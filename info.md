@@ -1,208 +1,48 @@
-📘 Curso de Gramática de Neerlandés para Hispanohablantes
-Sitio estático con audio, ejemplos y diálogos prácticos
+# Información del proyecto
 
-Este repositorio contiene un sitio web estático completo que enseña gramática del neerlandés (holandés) a hispanohablantes.
-El curso está diseñado para ser claro, completo y totalmente navegable desde GitHub Pages.
+## Producto principal
 
-Incluye:
+`index.html` contiene la nueva experiencia **Nederlands, gewoon doen**.
 
-Gramática detallada desde nivel inicial hasta intermedio–alto
+Está diseñada para aprender neerlandés directamente en neerlandés mediante:
 
-Alfabeto neerlandés con pronunciación
+1. **beeld** — imagen y situación visual;
+2. **geluid** — pronunciación neerlandesa;
+3. **betekenis** — significado explicado con neerlandés claro;
+4. **gebruik** — práctica y producción activa.
 
-Combinaciones fonéticas características (ui, ij/ei, eu, etc.)
+## Alcance actual
 
-Tiempos verbales explicados con ejemplos
+- Ruta A1–B2.
+- Grafo de conceptos.
+- Gramática y verbos.
+- Vocabulario visual.
+- Escenas de escucha.
+- Ejercicios interactivos.
+- Progreso local.
+- Tema claro/oscuro.
+- Uso offline básico.
+- GitHub Pages con tests previos al despliegue.
 
-Voz pasiva con “worden” y “zijn”
+## Política de audio
 
-Diálogos prácticos (restaurante, cafetería, supermercado, etc.)
+Los WAV de `audio/` pertenecen al repositorio anterior y **no se usan en la aplicación principal**. Algunos no estaban suficientemente validados.
 
-Secciones especiales con audios pre-generados
+La nueva interfaz utiliza textos revisados y la API de voz del navegador con idioma `nl-NL`. En dispositivos que tengan varias voces, la selección prioriza:
 
-Estructura en capítulos al estilo de un manual profesional
+1. `nl-NL`;
+2. `nl-BE`;
+3. cualquier voz `nl-*`.
 
-🌐 Demo (GitHub Pages)
+## Material anterior
 
-URL del sitio:
-(reemplaza con la URL una vez desplegado)
+`reference.html` conserva el curso antiguo para consulta histórica. No es la fuente de UX/UI ni de pronunciación de la aplicación principal.
 
-https://<tu-usuario>.github.io/<nombre-del-repo>/
+## Desarrollo
 
-Estructura
-├───audio
-│   ├───alfabeto
-│   ├───combinaciones
-│   ├───dialogos
-│   └───ejemplos
-├───css
-├───images
-├───js
-└───scripts -- crea los audios
+```bash
+npm run serve
+npm run check
+```
 
-
-Los archivos de audio no se generan en el frontend.
-Se deben producir previamente con un script TTS.
-
-🔊 Generación de audios (antes del despliegue)
-
-Los audios deben generarse antes de publicar el sitio, usando cualquier motor TTS.
-El proyecto asume rutas como:
-
-audio/alfabeto/nl_a.wav
-audio/combinaciones/ui.wav
-audio/dialogos/restaurante_01.wav
-
-
-Puedes usar un script de Python con la librería TTS.
-Ejemplo obligatorio de referencia (NO se ejecuta en el sitio, solo en tu máquina):
-
-from TTS.api import TTS
-
-tts = TTS(model_name="tts_models/en/ljspeech/tacotron2-DDC", progress_bar=False, gpu=False)
-tts.tts_to_file(
-    text="hallo, ik hoe van te",
-    file_path="output.wav",
-    lang="nl"
-)
-
-
-Ese script interno debería recorrer una lista de textos y generar todos los audios en un solo run.
-
-🚀 Despliegue en GitHub Pages
-
-Haz commit del proyecto.
-
-En GitHub, ve a:
-Settings → Pages → Deploy from branch
-
-Selecciona:
-
-Branch: main (o gh-pages)
-
-Folder: /root (o /docs si usas esa carpeta)
-
-Guarda cambios.
-
-Espera 1–2 minutos a que se genere el build.
-
-Importante:
-Asegúrate de que el archivo principal se llame:
-
-index.html
-
-
-Y que las rutas sean relativas, por ejemplo:
-
-css/styles.css
-js/main.js
-audio/dialogos/restaurante_01.wav
-
-
-Evita rutas absolutas como /css/styles.css, que rompen GitHub Pages.
-
-📘 Contenido del curso
-
-El sitio incluye:
-
-✔ Gramática completa
-
-Artículos: de, het, een
-
-Sustantivos y plural
-
-Pronombres
-
-Adjetivos y adverbios
-
-Verbo: presente, pasado (OVT y VTT), futuro, condicional
-
-Voz pasiva con worden/zijn
-
-Verbos modales
-
-Verbos separables
-
-✔ Fonética y pronunciación
-
-Alfabeto neerlandés
-
-Sonido de cada letra (con audio)
-
-Combinaciones típicas: ui, ij/ei, oe, sch, etc.
-
-✔ Conversaciones prácticas
-
-Con audio + traducción al español:
-
-Restaurante (incluye opciones vegetarianas y veganas)
-
-Cafetería
-
-Supermercado
-
-Pedir direcciones
-
-Presentarse
-
-Visita al médico (dieta veg/vegana)
-
-Small talk
-
-✔ Resumen final de gramática
-
-Con tablas compactas y ejemplos rápidos.
-
-🛠️ Tecnologías utilizadas
-
-HTML5
-
-CSS3
-
-JavaScript vanilla
-
-Audio HTML nativo (<audio controls>)
-
-Sin frameworks.
-Sin dependencias externas.
-Listo para correr en cualquier hosting estático.
-
-🧩 Solución de problemas
-❗ El sitio se ve mal en GitHub Pages o muestra 404
-
-Probablemente las rutas están mal configuradas.
-
-Usa rutas relativas:
-
-./css/styles.css
-./js/main.js
-
-❗ Los audios no se reproducen
-
-Verifica:
-
-Que los archivos existan en audio/...
-
-Que estén en minúsculas si así los referencia el HTML
-
-Que GitHub Pages haya terminado de desplegar
-
-👨‍💻 Contribuciones
-
-Puedes:
-
-Añadir audios
-
-Mejorar explicaciones
-
-Corregir gramática
-
-Crear más diálogos
-
-Mejorar diseño responsive
-
-PR bienvenidos.
-
-📜 Licencia
-
-Puedes elegir entre MIT, GPL o Creative Commons.
+No se requieren dependencias de producción ni proceso de compilación.
