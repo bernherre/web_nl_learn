@@ -1,13 +1,14 @@
 {
   "name": "web-nl-learn",
-  "version": "2.0.0",
+  "version": "5.0.0",
   "private": true,
   "type": "module",
-  "description": "Volledig statische leeromgeving voor Nederlands met beeld, nl-NL-uitspraak, concepten en interactieve oefeningen.",
+  "description": "Statische leeromgeving Nederlands A1-B2 met ruim 2.000 A1/A2-woorden en combinaties, diepe grammatica, voorzetsels, scheidbare werkwoorden, voegwoorden, beeld en nl-NL-uitspraak.",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8080",
-    "check": "node --check js/main.js && node --check js/content.js && node --check js/learning.js && npm test"
+    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/learning.js && node --check js/app.js && npm test",
+    "build": "node scripts/build-classic.mjs"
   },
   "engines": {
     "node": ">=20"

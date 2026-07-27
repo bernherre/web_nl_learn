@@ -23,8 +23,11 @@
       <nav class="main-nav">
         <button class="nav-item active" type="button" data-page="vandaag"><span class="nav-icon" aria-hidden="true">⌂</span><span>Vandaag</span></button>
         <button class="nav-item" type="button" data-page="leerpad"><span class="nav-icon" aria-hidden="true">↗</span><span>Leerpad</span></button>
+        <button class="nav-item" type="button" data-page="a1"><span class="nav-icon" aria-hidden="true">A1</span><span>A1-cursus</span></button>
+        <button class="nav-item" type="button" data-page="a2"><span class="nav-icon" aria-hidden="true">A2</span><span>A2-cursus</span></button>
         <button class="nav-item" type="button" data-page="concepten"><span class="nav-icon" aria-hidden="true">◎</span><span>Concepten</span></button>
         <button class="nav-item" type="button" data-page="grammatica"><span class="nav-icon" aria-hidden="true">¶</span><span>Grammatica</span></button>
+        <button class="nav-item" type="button" data-page="taalstructuren"><span class="nav-icon" aria-hidden="true">⌘</span><span>Taalstructuren</span></button>
         <button class="nav-item" type="button" data-page="werkwoorden"><span class="nav-icon" aria-hidden="true">↻</span><span>Werkwoorden</span></button>
         <button class="nav-item" type="button" data-page="woordenschat"><span class="nav-icon" aria-hidden="true">▦</span><span>Woordenschat</span></button>
         <button class="nav-item" type="button" data-page="luisteren"><span class="nav-icon" aria-hidden="true">◖</span><span>Luisteren</span></button>
@@ -107,6 +110,15 @@
               <div class="vocabulary-grid compact-grid" id="daily-vocabulary"></div>
             </section>
 
+            <section class="section-block a1-promo" aria-labelledby="a1-promo-title">
+              <div class="section-heading"><div><span class="kicker">Nieuwe complete route</span><h2 id="a1-promo-title">A1: van hallo tot vrije tijd</h2></div><button class="text-button" type="button" data-page="a1">Open alle 8 thema’s →</button></div>
+              <div class="a1-promo-grid">
+                <button class="card a1-feature" type="button" data-page="a1" data-a1-theme="hallo"><img src="images/theme-hallo.svg" alt="Twee mensen die kennismaken"><div><span class="eyebrow"><span>A1</span> Thema 1</span><h3>Hallo</h3><p>Begroeten, jezelf voorstellen, familie, zijn en hebben.</p></div></button>
+                <button class="card a1-feature" type="button" data-page="a1" data-a1-theme="wonen"><img src="images/theme-wonen.svg" alt="Een huis met kamers"><div><span class="eyebrow"><span>A1</span> Thema 3</span><h3>Wonen</h3><p>Kamers, meubels, plaatsvoorzetsels en eenvoudige hoofdzinnen.</p></div></button>
+                <button class="card a1-feature" type="button" data-page="a1" data-a1-theme="reizen"><img src="images/theme-reizen.svg" alt="Een trein op een station"><div><span class="eyebrow"><span>A1</span> Thema 7</span><h3>Reizen</h3><p>Kaartjes, spoor, route, tijd en modale werkwoorden.</p></div></button>
+              </div>
+            </section>
+
             <section class="section-block two-up" aria-label="Voortgang en aandachtspunt">
               <article class="card weekly-card">
                 <div class="section-heading compact"><div><span class="kicker">Ritme</span><h2>Deze week</h2></div><strong>72 min</strong></div>
@@ -181,6 +193,34 @@
             <div class="level-path" id="level-path"></div>
           </section>
 
+          <section class="page" id="page-a1" aria-labelledby="a1-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Volledige beginnersroute</span><h1 id="a1-title">Nederlands A1 in 8 thema’s</h1><p>Elke les volgt dezelfde heldere route: kijk naar de situatie, luister naar gecontroleerd Nederlands, begrijp de vorm en gebruik de taal zelf.</p></div><div class="a1-summary"><strong>8</strong><span>thema’s</span><strong>1000+</strong><span>woorden en combinaties</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk A1-thema">
+              <div><b>1</b><span><strong>Context</strong><small>beeld en situatie</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Input</strong><small>luisteren en lezen</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Inzicht</strong><small>woorden en grammatica</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Productie</strong><small>spreken en oefenen</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="a1-theme-grid" aria-label="A1-thema’s"></div>
+              <section class="card a1-theme-detail" id="a1-theme-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-a2" aria-labelledby="a2-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Van A1 naar zelfstandig dagelijks Nederlands</span><h1 id="a2-title">Nederlands A2 in 8 thema’s</h1><p>Verdiep woordenschat, grammatica, luistervaardigheid en praktische communicatie in wonen, samenleving, gezin, winkels, opleidingen, werk en gemeente.</p></div><div class="a1-summary"><strong>8</strong><span>thema’s</span><strong>1000+</strong><span>woorden en combinaties</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk A2-thema">
+              <div><b>1</b><span><strong>Context</strong><small>realistische situatie</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Netwerk</strong><small>woorden en combinaties</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Structuur</strong><small>grammatica en zinsbouw</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Gebruik</strong><small>luisteren, spreken en toetsen</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="a2-theme-grid" aria-label="A2-thema’s"></div>
+              <section class="card a1-theme-detail" id="a2-theme-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
           <section class="page" id="page-concepten" aria-labelledby="concepten-title">
             <div class="page-heading"><div><span class="kicker">Alles hangt samen</span><h1 id="concepten-title">Het conceptenweb</h1><p>Verken grammatica, werkwoorden, semantiek, uitspraak en communicatie als één verbonden systeem.</p></div></div>
             <section class="card concept-hero"><img src="images/concept-map.svg" alt="Conceptenkaart met Nederlands in het midden en verbonden taaldomeinen"><div><span class="kicker">Slim navigeren</span><h2>Kies een domein</h2><p>Elk nieuw concept toont betekenis, voorbeelden, uitspraak en verwante onderwerpen.</p><div class="concept-tags"><span>vorm</span><span>betekenis</span><span>context</span><span>gebruik</span></div></div></section>
@@ -195,6 +235,18 @@
               <div class="topic-list" id="grammar-list"></div>
               <section class="card topic-detail" id="grammar-detail" aria-live="polite"></section>
             </div>
+          </section>
+
+          <section class="page" id="page-taalstructuren" aria-labelledby="taalstructuren-title">
+            <div class="page-heading"><div><span class="kicker">Vorm, betekenis en positie</span><h1 id="taalstructuren-title">Taalstructuren in context</h1><p>Bestudeer niet alleen losse regels, maar complete patronen: welk woord kies je, wat betekent het en waar staat het in de zin?</p></div><div class="structure-total"><strong>300+</strong><span>patronen en combinaties</span></div></div>
+            <div class="structure-tabs" id="structure-tabs" role="tablist" aria-label="Taalstructuren">
+              <button class="active" type="button" role="tab" aria-selected="true" data-structure="voorzetsels">Voorzetsels</button>
+              <button type="button" role="tab" aria-selected="false" data-structure="scheidbaar">Scheidbare werkwoorden</button>
+              <button type="button" role="tab" aria-selected="false" data-structure="voegwoorden">Voegwoorden</button>
+              <button type="button" role="tab" aria-selected="false" data-structure="idiomatiek">Vaste en idiomatische combinaties</button>
+            </div>
+            <section class="card structure-overview" id="structure-summary" aria-live="polite"></section>
+            <div class="structure-content" id="structure-content" aria-live="polite"></div>
           </section>
 
           <section class="page" id="page-werkwoorden" aria-labelledby="werkwoorden-title">

@@ -29,7 +29,8 @@ test('de hoofdapp gebruikt geen twijfelachtige WAV-opnames', async () => {
 
 test('de inhoud bevat het leerpad A1 tot B2 en alle kerndomeinen', async () => {
   const content = await read('js/content.js');
-  for (const level of ['A1', 'A2', 'B1', 'B2']) assert.match(content, new RegExp(`id: '${level}'`));
+  const { levels } = await import('../js/content.js');
+  assert.deepEqual(levels.map((level) => level.id), ['A1', 'A2', 'B1', 'B2']);
   for (const domain of ['Grammatica', 'Werkwoorden', 'Semantiek', 'Woordenschat', 'Uitspraak', 'Communicatie']) assert.match(content, new RegExp(domain));
 });
 
@@ -56,11 +57,11 @@ test('alle lokale src- en href-assets op de startpagina bestaan', async () => {
 });
 
 test('alle inhoudsafbeeldingen bestaan en hebben alternatieve tekst in de app', async () => {
-  const content = await read('js/content.js');
-  const imageReferences = [...content.matchAll(/(?:image): '([^']+)'/g)].map((match) => match[1]);
-  assert.ok(imageReferences.length >= 10);
+  const { a1Themes, a2Themes, vocabulary } = await import('../js/content.js');
+  const imageReferences = [...new Set([...a1Themes, ...a2Themes, ...vocabulary].map((item) => item.image).filter(Boolean))];
+  assert.ok(imageReferences.length >= 16);
   for (const reference of imageReferences) await assert.doesNotReject(readFile(new URL(reference, root)));
-  assert.doesNotMatch(content, /alt: ''/);
+  for (const item of vocabulary) assert.ok(item.alt);
 });
 
 test('de offline cache bevat de kernbestanden', async () => {
@@ -69,9 +70,106 @@ test('de offline cache bevat de kernbestanden', async () => {
 });
 
 
+test('de A1-cursus bevat acht volledige thema’s met eigen oefeningen', async () => {
+  const { a1Themes } = await import('../js/content.js');
+  const html = await read('index.html');
+  assert.deepEqual(a1Themes.map((theme) => theme.id), ['hallo', 'school', 'wonen', 'eten', 'gezondheid', 'kleding', 'reizen', 'vrije-tijd']);
+  assert.match(html, /id="page-a1"/);
+  assert.match(html, /id="a1-theme-grid"/);
+  assert.match(html, /data-page="a1"/);
+  for (const theme of a1Themes) assert.ok(theme.exercise?.question && theme.exercise?.options?.length >= 3);
+});
+
+test('de A1-route gebruikt thematische beelden en browseruitspraak', async () => {
+  const content = await read('js/content.js');
+  const main = await read('js/main.js');
+  for (const image of ['theme-hallo.svg', 'theme-school.svg', 'theme-wonen.svg', 'theme-eten.svg', 'theme-dokter.svg', 'theme-kleding.svg', 'theme-reizen.svg', 'theme-vrije-tijd.svg']) {
+    assert.match(content, new RegExp(image.replace('.', '\.')));
+    await assert.doesNotReject(readFile(new URL(`images/${image}`, root)));
+  }
+  assert.match(main, /renderA1Themes/);
+  assert.match(main, /renderA2Themes/);
+  assert.match(main, /data-course-answer/);
+  assert.match(main, /class="sound-button speak"/);
+});
+
 test('de browserbundle heeft geen imports of exports nodig', async () => {
   const app = await read('js/app.js');
   assert.doesNotMatch(app, /^import\s/m);
   assert.doesNotMatch(app, /^export\s/m);
   assert.match(app, /initialize\(\);/);
+});
+
+
+test('elk A1- en A2-thema bevat minimaal honderdtwintig unieke woorden en combinaties', async () => {
+  const { a1Themes, a2Themes } = await import('../js/content.js');
+  assert.equal(a1Themes.length, 8);
+  assert.equal(a2Themes.length, 8);
+  for (const [level, themes] of [['A1', a1Themes], ['A2', a2Themes]]) {
+    for (const theme of themes) {
+      const words = Object.values(theme.wordGroups).flat();
+      assert.ok(words.length >= 120, `${level} ${theme.title} heeft slechts ${words.length} woorden`);
+      assert.equal(new Set(words).size, words.length, `${level} ${theme.title} bevat dubbele woorden`);
+      assert.ok(theme.vocabulary.length >= 8);
+      assert.ok(theme.dialogue.length >= 4);
+    }
+  }
+});
+
+test('de A2-route gebruikt de acht gepubliceerde hoofdthema’s als curriculaire referentie', async () => {
+  const { a2Themes } = await import('../js/content.js');
+  assert.deepEqual(a2Themes.map((theme) => theme.title), ['Verhuizen', 'Nederland', 'Kinderen', 'Winkels', 'Opleidingen', 'Werk zoeken', 'Werken', 'De gemeente']);
+  const html = await read('index.html');
+  assert.match(html, /id="page-a2"/);
+  assert.match(html, /id="a2-theme-grid"/);
+  assert.match(html, /1000\+/);
+});
+
+
+test('de verdiepingsbibliotheek bevat uitgebreide grammaticale systemen', async () => {
+  const { deepGrammarTopics, prepositionEntries, fixedPrepositionCombinations, separableVerbBank, conjunctionBank, idiomBank } = await import('../js/depth-content.js');
+  assert.ok(deepGrammarTopics.length >= 12);
+  assert.ok(prepositionEntries.length >= 35);
+  assert.ok(fixedPrepositionCombinations.length >= 80);
+  assert.ok(separableVerbBank.length >= 80);
+  assert.ok(separableVerbBank.filter((verb) => verb.models).length >= 12);
+  assert.ok(conjunctionBank.length >= 40);
+  assert.ok(idiomBank.length >= 75);
+});
+
+test('scheidbare werkwoorden tonen hun positie in zes zinsconstructies', async () => {
+  const { separableVerbBank } = await import('../js/depth-content.js');
+  const opstaan = separableVerbBank.find((verb) => verb.infinitive === 'opstaan');
+  assert.ok(opstaan?.models);
+  assert.match(opstaan.models.main, /sta .* op/);
+  assert.match(opstaan.models.perfect, /opgestaan/);
+  assert.match(opstaan.models.subordinate, /opsta/);
+  assert.match(opstaan.models.te, /op te staan/);
+});
+
+test('de interface bevat A2 en de afzonderlijke taalstructurenbibliotheek', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  for (const id of ['page-a2', 'a2-theme-grid', 'page-taalstructuren', 'structure-tabs', 'structure-content']) assert.match(html, new RegExp(`id="${id}"`));
+  for (const renderer of ['renderPrepositionStructures', 'renderSeparableStructures', 'renderConjunctionStructures', 'renderIdiomStructures']) assert.match(main, new RegExp(renderer));
+});
+
+test('de zestien thema’s bevatten samen ruim tweeduizend unieke leeritems binnen hun thema', async () => {
+  const { a1Themes, a2Themes } = await import('../js/content.js');
+  const counts = [...a1Themes, ...a2Themes].map((theme) => Object.values(theme.wordGroups).flat().length);
+  assert.ok(counts.reduce((sum, count) => sum + count, 0) >= 2000);
+});
+
+
+test('de klassieke browserbundle bevat alle verdiepingsbanken voor gebruik', async () => {
+  const app = await read('js/app.js');
+  const expandedDeclaration = app.indexOf('const expandedWordGroups');
+  const expandedUse = app.indexOf('expandedWordGroups[theme.id]');
+  const supplementDeclaration = app.indexOf('const supplementaryWordGroups');
+  const supplementUse = app.indexOf('supplementaryWordGroups[theme.id]');
+
+  assert.ok(expandedDeclaration >= 0, 'expandedWordGroups ontbreekt in js/app.js');
+  assert.ok(supplementDeclaration >= 0, 'supplementaryWordGroups ontbreekt in js/app.js');
+  assert.ok(expandedDeclaration < expandedUse, 'expandedWordGroups wordt gebruikt voor de declaratie');
+  assert.ok(supplementDeclaration < supplementUse, 'supplementaryWordGroups wordt gebruikt voor de declaratie');
 });

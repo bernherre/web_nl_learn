@@ -1,74 +1,97 @@
 # Nederlands, gewoon doen
 
-Aplicación web estática para aprender neerlandés **usando solamente neerlandés dentro de la experiencia de aprendizaje**.
+Een volledig statische leeromgeving voor Nederlands van A1 tot B2. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
-La metodología central es:
+> **beeld → geluid → betekenis → structuur → gebruik**
 
-> **beeld → geluid → betekenis → gebruik**
-> imagen → sonido → significado → uso
+## Inhoud van deze versie
 
-## Qué contiene esta versión
+### Woordenschat A1 en A2
 
-- Dashboard diario con plan de 20 minutos.
-- Ruta completa **A1 → A2 → B1 → B2**.
-- Grafo de conceptos: gramática, verbos, semántica, vocabulario, pronunciación y comunicación.
-- Lección visual funcional sobre el orden de palabras.
-- Atlas de gramática con filtros por nivel.
-- Entrenador de verbos con tiempos, ejemplos y pronunciación.
-- Vocabulario visual por temas, buscador y frases de contexto.
-- Escenas de escucha con preguntas de comprensión.
-- Ejercicios de orden de palabras, artículos y conjugación.
-- Progreso local mediante `localStorage`.
-- Modo claro/oscuro y velocidad de pronunciación configurable.
-- PWA/offline básico mediante Service Worker.
-- Despliegue automático en GitHub Pages después de ejecutar las pruebas.
+- 8 thematische A1-hoofdstukken;
+- 8 thematische A2-hoofdstukken;
+- **2.035 unieke woorden, taalhandelingen en vaste combinaties** binnen de zestien thema’s;
+- semantische groepen per thema, zoals personen, handelingen, situaties, beschrijvende woorden, functiewoorden en vaste combinaties;
+- klikbare uitspraak voor ieder woord of iedere combinatie;
+- 128 uitgelichte kernwoorden met eenvoudige definitie en voorbeeldzin;
+- thematische illustraties, dialogen, leerdoelen en mini-toetsen.
 
-## Pronunciación
+De thematische route gebruikt de openbare hoofdstukindeling van TaalCompleet A1 en A2 als curriculaire inspiratie. Alle definities, voorbeeldzinnen, dialogen, oefeningen en lijsten in deze app zijn nieuw geschreven en vormen geen digitale kopie van de boeken.
 
-La aplicación principal **no utiliza los WAV heredados**, porque algunos no estaban bien validados. Las lecciones reproducen texto neerlandés controlado mediante `SpeechSynthesisUtterance`:
+### Grammatica-atlas
 
-1. busca primero una voz `nl-NL`;
-2. utiliza `nl-BE` como segunda opción;
-3. usa cualquier voz `nl-*` como último fallback neerlandés;
-4. siempre establece el idioma de la frase como `nl-NL`;
-5. permite velocidad normal, lenta y personalizada.
+De grammatica-atlas bevat **38 basis- en verdiepingsthema’s** van A1 tot B2, waaronder:
 
-La calidad final depende de las voces instaladas en el dispositivo. En Windows y Edge suelen estar disponibles voces neerlandesas de buena calidad.
+- lidwoorden, zelfstandige naamwoorden, meervoud en verkleinwoorden;
+- bijvoeglijke naamwoorden, voornaamwoorden en vergelijkingen;
+- tegenwoordige tijd, perfectum, modale werkwoorden en werkwoordgroepen;
+- hoofdzin, inversie, bijzin en meerdere werkwoorden aan het einde;
+- plaats-, richting- en tijdvoorzetsels;
+- vaste combinaties met voorzetsels en `er + voorzetsel`;
+- scheidbare werkwoorden in hoofdzin, inversie, perfectum, bijzin, modale constructie en `te`-constructie;
+- nevenschikkende en onderschikkende voegwoorden;
+- betekenisrelaties zoals reden, oorzaak, doel, gevolg, voorwaarde, contrast, tijd en toevoeging;
+- idiomatische voorzetseluitdrukkingen.
 
-## Ejecutar localmente
+Verdiepende onderwerpen tonen een zinsmodel, meerdere voorbeeldzinnen, betekenisverschillen, veelgemaakte fouten en gerelateerde concepten.
 
-No requiere instalación de dependencias.
+### Taalstructuren in context
+
+De aparte sectie **Taalstructuren** bevat vier grote banken:
+
+1. **Voorzetsels** — basisgebruiken en meer dan tachtig vaste combinaties;
+2. **Scheidbare werkwoorden** — 87 werkwoorden, gegroepeerd per voorvoegsel, met twaalf volledige positiemodellen;
+3. **Voegwoorden** — 44 voegwoorden en zinsverbinders met betekenisrelatie en woordvolgorde;
+4. **Vaste en idiomatische combinaties** — 80 veelgebruikte chunks met betekenis en voorbeeldzin.
+
+### Werkwoordentrainer
+
+De trainer combineert kernwerkwoorden met de volledige bank scheidbare werkwoorden. Bij de uitgelichte scheidbare werkwoorden zie je hetzelfde werkwoord in:
+
+- een gewone hoofdzin;
+- inversie;
+- een modale constructie;
+- de voltooide tijd;
+- een bijzin;
+- een constructie met `te`.
+
+## Uitspraak
+
+De hoofdapp gebruikt geen twijfelachtige WAV-opnames. Zij spreekt gecontroleerde Nederlandse woorden en zinnen uit met `SpeechSynthesisUtterance` en kiest bij voorkeur:
+
+1. `nl-NL`;
+2. `nl-BE`;
+3. een andere `nl-*`-stem.
+
+Normale en langzame afspeelsnelheid blijven beschikbaar. De uiteindelijke stemkwaliteit hangt af van de stemmen in het besturingssysteem en de browser.
+
+## Statisch en direct te openen
+
+De app heeft geen framework of npm-afhankelijkheden nodig. Open `index.html` rechtstreeks met Chrome of Edge. De klassieke bundle `js/app.js` ondersteunt navigatie en oefeningen ook via dubbelklik.
+
+Voor de Service Worker en PWA-functies:
 
 ```bash
 npm run serve
 ```
 
-Luego abre:
+Open daarna `http://localhost:8080`.
 
-```text
-http://localhost:8080
-```
-
-No conviene abrir `index.html` directamente con doble clic porque los módulos ES y el Service Worker funcionan correctamente mediante HTTP.
-
-## Validar
+## Ontwikkelen en valideren
 
 ```bash
+npm run build
+npm test
 npm run check
 ```
 
-Las pruebas comprueban, entre otros puntos:
+- `npm run build` genereert `js/app.js` uit de bronbestanden;
+- `npm test` controleert leerlogica, inhoud, bestanden en deploymentvoorwaarden;
+- `npm run check` bouwt de bundle, controleert alle JavaScriptbestanden en voert de **26 tests** uit.
 
-- lógica del ejercicio de orden de palabras;
-- selección prioritaria de voz neerlandesa;
-- búsqueda y filtrado de vocabulario;
-- contenido A1–B2 y dominios clave;
-- ausencia de WAV heredados en la aplicación principal;
-- existencia de imágenes y archivos estáticos;
-- configuración del despliegue en GitHub Pages;
-- recursos principales de la caché offline.
+De browser-QA controleert daarnaast navigatie, A1/A2-kaarten, 38 grammaticaonderwerpen, de vier taalstructurenbanken, de woordvolgorde-oefening en horizontale overflow op mobiel.
 
-## Estructura
+## Structuur
 
 ```text
 .
@@ -77,15 +100,16 @@ Las pruebas comprueban, entre otros puntos:
 │   ├── styles.css
 │   └── reference.css
 ├── images/
-│   ├── concept-map.svg
-│   ├── lesson-thuiswerken.svg
-│   ├── scene-*.svg
-│   └── woord-*.svg
 ├── js/
-│   ├── content.js
 │   ├── learning.js
+│   ├── depth-content.js
+│   ├── supplement-content.js
+│   ├── content.js
 │   ├── main.js
+│   ├── app.js
 │   └── reference.js
+├── scripts/
+│   └── build-classic.mjs
 ├── tests/
 ├── index.html
 ├── reference.html
@@ -94,26 +118,6 @@ Las pruebas comprueban, entre otros puntos:
 └── package.json
 ```
 
-## Reutilización del repositorio anterior
+## Bestaand materiaal
 
-Se conserva:
-
-- la estructura Git y el historial disponible;
-- GitHub Pages;
-- licencia y avisos;
-- el material anterior en `reference.html`;
-- los audios heredados dentro del repositorio como material de archivo.
-
-La experiencia principal es la nueva interfaz. `reference.html` queda como referencia histórica y no determina el diseño ni la pronunciación de la aplicación actual.
-
-## GitHub Pages
-
-El workflow:
-
-1. ejecuta `npm test`;
-2. publica el repositorio como sitio estático;
-3. despliega únicamente si las pruebas pasan.
-
-## Openen zonder installatie
-
-Je kunt `index.html` rechtstreeks met Chrome of Edge openen. De browserbundle `js/app.js` gebruikt geen ES-module-imports, zodat navigatie en oefeningen ook via dubbelklik werken. Voor de beste lokale PWA-ervaring kun je nog steeds `npm run serve` gebruiken.
+Het oorspronkelijke naslagwerk blijft beschikbaar in `reference.html`, maar is niet de hoofdapp. De oude audiobestanden blijven alleen als archiefmateriaal in de repository staan en worden niet door de nieuwe leerervaring geladen.

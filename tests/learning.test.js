@@ -54,6 +54,6 @@ test('getGreeting kiest een passende Nederlandse daggroet', () => {
 
 test('safeProgress herstelt ongeldige lokale waarden veilig', () => {
   assert.deepEqual(safeProgress({ minutes: -3, completed: '2', audioPlays: 'x', wordOrderCompleted: 1 }), {
-    minutes: 0, completed: 2, audioPlays: 0, wordOrderCompleted: true, practiceCompleted: 0,
+    minutes: 0, completed: 2, audioPlays: 0, wordOrderCompleted: true, practiceCompleted: 0, a1Completed: [], a2Completed: [],
   });
 });

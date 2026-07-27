@@ -58,5 +58,7 @@ export function safeProgress(raw = {}) {
     audioPlays: Math.max(0, Number(raw.audioPlays) || 0),
     wordOrderCompleted: Boolean(raw.wordOrderCompleted),
     practiceCompleted: Math.max(0, Number(raw.practiceCompleted) || 0),
+    a1Completed: Array.isArray(raw.a1Completed) ? [...new Set(raw.a1Completed.filter((item) => typeof item === 'string'))] : [],
+    a2Completed: Array.isArray(raw.a2Completed) ? [...new Set(raw.a2Completed.filter((item) => typeof item === 'string'))] : [],
   };
 }
