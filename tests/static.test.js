@@ -243,3 +243,55 @@ test('de klassieke bundle en offlinecache bevatten de vragenmodule', async () =>
   assert.match(worker, /questions-content\.js/);
   assert.match(worker, /questions-map\.svg/);
 });
+
+
+test('V10 toont vijf zichtbare cursusroutes van A0 tot B2', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  for (const level of ['a0', 'a1', 'a2', 'b1', 'b2']) {
+    assert.match(html, new RegExp(`data-page="${level}"`));
+    assert.match(html, new RegExp(`id="page-${level}"`));
+  }
+  for (const renderer of ['renderA0Themes', 'renderA1Themes', 'renderA2Themes', 'renderB1Themes', 'renderB2Themes']) {
+    assert.match(main, new RegExp(renderer));
+  }
+});
+
+test('de A0-instaproute bevat begroeten, voorstellen, hulp en dagelijkse basis', async () => {
+  const { a0Themes } = await import('../js/starter-content.js');
+  assert.deepEqual(a0Themes.map((theme) => theme.id), ['groeten-afscheid', 'jezelf-voorstellen', 'begrijpen-hulp', 'dagelijkse-basis']);
+  assert.ok(a0Themes.every((theme) => theme.dialogue.length >= 4));
+  assert.ok(a0Themes.every((theme) => Object.values(theme.wordGroups).flat().length >= 48));
+  const all = JSON.stringify(a0Themes);
+  for (const phrase of ['dank je wel', 'hoe gaat het', 'mijn naam is', 'ik begrijp het niet', 'tot ziens']) assert.match(all, new RegExp(phrase));
+  for (const theme of a0Themes) await assert.doesNotReject(readFile(new URL(theme.image, root)));
+});
+
+test('B1 en B2 gebruiken negen terugkerende spiraalthema’s met gesprekken', async () => {
+  const { spiralThemes, spiralStats } = await import('../js/spiral-content.js');
+  assert.equal(spiralThemes.length, 9);
+  assert.equal(spiralStats.conversations, 36);
+  assert.ok(spiralStats.learningItems >= 900);
+  for (const theme of spiralThemes) {
+    for (const level of ['B1', 'B2']) {
+      const data = theme.levels[level];
+      assert.ok(data.canDo.length >= 3);
+      assert.ok(data.grammar.length >= 3);
+      assert.ok(data.dialogue.length >= 4);
+      assert.ok(Object.values(data.words).flat().length >= 24);
+    }
+  }
+  const titles = spiralThemes.map((theme) => theme.title).join(' ');
+  for (const topic of ['Kleding', 'Vakantie', 'Dieren', 'Huis', 'Eten', 'Supermarkt', 'Emoties', 'Literatuur', 'Omgeving']) assert.match(titles, new RegExp(topic));
+});
+
+test('de klassieke bundle en offlinecache bevatten A0 en de B1-B2-spiraal', async () => {
+  const app = await read('js/app.js');
+  const worker = await read('service-worker.js');
+  assert.match(app, /const a0Themes =/);
+  assert.match(app, /const spiralThemes =/);
+  assert.match(app, /function renderSpiralCourse/);
+  assert.match(worker, /starter-content\.js/);
+  assert.match(worker, /spiral-content\.js/);
+  assert.match(worker, /a0-groeten\.svg/);
+});

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123f38">
-  <meta name="description" content="Nederlands leren met beeld, geluid, betekenis en actief gebruik. Een volledig statische leeromgeving van A1 tot B2.">
+  <meta name="description" content="Nederlands leren met beeld, geluid, betekenis en actief gebruik. Een volledig statische leeromgeving van A0 tot B2.">
   <meta name="color-scheme" content="light dark">
   <title>Nederlands, gewoon doen</title>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
@@ -23,8 +23,11 @@
       <nav class="main-nav">
         <button class="nav-item active" type="button" data-page="vandaag"><span class="nav-icon" aria-hidden="true">⌂</span><span>Vandaag</span></button>
         <button class="nav-item" type="button" data-page="leerpad"><span class="nav-icon" aria-hidden="true">↗</span><span>Leerpad</span></button>
+        <button class="nav-item" type="button" data-page="a0"><span class="nav-icon" aria-hidden="true">A0</span><span>A0-start</span></button>
         <button class="nav-item" type="button" data-page="a1"><span class="nav-icon" aria-hidden="true">A1</span><span>A1-cursus</span></button>
         <button class="nav-item" type="button" data-page="a2"><span class="nav-icon" aria-hidden="true">A2</span><span>A2-cursus</span></button>
+        <button class="nav-item" type="button" data-page="b1"><span class="nav-icon" aria-hidden="true">B1</span><span>B1-cursus</span></button>
+        <button class="nav-item" type="button" data-page="b2"><span class="nav-icon" aria-hidden="true">B2</span><span>B2-cursus</span></button>
         <button class="nav-item" type="button" data-page="concepten"><span class="nav-icon" aria-hidden="true">◎</span><span>Concepten</span></button>
         <button class="nav-item" type="button" data-page="grammatica"><span class="nav-icon" aria-hidden="true">¶</span><span>Grammatica</span></button>
         <button class="nav-item" type="button" data-page="vragen"><span class="nav-icon" aria-hidden="true">?</span><span>Vragen</span></button>
@@ -52,7 +55,7 @@
         <div class="topbar-title" aria-live="polite"><span id="page-context">Vandaag</span><small>beeld · geluid · betekenis · gebruik</small></div>
         <div class="topbar-actions">
           <button class="icon-button" id="theme-toggle" type="button" aria-label="Wissel tussen licht en donker">☾</button>
-          <span class="level-pill">A2</span>
+          <span class="level-pill">A0–B2</span>
           <div class="streak" title="Oefenreeks"><span aria-hidden="true">🔥</span><div><strong id="streak-count">7 dagen</strong><small>mooie reeks</small></div></div>
           <button class="avatar" type="button" aria-label="Profiel">BH</button>
         </div>
@@ -117,6 +120,17 @@
                 <button class="card a1-feature" type="button" data-page="a1" data-a1-theme="hallo"><img src="images/theme-hallo.svg" alt="Twee mensen die kennismaken"><div><span class="eyebrow"><span>A1</span> Thema 1</span><h3>Hallo</h3><p>Begroeten, jezelf voorstellen, familie, zijn en hebben.</p></div></button>
                 <button class="card a1-feature" type="button" data-page="a1" data-a1-theme="wonen"><img src="images/theme-wonen.svg" alt="Een huis met kamers"><div><span class="eyebrow"><span>A1</span> Thema 3</span><h3>Wonen</h3><p>Kamers, meubels, plaatsvoorzetsels en eenvoudige hoofdzinnen.</p></div></button>
                 <button class="card a1-feature" type="button" data-page="a1" data-a1-theme="reizen"><img src="images/theme-reizen.svg" alt="Een trein op een station"><div><span class="eyebrow"><span>A1</span> Thema 7</span><h3>Reizen</h3><p>Kaartjes, spoor, route, tijd en modale werkwoorden.</p></div></button>
+              </div>
+            </section>
+
+            <section class="section-block" aria-labelledby="routes-title">
+              <div class="section-heading"><div><span class="kicker">Vijf zichtbare routes</span><h2 id="routes-title">Kies jouw niveau</h2></div><button class="text-button" type="button" data-page="leerpad">Bekijk het hele leerpad →</button></div>
+              <div class="level-quick-grid">
+                <button class="card level-quick level-a0" type="button" data-page="a0"><strong>A0</strong><span>Eerste contact</span><small>Hallo, dank je, mijn naam is…</small></button>
+                <button class="card level-quick level-a1" type="button" data-page="a1"><strong>A1</strong><span>Dagelijkse basis</span><small>Wonen, eten, kleding en reizen</small></button>
+                <button class="card level-quick level-a2" type="button" data-page="a2"><strong>A2</strong><span>Zelfstandig handelen</span><small>Werk, winkels, gezin en gemeente</small></button>
+                <button class="card level-quick level-b1" type="button" data-page="b1"><strong>B1</strong><span>Uitleggen en deelnemen</span><small>Emoties, omgeving en argumentatie</small></button>
+                <button class="card level-quick level-b2" type="button" data-page="b2"><strong>B2</strong><span>Nuanceren en analyseren</span><small>Literatuur, beleid en professioneel register</small></button>
               </div>
             </section>
 
@@ -190,8 +204,22 @@
           </section>
 
           <section class="page" id="page-leerpad" aria-labelledby="leerpad-title">
-            <div class="page-heading"><div><span class="kicker">Van A1 tot B2</span><h1 id="leerpad-title">Jouw leerpad</h1><p>Een duidelijke route van dagelijkse basis naar professioneel en natuurlijk Nederlands.</p></div><div class="legend"><span><i class="done"></i>afgerond</span><span><i class="current"></i>nu bezig</span><span><i></i>later</span></div></div>
+            <div class="page-heading"><div><span class="kicker">Van A0 tot B2</span><h1 id="leerpad-title">Jouw leerpad</h1><p>Een duidelijke route van dagelijkse basis naar professioneel en natuurlijk Nederlands.</p></div><div class="legend"><span><i class="done"></i>afgerond</span><span><i class="current"></i>nu bezig</span><span><i></i>later</span></div></div>
             <div class="level-path" id="level-path"></div>
+          </section>
+
+          <section class="page" id="page-a0" aria-labelledby="a0-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Eerste contact en overlevingstaal</span><h1 id="a0-title">Nederlands A0: meteen iets kunnen zeggen</h1><p>Vier compacte thema’s met begroetingen, afscheid, jezelf voorstellen, hulp vragen, cijfers, tijd en de minimaal nuttige taal voor je eerste gesprekken.</p></div><div class="a1-summary level-summary-a0"><strong>4</strong><span>thema’s</span><strong>190+</strong><span>woorden en chunks</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk A0-thema">
+              <div><b>1</b><span><strong>Kijk</strong><small>herken de situatie</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Luister</strong><small>hoor de hele chunk</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Herhaal</strong><small>spreek hardop na</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Gebruik</strong><small>maak echt contact</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="a0-theme-grid" aria-label="A0-thema’s"></div>
+              <section class="card a1-theme-detail" id="a0-theme-detail" aria-live="polite"></section>
+            </div>
           </section>
 
           <section class="page" id="page-a1" aria-labelledby="a1-title">
@@ -219,6 +247,34 @@
             <div class="a1-layout">
               <div class="a1-theme-grid" id="a2-theme-grid" aria-label="A2-thema’s"></div>
               <section class="card a1-theme-detail" id="a2-theme-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-b1" aria-labelledby="b1-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Zelfstandig Nederlands in echte gesprekken</span><h1 id="b1-title">Nederlands B1 in 9 spiraalthema’s</h1><p>De bekende thema’s keren terug met preciezere werkwoorden, langere gesprekken, mening, oorzaak-gevolg, ervaringen en professionele communicatie.</p></div><div class="a1-summary level-summary-b1"><strong>9</strong><span>thema’s</span><strong>234</strong><span>leeritems</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk B1-thema">
+              <div><b>1</b><span><strong>Activeren</strong><small>bekende taal ophalen</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Verdiepen</strong><small>precies vocabulaire</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Verbinden</strong><small>langere zinnen</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Gesprek</strong><small>uitleggen en reageren</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="b1-theme-grid" aria-label="B1-thema’s"></div>
+              <section class="card a1-theme-detail" id="b1-theme-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-b2" aria-labelledby="b2-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Nuance, interpretatie en professioneel register</span><h1 id="b2-title">Nederlands B2 in 9 spiraalthema’s</h1><p>Analyseer, onderbouw en nuanceer rond literatuur, milieu, relaties, consumentengedrag, cultuur en samenleving met natuurlijke vaste combinaties.</p></div><div class="a1-summary level-summary-b2"><strong>9</strong><span>thema’s</span><strong>234</strong><span>leeritems</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk B2-thema">
+              <div><b>1</b><span><strong>Interpreteren</strong><small>impliciete betekenis</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Nuanceren</strong><small>register en voorbehoud</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Onderbouwen</strong><small>argument en bron</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Produceren</strong><small>debat, essay en presentatie</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="b2-theme-grid" aria-label="B2-thema’s"></div>
+              <section class="card a1-theme-detail" id="b2-theme-detail" aria-live="polite"></section>
             </div>
           </section>
 

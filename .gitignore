@@ -6,5 +6,7 @@ coverage/
 
 __pycache__/
 *.pyc
-
-.vs
+.vs/
+*.suo
+*.user
+*.lnk

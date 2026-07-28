@@ -1,8 +1,8 @@
-const CACHE = 'nederlands-gewoon-doen-v9';
+const CACHE = 'nederlands-gewoon-doen-v10';
 const CORE = [
   './', './index.html', './css/styles.css', './js/app.js',
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
-  './js/questions-content.js', './js/verb-atlas.js',
+  './js/questions-content.js', './js/starter-content.js', './js/spiral-content.js', './js/verb-atlas.js',
   './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg', './images/lesson-thuiswerken.svg',
   './images/woord-huis.svg', './images/woord-fiets.svg', './images/woord-appel.svg',
   './images/woord-kantoor.svg', './images/woord-trein.svg', './images/woord-huisarts.svg',
@@ -11,7 +11,10 @@ const CORE = [
   './images/theme-hallo.svg', './images/theme-school.svg', './images/theme-wonen.svg', './images/theme-eten.svg',
   './images/theme-dokter.svg', './images/theme-kleding.svg', './images/theme-reizen.svg', './images/theme-vrije-tijd.svg',
   './images/a2-verhuizen.svg', './images/a2-nederland.svg', './images/a2-kinderen.svg', './images/a2-winkels.svg',
-  './images/a2-opleidingen.svg', './images/a2-werk-zoeken.svg', './images/a2-werken.svg', './images/a2-gemeente.svg'
+  './images/a2-opleidingen.svg', './images/a2-werk-zoeken.svg', './images/a2-werken.svg', './images/a2-gemeente.svg',
+  './images/a0-groeten.svg', './images/a0-voorstellen.svg', './images/a0-hulp.svg', './images/a0-dagelijks.svg',
+  './images/theme-vakantie.svg', './images/theme-dieren.svg', './images/theme-markt.svg', './images/theme-emoties.svg',
+  './images/theme-literatuur.svg', './images/theme-omgeving.svg'
 ];
 
 self.addEventListener('install', (event) => {

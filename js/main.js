@@ -16,6 +16,8 @@ import {
 } from './depth-content.js';
 import { verbAtlas } from './verb-atlas.js';
 import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
+import { a0Themes } from './starter-content.js';
+import { spiralThemes, spiralStats } from './spiral-content.js';
 import {
   a1Themes,
   a2Themes,
@@ -39,8 +41,11 @@ const state = {
   dutchVoice: null,
   selectedWords: [],
   grammarLevel: 'alle',
+  a0Theme: 'groeten-afscheid',
   a1Theme: 'hallo',
   a2Theme: 'verhuizen',
+  b1Theme: 'kleding-uiterlijk',
+  b2Theme: 'kleding-uiterlijk',
   grammarTopic: 'woordvolgorde',
   questionLevel: 'alle',
   questionTopic: 'ja-nee-vragen',
@@ -73,8 +78,11 @@ const elements = {
   checkAnswer: el('check-answer'), resetExercise: el('reset-exercise'), listenAnswer: el('listen-answer'),
   voiceStatus: el('voice-status'), settingsVoiceStatus: el('settings-voice-status'),
   dailyPlan: el('daily-plan'), dailyVocabulary: el('daily-vocabulary'), levelPath: el('level-path'),
+  a0ThemeGrid: el('a0-theme-grid'), a0ThemeDetail: el('a0-theme-detail'),
   a1ThemeGrid: el('a1-theme-grid'), a1ThemeDetail: el('a1-theme-detail'),
   a2ThemeGrid: el('a2-theme-grid'), a2ThemeDetail: el('a2-theme-detail'),
+  b1ThemeGrid: el('b1-theme-grid'), b1ThemeDetail: el('b1-theme-detail'),
+  b2ThemeGrid: el('b2-theme-grid'), b2ThemeDetail: el('b2-theme-detail'),
   conceptGrid: el('concept-grid'), conceptDetail: el('concept-detail'),
   grammarFilters: el('grammar-filters'), grammarList: el('grammar-list'), grammarDetail: el('grammar-detail'),
   questionFilters: el('question-filters'), questionList: el('question-list'), questionDetail: el('question-detail'),
@@ -202,10 +210,21 @@ function renderDashboard() {
 }
 
 function renderLevels() {
-  elements.levelPath.innerHTML = levels.map((level) => `<article class="card level-card ${level.current ? 'current' : ''} ${level.progress === 100 ? 'done' : ''}">
-    <div class="level-badge">${level.id}</div>
+  const progressByLevel = {
+    A1: completionPercentage(state.progress.a1Completed.length, a1Themes.length),
+    A2: completionPercentage(state.progress.a2Completed.length, a2Themes.length),
+    B1: completionPercentage(state.progress.b1Completed.length, spiralThemes.length),
+    B2: completionPercentage(state.progress.b2Completed.length, spiralThemes.length),
+  };
+  const allLevels = [{
+    id: 'A0', title: 'Eerste contact', description: 'Begroeten, bedanken, jezelf voorstellen, om herhaling vragen en de eerste praktische zinnen gebruiken.',
+    progress: completionPercentage(state.progress.a0Completed.length, a0Themes.length),
+    modules: ['Hallo en tot ziens', 'Dit ben ik', 'Ik begrijp het niet', 'Dagelijkse basis'], page: 'a0',
+  }, ...levels.map((level) => ({ ...level, progress: progressByLevel[level.id], page: level.id.toLowerCase() }))];
+  elements.levelPath.innerHTML = allLevels.map((level) => `<article class="card level-card ${level.current ? 'current' : ''} ${level.progress === 100 ? 'done' : ''}">
+    <button class="level-badge" type="button" data-page="${level.page}" aria-label="Open ${level.id}">${level.id}</button>
     <div><span class="kicker">${level.title}</span><h2>${level.description}</h2><div class="module-tags">${level.modules.map((module) => `<span>${module}</span>`).join('')}</div></div>
-    <div class="level-progress"><strong>${level.progress}%</strong><div class="meter"><i style="width:${level.progress}%"></i></div></div>
+    <div class="level-progress"><strong>${level.progress}%</strong><div class="meter"><i style="width:${level.progress}%"></i></div><button class="text-button" type="button" data-page="${level.page}">Open ${level.id} →</button></div>
   </article>`).join('');
 }
 
@@ -242,15 +261,21 @@ function renderCourseThemeDetail(theme, level, completed) {
     </div>`;
 }
 
+function courseConfig(level) {
+  const configs = {
+    A0: { themes: a0Themes, stateKey: 'a0Theme', progressKey: 'a0Completed', grid: elements.a0ThemeGrid, detail: elements.a0ThemeDetail },
+    A1: { themes: a1Themes, stateKey: 'a1Theme', progressKey: 'a1Completed', grid: elements.a1ThemeGrid, detail: elements.a1ThemeDetail },
+    A2: { themes: a2Themes, stateKey: 'a2Theme', progressKey: 'a2Completed', grid: elements.a2ThemeGrid, detail: elements.a2ThemeDetail },
+  };
+  return configs[level];
+}
+
 function renderCourseThemes(level) {
-  const isA1 = level === 'A1';
-  const themes = isA1 ? a1Themes : a2Themes;
-  const currentId = isA1 ? state.a1Theme : state.a2Theme;
-  const grid = isA1 ? elements.a1ThemeGrid : elements.a2ThemeGrid;
-  const detail = isA1 ? elements.a1ThemeDetail : elements.a2ThemeDetail;
-  const completedValues = isA1 ? state.progress.a1Completed : state.progress.a2Completed;
-  if (!grid || !detail) return;
-  const completed = new Set(completedValues || []);
+  const config = courseConfig(level);
+  if (!config?.grid || !config?.detail) return;
+  const { themes, stateKey, progressKey, grid, detail } = config;
+  const currentId = state[stateKey];
+  const completed = new Set(state.progress[progressKey] || []);
   grid.innerHTML = themes.map((theme) => `<button class="card a1-theme-card course-theme-card ${theme.id === currentId ? 'active' : ''} ${completed.has(theme.id) ? 'done' : ''}" type="button" data-course-theme-select="${theme.id}" data-course-level="${level}">
     <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}">
     <span class="a1-theme-number">${completed.has(theme.id) ? '✓' : theme.number}</span>
@@ -260,8 +285,67 @@ function renderCourseThemes(level) {
   detail.innerHTML = renderCourseThemeDetail(theme, level, completed.has(theme.id));
 }
 
+function spiralWordCount(theme, level) {
+  return Object.values(theme.levels[level].words || {}).reduce((total, words) => total + words.length, 0);
+}
+
+function spiralDialogueText(theme, level) {
+  return theme.levels[level].dialogue.map(([speaker, line]) => `${speaker}: ${line}`).join(' ');
+}
+
+function renderSpiralWordGroups(theme, level) {
+  return Object.entries(theme.levels[level].words || {}).map(([group, words], index) => `<details class="theme-word-group spiral-word-group" ${index === 0 ? 'open' : ''}>
+    <summary><span>${escapeHtml(group)}</span><strong>${words.length} items</strong></summary>
+    <div class="theme-word-chip-grid">${words.map((word) => `<button class="theme-word-chip speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82"><span>${escapeHtml(word)}</span><small>luister</small></button>`).join('')}</div>
+  </details>`).join('');
+}
+
+function renderSpiralDetail(theme, level, completed) {
+  const data = theme.levels[level];
+  const dialogue = spiralDialogueText(theme, level);
+  const verbs = data.words.Werkwoorden || [];
+  const prompts = level === 'B1'
+    ? [`Vertel twee minuten over ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Geef je mening en noem minstens twee redenen.', 'Reageer beleefd op een andere mening.']
+    : [`Analyseer een spanningsveld binnen ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Formuleer een standpunt met voorbehoud en een tegenargument.', 'Vat je conclusie samen in professioneel Nederlands.'];
+  return `<div class="a1-detail-hero course-detail-hero level-${level.toLowerCase()} spiral-detail-hero">
+      <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}">
+      <div><div class="eyebrow"><span>${level}</span> Spiraalthema</div><h1>${escapeHtml(theme.title)}</h1><p class="lead">${escapeHtml(theme.subtitle)}</p>
+      <div class="course-metrics"><span><strong>${spiralWordCount(theme, level)}</strong> leeritems</span><span><strong>${data.grammar.length}</strong> grammaticapatronen</span><span><strong>${data.dialogue.length}</strong> gespreksbeurten</span></div>
+      <div class="button-row"><button class="sound-button speak" type="button" data-text="${escapeHtml(dialogue)}" data-rate="0.9">🔊 Hele gesprek</button><button class="sound-button secondary speak" type="button" data-text="${escapeHtml(dialogue)}" data-rate="0.64">🐢 Langzaam</button></div></div>
+    </div>
+    <div class="a1-detail-body">
+      <section class="a1-can-do"><span class="kicker">Na dit thema</span><h2>Dit kun je op ${level}</h2><ul>${data.canDo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
+      <section><div class="section-heading compact"><div><span class="kicker">Spiraalwoorden</span><h2>Bekend thema, preciezere taal</h2></div><span class="plan-total">${spiralWordCount(theme, level)} items</span></div><p class="word-bank-intro">Dezelfde situatie groeit van concreet vocabulaire naar argumentatie, register en abstracte betekenis.</p>${renderSpiralWordGroups(theme, level)}</section>
+      <section><div class="section-heading compact"><div><span class="kicker">Werkwoorden precies gebruiken</span><h2>${verbs.length} kernwerkwoorden</h2></div><button class="text-button" type="button" data-page="werkwoorden" data-verb-level-link="${level}">Open de werkwoordenatlas →</button></div><div class="precision-verb-grid">${verbs.map((verb) => `<button class="speak" type="button" data-text="${escapeHtml(verb)}" data-rate="0.8"><strong>${escapeHtml(verb)}</strong><small>betekenis · vorm · uitspraak</small></button>`).join('')}</div></section>
+      <section><span class="kicker">Grammatica in context</span><h2>Structuren voor dit gesprek</h2><div class="spiral-grammar-grid">${data.grammar.map((item) => `<article><strong>${escapeHtml(item)}</strong><p>Herken dit patroon in het gesprek en gebruik het daarna in je eigen antwoord.</p><button class="text-button" type="button" data-page="grammatica" data-grammar-level="${level}">Bekijk ${level}-grammatica →</button></article>`).join('')}</div></section>
+      <section class="a1-dialogue spiral-dialogue"><div class="section-heading compact"><div><span class="kicker">Gesprek</span><h2>Luister, lees en reageer</h2></div><button class="sound-button speak" type="button" data-text="${escapeHtml(dialogue)}" data-rate="0.86">🔊 Alles afspelen</button></div><div>${data.dialogue.map(([speaker, line]) => `<p><b>${escapeHtml(speaker.slice(0, 1))}</b><span><strong>${escapeHtml(speaker)}</strong>${escapeHtml(line)}</span><button class="speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.86">🔊</button></p>`).join('')}</div></section>
+      <section class="card speaking-lab"><div><span class="kicker">Zelf spreken</span><h2>Van input naar eigen taal</h2><p>Kies één opdracht. Bereid kernwoorden voor, spreek twee minuten en luister daarna kritisch naar jezelf.</p></div><ol>${prompts.map((prompt) => `<li><button class="speak" type="button" data-text="${escapeHtml(prompt)}" data-rate="0.82">${escapeHtml(prompt)} 🔊</button></li>`).join('')}</ol></section>
+      <button class="${completed ? 'secondary-button' : 'primary-button'} a1-complete-button" type="button" data-complete-spiral="${theme.id}" data-course-level="${level}">${completed ? '✓ Thema voltooid' : `Markeer ${level}-thema als voltooid`}</button>
+    </div>`;
+}
+
+function renderSpiralCourse(level) {
+  const isB1 = level === 'B1';
+  const stateKey = isB1 ? 'b1Theme' : 'b2Theme';
+  const progressKey = isB1 ? 'b1Completed' : 'b2Completed';
+  const grid = isB1 ? elements.b1ThemeGrid : elements.b2ThemeGrid;
+  const detail = isB1 ? elements.b1ThemeDetail : elements.b2ThemeDetail;
+  if (!grid || !detail) return;
+  const completed = new Set(state.progress[progressKey] || []);
+  grid.innerHTML = spiralThemes.map((theme, index) => `<button class="card a1-theme-card course-theme-card spiral-theme-card ${theme.id === state[stateKey] ? 'active' : ''} ${completed.has(theme.id) ? 'done' : ''}" type="button" data-spiral-theme-select="${theme.id}" data-course-level="${level}">
+    <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}">
+    <span class="a1-theme-number">${completed.has(theme.id) ? '✓' : index + 1}</span>
+    <div><small>${level} · ${spiralWordCount(theme, level)} items</small><h2>${escapeHtml(theme.title)}</h2><p>${escapeHtml(theme.subtitle)}</p></div>
+  </button>`).join('');
+  const theme = spiralThemes.find((item) => item.id === state[stateKey]) || spiralThemes[0];
+  detail.innerHTML = renderSpiralDetail(theme, level, completed.has(theme.id));
+}
+
+function renderA0Themes() { renderCourseThemes('A0'); }
 function renderA1Themes() { renderCourseThemes('A1'); }
 function renderA2Themes() { renderCourseThemes('A2'); }
+function renderB1Themes() { renderSpiralCourse('B1'); }
+function renderB2Themes() { renderSpiralCourse('B2'); }
 
 function renderConcepts() {
   elements.conceptGrid.innerHTML = concepts.map((concept) => `<button class="card concept-card ${concept.id === state.concept ? 'active' : ''}" type="button" data-concept="${concept.id}">
@@ -629,8 +713,11 @@ function initializeSettings() {
 function handleClick(event) {
   const pageButton = event.target.closest('[data-page]');
   if (pageButton) {
+    if (pageButton.dataset.a0Theme) { state.a0Theme = pageButton.dataset.a0Theme; renderA0Themes(); }
     if (pageButton.dataset.a1Theme) { state.a1Theme = pageButton.dataset.a1Theme; renderA1Themes(); }
     if (pageButton.dataset.a2Theme) { state.a2Theme = pageButton.dataset.a2Theme; renderA2Themes(); }
+    if (pageButton.dataset.b1Theme) { state.b1Theme = pageButton.dataset.b1Theme; renderB1Themes(); }
+    if (pageButton.dataset.b2Theme) { state.b2Theme = pageButton.dataset.b2Theme; renderB2Themes(); }
     if (pageButton.dataset.grammarLevel) { state.grammarLevel = pageButton.dataset.grammarLevel; renderGrammar(); }
     if (pageButton.dataset.topic) {
       state.grammarTopic = pageButton.dataset.topic;
@@ -642,8 +729,15 @@ function handleClick(event) {
   const courseThemeButton = event.target.closest('[data-course-theme-select]');
   if (courseThemeButton) {
     const level = courseThemeButton.dataset.courseLevel;
-    if (level === 'A1') { state.a1Theme = courseThemeButton.dataset.courseThemeSelect; renderA1Themes(); }
-    else { state.a2Theme = courseThemeButton.dataset.courseThemeSelect; renderA2Themes(); }
+    const config = courseConfig(level);
+    if (config) { state[config.stateKey] = courseThemeButton.dataset.courseThemeSelect; renderCourseThemes(level); }
+    return;
+  }
+  const spiralThemeButton = event.target.closest('[data-spiral-theme-select]');
+  if (spiralThemeButton) {
+    const level = spiralThemeButton.dataset.courseLevel;
+    state[level === 'B1' ? 'b1Theme' : 'b2Theme'] = spiralThemeButton.dataset.spiralThemeSelect;
+    renderSpiralCourse(level);
     return;
   }
   const legacyA1ThemeButton = event.target.closest('[data-a1-theme]');
@@ -651,7 +745,7 @@ function handleClick(event) {
   const courseAnswer = event.target.closest('[data-course-answer]');
   if (courseAnswer) {
     const level = courseAnswer.dataset.courseLevel;
-    const themes = level === 'A1' ? a1Themes : a2Themes;
+    const themes = courseConfig(level)?.themes || [];
     const theme = themes.find((item) => item.id === courseAnswer.dataset.courseTheme);
     const correct = Number(courseAnswer.dataset.courseAnswer) === theme.exercise.answer;
     courseAnswer.parentElement.querySelectorAll('button').forEach((button, index) => {
@@ -668,12 +762,28 @@ function handleClick(event) {
   if (completeCourse) {
     const level = completeCourse.dataset.courseLevel;
     const id = completeCourse.dataset.completeCourse;
-    const key = level === 'A1' ? 'a1Completed' : 'a2Completed';
+    const config = courseConfig(level);
+    if (!config) return;
+    const values = new Set(state.progress[config.progressKey] || []);
+    values.has(id) ? values.delete(id) : values.add(id);
+    state.progress[config.progressKey] = [...values];
+    saveProgress();
+    renderCourseThemes(level);
+    renderLevels();
+    showToast(values.has(id) ? `${level}-thema gemarkeerd als voltooid.` : `${level}-thema opnieuw geopend.`);
+    return;
+  }
+  const completeSpiral = event.target.closest('[data-complete-spiral]');
+  if (completeSpiral) {
+    const level = completeSpiral.dataset.courseLevel;
+    const id = completeSpiral.dataset.completeSpiral;
+    const key = level === 'B1' ? 'b1Completed' : 'b2Completed';
     const values = new Set(state.progress[key] || []);
     values.has(id) ? values.delete(id) : values.add(id);
     state.progress[key] = [...values];
     saveProgress();
-    level === 'A1' ? renderA1Themes() : renderA2Themes();
+    renderSpiralCourse(level);
+    renderLevels();
     showToast(values.has(id) ? `${level}-thema gemarkeerd als voltooid.` : `${level}-thema opnieuw geopend.`);
     return;
   }
@@ -704,6 +814,8 @@ function handleClick(event) {
   }
   const structureButton = event.target.closest('[data-structure]');
   if (structureButton) { renderStructures(structureButton.dataset.structure); return; }
+  const verbLevelLink = event.target.closest('[data-verb-level-link]');
+  if (verbLevelLink) { state.verbLevel = verbLevelLink.dataset.verbLevelLink; elements.verbLevel.value = state.verbLevel; renderVerbs({ resetLimit: true }); showPage('werkwoorden'); return; }
   const verbButton = event.target.closest('[data-verb-infinitive]');
   if (verbButton) { renderVerbDetail(verbButton.dataset.verbInfinitive); return; }
   const speechButton = event.target.closest('.speak');
@@ -779,8 +891,12 @@ function initializeEvents() {
     state.progress = safeProgress();
     try { localStorage.removeItem(STORAGE_KEY); } catch { /* Opslag kan geblokkeerd zijn. */ }
     updateProgressUI();
+    renderA0Themes();
     renderA1Themes();
     renderA2Themes();
+    renderB1Themes();
+    renderB2Themes();
+    renderLevels();
     showToast('De lokale voortgang is gewist.');
   });
   window.addEventListener('hashchange', () => {
@@ -792,8 +908,11 @@ function initializeEvents() {
 function initialize() {
   renderDashboard();
   renderLevels();
+  renderA0Themes();
   renderA1Themes();
   renderA2Themes();
+  renderB1Themes();
+  renderB2Themes();
   renderConcepts();
   renderGrammar();
   renderQuestions();

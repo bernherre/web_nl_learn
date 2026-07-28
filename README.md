@@ -1,110 +1,163 @@
-# Nederlands, gewoon doen
+# Nederlands, gewoon doen — V10
 
-Een volledig statische leeromgeving voor Nederlands van A1 tot B2. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
+Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
-> **beeld → geluid → betekenis → structuur → gebruik**
+> **beeld → geluid → betekenis → structuur → gesprek → zelfstandig gebruik**
 
-## Inhoud van deze versie
+De applicatie kan rechtstreeks met een dubbelklik op `index.html` worden geopend. Voor offline/PWA-ondersteuning en lokaal ontwikkelen kan een kleine lokale server worden gebruikt.
 
-### Woordenschat A1 en A2
+## Vijf zichtbare cursusroutes
 
-- 8 thematische A1-hoofdstukken;
-- 8 thematische A2-hoofdstukken;
-- **2.035 unieke woorden, taalhandelingen en vaste combinaties** binnen de zestien thema’s;
-- semantische groepen per thema, zoals personen, handelingen, situaties, beschrijvende woorden, functiewoorden en vaste combinaties;
-- klikbare uitspraak voor ieder woord of iedere combinatie;
-- 128 uitgelichte kernwoorden met eenvoudige definitie en voorbeeldzin;
-- thematische illustraties, dialogen, leerdoelen en mini-toetsen.
+### A0 — eerste contact
 
-De thematische route gebruikt de openbare hoofdstukindeling van TaalCompleet A1 en A2 als curriculaire inspiratie. Alle definities, voorbeeldzinnen, dialogen, oefeningen en lijsten in deze app zijn nieuw geschreven en vormen geen digitale kopie van de boeken.
+Vier compacte instapthema’s met ruim 190 woorden, chunks en praktische zinnen:
 
-### Grammatica-atlas
+1. **Hallo en tot ziens** — hallo, goedemorgen, hoe gaat het, dank je wel, tot straks, doei;
+2. **Dit ben ik** — mijn naam is, ik heet, ik kom uit, ik woon in, ik spreek;
+3. **Ik begrijp het niet** — herhalen, langzamer spreken, betekenis vragen en hulp zoeken;
+4. **De eerste dagelijkse woorden** — ja/nee, cijfers, tijd, prijs, betalen, toilet en noodsituaties.
 
-De grammatica-atlas bevat **38 basis- en verdiepingsthema’s** van A1 tot B2, waaronder:
+Elk A0-thema bevat een eigen illustratie, uitspraak op normale en langzame snelheid, woordgroepen, een kort gesprek, basisgrammatica en een mini-toets.
+
+### A1 — dagelijkse basis
+
+Acht volledige thema’s met ruim 1.000 woorden, taalhandelingen en vaste combinaties:
+
+- hallo en familie;
+- school;
+- wonen;
+- eten en drinken;
+- gezondheid;
+- kleding;
+- reizen;
+- vrije tijd.
+
+### A2 — zelfstandig dagelijks handelen
+
+Acht volledige thema’s met opnieuw ruim 1.000 woorden en combinaties:
+
+- verhuizen;
+- Nederland;
+- kinderen;
+- winkels;
+- opleidingen;
+- werk zoeken;
+- werken;
+- de gemeente.
+
+### B1 — uitleggen, deelnemen en reageren
+
+Negen zichtbare spiraalthema’s. Bekende onderwerpen keren terug met preciezere werkwoorden, langere zinnen, oorzaak-gevolg, ervaringen, mening en gesprek:
+
+- kleding en uiterlijk;
+- vakantie en reizen;
+- dieren en natuur;
+- huis en huishouden;
+- eten en koken;
+- supermarkt en markt;
+- emoties en relaties;
+- literatuur en verhalen;
+- omgeving en milieu.
+
+B1 bevat 234 geselecteerde leeritems, negen gesprekken, spreekopdrachten, grammatica in context en directe verbindingen naar de werkwoordenatlas.
+
+### B2 — nuanceren, interpreteren en onderbouwen
+
+Dezelfde negen spiraalthema’s groeien door naar abstractere taal, professioneel register, interpretatie, debat, beleid en kritische analyse. B2 bevat eveneens 234 geselecteerde leeritems en negen uitgebreide gesprekken.
+
+Voorbeelden van B2-doelen:
+
+- een literair motief of vertelperspectief interpreteren;
+- klimaat- en consumentenbeleid genuanceerd bespreken;
+- een standpunt formuleren met voorbehoud en tegenargument;
+- precieze werkwoorden en vaste combinaties gebruiken;
+- formeel en professioneel reageren.
+
+## Curriculair spiraalmodel
+
+Een thema verdwijnt niet na één niveau, maar krijgt telkens een diepere functie:
+
+```text
+Kleding    A1 kledingstukken → A2 kopen/ruilen → B1 identiteit → B2 duurzaamheid
+Eten       A1 producten      → A2 recepten     → B1 cultuur   → B2 voedselsysteem
+Emoties    A1 basisgevoel    → A2 oorzaken     → B1 conflict  → B2 psychologische nuance
+Literatuur A1 kort verhaal   → A2 samenvatten  → B1 duiden    → B2 kritisch interpreteren
+Omgeving   A1 buurt en weer  → A2 recycling    → B1 klimaat   → B2 transitie en beleid
+```
+
+## Grammatica-atlas
+
+De grammatica-atlas bevat 38 basis- en verdiepingsthema’s van A1 tot B2, waaronder:
 
 - lidwoorden, zelfstandige naamwoorden, meervoud en verkleinwoorden;
-- bijvoeglijke naamwoorden, voornaamwoorden en vergelijkingen;
-- tegenwoordige tijd, perfectum, modale werkwoorden en werkwoordgroepen;
+- bijvoeglijke naamwoorden, kleuren, vergelijking en voornaamwoorden;
 - hoofdzin, inversie, bijzin en meerdere werkwoorden aan het einde;
+- tegenwoordige tijd, perfectum, imperfectum en modale constructies;
 - plaats-, richting- en tijdvoorzetsels;
 - vaste combinaties met voorzetsels en `er + voorzetsel`;
-- scheidbare werkwoorden in hoofdzin, inversie, perfectum, bijzin, modale constructie en `te`-constructie;
+- scheidbare werkwoorden in hoofdzin, perfectum, bijzin, modale constructie en `te`-constructie;
 - nevenschikkende en onderschikkende voegwoorden;
-- betekenisrelaties zoals reden, oorzaak, doel, gevolg, voorwaarde, contrast, tijd en toevoeging;
-- idiomatische voorzetseluitdrukkingen.
+- oorzaak, reden, doel, gevolg, voorwaarde, contrast en concessie;
+- idiomatische en professionele formuleringen.
 
-Verdiepende onderwerpen tonen een zinsmodel, meerdere voorbeeldzinnen, betekenisverschillen, veelgemaakte fouten en gerelateerde concepten.
+## Vragen van A1 tot B2
 
-
-### Vragen: van A1 tot B2
-
-De nieuwe sectie **Vragen** bevat een zelfstandige leerlijn met **14 lessen**, een visuele overzichtskaart, audio en actieve oefeningen:
+De sectie **Vragen** bevat veertien lessen en 22 families met `waar`, `daar`, `er` en `hier + voorzetsel`:
 
 - ja/nee-vragen en inversie;
-- basisvraagwoorden: `wie`, `wat`, `waar`, `wanneer`, `waarom` en `hoe`;
-- combinaties zoals `hoe oud`, `hoe laat`, `hoe lang`, `hoe vaak`, `hoe ver` en `hoeveel`;
-- `welk`, `welke` en `wat voor`;
+- `wie`, `wat`, `waar`, `wanneer`, `waarom`, `hoe`;
+- `hoe oud`, `hoe laat`, `hoe lang`, `hoe vaak`, `hoe ver`, `hoeveel`;
+- `welk`, `welke`, `wat voor`;
 - vragen met scheidbare werkwoorden;
-- vragen in verleden tijd en perfectum;
-- beleefde en formele vragen met `kunt`, `zou`, `mag` en `wilt`;
-- indirecte vragen met een vraagwoord of `of`;
-- relatieve waar-vormen en genuanceerde B2-vragen.
+- verleden tijd en perfectum;
+- beleefde en indirecte vragen;
+- `waarmee`, `waarop`, `waarover`, `waarvoor`, `waaraan`, `waarvan`, `waarin`, `waaruit`, `waarnaar`, `waardoor`, enzovoort;
+- contrasten voor personen: `met wie`, `op wie`, `over wie`.
 
-Een aparte matrix behandelt **22 families met waar, daar, er en hier + voorzetsel**, waaronder `waarmee`, `waarop`, `waarover`, `waarvoor`, `waaraan`, `waarvan`, `waarin`, `waaruit`, `waarnaar`, `waardoor`, `waartoe`, `waarvandaan` en `waarnaartoe`. Elke kaart toont:
+## Taalstructuren in context
 
-- de vraagvorm;
-- nadrukkelijke verwijzing met `daar-`;
-- neutrale verwijzing met `er-`;
-- verwijzing naar iets dichtbij of in de huidige context met `hier-`;
-- een gesplitste variant;
-- het contrast met personen, zoals `met wie`, `op wie` en `over wie`;
-- betekenis, voorbeeld en audio.
+Vier grote banken verbinden vorm, betekenis en zinspositie:
 
-De uitleg volgt de grammaticale principes van de Algemene Nederlandse Spraakkunst en Taaladvies, maar alle lessen, voorbeelden en oefeningen zijn origineel geschreven voor deze leeromgeving.
+1. **Voorzetsels** — basisgebruik en meer dan tachtig vaste combinaties;
+2. **Scheidbare werkwoorden** — 87 kernwerkwoorden en twaalf volledige positiemodellen;
+3. **Voegwoorden** — 44 voegwoorden en zinsverbinders;
+4. **Vaste en idiomatische combinaties** — 80 veelgebruikte chunks.
 
-### Taalstructuren in context
+## Werkwoordenatlas
 
-De aparte sectie **Taalstructuren** bevat vier grote banken:
+De atlas bevat **1.880 werkwoorden**:
 
-1. **Voorzetsels** — basisgebruiken en meer dan tachtig vaste combinaties;
-2. **Scheidbare werkwoorden** — 87 werkwoorden, gegroepeerd per voorvoegsel, met twaalf volledige positiemodellen;
-3. **Voegwoorden** — 44 voegwoorden en zinsverbinders met betekenisrelatie en woordvolgorde;
-4. **Vaste en idiomatische combinaties** — 80 veelgebruikte chunks met betekenis en voorbeeldzin.
-
-### Werkwoordenatlas
-
-De eenvoudige trainer is vervangen door een doorzoekbare atlas met **1.880 werkwoorden**:
-
-- **870 regelmatige werkwoorden**;
-- **1.010 onregelmatige werkwoorden**, inclusief samengestelde en scheidbare families met een onregelmatige stam;
-- **1.240 scheidbare werkwoorden**;
-- indeling naar A1, A2, B1 en B2;
-- betekenislabels voor handeling, beweging, verandering, toestand, gebeurtenis/resultaat en modaliteit;
+- 870 regelmatige werkwoorden;
+- 1.010 onregelmatige werkwoorden;
+- 1.240 scheidbare werkwoorden;
+- niveaulabel A1, A2, B1 of B2;
+- semantische labels voor handeling, beweging, verandering, toestand, gebeurtenis/resultaat en modaliteit;
 - filters op regelmatigheid, betekenis, niveau, scheidbaarheid en hulpwerkwoord;
-- volledige persoonsvormen voor de tegenwoordige tijd;
-- volledige persoonsvormen voor de onvoltooid verleden tijd;
+- volledige tegenwoordige tijd;
+- volledige onvoltooid verleden tijd;
 - voltooid deelwoord en perfectum met `hebben`, `zijn` of beide;
-- gebiedende wijs en modellen voor hoofdzin, verleden tijd, perfectum, modale constructie, bijzin en — bij scheidbare werkwoorden — `te`.
+- gebiedende wijs;
+- modellen voor hoofdzin, verleden tijd, perfectum, modale constructie, bijzin en `te`.
 
-Bij bewegingswerkwoorden met `hebben/zijn` legt de interface het functionele verschil uit: `hebben` benadrukt vaak de activiteit, terwijl `zijn` meestal richting, bestemming of verandering van plaats markeert.
+Bij bewegingswerkwoorden met `hebben/zijn` legt de interface het functionele verschil uit: `hebben` benadrukt vaak de activiteit, terwijl `zijn` doorgaans richting, bestemming of verandering van plaats markeert.
 
-De werkwoordgegevens zijn gegenereerd uit gecureerde basisvormen en Nederlandse morfologische regels. De vrije woordenlijst van **Stichting OpenTaal** is gebruikt om spellingvormen te valideren. Dit is geen kopie of transcriptie van Van Dale; Van Dale dient uitsluitend als inhoudelijke inspiratie voor de gewenste diepgang en ordening.
+De spellingvormen zijn gevalideerd met vrije gegevens van Stichting OpenTaal. Dit project is geen transcriptie van Van Dale of TaalCompleet. Die methodes dienen als inspiratie voor schaal, diepgang en ordening; definities, voorbeelden, dialogen en oefeningen in deze webapp zijn origineel geschreven.
 
-## Uitspraak
+## Beeld en uitspraak
 
-De hoofdapp gebruikt geen twijfelachtige WAV-opnames. Zij spreekt gecontroleerde Nederlandse woorden en zinnen uit met `SpeechSynthesisUtterance` en kiest bij voorkeur:
+Nieuwe begrippen worden waar mogelijk ondersteund met een thematische illustratie. Alle gecontroleerde woorden en zinnen kunnen worden uitgesproken met `SpeechSynthesisUtterance`. De app kiest bij voorkeur:
 
 1. `nl-NL`;
 2. `nl-BE`;
 3. een andere `nl-*`-stem.
 
-Normale en langzame afspeelsnelheid blijven beschikbaar. De uiteindelijke stemkwaliteit hangt af van de stemmen in het besturingssysteem en de browser.
+Normale en langzame afspeelsnelheid zijn beschikbaar. De oude twijfelachtige WAV-opnames worden niet door de hoofdapp gebruikt.
 
-## Statisch en direct te openen
+## Direct openen
 
-De app heeft geen framework of npm-afhankelijkheden nodig. Open `index.html` rechtstreeks met Chrome of Edge. De klassieke bundle `js/app.js` ondersteunt navigatie en oefeningen ook via dubbelklik.
+Open `index.html` met Chrome of Edge. De app laadt `js/app.js` als klassieke browserbundle, zodat navigatie en oefeningen ook via dubbelklik werken.
 
-Voor de Service Worker en PWA-functies:
+Voor Service Worker- en PWA-functies:
 
 ```bash
 npm run serve
@@ -114,17 +167,17 @@ Open daarna `http://localhost:8080`.
 
 ## Ontwikkelen en valideren
 
+Er zijn geen npm-afhankelijkheden nodig.
+
 ```bash
 npm run build
 npm test
 npm run check
 ```
 
-- `npm run build` genereert `js/app.js` uit de bronbestanden;
-- `npm test` controleert leerlogica, inhoud, bestanden en deploymentvoorwaarden;
-- `npm run check` bouwt de bundle, controleert alle JavaScriptbestanden en voert de **32 tests** uit.
-
-De tests controleren daarnaast de volledige vragenleerlijn, de 22 waar/daar/er/hier-patronen, de klassieke dubbelklik-bundle en de offlinecache. Een lokale visuele controle in Chrome of Edge blijft aanbevolen na integratie in het eigen repository.
+- `npm run build` genereert `js/app.js` uit alle bronbestanden;
+- `npm test` voert statische en functionele tests uit;
+- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **36 tests** uit.
 
 ## Structuur
 
@@ -137,20 +190,18 @@ De tests controleren daarnaast de volledige vragenleerlijn, de 22 waar/daar/er/h
 ├── images/
 ├── js/
 │   ├── learning.js
+│   ├── content.js
+│   ├── starter-content.js
+│   ├── spiral-content.js
 │   ├── depth-content.js
 │   ├── supplement-content.js
 │   ├── questions-content.js
 │   ├── verb-atlas.js
-│   ├── content.js
 │   ├── main.js
 │   ├── app.js
 │   └── reference.js
 ├── data/
-│   ├── verb-atlas-meta.json
-│   └── OpenTaal-LICENSE.txt
 ├── scripts/
-│   ├── build-classic.mjs
-│   └── generate_verb_atlas.py
 ├── tests/
 ├── index.html
 ├── reference.html
@@ -159,10 +210,6 @@ De tests controleren daarnaast de volledige vragenleerlijn, de 22 waar/daar/er/h
 └── package.json
 ```
 
-## Bronnen en licenties van derden
-
-Voor de validatie van Nederlandse spellingvormen gebruikt de generator de woordenlijst van Stichting OpenTaal. De bijbehorende licentie is opgenomen in `data/OpenTaal-LICENSE.txt`. De gegenereerde atlas en alle didactische toelichtingen in deze repository zijn aangepast en uitgebreid voor deze leeromgeving.
-
 ## Bestaand materiaal
 
-Het oorspronkelijke naslagwerk blijft beschikbaar in `reference.html`, maar is niet de hoofdapp. De oude audiobestanden blijven alleen als archiefmateriaal in de repository staan en worden niet door de nieuwe leerervaring geladen.
+Het oorspronkelijke naslagwerk blijft beschikbaar in `reference.html`, maar is niet de hoofdapp. Oude audio blijft alleen als archiefmateriaal in de repository staan.
