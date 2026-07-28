@@ -1,0 +1,30 @@
+﻿feat: expand Dutch learning platform from A0 to B2
+
+- add complete learning routes for A0, A1, A2, B1 and B2
+- add practical A0 modules for greetings, introductions, courtesy, survival phrases and basic communication
+- expand thematic vocabulary through clothing, family, housing, food, markets, travel, animals, emotions, literature and the environment
+- add semantic distinction and examples for gezin, familie and related family vocabulary
+- add complete number modules with cardinal and ordinal numbers, large denominations up to biljoen, fractions, decimals, percentages and prices
+- add dates, weekdays, months, years, seasons, clock times, duration, frequency and formal date formats
+- add introductory Dutch mathematical vocabulary for operations, sets, groups, vectors, matrices, tensors, summations, products and integrals
+- add physics terminology covering mechanics, astronomy, electromagnetism, fields and quantum mechanics
+- add software terminology covering development, architecture, data, cloud, security, observability and artificial intelligence
+- expand the grammar atlas with questions, inversion, indirect questions, formal questions and question-word combinations
+- add complete waar, daar, er and hier plus preposition families, including person-versus-object contrasts
+- expand preposition usage, fixed verb-preposition combinations, conjunctions and idiomatic constructions
+- add detailed separable-verb patterns for main clauses, inversion, subordinate clauses, perfect tense, modal verbs and te constructions
+- add a searchable atlas of 1,880 regular and irregular verbs
+- include complete present and past conjugations, participles, perfect forms, imperatives and sentence-position examples
+- classify verbs by movement, change, state, action, event, result and modality
+- indicate separability, CEFR level, transitivity and auxiliary selection with hebben, zijn or both
+- add normal and slow Dutch pronunciation using nl-NL browser voices
+- keep legacy audio files outside the primary learning experience
+- improve the visual system with accessible green, cream and orange tones
+- ensure readable text contrast in light and dark modes
+- add high-contrast, color-vision-friendly and adjustable-text accessibility options
+- avoid using color as the only indicator by combining labels, icons and visual states
+- preserve the static HTML, CSS and JavaScript architecture with no required build step
+- update offline support, service worker caching and GitHub Pages deployment
+- preserve previous reference material while making the new UX/UI the primary experience
+- extend automated validation to 41 static and functional tests
+- update README, project documentation, ignore rules and line-ending configuration
