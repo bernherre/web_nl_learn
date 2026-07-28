@@ -367,3 +367,20 @@ test('de technische atlassen zijn zichtbaar, zoekbaar, offline en aanwezig in de
   assert.match(app, /const softwareConcepts =/);
   assert.match(worker, /technical-content\.js/);
 });
+
+
+test('V14 toont rustige woordkaarten met betekenis, voorbeelden en progressieve onthulling', async () => {
+  const main = await read('js/main.js');
+  const css = await read('css/styles.css');
+  const app = await read('js/app.js');
+  assert.match(main, /commonWordLearningDetails/);
+  assert.match(main, /theme-word-definition/);
+  assert.match(main, /Voorbeeldzin/);
+  assert.match(main, /wordIndex >= 8 \? 'is-extra'/);
+  assert.match(main, /data-theme-word-search/);
+  assert.match(main, /data-word-group-more/);
+  assert.match(css, /\.theme-word-card-grid/);
+  assert.match(css, /grid-template-columns: repeat\(2/);
+  assert.match(css, /\.theme-word-card\.is-extra \{ display: none; \}/);
+  assert.match(app, /Een korte Nederlandse definitie|Het woord waarmee een persoon/);
+});

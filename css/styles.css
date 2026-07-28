@@ -1175,3 +1175,181 @@ html[data-motion="reduced"] *::after {
   .setting-select { align-items: flex-start; flex-direction: column; }
   .setting-select select { width: 100%; }
 }
+
+/* V14: calm vocabulary learning cards */
+.word-bank-toolbar {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 18px 0 20px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+}
+.word-bank-search {
+  flex: 1 1 360px;
+  display: grid;
+  gap: 6px;
+  color: var(--ink);
+  font-weight: 800;
+  font-size: .78rem;
+}
+.word-bank-search input {
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--surface-2);
+  color: var(--ink);
+  outline: none;
+}
+.word-bank-search input::placeholder { color: var(--muted); opacity: .9; }
+.word-bank-search input:focus {
+  border-color: var(--green-2);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--green-2) 20%, transparent);
+}
+.word-bank-result {
+  flex: 0 0 auto;
+  margin: 0;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 700;
+}
+.theme-word-card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0 14px 15px;
+}
+.theme-word-card {
+  min-width: 0;
+  padding: 15px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--surface-2);
+  color: var(--ink);
+  box-shadow: 0 5px 16px rgba(26, 59, 52, .04);
+}
+.theme-word-card.is-extra { display: none; }
+.theme-word-group.show-all .theme-word-card.is-extra,
+.full-word-bank.search-mode .theme-word-card.is-extra { display: block; }
+.theme-word-card[hidden],
+.theme-word-group[hidden] { display: none !important; }
+.theme-word-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.word-kind {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: var(--green-soft);
+  color: var(--green-2);
+  font-size: .64rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.word-audio-actions { display: flex; gap: 6px; }
+.icon-sound-button {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--green-2) 35%, var(--line));
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+.icon-sound-button.slow { border-color: color-mix(in srgb, var(--orange) 40%, var(--line)); }
+.icon-sound-button:hover,
+.icon-sound-button:focus-visible {
+  border-color: var(--green-2);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--green-2) 18%, transparent);
+}
+.theme-word-card h3 {
+  margin: 0 0 7px;
+  color: var(--ink);
+  font-size: 1.06rem;
+  overflow-wrap: anywhere;
+}
+.theme-word-definition {
+  min-height: 3.15em;
+  margin: 0;
+  color: var(--muted);
+  font-size: .88rem;
+  line-height: 1.5;
+}
+.theme-word-example {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+.theme-word-example summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  color: var(--green-2);
+  font-size: .76rem;
+  font-weight: 800;
+  cursor: pointer;
+  list-style: none;
+}
+.theme-word-example summary::-webkit-details-marker { display: none; }
+.theme-word-example summary::after { content: '＋'; }
+.theme-word-example[open] summary::after { content: '−'; }
+.theme-word-example p {
+  margin: 9px 0 5px;
+  color: var(--ink);
+  font-size: .84rem;
+}
+.theme-word-example .text-button { font-size: .74rem; }
+.word-group-more {
+  display: block;
+  margin: 0 14px 15px;
+  padding: 9px 13px;
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  background: var(--surface);
+  color: var(--green-2);
+  font-weight: 800;
+  cursor: pointer;
+}
+.word-group-more:hover,
+.word-group-more:focus-visible {
+  border-color: var(--green-2);
+  background: var(--green-soft);
+}
+html[data-theme="dark"] .theme-word-card {
+  box-shadow: none;
+  background: color-mix(in srgb, var(--surface-2) 88%, #000);
+}
+html[data-contrast="high"] .theme-word-card,
+html[data-contrast="high"] .word-bank-toolbar,
+html[data-contrast="high"] .word-bank-search input {
+  border-width: 2px;
+}
+
+@media (max-width: 820px) {
+  .word-bank-toolbar { align-items: stretch; flex-direction: column; }
+  .word-bank-result { align-self: flex-start; }
+  .theme-word-card-grid { grid-template-columns: 1fr; }
+  .theme-word-definition { min-height: 0; }
+}
+
+@media (max-width: 440px) {
+  .theme-word-card-grid { padding-inline: 10px; }
+  .theme-word-card { padding: 13px; }
+  .word-group-more { margin-inline: 10px; }
+}

@@ -1,4 +1,4 @@
-# Nederlands, gewoon doen — V13
+# Nederlands, gewoon doen — V14
 
 Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
@@ -143,6 +143,21 @@ Bij bewegingswerkwoorden met `hebben/zijn` legt de interface het functionele ver
 
 De spellingvormen zijn gevalideerd met vrije gegevens van Stichting OpenTaal. Dit project is geen transcriptie van Van Dale of TaalCompleet. Die methodes dienen als inspiratie voor schaal, diepgang en ordening; definities, voorbeelden, dialogen en oefeningen in deze webapp zijn origineel geschreven.
 
+## Woorden leren zonder visuele overbelasting
+
+De volledige woordenbanken zijn in V14 opnieuw ontworpen als kleine leereenheden in plaats van een dicht raster met knoppen:
+
+- maximaal acht woorden per groep bij de eerste weergave;
+- twee kolommen op grote schermen en één kolom op mobiel;
+- een korte Nederlandse definitie op iedere kaart;
+- een uitklapbare voorbeeldzin waar betrouwbare context beschikbaar is;
+- aparte knoppen voor normale en langzame uitspraak;
+- zoeken binnen het actieve thema;
+- een knop **Toon meer** voor de resterende woorden;
+- semantische groepen die gesloten kunnen blijven totdat de leerling ze nodig heeft.
+
+De app gebruikt handmatig geschreven uitleg voor kernwoorden, bestaande themadefinities en gecontroleerde werkwoordinformatie. Voor minder centrale woorden geeft zij een duidelijke thematische basisuitleg, zodat geen woord zonder leercontext als losse knop wordt aangeboden.
+
 ## Beeld en uitspraak
 
 Nieuwe begrippen worden waar mogelijk ondersteund met een thematische illustratie. Alle gecontroleerde woorden en zinnen kunnen worden uitgesproken met `SpeechSynthesisUtterance`. De app kiest bij voorkeur:
@@ -155,7 +170,7 @@ Normale en langzame afspeelsnelheid zijn beschikbaar. De oude twijfelachtige WAV
 
 ## Toegankelijke visuele interface
 
-De V13 behoudt de warme groene, crèmekleurige en oranje identiteit, maar gebruikt kleur nooit als enige informatiedrager. De interface bevat:
+De V14 behoudt de warme groene, crèmekleurige en oranje identiteit, maar gebruikt kleur nooit als enige informatiedrager. De interface bevat:
 
 - dag- en nachtmodus;
 - hoogcontrastmodus;
@@ -213,7 +228,7 @@ npm run check
 
 - `npm run build` genereert `js/app.js` uit alle bronbestanden;
 - `npm test` voert statische en functionele tests uit;
-- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **41 tests** uit.
+- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **42 tests** uit.
 
 ## Structuur
 

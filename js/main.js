@@ -162,6 +162,128 @@ function escapeHtml(value) {
     .replaceAll('"', '&quot;').replaceAll("'", '&#039;');
 }
 
+
+const commonWordLearningDetails = {
+  'de naam': ['Het woord waarmee een persoon, plaats of ding wordt genoemd.', 'Mijn naam is Noor.'],
+  'de voornaam': ['De persoonlijke naam die vóór de achternaam staat.', 'Mijn voornaam is Bernardo.'],
+  'de achternaam': ['De familienaam die je met andere familieleden kunt delen.', 'Mijn achternaam is Herrera.'],
+  'het adres': ['De gegevens waarmee je precies kunt aangeven waar iemand woont.', 'Mijn adres is Marktstraat 12.'],
+  'de straat': ['Een openbare weg met huizen of andere gebouwen erlangs.', 'Wij wonen in een rustige straat.'],
+  'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
+  'de postcode': ['Een combinatie van cijfers en letters die bij een gebied of adres hoort.', 'Wat is uw postcode?'],
+  'de woonplaats': ['De stad of het dorp waar iemand woont.', 'Mijn woonplaats is Waalre.'],
+  'het land': ['Een gebied met eigen grenzen en meestal een eigen regering.', 'Nederland is een klein land.'],
+  'de nationaliteit': ['De officiële verbondenheid van een persoon met een land.', 'Wat is uw nationaliteit?'],
+  'de taal': ['Een systeem van woorden en regels waarmee mensen communiceren.', 'Nederlands is de taal die ik leer.'],
+  'de familie': ['Alle verwanten samen, ook buiten het huishouden, zoals ooms, tantes en grootouders.', 'Mijn familie woont in verschillende landen.'],
+  'het gezin': ['Ouders of verzorgers en kinderen die samen een huishouden vormen.', 'Ons gezin bestaat uit vier personen.'],
+  'de ouder': ['Een vader, moeder of verzorger van een kind.', 'Elke ouder krijgt informatie van de school.'],
+  'de vader': ['Een man die een kind heeft of verzorgt.', 'Mijn vader woont in Colombia.'],
+  'de moeder': ['Een vrouw die een kind heeft of verzorgt.', 'Haar moeder werkt in een ziekenhuis.'],
+  'de broer': ['Een jongen of man met dezelfde ouder of ouders als jij.', 'Mijn broer is ouder dan ik.'],
+  'de zus': ['Een meisje of vrouw met dezelfde ouder of ouders als jij.', 'Mijn zus spreekt drie talen.'],
+  'de man': ['Een volwassen persoon van het mannelijke geslacht; ook een huwelijkspartner.', 'De man wacht bij de ingang.'],
+  'de vrouw': ['Een volwassen persoon van het vrouwelijke geslacht; ook een huwelijkspartner.', 'De vrouw fietst naar haar werk.'],
+  'het kind': ['Een jonge persoon; ook een zoon of dochter van iemand.', 'Het kind speelt buiten.'],
+  'heten': ['Een bepaalde naam hebben.', 'Ik heet Sofia.'],
+  'zijn': ['Een identiteit, eigenschap, plaats of toestand uitdrukken.', 'Wij zijn vandaag thuis.'],
+  'hebben': ['Iets bezitten, ontvangen of ervaren.', 'Ik heb een afspraak.'],
+  'komen': ['Zich naar een plaats bewegen of uit een plaats afkomstig zijn.', 'Ik kom uit Colombia.'],
+  'wonen': ['Op een bepaalde plaats je huis hebben.', 'Wij wonen dicht bij een park.'],
+  'spreken': ['Met woorden mondeling communiceren.', 'Spreekt u Nederlands?'],
+  'begrijpen': ['De betekenis van iets kennen of volgen.', 'Ik begrijp de vraag.'],
+  'spellen': ['De letters van een woord één voor één noemen.', 'Kunt u uw naam spellen?'],
+  'vragen': ['Iets zeggen om informatie, hulp of toestemming te krijgen.', 'Ik vraag de docent om hulp.'],
+  'antwoorden': ['Reageren op een vraag of bericht.', 'Zij antwoordt rustig.'],
+  'begroeten': ['Iemand vriendelijk aanspreken wanneer je die persoon ontmoet.', 'Wij begroeten de nieuwe buren.'],
+  'voorstellen': ['Vertellen wie jezelf of een andere persoon is.', 'Ik stel mezelf aan de groep voor.'],
+  'kennismaken': ['Iemand voor het eerst ontmoeten en informatie uitwisselen.', 'Morgen maken we kennis met het team.'],
+  'ontmoeten': ['Bij iemand komen en die persoon zien of spreken.', 'Ik ontmoet mijn collega bij het station.'],
+  'bellen': ['Telefonisch contact met iemand opnemen.', 'Ik bel vanmiddag de huisarts.'],
+  'kennen': ['Weten wie of wat iemand of iets is door eerdere ervaring.', 'Ken je onze nieuwe docent?'],
+  'nederlands': ['Behorend bij Nederland of de Nederlandse taal.', 'Ik volg een Nederlandse taalles.'],
+  'buitenlands': ['Afkomstig uit of verbonden met een ander land.', 'Zij heeft een buitenlands diploma.'],
+  'getrouwd': ['Door een huwelijk officieel met iemand verbonden.', 'Mijn zus is getrouwd.'],
+  'alleenstaand': ['Niet getrouwd en zonder vaste partner in het huishouden.', 'Hij is alleenstaand.'],
+  'jong': ['Nog niet oud; met een lage leeftijd.', 'De kinderen zijn nog jong.'],
+  'oud': ['Al lang bestaand of met een hoge leeftijd.', 'Hoe oud ben je?'],
+  'vriendelijk': ['Aardig, beleefd en prettig tegenover andere mensen.', 'De buurvrouw is erg vriendelijk.'],
+  'nieuw': ['Nog niet lang bestaand, gekocht of bekend.', 'Wij hebben een nieuwe buurman.'],
+  'hetzelfde': ['Niet verschillend; precies gelijk aan iets anders.', 'Wij hebben hetzelfde adres.'],
+  'anders': ['Niet hetzelfde of op een andere manier.', 'Vandaag gaat het anders.'],
+  'samen': ['Met één of meer andere mensen.', 'Wij leren samen Nederlands.'],
+  'alleen': ['Zonder andere mensen of zonder hulp.', 'Ik woon niet alleen.'],
+  'goedemorgen': ['Een beleefde begroeting die je in de ochtend gebruikt.', 'Goedemorgen, hoe gaat het?'],
+  'goedemiddag': ['Een beleefde begroeting die je in de middag gebruikt.', 'Goedemiddag, waarmee kan ik u helpen?'],
+  'goedenavond': ['Een beleefde begroeting die je in de avond gebruikt.', 'Goedenavond, welkom bij ons thuis.'],
+  'tot ziens': ['Een neutrale of beleefde manier om afscheid te nemen.', 'Bedankt voor uw bezoek. Tot ziens!'],
+  'tot morgen': ['Een afscheid waarmee je zegt dat je iemand morgen weer ziet.', 'Tot morgen op school!'],
+  'hoe heet je?': ['Een informele vraag naar de naam van een persoon.', 'Hallo, hoe heet je?'],
+  'waar kom je vandaan?': ['Een vraag naar het land, de stad of plaats van herkomst.', 'Waar kom je vandaan? Ik kom uit Spanje.'],
+  'aangenaam kennis te maken': ['Een beleefde reactie wanneer je iemand voor het eerst ontmoet.', 'Aangenaam kennis te maken, ik ben Lina.'],
+  'hoe gaat het?': ['Een vraag naar hoe iemand zich voelt of hoe het met iemand gaat.', 'Hoi Sam, hoe gaat het?'],
+  'het gaat goed': ['Een positief antwoord op de vraag hoe het gaat.', 'Dank je, het gaat goed.'],
+  'dank je wel': ['Een informele uitdrukking waarmee je iemand bedankt.', 'Dank je wel voor je hulp.'],
+  'alstublieft': ['Een beleefd woord bij een verzoek of wanneer je iets aan iemand geeft.', 'Een koffie, alstublieft.'],
+};
+
+function normalizeLearningWord(word) {
+  return String(word || '').trim().toLocaleLowerCase('nl-NL');
+}
+
+function highlightedWordDetails(theme, word) {
+  const normalized = normalizeLearningWord(word);
+  const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
+  if (local) return { definition: local[1], example: local[2], source: 'thema' };
+  const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
+  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord' };
+  return null;
+}
+
+function verbLearningDetails(word) {
+  const normalized = normalizeLearningWord(word);
+  const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
+  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord' };
+  const atlas = verbAtlas.find((item) => normalizeLearningWord(item.infinitive) === normalized);
+  if (!atlas) return null;
+  return {
+    definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
+    example: atlas.sentencePatterns?.hoofdzin || '',
+    source: 'werkwoord',
+  };
+}
+
+function fallbackWordDetails(theme, group, word) {
+  const lowerGroup = normalizeLearningWord(group);
+  const themeName = theme.title.toLocaleLowerCase('nl-NL');
+  if (word.trim().endsWith('?')) {
+    return { definition: `Een vaste vraag die je gebruikt in gesprekken over ${themeName}.`, example: word, source: 'vraag' };
+  }
+  if (lowerGroup.includes('vaste') || lowerGroup.includes('combinatie') || word.trim().includes(' ')) {
+    return { definition: `Een vaste combinatie die je als één geheel gebruikt wanneer je over ${themeName} praat.`, example: word, source: 'combinatie' };
+  }
+  if (lowerGroup.includes('werkwoord')) {
+    return { definition: `Een werkwoord voor een handeling, toestand of gebeurtenis binnen het thema ${themeName}.`, example: '', source: 'werkwoord' };
+  }
+  if (lowerGroup.includes('beschrij') || lowerGroup.includes('eigenschap') || lowerGroup.includes('bijvoeg')) {
+    return { definition: `Een woord waarmee je een persoon, ding of situatie binnen het thema ${themeName} beschrijft.`, example: '', source: 'beschrijving' };
+  }
+  return { definition: `Een zelfstandig naamwoord dat je nodig hebt om over ${themeName} te praten.`, example: '', source: 'themawoord' };
+}
+
+function wordLearningDetails(theme, group, word) {
+  const normalized = normalizeLearningWord(word);
+  const curated = commonWordLearningDetails[normalized];
+  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg' };
+  return highlightedWordDetails(theme, word)
+    || verbLearningDetails(word)
+    || fallbackWordDetails(theme, group, word);
+}
+
+function wordGroupId(theme, group) {
+  return `${theme.id}-${group}`.toLocaleLowerCase('nl-NL').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
 function showPage(page, updateHash = true) {
   const target = document.querySelector(`#page-${page}`);
   if (!target) return;
@@ -260,10 +382,28 @@ function themeWordCount(theme) {
 }
 
 function renderThemeWordGroups(theme) {
-  return Object.entries(theme.wordGroups || {}).map(([group, words], index) => `<details class="theme-word-group" ${index === 0 ? 'open' : ''}>
-    <summary><span>${escapeHtml(group)}</span><strong>${words.length} woorden</strong></summary>
-    <div class="theme-word-chip-grid">${words.map((word) => `<button class="theme-word-chip speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82"><span>${escapeHtml(word)}</span><small>luister</small></button>`).join('')}</div>
-  </details>`).join('');
+  return Object.entries(theme.wordGroups || {}).map(([group, words], index) => {
+    const groupId = wordGroupId(theme, group);
+    const cards = words.map((word, wordIndex) => {
+      const details = wordLearningDetails(theme, group, word);
+      const searchable = `${word} ${details.definition} ${details.example} ${group}`.toLocaleLowerCase('nl-NL');
+      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
+        <div class="theme-word-card-top"><span class="word-kind">${escapeHtml(details.source)}</span><div class="word-audio-actions">
+          <button class="icon-sound-button speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>
+          <button class="icon-sound-button slow speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.58" aria-label="Luister langzaam naar ${escapeHtml(word)}">🐢</button>
+        </div></div>
+        <h3>${escapeHtml(word)}</h3>
+        <p class="theme-word-definition">${escapeHtml(details.definition)}</p>
+        ${details.example ? `<details class="theme-word-example"><summary>Voorbeeldzin</summary><p>${escapeHtml(details.example)}</p><button class="text-button speak" type="button" data-text="${escapeHtml(details.example)}" data-rate="0.86">Luister naar de zin 🔊</button></details>` : ''}
+      </article>`;
+    }).join('');
+    const remaining = Math.max(0, words.length - 8);
+    return `<details class="theme-word-group" data-word-group="${escapeHtml(groupId)}" ${index === 0 ? 'open' : ''}>
+      <summary><span>${escapeHtml(group)}</span><strong>${words.length} woorden</strong></summary>
+      <div class="theme-word-card-grid">${cards}</div>
+      ${remaining ? `<button class="word-group-more" type="button" data-word-group-more="${escapeHtml(groupId)}" data-remaining="${remaining}" aria-expanded="false">Toon nog ${remaining} woorden</button>` : ''}
+    </details>`;
+  }).join('');
 }
 
 function renderCourseThemeDetail(theme, level, completed) {
@@ -279,7 +419,7 @@ function renderCourseThemeDetail(theme, level, completed) {
       <section><div class="section-heading compact"><div><span class="kicker">Betekenis in context</span><h2>Uitgelichte kernwoorden</h2></div><span class="plan-total">${theme.vocabulary.length} uitgebreid</span></div>
         <div class="a1-word-grid">${theme.vocabulary.map(([word, meaning, example]) => `<article><strong>${escapeHtml(word)}</strong><p>${escapeHtml(meaning)}</p><small>${escapeHtml(example)}</small><div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button></div></article>`).join('')}</div>
       </section>
-      <section class="full-word-bank"><div class="section-heading compact"><div><span class="kicker">Volledige woordenlijst</span><h2>${themeWordCount(theme)} woorden en vaste combinaties</h2></div><span class="plan-total">klik om te luisteren</span></div><p class="word-bank-intro">De woorden zijn semantisch gegroepeerd. Open een groep, luister en herhaal de woorden hardop.</p>${renderThemeWordGroups(theme)}</section>
+      <section class="full-word-bank"><div class="section-heading compact"><div><span class="kicker">Woorden leren</span><h2>${themeWordCount(theme)} woorden en vaste combinaties</h2></div><span class="plan-total">betekenis · voorbeeld · geluid</span></div><p class="word-bank-intro">Begin rustig met acht woorden per groep. Elke kaart geeft een korte betekenis; open de voorbeeldzin en luister normaal of langzaam.</p><div class="word-bank-toolbar"><label class="word-bank-search"><span>Zoek in dit thema</span><input type="search" data-theme-word-search placeholder="Bijvoorbeeld: familie, wonen, spreken…" autocomplete="off"></label><p class="word-bank-result" data-theme-word-result aria-live="polite">${themeWordCount(theme)} woorden beschikbaar</p></div>${renderThemeWordGroups(theme)}</section>
       <section><span class="kicker">Grammatica</span><h2>Vorm en betekenis</h2><div class="a1-grammar-grid">${theme.grammar.map(([title, explanation]) => `<article><strong>${escapeHtml(title)}</strong><p>${escapeHtml(explanation)}</p><button class="text-button" type="button" data-page="grammatica" data-grammar-level="${level}">Open in de grammatica-atlas →</button></article>`).join('')}</div></section>
       <section class="a1-sound-panel"><div><span class="kicker">Uitspraak</span><h2>Klanken van dit thema</h2><p>Luister, kijk naar de spelling en spreek de woorden hardop na.</p></div><div class="pronunciation-chips">${theme.pronunciation.map((sound) => `<button class="speak" type="button" data-text="${escapeHtml(sound)}" data-rate="0.68">${escapeHtml(sound)} 🔊</button>`).join('')}</div></section>
       <section class="a1-dialogue"><span class="kicker">Gesprek</span><h2>Lees en luister</h2><div>${theme.dialogue.map((line, index) => `<p><b>${index % 2 === 0 ? 'A' : 'B'}</b><span>${escapeHtml(line)}</span><button class="speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.86">🔊</button></p>`).join('')}</div></section>
@@ -980,6 +1120,15 @@ function handleClick(event) {
   if (verbLevelLink) { state.verbLevel = verbLevelLink.dataset.verbLevelLink; elements.verbLevel.value = state.verbLevel; renderVerbs({ resetLimit: true }); showPage('werkwoorden'); return; }
   const verbButton = event.target.closest('[data-verb-infinitive]');
   if (verbButton) { renderVerbDetail(verbButton.dataset.verbInfinitive); return; }
+  const wordGroupMore = event.target.closest('[data-word-group-more]');
+  if (wordGroupMore) {
+    const group = document.querySelector(`[data-word-group="${CSS.escape(wordGroupMore.dataset.wordGroupMore)}"]`);
+    if (!group) return;
+    const expanded = group.classList.toggle('show-all');
+    wordGroupMore.setAttribute('aria-expanded', String(expanded));
+    wordGroupMore.textContent = expanded ? 'Toon minder' : `Toon nog ${wordGroupMore.dataset.remaining} woorden`;
+    return;
+  }
   const speechButton = event.target.closest('.speak');
   if (speechButton) { speak(speechButton.dataset.text, speechButton.dataset.rate); return; }
   const conceptButton = event.target.closest('[data-concept]');
@@ -1025,8 +1174,32 @@ function handleClick(event) {
   }
 }
 
+function handleDynamicInput(event) {
+  const input = event.target.closest('[data-theme-word-search]');
+  if (!input) return;
+  const bank = input.closest('.full-word-bank');
+  if (!bank) return;
+  const query = normalizeLearningWord(input.value);
+  bank.classList.toggle('search-mode', Boolean(query));
+  let matches = 0;
+  bank.querySelectorAll('.theme-word-group').forEach((group) => {
+    let groupMatches = 0;
+    group.querySelectorAll('[data-theme-word-card]').forEach((card) => {
+      const visible = !query || normalizeLearningWord(card.dataset.search).includes(query);
+      card.hidden = !visible;
+      if (visible) groupMatches += 1;
+    });
+    group.hidden = groupMatches === 0;
+    if (query && groupMatches) group.open = true;
+    matches += groupMatches;
+  });
+  const result = bank.querySelector('[data-theme-word-result]');
+  if (result) result.textContent = query ? `${matches} resultaten voor “${input.value.trim()}”` : `${bank.querySelectorAll('[data-theme-word-card]').length} woorden beschikbaar`;
+}
+
 function initializeEvents() {
   document.addEventListener('click', handleClick);
+  document.addEventListener('input', handleDynamicInput);
   elements.menuButton.addEventListener('click', () => {
     const open = elements.sidebar.classList.toggle('open');
     elements.menuButton.setAttribute('aria-expanded', String(open));
