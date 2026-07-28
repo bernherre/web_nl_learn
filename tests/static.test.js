@@ -295,3 +295,75 @@ test('de klassieke bundle en offlinecache bevatten A0 en de B1-B2-spiraal', asyn
   assert.match(worker, /spiral-content\.js/);
   assert.match(worker, /a0-groeten\.svg/);
 });
+
+test('V11 bevat een volledige leerlijn voor getallen, datum, tijd en wiskundetaal', async () => {
+  const { numberTimeTopics, mathConcepts } = await import('../js/number-math-content.js');
+  const html = await read('index.html');
+  assert.ok(numberTimeTopics.length >= 12);
+  assert.ok(mathConcepts.length >= 35);
+  const numberText = JSON.stringify(numberTimeTopics);
+  for (const term of ['miljoen', 'miljard', 'biljoen', 'cardinalen', 'rangtelwoorden', 'datum', 'Klokkijken']) assert.match(numberText, new RegExp(term, 'i'));
+  const mathText = JSON.stringify(mathConcepts);
+  for (const term of ['matrix', 'sommatie', 'productoria', 'integraal', 'tensor', 'verzameling', 'groep']) assert.match(mathText, new RegExp(term, 'i'));
+  for (const id of ['page-getallen', 'page-wiskunde', 'number-topic-list', 'math-concept-grid']) assert.match(html, new RegExp(`id="${id}"`));
+});
+
+test('de toegankelijkheidsbediening is functioneel gekoppeld en gebruikt leesbare profielen', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  const css = await read('css/styles.css');
+  for (const id of ['theme-light', 'theme-dark', 'contrast-toggle', 'color-profile', 'high-contrast-setting', 'reduced-motion-setting', 'text-scale-setting']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.doesNotMatch(main, /themeToggle/);
+  assert.match(main, /function applySettings/);
+  assert.match(main, /dataset\.contrast/);
+  assert.match(main, /dataset\.colorProfile/);
+  assert.match(css, /data-contrast="high"/);
+  assert.match(css, /data-color-profile="color-safe"/);
+  assert.match(css, /:focus-visible/);
+});
+
+test('de natuurkundeatlas bevat brede vaktaal met uitsluitend naam en definitie', async () => {
+  const { physicsCategories, physicsConcepts } = await import('../js/technical-content.js');
+  assert.equal(physicsCategories.length, 8);
+  assert.equal(physicsConcepts.length, 105);
+  for (const category of ['basis', 'mechanica', 'elektromagnetisme', 'velden-relativiteit', 'kwantum', 'astronomie', 'golven-thermo']) {
+    assert.ok(physicsConcepts.some((concept) => concept.category === category), `${category} ontbreekt`);
+  }
+  for (const concept of physicsConcepts) {
+    assert.deepEqual(Object.keys(concept).sort(), ['category', 'definition', 'id', 'term']);
+    assert.ok(concept.term.length > 2);
+    assert.ok(concept.definition.length > 25);
+  }
+  const text = JSON.stringify(physicsConcepts);
+  for (const term of ['elektrische veld', 'kwantum', 'golffunctie', 'zwart', 'ruimtetijd', 'koppel']) assert.match(text, new RegExp(term, 'i'));
+});
+
+test('de softwareatlas bevat programmeren, architectuur, data, cloud, security en observability', async () => {
+  const { softwareCategories, softwareConcepts } = await import('../js/technical-content.js');
+  assert.equal(softwareCategories.length, 9);
+  assert.equal(softwareConcepts.length, 120);
+  for (const category of ['programmeren', 'datastructuren', 'architectuur', 'data', 'cloud-devops', 'beveiliging', 'kwaliteit', 'ai']) {
+    assert.ok(softwareConcepts.some((concept) => concept.category === category), `${category} ontbreekt`);
+  }
+  for (const concept of softwareConcepts) assert.deepEqual(Object.keys(concept).sort(), ['category', 'definition', 'id', 'term']);
+  const text = JSON.stringify(softwareConcepts);
+  for (const term of ['API', 'lakehouse', 'container', 'trace', 'authenticatie', 'generatieve AI']) assert.match(text, new RegExp(term, 'i'));
+});
+
+test('de technische atlassen zijn zichtbaar, zoekbaar, offline en aanwezig in de klassieke bundle', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  const app = await read('js/app.js');
+  const worker = await read('service-worker.js');
+  for (const id of ['page-natuurkunde', 'page-software', 'physics-category-filters', 'physics-search', 'physics-concept-grid', 'software-category-filters', 'software-search', 'software-concept-grid']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.match(main, /function renderPhysics/);
+  assert.match(main, /function renderSoftware/);
+  assert.match(main, /filterTechnicalConcepts/);
+  assert.match(app, /const physicsConcepts =/);
+  assert.match(app, /const softwareConcepts =/);
+  assert.match(worker, /technical-content\.js/);
+});

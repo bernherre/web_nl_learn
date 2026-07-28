@@ -31,6 +31,10 @@
         <button class="nav-item" type="button" data-page="concepten"><span class="nav-icon" aria-hidden="true">◎</span><span>Concepten</span></button>
         <button class="nav-item" type="button" data-page="grammatica"><span class="nav-icon" aria-hidden="true">¶</span><span>Grammatica</span></button>
         <button class="nav-item" type="button" data-page="vragen"><span class="nav-icon" aria-hidden="true">?</span><span>Vragen</span></button>
+        <button class="nav-item" type="button" data-page="getallen"><span class="nav-icon" aria-hidden="true">123</span><span>Getallen & tijd</span></button>
+        <button class="nav-item" type="button" data-page="wiskunde"><span class="nav-icon" aria-hidden="true">Σ</span><span>Wiskunde</span></button>
+        <button class="nav-item" type="button" data-page="natuurkunde"><span class="nav-icon" aria-hidden="true">φ</span><span>Natuurkunde</span></button>
+        <button class="nav-item" type="button" data-page="software"><span class="nav-icon" aria-hidden="true">&lt;/&gt;</span><span>Software</span></button>
         <button class="nav-item" type="button" data-page="taalstructuren"><span class="nav-icon" aria-hidden="true">⌘</span><span>Taalstructuren</span></button>
         <button class="nav-item" type="button" data-page="werkwoorden"><span class="nav-icon" aria-hidden="true">↻</span><span>Werkwoorden</span></button>
         <button class="nav-item" type="button" data-page="woordenschat"><span class="nav-icon" aria-hidden="true">▦</span><span>Woordenschat</span></button>
@@ -54,10 +58,18 @@
         <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">☰</button>
         <div class="topbar-title" aria-live="polite"><span id="page-context">Vandaag</span><small>beeld · geluid · betekenis · gebruik</small></div>
         <div class="topbar-actions">
-          <button class="icon-button" id="theme-toggle" type="button" aria-label="Wissel tussen licht en donker">☾</button>
-          <span class="level-pill">A0–B2</span>
-          <div class="streak" title="Oefenreeks"><span aria-hidden="true">🔥</span><div><strong id="streak-count">7 dagen</strong><small>mooie reeks</small></div></div>
-          <button class="avatar" type="button" aria-label="Profiel">BH</button>
+          <div class="theme-switch" role="group" aria-label="Kleurmodus">
+            <button class="theme-choice active" id="theme-light" type="button" data-theme-choice="light" aria-pressed="true"><span aria-hidden="true">☀</span><span>Dag</span></button>
+            <button class="theme-choice" id="theme-dark" type="button" data-theme-choice="dark" aria-pressed="false"><span aria-hidden="true">☾</span><span>Nacht</span></button>
+          </div>
+          <div class="text-size-switch" role="group" aria-label="Tekstgrootte">
+            <button type="button" data-text-scale="small" aria-label="Kleinere tekst">A−</button>
+            <button class="active" type="button" data-text-scale="normal" aria-label="Normale tekst" aria-pressed="true">A</button>
+            <button type="button" data-text-scale="large" aria-label="Grotere tekst">A+</button>
+          </div>
+          <button class="accessibility-button" id="contrast-toggle" type="button" aria-pressed="false" title="Hoog contrast"><span aria-hidden="true">◐</span><span class="control-label">Contrast</span></button>
+          <label class="color-profile-control" for="color-profile"><span class="sr-only">Kleurprofiel</span><span aria-hidden="true">◌</span><select id="color-profile" aria-label="Kleurprofiel"><option value="standard">Standaard</option><option value="color-safe">Kleurveilig</option></select></label>
+          <button class="menu-more" id="open-settings-top" type="button" aria-label="Open toegankelijkheidsinstellingen">☰</button>
         </div>
       </header>
 
@@ -108,6 +120,25 @@
                 <small class="voice-status" id="voice-status">Nederlandse stem wordt gecontroleerd…</small>
               </section>
             </div>
+
+            <section class="quick-level-section" aria-labelledby="quick-level-title">
+              <div class="section-heading compact"><div><span class="kicker">Jouw leerpad</span><h2 id="quick-level-title">Van eerste woorden naar nuance</h2></div><button class="text-button" type="button" data-page="leerpad">Bekijk het volledige leerpad →</button></div>
+              <div class="quick-level-grid">
+                <button class="quick-level-card current" type="button" data-page="a0"><span class="quick-level-code">A0</span><strong>Start</strong><small>Groeten en overlevingstaal</small><i><b style="width:18%"></b></i><em>18%</em></button>
+                <button class="quick-level-card" type="button" data-page="a1"><span class="quick-level-code">A1</span><strong>Basis</strong><small>Dagelijkse communicatie</small><i><b style="width:0%"></b></i><em>0%</em></button>
+                <button class="quick-level-card" type="button" data-page="a2"><span class="quick-level-code">A2</span><strong>Zelfstandig</strong><small>Meer gesprekken en context</small><i><b style="width:0%"></b></i><em>0%</em></button>
+                <button class="quick-level-card" type="button" data-page="b1"><span class="quick-level-code">B1</span><strong>Vloeiend</strong><small>Vertellen en argumenteren</small><i><b style="width:0%"></b></i><em>0%</em></button>
+                <button class="quick-level-card" type="button" data-page="b2"><span class="quick-level-code">B2</span><strong>Nuance</strong><small>Professioneel en precies</small><i><b style="width:0%"></b></i><em>0%</em></button>
+              </div>
+            </section>
+
+            <section class="accessibility-summary" aria-label="Toegankelijkheidsfuncties">
+              <div><span aria-hidden="true">◉</span><p><strong>Leesbaar contrast</strong><small>Tekst blijft zichtbaar in dag- en nachtmodus.</small></p></div>
+              <div><span aria-hidden="true">◌</span><p><strong>Kleurveilig</strong><small>Betekenis wordt nooit alleen met kleur getoond.</small></p></div>
+              <div><span aria-hidden="true">Aa</span><p><strong>Aanpasbare tekst</strong><small>Kies kleiner, normaal of groter.</small></p></div>
+              <div><span aria-hidden="true">🔊</span><p><strong>Audio-ondersteuning</strong><small>Woorden, zinnen en dialogen met audio.</small></p></div>
+              <div><span aria-hidden="true">☾</span><p><strong>Nachtmodus</strong><small>Rustige donkere oppervlakken met hoog contrast.</small></p></div>
+            </section>
 
             <section class="section-block" aria-labelledby="woorden-vandaag">
               <div class="section-heading"><div><span class="kicker">Beeldwoorden</span><h2 id="woorden-vandaag">Drie woorden voor vandaag</h2></div><button class="text-button" type="button" data-page="woordenschat">Bekijk alle woorden →</button></div>
@@ -317,6 +348,73 @@
             <section class="card question-practice" id="question-practice" aria-live="polite"></section>
           </section>
 
+          <section class="page" id="page-getallen" aria-labelledby="getallen-title">
+            <div class="page-heading number-page-heading">
+              <div><span class="kicker">Van nul tot eenentwintigste eeuw</span><h1 id="getallen-title">Getallen, datum en tijd</h1><p>Leer cardinalen, ordinalen, prijzen, telefoonnummers, kalender, kloktijd, duur, frequentie en maten in natuurlijk Nederlands.</p></div>
+              <div class="number-stats"><span><strong>14</strong> thema’s</span><span><strong>A0–B2</strong> opbouw</span><span><strong>60+</strong> voorbeelden</span></div>
+            </div>
+            <section class="card number-visual-hero">
+              <img src="images/numbers-time-map.svg" alt="Visuele kaart met getallen, klok, kalender, geld en maten">
+              <div><span class="kicker">Luisteren, lezen en gebruiken</span><h2>Hoe laat? Welke datum? Hoeveel?</h2><p>Dezelfde getallentaal komt terug in adressen, prijzen, afspraken, historische perioden en professionele rapportages.</p><div class="question-route"><span>A0 tellen</span><i>→</i><span>A1 klok en datum</span><i>→</i><span>A2 plannen</span><i>→</i><span>B1–B2 precisie</span></div></div>
+            </section>
+            <section class="number-reference" id="number-quick-reference" aria-label="Snel overzicht van getallen en tijd"></section>
+            <div class="library-layout number-library-layout">
+              <div class="topic-list" id="number-topic-list"></div>
+              <section class="card topic-detail number-topic-detail" id="number-topic-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-wiskunde" aria-labelledby="wiskunde-title">
+            <div class="page-heading math-page-heading">
+              <div><span class="kicker">Nederlandse vaktaal in één atlas</span><h1 id="wiskunde-title">Wiskundetaal: namen en basisnoties</h1><p>Leer de Nederlandse woorden voor rekenen, algebra, verzamelingen, matrices, sommatie, integralen, tensoren en abstracte structuren.</p></div>
+              <div class="math-stats"><span><strong id="math-concept-count">0</strong> begrippen</span><span><strong>7</strong> domeinen</span><span><strong>NL</strong> uitleg en audio</span></div>
+            </div>
+            <section class="card math-visual-hero">
+              <img src="images/math-map.svg" alt="Conceptkaart met rekenen, algebra, verzamelingen, matrices, analyse en structuren">
+              <div><span class="kicker">Geen volledige rekencursus</span><h2>Herken de taal en het symbool</h2><p>Elke fiche geeft de Nederlandse naam, een korte notie, een symbool of formule, een uitgesproken voorbeeld en verwante begrippen.</p><div class="concept-tags"><span>naam</span><span>symbool</span><span>notie</span><span>verband</span></div></div>
+            </section>
+            <div class="math-toolbar">
+              <div class="filter-row" id="math-category-filters" aria-label="Filter wiskundebegrippen op domein"></div>
+              <label class="math-search" for="math-search"><span>Zoek een begrip</span><input id="math-search" type="search" placeholder="bijv. matrix, integraal, groep…" autocomplete="off"></label>
+            </div>
+            <div class="math-layout">
+              <div class="math-concept-grid" id="math-concept-grid"></div>
+              <section class="card math-concept-detail" id="math-concept-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-natuurkunde" aria-labelledby="natuurkunde-title">
+            <div class="page-heading technical-page-heading">
+              <div><span class="kicker">Nederlandse vaktaal · natuurwetenschappen</span><h1 id="natuurkunde-title">Natuurkunde: concept, naam en definitie</h1><p>Een beknopte begrippenatlas voor basisfysica, mechanica, elektromagnetisme, velden, relativiteit, kwantummechanica, astronomie, golven en thermodynamica.</p></div>
+              <div class="technical-stats"><span><strong id="physics-concept-count">105</strong> begrippen zichtbaar</span><span><strong>7</strong> domeinen</span><span><strong>NL</strong> definitie</span></div>
+            </div>
+            <section class="card technical-hero physics-hero" aria-label="Natuurkundige domeinen">
+              <div class="technical-hero-symbols" aria-hidden="true"><span>φ</span><span>⚛</span><span>∿</span><span>✦</span></div>
+              <div><span class="kicker">Van beweging tot het heelal</span><h2>Herken de Nederlandse namen van kernbegrippen</h2><p>Elke kaart bevat bewust alleen het domein, de Nederlandse naam en een korte definitie. De luidspreker helpt bij de uitspraak.</p></div>
+            </section>
+            <div class="technical-toolbar">
+              <div class="filter-row" id="physics-category-filters" aria-label="Filter natuurkundebegrippen op domein"></div>
+              <label class="technical-search" for="physics-search"><span>Zoek een begrip</span><input id="physics-search" type="search" placeholder="bijv. kracht, veld, kwantum, ster…" autocomplete="off"></label>
+            </div>
+            <div class="technical-concept-grid" id="physics-concept-grid"></div>
+          </section>
+
+          <section class="page" id="page-software" aria-labelledby="software-title">
+            <div class="page-heading technical-page-heading">
+              <div><span class="kicker">Nederlandse vaktaal · digitale systemen</span><h1 id="software-title">Software: concept, naam en definitie</h1><p>Een woordenatlas voor programmeren, datastructuren, architectuur, data, cloud, DevOps, beveiliging, observability en kunstmatige intelligentie.</p></div>
+              <div class="technical-stats"><span><strong id="software-concept-count">120</strong> begrippen zichtbaar</span><span><strong>8</strong> domeinen</span><span><strong>NL</strong> definitie</span></div>
+            </div>
+            <section class="card technical-hero software-hero" aria-label="Softwaredomeinen">
+              <div class="technical-hero-symbols" aria-hidden="true"><span>{ }</span><span>⌁</span><span>DB</span><span>☁</span></div>
+              <div><span class="kicker">Van broncode tot cloudarchitectuur</span><h2>Technische termen begrijpen zonder onnodige uitleg</h2><p>Elke kaart toont alleen het domein, de Nederlandse naam en een korte definitie. Zo blijft de atlas snel scanbaar en bruikbaar tijdens werk of studie.</p></div>
+            </section>
+            <div class="technical-toolbar">
+              <div class="filter-row" id="software-category-filters" aria-label="Filter softwarebegrippen op domein"></div>
+              <label class="technical-search" for="software-search"><span>Zoek een begrip</span><input id="software-search" type="search" placeholder="bijv. API, database, container, trace…" autocomplete="off"></label>
+            </div>
+            <div class="technical-concept-grid" id="software-concept-grid"></div>
+          </section>
+
           <section class="page" id="page-taalstructuren" aria-labelledby="taalstructuren-title">
             <div class="page-heading"><div><span class="kicker">Vorm, betekenis en positie</span><h1 id="taalstructuren-title">Taalstructuren in context</h1><p>Bestudeer niet alleen losse regels, maar complete patronen: welk woord kies je, wat betekent het en waar staat het in de zin?</p></div><div class="structure-total"><strong>300+</strong><span>patronen en combinaties</span></div></div>
             <div class="structure-tabs" id="structure-tabs" role="tablist" aria-label="Taalstructuren">
@@ -396,7 +494,13 @@
   <dialog class="settings-dialog" id="settings-dialog">
     <form method="dialog">
       <div class="dialog-heading"><div><span class="kicker">Persoonlijke ervaring</span><h2>Instellingen</h2></div><button class="icon-button" value="cancel" aria-label="Sluit instellingen">×</button></div>
-      <fieldset><legend>Weergave</legend><label class="setting-row"><span><strong>Donkere modus</strong><small>Rustiger bij weinig licht</small></span><input id="dark-mode-setting" type="checkbox" role="switch"></label></fieldset>
+      <fieldset><legend>Weergave en toegankelijkheid</legend>
+        <label class="setting-row"><span><strong>Donkere modus</strong><small>Rustiger bij weinig licht, met lichte tekst op donkere oppervlakken.</small></span><input id="dark-mode-setting" type="checkbox" role="switch"></label>
+        <label class="setting-row"><span><strong>Hoog contrast</strong><small>Vergroot het verschil tussen tekst, achtergrond en randen.</small></span><input id="high-contrast-setting" type="checkbox" role="switch"></label>
+        <label class="setting-row"><span><strong>Beweging beperken</strong><small>Schakelt niet-essentiële animaties uit.</small></span><input id="reduced-motion-setting" type="checkbox" role="switch"></label>
+        <label class="setting-select" for="text-scale-setting"><span><strong>Tekstgrootte</strong><small>De lay-out blijft bruikbaar bij grotere tekst.</small></span><select id="text-scale-setting"><option value="small">Kleiner</option><option value="normal">Normaal</option><option value="large">Groter</option></select></label>
+        <label class="setting-select" for="color-profile-setting"><span><strong>Kleurprofiel</strong><small>Kleurveilig gebruikt blauw, goud en duidelijke patronen.</small></span><select id="color-profile-setting"><option value="standard">Standaard</option><option value="color-safe">Kleurveilig</option></select></label>
+      </fieldset>
       <fieldset><legend>Uitspraak</legend><label for="speech-rate">Standaardsnelheid <output id="speech-rate-output">0.9×</output></label><input id="speech-rate" type="range" min="0.55" max="1.1" step="0.05" value="0.9"><p class="setting-help" id="settings-voice-status">De browser kiest de beste beschikbare Nederlandse stem.</p><button class="secondary-button speak" type="button" data-text="Goedemorgen. Vandaag oefenen we Nederlands.">Test de stem</button></fieldset>
       <div class="dialog-actions"><button class="primary-button" value="default">Klaar</button></div>
     </form>

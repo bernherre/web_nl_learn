@@ -9,10 +9,12 @@ const supplementContent = stripExports(await readFile(new URL('../js/supplement-
 const questionsContent = stripExports(await readFile(new URL('../js/questions-content.js', import.meta.url), 'utf8'));
 const starterContent = stripExports(await readFile(new URL('../js/starter-content.js', import.meta.url), 'utf8'));
 const spiralContent = stripExports(await readFile(new URL('../js/spiral-content.js', import.meta.url), 'utf8'));
+const numberMathContent = stripExports(await readFile(new URL('../js/number-math-content.js', import.meta.url), 'utf8'));
+const technicalContent = stripExports(await readFile(new URL('../js/technical-content.js', import.meta.url), 'utf8'));
 const verbAtlas = stripExports(await readFile(new URL('../js/verb-atlas.js', import.meta.url), 'utf8'));
 const content = stripImports(stripExports(await readFile(new URL('../js/content.js', import.meta.url), 'utf8')));
 const main = stripImports(await readFile(new URL('../js/main.js', import.meta.url), 'utf8'));
 
-const bundle = `/* Generated browser bundle. Source of truth: learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, verb-atlas.js, content.js and main.js. */\n(function () {\n'use strict';\n${learning}\n${depthContent}\n${supplementContent}\n${questionsContent}\n${starterContent}\n${spiralContent}\n${verbAtlas}\n${content}\n${main}\n})();\n`;
+const bundle = `/* Generated browser bundle. Source of truth: learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, number-math-content.js, technical-content.js, verb-atlas.js, content.js and main.js. */\n(function () {\n'use strict';\n${learning}\n${depthContent}\n${supplementContent}\n${questionsContent}\n${starterContent}\n${spiralContent}\n${numberMathContent}\n${technicalContent}\n${verbAtlas}\n${content}\n${main}\n})();\n`;
 await writeFile(new URL('../js/app.js', import.meta.url), bundle, 'utf8');
 console.log('js/app.js bijgewerkt.');

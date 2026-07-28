@@ -18,6 +18,8 @@ import { verbAtlas } from './verb-atlas.js';
 import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
 import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
+import { numberTimeTopics, numberQuickReference, mathCategories, mathConcepts, mathStats } from './number-math-content.js';
+import { physicsCategories, physicsConcepts, softwareCategories, softwareConcepts, technicalStats } from './technical-content.js';
 import {
   a1Themes,
   a2Themes,
@@ -52,6 +54,14 @@ const state = {
   questionMatrixQuery: '',
   questionPracticeIndex: 0,
   questionPracticeAnswered: false,
+  numberTopic: 'cardinalen-basis',
+  mathCategory: 'alle',
+  mathQuery: '',
+  mathConcept: 'optellen',
+  physicsCategory: 'alle',
+  physicsQuery: '',
+  softwareCategory: 'alle',
+  softwareQuery: '',
   concept: 'grammatica',
   vocabularyCategory: 'alle',
   vocabularyQuery: '',
@@ -87,6 +97,10 @@ const elements = {
   grammarFilters: el('grammar-filters'), grammarList: el('grammar-list'), grammarDetail: el('grammar-detail'),
   questionFilters: el('question-filters'), questionList: el('question-list'), questionDetail: el('question-detail'),
   questionMatrix: el('question-matrix'), questionMatrixSearch: el('question-matrix-search'), questionMatrixCount: el('question-matrix-count'), questionPractice: el('question-practice'),
+  numberQuickReference: el('number-quick-reference'), numberTopicList: el('number-topic-list'), numberTopicDetail: el('number-topic-detail'),
+  mathCategoryFilters: el('math-category-filters'), mathSearch: el('math-search'), mathConceptGrid: el('math-concept-grid'), mathConceptDetail: el('math-concept-detail'), mathConceptCount: el('math-concept-count'),
+  physicsCategoryFilters: el('physics-category-filters'), physicsSearch: el('physics-search'), physicsConceptGrid: el('physics-concept-grid'), physicsConceptCount: el('physics-concept-count'),
+  softwareCategoryFilters: el('software-category-filters'), softwareSearch: el('software-search'), softwareConceptGrid: el('software-concept-grid'), softwareConceptCount: el('software-concept-count'),
   structureTabs: el('structure-tabs'), structureSummary: el('structure-summary'), structureContent: el('structure-content'),
   verbSearch: el('verb-search'), verbRegularity: el('verb-regularity'), verbSemantic: el('verb-semantic'),
   verbLevel: el('verb-level'), verbSeparable: el('verb-separable'), verbAuxiliary: el('verb-auxiliary'),
@@ -97,7 +111,11 @@ const elements = {
   progressMinutes: el('progress-minutes'), progressCompleted: el('progress-completed'), progressAudio: el('progress-audio'),
   skillProgress: el('skill-progress'), clearProgress: el('clear-progress'),
   settingsDialog: el('settings-dialog'), darkModeSetting: el('dark-mode-setting'),
-  speechRate: el('speech-rate'), speechRateOutput: el('speech-rate-output'), themeToggle: el('theme-toggle'),
+  highContrastSetting: el('high-contrast-setting'), reducedMotionSetting: el('reduced-motion-setting'),
+  textScaleSetting: el('text-scale-setting'), colorProfileSetting: el('color-profile-setting'),
+  openSettingsTop: el('open-settings-top'), themeLight: el('theme-light'), themeDark: el('theme-dark'),
+  contrastToggle: el('contrast-toggle'), colorProfile: el('color-profile'), settingsVoiceStatus: el('settings-voice-status'),
+  speechRate: el('speech-rate'), speechRateOutput: el('speech-rate-output'),
 };
 
 function readProgress() {
@@ -111,10 +129,19 @@ function saveProgress() {
 }
 
 function readSettings() {
+  const defaults = { theme: 'light', speechRate: .9, highContrast: false, reducedMotion: false, textScale: 'normal', colorProfile: 'standard' };
   try {
     const stored = JSON.parse(localStorage.getItem(SETTINGS_KEY) || '{}');
-    return { theme: stored.theme === 'dark' ? 'dark' : 'light', speechRate: Number(stored.speechRate) || .9 };
-  } catch { return { theme: 'light', speechRate: .9 }; }
+    return {
+      ...defaults,
+      theme: stored.theme === 'dark' ? 'dark' : 'light',
+      speechRate: Number(stored.speechRate) || .9,
+      highContrast: Boolean(stored.highContrast),
+      reducedMotion: Boolean(stored.reducedMotion),
+      textScale: ['small', 'normal', 'large'].includes(stored.textScale) ? stored.textScale : 'normal',
+      colorProfile: stored.colorProfile === 'color-safe' ? 'color-safe' : 'standard',
+    };
+  } catch { return defaults; }
 }
 
 function saveSettings() {
@@ -362,6 +389,86 @@ function renderConceptDetail() {
     <div class="concept-children">${concept.children.map((child) => `<button type="button" data-concept-child="${escapeHtml(child)}"><strong>${escapeHtml(child)}</strong><br><small>uitleg · voorbeelden · audio</small></button>`).join('')}</div>
   </div>`;
 }
+
+function renderNumberTime() {
+  if (!elements.numberTopicList || !elements.numberTopicDetail || !elements.numberQuickReference) return;
+  elements.numberQuickReference.innerHTML = numberQuickReference.map((group) => `<article class="card number-reference-card"><h2>${escapeHtml(group.title)}</h2><div>${group.items.map((item) => `<button class="speak" type="button" data-text="${escapeHtml(item.replace(/^\S+\s/, ''))}" data-rate="0.78">${escapeHtml(item)} <span aria-hidden="true">🔊</span></button>`).join('')}</div></article>`).join('');
+  elements.numberTopicList.innerHTML = numberTimeTopics.map((topic) => `<button class="topic-button ${topic.id === state.numberTopic ? 'active' : ''}" type="button" data-number-topic="${escapeHtml(topic.id)}"><small>${escapeHtml(topic.level)}</small><strong>${escapeHtml(topic.title)}</strong><span>${escapeHtml(topic.summary)}</span></button>`).join('');
+  const topic = numberTimeTopics.find((item) => item.id === state.numberTopic) || numberTimeTopics[0];
+  elements.numberTopicDetail.innerHTML = `<div class="eyebrow"><span>${escapeHtml(topic.level)}</span> getallen & tijd</div><h1>${escapeHtml(topic.title)}</h1><p class="lead">${escapeHtml(topic.summary)}</p>
+    <div class="rule-box number-rule-box"><small>Patroon</small><strong>${escapeHtml(topic.rule)}</strong></div>
+    <div class="section-heading compact"><h2>Voorbeelden</h2><button class="sound-button speak" type="button" data-text="${escapeHtml(topic.examples.join(' '))}" data-rate="0.8">🔊 Luister naar alle voorbeelden</button></div>
+    <ul class="example-list">${topic.examples.map((example) => `<li><span>${escapeHtml(example)}</span><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.84" aria-label="Luister naar ${escapeHtml(example)}">🔊</button></li>`).join('')}</ul>
+    <div class="grammar-section-grid">${topic.sections.map((section) => `<article class="grammar-section-card"><h3>${escapeHtml(section.title)}</h3><ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></article>`).join('')}</div>`;
+}
+
+function filteredMathConcepts() {
+  const query = state.mathQuery.trim().toLocaleLowerCase('nl-NL');
+  return mathConcepts.filter((concept) => {
+    if (state.mathCategory !== 'alle' && concept.category !== state.mathCategory) return false;
+    if (!query) return true;
+    return [concept.term, concept.noun, concept.notion, concept.symbol, concept.formula, ...(concept.related || [])]
+      .filter(Boolean).join(' ').toLocaleLowerCase('nl-NL').includes(query);
+  });
+}
+
+function renderMathDetail(id = state.mathConcept) {
+  const concept = mathConcepts.find((item) => item.id === id) || mathConcepts[0];
+  state.mathConcept = concept.id;
+  if (!elements.mathConceptDetail) return;
+  elements.mathConceptDetail.innerHTML = `<div class="math-symbol" aria-hidden="true">${escapeHtml(concept.symbol)}</div><div class="eyebrow"><span>${escapeHtml(concept.category)}</span> wiskundetaal</div><h1>${escapeHtml(concept.term)}</h1><p class="math-noun">${escapeHtml(concept.noun)}</p><p class="lead">${escapeHtml(concept.notion)}</p>
+    <div class="math-formula"><small>Notatie</small><strong>${escapeHtml(concept.formula)}</strong></div>
+    <div class="math-spoken"><small>Zo zeg je het</small><p>${escapeHtml(concept.example)}</p><div class="button-row"><button class="sound-button speak" type="button" data-text="${escapeHtml(concept.term)}. ${escapeHtml(concept.example)}" data-rate="0.78">🔊 Luister</button><button class="sound-button secondary speak" type="button" data-text="${escapeHtml(concept.term)}. ${escapeHtml(concept.notion)}" data-rate="0.62">🐢 Langzaam</button></div></div>
+    <h3>Verwante begrippen</h3><div class="connection-tags">${concept.related.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>`;
+  elements.mathConceptGrid?.querySelectorAll('[data-math-concept]').forEach((button) => button.classList.toggle('active', button.dataset.mathConcept === concept.id));
+}
+
+function renderMath() {
+  if (!elements.mathConceptGrid || !elements.mathCategoryFilters) return;
+  elements.mathConceptCount.textContent = String(mathStats.concepts);
+  elements.mathCategoryFilters.innerHTML = mathCategories.map(([id, label]) => `<button class="${state.mathCategory === id ? 'active' : ''}" type="button" data-math-category="${escapeHtml(id)}">${escapeHtml(label)}</button>`).join('');
+  const filtered = filteredMathConcepts();
+  if (!filtered.some((item) => item.id === state.mathConcept)) state.mathConcept = filtered[0]?.id || mathConcepts[0].id;
+  elements.mathConceptGrid.innerHTML = filtered.length ? filtered.map((concept) => `<button class="math-concept-card ${concept.id === state.mathConcept ? 'active' : ''}" type="button" data-math-concept="${escapeHtml(concept.id)}"><span class="math-card-symbol">${escapeHtml(concept.symbol)}</span><small>${escapeHtml(concept.category)}</small><strong>${escapeHtml(concept.term)}</strong><p>${escapeHtml(concept.notion)}</p></button>`).join('') : '<div class="empty-state"><strong>Geen begrip gevonden.</strong><p>Zoek bijvoorbeeld op “matrix”, “integraal”, “groep” of “kans”.</p></div>';
+  renderMathDetail(state.mathConcept);
+}
+
+function technicalCategoryLabel(categories, id) {
+  return categories.find(([categoryId]) => categoryId === id)?.[1] || id;
+}
+
+function filterTechnicalConcepts(concepts, category, query) {
+  const needle = query.trim().toLocaleLowerCase('nl-NL');
+  return concepts.filter((concept) => {
+    if (category !== 'alle' && concept.category !== category) return false;
+    if (!needle) return true;
+    return `${concept.term} ${concept.definition} ${concept.category}`.toLocaleLowerCase('nl-NL').includes(needle);
+  });
+}
+
+function technicalCard(concept, categories) {
+  const label = technicalCategoryLabel(categories, concept.category);
+  return `<article class="card technical-concept-card"><div class="technical-card-head"><span>${escapeHtml(label)}</span><button class="mini-audio speak" type="button" data-text="${escapeHtml(concept.term)}" data-rate="0.76" aria-label="Luister naar ${escapeHtml(concept.term)}">🔊</button></div><h2>${escapeHtml(concept.term)}</h2><p>${escapeHtml(concept.definition)}</p></article>`;
+}
+
+function renderTechnicalAtlas(kind) {
+  const isPhysics = kind === 'physics';
+  const concepts = isPhysics ? physicsConcepts : softwareConcepts;
+  const categories = isPhysics ? physicsCategories : softwareCategories;
+  const category = isPhysics ? state.physicsCategory : state.softwareCategory;
+  const query = isPhysics ? state.physicsQuery : state.softwareQuery;
+  const filters = isPhysics ? elements.physicsCategoryFilters : elements.softwareCategoryFilters;
+  const grid = isPhysics ? elements.physicsConceptGrid : elements.softwareConceptGrid;
+  const count = isPhysics ? elements.physicsConceptCount : elements.softwareConceptCount;
+  if (!filters || !grid || !count) return;
+  filters.innerHTML = categories.map(([id, label]) => `<button class="${category === id ? 'active' : ''}" type="button" data-technical-kind="${kind}" data-technical-category="${escapeHtml(id)}">${escapeHtml(label)}</button>`).join('');
+  const filtered = filterTechnicalConcepts(concepts, category, query);
+  count.textContent = `${filtered.length} van ${concepts.length}`;
+  grid.innerHTML = filtered.length ? filtered.map((concept) => technicalCard(concept, categories)).join('') : `<div class="empty-state"><strong>Geen begrip gevonden.</strong><p>Probeer een andere zoekterm of kies alle domeinen.</p></div>`;
+}
+
+function renderPhysics() { renderTechnicalAtlas('physics'); }
+function renderSoftware() { renderTechnicalAtlas('software'); }
 
 function renderGrammarFilters() {
   const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
@@ -687,22 +794,64 @@ function updateProgressUI() {
   elements.skillProgress.innerHTML = skills.map(([name, value, level]) => `<div class="skill-row"><div><span>${name}</span><b>${level}</b></div><div class="meter"><i style="width:${value}%"></i></div></div>`).join('');
 }
 
+function syncSettingsControls() {
+  const root = document.documentElement;
+  root.dataset.theme = state.settings.theme;
+  root.dataset.contrast = state.settings.highContrast ? 'high' : 'normal';
+  root.dataset.motion = state.settings.reducedMotion ? 'reduced' : 'full';
+  root.dataset.textScale = state.settings.textScale;
+  root.dataset.colorProfile = state.settings.colorProfile;
+
+  if (elements.darkModeSetting) elements.darkModeSetting.checked = state.settings.theme === 'dark';
+  if (elements.highContrastSetting) elements.highContrastSetting.checked = state.settings.highContrast;
+  if (elements.reducedMotionSetting) elements.reducedMotionSetting.checked = state.settings.reducedMotion;
+  if (elements.textScaleSetting) elements.textScaleSetting.value = state.settings.textScale;
+  if (elements.colorProfileSetting) elements.colorProfileSetting.value = state.settings.colorProfile;
+  if (elements.colorProfile) elements.colorProfile.value = state.settings.colorProfile;
+  if (elements.contrastToggle) elements.contrastToggle.setAttribute('aria-pressed', String(state.settings.highContrast));
+
+  [elements.themeLight, elements.themeDark].forEach((button) => {
+    if (!button) return;
+    const active = button.dataset.themeChoice === state.settings.theme;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  document.querySelectorAll('[data-text-scale]').forEach((button) => {
+    const active = button.dataset.textScale === state.settings.textScale;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+  const meta = document.querySelector('meta[name="theme-color"]');
+  if (meta) meta.content = state.settings.theme === 'dark' ? '#0f1d1a' : '#123f38';
+}
+
+function applySettings({ persist = true } = {}) {
+  syncSettingsControls();
+  if (persist) saveSettings();
+}
+
 function applyTheme(theme) {
   state.settings.theme = theme === 'dark' ? 'dark' : 'light';
-  document.documentElement.dataset.theme = state.settings.theme;
-  elements.darkModeSetting.checked = state.settings.theme === 'dark';
-  elements.themeToggle.textContent = state.settings.theme === 'dark' ? '☀' : '☾';
-  document.querySelector('meta[name="theme-color"]').content = state.settings.theme === 'dark' ? '#0f1d1a' : '#123f38';
-  saveSettings();
+  applySettings();
 }
 
 function initializeSettings() {
-  applyTheme(state.settings.theme);
+  applySettings({ persist: false });
   elements.speechRate.value = String(state.settings.speechRate);
   elements.speechRateOutput.textContent = `${state.settings.speechRate.toFixed(2).replace(/0$/, '')}×`;
-  el('open-settings').addEventListener('click', () => elements.settingsDialog.showModal());
-  elements.themeToggle.addEventListener('click', () => applyTheme(state.settings.theme === 'dark' ? 'light' : 'dark'));
-  elements.darkModeSetting.addEventListener('change', (event) => applyTheme(event.target.checked ? 'dark' : 'light'));
+  const openDialog = () => elements.settingsDialog?.showModal();
+  el('open-settings')?.addEventListener('click', openDialog);
+  elements.openSettingsTop?.addEventListener('click', openDialog);
+  elements.themeLight?.addEventListener('click', () => applyTheme('light'));
+  elements.themeDark?.addEventListener('click', () => applyTheme('dark'));
+  elements.darkModeSetting?.addEventListener('change', (event) => applyTheme(event.target.checked ? 'dark' : 'light'));
+  elements.contrastToggle?.addEventListener('click', () => { state.settings.highContrast = !state.settings.highContrast; applySettings(); });
+  elements.highContrastSetting?.addEventListener('change', (event) => { state.settings.highContrast = event.target.checked; applySettings(); });
+  elements.reducedMotionSetting?.addEventListener('change', (event) => { state.settings.reducedMotion = event.target.checked; applySettings(); });
+  document.querySelectorAll('[data-text-scale]').forEach((button) => button.addEventListener('click', () => { state.settings.textScale = button.dataset.textScale; applySettings(); }));
+  elements.textScaleSetting?.addEventListener('change', (event) => { state.settings.textScale = event.target.value; applySettings(); });
+  elements.colorProfile?.addEventListener('change', (event) => { state.settings.colorProfile = event.target.value; applySettings(); });
+  elements.colorProfileSetting?.addEventListener('change', (event) => { state.settings.colorProfile = event.target.value; applySettings(); });
   elements.speechRate.addEventListener('input', (event) => {
     state.settings.speechRate = Number(event.target.value);
     elements.speechRateOutput.textContent = `${state.settings.speechRate.toFixed(2).replace(/0$/, '')}×`;
@@ -812,6 +961,19 @@ function handleClick(event) {
     renderQuestionPractice();
     return;
   }
+  const numberTopic = event.target.closest('[data-number-topic]');
+  if (numberTopic) { state.numberTopic = numberTopic.dataset.numberTopic; renderNumberTime(); return; }
+  const mathCategory = event.target.closest('[data-math-category]');
+  if (mathCategory) { state.mathCategory = mathCategory.dataset.mathCategory; renderMath(); return; }
+  const technicalCategory = event.target.closest('[data-technical-category]');
+  if (technicalCategory) {
+    const kind = technicalCategory.dataset.technicalKind;
+    if (kind === 'physics') { state.physicsCategory = technicalCategory.dataset.technicalCategory; renderPhysics(); }
+    if (kind === 'software') { state.softwareCategory = technicalCategory.dataset.technicalCategory; renderSoftware(); }
+    return;
+  }
+  const mathConcept = event.target.closest('[data-math-concept]');
+  if (mathConcept) { renderMathDetail(mathConcept.dataset.mathConcept); return; }
   const structureButton = event.target.closest('[data-structure]');
   if (structureButton) { renderStructures(structureButton.dataset.structure); return; }
   const verbLevelLink = event.target.closest('[data-verb-level-link]');
@@ -886,6 +1048,9 @@ function initializeEvents() {
   elements.verbAuxiliary.addEventListener('change', (event) => { state.verbAuxiliary = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbLoadMore.addEventListener('click', () => { state.verbLimit += 80; renderVerbs(); });
   elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
+  elements.mathSearch?.addEventListener('input', (event) => { state.mathQuery = event.target.value; renderMath(); });
+  elements.physicsSearch?.addEventListener('input', (event) => { state.physicsQuery = event.target.value; renderPhysics(); });
+  elements.softwareSearch?.addEventListener('input', (event) => { state.softwareQuery = event.target.value; renderSoftware(); });
   elements.wordSearch.addEventListener('input', (event) => { state.vocabularyQuery = event.target.value; renderVocabulary(); });
   elements.clearProgress.addEventListener('click', () => {
     state.progress = safeProgress();
@@ -916,6 +1081,10 @@ function initialize() {
   renderConcepts();
   renderGrammar();
   renderQuestions();
+  renderNumberTime();
+  renderMath();
+  renderPhysics();
+  renderSoftware();
   renderStructures();
   renderVerbs();
   renderVocabulary();

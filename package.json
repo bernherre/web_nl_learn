@@ -1,13 +1,13 @@
 {
   "name": "web-nl-learn",
-  "version": "10.0.0",
+  "version": "13.0.0",
   "private": true,
   "type": "module",
-  "description": "Statische leeromgeving Nederlands A0-B2 met vijf zichtbare routes, ruim 2.000 leeritems, diepe grammatica, 1.880 vervoegde werkwoorden en complete vraag- en gesprekssystemen.",
+  "description": "Statische Nederlandstalige leeromgeving A0-B2 met toegankelijke UX, getallen, datum, tijd, wiskundetaal, natuurkunde, softwarebegrippen, diepe grammatica en 1.880 vervoegde werkwoorden.",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8080",
-    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/starter-content.js && node --check js/spiral-content.js && node --check js/verb-atlas.js && node --check js/learning.js && node --check js/app.js && npm test",
+    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/starter-content.js && node --check js/spiral-content.js && node --check js/number-math-content.js && node --check js/technical-content.js && node --check js/verb-atlas.js && node --check js/learning.js && node --check js/app.js && npm test",
     "build": "node scripts/build-classic.mjs"
   },
   "engines": {

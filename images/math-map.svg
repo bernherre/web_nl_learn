@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" role="img" aria-labelledby="title desc">
+<title id="title">Wiskundetaal</title><desc id="desc">Een conceptkaart met rekenen, algebra, verzamelingen, matrices, analyse en abstracte structuren.</desc>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#edf7f3"/><stop offset="1" stop-color="#fdf1e5"/></linearGradient><filter id="s"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-opacity=".12"/></filter></defs>
+<rect width="800" height="520" rx="38" fill="url(#bg)"/>
+<g stroke="#91afa7" stroke-width="4" opacity=".8"><path d="M400 260 170 105"/><path d="M400 260 400 80"/><path d="M400 260 630 105"/><path d="M400 260 170 415"/><path d="M400 260 400 440"/><path d="M400 260 630 415"/></g>
+<g filter="url(#s)"><circle cx="400" cy="260" r="105" fill="#123f38"/><text x="400" y="245" text-anchor="middle" font-family="Arial,sans-serif" font-size="58" font-weight="900" fill="#fff">Σ ∫ A</text><text x="400" y="293" text-anchor="middle" font-family="Arial,sans-serif" font-size="24" fill="#d7eee7">wiskundetaal</text></g>
+<g font-family="Arial,sans-serif" text-anchor="middle" filter="url(#s)">
+<rect x="65" y="45" width="210" height="115" rx="28" fill="#fff"/><text x="170" y="95" font-size="32" font-weight="850" fill="#123f38">+ − × ÷</text><text x="170" y="130" font-size="18" fill="#5a6e68">rekenen</text>
+<rect x="295" y="25" width="210" height="115" rx="28" fill="#fff"/><text x="400" y="75" font-size="30" font-weight="850" fill="#c96a1b">f(x) = x²</text><text x="400" y="110" font-size="18" fill="#5a6e68">algebra</text>
+<rect x="525" y="45" width="210" height="115" rx="28" fill="#fff"/><text x="630" y="95" font-size="32" font-weight="850" fill="#123f38">A ∩ B</text><text x="630" y="130" font-size="18" fill="#5a6e68">verzamelingen</text>
+<rect x="65" y="360" width="210" height="115" rx="28" fill="#fff"/><text x="170" y="410" font-size="31" font-weight="850" fill="#c96a1b">[ aᵢⱼ ]</text><text x="170" y="445" font-size="18" fill="#5a6e68">matrix en tensor</text>
+<rect x="295" y="380" width="210" height="115" rx="28" fill="#fff"/><text x="400" y="430" font-size="34" font-weight="850" fill="#123f38">∫∫ f dA</text><text x="400" y="465" font-size="18" fill="#5a6e68">analyse</text>
+<rect x="525" y="360" width="210" height="115" rx="28" fill="#fff"/><text x="630" y="410" font-size="29" font-weight="850" fill="#c96a1b">(G, ·)</text><text x="630" y="445" font-size="18" fill="#5a6e68">groep · ring · lichaam</text>
+</g>
+</svg>

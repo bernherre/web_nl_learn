@@ -1,4 +1,4 @@
-# Nederlands, gewoon doen — V10
+# Nederlands, gewoon doen — V13
 
 Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
@@ -153,6 +153,42 @@ Nieuwe begrippen worden waar mogelijk ondersteund met een thematische illustrati
 
 Normale en langzame afspeelsnelheid zijn beschikbaar. De oude twijfelachtige WAV-opnames worden niet door de hoofdapp gebruikt.
 
+## Toegankelijke visuele interface
+
+De V13 behoudt de warme groene, crèmekleurige en oranje identiteit, maar gebruikt kleur nooit als enige informatiedrager. De interface bevat:
+
+- dag- en nachtmodus;
+- hoogcontrastmodus;
+- een kleurveilig profiel voor onder meer rood-groenkleurenzienstoornissen;
+- drie tekstgroottes;
+- zichtbare focusranden en semantische labels;
+- ondersteuning voor `prefers-reduced-motion`;
+- tekstcontrast dat ook op kaarten, knoppen en badges leesbaar blijft.
+
+## Getallen, datum en tijd
+
+De afzonderlijke route **Getallen & tijd** behandelt onder andere:
+
+- hoofdtelwoorden en rangtelwoorden;
+- tientallen, honderden, duizenden, miljoenen, miljarden en biljoenen;
+- breuken, decimalen, percentages, negatieve getallen en benaderingen;
+- prijzen, telefoonnummers, adressen, maten en hoeveelheden;
+- kloktijd, dagdelen, duur en frequentie;
+- weekdagen, maanden, seizoenen, data, jaren, eeuwen en decennia.
+
+## Wiskundetaal
+
+De route **Wiskunde** is een begrippenatlas met Nederlandse namen en korte basisnoties voor rekenen, algebra, meetkunde, verzamelingen, groepen, vectoren, matrices, sommatie, productnotatie, afgeleiden, integralen, meervoudige integralen en tensoren.
+
+## Natuurkunde en software
+
+Twee technische woordenatlassen bevatten uitsluitend een Nederlandse term en een beknopte Nederlandse definitie:
+
+- **Natuurkunde**: basisfysica, mechanica, elektromagnetisme, velden, relativiteit, kwantummechanica, astronomie, golven en thermodynamica;
+- **Software**: programmeren, datastructuren, architectuur, data, cloud, DevOps, beveiliging, observability, testen en kunstmatige intelligentie.
+
+Beide atlassen zijn doorzoekbaar, filterbaar en geschikt voor uitspraak via de Nederlandse browserstem.
+
 ## Direct openen
 
 Open `index.html` met Chrome of Edge. De app laadt `js/app.js` als klassieke browserbundle, zodat navigatie en oefeningen ook via dubbelklik werken.
@@ -177,7 +213,7 @@ npm run check
 
 - `npm run build` genereert `js/app.js` uit alle bronbestanden;
 - `npm test` voert statische en functionele tests uit;
-- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **36 tests** uit.
+- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **41 tests** uit.
 
 ## Structuur
 
