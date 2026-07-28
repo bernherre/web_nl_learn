@@ -1,13 +1,13 @@
 {
   "name": "web-nl-learn",
-  "version": "5.0.0",
+  "version": "9.0.0",
   "private": true,
   "type": "module",
-  "description": "Statische leeromgeving Nederlands A1-B2 met ruim 2.000 A1/A2-woorden en combinaties, diepe grammatica, voorzetsels, scheidbare werkwoorden, voegwoorden, beeld en nl-NL-uitspraak.",
+  "description": "Statische leeromgeving Nederlands A1-B2 met ruim 2.000 leeritems, diepe grammatica, 1.880 vervoegde werkwoorden en een compleet systeem voor Nederlandse vragen.",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8080",
-    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/learning.js && node --check js/app.js && npm test",
+    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/verb-atlas.js && node --check js/learning.js && node --check js/app.js && npm test",
     "build": "node scripts/build-classic.mjs"
   },
   "engines": {

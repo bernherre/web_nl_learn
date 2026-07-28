@@ -35,6 +35,33 @@ De grammatica-atlas bevat **38 basis- en verdiepingsthema’s** van A1 tot B2, w
 
 Verdiepende onderwerpen tonen een zinsmodel, meerdere voorbeeldzinnen, betekenisverschillen, veelgemaakte fouten en gerelateerde concepten.
 
+
+### Vragen: van A1 tot B2
+
+De nieuwe sectie **Vragen** bevat een zelfstandige leerlijn met **14 lessen**, een visuele overzichtskaart, audio en actieve oefeningen:
+
+- ja/nee-vragen en inversie;
+- basisvraagwoorden: `wie`, `wat`, `waar`, `wanneer`, `waarom` en `hoe`;
+- combinaties zoals `hoe oud`, `hoe laat`, `hoe lang`, `hoe vaak`, `hoe ver` en `hoeveel`;
+- `welk`, `welke` en `wat voor`;
+- vragen met scheidbare werkwoorden;
+- vragen in verleden tijd en perfectum;
+- beleefde en formele vragen met `kunt`, `zou`, `mag` en `wilt`;
+- indirecte vragen met een vraagwoord of `of`;
+- relatieve waar-vormen en genuanceerde B2-vragen.
+
+Een aparte matrix behandelt **22 families met waar, daar, er en hier + voorzetsel**, waaronder `waarmee`, `waarop`, `waarover`, `waarvoor`, `waaraan`, `waarvan`, `waarin`, `waaruit`, `waarnaar`, `waardoor`, `waartoe`, `waarvandaan` en `waarnaartoe`. Elke kaart toont:
+
+- de vraagvorm;
+- nadrukkelijke verwijzing met `daar-`;
+- neutrale verwijzing met `er-`;
+- verwijzing naar iets dichtbij of in de huidige context met `hier-`;
+- een gesplitste variant;
+- het contrast met personen, zoals `met wie`, `op wie` en `over wie`;
+- betekenis, voorbeeld en audio.
+
+De uitleg volgt de grammaticale principes van de Algemene Nederlandse Spraakkunst en Taaladvies, maar alle lessen, voorbeelden en oefeningen zijn origineel geschreven voor deze leeromgeving.
+
 ### Taalstructuren in context
 
 De aparte sectie **Taalstructuren** bevat vier grote banken:
@@ -44,16 +71,24 @@ De aparte sectie **Taalstructuren** bevat vier grote banken:
 3. **Voegwoorden** — 44 voegwoorden en zinsverbinders met betekenisrelatie en woordvolgorde;
 4. **Vaste en idiomatische combinaties** — 80 veelgebruikte chunks met betekenis en voorbeeldzin.
 
-### Werkwoordentrainer
+### Werkwoordenatlas
 
-De trainer combineert kernwerkwoorden met de volledige bank scheidbare werkwoorden. Bij de uitgelichte scheidbare werkwoorden zie je hetzelfde werkwoord in:
+De eenvoudige trainer is vervangen door een doorzoekbare atlas met **1.880 werkwoorden**:
 
-- een gewone hoofdzin;
-- inversie;
-- een modale constructie;
-- de voltooide tijd;
-- een bijzin;
-- een constructie met `te`.
+- **870 regelmatige werkwoorden**;
+- **1.010 onregelmatige werkwoorden**, inclusief samengestelde en scheidbare families met een onregelmatige stam;
+- **1.240 scheidbare werkwoorden**;
+- indeling naar A1, A2, B1 en B2;
+- betekenislabels voor handeling, beweging, verandering, toestand, gebeurtenis/resultaat en modaliteit;
+- filters op regelmatigheid, betekenis, niveau, scheidbaarheid en hulpwerkwoord;
+- volledige persoonsvormen voor de tegenwoordige tijd;
+- volledige persoonsvormen voor de onvoltooid verleden tijd;
+- voltooid deelwoord en perfectum met `hebben`, `zijn` of beide;
+- gebiedende wijs en modellen voor hoofdzin, verleden tijd, perfectum, modale constructie, bijzin en — bij scheidbare werkwoorden — `te`.
+
+Bij bewegingswerkwoorden met `hebben/zijn` legt de interface het functionele verschil uit: `hebben` benadrukt vaak de activiteit, terwijl `zijn` meestal richting, bestemming of verandering van plaats markeert.
+
+De werkwoordgegevens zijn gegenereerd uit gecureerde basisvormen en Nederlandse morfologische regels. De vrije woordenlijst van **Stichting OpenTaal** is gebruikt om spellingvormen te valideren. Dit is geen kopie of transcriptie van Van Dale; Van Dale dient uitsluitend als inhoudelijke inspiratie voor de gewenste diepgang en ordening.
 
 ## Uitspraak
 
@@ -87,9 +122,9 @@ npm run check
 
 - `npm run build` genereert `js/app.js` uit de bronbestanden;
 - `npm test` controleert leerlogica, inhoud, bestanden en deploymentvoorwaarden;
-- `npm run check` bouwt de bundle, controleert alle JavaScriptbestanden en voert de **26 tests** uit.
+- `npm run check` bouwt de bundle, controleert alle JavaScriptbestanden en voert de **32 tests** uit.
 
-De browser-QA controleert daarnaast navigatie, A1/A2-kaarten, 38 grammaticaonderwerpen, de vier taalstructurenbanken, de woordvolgorde-oefening en horizontale overflow op mobiel.
+De tests controleren daarnaast de volledige vragenleerlijn, de 22 waar/daar/er/hier-patronen, de klassieke dubbelklik-bundle en de offlinecache. Een lokale visuele controle in Chrome of Edge blijft aanbevolen na integratie in het eigen repository.
 
 ## Structuur
 
@@ -104,12 +139,18 @@ De browser-QA controleert daarnaast navigatie, A1/A2-kaarten, 38 grammaticaonder
 │   ├── learning.js
 │   ├── depth-content.js
 │   ├── supplement-content.js
+│   ├── questions-content.js
+│   ├── verb-atlas.js
 │   ├── content.js
 │   ├── main.js
 │   ├── app.js
 │   └── reference.js
+├── data/
+│   ├── verb-atlas-meta.json
+│   └── OpenTaal-LICENSE.txt
 ├── scripts/
-│   └── build-classic.mjs
+│   ├── build-classic.mjs
+│   └── generate_verb_atlas.py
 ├── tests/
 ├── index.html
 ├── reference.html
@@ -117,6 +158,10 @@ De browser-QA controleert daarnaast navigatie, A1/A2-kaarten, 38 grammaticaonder
 ├── service-worker.js
 └── package.json
 ```
+
+## Bronnen en licenties van derden
+
+Voor de validatie van Nederlandse spellingvormen gebruikt de generator de woordenlijst van Stichting OpenTaal. De bijbehorende licentie is opgenomen in `data/OpenTaal-LICENSE.txt`. De gegenereerde atlas en alle didactische toelichtingen in deze repository zijn aangepast en uitgebreid voor deze leeromgeving.
 
 ## Bestaand materiaal
 

@@ -173,3 +173,73 @@ test('de klassieke browserbundle bevat alle verdiepingsbanken voor gebruik', asy
   assert.ok(expandedDeclaration < expandedUse, 'expandedWordGroups wordt gebruikt voor de declaratie');
   assert.ok(supplementDeclaration < supplementUse, 'supplementaryWordGroups wordt gebruikt voor de declaratie');
 });
+
+test('de werkwoordenatlas bevat een grote, gefilterde verzameling met volledige vervoeging', async () => {
+  const { verbAtlas } = await import('../js/verb-atlas.js');
+  assert.ok(verbAtlas.length >= 1800);
+  assert.ok(verbAtlas.filter((verb) => verb.regularity === 'regelmatig').length >= 800);
+  assert.ok(verbAtlas.filter((verb) => verb.regularity === 'onregelmatig').length >= 900);
+  assert.ok(verbAtlas.filter((verb) => verb.separable).length >= 1000);
+  for (const semantic of ['handeling', 'beweging', 'verandering', 'toestand', 'gebeurtenis', 'modaal']) {
+    assert.ok(verbAtlas.some((verb) => verb.semantic === semantic), `categorie ${semantic} ontbreekt`);
+  }
+  for (const verb of verbAtlas) {
+    assert.equal(verb.presentForms.length, 6, `${verb.infinitive} mist tegenwoordige vormen`);
+    assert.equal(verb.pastForms.length, 6, `${verb.infinitive} mist verleden vormen`);
+    assert.ok(verb.perfectForms.length >= 2, `${verb.infinitive} mist voltooide vormen`);
+    assert.ok(verb.participle, `${verb.infinitive} mist voltooid deelwoord`);
+  }
+});
+
+test('de werkwoordeninterface ondersteunt zoeken en filters', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  for (const id of ['verb-search', 'verb-regularity', 'verb-semantic', 'verb-level', 'verb-separable', 'verb-auxiliary', 'verb-atlas-list']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.match(main, /getFilteredVerbs/);
+  assert.match(main, /data-verb-infinitive/);
+  assert.match(main, /renderConjugationTable/);
+});
+
+test('de klassieke bundle bevat de volledige werkwoordenatlas', async () => {
+  const app = await read('js/app.js');
+  assert.match(app, /const verbAtlas =/);
+  assert.match(app, /"infinitive":"zijn"/);
+  assert.match(app, /"semantic":"beweging"/);
+});
+
+test('de vragenmodule bevat een volledige leerlijn van A1 tot B2', async () => {
+  const { questionTopics, pronominalAdverbs, questionPractice } = await import('../js/questions-content.js');
+  const html = await read('index.html');
+  assert.equal(questionTopics.length, 14);
+  assert.ok(pronominalAdverbs.length >= 20);
+  assert.ok(questionPractice.length >= 10);
+  assert.deepEqual([...new Set(questionTopics.map((topic) => topic.level))], ['A1', 'A2', 'B1', 'B2']);
+  for (const id of ['page-vragen', 'question-filters', 'question-list', 'question-detail', 'question-matrix', 'question-practice']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+});
+
+test('waar-daar-er-hier-patronen behandelen zaken, personen en gesplitste vormen', async () => {
+  const { pronominalAdverbs } = await import('../js/questions-content.js');
+  for (const form of ['waarmee', 'waarop', 'waarover', 'waarvoor', 'waaraan', 'waarvan', 'waarin', 'waaruit', 'waarnaar', 'waardoor']) {
+    assert.ok(pronominalAdverbs.some((item) => item.question === form), `${form} ontbreekt`);
+  }
+  const met = pronominalAdverbs.find((item) => item.question === 'waarmee');
+  assert.equal(met.person, 'met wie');
+  assert.match(met.splitExample, /Waar .* mee\?/);
+  const op = pronominalAdverbs.find((item) => item.question === 'waarop');
+  assert.equal(op.reference, 'erop');
+  assert.equal(op.demonstrative, 'daarop');
+});
+
+test('de klassieke bundle en offlinecache bevatten de vragenmodule', async () => {
+  const app = await read('js/app.js');
+  const worker = await read('service-worker.js');
+  assert.match(app, /const questionTopics =/);
+  assert.match(app, /const pronominalAdverbs =/);
+  assert.match(app, /function renderQuestions\(\)/);
+  assert.match(worker, /questions-content\.js/);
+  assert.match(worker, /questions-map\.svg/);
+});

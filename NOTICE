@@ -9,3 +9,15 @@ Attribution requirements for reuse:
 
 This applies to all textual explanations, audio files, examples, dialogues,
 and educational content found in this repository.
+
+Third-party language data
+-------------------------
+Dutch spelling forms were validated with the OpenTaal Dutch word list.
+Creator: Stichting OpenTaal.
+Source: https://github.com/OpenTaal/opentaal-wordlist
+License: Revised BSD License and/or CC BY 3.0.
+A copy of the applicable license is included in data/OpenTaal-LICENSE.txt.
+
+The verb atlas is an adaptation generated from curated verb roots, morphological
+rules and spelling validation; it is not a reproduction of Van Dale content.
+

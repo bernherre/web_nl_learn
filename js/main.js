@@ -14,6 +14,8 @@ import {
   conjunctionBank,
   idiomBank,
 } from './depth-content.js';
+import { verbAtlas } from './verb-atlas.js';
+import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
 import {
   a1Themes,
   a2Themes,
@@ -40,12 +42,25 @@ const state = {
   a1Theme: 'hallo',
   a2Theme: 'verhuizen',
   grammarTopic: 'woordvolgorde',
+  questionLevel: 'alle',
+  questionTopic: 'ja-nee-vragen',
+  questionMatrixQuery: '',
+  questionPracticeIndex: 0,
+  questionPracticeAnswered: false,
   concept: 'grammatica',
   vocabularyCategory: 'alle',
   vocabularyQuery: '',
   practice: 'order',
   structure: 'voorzetsels',
   practiceSelection: [],
+  verbQuery: '',
+  verbRegularity: 'alle',
+  verbSemantic: 'alle',
+  verbLevel: 'alle',
+  verbSeparable: 'alle',
+  verbAuxiliary: 'alle',
+  verbLimit: 80,
+  selectedVerb: 'zijn',
   progress: readProgress(),
   settings: readSettings(),
 };
@@ -62,8 +77,13 @@ const elements = {
   a2ThemeGrid: el('a2-theme-grid'), a2ThemeDetail: el('a2-theme-detail'),
   conceptGrid: el('concept-grid'), conceptDetail: el('concept-detail'),
   grammarFilters: el('grammar-filters'), grammarList: el('grammar-list'), grammarDetail: el('grammar-detail'),
+  questionFilters: el('question-filters'), questionList: el('question-list'), questionDetail: el('question-detail'),
+  questionMatrix: el('question-matrix'), questionMatrixSearch: el('question-matrix-search'), questionMatrixCount: el('question-matrix-count'), questionPractice: el('question-practice'),
   structureTabs: el('structure-tabs'), structureSummary: el('structure-summary'), structureContent: el('structure-content'),
-  verbSelect: el('verb-select'), verbMeaning: el('verb-meaning'), verbDetail: el('verb-detail'), speakVerb: el('speak-verb'),
+  verbSearch: el('verb-search'), verbRegularity: el('verb-regularity'), verbSemantic: el('verb-semantic'),
+  verbLevel: el('verb-level'), verbSeparable: el('verb-separable'), verbAuxiliary: el('verb-auxiliary'),
+  verbResultsSummary: el('verb-results-summary'), verbAtlasList: el('verb-atlas-list'), verbLoadMore: el('verb-load-more'),
+  verbDetail: el('verb-detail'),
   vocabularyFilters: el('vocabulary-filters'), vocabularyGrid: el('vocabulary-grid'), wordSearch: el('word-search'),
   listeningGrid: el('listening-grid'), practiceStage: el('practice-stage'),
   progressMinutes: el('progress-minutes'), progressCompleted: el('progress-completed'), progressAudio: el('progress-audio'),
@@ -283,36 +303,127 @@ function renderGrammar() {
     <h3>Gerelateerde concepten</h3><div class="connection-tags">${topic.connections.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>`;
 }
 
-function renderVerbs() {
-  const coreOptions = verbs.map((verb) => `<option value="core:${escapeHtml(verb.infinitive)}">${escapeHtml(verb.infinitive)}</option>`).join('');
-  const separableOptions = separableVerbBank.map((verb) => `<option value="separable:${escapeHtml(verb.infinitive)}">${escapeHtml(verb.infinitive)} · ${escapeHtml(verb.prefix)} + …</option>`).join('');
-  elements.verbSelect.innerHTML = `<optgroup label="Kernwerkwoorden">${coreOptions}</optgroup><optgroup label="Scheidbare werkwoorden">${separableOptions}</optgroup>`;
-  renderVerbDetail(`core:${verbs[0].infinitive}`);
+
+function renderQuestionFilters() {
+  const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
+  elements.questionFilters.innerHTML = filters.map((level) => `<button class="${state.questionLevel === level ? 'active' : ''}" type="button" data-question-level="${level}">${level === 'alle' ? 'Alle niveaus' : level}</button>`).join('');
 }
 
-function renderVerbDetail(value) {
-  const [kind, infinitive] = String(value).includes(':') ? String(value).split(':') : ['core', value];
-  elements.verbSelect.value = `${kind}:${infinitive}`;
-  if (kind === 'separable') {
-    const verb = separableVerbBank.find((item) => item.infinitive === infinitive) || separableVerbBank[0];
-    const models = verb.models || { main: verb.example };
-    const modelLabels = {
-      main: 'Hoofdzin', inversion: 'Inversie', modal: 'Met een modaal werkwoord', perfect: 'Voltooide tijd', subordinate: 'Bijzin', te: 'Met te',
-    };
-    elements.verbMeaning.innerHTML = `<span class="kicker">Scheidbaar werkwoord</span><strong>${escapeHtml(verb.meaning)}</strong><small>Voorvoegsel: ${escapeHtml(verb.prefix)}</small>`;
-    elements.speakVerb.dataset.text = verb.infinitive;
-    elements.verbDetail.innerHTML = `<div class="section-heading"><div><span class="kicker">Werkwoord + zinspositie</span><h1>${escapeHtml(verb.infinitive)}</h1></div><button class="icon-sound speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.75">🔊</button></div>
-      <div class="split-verb-visual"><span>${escapeHtml(verb.prefix)}</span><i>+</i><strong>${escapeHtml(verb.infinitive.slice(verb.prefix.length))}</strong><small>in de hoofdzin vaak uit elkaar</small></div>
-      <div class="verb-model-grid">${Object.entries(models).map(([key, sentence]) => `<article><small>${modelLabels[key] || key}</small><p>${escapeHtml(sentence)}</p><button class="speak" type="button" data-text="${escapeHtml(sentence)}" data-rate="0.86">🔊 Luister</button></article>`).join('')}</div>
-      ${verb.models ? '<div class="grammar-note contrast"><h3>Zie het patroon</h3><p>Hoofdzin: het losse deel staat aan het einde. Bijzin: het werkwoord komt weer samen. Perfectum: <em>ge</em> staat meestal tussen voorvoegsel en stam. Met <em>te</em>: <em>op te staan</em>.</p></div>' : `<div class="grammar-note"><h3>In context</h3><p>${escapeHtml(verb.example)}</p></div>`}`;
-    return;
-  }
-  const verb = verbs.find((item) => item.infinitive === infinitive) || verbs[0];
-  elements.verbMeaning.innerHTML = `<span class="kicker">Betekenis</span><strong>${escapeHtml(verb.meaning)}</strong><small>Hulpwerkwoord: ${escapeHtml(verb.auxiliary)}</small>`;
-  elements.speakVerb.dataset.text = verb.infinitive;
-  elements.verbDetail.innerHTML = `<div class="section-heading"><div><span class="kicker">Werkwoord</span><h1>${escapeHtml(verb.infinitive)}</h1></div><button class="icon-sound speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.75" aria-label="Luister naar ${escapeHtml(verb.infinitive)}">🔊</button></div>
-    <div class="verb-tenses"><div class="tense-card"><h3>Tegenwoordige tijd</h3><ul>${verb.present.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div><div class="tense-card"><h3>Verleden tijd</h3><ul>${verb.past.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></div><div class="tense-card"><h3>Voltooide tijd</h3><p>${escapeHtml(verb.perfect)}</p></div></div>
-    <div class="verb-perfect"><span class="kicker">In context</span><ul class="example-list">${verb.examples.map((example) => `<li><span>${escapeHtml(example)}</span><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.88">🔊</button></li>`).join('')}</ul></div>`;
+function renderQuestionDetail(topic) {
+  const sections = (topic.sections || []).map((section) => `<article class="grammar-section-card"><h3>${escapeHtml(section.title)}</h3><ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></article>`).join('');
+  const contrasts = (topic.contrasts || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+  const mistakes = (topic.mistakes || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('');
+  elements.questionDetail.innerHTML = `<div class="eyebrow"><span>${escapeHtml(topic.level)}</span> vragen</div><h1>${escapeHtml(topic.title)}</h1><p class="lead">${escapeHtml(topic.summary)}</p>
+    <div class="rule-box question-rule-box"><small>Zinsmodel</small><strong>${escapeHtml(topic.rule)}</strong></div>
+    <div class="section-heading compact"><h2>Voorbeelden</h2><button class="sound-button speak" type="button" data-text="${escapeHtml(topic.examples.join(' '))}" data-rate="0.82">🔊 Luister naar alle vragen</button></div>
+    <ul class="example-list question-example-list">${topic.examples.map((example) => `<li><span>${escapeHtml(example)}</span><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.86" aria-label="Luister naar ${escapeHtml(example)}">🔊</button></li>`).join('')}</ul>
+    <div class="grammar-section-grid">${sections}</div>
+    ${contrasts ? `<section class="grammar-note contrast"><h3>Vergelijk</h3><ul>${contrasts}</ul></section>` : ''}
+    ${mistakes ? `<section class="grammar-note mistake"><h3>Veelgemaakte fouten</h3><ul>${mistakes}</ul></section>` : ''}
+    <h3>Gerelateerde concepten</h3><div class="connection-tags">${topic.connections.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>`;
+}
+
+function renderQuestionMatrix() {
+  const query = state.questionMatrixQuery.trim().toLocaleLowerCase('nl-NL');
+  const filtered = pronominalAdverbs.filter((item) => {
+    if (!query) return true;
+    return Object.values(item).join(' ').toLocaleLowerCase('nl-NL').includes(query);
+  });
+  elements.questionMatrixCount.textContent = `${filtered.length} van ${pronominalAdverbs.length} patronen`;
+  elements.questionMatrix.innerHTML = filtered.length ? filtered.map((item) => `<article class="question-matrix-card">
+    <div class="question-matrix-head"><strong>${escapeHtml(item.question)}</strong><span>${escapeHtml(item.level)}</span></div>
+    <p>${escapeHtml(item.meaning)}</p>
+    <div class="question-form-row"><small>vraag</small><button class="speak" type="button" data-text="${escapeHtml(item.questionExample)}" data-rate="0.84">${escapeHtml(item.questionExample)} 🔊</button></div>
+    <div class="pronoun-chain" aria-label="Verwijsvormen"><span><small>waar</small>${escapeHtml(item.question)}</span><span><small>daar</small>${escapeHtml(item.demonstrative)}</span><span><small>er</small>${escapeHtml(item.reference)}</span><span><small>hier</small>${escapeHtml(item.near)}</span></div>
+    <div class="question-answer-row"><span>${escapeHtml(item.answerExample)}</span><button class="mini-audio speak" type="button" data-text="${escapeHtml(item.answerExample)}" data-rate="0.84">🔊</button></div>
+    <div class="question-split-row"><small>ook gesplitst</small><span>${escapeHtml(item.splitExample)}</span></div>
+    <div class="person-contrast"><small>persoon</small><strong>${escapeHtml(item.person)}</strong></div>
+  </article>`).join('') : '<div class="empty-state"><strong>Geen vorm gevonden.</strong><p>Zoek bijvoorbeeld op “waarop”, “ermee”, “persoon” of “richting”.</p></div>';
+}
+
+function renderQuestionPractice() {
+  const item = questionPractice[state.questionPracticeIndex % questionPractice.length];
+  elements.questionPractice.innerHTML = `<div class="question-practice-heading"><div><span class="kicker">Actieve herhaling · ${escapeHtml(item.level)}</span><h2>Kies de beste vraag</h2><p>${escapeHtml(item.prompt)}</p></div><span class="practice-counter">${state.questionPracticeIndex + 1} / ${questionPractice.length}</span></div>
+    <div class="question-practice-options">${item.options.map((option, index) => `<button type="button" data-question-practice-answer="${index}" ${state.questionPracticeAnswered ? 'disabled' : ''}>${escapeHtml(option)}</button>`).join('')}</div>
+    <p class="feedback" id="question-practice-feedback">Kies één antwoord en bekijk waarom het klopt.</p>
+    <div class="question-practice-actions"><button class="sound-button speak" type="button" data-text="${escapeHtml(item.audio)}" data-rate="0.84">🔊 Luister naar de juiste vorm</button><button class="primary-button" type="button" data-question-practice-next>Volgende vraag →</button></div>`;
+}
+
+function renderQuestions() {
+  renderQuestionFilters();
+  const filtered = questionTopics.filter((topic) => state.questionLevel === 'alle' || topic.level === state.questionLevel);
+  if (!filtered.some((topic) => topic.id === state.questionTopic)) state.questionTopic = filtered[0]?.id || questionTopics[0].id;
+  elements.questionList.innerHTML = filtered.map((topic) => `<button class="topic-button ${topic.id === state.questionTopic ? 'active' : ''}" type="button" data-question-topic="${escapeHtml(topic.id)}"><small>${escapeHtml(topic.level)}</small><strong>${escapeHtml(topic.title)}</strong><span>${escapeHtml(topic.summary)}</span></button>`).join('');
+  renderQuestionDetail(questionTopics.find((topic) => topic.id === state.questionTopic) || questionTopics[0]);
+  renderQuestionMatrix();
+  renderQuestionPractice();
+}
+
+function getFilteredVerbs() {
+  const query = state.verbQuery.trim().toLocaleLowerCase('nl-NL');
+  return verbAtlas.filter((verb) => {
+    if (query) {
+      const haystack = [verb.infinitive, verb.root, verb.prefix, verb.semanticLabel, verb.participle]
+        .filter(Boolean).join(' ').toLocaleLowerCase('nl-NL');
+      if (!haystack.includes(query)) return false;
+    }
+    if (state.verbRegularity !== 'alle' && verb.regularity !== state.verbRegularity) return false;
+    if (state.verbSemantic !== 'alle' && verb.semantic !== state.verbSemantic) return false;
+    if (state.verbLevel !== 'alle' && verb.level !== state.verbLevel) return false;
+    if (state.verbSeparable === 'ja' && !verb.separable) return false;
+    if (state.verbSeparable === 'nee' && verb.separable) return false;
+    if (state.verbAuxiliary !== 'alle' && verb.auxiliary !== state.verbAuxiliary) return false;
+    return true;
+  });
+}
+
+function verbPronounAndForm(line) {
+  const split = String(line).split(' ');
+  if (split[0] === 'hij/zij') return ['hij/zij', split.slice(1).join(' ')];
+  return [split[0], split.slice(1).join(' ')];
+}
+
+function renderConjugationTable(forms) {
+  return `<table class="conjugation-table"><tbody>${forms.map((line) => {
+    const [pronoun, form] = verbPronounAndForm(line);
+    return `<tr><td>${escapeHtml(pronoun)}</td><td><strong>${escapeHtml(form)}</strong></td></tr>`;
+  }).join('')}</tbody></table>`;
+}
+
+function renderVerbDetail(infinitive = state.selectedVerb) {
+  const verb = verbAtlas.find((item) => item.infinitive === infinitive) || verbAtlas.find((item) => item.infinitive === 'zijn') || verbAtlas[0];
+  state.selectedVerb = verb.infinitive;
+  const regularityLabel = verb.regularity === 'regelmatig' ? 'Regelmatig' : 'Onregelmatig';
+  const separableLabel = verb.separable ? `Scheidbaar · ${verb.prefix} + ${verb.root}` : 'Niet scheidbaar';
+  const perfectForms = verb.perfectForms.map((form) => `<div class="verb-perfect-form"><strong>${escapeHtml(form)}</strong><button class="speak" type="button" data-text="${escapeHtml(form)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(form)}">🔊</button></div>`).join('');
+  const patternLabels = { hoofdzin: 'Hoofdzin', verleden: 'Verleden tijd', perfectum: 'Perfectum', modaal: 'Met modaal werkwoord', bijzin: 'Bijzin', metTe: 'Met te' };
+  const patterns = Object.entries(verb.sentencePatterns || {}).map(([key, sentence]) => `<article><small>${escapeHtml(patternLabels[key] || key)}</small><p>${escapeHtml(sentence)}</p><button class="mini-audio speak" type="button" data-text="${escapeHtml(sentence.replace(/^… /, ''))}" data-rate="0.84">🔊 Luister</button></article>`).join('');
+  elements.verbDetail.innerHTML = `<div class="verb-detail-header"><div class="verb-detail-title"><span class="kicker">${escapeHtml(verb.level)} · ${escapeHtml(verb.semanticLabel)}</span><h1>${escapeHtml(verb.infinitive)}</h1><p>${escapeHtml(verb.meaning)}</p></div><button class="sound-button speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.72">🔊 Uitspraak</button></div>
+    <div class="verb-meta-chips"><span class="primary">${regularityLabel}</span><span class="semantic">${escapeHtml(verb.semanticLabel)}</span><span>${escapeHtml(separableLabel)}</span><span>hulpwerkwoord: ${escapeHtml(verb.auxiliary)}</span><span>${escapeHtml(verb.conjugationClass)}</span></div>
+    <div class="verb-semantic-note"><strong>Betekenistype</strong><p>${escapeHtml(verb.meaning)}</p>${verb.semantic === 'beweging' && verb.auxiliary === 'hebben/zijn' ? '<p><strong>Let op:</strong> <em>hebben</em> legt vaak de nadruk op de activiteit; <em>zijn</em> op richting of bestemming.</p>' : ''}</div>
+    <div class="verb-conjugation-grid"><section class="conjugation-panel"><h3>Tegenwoordige tijd</h3>${renderConjugationTable(verb.presentForms)}</section><section class="conjugation-panel"><h3>Onvoltooid verleden tijd</h3>${renderConjugationTable(verb.pastForms)}</section></div>
+    <section class="conjugation-panel"><div class="section-heading compact"><h3>Voltooide tijd</h3><span>voltooid deelwoord: <strong>${escapeHtml(verb.participle)}</strong></span></div><div class="verb-perfect-grid">${perfectForms}</div></section>
+    <section class="conjugation-panel"><div class="section-heading compact"><h3>Zinspositie en gebruik</h3><span>gebiedende wijs: <strong>${escapeHtml(verb.imperative)}</strong></span></div><div class="verb-pattern-grid">${patterns}</div></section>
+    <p class="verb-source-note">De atlas is automatisch opgebouwd uit gecureerde werkwoordstammen en morfologische regels. De OpenTaal-woordenlijst is gebruikt om Nederlandse spellingvormen te valideren. Controleer bij uitzonderlijk of specialistisch gebruik altijd een gezaghebbend woordenboek.</p>`;
+  document.querySelectorAll('.verb-list-item').forEach((button) => {
+    const active = button.dataset.verbInfinitive === verb.infinitive;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-selected', String(active));
+  });
+}
+
+function renderVerbs({ resetLimit = false } = {}) {
+  if (resetLimit) state.verbLimit = 80;
+  const filtered = getFilteredVerbs();
+  if (!filtered.some((verb) => verb.infinitive === state.selectedVerb)) state.selectedVerb = filtered[0]?.infinitive || 'zijn';
+  const visible = filtered.slice(0, state.verbLimit);
+  const regularCount = filtered.filter((verb) => verb.regularity === 'regelmatig').length;
+  const irregularCount = filtered.length - regularCount;
+  elements.verbResultsSummary.innerHTML = `<span><strong>${filtered.length.toLocaleString('nl-NL')}</strong> resultaten</span><span>${regularCount} regelmatig · ${irregularCount} onregelmatig</span>`;
+  elements.verbAtlasList.innerHTML = visible.length ? visible.map((verb) => `<button class="verb-list-item ${verb.infinitive === state.selectedVerb ? 'active' : ''}" type="button" role="option" aria-selected="${verb.infinitive === state.selectedVerb}" data-verb-infinitive="${escapeHtml(verb.infinitive)}"><span><strong>${escapeHtml(verb.infinitive)}</strong><small>${escapeHtml(verb.semanticLabel)} · ${escapeHtml(verb.auxiliary)}</small></span><span class="verb-list-badges"><span class="${verb.regularity === 'regelmatig' ? 'regular' : 'irregular'}">${verb.regularity === 'regelmatig' ? 'R' : 'OR'}</span>${verb.separable ? '<span>S</span>' : ''}<span>${escapeHtml(verb.level)}</span></span></button>`).join('') : '<div class="empty-state"><strong>Geen werkwoorden gevonden.</strong><p>Maak de zoekopdracht korter of zet een filter terug op “Alle”.</p></div>';
+  elements.verbLoadMore.hidden = visible.length >= filtered.length;
+  elements.verbLoadMore.textContent = `Toon meer (${Math.min(80, filtered.length - visible.length)} van ${filtered.length - visible.length} resterend)`;
+  renderVerbDetail(state.selectedVerb);
 }
 
 function structureAudio(text, label = 'Luister') {
@@ -566,8 +677,35 @@ function handleClick(event) {
     showToast(values.has(id) ? `${level}-thema gemarkeerd als voltooid.` : `${level}-thema opnieuw geopend.`);
     return;
   }
+  const questionLevel = event.target.closest('[data-question-level]');
+  if (questionLevel) { state.questionLevel = questionLevel.dataset.questionLevel; renderQuestions(); return; }
+  const questionTopic = event.target.closest('[data-question-topic]');
+  if (questionTopic) { state.questionTopic = questionTopic.dataset.questionTopic; renderQuestions(); return; }
+  const questionAnswer = event.target.closest('[data-question-practice-answer]');
+  if (questionAnswer) {
+    const item = questionPractice[state.questionPracticeIndex % questionPractice.length];
+    const selected = Number(questionAnswer.dataset.questionPracticeAnswer);
+    state.questionPracticeAnswered = true;
+    questionAnswer.parentElement.querySelectorAll('button').forEach((button, index) => {
+      button.disabled = true;
+      button.classList.toggle('correct', index === item.answer);
+      button.classList.toggle('wrong', index === selected && index !== item.answer);
+    });
+    const feedback = el('question-practice-feedback');
+    feedback.textContent = selected === item.answer ? `Goed. ${item.explanation}` : `Nog niet. ${item.explanation}`;
+    if (selected === item.answer) completePractice('Vraagconstructie correct.');
+    return;
+  }
+  if (event.target.closest('[data-question-practice-next]')) {
+    state.questionPracticeIndex = (state.questionPracticeIndex + 1) % questionPractice.length;
+    state.questionPracticeAnswered = false;
+    renderQuestionPractice();
+    return;
+  }
   const structureButton = event.target.closest('[data-structure]');
   if (structureButton) { renderStructures(structureButton.dataset.structure); return; }
+  const verbButton = event.target.closest('[data-verb-infinitive]');
+  if (verbButton) { renderVerbDetail(verbButton.dataset.verbInfinitive); return; }
   const speechButton = event.target.closest('.speak');
   if (speechButton) { speak(speechButton.dataset.text, speechButton.dataset.rate); return; }
   const conceptButton = event.target.closest('[data-concept]');
@@ -628,8 +766,14 @@ function initializeEvents() {
   elements.checkAnswer.addEventListener('click', checkMainExercise);
   elements.resetExercise.addEventListener('click', () => { state.selectedWords = []; resetMainExercise(); renderMainExercise(); });
   elements.listenAnswer.addEventListener('click', () => speak(state.selectedWords.join(' ') || EXPECTED_SENTENCE));
-  elements.verbSelect.addEventListener('change', (event) => renderVerbDetail(event.target.value));
-  elements.speakVerb.addEventListener('click', () => speak(elements.speakVerb.dataset.text, .75));
+  elements.verbSearch.addEventListener('input', (event) => { state.verbQuery = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbRegularity.addEventListener('change', (event) => { state.verbRegularity = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbSemantic.addEventListener('change', (event) => { state.verbSemantic = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbLevel.addEventListener('change', (event) => { state.verbLevel = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbSeparable.addEventListener('change', (event) => { state.verbSeparable = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbAuxiliary.addEventListener('change', (event) => { state.verbAuxiliary = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbLoadMore.addEventListener('click', () => { state.verbLimit += 80; renderVerbs(); });
+  elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
   elements.wordSearch.addEventListener('input', (event) => { state.vocabularyQuery = event.target.value; renderVocabulary(); });
   elements.clearProgress.addEventListener('click', () => {
     state.progress = safeProgress();
@@ -652,6 +796,7 @@ function initialize() {
   renderA2Themes();
   renderConcepts();
   renderGrammar();
+  renderQuestions();
   renderStructures();
   renderVerbs();
   renderVocabulary();

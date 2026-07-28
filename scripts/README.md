@@ -1,5 +1,23 @@
-# Scripts heredados
+# Hulpscripts
 
-Los scripts de generación de audio se conservan como referencia histórica, pero no forman parte del flujo actual de la aplicación ni del despliegue.
+## `build-classic.mjs`
 
-No deben regenerarse audios automáticamente sin revisar primero el modelo, el idioma efectivo, el texto y la calidad de salida.
+Bouwt `js/app.js`, zodat de statische web ook zonder modules en via een eenvoudige webserver werkt.
+
+```bash
+npm run build
+```
+
+## `generate_verb_atlas.py`
+
+Genereert de grote werkwoordenatlas uit gecureerde basisvormen, Nederlandse morfologische regels en een externe OpenTaal-woordenlijst voor spellingsvalidatie.
+
+```bash
+python3 scripts/generate_verb_atlas.py /pad/naar/opentaal-wordlist.txt /tmp/verb-atlas.json
+```
+
+De gegenereerde productieversie staat in `js/verb-atlas.js`. De bronlicentie van OpenTaal staat in `data/OpenTaal-LICENSE.txt`. Automatisch gegenereerde vormen blijven controleerbaar en moeten bij uitzonderlijk of specialistisch gebruik worden vergeleken met een gezaghebbend woordenboek.
+
+## Audioscripts
+
+De oude audiogenerator blijft alleen als historische referentie aanwezig. De hoofdapp gebruikt gecontroleerde tekst met een beschikbare Nederlandse browserstem en laadt de oude WAV-bestanden niet.

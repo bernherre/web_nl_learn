@@ -1,0 +1,15 @@
+{
+  "count": 1880,
+  "regular": 870,
+  "irregular": 1010,
+  "separable": 1240,
+  "semanticCategories": [
+    "beweging",
+    "gebeurtenis",
+    "handeling",
+    "modaal",
+    "toestand",
+    "verandering"
+  ],
+  "source": "OpenTaal wordlist used for spelling validation; conjugation data generated from curated roots and Dutch morphology rules."
+}

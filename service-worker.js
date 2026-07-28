@@ -1,8 +1,9 @@
-const CACHE = 'nederlands-gewoon-doen-v5';
+const CACHE = 'nederlands-gewoon-doen-v9';
 const CORE = [
   './', './index.html', './css/styles.css', './js/app.js',
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
-  './images/logo.svg', './images/concept-map.svg', './images/lesson-thuiswerken.svg',
+  './js/questions-content.js', './js/verb-atlas.js',
+  './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg', './images/lesson-thuiswerken.svg',
   './images/woord-huis.svg', './images/woord-fiets.svg', './images/woord-appel.svg',
   './images/woord-kantoor.svg', './images/woord-trein.svg', './images/woord-huisarts.svg',
   './images/woord-school.svg', './images/woord-regen.svg', './images/woord-koffie.svg',

@@ -1,3 +1,7 @@
+# V9 — Vragensysteem A1–B2
+
+Deze versie voegt een volledige vragenmodule toe met 14 lessen, 22 voornaamwoordelijke-bijwoordfamilies en 10 interactieve oefeningen. De rest van de V8-werkwoordenatlas en de A1–B2-inhoud blijft behouden.
+
 # Información del proyecto
 
 ## Producto principal
@@ -46,3 +50,14 @@ npm run check
 ```
 
 No se requieren dependencias de producción ni proceso de compilación.
+
+
+## V8 — werkwoordenatlas
+
+- 1.880 doorzoekbare werkwoorden;
+- 870 regelmatig en 1.010 onregelmatig;
+- 1.240 scheidbare werkwoorden;
+- volledige persoonsvormen in tegenwoordige en verleden tijd;
+- perfectum, deelwoord, imperatief en zinsmodellen;
+- betekenisfilters: handeling, beweging, verandering, toestand, gebeurtenis en modaliteit;
+- OpenTaal-licentie en bronvermelding opgenomen.
