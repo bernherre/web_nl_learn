@@ -6,5 +6,3 @@ coverage/
 
 __pycache__/
 *.pyc
-
-.vs/
