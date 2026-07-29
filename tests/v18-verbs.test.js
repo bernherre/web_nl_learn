@@ -53,7 +53,12 @@ test('de werkwoordeninterface biedt zichtbare filters en lexicale panelen', asyn
 test('de klassieke bundle en offlinecache bevatten de V18-gegevens', async () => {
   const app = await readFile(new URL('../js/app.js', import.meta.url), 'utf8');
   const worker = await readFile(new URL('../service-worker.js', import.meta.url), 'utf8');
-  assert.match(app, /enrichVerbAtlas/u);
+  assert.match(app, /function\s+enrichVerbAtlas\s*\(/u);
+  assert.match(app, /enrichVerbAtlas\s*\(\s*verbAtlas\s*\)/u);
+  assert.ok(
+    app.indexOf('function enrichVerbAtlas') < app.indexOf('const allVerbs = enrichVerbAtlas(verbAtlas)'),
+    'enrichVerbAtlas moet voor de eerste aanroep in de browserbundle staan',
+  );
   assert.match(app, /zich voorbereiden op/u);
   assert.match(worker, /verb-details\.js/u);
   assert.match(worker, /v18/u);
