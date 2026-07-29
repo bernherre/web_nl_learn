@@ -1552,3 +1552,75 @@ html[data-contrast="high"] .word-bank-search input {
   .reading-writing-stats span { min-width: 88px; }
   .reading-text { font-size: 1rem; line-height: 1.72; }
 }
+
+
+/* V17: professionele begrippenatlassen */
+.professional-domain-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+.professional-domain-card { display: flex; align-items: center; gap: 14px; min-height: 92px; padding: 16px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface); color: var(--ink); text-align: left; cursor: pointer; box-shadow: var(--shadow-sm); }
+.professional-domain-card:hover { border-color: var(--green-2); transform: translateY(-1px); }
+.professional-domain-card.active { border-color: var(--green); outline: 3px solid color-mix(in srgb, var(--green) 18%, transparent); background: var(--green-soft); }
+.professional-domain-icon { display: grid; place-items: center; flex: 0 0 46px; width: 46px; height: 46px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--green); font-family: var(--font-display); font-size: 1.25rem; font-weight: 900; }
+.professional-domain-card span:last-child { display: grid; gap: 4px; }
+.professional-domain-card strong { line-height: 1.18; }
+.professional-domain-card small { color: var(--muted); }
+.professional-domain-summary { display: grid; grid-template-columns: auto 1fr; gap: 18px; align-items: center; margin-bottom: 18px; padding: 22px; }
+.professional-summary-icon { display: grid; place-items: center; width: 74px; height: 74px; border-radius: 22px; background: var(--green); color: white; font-family: var(--font-display); font-size: 2rem; font-weight: 900; }
+.professional-domain-summary h2 { margin: 3px 0 5px; }
+.professional-domain-summary p { margin: 0; color: var(--muted); }
+.professional-concept-card { min-height: 225px; }
+.professional-card-actions { display: flex; align-items: center; gap: 8px; }
+.professional-card-actions > small { display: inline-flex; min-width: 34px; justify-content: center; padding: 5px 8px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-size: .7rem; font-weight: 900; }
+.professional-load-more-wrap { display: flex; justify-content: center; padding-top: 22px; }
+.professional-load-more[hidden] { display: none; }
+html[data-theme='dark'] .professional-domain-card.active { background: color-mix(in srgb, var(--green-2) 24%, var(--surface)); }
+html[data-contrast='high'] .professional-domain-card.active { outline-width: 4px; }
+@media (max-width: 1020px) { .professional-domain-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 680px) { .professional-domain-grid { grid-template-columns: 1fr; } .professional-domain-summary { grid-template-columns: 1fr; } .professional-summary-icon { width: 60px; height: 60px; } }
+
+/* V18: lexicografisch verrijkte werkwoordenatlas */
+.verb-title-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.verb-quality-badge { display: inline-flex; align-items: center; min-height: 28px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; font-size: .75rem; font-weight: 800; letter-spacing: .02em; }
+.verb-quality-badge.verified { color: var(--green); background: var(--green-soft); border-color: color-mix(in srgb, var(--green) 40%, var(--line)); }
+.verb-quality-badge.catalog { color: var(--muted); background: var(--surface); }
+.verb-definition { font-size: 1.05rem; line-height: 1.65; color: var(--ink) !important; }
+.verb-main-example { margin: 14px 0 0; padding: 13px 16px; border-inline-start: 4px solid var(--orange); border-radius: 0 12px 12px 0; background: var(--orange-soft); color: var(--ink); font-weight: 700; line-height: 1.55; }
+.verb-audio-stack { display: grid; gap: 8px; min-width: 160px; }
+.verb-meta-chips .reflexive, .verb-list-badges .reflexive { color: #082f49; background: #bae6fd; border-color: #38bdf8; }
+.verb-meta-chips .preposition, .verb-list-badges .preposition { color: #422006; background: #fde68a; border-color: #f59e0b; }
+.verb-list-badges .enriched { color: #052e16; background: #bbf7d0; border-color: #22c55e; }
+.verb-lexical-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(260px, .75fr); gap: 14px; margin: 18px 0; }
+.verb-lexical-grid .verb-semantic-note { margin: 0; }
+.verb-synonyms { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); }
+.verb-synonyms > strong { display: block; margin-bottom: 10px; }
+.verb-synonyms > div { display: flex; flex-wrap: wrap; gap: 7px; }
+.verb-synonyms.muted p { color: var(--muted); line-height: 1.55; }
+.verb-word-chip { padding: 7px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: var(--ink); font: inherit; font-size: .83rem; font-weight: 700; cursor: pointer; }
+.verb-word-chip:hover, .verb-word-chip:focus-visible { border-color: var(--green-2); background: var(--green-soft); }
+.verb-sense-grid, .verb-preposition-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.verb-sense-grid article, .verb-preposition-grid article { padding: 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--bg); }
+.verb-sense-grid small { color: var(--orange); font-weight: 900; text-transform: uppercase; letter-spacing: .06em; }
+.verb-sense-grid p, .verb-preposition-grid p { margin: 8px 0; color: var(--ink); line-height: 1.55; }
+.verb-sense-grid blockquote, .verb-preposition-grid blockquote { margin: 10px 0; padding: 10px 12px; border-inline-start: 3px solid var(--green-2); background: var(--green-soft); color: var(--ink); border-radius: 0 10px 10px 0; }
+.sense-related { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.sense-related span { padding: 4px 8px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: .78rem; font-weight: 700; }
+.reflexive-panel { border-top: 4px solid #38bdf8; }
+.reflexive-panel .panel-intro { color: var(--muted); line-height: 1.6; }
+.reflexive-panel h4 { margin: 4px 0 10px; }
+.verb-preposition-panel { border-top: 4px solid #f59e0b; }
+.verb-list-item small { max-width: 330px; }
+
+[data-theme="dark"] .verb-meta-chips .reflexive,
+[data-theme="dark"] .verb-list-badges .reflexive { color: #e0f2fe; background: #0c4a6e; border-color: #38bdf8; }
+[data-theme="dark"] .verb-meta-chips .preposition,
+[data-theme="dark"] .verb-list-badges .preposition { color: #fef3c7; background: #78350f; border-color: #f59e0b; }
+[data-theme="dark"] .verb-list-badges .enriched { color: #dcfce7; background: #14532d; border-color: #4ade80; }
+
+@media (max-width: 820px) {
+  .verb-lexical-grid, .verb-sense-grid, .verb-preposition-grid { grid-template-columns: 1fr; }
+  .verb-audio-stack { width: 100%; grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 520px) {
+  .verb-audio-stack { grid-template-columns: 1fr; }
+  .verb-main-example { font-size: .95rem; }
+}

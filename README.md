@@ -1,4 +1,36 @@
-# Nederlands, gewoon doen — V16
+# Nederlands, gewoon doen — V18
+
+
+## V18 — gecureerde werkwoorden, definities en vaste patronen
+
+V18 maakt van de werkwoordenpagina een echte leer- en naslagatlas. De bestaande catalogus is uitgebreid tot **1.905 werkwoorden**. Daarbinnen zijn **160 kernwerkwoorden lexicografisch verrijkt** met:
+
+- een korte definitie in eenvoudig Nederlands;
+- een natuurlijke voorbeeldzin;
+- synoniemen en nabije woorden;
+- meerdere betekenissen wanneer hetzelfde werkwoord verschillende functies heeft;
+- gecontroleerde verleden tijd en voltooid deelwoord;
+- markering van regelmatige en onregelmatige vormen;
+- markering van scheidbare en wederkerende werkwoorden;
+- vaste voorzetsels, zoals `wachten op`, `denken aan`, `vragen om` en `afhangen van`;
+- volledige wederkerende vormen met `me`, `je`, `zich` en `ons`;
+- zinsmodellen voor hoofdzin, bijzin, perfectum, modale werkwoorden en `te`-constructies.
+
+De nieuwe filter **Speciale selectie** opent standaard de verrijkte kern en kan ook alleen wederkerende werkwoorden, vaste-voorzetselwerkwoorden of alle catalogusvormen tonen. De foto’s uit de gedeelde Van Dale Werkwoordgrammatica zijn gebruikt als curriculaire en morfologische controle voor veel belangrijke regelmatige, onregelmatige en samengestelde werkwoorden. Definities, voorbeelden en synonymiebeschrijvingen zijn origineel voor deze applicatie geschreven.
+
+## V17 — professionele begrippenatlassen
+
+De V17 voegt één toegankelijke pagina **Vaklexicon** toe met zes volledige domeinen:
+
+- Bedrijfskunde & administratie — 48 begrippen
+- Marketing — 48 begrippen
+- Economie — 48 begrippen
+- Zorg, lichaam & gezondheid — 48 begrippen
+- Overheid, recht & gemeente — 48 begrippen
+- Bouw, architectuur & infrastructuur — 64 begrippen
+
+Samen zijn dat **304 nieuwe Nederlandse vakbegrippen** op A2–B2-niveau. Elk begrip heeft een duidelijke definitie, niveau-indicatie, uitspraakknop, domeinfilter en zoekfunctie. De eerste 18 kaarten worden getoond; de rest verschijnt progressief zodat de pagina rustig blijft.
+
 
 Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
@@ -198,11 +230,13 @@ Vier grote banken verbinden vorm, betekenis en zinspositie:
 
 ## Werkwoordenatlas
 
-De atlas bevat **1.880 werkwoorden**:
+De atlas bevat **1.905 werkwoorden**, waarvan 160 lexicografisch verrijkt:
 
-- 870 regelmatige werkwoorden;
-- 1.010 onregelmatige werkwoorden;
-- 1.240 scheidbare werkwoorden;
+- een brede basis van regelmatige en onregelmatige werkwoorden;
+- 160 verrijkte kernwerkwoorden met definitie, voorbeeld en synoniemen;
+- 24 wederkerende patronen;
+- 67 werkwoorden en constructies met een vast voorzetsel;
+- ruim 1.200 scheidbare catalogusvormen;
 - niveaulabel A1, A2, B1 of B2;
 - semantische labels voor handeling, beweging, verandering, toestand, gebeurtenis/resultaat en modaliteit;
 - filters op regelmatigheid, betekenis, niveau, scheidbaarheid en hulpwerkwoord;

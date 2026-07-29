@@ -1,10 +1,10 @@
-const CACHE = 'nederlands-gewoon-doen-v16';
+const CACHE = 'nederlands-gewoon-doen-v18';
 const CORE = [
   './', './index.html', './css/styles.css', './js/app.js',
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
-  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/number-math-content.js', './js/technical-content.js',
+  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js',
   './js/exercises.js',
-  './js/profiles.js', './js/verb-atlas.js',
+  './js/profiles.js', './js/verb-atlas.js', './js/verb-details.js',
   './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg', './images/numbers-time-map.svg', './images/math-map.svg', './images/lesson-thuiswerken.svg',
   './images/woord-huis.svg', './images/woord-fiets.svg', './images/woord-appel.svg',
   './images/woord-kantoor.svg', './images/woord-trein.svg', './images/woord-huisarts.svg',

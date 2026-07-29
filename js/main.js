@@ -15,11 +15,13 @@ import {
   idiomBank,
 } from './depth-content.js';
 import { verbAtlas } from './verb-atlas.js';
+import { enrichVerbAtlas, enrichedVerbCount } from './verb-details.js';
 import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
 import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
 import { numberTimeTopics, numberQuickReference, mathCategories, mathConcepts, mathStats } from './number-math-content.js';
 import { physicsCategories, physicsConcepts, softwareCategories, softwareConcepts, technicalStats } from './technical-content.js';
+import { professionalDomains, professionalConcepts, professionalStats } from './professional-content.js';
 import { advancedGrammarTopics, logicRelationGroups, readingArticles, emailTasks, advancedPracticeStats } from './advanced-practice-content.js';
 import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
 import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
@@ -40,6 +42,7 @@ const SETTINGS_KEY = 'nederlands-gewoon-doen-settings-v2';
 const EXERCISE_WORDS = ['Vandaag', 'werk', 'ik', 'thuis'];
 const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
 const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics];
+const allVerbs = enrichVerbAtlas(verbAtlas);
 
 const initialProfile = readActiveProfileSession();
 
@@ -68,6 +71,10 @@ const state = {
   physicsQuery: '',
   softwareCategory: 'alle',
   softwareQuery: '',
+  professionalDomain: 'bedrijfskunde',
+  professionalCategory: 'alle',
+  professionalQuery: '',
+  professionalLimit: 18,
   concept: 'grammatica',
   vocabularyCategory: 'alle',
   vocabularyQuery: '',
@@ -80,6 +87,7 @@ const state = {
   verbLevel: 'alle',
   verbSeparable: 'alle',
   verbAuxiliary: 'alle',
+  verbFeature: 'verrijkt',
   verbLimit: 80,
   selectedVerb: 'zijn',
   activeProfile: initialProfile,
@@ -120,9 +128,10 @@ const elements = {
   mathCategoryFilters: el('math-category-filters'), mathSearch: el('math-search'), mathConceptGrid: el('math-concept-grid'), mathConceptDetail: el('math-concept-detail'), mathConceptCount: el('math-concept-count'),
   physicsCategoryFilters: el('physics-category-filters'), physicsSearch: el('physics-search'), physicsConceptGrid: el('physics-concept-grid'), physicsConceptCount: el('physics-concept-count'),
   softwareCategoryFilters: el('software-category-filters'), softwareSearch: el('software-search'), softwareConceptGrid: el('software-concept-grid'), softwareConceptCount: el('software-concept-count'),
+  professionalDomainTabs: el('professional-domain-tabs'), professionalCategoryFilters: el('professional-category-filters'), professionalSearch: el('professional-search'), professionalConceptGrid: el('professional-concept-grid'), professionalConceptCount: el('professional-concept-count'), professionalDomainSummary: el('professional-domain-summary'), professionalLoadMore: el('professional-load-more'),
   structureTabs: el('structure-tabs'), structureSummary: el('structure-summary'), structureContent: el('structure-content'),
   verbSearch: el('verb-search'), verbRegularity: el('verb-regularity'), verbSemantic: el('verb-semantic'),
-  verbLevel: el('verb-level'), verbSeparable: el('verb-separable'), verbAuxiliary: el('verb-auxiliary'),
+  verbLevel: el('verb-level'), verbSeparable: el('verb-separable'), verbAuxiliary: el('verb-auxiliary'), verbFeature: el('verb-feature'),
   verbResultsSummary: el('verb-results-summary'), verbAtlasList: el('verb-atlas-list'), verbLoadMore: el('verb-load-more'),
   verbDetail: el('verb-detail'),
   vocabularyFilters: el('vocabulary-filters'), vocabularyGrid: el('vocabulary-grid'), wordSearch: el('word-search'),
@@ -322,7 +331,7 @@ function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
   if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord' };
-  const atlas = verbAtlas.find((item) => normalizeLearningWord(item.infinitive) === normalized);
+  const atlas = allVerbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
   if (!atlas) return null;
   return {
     definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
@@ -688,6 +697,43 @@ function renderTechnicalAtlas(kind) {
 function renderPhysics() { renderTechnicalAtlas('physics'); }
 function renderSoftware() { renderTechnicalAtlas('software'); }
 
+
+function currentProfessionalDomain() {
+  return professionalDomains.find((domain) => domain.id === state.professionalDomain) || professionalDomains[0];
+}
+
+function filteredProfessionalConcepts() {
+  const domain = currentProfessionalDomain();
+  const needle = state.professionalQuery.trim().toLocaleLowerCase('nl-NL');
+  return professionalConcepts.filter((concept) => {
+    if (concept.domain !== domain.id) return false;
+    if (state.professionalCategory !== 'alle' && concept.category !== state.professionalCategory) return false;
+    if (!needle) return true;
+    return `${concept.term} ${concept.definition} ${concept.level} ${concept.category}`.toLocaleLowerCase('nl-NL').includes(needle);
+  });
+}
+
+function professionalCategoryLabel(domain, categoryId) {
+  return domain.categories.find(([id]) => id === categoryId)?.[1] || categoryId;
+}
+
+function renderProfessionalLexicon() {
+  if (!elements.professionalDomainTabs || !elements.professionalCategoryFilters || !elements.professionalConceptGrid) return;
+  const domain = currentProfessionalDomain();
+  const concepts = filteredProfessionalConcepts();
+  const visible = concepts.slice(0, state.professionalLimit);
+  elements.professionalDomainTabs.innerHTML = professionalDomains.map((item) => `<button class="professional-domain-card ${item.id === domain.id ? 'active' : ''}" type="button" data-professional-domain="${escapeHtml(item.id)}" aria-pressed="${item.id === domain.id}"><span class="professional-domain-icon" aria-hidden="true">${escapeHtml(item.icon)}</span><span><strong>${escapeHtml(item.title)}</strong><small>${professionalStats.byDomain[item.id]} begrippen</small></span></button>`).join('');
+  elements.professionalCategoryFilters.innerHTML = domain.categories.map(([id, label]) => `<button class="${state.professionalCategory === id ? 'active' : ''}" type="button" data-professional-category="${escapeHtml(id)}">${escapeHtml(label)}</button>`).join('');
+  elements.professionalConceptCount.textContent = `${concepts.length} van ${professionalStats.byDomain[domain.id]}`;
+  elements.professionalDomainSummary.innerHTML = `<div class="professional-summary-icon" aria-hidden="true">${escapeHtml(domain.icon)}</div><div><span class="kicker">${professionalStats.byDomain[domain.id]} Nederlandse vakbegrippen</span><h2>${escapeHtml(domain.title)}</h2><p>${escapeHtml(domain.subtitle)}</p></div>`;
+  elements.professionalConceptGrid.innerHTML = visible.length ? visible.map((concept) => `<article class="card technical-concept-card professional-concept-card"><div class="technical-card-head"><span>${escapeHtml(professionalCategoryLabel(domain, concept.category))}</span><div class="professional-card-actions"><small>${escapeHtml(concept.level)}</small><button class="mini-audio speak" type="button" data-text="${escapeHtml(concept.term)}. ${escapeHtml(concept.definition)}" data-rate="0.76" aria-label="Luister naar ${escapeHtml(concept.term)}">🔊</button></div></div><h2>${escapeHtml(concept.term)}</h2><p>${escapeHtml(concept.definition)}</p></article>`).join('') : `<div class="empty-state"><strong>Geen begrip gevonden.</strong><p>Probeer een andere zoekterm of kies een andere categorie.</p></div>`;
+  if (elements.professionalLoadMore) {
+    const remaining = Math.max(0, concepts.length - visible.length);
+    elements.professionalLoadMore.hidden = remaining === 0;
+    elements.professionalLoadMore.textContent = remaining ? `Toon nog ${Math.min(18, remaining)} begrippen` : 'Alle begrippen zichtbaar';
+  }
+}
+
 function renderGrammarFilters() {
   const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
   elements.grammarFilters.innerHTML = filters.map((level) => `<button class="${state.grammarLevel === level ? 'active' : ''}" type="button" data-grammar-level="${level}">${level === 'alle' ? 'Alle niveaus' : level}</button>`).join('');
@@ -815,10 +861,13 @@ function renderQuestions() {
 
 function getFilteredVerbs() {
   const query = state.verbQuery.trim().toLocaleLowerCase('nl-NL');
-  return verbAtlas.filter((verb) => {
+  return allVerbs.filter((verb) => {
     if (query) {
-      const haystack = [verb.infinitive, verb.root, verb.prefix, verb.semanticLabel, verb.participle]
-        .filter(Boolean).join(' ').toLocaleLowerCase('nl-NL');
+      const haystack = [
+        verb.infinitive, verb.root, verb.prefix, verb.semanticLabel, verb.participle,
+        verb.definition, verb.example, ...(verb.synonyms || []),
+        ...(verb.fixedPrepositions || []).flatMap((item) => [item[0], item[1], item[2]]),
+      ].filter(Boolean).join(' ').toLocaleLowerCase('nl-NL');
       if (!haystack.includes(query)) return false;
     }
     if (state.verbRegularity !== 'alle' && verb.regularity !== state.verbRegularity) return false;
@@ -827,6 +876,10 @@ function getFilteredVerbs() {
     if (state.verbSeparable === 'ja' && !verb.separable) return false;
     if (state.verbSeparable === 'nee' && verb.separable) return false;
     if (state.verbAuxiliary !== 'alle' && verb.auxiliary !== state.verbAuxiliary) return false;
+    if (state.verbFeature === 'verrijkt' && !verb.lexicalEnriched) return false;
+    if (state.verbFeature === 'wederkerend' && !verb.reflexive) return false;
+    if (state.verbFeature === 'voorzetsel' && !(verb.fixedPrepositions || []).length) return false;
+    if (state.verbFeature === 'geverifieerd' && !verb.verified) return false;
     return true;
   });
 }
@@ -845,20 +898,38 @@ function renderConjugationTable(forms) {
 }
 
 function renderVerbDetail(infinitive = state.selectedVerb) {
-  const verb = verbAtlas.find((item) => item.infinitive === infinitive) || verbAtlas.find((item) => item.infinitive === 'zijn') || verbAtlas[0];
+  const verb = allVerbs.find((item) => item.infinitive === infinitive) || allVerbs.find((item) => item.infinitive === 'zijn') || allVerbs[0];
   state.selectedVerb = verb.infinitive;
   const regularityLabel = verb.regularity === 'regelmatig' ? 'Regelmatig' : 'Onregelmatig';
   const separableLabel = verb.separable ? `Scheidbaar · ${verb.prefix} + ${verb.root}` : 'Niet scheidbaar';
   const perfectForms = verb.perfectForms.map((form) => `<div class="verb-perfect-form"><strong>${escapeHtml(form)}</strong><button class="speak" type="button" data-text="${escapeHtml(form)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(form)}">🔊</button></div>`).join('');
   const patternLabels = { hoofdzin: 'Hoofdzin', verleden: 'Verleden tijd', perfectum: 'Perfectum', modaal: 'Met modaal werkwoord', bijzin: 'Bijzin', metTe: 'Met te' };
   const patterns = Object.entries(verb.sentencePatterns || {}).map(([key, sentence]) => `<article><small>${escapeHtml(patternLabels[key] || key)}</small><p>${escapeHtml(sentence)}</p><button class="mini-audio speak" type="button" data-text="${escapeHtml(sentence.replace(/^… /, ''))}" data-rate="0.84">🔊 Luister</button></article>`).join('');
-  elements.verbDetail.innerHTML = `<div class="verb-detail-header"><div class="verb-detail-title"><span class="kicker">${escapeHtml(verb.level)} · ${escapeHtml(verb.semanticLabel)}</span><h1>${escapeHtml(verb.infinitive)}</h1><p>${escapeHtml(verb.meaning)}</p></div><button class="sound-button speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.72">🔊 Uitspraak</button></div>
-    <div class="verb-meta-chips"><span class="primary">${regularityLabel}</span><span class="semantic">${escapeHtml(verb.semanticLabel)}</span><span>${escapeHtml(separableLabel)}</span><span>hulpwerkwoord: ${escapeHtml(verb.auxiliary)}</span><span>${escapeHtml(verb.conjugationClass)}</span></div>
-    <div class="verb-semantic-note"><strong>Betekenistype</strong><p>${escapeHtml(verb.meaning)}</p>${verb.semantic === 'beweging' && verb.auxiliary === 'hebben/zijn' ? '<p><strong>Let op:</strong> <em>hebben</em> legt vaak de nadruk op de activiteit; <em>zijn</em> op richting of bestemming.</p>' : ''}</div>
+  const synonyms = (verb.synonyms || []).length
+    ? `<div class="verb-synonyms"><strong>Synoniemen en nabije woorden</strong><div>${verb.synonyms.map((item) => `<button class="speak verb-word-chip" type="button" data-text="${escapeHtml(item)}" data-rate="0.78">${escapeHtml(item)} 🔊</button>`).join('')}</div></div>`
+    : '<div class="verb-synonyms muted"><strong>Synoniemen</strong><p>Voor deze catalogusvorm is nog geen betrouwbaar direct synoniem toegevoegd.</p></div>';
+  const senses = (verb.senses || []).length
+    ? `<section class="conjugation-panel verb-senses"><div class="section-heading compact"><h3>Betekenissen</h3><span>${verb.senses.length} gebruik${verb.senses.length === 1 ? '' : 'en'}</span></div><div class="verb-sense-grid">${verb.senses.map(([definition, example, related], index) => `<article><small>Betekenis ${index + 1}</small><p>${escapeHtml(definition)}</p><blockquote>${escapeHtml(example)}</blockquote><div class="sense-related">${(related || []).map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div><button class="mini-audio speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.82">🔊 Voorbeeld</button></article>`).join('')}</div></section>`
+    : '';
+  const fixedPrepositions = (verb.fixedPrepositions || []).length
+    ? `<section class="conjugation-panel verb-preposition-panel"><div class="section-heading compact"><h3>Vaste voorzetsels en patronen</h3><span>${verb.fixedPrepositions.length} combinatie${verb.fixedPrepositions.length === 1 ? '' : 's'}</span></div><div class="verb-preposition-grid">${verb.fixedPrepositions.map(([pattern, meaning, example]) => `<article><strong>${escapeHtml(pattern)}</strong><p>${escapeHtml(meaning)}</p><blockquote>${escapeHtml(example)}</blockquote><button class="mini-audio speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.82">🔊 Luister</button></article>`).join('')}</div></section>`
+    : '';
+  const reflexivePanel = verb.reflexive && verb.reflexiveForms?.length
+    ? `<section class="conjugation-panel reflexive-panel"><div class="section-heading compact"><h3>Wederkerend gebruik</h3><span>me · je · zich · ons</span></div><p class="panel-intro">Het wederkerend voornaamwoord verandert met het onderwerp. Leer de volledige combinatie als één patroon.</p><div class="verb-conjugation-grid"><div><h4>Tegenwoordige tijd</h4>${renderConjugationTable(verb.reflexiveForms)}</div><div><h4>Verleden tijd</h4>${renderConjugationTable(verb.reflexivePastForms || [])}</div></div></section>`
+    : '';
+  const enrichedNotice = verb.lexicalEnriched
+    ? '<span class="verb-quality-badge verified">✓ lexicografisch verrijkt</span>'
+    : '<span class="verb-quality-badge catalog">catalogusvorm</span>';
+  elements.verbDetail.innerHTML = `<div class="verb-detail-header"><div class="verb-detail-title"><div class="verb-title-kicker"><span class="kicker">${escapeHtml(verb.level)} · ${escapeHtml(verb.semanticLabel)}</span>${enrichedNotice}</div><h1>${escapeHtml(verb.infinitive)}</h1><p class="verb-definition">${escapeHtml(verb.definition || verb.meaning)}</p><blockquote class="verb-main-example">${escapeHtml(verb.example || verb.sentencePatterns?.hoofdzin || '')}</blockquote></div><div class="verb-audio-stack"><button class="sound-button speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.72">🔊 Uitspraak</button>${verb.example ? `<button class="secondary-button speak" type="button" data-text="${escapeHtml(verb.example)}" data-rate="0.82">🐢 Voorbeeld</button>` : ''}</div></div>
+    <div class="verb-meta-chips"><span class="primary">${regularityLabel}</span><span class="semantic">${escapeHtml(verb.semanticLabel)}</span><span>${escapeHtml(separableLabel)}</span>${verb.reflexive ? '<span class="reflexive">Wederkerend</span>' : ''}${(verb.fixedPrepositions || []).length ? '<span class="preposition">Vast voorzetsel</span>' : ''}<span>hulpwerkwoord: ${escapeHtml(verb.auxiliary)}</span><span>${escapeHtml(verb.conjugationClass)}</span></div>
+    <div class="verb-lexical-grid"><div class="verb-semantic-note"><strong>Definitie</strong><p>${escapeHtml(verb.definition || verb.meaning)}</p>${verb.semantic === 'beweging' && verb.auxiliary === 'hebben/zijn' ? '<p><strong>Let op:</strong> <em>hebben</em> legt vaak de nadruk op de activiteit; <em>zijn</em> op richting of bestemming.</p>' : ''}</div>${synonyms}</div>
+    ${senses}
+    ${fixedPrepositions}
+    ${reflexivePanel}
     <div class="verb-conjugation-grid"><section class="conjugation-panel"><h3>Tegenwoordige tijd</h3>${renderConjugationTable(verb.presentForms)}</section><section class="conjugation-panel"><h3>Onvoltooid verleden tijd</h3>${renderConjugationTable(verb.pastForms)}</section></div>
     <section class="conjugation-panel"><div class="section-heading compact"><h3>Voltooide tijd</h3><span>voltooid deelwoord: <strong>${escapeHtml(verb.participle)}</strong></span></div><div class="verb-perfect-grid">${perfectForms}</div></section>
     <section class="conjugation-panel"><div class="section-heading compact"><h3>Zinspositie en gebruik</h3><span>gebiedende wijs: <strong>${escapeHtml(verb.imperative)}</strong></span></div><div class="verb-pattern-grid">${patterns}</div></section>
-    <p class="verb-source-note">De atlas is automatisch opgebouwd uit gecureerde werkwoordstammen en morfologische regels. De OpenTaal-woordenlijst is gebruikt om Nederlandse spellingvormen te valideren. Controleer bij uitzonderlijk of specialistisch gebruik altijd een gezaghebbend woordenboek.</p>`;
+    <p class="verb-source-note">De verrijkte kernwerkwoorden zijn handmatig gecontroleerd en voorzien van originele definities, voorbeelden, synoniemen, wederkerende patronen en vaste voorzetsels. De overige catalogusvormen blijven beschikbaar, maar zijn nog niet allemaal lexicografisch verrijkt.</p>`;
   document.querySelectorAll('.verb-list-item').forEach((button) => {
     const active = button.dataset.verbInfinitive === verb.infinitive;
     button.classList.toggle('active', active);
@@ -873,8 +944,8 @@ function renderVerbs({ resetLimit = false } = {}) {
   const visible = filtered.slice(0, state.verbLimit);
   const regularCount = filtered.filter((verb) => verb.regularity === 'regelmatig').length;
   const irregularCount = filtered.length - regularCount;
-  elements.verbResultsSummary.innerHTML = `<span><strong>${filtered.length.toLocaleString('nl-NL')}</strong> resultaten</span><span>${regularCount} regelmatig · ${irregularCount} onregelmatig</span>`;
-  elements.verbAtlasList.innerHTML = visible.length ? visible.map((verb) => `<button class="verb-list-item ${verb.infinitive === state.selectedVerb ? 'active' : ''}" type="button" role="option" aria-selected="${verb.infinitive === state.selectedVerb}" data-verb-infinitive="${escapeHtml(verb.infinitive)}"><span><strong>${escapeHtml(verb.infinitive)}</strong><small>${escapeHtml(verb.semanticLabel)} · ${escapeHtml(verb.auxiliary)}</small></span><span class="verb-list-badges"><span class="${verb.regularity === 'regelmatig' ? 'regular' : 'irregular'}">${verb.regularity === 'regelmatig' ? 'R' : 'OR'}</span>${verb.separable ? '<span>S</span>' : ''}<span>${escapeHtml(verb.level)}</span></span></button>`).join('') : '<div class="empty-state"><strong>Geen werkwoorden gevonden.</strong><p>Maak de zoekopdracht korter of zet een filter terug op “Alle”.</p></div>';
+  elements.verbResultsSummary.innerHTML = `<span><strong>${filtered.length.toLocaleString('nl-NL')}</strong> resultaten</span><span>${regularCount} regelmatig · ${irregularCount} onregelmatig</span><span>${enrichedVerbCount} lexicografisch verrijkt</span>`;
+  elements.verbAtlasList.innerHTML = visible.length ? visible.map((verb) => `<button class="verb-list-item ${verb.infinitive === state.selectedVerb ? 'active' : ''}" type="button" role="option" aria-selected="${verb.infinitive === state.selectedVerb}" data-verb-infinitive="${escapeHtml(verb.infinitive)}"><span><strong>${escapeHtml(verb.infinitive)}</strong><small>${escapeHtml(verb.lexicalEnriched ? verb.definition : verb.semanticLabel)} · ${escapeHtml(verb.auxiliary)}</small></span><span class="verb-list-badges"><span class="${verb.regularity === 'regelmatig' ? 'regular' : 'irregular'}">${verb.regularity === 'regelmatig' ? 'R' : 'OR'}</span>${verb.lexicalEnriched ? '<span class="enriched">✓</span>' : ''}${verb.reflexive ? '<span class="reflexive">W</span>' : ''}${(verb.fixedPrepositions || []).length ? '<span class="preposition">P</span>' : ''}${verb.separable ? '<span>S</span>' : ''}<span>${escapeHtml(verb.level)}</span></span></button>`).join('') : '<div class="empty-state"><strong>Geen werkwoorden gevonden.</strong><p>Maak de zoekopdracht korter of zet een filter terug op “Alle”.</p></div>';
   elements.verbLoadMore.hidden = visible.length >= filtered.length;
   elements.verbLoadMore.textContent = `Toon meer (${Math.min(80, filtered.length - visible.length)} van ${filtered.length - visible.length} resterend)`;
   renderVerbDetail(state.selectedVerb);
@@ -1521,6 +1592,28 @@ function handleClick(event) {
   if (numberTopic) { state.numberTopic = numberTopic.dataset.numberTopic; renderNumberTime(); return; }
   const mathCategory = event.target.closest('[data-math-category]');
   if (mathCategory) { state.mathCategory = mathCategory.dataset.mathCategory; renderMath(); return; }
+  const professionalDomain = event.target.closest('[data-professional-domain]');
+  if (professionalDomain) {
+    state.professionalDomain = professionalDomain.dataset.professionalDomain;
+    state.professionalCategory = 'alle';
+    state.professionalQuery = '';
+    state.professionalLimit = 18;
+    if (elements.professionalSearch) elements.professionalSearch.value = '';
+    renderProfessionalLexicon();
+    return;
+  }
+  const professionalCategory = event.target.closest('[data-professional-category]');
+  if (professionalCategory) {
+    state.professionalCategory = professionalCategory.dataset.professionalCategory;
+    state.professionalLimit = 18;
+    renderProfessionalLexicon();
+    return;
+  }
+  if (event.target.closest('#professional-load-more')) {
+    state.professionalLimit += 18;
+    renderProfessionalLexicon();
+    return;
+  }
   const technicalCategory = event.target.closest('[data-technical-category]');
   if (technicalCategory) {
     const kind = technicalCategory.dataset.technicalKind;
@@ -1647,11 +1740,13 @@ function initializeEvents() {
   elements.verbLevel.addEventListener('change', (event) => { state.verbLevel = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbSeparable.addEventListener('change', (event) => { state.verbSeparable = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbAuxiliary.addEventListener('change', (event) => { state.verbAuxiliary = event.target.value; renderVerbs({ resetLimit: true }); });
+  elements.verbFeature.addEventListener('change', (event) => { state.verbFeature = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbLoadMore.addEventListener('click', () => { state.verbLimit += 80; renderVerbs(); });
   elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
   elements.mathSearch?.addEventListener('input', (event) => { state.mathQuery = event.target.value; renderMath(); });
   elements.physicsSearch?.addEventListener('input', (event) => { state.physicsQuery = event.target.value; renderPhysics(); });
   elements.softwareSearch?.addEventListener('input', (event) => { state.softwareQuery = event.target.value; renderSoftware(); });
+  elements.professionalSearch?.addEventListener('input', (event) => { state.professionalQuery = event.target.value; state.professionalLimit = 18; renderProfessionalLexicon(); });
   elements.wordSearch.addEventListener('input', (event) => { state.vocabularyQuery = event.target.value; renderVocabulary(); });
   elements.clearProgress.addEventListener('click', () => {
     if (!state.activeProfile) { openProfileDialog({ required: true }); return; }
@@ -1688,6 +1783,7 @@ function initialize() {
   renderMath();
   renderPhysics();
   renderSoftware();
+  renderProfessionalLexicon();
   renderStructures();
   renderVerbs();
   renderVocabulary();
