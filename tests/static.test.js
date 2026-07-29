@@ -384,3 +384,33 @@ test('V14 toont rustige woordkaarten met betekenis, voorbeelden en progressieve 
   assert.match(css, /\.theme-word-card\.is-extra \{ display: none; \}/);
   assert.match(app, /Een korte Nederlandse definitie|Het woord waarmee een persoon/);
 });
+
+test('V15 bevat lokale profielen, gastmodus en een gescheiden voortgangsmodel', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  const app = await read('js/app.js');
+  for (const id of ['profile-dialog', 'profile-list', 'new-profile-form', 'guest-profile', 'profile-button', 'export-profile']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.match(html, /Geen trackingcookies/);
+  assert.match(main, /profileProgressKey/);
+  assert.match(main, /profileExerciseKey/);
+  assert.match(main, /sessionStorage/);
+  assert.match(main, /localStorage/);
+  assert.match(app, /nl-learn:profile:/);
+});
+
+test('V15 toont de modulaire oefenbank met filters en persoonlijke fouten', async () => {
+  const html = await read('index.html');
+  const main = await read('js/main.js');
+  const app = await read('js/app.js');
+  const worker = await read('service-worker.js');
+  for (const id of ['exercise-level', 'exercise-type', 'exercise-topic', 'exercise-engine', 'exercise-mistakes', 'exercise-profile-stats']) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.match(main, /renderExerciseEngine/);
+  assert.match(main, /recordExerciseResult/);
+  assert.match(app, /const exerciseBank =/);
+  assert.match(worker, /exercises\.js/);
+  assert.match(worker, /profiles\.js/);
+});

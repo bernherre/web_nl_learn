@@ -58,6 +58,7 @@
         <button class="menu-button" id="menu-button" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">☰</button>
         <div class="topbar-title" aria-live="polite"><span id="page-context">Vandaag</span><small>beeld · geluid · betekenis · gebruik</small></div>
         <div class="topbar-actions">
+          <button class="profile-pill" id="profile-button" type="button" aria-label="Wissel leerprofiel"><span class="profile-avatar" id="profile-avatar" aria-hidden="true">?</span><span class="profile-pill-copy"><small>Leerprofiel</small><strong id="active-profile-name">Kies profiel</strong></span></button>
           <div class="theme-switch" role="group" aria-label="Kleurmodus">
             <button class="theme-choice active" id="theme-light" type="button" data-theme-choice="light" aria-pressed="true"><span aria-hidden="true">☀</span><span>Dag</span></button>
             <button class="theme-choice" id="theme-dark" type="button" data-theme-choice="dark" aria-pressed="false"><span aria-hidden="true">☾</span><span>Nacht</span></button>
@@ -464,17 +465,26 @@
           </section>
 
           <section class="page" id="page-oefenen" aria-labelledby="oefenen-title">
-            <div class="page-heading"><div><span class="kicker">Korte actieve herhaling</span><h1 id="oefenen-title">Oefenen</h1><p>Woordvolgorde, lidwoorden en werkwoorden in kleine oefeningen met directe feedback.</p></div></div>
-            <div class="practice-tabs" role="tablist" aria-label="Soorten oefeningen">
-              <button class="active" type="button" role="tab" aria-selected="true" data-practice="order">Woordvolgorde</button>
-              <button type="button" role="tab" aria-selected="false" data-practice="article">De of het</button>
-              <button type="button" role="tab" aria-selected="false" data-practice="verb">Werkwoord</button>
+            <div class="page-heading exercise-heading"><div><span class="kicker">Persoonlijke oefenbank</span><h1 id="oefenen-title">Oefenen</h1><p>Meer dan vierduizend originele oefeningen, verdeeld over A0–B2. Je fouten en herhalingen horen alleen bij het actieve profiel.</p></div><div class="exercise-total"><strong id="exercise-total-count">4.050</strong><span>oefeningen</span></div></div>
+            <div class="exercise-layout">
+              <aside class="card exercise-sidebar" aria-label="Oefeningen filteren">
+                <h2>Kies je sessie</h2>
+                <label>Niveau<select id="exercise-level"><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="alle">Alle niveaus</option></select></label>
+                <label>Oefening<select id="exercise-type"><option value="alle">Alle soorten</option><option value="choice">Meerkeuze</option><option value="input">Invullen</option><option value="order">Woordvolgorde</option><option value="listening">Luisteren</option><option value="selfcheck">Schrijven</option></select></label>
+                <label>Thema<select id="exercise-topic"><option value="alle">Alle thema’s</option></select></label>
+                <div class="exercise-session-options">
+                  <button class="secondary-button" id="exercise-mistakes" type="button">Mijn fouten</button>
+                  <button class="secondary-button" id="exercise-random" type="button">Nieuwe mix</button>
+                </div>
+                <div class="exercise-profile-stats" id="exercise-profile-stats" aria-live="polite"></div>
+              </aside>
+              <section class="card exercise-stage" id="exercise-engine" aria-live="polite"></section>
             </div>
-            <section class="card practice-stage" id="practice-stage" aria-live="polite"></section>
+            <details class="legacy-practice card"><summary>Drie klassieke mini-oefeningen</summary><div class="practice-tabs" role="tablist" aria-label="Klassieke soorten oefeningen"><button class="active" type="button" role="tab" aria-selected="true" data-practice="order">Woordvolgorde</button><button type="button" role="tab" aria-selected="false" data-practice="article">De of het</button><button type="button" role="tab" aria-selected="false" data-practice="verb">Werkwoord</button></div><section class="practice-stage" id="practice-stage" aria-live="polite"></section></details>
           </section>
 
           <section class="page" id="page-voortgang" aria-labelledby="voortgang-title">
-            <div class="page-heading"><div><span class="kicker">Alleen op dit apparaat</span><h1 id="voortgang-title">Mijn voortgang</h1><p>Je resultaten worden lokaal in je browser bewaard. Er wordt niets naar een server gestuurd.</p></div><button class="secondary-button" id="clear-progress" type="button">Wis lokale voortgang</button></div>
+            <div class="page-heading"><div><span class="kicker">Profielgebonden en alleen op dit apparaat</span><h1 id="voortgang-title">Mijn voortgang</h1><p id="progress-profile-description">Je resultaten worden apart bewaard voor het actieve profiel. Er worden geen trackingcookies gebruikt en niets wordt naar een server gestuurd.</p></div><div class="progress-actions"><button class="secondary-button" id="export-profile" type="button">Exporteer profiel</button><button class="secondary-button" id="clear-progress" type="button">Wis profielvoortgang</button></div></div>
             <div class="stat-grid">
               <article class="card stat-card"><span>Vandaag</span><strong id="progress-minutes">0</strong><small>minuten</small></article>
               <article class="card stat-card"><span>Oefeningen</span><strong id="progress-completed">0</strong><small>afgerond</small></article>
@@ -491,6 +501,20 @@
     </div>
   </div>
 
+
+  <dialog class="profile-dialog" id="profile-dialog">
+    <div class="profile-dialog-inner">
+      <div class="dialog-heading"><div><span class="kicker">Persoonlijke voortgang</span><h2>Wie gaat er leren?</h2></div><button class="icon-button" id="close-profile-dialog" type="button" aria-label="Sluit profielkeuze">×</button></div>
+      <p class="profile-intro">Elk profiel heeft eigen voortgang, fouten en oefenresultaten. Alles blijft lokaal op dit apparaat.</p>
+      <div class="storage-notice"><span aria-hidden="true">🔒</span><div><strong>Geen trackingcookies</strong><p>We gebruiken lokale opslag alleen om jouw profiel te onthouden. Gastvoortgang verdwijnt wanneer de browsersessie eindigt.</p></div></div>
+      <div class="profile-list" id="profile-list" aria-live="polite"></div>
+      <form class="new-profile-form" id="new-profile-form">
+        <label for="new-profile-name">Nieuw profiel</label>
+        <div><input id="new-profile-name" name="name" maxlength="60" placeholder="Bijv. Bernardo" autocomplete="name" required><button class="primary-button" type="submit">Maak profiel</button></div>
+      </form>
+      <div class="profile-dialog-actions"><button class="secondary-button" id="guest-profile" type="button">Doorgaan als gast</button><label class="secondary-button import-label" for="import-profile">Importeer profiel<input id="import-profile" type="file" accept="application/json" hidden></label></div>
+    </div>
+  </dialog>
   <dialog class="settings-dialog" id="settings-dialog">
     <form method="dialog">
       <div class="dialog-heading"><div><span class="kicker">Persoonlijke ervaring</span><h2>Instellingen</h2></div><button class="icon-button" value="cancel" aria-label="Sluit instellingen">×</button></div>

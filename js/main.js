@@ -20,6 +20,8 @@ import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
 import { numberTimeTopics, numberQuickReference, mathCategories, mathConcepts, mathStats } from './number-math-content.js';
 import { physicsCategories, physicsConcepts, softwareCategories, softwareConcepts, technicalStats } from './technical-content.js';
+import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
+import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
 import {
   a1Themes,
   a2Themes,
@@ -32,10 +34,12 @@ import {
   vocabulary,
 } from './content.js';
 
-const STORAGE_KEY = 'nederlands-gewoon-doen-progress-v2';
+const LEGACY_STORAGE_KEY = 'nederlands-gewoon-doen-progress-v2';
 const SETTINGS_KEY = 'nederlands-gewoon-doen-settings-v2';
 const EXERCISE_WORDS = ['Vandaag', 'werk', 'ik', 'thuis'];
 const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
+
+const initialProfile = readActiveProfileSession();
 
 const state = {
   page: 'vandaag',
@@ -76,7 +80,16 @@ const state = {
   verbAuxiliary: 'alle',
   verbLimit: 80,
   selectedVerb: 'zijn',
-  progress: readProgress(),
+  activeProfile: initialProfile,
+  progress: readProgress(initialProfile),
+  exerciseStats: readExerciseStats(initialProfile),
+  exerciseLevel: 'A0',
+  exerciseType: 'alle',
+  exerciseTopic: 'alle',
+  exerciseMistakesOnly: false,
+  currentExercise: null,
+  exerciseResponse: [],
+  exerciseAnswered: false,
   settings: readSettings(),
 };
 
@@ -116,16 +129,72 @@ const elements = {
   openSettingsTop: el('open-settings-top'), themeLight: el('theme-light'), themeDark: el('theme-dark'),
   contrastToggle: el('contrast-toggle'), colorProfile: el('color-profile'), settingsVoiceStatus: el('settings-voice-status'),
   speechRate: el('speech-rate'), speechRateOutput: el('speech-rate-output'),
+  profileButton: el('profile-button'), profileAvatar: el('profile-avatar'), activeProfileName: el('active-profile-name'),
+  profileDialog: el('profile-dialog'), profileList: el('profile-list'), closeProfileDialog: el('close-profile-dialog'),
+  newProfileForm: el('new-profile-form'), newProfileName: el('new-profile-name'), guestProfile: el('guest-profile'), importProfile: el('import-profile'),
+  exportProfile: el('export-profile'), progressProfileDescription: el('progress-profile-description'),
+  exerciseLevel: el('exercise-level'), exerciseType: el('exercise-type'), exerciseTopic: el('exercise-topic'), exerciseEngine: el('exercise-engine'),
+  exerciseProfileStats: el('exercise-profile-stats'), exerciseMistakes: el('exercise-mistakes'), exerciseRandom: el('exercise-random'), exerciseTotalCount: el('exercise-total-count'),
 };
 
-function readProgress() {
-  try { return safeProgress(JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}')); }
-  catch { return safeProgress(); }
+function readProfiles() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(PROFILE_REGISTRY_KEY) || '[]');
+    return Array.isArray(raw) ? raw.map(normaliseProfile).filter((profile) => !profile.guest) : [];
+  } catch { return []; }
+}
+
+function saveProfiles(profiles) {
+  try { localStorage.setItem(PROFILE_REGISTRY_KEY, JSON.stringify(profiles.map(normaliseProfile))); } catch { /* Lokale opslag kan geblokkeerd zijn. */ }
+}
+
+function readActiveProfileSession() {
+  try {
+    const raw = JSON.parse(sessionStorage.getItem(ACTIVE_PROFILE_KEY) || 'null');
+    if (!raw) return null;
+    if (raw.guest || raw.id === GUEST_PROFILE_ID) return normaliseProfile({ ...raw, id: GUEST_PROFILE_ID, name: raw.name || 'Gast', guest: true });
+    const stored = readProfiles().find((profile) => profile.id === raw.id);
+    return stored || null;
+  } catch { return null; }
+}
+
+function profileStorage(profile) {
+  return profile?.guest ? sessionStorage : localStorage;
+}
+
+function readProgress(profile = state?.activeProfile) {
+  if (!profile) return safeProgress();
+  try {
+    const storage = profileStorage(profile);
+    const key = profileProgressKey(profile.id);
+    const raw = storage.getItem(key);
+    if (raw) return safeProgress(JSON.parse(raw));
+    if (!profile.guest) {
+      const legacy = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (legacy && readProfiles().length <= 1) return safeProgress(JSON.parse(legacy));
+    }
+  } catch { /* Gebruik lege voortgang. */ }
+  return safeProgress();
 }
 
 function saveProgress() {
-  try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress)); } catch { /* Opslag kan geblokkeerd zijn. */ }
+  if (state.activeProfile) {
+    try { profileStorage(state.activeProfile).setItem(profileProgressKey(state.activeProfile.id), JSON.stringify(state.progress)); } catch { /* Opslag kan geblokkeerd zijn. */ }
+  }
   updateProgressUI();
+}
+
+function readExerciseStats(profile = state?.activeProfile) {
+  if (!profile) return safeExerciseStats();
+  try { return safeExerciseStats(JSON.parse(profileStorage(profile).getItem(profileExerciseKey(profile.id)) || '{}')); }
+  catch { return safeExerciseStats(); }
+}
+
+function saveExerciseStats() {
+  if (state.activeProfile) {
+    try { profileStorage(state.activeProfile).setItem(profileExerciseKey(state.activeProfile.id), JSON.stringify(state.exerciseStats)); } catch { /* Opslag kan geblokkeerd zijn. */ }
+  }
+  renderExerciseProfileStats();
 }
 
 function readSettings() {
@@ -917,6 +986,217 @@ function completePractice(message) {
   showToast(message);
 }
 
+
+function profileInitials(name) {
+  return String(name || '?').trim().split(/\s+/u).slice(0, 2).map((part) => part[0]?.toUpperCase() || '').join('') || '?';
+}
+
+function renderProfileList() {
+  if (!elements.profileList) return;
+  const profiles = readProfiles();
+  elements.profileList.innerHTML = profiles.length
+    ? profiles.map((profile) => `<article class="profile-choice ${state.activeProfile?.id === profile.id ? 'active' : ''}">
+        <button type="button" class="profile-select" data-profile-select="${escapeHtml(profile.id)}"><span class="profile-avatar" aria-hidden="true">${escapeHtml(profileInitials(profile.name))}</span><span><strong>${escapeHtml(profile.name)}</strong><small>${state.activeProfile?.id === profile.id ? 'Actief profiel' : 'Open persoonlijke voortgang'}</small></span></button>
+        <button type="button" class="icon-button profile-delete" data-profile-delete="${escapeHtml(profile.id)}" aria-label="Verwijder profiel ${escapeHtml(profile.name)}">×</button>
+      </article>`).join('')
+    : '<div class="empty-profile-state"><strong>Nog geen opgeslagen profielen</strong><p>Maak hieronder een profiel of ga tijdelijk door als gast.</p></div>';
+  if (elements.closeProfileDialog) elements.closeProfileDialog.hidden = !state.activeProfile;
+}
+
+function updateProfileUI() {
+  const profile = state.activeProfile;
+  const name = profile?.name || 'Kies profiel';
+  if (elements.activeProfileName) elements.activeProfileName.textContent = name;
+  if (elements.profileAvatar) elements.profileAvatar.textContent = profileInitials(name);
+  if (elements.progressProfileDescription) {
+    elements.progressProfileDescription.textContent = profile?.guest
+      ? 'Je gebruikt de gastmodus. Deze voortgang blijft alleen tijdens de huidige browsersessie beschikbaar.'
+      : `De resultaten van ${name} worden apart op dit apparaat bewaard. Er worden geen trackingcookies gebruikt.`;
+  }
+  renderProfileList();
+}
+
+function openProfileDialog({ required = false } = {}) {
+  renderProfileList();
+  if (!elements.profileDialog?.open) elements.profileDialog?.showModal();
+  elements.profileDialog?.classList.toggle('required', required || !state.activeProfile);
+  elements.newProfileName?.focus();
+}
+
+function activateProfile(profile) {
+  const clean = normaliseProfile(profile);
+  state.activeProfile = clean;
+  try { sessionStorage.setItem(ACTIVE_PROFILE_KEY, JSON.stringify(clean)); } catch { /* Alleen deze sessie. */ }
+  if (!clean.guest) {
+    const profiles = readProfiles().map((item) => item.id === clean.id ? { ...item, lastUsedAt: new Date().toISOString() } : item);
+    saveProfiles(profiles);
+  }
+  state.progress = readProgress(clean);
+  state.exerciseStats = readExerciseStats(clean);
+  state.currentExercise = null;
+  updateProfileUI();
+  updateProgressUI();
+  renderLevels();
+  renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes();
+  renderExerciseEngine({ chooseNew: true });
+  elements.profileDialog?.close();
+  showToast(`${clean.name} is nu actief.`);
+}
+
+function createProfile(name) {
+  const profiles = readProfiles();
+  const profile = normaliseProfile({ id: uniqueProfileId(name, profiles), name, guest: false });
+  saveProfiles([...profiles, profile]);
+  activateProfile(profile);
+}
+
+function deleteProfile(profileId) {
+  const profile = readProfiles().find((item) => item.id === profileId);
+  if (!profile || !window.confirm(`Profiel “${profile.name}” en de lokale voortgang verwijderen?`)) return;
+  try {
+    localStorage.removeItem(profileProgressKey(profileId));
+    localStorage.removeItem(profileExerciseKey(profileId));
+  } catch { /* Geen actie. */ }
+  saveProfiles(readProfiles().filter((item) => item.id !== profileId));
+  if (state.activeProfile?.id === profileId) {
+    state.activeProfile = null;
+    state.progress = safeProgress();
+    state.exerciseStats = safeExerciseStats();
+    try { sessionStorage.removeItem(ACTIVE_PROFILE_KEY); } catch { /* Geen actie. */ }
+    updateProfileUI(); updateProgressUI(); renderExerciseEngine({ chooseNew: true });
+    openProfileDialog({ required: true });
+  } else renderProfileList();
+}
+
+function exportActiveProfile() {
+  if (!state.activeProfile) { openProfileDialog({ required: true }); return; }
+  const payload = exportProfilePayload(state.activeProfile, state.progress, state.exerciseStats);
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement('a');
+  anchor.href = url;
+  anchor.download = `nederlands-profiel-${state.activeProfile.id}.json`;
+  anchor.click();
+  URL.revokeObjectURL(url);
+  showToast('Profielbestand is geëxporteerd.');
+}
+
+async function importProfileFile(file) {
+  try {
+    const payload = JSON.parse(await file.text());
+    if (!validateProfileImport(payload)) throw new Error('Ongeldig profielbestand');
+    const profiles = readProfiles();
+    const profile = normaliseProfile({ ...payload.profile, id: uniqueProfileId(payload.profile.name, profiles), guest: false });
+    saveProfiles([...profiles, profile]);
+    localStorage.setItem(profileProgressKey(profile.id), JSON.stringify(safeProgress(payload.progress)));
+    localStorage.setItem(profileExerciseKey(profile.id), JSON.stringify(safeExerciseStats(payload.exerciseStats)));
+    activateProfile(profile);
+  } catch {
+    showToast('Dit profielbestand kon niet worden geïmporteerd.');
+  } finally {
+    if (elements.importProfile) elements.importProfile.value = '';
+  }
+}
+
+function getExercisePool() {
+  let pool = filterExercises(exerciseBank, { level: state.exerciseLevel, type: state.exerciseType, topic: state.exerciseTopic });
+  if (state.exerciseMistakesOnly) {
+    const ids = new Set(Object.keys(state.exerciseStats.mistakes || {}));
+    pool = pool.filter((item) => ids.has(item.id));
+  }
+  return pool;
+}
+
+function refreshExerciseTopics() {
+  if (!elements.exerciseTopic) return;
+  const levelPool = filterExercises(exerciseBank, { level: state.exerciseLevel, type: state.exerciseType });
+  const topics = [...new Set(levelPool.map((item) => item.topic))].sort((a, b) => a.localeCompare(b, 'nl'));
+  const current = state.exerciseTopic;
+  elements.exerciseTopic.innerHTML = '<option value="alle">Alle thema’s</option>' + topics.map((topic) => `<option value="${escapeHtml(topic)}">${escapeHtml(topic)}</option>`).join('');
+  state.exerciseTopic = topics.includes(current) ? current : 'alle';
+  elements.exerciseTopic.value = state.exerciseTopic;
+}
+
+function chooseNextExercise() {
+  const pool = getExercisePool();
+  if (!pool.length) { state.currentExercise = null; return; }
+  const recent = new Set(state.exerciseStats.history.slice(-40));
+  const available = pool.filter((item) => !recent.has(item.id));
+  const candidates = available.length ? available : pool;
+  const index = (state.exerciseStats.answered * 37 + state.exerciseStats.correct * 11 + candidates.length) % candidates.length;
+  state.currentExercise = candidates[index];
+  state.exerciseResponse = [];
+  state.exerciseAnswered = false;
+}
+
+function renderExerciseProfileStats() {
+  if (!elements.exerciseProfileStats) return;
+  const stats = safeExerciseStats(state.exerciseStats);
+  const percentage = stats.answered ? Math.round((stats.correct / stats.answered) * 100) : 0;
+  elements.exerciseProfileStats.innerHTML = `<div><strong>${stats.answered}</strong><span>gemaakt</span></div><div><strong>${percentage}%</strong><span>correct</span></div><div><strong>${stats.bestStreak}</strong><span>beste reeks</span></div>`;
+}
+
+function exerciseResponseMarkup(exercise) {
+  if (exercise.type === 'choice' || exercise.type === 'listening') {
+    return `<div class="exercise-options">${exercise.options.map((option) => `<button type="button" data-engine-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join('')}</div>`;
+  }
+  if (exercise.type === 'input') {
+    return `<label class="exercise-input-label">Jouw antwoord<input id="exercise-input-answer" type="text" autocomplete="off" spellcheck="false"></label><button class="primary-button" type="button" data-engine-check>Controleren</button>`;
+  }
+  if (exercise.type === 'order') {
+    const selected = state.exerciseResponse;
+    const remaining = remainingWords(exercise.tokens, selected);
+    return `<div class="engine-order-zone">${selected.length ? selected.map((word, index) => `<button type="button" data-engine-remove-word="${index}">${escapeHtml(word)}</button>`).join('') : '<span class="placeholder">Bouw hier de zin</span>'}</div><div class="engine-word-bank">${remaining.map((word) => `<button type="button" data-engine-word="${escapeHtml(word)}">${escapeHtml(word)}</button>`).join('')}</div><button class="primary-button" type="button" data-engine-check ${remaining.length ? 'disabled' : ''}>Controleren</button>`;
+  }
+  return `<label class="exercise-input-label">Jouw tekst<textarea id="exercise-self-answer" rows="4" placeholder="Schrijf één of meer zinnen…"></textarea></label><button class="primary-button" type="button" data-engine-reveal>Vergelijk met een model</button>`;
+}
+
+function renderExerciseEngine({ chooseNew = false } = {}) {
+  if (!elements.exerciseEngine) return;
+  if (chooseNew || !state.currentExercise || !getExercisePool().some((item) => item.id === state.currentExercise.id)) chooseNextExercise();
+  const exercise = state.currentExercise;
+  if (elements.exerciseTotalCount) elements.exerciseTotalCount.textContent = exerciseStats.total.toLocaleString('nl-NL');
+  renderExerciseProfileStats();
+  if (!exercise) {
+    elements.exerciseEngine.innerHTML = `<div class="empty-exercise"><span aria-hidden="true">◎</span><h2>Geen oefeningen gevonden</h2><p>Pas de filters aan of schakel “Mijn fouten” uit.</p></div>`;
+    return;
+  }
+  elements.exerciseEngine.innerHTML = `<div class="exercise-card-header"><div><span class="level-badge">${exercise.level}</span><span class="topic-badge">${escapeHtml(exercise.topic)}</span><span class="type-badge">${escapeHtml(exercise.type)}</span></div><span>${escapeHtml(exercise.id)}</span></div>
+    <div class="exercise-question"><span class="kicker">${exercise.type === 'listening' ? 'Luisteroefening' : exercise.type === 'selfcheck' ? 'Productie' : 'Actieve oefening'}</span><h2>${escapeHtml(exercise.prompt)}</h2>${exercise.type === 'listening' ? `<button class="sound-button speak" type="button" data-text="${escapeHtml(exercise.audio)}" data-rate="0.88">🔊 Luister</button>` : ''}</div>
+    <div id="exercise-response-area">${exerciseResponseMarkup(exercise)}</div>
+    <div class="exercise-feedback" id="exercise-engine-feedback" role="status">Kies of schrijf je antwoord.</div>
+    <div class="exercise-footer"><button class="text-button" type="button" data-engine-skip>Overslaan</button><button class="secondary-button" type="button" data-engine-next disabled>Volgende oefening</button></div>`;
+}
+
+function recordExerciseResult(correct, response = '') {
+  const exercise = state.currentExercise;
+  if (!exercise || state.exerciseAnswered) return;
+  state.exerciseAnswered = true;
+  const stats = state.exerciseStats;
+  stats.answered += 1;
+  stats.correct += correct ? 1 : 0;
+  stats.streak = correct ? stats.streak + 1 : 0;
+  stats.bestStreak = Math.max(stats.bestStreak, stats.streak);
+  stats.history.push(exercise.id);
+  stats.history = stats.history.slice(-300);
+  stats.byLevel[exercise.level] = stats.byLevel[exercise.level] || { answered: 0, correct: 0 };
+  stats.byLevel[exercise.level].answered += 1;
+  stats.byLevel[exercise.level].correct += correct ? 1 : 0;
+  if (correct) delete stats.mistakes[exercise.id];
+  else stats.mistakes[exercise.id] = { count: (stats.mistakes[exercise.id]?.count || 0) + 1, lastResponse: String(response), updatedAt: new Date().toISOString() };
+  saveExerciseStats();
+  state.progress.practiceCompleted += 1;
+  state.progress.completed += correct ? 1 : 0;
+  state.progress.minutes += 2;
+  saveProgress();
+  const feedback = el('exercise-engine-feedback');
+  if (feedback) feedback.innerHTML = exercise.type === 'selfcheck'
+    ? `<strong>Modelantwoord</strong><br>${escapeHtml(exercise.modelAnswer)}<br><span>${escapeHtml(exercise.explanation)}</span>`
+    : `<strong>${correct ? 'Goed gedaan.' : 'Nog niet correct.'}</strong> ${escapeHtml(exercise.explanation)}${!correct && exercise.answer ? `<br><span>Antwoord: <b>${escapeHtml(exercise.answer)}</b></span>` : ''}`;
+  document.querySelector('[data-engine-next]')?.removeAttribute('disabled');
+  document.querySelectorAll('[data-engine-option], [data-engine-check], [data-engine-reveal], [data-engine-word], [data-engine-remove-word]').forEach((button) => { button.disabled = true; });
+}
+
 function updateProgressUI() {
   const progress = safeProgress(state.progress);
   const minutes = Math.min(progress.minutes, 20);
@@ -1000,6 +1280,36 @@ function initializeSettings() {
 }
 
 function handleClick(event) {
+  const profileSelect = event.target.closest('[data-profile-select]');
+  if (profileSelect) { const profile = readProfiles().find((item) => item.id === profileSelect.dataset.profileSelect); if (profile) activateProfile(profile); return; }
+  const profileDelete = event.target.closest('[data-profile-delete]');
+  if (profileDelete) { deleteProfile(profileDelete.dataset.profileDelete); return; }
+  const engineOption = event.target.closest('[data-engine-option]');
+  if (engineOption && !state.exerciseAnswered) {
+    const response = engineOption.dataset.engineOption;
+    const correct = checkExerciseAnswer(state.currentExercise, response);
+    engineOption.parentElement.querySelectorAll('button').forEach((button) => {
+      button.classList.toggle('correct', button.dataset.engineOption === String(state.currentExercise.answer));
+      button.classList.toggle('wrong', button === engineOption && !correct);
+    });
+    recordExerciseResult(correct, response); return;
+  }
+  const engineWord = event.target.closest('[data-engine-word]');
+  if (engineWord && !state.exerciseAnswered) { state.exerciseResponse.push(engineWord.dataset.engineWord); renderExerciseEngine(); return; }
+  const engineRemoveWord = event.target.closest('[data-engine-remove-word]');
+  if (engineRemoveWord && !state.exerciseAnswered) { state.exerciseResponse.splice(Number(engineRemoveWord.dataset.engineRemoveWord), 1); renderExerciseEngine(); return; }
+  if (event.target.closest('[data-engine-check]') && !state.exerciseAnswered) {
+    const response = state.currentExercise.type === 'order' ? state.exerciseResponse.join(' ') : el('exercise-input-answer')?.value || '';
+    recordExerciseResult(checkExerciseAnswer(state.currentExercise, response), response); return;
+  }
+  if (event.target.closest('[data-engine-reveal]') && !state.exerciseAnswered) {
+    const response = el('exercise-self-answer')?.value || '';
+    const feedback = el('exercise-engine-feedback');
+    if (feedback) feedback.innerHTML = `<strong>Modelantwoord</strong><br>${escapeHtml(state.currentExercise.modelAnswer)}<br><span>${escapeHtml(state.currentExercise.explanation)}</span>`;
+    recordExerciseResult(Boolean(response.trim()), response); return;
+  }
+  if (event.target.closest('[data-engine-next]')) { chooseNextExercise(); renderExerciseEngine(); return; }
+  if (event.target.closest('[data-engine-skip]')) { chooseNextExercise(); renderExerciseEngine(); return; }
   const pageButton = event.target.closest('[data-page]');
   if (pageButton) {
     if (pageButton.dataset.a0Theme) { state.a0Theme = pageButton.dataset.a0Theme; renderA0Themes(); }
@@ -1200,6 +1510,18 @@ function handleDynamicInput(event) {
 function initializeEvents() {
   document.addEventListener('click', handleClick);
   document.addEventListener('input', handleDynamicInput);
+  elements.profileButton?.addEventListener('click', () => openProfileDialog());
+  elements.closeProfileDialog?.addEventListener('click', () => { if (state.activeProfile) elements.profileDialog?.close(); });
+  elements.profileDialog?.addEventListener('cancel', (event) => { if (!state.activeProfile) event.preventDefault(); });
+  elements.newProfileForm?.addEventListener('submit', (event) => { event.preventDefault(); const name = elements.newProfileName.value.trim(); if (name) { createProfile(name); elements.newProfileForm.reset(); } });
+  elements.guestProfile?.addEventListener('click', () => activateProfile({ id: GUEST_PROFILE_ID, name: 'Gast', guest: true }));
+  elements.importProfile?.addEventListener('change', (event) => { const [file] = event.target.files || []; if (file) importProfileFile(file); });
+  elements.exportProfile?.addEventListener('click', exportActiveProfile);
+  elements.exerciseLevel?.addEventListener('change', (event) => { state.exerciseLevel = event.target.value; state.exerciseMistakesOnly = false; refreshExerciseTopics(); renderExerciseEngine({ chooseNew: true }); });
+  elements.exerciseType?.addEventListener('change', (event) => { state.exerciseType = event.target.value; state.exerciseMistakesOnly = false; refreshExerciseTopics(); renderExerciseEngine({ chooseNew: true }); });
+  elements.exerciseTopic?.addEventListener('change', (event) => { state.exerciseTopic = event.target.value; state.exerciseMistakesOnly = false; renderExerciseEngine({ chooseNew: true }); });
+  elements.exerciseMistakes?.addEventListener('click', () => { state.exerciseMistakesOnly = !state.exerciseMistakesOnly; elements.exerciseMistakes.classList.toggle('active', state.exerciseMistakesOnly); renderExerciseEngine({ chooseNew: true }); });
+  elements.exerciseRandom?.addEventListener('click', () => { state.exerciseMistakesOnly = false; elements.exerciseMistakes?.classList.remove('active'); chooseNextExercise(); renderExerciseEngine(); });
   elements.menuButton.addEventListener('click', () => {
     const open = elements.sidebar.classList.toggle('open');
     elements.menuButton.setAttribute('aria-expanded', String(open));
@@ -1226,16 +1548,17 @@ function initializeEvents() {
   elements.softwareSearch?.addEventListener('input', (event) => { state.softwareQuery = event.target.value; renderSoftware(); });
   elements.wordSearch.addEventListener('input', (event) => { state.vocabularyQuery = event.target.value; renderVocabulary(); });
   elements.clearProgress.addEventListener('click', () => {
+    if (!state.activeProfile) { openProfileDialog({ required: true }); return; }
+    if (!window.confirm(`De voortgang van ${state.activeProfile.name} wissen?`)) return;
     state.progress = safeProgress();
-    try { localStorage.removeItem(STORAGE_KEY); } catch { /* Opslag kan geblokkeerd zijn. */ }
-    updateProgressUI();
-    renderA0Themes();
-    renderA1Themes();
-    renderA2Themes();
-    renderB1Themes();
-    renderB2Themes();
-    renderLevels();
-    showToast('De lokale voortgang is gewist.');
+    state.exerciseStats = safeExerciseStats();
+    try {
+      profileStorage(state.activeProfile).removeItem(profileProgressKey(state.activeProfile.id));
+      profileStorage(state.activeProfile).removeItem(profileExerciseKey(state.activeProfile.id));
+    } catch { /* Opslag kan geblokkeerd zijn. */ }
+    updateProgressUI(); renderExerciseEngine({ chooseNew: true });
+    renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes(); renderLevels();
+    showToast(`De voortgang van ${state.activeProfile.name} is gewist.`);
   });
   window.addEventListener('hashchange', () => {
     const page = location.hash.slice(1);
@@ -1264,6 +1587,9 @@ function initialize() {
   renderListening();
   renderMainExercise();
   renderPractice();
+  refreshExerciseTopics();
+  renderExerciseEngine({ chooseNew: true });
+  updateProfileUI();
   updateProgressUI();
   initializeSettings();
   initializeEvents();
@@ -1271,6 +1597,7 @@ function initialize() {
   if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = loadVoices;
   const hashPage = location.hash.slice(1);
   showPage(document.querySelector(`#page-${hashPage}`) ? hashPage : 'vandaag', false);
+  if (!state.activeProfile) window.setTimeout(() => openProfileDialog({ required: true }), 40);
   if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./service-worker.js').catch(() => {});
 }
 

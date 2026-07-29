@@ -1,10 +1,40 @@
-# Nederlands, gewoon doen — V14
+# Nederlands, gewoon doen — V15
 
 Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
 > **beeld → geluid → betekenis → structuur → gesprek → zelfstandig gebruik**
 
 De applicatie kan rechtstreeks met een dubbelklik op `index.html` worden geopend. Voor offline/PWA-ondersteuning en lokaal ontwikkelen kan een kleine lokale server worden gebruikt.
+
+
+## V15 — persoonlijke profielen en een echte oefenmotor
+
+De V15 voegt twee structurele onderdelen toe:
+
+### Gescheiden leerprofielen
+
+- bij het openen verschijnt een profielkeuze;
+- ieder opgeslagen profiel heeft eigen cursusvoortgang, fouten, oefenresultaten en herhalingen;
+- het actieve profiel wordt alleen voor de huidige browsersessie onthouden met `sessionStorage`;
+- profielgegevens worden lokaal opgeslagen met aparte sleutels per gebruiker;
+- **Gastmodus** gebruikt uitsluitend `sessionStorage` en verdwijnt aan het einde van de browsersessie;
+- profielen kunnen als JSON worden geëxporteerd en later opnieuw worden geïmporteerd;
+- er worden geen trackingcookies, advertenties of externe analytics gebruikt;
+- een lokale profielnaam of PIN is geen sterke beveiliging: voor echte accounts en synchronisatie is een backend nodig.
+
+### Oefenbank A0–B2
+
+De oefenroute bevat **4.050 originele oefeningen**:
+
+| Niveau | Aantal |
+|---|---:|
+| A0 | 250 |
+| A1 | 700 |
+| A2 | 900 |
+| B1 | 1.000 |
+| B2 | 1.200 |
+
+De oefenbank ondersteunt meerkeuze, invullen, woordvolgorde, luisteren en begeleid schrijven. Filters op niveau, type en thema worden gecombineerd met persoonlijke foutregistratie. De knop **Mijn fouten** maakt een herhaalsessie van eerder fout beantwoorde items.
 
 ## Vijf zichtbare cursusroutes
 
@@ -145,7 +175,7 @@ De spellingvormen zijn gevalideerd met vrije gegevens van Stichting OpenTaal. Di
 
 ## Woorden leren zonder visuele overbelasting
 
-De volledige woordenbanken zijn in V14 opnieuw ontworpen als kleine leereenheden in plaats van een dicht raster met knoppen:
+De volledige woordenbanken zijn in V14 opnieuw ontworpen en in V15 profielgebonden gemaakt als kleine leereenheden in plaats van een dicht raster met knoppen:
 
 - maximaal acht woorden per groep bij de eerste weergave;
 - twee kolommen op grote schermen en één kolom op mobiel;
@@ -170,7 +200,7 @@ Normale en langzame afspeelsnelheid zijn beschikbaar. De oude twijfelachtige WAV
 
 ## Toegankelijke visuele interface
 
-De V14 behoudt de warme groene, crèmekleurige en oranje identiteit, maar gebruikt kleur nooit als enige informatiedrager. De interface bevat:
+De V15 behoudt de warme groene, crèmekleurige en oranje identiteit, maar gebruikt kleur nooit als enige informatiedrager. De interface bevat:
 
 - dag- en nachtmodus;
 - hoogcontrastmodus;
@@ -228,7 +258,7 @@ npm run check
 
 - `npm run build` genereert `js/app.js` uit alle bronbestanden;
 - `npm test` voert statische en functionele tests uit;
-- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **42 tests** uit.
+- `npm run check` bouwt de bundle, controleert de JavaScript-syntaxis en voert alle **50 tests** uit.
 
 ## Structuur
 
@@ -248,6 +278,8 @@ npm run check
 │   ├── supplement-content.js
 │   ├── questions-content.js
 │   ├── verb-atlas.js
+│   ├── exercises.js
+│   ├── profiles.js
 │   ├── main.js
 │   ├── app.js
 │   └── reference.js
