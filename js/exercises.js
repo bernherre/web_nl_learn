@@ -1,3 +1,4 @@
+import { advancedExerciseBank } from './advanced-practice-content.js';
 const LEVEL_TARGETS = { A0: 250, A1: 700, A2: 900, B1: 1000, B2: 1200 };
 
 const people = ['Noor', 'Sam', 'Lina', 'Omar', 'Sara', 'Milan', 'Yara', 'Daan'];
@@ -115,7 +116,8 @@ function createLevelExercises(level, count) {
   });
 }
 
-export const exerciseBank = Object.entries(LEVEL_TARGETS).flatMap(([level, count]) => createLevelExercises(level, count));
+const baseExerciseBank = Object.entries(LEVEL_TARGETS).flatMap(([level, count]) => createLevelExercises(level, count));
+export const exerciseBank = [...baseExerciseBank, ...advancedExerciseBank];
 export const exerciseStats = {
   total: exerciseBank.length,
   byLevel: Object.fromEntries(Object.keys(LEVEL_TARGETS).map((level) => [level, exerciseBank.filter((item) => item.level === level).length])),

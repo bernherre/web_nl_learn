@@ -1,13 +1,13 @@
 {
   "name": "web-nl-learn",
-  "version": "15.0.0",
+  "version": "16.0.0",
   "private": true,
   "type": "module",
-  "description": "Statische Nederlandstalige leeromgeving A0-B2 met toegankelijke UX, getallen, datum, tijd, wiskundetaal, natuurkunde, softwarebegrippen, diepe grammatica en 1.880 vervoegde werkwoorden en rustige woordkaarten, lokale leerprofielen en meer dan 4.000 persoonlijke oefeningen.",
+  "description": "Statische Nederlandstalige leeromgeving A0-B2 met toegankelijke UX, lokale profielen, 1.880 vervoegde werkwoorden, achtduizend oefeningen, vindbare grammatica, B1-B2-lezen en professionele e-mailtraining.",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8080",
-    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/starter-content.js && node --check js/spiral-content.js && node --check js/number-math-content.js && node --check js/technical-content.js && node --check js/exercises.js && node --check js/profiles.js && node --check js/verb-atlas.js && node --check js/learning.js && node --check js/app.js && npm test",
+    "check": "npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/starter-content.js && node --check js/spiral-content.js && node --check js/number-math-content.js && node --check js/technical-content.js && node --check js/advanced-practice-content.js && node --check js/exercises.js && node --check js/profiles.js && node --check js/verb-atlas.js && node --check js/learning.js && node --check js/app.js && npm test",
     "build": "node scripts/build-classic.mjs"
   },
   "engines": {

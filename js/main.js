@@ -20,6 +20,7 @@ import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
 import { numberTimeTopics, numberQuickReference, mathCategories, mathConcepts, mathStats } from './number-math-content.js';
 import { physicsCategories, physicsConcepts, softwareCategories, softwareConcepts, technicalStats } from './technical-content.js';
+import { advancedGrammarTopics, logicRelationGroups, readingArticles, emailTasks, advancedPracticeStats } from './advanced-practice-content.js';
 import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
 import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
 import {
@@ -38,6 +39,7 @@ const LEGACY_STORAGE_KEY = 'nederlands-gewoon-doen-progress-v2';
 const SETTINGS_KEY = 'nederlands-gewoon-doen-settings-v2';
 const EXERCISE_WORDS = ['Vandaag', 'werk', 'ik', 'thuis'];
 const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
+const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics];
 
 const initialProfile = readActiveProfileSession();
 
@@ -90,6 +92,10 @@ const state = {
   currentExercise: null,
   exerciseResponse: [],
   exerciseAnswered: false,
+  readingLevel: 'B1',
+  readingArticle: readingArticles.find((item) => item.level === 'B1')?.id || readingArticles[0]?.id,
+  emailLevel: 'B1',
+  emailTask: emailTasks.find((item) => item.level === 'B1')?.id || emailTasks[0]?.id,
   settings: readSettings(),
 };
 
@@ -135,6 +141,9 @@ const elements = {
   exportProfile: el('export-profile'), progressProfileDescription: el('progress-profile-description'),
   exerciseLevel: el('exercise-level'), exerciseType: el('exercise-type'), exerciseTopic: el('exercise-topic'), exerciseEngine: el('exercise-engine'),
   exerciseProfileStats: el('exercise-profile-stats'), exerciseMistakes: el('exercise-mistakes'), exerciseRandom: el('exercise-random'), exerciseTotalCount: el('exercise-total-count'),
+  readingLevelFilters: el('reading-level-filters'), readingArticleList: el('reading-article-list'), readingArticleDetail: el('reading-article-detail'),
+  emailLevelFilters: el('email-level-filters'), emailTaskList: el('email-task-list'), emailTaskDetail: el('email-task-detail'),
+  logicRelationGrid: el('logic-relation-grid'),
 };
 
 function readProfiles() {
@@ -686,10 +695,10 @@ function renderGrammarFilters() {
 
 function renderGrammar() {
   renderGrammarFilters();
-  const filtered = grammarTopics.filter((topic) => state.grammarLevel === 'alle' || topic.level === state.grammarLevel);
-  if (!filtered.some((topic) => topic.id === state.grammarTopic)) state.grammarTopic = filtered[0]?.id || grammarTopics[0].id;
+  const filtered = allGrammarTopics.filter((topic) => state.grammarLevel === 'alle' || topic.level === state.grammarLevel);
+  if (!filtered.some((topic) => topic.id === state.grammarTopic)) state.grammarTopic = filtered[0]?.id || allGrammarTopics[0].id;
   elements.grammarList.innerHTML = filtered.map((topic) => `<button class="topic-button ${topic.id === state.grammarTopic ? 'active' : ''}" type="button" data-grammar-topic="${topic.id}"><small>${topic.level}</small><strong>${topic.title}</strong><span>${topic.summary}</span></button>`).join('');
-  const topic = grammarTopics.find((item) => item.id === state.grammarTopic) || grammarTopics[0];
+  const topic = allGrammarTopics.find((item) => item.id === state.grammarTopic) || allGrammarTopics[0];
   const sections = (topic.sections || []).map((section) => `<article class="grammar-section-card"><h3>${escapeHtml(section.title)}</h3><ul>${section.items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></article>`).join('');
   const contrasts = (topic.contrasts || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('');
   const mistakes = (topic.mistakes || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('');
@@ -703,6 +712,51 @@ function renderGrammar() {
     <h3>Gerelateerde concepten</h3><div class="connection-tags">${topic.connections.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div>`;
 }
 
+
+
+function renderLogicRelations() {
+  if (!elements.logicRelationGrid) return;
+  elements.logicRelationGrid.innerHTML = logicRelationGroups.map((group) => `<details class="logic-relation-card" ${group.id === 'gevolg' ? 'open' : ''}><summary><strong>${escapeHtml(group.title)}</strong><span>${group.items.length} vormen</span></summary><div class="logic-item-list">${group.items.map(([term, type, meaning, example]) => `<article><div><strong>${escapeHtml(term)}</strong><small>${escapeHtml(type)}</small></div><p>${escapeHtml(meaning)}</p><div class="logic-example"><span>${escapeHtml(example)}</span><button class="mini-audio speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.84" aria-label="Luister naar het voorbeeld">🔊</button></div></article>`).join('')}</div></details>`).join('');
+}
+
+function renderReadingFilters() {
+  if (!elements.readingLevelFilters) return;
+  elements.readingLevelFilters.innerHTML = ['B1', 'B2'].map((level) => `<button class="${state.readingLevel === level ? 'active' : ''}" type="button" data-reading-level="${level}">${level} lezen</button>`).join('');
+}
+
+function renderReadingArticle() {
+  if (!elements.readingArticleDetail) return;
+  const article = readingArticles.find((item) => item.id === state.readingArticle) || readingArticles.find((item) => item.level === state.readingLevel) || readingArticles[0];
+  if (!article) return;
+  state.readingArticle = article.id;
+  elements.readingArticleDetail.innerHTML = `<article class="reading-article"><div class="reading-article-header"><div><span class="eyebrow"><span>${escapeHtml(article.level)}</span> ${escapeHtml(article.topic)}</span><h2>${escapeHtml(article.title)}</h2><p>${article.paragraphs.length} alinea’s · ongeveer ${article.minutes} minuten</p></div><button class="sound-button speak" type="button" data-text="${escapeHtml(article.paragraphs.join(' '))}" data-rate="0.82">🔊 Lees voor</button></div>
+    <details class="reading-vocabulary"><summary>Moeilijke woorden (${article.vocabulary.length})</summary><div>${article.vocabulary.map(([term, definition]) => `<article><strong>${escapeHtml(term)}</strong><p>${escapeHtml(definition)}</p><button class="mini-audio speak" type="button" data-text="${escapeHtml(term)}" data-rate="0.72">🔊</button></article>`).join('')}</div></details>
+    <div class="reading-text">${article.paragraphs.map((paragraph, index) => `<p><span class="paragraph-number" aria-label="Alinea ${index + 1}">${index + 1}</span>${escapeHtml(paragraph)}</p>`).join('')}</div>
+    <section class="reading-questions"><div class="section-heading compact"><div><span class="kicker">Begrijpend lezen</span><h3>${article.questions.length} vragen</h3></div><span class="nt2-style-badge">${article.level === 'B2' ? 'NT2-II-stijl · origineel' : 'B1-oefening'}</span></div>${article.questions.map((question, qIndex) => `<article class="reading-question" data-reading-question="${qIndex}"><h4>${qIndex + 1}. ${escapeHtml(question.prompt)}</h4><div class="exercise-options">${question.options.map((option, optionIndex) => `<button type="button" data-reading-answer="${optionIndex}" data-reading-question-index="${qIndex}" data-reading-article-id="${escapeHtml(article.id)}">${escapeHtml(option)}</button>`).join('')}</div><p class="reading-feedback" id="reading-feedback-${qIndex}" role="status">Kies één antwoord.</p></article>`).join('')}</section>
+  </article>`;
+}
+
+function renderReadingWriting() {
+  renderReadingFilters();
+  if (elements.readingArticleList) {
+    const articles = readingArticles.filter((item) => item.level === state.readingLevel);
+    if (!articles.some((item) => item.id === state.readingArticle)) state.readingArticle = articles[0]?.id;
+    elements.readingArticleList.innerHTML = articles.map((article) => `<button class="topic-button ${article.id === state.readingArticle ? 'active' : ''}" type="button" data-reading-article="${escapeHtml(article.id)}"><small>${escapeHtml(article.level)} · ${article.minutes} min</small><strong>${escapeHtml(article.title)}</strong><span>${escapeHtml(article.topic)}</span></button>`).join('');
+  }
+  renderReadingArticle();
+  renderEmailWriting();
+}
+
+function renderEmailWriting() {
+  if (!elements.emailLevelFilters || !elements.emailTaskList || !elements.emailTaskDetail) return;
+  elements.emailLevelFilters.innerHTML = ['B1', 'B2'].map((level) => `<button class="${state.emailLevel === level ? 'active' : ''}" type="button" data-email-level="${level}">${level} e-mails</button>`).join('');
+  const tasks = emailTasks.filter((item) => item.level === state.emailLevel);
+  if (!tasks.some((item) => item.id === state.emailTask)) state.emailTask = tasks[0]?.id;
+  elements.emailTaskList.innerHTML = tasks.map((task) => `<button class="topic-button ${task.id === state.emailTask ? 'active' : ''}" type="button" data-email-task="${escapeHtml(task.id)}"><small>${escapeHtml(task.level)} · ${escapeHtml(task.tone)}</small><strong>${escapeHtml(task.title)}</strong><span>${escapeHtml(task.recipient)}</span></button>`).join('');
+  const task = emailTasks.find((item) => item.id === state.emailTask) || tasks[0];
+  if (!task) return;
+  elements.emailTaskDetail.innerHTML = `<article class="email-task"><div class="eyebrow"><span>${escapeHtml(task.level)}</span> schrijven</div><h2>${escapeHtml(task.title)}</h2><p class="lead">${escapeHtml(task.context)}</p><div class="email-brief"><div><small>Aan</small><strong>${escapeHtml(task.recipient)}</strong></div><div><small>Toon</small><strong>${escapeHtml(task.tone)}</strong></div></div><div class="email-task-grid"><section><h3>Neem dit op</h3><ul class="check-list">${task.points.map((point) => `<li>${escapeHtml(point)}</li>`).join('')}</ul></section><section><h3>Bruikbare zinnen</h3><ul>${task.useful.map((phrase) => `<li><button class="text-audio speak" type="button" data-text="${escapeHtml(phrase)}" data-rate="0.82">${escapeHtml(phrase)} 🔊</button></li>`).join('')}</ul></section></div><label class="exercise-input-label email-editor">Jouw e-mail<textarea id="email-draft" rows="12" placeholder="Onderwerp: …\n\nGeachte …"></textarea></label><div class="button-row"><button class="primary-button" type="button" data-email-model="${escapeHtml(task.id)}">Vergelijk met model</button><button class="secondary-button speak" type="button" data-text="${escapeHtml(task.model)}" data-rate="0.8">🔊 Luister naar model</button></div><div class="email-model" id="email-model" hidden></div></article>`;
+}
 
 function renderQuestionFilters() {
   const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
@@ -1137,7 +1191,7 @@ function renderExerciseProfileStats() {
 }
 
 function exerciseResponseMarkup(exercise) {
-  if (exercise.type === 'choice' || exercise.type === 'listening') {
+  if (exercise.type === 'choice' || exercise.type === 'listening' || exercise.type === 'reading') {
     return `<div class="exercise-options">${exercise.options.map((option) => `<button type="button" data-engine-option="${escapeHtml(option)}">${escapeHtml(option)}</button>`).join('')}</div>`;
   }
   if (exercise.type === 'input') {
@@ -1161,8 +1215,11 @@ function renderExerciseEngine({ chooseNew = false } = {}) {
     elements.exerciseEngine.innerHTML = `<div class="empty-exercise"><span aria-hidden="true">◎</span><h2>Geen oefeningen gevonden</h2><p>Pas de filters aan of schakel “Mijn fouten” uit.</p></div>`;
     return;
   }
+  const readingPassage = exercise.type === 'reading' ? `<details class="engine-reading-passage" open><summary>${escapeHtml(exercise.passageTitle || 'Leestekst')}</summary><div>${(exercise.passage || []).map((paragraph, index) => `<p><span class="paragraph-number">${index + 1}</span>${escapeHtml(paragraph)}</p>`).join('')}</div></details>` : '';
+  const kicker = exercise.type === 'listening' ? 'Luisteroefening' : exercise.type === 'reading' ? 'Begrijpend lezen' : exercise.type === 'selfcheck' ? 'Productie' : 'Actieve oefening';
   elements.exerciseEngine.innerHTML = `<div class="exercise-card-header"><div><span class="level-badge">${exercise.level}</span><span class="topic-badge">${escapeHtml(exercise.topic)}</span><span class="type-badge">${escapeHtml(exercise.type)}</span></div><span>${escapeHtml(exercise.id)}</span></div>
-    <div class="exercise-question"><span class="kicker">${exercise.type === 'listening' ? 'Luisteroefening' : exercise.type === 'selfcheck' ? 'Productie' : 'Actieve oefening'}</span><h2>${escapeHtml(exercise.prompt)}</h2>${exercise.type === 'listening' ? `<button class="sound-button speak" type="button" data-text="${escapeHtml(exercise.audio)}" data-rate="0.88">🔊 Luister</button>` : ''}</div>
+    ${readingPassage}
+    <div class="exercise-question"><span class="kicker">${kicker}</span><h2>${escapeHtml(exercise.prompt)}</h2>${exercise.type === 'listening' ? `<button class="sound-button speak" type="button" data-text="${escapeHtml(exercise.audio)}" data-rate="0.88">🔊 Luister</button>` : ''}</div>
     <div id="exercise-response-area">${exerciseResponseMarkup(exercise)}</div>
     <div class="exercise-feedback" id="exercise-engine-feedback" role="status">Kies of schrijf je antwoord.</div>
     <div class="exercise-footer"><button class="text-button" type="button" data-engine-skip>Overslaan</button><button class="secondary-button" type="button" data-engine-next disabled>Volgende oefening</button></div>`;
@@ -1191,8 +1248,8 @@ function recordExerciseResult(correct, response = '') {
   saveProgress();
   const feedback = el('exercise-engine-feedback');
   if (feedback) feedback.innerHTML = exercise.type === 'selfcheck'
-    ? `<strong>Modelantwoord</strong><br>${escapeHtml(exercise.modelAnswer)}<br><span>${escapeHtml(exercise.explanation)}</span>`
-    : `<strong>${correct ? 'Goed gedaan.' : 'Nog niet correct.'}</strong> ${escapeHtml(exercise.explanation)}${!correct && exercise.answer ? `<br><span>Antwoord: <b>${escapeHtml(exercise.answer)}</b></span>` : ''}`;
+    ? `<strong>Modelantwoord</strong><br><span class="model-answer-text">${escapeHtml(exercise.modelAnswer)}</span><br><span>${escapeHtml(exercise.explanation)}</span>`
+    : `<strong>${correct ? 'Goed gedaan.' : 'Nog niet correct.'}</strong> ${escapeHtml(exercise.explanation)}${exercise.evidence ? `<br><span>Bewijs: <b>${escapeHtml(exercise.evidence)}</b></span>` : ''}${!correct && exercise.answer ? `<br><span>Antwoord: <b>${escapeHtml(exercise.answer)}</b></span>` : ''}`;
   document.querySelector('[data-engine-next]')?.removeAttribute('disabled');
   document.querySelectorAll('[data-engine-option], [data-engine-check], [data-engine-reveal], [data-engine-word], [data-engine-remove-word]').forEach((button) => { button.disabled = true; });
 }
@@ -1319,10 +1376,59 @@ function handleClick(event) {
     if (pageButton.dataset.b2Theme) { state.b2Theme = pageButton.dataset.b2Theme; renderB2Themes(); }
     if (pageButton.dataset.grammarLevel) { state.grammarLevel = pageButton.dataset.grammarLevel; renderGrammar(); }
     if (pageButton.dataset.topic) {
+      state.grammarLevel = 'alle';
       state.grammarTopic = pageButton.dataset.topic;
       renderGrammar();
     }
     showPage(pageButton.dataset.page);
+    return;
+  }
+  const readingLevel = event.target.closest('[data-reading-level]');
+  if (readingLevel) {
+    state.readingLevel = readingLevel.dataset.readingLevel;
+    state.readingArticle = readingArticles.find((item) => item.level === state.readingLevel)?.id;
+    renderReadingWriting();
+    return;
+  }
+  const readingArticleButton = event.target.closest('[data-reading-article]');
+  if (readingArticleButton) { state.readingArticle = readingArticleButton.dataset.readingArticle; renderReadingWriting(); return; }
+  const readingAnswer = event.target.closest('[data-reading-answer]');
+  if (readingAnswer) {
+    const article = readingArticles.find((item) => item.id === readingAnswer.dataset.readingArticleId);
+    const questionIndex = Number(readingAnswer.dataset.readingQuestionIndex);
+    const question = article?.questions[questionIndex];
+    if (!question) return;
+    const selected = Number(readingAnswer.dataset.readingAnswer);
+    const container = readingAnswer.closest('.reading-question');
+    container?.querySelectorAll('[data-reading-answer]').forEach((button, index) => {
+      button.disabled = true;
+      button.classList.toggle('correct', index === question.answer);
+      button.classList.toggle('wrong', index === selected && index !== question.answer);
+    });
+    const feedback = el(`reading-feedback-${questionIndex}`);
+    if (feedback) feedback.innerHTML = `${selected === question.answer ? '<strong>Goed.</strong>' : '<strong>Nog niet.</strong>'} ${escapeHtml(question.explanation)} <span>Bewijs: alinea ${question.evidence}.</span>`;
+    if (selected === question.answer) completePractice('Leesvraag correct.');
+    return;
+  }
+  const emailLevel = event.target.closest('[data-email-level]');
+  if (emailLevel) {
+    state.emailLevel = emailLevel.dataset.emailLevel;
+    state.emailTask = emailTasks.find((item) => item.level === state.emailLevel)?.id;
+    renderEmailWriting();
+    return;
+  }
+  const emailTaskButton = event.target.closest('[data-email-task]');
+  if (emailTaskButton) { state.emailTask = emailTaskButton.dataset.emailTask; renderEmailWriting(); return; }
+  const emailModel = event.target.closest('[data-email-model]');
+  if (emailModel) {
+    const task = emailTasks.find((item) => item.id === emailModel.dataset.emailModel);
+    const model = el('email-model');
+    if (task && model) {
+      const draft = el('email-draft')?.value.trim();
+      model.hidden = false;
+      model.innerHTML = `<h3>Modelantwoord</h3><pre>${escapeHtml(task.model)}</pre><p>${draft ? 'Vergelijk je onderwerp, toon, kernpunten en afsluiting met het model.' : 'Schrijf eerst zelf een versie en gebruik het model daarna als vergelijking.'}</p>`;
+      if (draft) completePractice('E-mailtaak uitgevoerd.');
+    }
     return;
   }
   const courseThemeButton = event.target.closest('[data-course-theme-select]');
@@ -1576,6 +1682,7 @@ function initialize() {
   renderB2Themes();
   renderConcepts();
   renderGrammar();
+  renderLogicRelations();
   renderQuestions();
   renderNumberTime();
   renderMath();
@@ -1585,6 +1692,7 @@ function initialize() {
   renderVerbs();
   renderVocabulary();
   renderListening();
+  renderReadingWriting();
   renderMainExercise();
   renderPractice();
   refreshExerciseTopics();

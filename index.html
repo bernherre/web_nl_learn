@@ -39,6 +39,7 @@
         <button class="nav-item" type="button" data-page="werkwoorden"><span class="nav-icon" aria-hidden="true">↻</span><span>Werkwoorden</span></button>
         <button class="nav-item" type="button" data-page="woordenschat"><span class="nav-icon" aria-hidden="true">▦</span><span>Woordenschat</span></button>
         <button class="nav-item" type="button" data-page="luisteren"><span class="nav-icon" aria-hidden="true">◖</span><span>Luisteren</span></button>
+        <button class="nav-item" type="button" data-page="lezen-schrijven"><span class="nav-icon" aria-hidden="true">✎</span><span>Lezen & schrijven</span></button>
         <button class="nav-item" type="button" data-page="oefenen"><span class="nav-icon" aria-hidden="true">✓</span><span>Oefenen</span></button>
         <button class="nav-item" type="button" data-page="voortgang"><span class="nav-icon" aria-hidden="true">▥</span><span>Mijn voortgang</span></button>
       </nav>
@@ -319,11 +320,13 @@
 
           <section class="page" id="page-grammatica" aria-labelledby="grammatica-title">
             <div class="page-heading"><div><span class="kicker">Van vorm naar betekenis</span><h1 id="grammatica-title">Grammatica-atlas</h1><p>Regels in eenvoudige taal, met visuele modellen, audio en verbindingen naar andere concepten.</p></div></div>
+            <section class="grammar-discovery" aria-labelledby="grammar-discovery-title"><div class="section-heading compact"><div><span class="kicker">Binnen twee klikken</span><h2 id="grammar-discovery-title">Veelgezochte structuren</h2></div><p>Zoek op functie, niet alleen op woordsoort.</p></div><div class="grammar-shortcuts"><button type="button" data-page="grammatica" data-topic="bijwoorden-overzicht">Bijwoorden</button><button type="button" data-page="grammatica" data-topic="signaalwoorden-logische-relaties">Connectors & signaalwoorden</button><button type="button" data-page="grammatica" data-topic="voorzetsels-plaats">Voorzetsels</button><button type="button" data-page="grammatica" data-topic="gevolg-zodat-waardoor">Zodat · waardoor · daardoor</button><button type="button" data-page="grammatica" data-topic="voorwaarden-als-mits-tenzij">Voorwaarden</button><button type="button" data-page="grammatica" data-topic="nuancerende-bijwoorden">Nuance B2</button></div></section>
             <div class="filter-row" id="grammar-filters" aria-label="Filter grammatica op niveau"></div>
             <div class="library-layout">
               <div class="topic-list" id="grammar-list"></div>
               <section class="card topic-detail" id="grammar-detail" aria-live="polite"></section>
             </div>
+            <section class="section-block logic-relations" aria-labelledby="logic-relations-title"><div class="section-heading"><div><span class="kicker">Betekenis eerst</span><h2 id="logic-relations-title">Verbinders per logische relatie</h2></div><p class="section-intro">Vergelijk voegwoorden, bijwoorden en voorzetselgroepen die dezelfde relatie uitdrukken.</p></div><div id="logic-relation-grid" class="logic-relation-grid"></div></section>
           </section>
 
 
@@ -464,13 +467,19 @@
             <div class="listening-grid" id="listening-grid"></div>
           </section>
 
+          <section class="page" id="page-lezen-schrijven" aria-labelledby="lezen-schrijven-title">
+            <div class="page-heading reading-writing-heading"><div><span class="kicker">B1 zelfstandig · B2 kritisch</span><h1 id="lezen-schrijven-title">Lezen en e-mails schrijven</h1><p>Oefen met originele artikelen, begripvragen, klachten, meningen, voorkeuren en professionele e-mails. B2 bevat vragen in NT2-II-stijl, maar geen officiële examenvragen.</p></div><div class="reading-writing-stats"><span><strong>10</strong> artikelen</span><span><strong>12</strong> e-mailtaken</span><span><strong>B1–B2</strong> niveau</span></div></div>
+            <section class="reading-section" aria-labelledby="reading-section-title"><div class="section-heading"><div><span class="kicker">Hoofdgedachte · bewijs · argumentatie</span><h2 id="reading-section-title">Artikelen met begripvragen</h2></div><div class="filter-row compact-filters" id="reading-level-filters" aria-label="Filter leesteksten op niveau"></div></div><div class="reading-layout"><aside class="card reading-article-list" id="reading-article-list" aria-label="Leesteksten"></aside><section class="card reading-article-detail" id="reading-article-detail" aria-live="polite"></section></div></section>
+            <section class="email-section" aria-labelledby="email-section-title"><div class="section-heading"><div><span class="kicker">Klacht · mening · voorstel · professioneel register</span><h2 id="email-section-title">E-mails B1 en B2</h2></div><div class="filter-row compact-filters" id="email-level-filters" aria-label="Filter e-mailtaken op niveau"></div></div><div class="reading-layout"><aside class="card reading-article-list" id="email-task-list" aria-label="E-mailtaken"></aside><section class="card reading-article-detail" id="email-task-detail" aria-live="polite"></section></div></section>
+          </section>
+
           <section class="page" id="page-oefenen" aria-labelledby="oefenen-title">
-            <div class="page-heading exercise-heading"><div><span class="kicker">Persoonlijke oefenbank</span><h1 id="oefenen-title">Oefenen</h1><p>Meer dan vierduizend originele oefeningen, verdeeld over A0–B2. Je fouten en herhalingen horen alleen bij het actieve profiel.</p></div><div class="exercise-total"><strong id="exercise-total-count">4.050</strong><span>oefeningen</span></div></div>
+            <div class="page-heading exercise-heading"><div><span class="kicker">Persoonlijke oefenbank</span><h1 id="oefenen-title">Oefenen</h1><p>Achtduizend originele oefeningen, verdeeld over A0–B2, met extra dekking voor connectors, bijwoorden, voorzetsels, vragen, tijden, scheidbare werkwoorden, lezen en schrijven. Je fouten en herhalingen horen alleen bij het actieve profiel.</p></div><div class="exercise-total"><strong id="exercise-total-count">8.000</strong><span>oefeningen</span></div></div>
             <div class="exercise-layout">
               <aside class="card exercise-sidebar" aria-label="Oefeningen filteren">
                 <h2>Kies je sessie</h2>
                 <label>Niveau<select id="exercise-level"><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="alle">Alle niveaus</option></select></label>
-                <label>Oefening<select id="exercise-type"><option value="alle">Alle soorten</option><option value="choice">Meerkeuze</option><option value="input">Invullen</option><option value="order">Woordvolgorde</option><option value="listening">Luisteren</option><option value="selfcheck">Schrijven</option></select></label>
+                <label>Oefening<select id="exercise-type"><option value="alle">Alle soorten</option><option value="choice">Meerkeuze</option><option value="input">Invullen</option><option value="order">Woordvolgorde</option><option value="listening">Luisteren</option><option value="selfcheck">Schrijven / e-mail</option><option value="reading">Begrijpend lezen</option></select></label>
                 <label>Thema<select id="exercise-topic"><option value="alle">Alle thema’s</option></select></label>
                 <div class="exercise-session-options">
                   <button class="secondary-button" id="exercise-mistakes" type="button">Mijn fouten</button>

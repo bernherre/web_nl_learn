@@ -1,0 +1,39 @@
+﻿feat: expand grammar practice and add B1-B2 reading and writing
+
+- expand the exercise engine with broader grammar coverage across A0 to B2
+- add targeted exercises for connectors, conjunctions and logical relationships
+- add practice for cause, consequence, purpose, condition, contrast and time
+- cover omdat, doordat, want, aangezien, zodat, waardoor, daardoor and daarom
+- add conditional structures with als, wanneer, mits, tenzij and indien
+- add hypothetical constructions with zou and conditional perfect forms
+- add exercises for adverbs of time, place, frequency, degree and attitude
+- improve grammar navigation for bijwoorden, voorzetsels, voegwoorden and signaalwoorden
+- organize connectors by meaning as well as grammatical category
+- add extensive practice for simple and fixed prepositions
+- cover verb-preposition, adjective-preposition and noun-preposition combinations
+- add exercises for waar, daar, er and hier plus preposition constructions
+- add contrasts such as vragen om versus vragen naar and denken aan versus denken over
+- expand practice for separable verbs in main clauses, inversion and subordinate clauses
+- add separable-verb exercises with modal verbs, perfect tense and te constructions
+- expand present, past, perfect and pluperfect tense exercises
+- add practice for regular and irregular verb conjugation
+- add exercises for auxiliary selection with hebben, zijn or both
+- cover verbs of movement, change, state, action, event and result
+- add passive voice exercises with worden and zijn
+- improve question exercises from basic forms through indirect and formal questions
+- add B1 communication practice for complaints, opinions, preferences and disagreement
+- add exercises for polite requests, solutions and professional communication
+- add twelve guided email-writing tasks for B1 and B2
+- cover complaints, requests, advice, delays, meeting summaries and professional feedback
+- add ten original B1-B2 reading articles with numbered paragraphs
+- include comprehension questions, vocabulary support and answer evidence
+- add exercises for main ideas, details, references, connectors and implicit meaning
+- add B2 argumentation, author-intention and critical-reading questions
+- add original NT2-II-style reading practice clearly marked as unofficial
+- add timed and untimed reading modes
+- save reading, writing and grammar errors separately for each local profile
+- preserve guest mode and independent user progress
+- improve grammar search and make key topics reachable within two navigation steps
+- update static bundles, offline caching and standalone build
+- update tests and documentation for the expanded exercise coverage
+- pass 56 automated tests

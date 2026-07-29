@@ -3,14 +3,14 @@ import assert from 'node:assert/strict';
 import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from '../js/exercises.js';
 import { exportProfilePayload, profileExerciseKey, profileIdFromName, profileProgressKey, uniqueProfileId, validateProfileImport } from '../js/profiles.js';
 
-test('de oefenbank bevat meer dan vierduizend oefeningen met de afgesproken verdeling', () => {
-  assert.equal(exerciseBank.length, 4050);
-  assert.deepEqual(exerciseStats.byLevel, { A0: 250, A1: 700, A2: 900, B1: 1000, B2: 1200 });
+test('de V16-oefenbank bevat achtduizend oefeningen met brede dekking', () => {
+  assert.equal(exerciseBank.length, 8000);
+  assert.deepEqual(exerciseStats.byLevel, { A0: 350, A1: 1050, A2: 1550, B1: 2250, B2: 2800 });
   assert.equal(new Set(exerciseBank.map((item) => item.id)).size, exerciseBank.length);
   for (const item of exerciseBank) {
     assert.ok(item.prompt);
     assert.ok(item.explanation);
-    assert.ok(['choice', 'input', 'order', 'listening', 'selfcheck'].includes(item.type));
+    assert.ok(['choice', 'input', 'order', 'listening', 'selfcheck', 'reading'].includes(item.type));
   }
 });
 

@@ -1,4 +1,4 @@
-# Nederlands, gewoon doen — V15
+# Nederlands, gewoon doen — V16
 
 Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofdapp gebruikt uitsluitend Nederlands en volgt de didactische lijn:
 
@@ -7,9 +7,52 @@ Een volledig statische leeromgeving voor Nederlands van **A0 tot B2**. De hoofda
 De applicatie kan rechtstreeks met een dubbelklik op `index.html` worden geopend. Voor offline/PWA-ondersteuning en lokaal ontwikkelen kan een kleine lokale server worden gebruikt.
 
 
+## V16 — brede oefendekking, vindbare grammatica en lezen/schrijven B1–B2
+
+V16 bouwt verder op de lokale profielen van V15 en corrigeert de inhoudelijke dekking van de oefenbank.
+
+### Achtduizend oefeningen met expliciete grammaticale dekking
+
+De oefenbank bevat nu **8.000 originele oefeningen**. Naast de eerdere basis komen de volgende domeinen als afzonderlijke oefenthema’s terug:
+
+- bijwoorden van tijd, plaats, frequentie, graad, houding en verbinding;
+- connectors en signaalwoorden per logische relatie;
+- oorzaak, gevolg, doel, contrast, tijd en voorwaarde;
+- `zodat`, `waardoor`, `daardoor`, `dus`, `doordat`, `omdat`, `aangezien`, `mits` en `tenzij`;
+- losse en vaste voorzetsels, inclusief `waar/daar/er/hier + voorzetsel`;
+- scheidbare werkwoorden in hoofdzin, bijzin, perfectum, modale en `te`-constructie;
+- tegenwoordige tijd, imperfectum, perfectum, plusquamperfectum, passief en hypothetische voorwaarden;
+- vragen, beleefde formuleringen, klachten, meningen en voorkeuren;
+- begrijpend lezen B1 en B2;
+- professionele e-mails B1 en B2.
+
+### Grammatica die in twee klikken vindbaar is
+
+De grammatica-atlas heeft directe ingangen voor **Bijwoorden**, **Connectors & signaalwoorden**, **Voorzetsels**, **Zodat / waardoor / daardoor**, **Voorwaarden** en **Nuance B2**. Een aparte relatiesectie groepeert vormen eerst naar betekenis en toont daarna of het om een voegwoord, bijwoord, voorzetsel of vaste verbinding gaat.
+
+### Lezen B1 en B2
+
+De route **Lezen & schrijven** bevat tien originele artikelen met alinea-aanduidingen, moeilijke woorden, voorleesfunctie en bewijsgerichte begripvragen. De B2-vragen zijn gemarkeerd als **NT2-II-stijl**, maar zijn geen officiële examenvragen.
+
+Onderwerpen zijn onder andere bibliotheek en samenleving, duurzaam reizen, wonen en klachten, dierenopvang, kunstmatige intelligentie, stedelijke verdichting, duurzame voeding, literatuur, biodiversiteit en werkdruk.
+
+### E-mails B1 en B2
+
+Twaalf schrijftaken behandelen onder meer:
+
+- klachten en reparatieverzoeken;
+- afspraken wijzigen en informatie vragen;
+- meningen en voorkeuren onderbouwen;
+- formele klachten, adviezen en reacties op besluiten;
+- vergaderingen samenvatten;
+- risico’s en vertraging uitleggen;
+- constructieve professionele feedback.
+
+Iedere taak bevat een communicatieve situatie, ontvanger, register, verplichte inhoudspunten, bruikbare formuleringen, een schrijfveld en een modelantwoord.
+
 ## V15 — persoonlijke profielen en een echte oefenmotor
 
-De V15 voegt twee structurele onderdelen toe:
+V15 voegde twee structurele onderdelen toe die in V16 behouden blijven:
 
 ### Gescheiden leerprofielen
 
@@ -24,15 +67,15 @@ De V15 voegt twee structurele onderdelen toe:
 
 ### Oefenbank A0–B2
 
-De oefenroute bevat **4.050 originele oefeningen**:
+De oorspronkelijke V15-oefenroute bevatte **4.050 oefeningen**; V16 breidt dit uit tot **8.000**:
 
 | Niveau | Aantal |
 |---|---:|
-| A0 | 250 |
-| A1 | 700 |
-| A2 | 900 |
-| B1 | 1.000 |
-| B2 | 1.200 |
+| A0 | 350 |
+| A1 | 1.050 |
+| A2 | 1.550 |
+| B1 | 2.250 |
+| B2 | 2.800 |
 
 De oefenbank ondersteunt meerkeuze, invullen, woordvolgorde, luisteren en begeleid schrijven. Filters op niveau, type en thema worden gecombineerd met persoonlijke foutregistratie. De knop **Mijn fouten** maakt een herhaalsessie van eerder fout beantwoorde items.
 
