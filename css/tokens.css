@@ -32,3 +32,12 @@
   --focus-ring: 0 0 0 3px color-mix(in srgb, var(--yellow) 70%, transparent);
   --transition-fast: 160ms ease;
 }
+/* Compatibiliteitslaag voor bestaande componenten */
+:root {
+  --brand: var(--green);
+  --brand-strong: var(--green-2);
+  --accent: var(--orange);
+  --text: var(--ink);
+  --border: var(--line);
+  --surface-soft: var(--surface-2);
+}

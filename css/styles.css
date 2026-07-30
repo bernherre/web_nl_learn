@@ -1558,3 +1558,170 @@ html[data-contrast='high'] .professional-domain-card.active { outline-width: 4px
 }
 
 .app-version { display: block; padding: 0 10px; color: #b8d3c9; font-size: .72rem; letter-spacing: .04em; }
+/* V19 dashboard journey components */
+.quick-level-section {
+  margin-top: 2.25rem;
+}
+
+.quick-level-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .85rem;
+}
+
+.quick-level-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: .2rem .65rem;
+  min-width: 0;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+  cursor: pointer;
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+.quick-level-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--green-2);
+  box-shadow: var(--shadow);
+}
+
+.quick-level-card.current {
+  border-color: var(--green-2);
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--green-soft) 76%, var(--surface)),
+      var(--surface)
+    );
+}
+
+.quick-level-code {
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: .85rem;
+  background: var(--green-soft);
+  color: var(--green-2);
+  font-family: var(--font-display);
+  font-weight: 800;
+}
+
+.quick-level-card strong {
+  min-width: 0;
+  color: var(--ink);
+  font-size: .98rem;
+}
+
+.quick-level-card small {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: .76rem;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quick-level-card > i {
+  grid-column: 1 / -1;
+  display: block;
+  height: .38rem;
+  margin-top: .55rem;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--surface-2);
+}
+
+.quick-level-card > i > b {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--green-2);
+}
+
+.quick-level-card > em {
+  position: absolute;
+  right: .75rem;
+  bottom: .68rem;
+  color: var(--muted);
+  font-size: .68rem;
+  font-style: normal;
+  font-weight: 750;
+}
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .85rem;
+  margin-top: 1rem;
+}
+
+.trust-strip > div {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+  padding: .9rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+}
+
+.trust-strip > div > span {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: .72rem;
+  background: var(--green-soft);
+  color: var(--green-2);
+  font-weight: 800;
+}
+
+.trust-strip p {
+  margin: 0;
+}
+
+.trust-strip strong,
+.trust-strip small {
+  display: block;
+}
+
+.trust-strip strong {
+  color: var(--ink);
+}
+
+.trust-strip small {
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+@media (max-width: 1100px) {
+  .quick-level-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .quick-level-grid,
+  .trust-strip {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-level-card small {
+    white-space: normal;
+  }
+}
