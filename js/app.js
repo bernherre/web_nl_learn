@@ -3,9 +3,9 @@
 'use strict';
 const APP_META = Object.freeze({
   name: 'Nederlands, gewoon doen',
-  version: '19.0.0',
+  version: '19.0.1',
   storageSchema: 1,
-  cacheName: 'nederlands-gewoon-doen-v19-0-0'
+  cacheName: 'nederlands-gewoon-doen-v19-0-1'
 });
 
 function normaliseSentence(value) {
@@ -11758,6 +11758,18 @@ const commonWordLearningDetails = {
   'het adres': ['De gegevens waarmee je precies kunt aangeven waar iemand woont.', 'Mijn adres is Marktstraat 12.'],
   'de straat': ['Een openbare weg met huizen of andere gebouwen erlangs.', 'Wij wonen in een rustige straat.'],
   'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
+  'de opslag': ['Een ruimte waar je spullen tijdelijk bewaart, bijvoorbeeld tijdens een verhuizing.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
+  'de schade': ['Beschadiging, verlies of nadeel dat door een ongeluk, fout of andere gebeurtenis ontstaat.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
+  'de borg': ['Een bedrag dat je vooraf betaalt als zekerheid en meestal terugkrijgt wanneer je alles netjes achterlaat.', 'Bij het tekenen van het huurcontract betaalden we twee maanden borg.'],
+  'de sleuteloverdracht': ['Het moment waarop de sleutels officieel aan de nieuwe bewoner worden gegeven.', 'De sleuteloverdracht vindt vrijdagmiddag bij de woning plaats.'],
+  'de bezichtiging': ['Een afspraak waarbij je een woning of gebouw bekijkt voordat je beslist.', 'Tijdens de bezichtiging controleerden we de keuken en de badkamer.'],
+  'de inschrijving': ['De officiële registratie van een persoon, activiteit of aanvraag.', 'Na de verhuizing regelde zij haar inschrijving bij de gemeente.'],
+  'de verhuurder': ['De persoon of organisatie die een woning tegen betaling aan iemand laat gebruiken.', 'De verhuurder laat de kapotte verwarming repareren.'],
+  'de huurder': ['De persoon die betaalt om een woning, kamer of ander object te gebruiken.', 'De huurder meldt de lekkage direct aan de verhuurder.'],
+  'de makelaar': ['Een professional die helpt bij het kopen, verkopen of huren van een woning.', 'De makelaar plant drie bezichtigingen op zaterdag.'],
+  'de verhuisdoos': ['Een stevige doos waarin je spullen tijdens een verhuizing inpakt.', 'We schrijven de naam van elke kamer op de verhuisdoos.'],
+  'de verhuiswagen': ['Een voertuig waarmee meubels en andere spullen naar een nieuwe woning worden gebracht.', 'De verhuiswagen staat om acht uur voor de deur.'],
+  'de oplevering': ['Het officiële moment waarop een woning wordt gecontroleerd en overgedragen.', 'Bij de oplevering noteerden we alle bestaande beschadigingen.'],
   'de postcode': ['Een combinatie van cijfers en letters die bij een gebied of adres hoort.', 'Wat is uw postcode?'],
   'de woonplaats': ['De stad of het dorp waar iemand woont.', 'Mijn woonplaats is Waalre.'],
   'het land': ['Een gebied met eigen grenzen en meestal een eigen regering.', 'Nederland is een klein land.'],
@@ -11822,47 +11834,39 @@ function normalizeLearningWord(word) {
 function highlightedWordDetails(theme, word) {
   const normalized = normalizeLearningWord(word);
   const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
-  if (local) return { definition: local[1], example: local[2], source: 'thema' };
+  if (local) return { definition: local[1], example: local[2], source: 'thema', reviewed: true };
   const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
-  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord' };
+  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord', reviewed: true };
   return null;
 }
 
 function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord' };
+  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord', reviewed: true };
   const atlas = allVerbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
   if (!atlas) return null;
   return {
     definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
     example: atlas.sentencePatterns?.hoofdzin || '',
     source: 'werkwoord',
+    reviewed: true,
   };
 }
 
 function fallbackWordDetails(theme, group, word) {
-  const lowerGroup = normalizeLearningWord(group);
-  const themeName = theme.title.toLocaleLowerCase('nl-NL');
-  if (word.trim().endsWith('?')) {
-    return { definition: `Een vaste vraag die je gebruikt in gesprekken over ${themeName}.`, example: word, source: 'vraag' };
-  }
-  if (lowerGroup.includes('vaste') || lowerGroup.includes('combinatie') || word.trim().includes(' ')) {
-    return { definition: `Een vaste combinatie die je als één geheel gebruikt wanneer je over ${themeName} praat.`, example: word, source: 'combinatie' };
-  }
-  if (lowerGroup.includes('werkwoord')) {
-    return { definition: `Een werkwoord voor een handeling, toestand of gebeurtenis binnen het thema ${themeName}.`, example: '', source: 'werkwoord' };
-  }
-  if (lowerGroup.includes('beschrij') || lowerGroup.includes('eigenschap') || lowerGroup.includes('bijvoeg')) {
-    return { definition: `Een woord waarmee je een persoon, ding of situatie binnen het thema ${themeName} beschrijft.`, example: '', source: 'beschrijving' };
-  }
-  return { definition: `Een zelfstandig naamwoord dat je nodig hebt om over ${themeName} te praten.`, example: '', source: 'themawoord' };
+  return {
+    definition: 'Voor dit woord is nog geen gecontroleerde betekenis beschikbaar.',
+    example: '',
+    source: 'controle nodig',
+    reviewed: false,
+  };
 }
 
 function wordLearningDetails(theme, group, word) {
   const normalized = normalizeLearningWord(word);
   const curated = commonWordLearningDetails[normalized];
-  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg' };
+  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg', reviewed: true };
   return highlightedWordDetails(theme, word)
     || verbLearningDetails(word)
     || fallbackWordDetails(theme, group, word);
@@ -11975,7 +11979,7 @@ function renderThemeWordGroups(theme) {
     const cards = words.map((word, wordIndex) => {
       const details = wordLearningDetails(theme, group, word);
       const searchable = `${word} ${details.definition} ${details.example} ${group}`.toLocaleLowerCase('nl-NL');
-      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
+      return `<article class="theme-word-card ${details.reviewed === false ? 'needs-review' : ''} ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
         <div class="theme-word-card-top"><span class="word-kind">${escapeHtml(details.source)}</span><div class="word-audio-actions">
           <button class="icon-sound-button speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>
           <button class="icon-sound-button slow speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.58" aria-label="Luister langzaam naar ${escapeHtml(word)}">🐢</button>

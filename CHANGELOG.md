@@ -18,3 +18,12 @@ Alle belangrijke wijzigingen aan dit project worden in dit bestand bijgehouden. 
 
 ### Fixed
 - Bescherming tegen versieverschillen tussen package, interface, bundle en cache.
+
+## [19.0.1] - 2026-07-30
+
+### Fixed
+- Verwijderd: generieke definities die deden alsof een woord lexicografisch was uitgelegd.
+- Verwijderd: schijnvoorbeelden waarin alleen het trefwoord werd herhaald.
+- Niet-gecontroleerde items worden nu eerlijk gemarkeerd als `controle nodig` en tonen geen voorbeeldzin.
+- Toegevoegd: concrete betekenissen en natuurlijke voorbeelden voor kernwoorden rond verhuizen, waaronder `de opslag` en `de schade`.
+- Toegevoegd: automatische lexicale kwaliteitsaudit om terugval te voorkomen.

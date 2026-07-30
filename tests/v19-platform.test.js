@@ -7,8 +7,8 @@ const read = (path) => readFile(new URL(`../${path}`, import.meta.url), 'utf8');
 test('V19 centraliseert versie, design tokens en typografie', async () => {
   const [pkgText, index, tokens, type] = await Promise.all([read('package.json'), read('index.html'), read('css/tokens.css'), read('css/typography.css')]);
   const pkg = JSON.parse(pkgText);
-  assert.equal(pkg.version, '19.0.0');
-  assert.match(index, /v19\.0\.0/u);
+  assert.equal(pkg.version, '19.0.1');
+  assert.match(index, /v19\.0\.1/u);
   assert.match(tokens, /--font-body/u);
   assert.match(type, /text-rendering/u);
 });
@@ -19,7 +19,7 @@ test('V19 heeft een controleerbare PWA-basis', async () => {
   assert.equal(manifest.display, 'standalone');
   assert.ok(manifest.shortcuts.length >= 3);
   assert.match(sw, /offline\.html/u);
-  assert.match(sw, /v19-0-0/u);
+  assert.match(sw, /v19-0-1/u);
   assert.match(offline, /Je bent niet verbonden/u);
 });
 

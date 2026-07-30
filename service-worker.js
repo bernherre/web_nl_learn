@@ -1,4 +1,4 @@
-const CACHE = 'nederlands-gewoon-doen-v19-0-0';
+const CACHE = 'nederlands-gewoon-doen-v19-0-1';
 const CORE = [
   './', './index.html', './offline.html', './manifest.webmanifest',
   './css/styles.css', './css/tokens.css', './css/themes.css', './css/typography.css', './css/accessibility.css', './js/app.js',
