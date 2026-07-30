@@ -1,6 +1,6 @@
 {
   "name": "web-nl-learn",
-  "version": "19.0.1",
+  "version": "19.0.2",
   "private": true,
   "type": "module",
   "description": "Statische en installeerbare Nederlandstalige leeromgeving A0-B2 met lokale profielen, toegankelijke UX, vaklexicons en een verrijkte werkwoordenatlas.",

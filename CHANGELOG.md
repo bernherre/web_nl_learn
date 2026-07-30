@@ -19,6 +19,18 @@ Alle belangrijke wijzigingen aan dit project worden in dit bestand bijgehouden. 
 ### Fixed
 - Bescherming tegen versieverschillen tussen package, interface, bundle en cache.
 
+## [19.0.2] - 2026-07-30
+
+### Fixed
+
+- Breidt de lexicale audit uit naar alle niveaus, thema’s, technische atlassen en professionele begrippen.
+- Verbergt generieke definities en contextloze schijnvoorbeelden in de cursusinterface.
+- Markeert niet-gecontroleerde woordgroepitems eerlijk als `controle nodig`.
+- Behandelt niet-verrijkte werkwoorden uitsluitend als catalogusvormen.
+- Verbetert het volledige woordveld van het A2-thema Verhuizen en diverse A0-kernzinnen.
+- Corrigeert de uitleg van kernwerkwoorden en voorkomt foutieve vormen zoals `ik zweem`.
+- Genereert `docs/lexical-audit.md` met aantallen en blokkerende bevindingen.
+
 ## [19.0.1] - 2026-07-30
 
 ### Fixed

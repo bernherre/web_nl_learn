@@ -259,6 +259,45 @@ const commonWordLearningDetails = {
   'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
   'de opslag': ['Een ruimte waar je spullen tijdelijk bewaart, bijvoorbeeld tijdens een verhuizing.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
   'de schade': ['Beschadiging, verlies of nadeel dat door een ongeluk, fout of andere gebeurtenis ontstaat.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
+  'inpakken': ['Spullen in dozen, tassen of papier doen om ze te bewaren, te vervoeren of cadeau te geven.', 'We pakken de boeken zorgvuldig in voordat de verhuiswagen komt.'],
+  'uitpakken': ['Spullen uit een doos, tas of verpakking halen.', 'Na de verhuizing pakken we eerst de keukenspullen uit.'],
+  'tillen': ['Iets met je handen omhoogbrengen of op een andere plaats zetten.', 'Kun je deze zware doos samen met mij tillen?'],
+  'dragen': ['Iets vasthouden en ermee naar een andere plaats lopen.', 'De verhuizers dragen de kast voorzichtig naar boven.'],
+  'inrichten': ['Een ruimte bruikbaar en prettig maken door meubels en spullen een plaats te geven.', 'We richten de woonkamer in met een bank en twee kasten.'],
+  'ophangen': ['Iets hoger vastmaken, bijvoorbeeld aan een muur of plafond.', 'Zij hangt de lamp boven de eettafel op.'],
+  'monteren': ['Onderdelen op de juiste manier aan elkaar bevestigen zodat ze één geheel vormen.', 'We monteren de nieuwe kast volgens de handleiding.'],
+  'doorgeven': ['Informatie aan een andere persoon of organisatie melden.', 'Geef je nieuwe adres op tijd aan de gemeente door.'],
+  'inschrijven': ['Een persoon officieel registreren voor een plaats, activiteit of organisatie.', 'Na de verhuizing schrijft hij zich bij de gemeente in.'],
+  'opzeggen': ['Laten weten dat een contract, abonnement of afspraak moet eindigen.', 'We zeggen het oude huurcontract schriftelijk op.'],
+  'regelen': ['Ervoor zorgen dat iets wordt afgesproken, georganiseerd of uitgevoerd.', 'Ik regel een verhuiswagen voor zaterdagochtend.'],
+  'afspreken': ['Samen bepalen wanneer, waar of hoe iets gebeurt.', 'We spreken met de verhuurder af dat de oplevering vrijdag is.'],
+  'lenen': ['Iets tijdelijk van iemand gebruiken en het later teruggeven.', 'We lenen een steekwagen van de buren.'],
+  'beschadigen': ['Ervoor zorgen dat iets kapotgaat of minder goed wordt.', 'Pas op dat je de vloer niet beschadigt.'],
+  'controleren': ['Nauwkeurig kijken of iets klopt, compleet is of goed werkt.', 'Tijdens de oplevering controleren we alle kamers.'],
+  'beschikbaar': ['Vrij en gereed om gebruikt, gekozen of verkregen te worden.', 'De verhuiswagen is zaterdagmiddag beschikbaar.'],
+  'geschikt': ['Goed passend bij een bepaald doel, persoon of situatie.', 'Deze kast is geschikt voor een kleine slaapkamer.'],
+  'praktisch': ['Handig en gemakkelijk te gebruiken in een concrete situatie.', 'Een verhuisdoos met handgrepen is erg praktisch.'],
+  'zwaar': ['Met veel gewicht en daardoor moeilijk op te tillen.', 'Deze doos is te zwaar om alleen te dragen.'],
+  'licht': ['Met weinig gewicht en daardoor gemakkelijk op te tillen.', 'De lege verhuisdoos is heel licht.'],
+  'breekbaar': ['Gemakkelijk kapot te maken of te breken.', 'Zet breekbaar servies in een aparte doos.'],
+  'compleet': ['Met alle noodzakelijke delen; er ontbreekt niets.', 'Controleer of de sleutelset compleet is.'],
+  'leeg': ['Zonder mensen, spullen of inhoud.', 'De oude woning moet bij de oplevering leeg zijn.'],
+  'gemeubileerd': ['Met meubels die al in de woning of kamer aanwezig zijn.', 'Zij huurt tijdelijk een gemeubileerd appartement.'],
+  'ongemeubileerd': ['Zonder meubels die door de verhuurder zijn geplaatst.', 'De woning wordt ongemeubileerd opgeleverd.'],
+  'tijdelijk': ['Voor een beperkte periode en niet voor altijd.', 'Tijdens de verbouwing wonen we tijdelijk bij familie.'],
+  'definitief': ['Vast en bedoeld om niet meer te veranderen.', 'Volgende week maken we de verhuisdatum definitief.'],
+  'adres wijzigen': ['Een oud adres officieel vervangen door een nieuw adres.', 'Na de verhuizing moet je je adres bij meerdere organisaties wijzigen.'],
+  'huur opzeggen': ['De verhuurder laten weten dat je het huurcontract wilt beëindigen.', 'Zij zegt de huur drie maanden voor de verhuizing op.'],
+  'borg betalen': ['Een bedrag als zekerheid aan de verhuurder overmaken.', 'Voor de sleuteloverdracht moeten we de borg betalen.'],
+  'sleutel ophalen': ['Naar een afgesproken plaats gaan om een sleutel te ontvangen.', 'Vrijdag halen we de sleutel bij de makelaar op.'],
+  'dozen inpakken': ['Spullen geordend in verhuisdozen doen.', 'We pakken eerst de boeken en het servies in dozen in.'],
+  'meubels verplaatsen': ['Meubels van de ene plaats naar een andere plaats brengen.', 'De verhuizers verplaatsen de meubels zonder de vloer te beschadigen.'],
+  'kennis maken met de buren': ['De buren voor het eerst ontmoeten en iets over elkaar vertellen.', 'Na de verhuizing maken we kennis met de buren.'],
+  'rekening houden met': ['Bij een plan of beslissing aandacht geven aan een omstandigheid of persoon.', 'Houd bij het tillen rekening met de smalle trap.'],
+  'op tijd doorgeven': ['Informatie vóór de afgesproken of noodzakelijke datum melden.', 'Geef de meterstanden op tijd aan de leverancier door.'],
+  'een afspraak bevestigen': ['Laten weten dat een eerder gemaakte afspraak doorgaat.', 'De makelaar bevestigt de afspraak per e-mail.'],
+  'schade melden': ['Een beschadiging officieel aan de verantwoordelijke persoon of organisatie doorgeven.', 'De huurder meldt de schade direct bij de verhuurder.'],
+  'een woning opleveren': ['Een woning na controle officieel aan de eigenaar of nieuwe bewoner overdragen.', 'We leveren de woning schoon en leeg op.'],
   'de borg': ['Een bedrag dat je vooraf betaalt als zekerheid en meestal terugkrijgt wanneer je alles netjes achterlaat.', 'Bij het tekenen van het huurcontract betaalden we twee maanden borg.'],
   'de sleuteloverdracht': ['Het moment waarop de sleutels officieel aan de nieuwe bewoner worden gegeven.', 'De sleuteloverdracht vindt vrijdagmiddag bij de woning plaats.'],
   'de bezichtiging': ['Een afspraak waarbij je een woning of gebouw bekijkt voordat je beslist.', 'Tijdens de bezichtiging controleerden we de keuken en de badkamer.'],
@@ -330,27 +369,76 @@ function normalizeLearningWord(word) {
   return String(word || '').trim().toLocaleLowerCase('nl-NL');
 }
 
+
+const GENERIC_LEXICAL_PATTERNS = [
+  /^Het werkwoord beschrijft vooral/u,
+  /^Het werkwoord beschrijft een toestand/u,
+  /^Het onderwerp verandert van toestand/u,
+  /^Een vaste combinatie(?: die| voor| om)/u,
+  /^Een zelfstandig naamwoord(?: dat| voor)/u,
+  /^Het zelfstandig naamwoord verwijst naar/u,
+  /^Een .* uit deze les\.?$/u,
+];
+
+function normalizedLexicalText(value) {
+  return String(value || '')
+    .trim()
+    .toLocaleLowerCase('nl-NL')
+    .replace(/[“”„'‘’.,!?;:()]/gu, '')
+    .replace(/\s+/gu, ' ');
+}
+
+function isReliableDefinition(term, definition) {
+  const text = String(definition || '').trim();
+  if (text.length < 18 || GENERIC_LEXICAL_PATTERNS.some((pattern) => pattern.test(text))) return false;
+  const normalizedTerm = normalizedLexicalText(term).replace(/^(de|het|een)\s+/u, '');
+  const normalizedDefinition = normalizedLexicalText(text);
+  if (!normalizedTerm || normalizedDefinition === normalizedTerm) return false;
+  return ![`${normalizedTerm} is `, `${normalizedTerm} betekent `].some((start) => normalizedDefinition.startsWith(start));
+}
+
+function isReliableExample(term, example) {
+  const text = String(example || '').trim();
+  if (text.length < 12) return false;
+  const normalizedTerm = normalizedLexicalText(term);
+  const normalizedExample = normalizedLexicalText(text);
+  if (!normalizedExample || normalizedExample === normalizedTerm) return false;
+  if (/^ik\s+[a-zà-ÿ-]+(?:en)\.?$/u.test(normalizedExample)) return false;
+  const words = normalizedExample.split(' ').filter(Boolean);
+  return words.length >= 3;
+}
+
+function reviewedLearningDetails(term, definition, example, source) {
+  const definitionOk = isReliableDefinition(term, definition);
+  const exampleOk = isReliableExample(term, example);
+  if (!definitionOk) return null;
+  return {
+    definition: String(definition).trim(),
+    example: exampleOk ? String(example).trim() : '',
+    source,
+    reviewed: true,
+  };
+}
+
 function highlightedWordDetails(theme, word) {
   const normalized = normalizeLearningWord(word);
   const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
-  if (local) return { definition: local[1], example: local[2], source: 'thema', reviewed: true };
+  if (local) return reviewedLearningDetails(word, local[1], local[2], 'thema');
   const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
-  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord', reviewed: true };
+  if (global) return reviewedLearningDetails(word, global.definition, global.example, 'beeldwoord');
   return null;
 }
 
 function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord', reviewed: true };
+  if (compact) {
+    const reviewed = reviewedLearningDetails(word, compact.meaning, compact.examples?.[0] || '', 'werkwoord');
+    if (reviewed) return reviewed;
+  }
   const atlas = allVerbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (!atlas) return null;
-  return {
-    definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
-    example: atlas.sentencePatterns?.hoofdzin || '',
-    source: 'werkwoord',
-    reviewed: true,
-  };
+  if (!atlas?.lexicalEnriched || atlas.verified !== true) return null;
+  return reviewedLearningDetails(word, atlas.definition || atlas.meaning, atlas.example || atlas.sentencePatterns?.hoofdzin || '', 'werkwoord');
 }
 
 function fallbackWordDetails(theme, group, word) {
@@ -365,7 +453,7 @@ function fallbackWordDetails(theme, group, word) {
 function wordLearningDetails(theme, group, word) {
   const normalized = normalizeLearningWord(word);
   const curated = commonWordLearningDetails[normalized];
-  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg', reviewed: true };
+  if (curated) return reviewedLearningDetails(word, curated[0], curated[1], 'uitleg') || fallbackWordDetails(theme, group, word);
   return highlightedWordDetails(theme, word)
     || verbLearningDetails(word)
     || fallbackWordDetails(theme, group, word);
@@ -508,7 +596,10 @@ function renderCourseThemeDetail(theme, level, completed) {
     <div class="a1-detail-body">
       <section class="a1-can-do"><span class="kicker">Na dit thema</span><h2>Dit kun je</h2><ul>${theme.canDo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
       <section><div class="section-heading compact"><div><span class="kicker">Betekenis in context</span><h2>Uitgelichte kernwoorden</h2></div><span class="plan-total">${theme.vocabulary.length} uitgebreid</span></div>
-        <div class="a1-word-grid">${theme.vocabulary.map(([word, meaning, example]) => `<article><strong>${escapeHtml(word)}</strong><p>${escapeHtml(meaning)}</p><small>${escapeHtml(example)}</small><div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button></div></article>`).join('')}</div>
+        <div class="a1-word-grid">${theme.vocabulary.map(([word]) => {
+          const details = wordLearningDetails(theme, 'Uitgelichte kernwoorden', word);
+          return `<article class="${details.reviewed === false ? 'needs-review' : ''}"><strong>${escapeHtml(word)}</strong><span class="word-kind">${escapeHtml(details.source)}</span><p>${escapeHtml(details.definition)}</p>${details.example ? `<small>${escapeHtml(details.example)}</small>` : ''}<div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>${details.example ? `<button class="speak" type="button" data-text="${escapeHtml(details.example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button>` : ''}</div></article>`;
+        }).join('')}</div>
       </section>
       <section class="full-word-bank"><div class="section-heading compact"><div><span class="kicker">Woorden leren</span><h2>${themeWordCount(theme)} woorden en vaste combinaties</h2></div><span class="plan-total">betekenis · voorbeeld · geluid</span></div><p class="word-bank-intro">Begin rustig met acht woorden per groep. Elke kaart geeft een korte betekenis; open de voorbeeldzin en luister normaal of langzaam.</p><div class="word-bank-toolbar"><label class="word-bank-search"><span>Zoek in dit thema</span><input type="search" data-theme-word-search placeholder="Bijvoorbeeld: familie, wonen, spreken…" autocomplete="off"></label><p class="word-bank-result" data-theme-word-result aria-live="polite">${themeWordCount(theme)} woorden beschikbaar</p></div>${renderThemeWordGroups(theme)}</section>
       <section><span class="kicker">Grammatica</span><h2>Vorm en betekenis</h2><div class="a1-grammar-grid">${theme.grammar.map(([title, explanation]) => `<article><strong>${escapeHtml(title)}</strong><p>${escapeHtml(explanation)}</p><button class="text-button" type="button" data-page="grammatica" data-grammar-level="${level}">Open in de grammatica-atlas →</button></article>`).join('')}</div></section>

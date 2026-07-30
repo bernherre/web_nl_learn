@@ -3,9 +3,9 @@
 'use strict';
 const APP_META = Object.freeze({
   name: 'Nederlands, gewoon doen',
-  version: '19.0.1',
+  version: '19.0.2',
   storageSchema: 1,
-  cacheName: 'nederlands-gewoon-doen-v19-0-1'
+  cacheName: 'nederlands-gewoon-doen-v19-0-2'
 });
 
 function normaliseSentence(value) {
@@ -4670,8 +4670,8 @@ const a0Themes = [
     ],
     vocabulary: [
       ['hallo', 'Een gewone begroeting voor bijna elke situatie.', 'Hallo, hoe gaat het?'],
-      ['goedemorgen', 'Een begroeting in de ochtend.', 'Goedemorgen, mevrouw.'],
-      ['goedemiddag', 'Een begroeting in de middag.', 'Goedemiddag, welkom.'],
+      ['goedemorgen', 'Een begroeting die je vanaf het begin van de dag tot ongeveer twaalf uur gebruikt.', 'Goedemorgen, mevrouw De Vries. Heeft u goed geslapen?'],
+      ['goedemiddag', 'Een begroeting die je na twaalf uur en vóór de avond gebruikt.', 'Goedemiddag, welkom bij de gemeente. Waarmee kan ik u helpen?'],
       ['goedenavond', 'Een begroeting in de avond.', 'Goedenavond, alles goed?'],
       ['dank je wel', 'Een informele manier om iemand te bedanken.', 'Dank je wel voor je hulp.'],
       ['dank u wel', 'Een beleefde manier om iemand te bedanken.', 'Dank u wel, meneer.'],
@@ -4720,9 +4720,9 @@ const a0Themes = [
       ['ik heet', 'Een korte manier om je naam te noemen.', 'Ik heet Amir.'],
       ['hoe heet je?', 'Een informele vraag naar iemands naam.', 'Hoi, hoe heet je?'],
       ['hoe heet u?', 'Een beleefde vraag naar iemands naam.', 'Goedemiddag, hoe heet u?'],
-      ['ik kom uit', 'Een vaste combinatie voor je land of plaats van herkomst.', 'Ik kom uit Colombia.'],
-      ['ik woon in', 'Een vaste combinatie voor je woonplaats.', 'Ik woon in Eindhoven.'],
-      ['ik spreek', 'Een vaste combinatie om een taal te noemen.', 'Ik spreek Spaans en Engels.'],
+      ['ik kom uit', 'Met deze woorden vertel je uit welk land, welke stad of welke plaats je afkomstig bent.', 'Ik kom uit Colombia, maar ik woon nu in Eindhoven.'],
+      ['ik woon in', 'Met deze woorden vertel je in welke plaats, straat of woning je huis is.', 'Ik woon in Eindhoven, vlak bij het station.'],
+      ['ik spreek', 'Met deze woorden vertel je welke taal je mondeling kunt gebruiken.', 'Ik spreek Spaans en Engels en ik leer nu Nederlands.'],
       ['aangenaam', 'Een beleefde reactie wanneer je iemand ontmoet.', 'Aangenaam, ik ben Noor.']
     ],
     wordGroups: {
@@ -4765,9 +4765,9 @@ const a0Themes = [
     vocabulary: [
       ['ik begrijp het niet', 'Je zegt dat de betekenis niet duidelijk is.', 'Sorry, ik begrijp het niet.'],
       ['nog een keer', 'Een verzoek om iets te herhalen.', 'Kunt u dat nog een keer zeggen?'],
-      ['langzamer, alstublieft', 'Een verzoek om minder snel te spreken.', 'Langzamer, alstublieft.'],
-      ['wat betekent dat?', 'Een vraag naar de betekenis van een woord of zin.', 'Wat betekent dat?'],
-      ['kunt u mij helpen?', 'Een beleefde vraag om hulp.', 'Kunt u mij helpen?'],
+      ['langzamer, alstublieft', 'Een beleefd verzoek aan iemand om minder snel te spreken.', 'Kunt u iets langzamer spreken, alstublieft?'],
+      ['wat betekent dat?', 'Een vraag waarmee je om uitleg van een onbekend woord, teken of zin vraagt.', 'Ik ken het woord afspraak niet. Wat betekent dat?'],
+      ['kunt u mij helpen?', 'Een beleefde vraag waarmee je iemand vraagt iets voor je te doen of uit te leggen.', 'Pardon, kunt u mij helpen met deze automaat?'],
       ['waar is ...?', 'Een basisvraag naar een plaats.', 'Waar is het station?'],
       ['ik zoek ...', 'Een vaste zin wanneer je iets nodig hebt.', 'Ik zoek de uitgang.'],
       ['sorry', 'Een woord om beleefd aandacht te vragen of je te verontschuldigen.', 'Sorry, waar is de bushalte?']
@@ -4810,10 +4810,10 @@ const a0Themes = [
       'Ik kan een eenvoudige basisbehoefte uitspreken.'
     ],
     vocabulary: [
-      ['ja', 'Een positief antwoord.', 'Ja, graag.'],
+      ['ja', 'Een positief antwoord waarmee je instemt of bevestigt dat iets klopt.', 'Wilt u koffie? Ja, graag.'],
       ['nee', 'Een negatief antwoord.', 'Nee, dank u.'],
-      ['hoeveel kost het?', 'Een vraag naar de prijs.', 'Hoeveel kost het?'],
-      ['hoe laat is het?', 'Een vraag naar de tijd.', 'Hoe laat is het?'],
+      ['hoeveel kost het?', 'Een vraag waarmee je wilt weten welke prijs je voor iets moet betalen.', 'Deze jas heeft geen prijskaartje. Hoeveel kost hij?'],
+      ['hoe laat is het?', 'Een vraag waarmee je naar het huidige tijdstip vraagt.', 'Mijn telefoon is leeg. Weet u hoe laat het is?'],
       ['ik wil graag ...', 'Een beleefde manier om iets te vragen.', 'Ik wil graag water.'],
       ['waar is het toilet?', 'Een basisvraag naar het toilet.', 'Pardon, waar is het toilet?'],
       ['ik heb een probleem', 'Een korte zin om aan te geven dat iets niet goed gaat.', 'Ik heb een probleem met mijn kaart.'],
@@ -7073,7 +7073,7 @@ const rawVerbDetails = [
   ['blijken','Duidelijk worden dat iets waar of anders is.','Uit het onderzoek bleek dat de methode werkte.',['duidelijk worden','naar voren komen'],{past:'bleek',pastPlural:'bleken',participle:'gebleken',auxiliary:'zijn',presentStem:'blijk'}],
   ['ontstaan','Beginnen te bestaan of zich geleidelijk vormen.','Het probleem is tijdens de migratie ontstaan.',['zich vormen','opkomen'],{past:'ontstond',pastPlural:'ontstonden',participle:'ontstaan',auxiliary:'zijn',presentStem:'ontsta'}],
   ['verdwijnen','Niet langer zichtbaar of aanwezig zijn.','De fout is na de update verdwenen.',['weggaan','ophouden te bestaan'],{past:'verdween',pastPlural:'verdwenen',participle:'verdwenen',auxiliary:'zijn',presentStem:'verdwijn'}],
-  ['gebeuren','Plaatsvinden.','Wat is er gisteren gebeurd?',['plaatsvinden','voorvallen'],{past:'gebeurde',pastPlural:'gebeurden',participle:'gebeurd',auxiliary:'zijn',presentStem:'gebeur'}],
+  ['gebeuren','Plaatsvinden of ontstaan zonder dat een handelende persoon centraal staat.','Wat is er gisteren gebeurd?',['plaatsvinden','voorvallen'],{past:'gebeurde',pastPlural:'gebeurden',participle:'gebeurd',auxiliary:'zijn',presentStem:'gebeur'}],
   ['lukken','Het gewenste resultaat bereiken.','Het is gelukt om de fout te herstellen.',['slagen','goed aflopen'],{past:'lukte',pastPlural:'lukten',participle:'gelukt',auxiliary:'zijn',presentStem:'luk'}],
   ['mislukken','Niet het gewenste resultaat bereiken.','De eerste poging is mislukt.',['falen','verkeerd aflopen'],{past:'mislukte',pastPlural:'mislukten',participle:'mislukt',auxiliary:'zijn',presentStem:'misluk'}],
   ['genieten','Iets als prettig ervaren.','We hebben van de vakantie genoten.',['plezier hebben','waarderen'],{past:'genoot',pastPlural:'genoten',participle:'genoten',auxiliary:'hebben',presentStem:'geniet'},[['genieten van','Veel plezier of voldoening uit iets krijgen.','Ik geniet van de rust.']]],
@@ -10056,15 +10056,15 @@ const grammarTopics = [
 const verbs = [
   { infinitive: 'zijn', meaning: 'een toestand of identiteit hebben', auxiliary: 'zijn', present: ['ik ben', 'jij bent', 'hij/zij is', 'wij zijn'], past: ['ik was', 'jij was', 'wij waren'], perfect: 'ik ben geweest', examples: ['Ik ben thuis.', 'Zij is docent.', 'Wij zijn moe.'] },
   { infinitive: 'hebben', meaning: 'iets bezitten of ervaren', auxiliary: 'hebben', present: ['ik heb', 'jij hebt', 'hij/zij heeft', 'wij hebben'], past: ['ik had', 'jij had', 'wij hadden'], perfect: 'ik heb gehad', examples: ['Ik heb een afspraak.', 'Hij heeft koorts.', 'Wij hebben tijd.'] },
-  { infinitive: 'heten', meaning: 'een naam hebben', auxiliary: 'hebben', present: ['ik heet', 'jij heet', 'hij/zij heet', 'wij heten'], past: ['ik heette', 'jij heette', 'wij heetten'], perfect: 'ik heb geheten', examples: ['Ik heet Lina.', 'Hoe heet u?', 'Onze docent heet Peter.'] },
+  { infinitive: 'heten', meaning: 'Een bepaalde naam hebben of met een bepaalde naam genoemd worden.', auxiliary: 'hebben', present: ['ik heet', 'jij heet', 'hij/zij heet', 'wij heten'], past: ['ik heette', 'jij heette', 'wij heetten'], perfect: 'ik heb geheten', examples: ['Ik heet Lina.', 'Hoe heet u?', 'Onze docent heet Peter.'] },
   { infinitive: 'komen', meaning: 'naar een plaats bewegen of ergens vandaan zijn', auxiliary: 'zijn', present: ['ik kom', 'jij komt', 'hij/zij komt', 'wij komen'], past: ['ik kwam', 'jij kwam', 'wij kwamen'], perfect: 'ik ben gekomen', examples: ['Ik kom uit Colombia.', 'De bus komt om acht uur.', 'Zij is te laat gekomen.'] },
   { infinitive: 'wonen', meaning: 'op een plaats je huis hebben', auxiliary: 'hebben', present: ['ik woon', 'jij woont', 'hij/zij woont', 'wij wonen'], past: ['ik woonde', 'jij woonde', 'wij woonden'], perfect: 'ik heb gewoond', examples: ['Ik woon in Waalre.', 'Wij wonen bij een park.', 'Hij heeft in Duitsland gewoond.'] },
   { infinitive: 'leren', meaning: 'nieuwe kennis of vaardigheden krijgen', auxiliary: 'hebben', present: ['ik leer', 'jij leert', 'hij/zij leert', 'wij leren'], past: ['ik leerde', 'jij leerde', 'wij leerden'], perfect: 'ik heb geleerd', examples: ['Ik leer Nederlands.', 'De kinderen leren lezen.', 'Wij hebben veel geleerd.'] },
   { infinitive: 'spreken', meaning: 'met woorden communiceren', auxiliary: 'hebben', present: ['ik spreek', 'jij spreekt', 'hij/zij spreekt', 'wij spreken'], past: ['ik sprak', 'jij sprak', 'wij spraken'], perfect: 'ik heb gesproken', examples: ['Ik spreek Spaans.', 'Spreekt u Nederlands?', 'Wij hebben met de docent gesproken.'] },
   { infinitive: 'werken', meaning: 'een taak of beroep uitvoeren', auxiliary: 'hebben', present: ['ik werk', 'jij werkt', 'hij/zij werkt', 'wij werken'], past: ['ik werkte', 'jij werkte', 'wij werkten'], perfect: 'ik heb gewerkt', examples: ['Ik werk vandaag thuis.', 'Hij werkt op kantoor.', 'We hebben samen gewerkt.'] },
   { infinitive: 'gaan', meaning: 'zich naar een andere plaats bewegen', auxiliary: 'zijn', present: ['ik ga', 'jij gaat', 'hij/zij gaat', 'wij gaan'], past: ['ik ging', 'jij ging', 'wij gingen'], perfect: 'ik ben gegaan', examples: ['Wij gaan naar school.', 'Ik ga met de fiets.', 'Zij is naar huis gegaan.'] },
-  { infinitive: 'eten', meaning: 'voedsel nemen', auxiliary: 'hebben', present: ['ik eet', 'jij eet', 'hij/zij eet', 'wij eten'], past: ['ik at', 'jij at', 'wij aten'], perfect: 'ik heb gegeten', examples: ['Ik eet een appel.', 'Wat eten jullie?', 'Wij hebben soep gegeten.'] },
-  { infinitive: 'drinken', meaning: 'vloeistof nemen', auxiliary: 'hebben', present: ['ik drink', 'jij drinkt', 'hij/zij drinkt', 'wij drinken'], past: ['ik dronk', 'jij dronk', 'wij dronken'], perfect: 'ik heb gedronken', examples: ['Ik drink water.', 'Drinkt u koffie?', 'Hij heeft thee gedronken.'] },
+  { infinitive: 'eten', meaning: 'Voedsel in de mond nemen, kauwen en doorslikken.', auxiliary: 'hebben', present: ['ik eet', 'jij eet', 'hij/zij eet', 'wij eten'], past: ['ik at', 'jij at', 'wij aten'], perfect: 'ik heb gegeten', examples: ['Ik eet een appel.', 'Wat eten jullie?', 'Wij hebben soep gegeten.'] },
+  { infinitive: 'drinken', meaning: 'Een vloeistof via de mond innemen.', auxiliary: 'hebben', present: ['ik drink', 'jij drinkt', 'hij/zij drinkt', 'wij drinken'], past: ['ik dronk', 'jij dronk', 'wij dronken'], perfect: 'ik heb gedronken', examples: ['Ik drink water.', 'Drinkt u koffie?', 'Hij heeft thee gedronken.'] },
   { infinitive: 'maken', meaning: 'iets doen, produceren of voorbereiden', auxiliary: 'hebben', present: ['ik maak', 'jij maakt', 'hij/zij maakt', 'wij maken'], past: ['ik maakte', 'jij maakte', 'wij maakten'], perfect: 'ik heb gemaakt', examples: ['Ik maak de opdracht.', 'Wij maken soep.', 'Zij heeft een afspraak gemaakt.'] },
   { infinitive: 'willen', meaning: 'een wens of bedoeling hebben', auxiliary: 'hebben', present: ['ik wil', 'jij wilt/wil', 'hij/zij wil', 'wij willen'], past: ['ik wilde', 'jij wilde', 'wij wilden'], perfect: 'ik heb gewild', examples: ['Ik wil graag koffie.', 'Wilt u pinnen?', 'Wij willen Nederlands leren.'] },
   { infinitive: 'kunnen', meaning: 'in staat zijn of een mogelijkheid hebben', auxiliary: 'hebben', present: ['ik kan', 'jij kunt/kan', 'hij/zij kan', 'wij kunnen'], past: ['ik kon', 'jij kon', 'wij konden'], perfect: 'ik heb gekund', examples: ['Ik kan Nederlands spreken.', 'Kunt u dat herhalen?', 'Wij kunnen morgen komen.'] },
@@ -11760,6 +11760,45 @@ const commonWordLearningDetails = {
   'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
   'de opslag': ['Een ruimte waar je spullen tijdelijk bewaart, bijvoorbeeld tijdens een verhuizing.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
   'de schade': ['Beschadiging, verlies of nadeel dat door een ongeluk, fout of andere gebeurtenis ontstaat.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
+  'inpakken': ['Spullen in dozen, tassen of papier doen om ze te bewaren, te vervoeren of cadeau te geven.', 'We pakken de boeken zorgvuldig in voordat de verhuiswagen komt.'],
+  'uitpakken': ['Spullen uit een doos, tas of verpakking halen.', 'Na de verhuizing pakken we eerst de keukenspullen uit.'],
+  'tillen': ['Iets met je handen omhoogbrengen of op een andere plaats zetten.', 'Kun je deze zware doos samen met mij tillen?'],
+  'dragen': ['Iets vasthouden en ermee naar een andere plaats lopen.', 'De verhuizers dragen de kast voorzichtig naar boven.'],
+  'inrichten': ['Een ruimte bruikbaar en prettig maken door meubels en spullen een plaats te geven.', 'We richten de woonkamer in met een bank en twee kasten.'],
+  'ophangen': ['Iets hoger vastmaken, bijvoorbeeld aan een muur of plafond.', 'Zij hangt de lamp boven de eettafel op.'],
+  'monteren': ['Onderdelen op de juiste manier aan elkaar bevestigen zodat ze één geheel vormen.', 'We monteren de nieuwe kast volgens de handleiding.'],
+  'doorgeven': ['Informatie aan een andere persoon of organisatie melden.', 'Geef je nieuwe adres op tijd aan de gemeente door.'],
+  'inschrijven': ['Een persoon officieel registreren voor een plaats, activiteit of organisatie.', 'Na de verhuizing schrijft hij zich bij de gemeente in.'],
+  'opzeggen': ['Laten weten dat een contract, abonnement of afspraak moet eindigen.', 'We zeggen het oude huurcontract schriftelijk op.'],
+  'regelen': ['Ervoor zorgen dat iets wordt afgesproken, georganiseerd of uitgevoerd.', 'Ik regel een verhuiswagen voor zaterdagochtend.'],
+  'afspreken': ['Samen bepalen wanneer, waar of hoe iets gebeurt.', 'We spreken met de verhuurder af dat de oplevering vrijdag is.'],
+  'lenen': ['Iets tijdelijk van iemand gebruiken en het later teruggeven.', 'We lenen een steekwagen van de buren.'],
+  'beschadigen': ['Ervoor zorgen dat iets kapotgaat of minder goed wordt.', 'Pas op dat je de vloer niet beschadigt.'],
+  'controleren': ['Nauwkeurig kijken of iets klopt, compleet is of goed werkt.', 'Tijdens de oplevering controleren we alle kamers.'],
+  'beschikbaar': ['Vrij en gereed om gebruikt, gekozen of verkregen te worden.', 'De verhuiswagen is zaterdagmiddag beschikbaar.'],
+  'geschikt': ['Goed passend bij een bepaald doel, persoon of situatie.', 'Deze kast is geschikt voor een kleine slaapkamer.'],
+  'praktisch': ['Handig en gemakkelijk te gebruiken in een concrete situatie.', 'Een verhuisdoos met handgrepen is erg praktisch.'],
+  'zwaar': ['Met veel gewicht en daardoor moeilijk op te tillen.', 'Deze doos is te zwaar om alleen te dragen.'],
+  'licht': ['Met weinig gewicht en daardoor gemakkelijk op te tillen.', 'De lege verhuisdoos is heel licht.'],
+  'breekbaar': ['Gemakkelijk kapot te maken of te breken.', 'Zet breekbaar servies in een aparte doos.'],
+  'compleet': ['Met alle noodzakelijke delen; er ontbreekt niets.', 'Controleer of de sleutelset compleet is.'],
+  'leeg': ['Zonder mensen, spullen of inhoud.', 'De oude woning moet bij de oplevering leeg zijn.'],
+  'gemeubileerd': ['Met meubels die al in de woning of kamer aanwezig zijn.', 'Zij huurt tijdelijk een gemeubileerd appartement.'],
+  'ongemeubileerd': ['Zonder meubels die door de verhuurder zijn geplaatst.', 'De woning wordt ongemeubileerd opgeleverd.'],
+  'tijdelijk': ['Voor een beperkte periode en niet voor altijd.', 'Tijdens de verbouwing wonen we tijdelijk bij familie.'],
+  'definitief': ['Vast en bedoeld om niet meer te veranderen.', 'Volgende week maken we de verhuisdatum definitief.'],
+  'adres wijzigen': ['Een oud adres officieel vervangen door een nieuw adres.', 'Na de verhuizing moet je je adres bij meerdere organisaties wijzigen.'],
+  'huur opzeggen': ['De verhuurder laten weten dat je het huurcontract wilt beëindigen.', 'Zij zegt de huur drie maanden voor de verhuizing op.'],
+  'borg betalen': ['Een bedrag als zekerheid aan de verhuurder overmaken.', 'Voor de sleuteloverdracht moeten we de borg betalen.'],
+  'sleutel ophalen': ['Naar een afgesproken plaats gaan om een sleutel te ontvangen.', 'Vrijdag halen we de sleutel bij de makelaar op.'],
+  'dozen inpakken': ['Spullen geordend in verhuisdozen doen.', 'We pakken eerst de boeken en het servies in dozen in.'],
+  'meubels verplaatsen': ['Meubels van de ene plaats naar een andere plaats brengen.', 'De verhuizers verplaatsen de meubels zonder de vloer te beschadigen.'],
+  'kennis maken met de buren': ['De buren voor het eerst ontmoeten en iets over elkaar vertellen.', 'Na de verhuizing maken we kennis met de buren.'],
+  'rekening houden met': ['Bij een plan of beslissing aandacht geven aan een omstandigheid of persoon.', 'Houd bij het tillen rekening met de smalle trap.'],
+  'op tijd doorgeven': ['Informatie vóór de afgesproken of noodzakelijke datum melden.', 'Geef de meterstanden op tijd aan de leverancier door.'],
+  'een afspraak bevestigen': ['Laten weten dat een eerder gemaakte afspraak doorgaat.', 'De makelaar bevestigt de afspraak per e-mail.'],
+  'schade melden': ['Een beschadiging officieel aan de verantwoordelijke persoon of organisatie doorgeven.', 'De huurder meldt de schade direct bij de verhuurder.'],
+  'een woning opleveren': ['Een woning na controle officieel aan de eigenaar of nieuwe bewoner overdragen.', 'We leveren de woning schoon en leeg op.'],
   'de borg': ['Een bedrag dat je vooraf betaalt als zekerheid en meestal terugkrijgt wanneer je alles netjes achterlaat.', 'Bij het tekenen van het huurcontract betaalden we twee maanden borg.'],
   'de sleuteloverdracht': ['Het moment waarop de sleutels officieel aan de nieuwe bewoner worden gegeven.', 'De sleuteloverdracht vindt vrijdagmiddag bij de woning plaats.'],
   'de bezichtiging': ['Een afspraak waarbij je een woning of gebouw bekijkt voordat je beslist.', 'Tijdens de bezichtiging controleerden we de keuken en de badkamer.'],
@@ -11831,27 +11870,76 @@ function normalizeLearningWord(word) {
   return String(word || '').trim().toLocaleLowerCase('nl-NL');
 }
 
+
+const GENERIC_LEXICAL_PATTERNS = [
+  /^Het werkwoord beschrijft vooral/u,
+  /^Het werkwoord beschrijft een toestand/u,
+  /^Het onderwerp verandert van toestand/u,
+  /^Een vaste combinatie(?: die| voor| om)/u,
+  /^Een zelfstandig naamwoord(?: dat| voor)/u,
+  /^Het zelfstandig naamwoord verwijst naar/u,
+  /^Een .* uit deze les\.?$/u,
+];
+
+function normalizedLexicalText(value) {
+  return String(value || '')
+    .trim()
+    .toLocaleLowerCase('nl-NL')
+    .replace(/[“”„'‘’.,!?;:()]/gu, '')
+    .replace(/\s+/gu, ' ');
+}
+
+function isReliableDefinition(term, definition) {
+  const text = String(definition || '').trim();
+  if (text.length < 18 || GENERIC_LEXICAL_PATTERNS.some((pattern) => pattern.test(text))) return false;
+  const normalizedTerm = normalizedLexicalText(term).replace(/^(de|het|een)\s+/u, '');
+  const normalizedDefinition = normalizedLexicalText(text);
+  if (!normalizedTerm || normalizedDefinition === normalizedTerm) return false;
+  return ![`${normalizedTerm} is `, `${normalizedTerm} betekent `].some((start) => normalizedDefinition.startsWith(start));
+}
+
+function isReliableExample(term, example) {
+  const text = String(example || '').trim();
+  if (text.length < 12) return false;
+  const normalizedTerm = normalizedLexicalText(term);
+  const normalizedExample = normalizedLexicalText(text);
+  if (!normalizedExample || normalizedExample === normalizedTerm) return false;
+  if (/^ik\s+[a-zà-ÿ-]+(?:en)\.?$/u.test(normalizedExample)) return false;
+  const words = normalizedExample.split(' ').filter(Boolean);
+  return words.length >= 3;
+}
+
+function reviewedLearningDetails(term, definition, example, source) {
+  const definitionOk = isReliableDefinition(term, definition);
+  const exampleOk = isReliableExample(term, example);
+  if (!definitionOk) return null;
+  return {
+    definition: String(definition).trim(),
+    example: exampleOk ? String(example).trim() : '',
+    source,
+    reviewed: true,
+  };
+}
+
 function highlightedWordDetails(theme, word) {
   const normalized = normalizeLearningWord(word);
   const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
-  if (local) return { definition: local[1], example: local[2], source: 'thema', reviewed: true };
+  if (local) return reviewedLearningDetails(word, local[1], local[2], 'thema');
   const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
-  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord', reviewed: true };
+  if (global) return reviewedLearningDetails(word, global.definition, global.example, 'beeldwoord');
   return null;
 }
 
 function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord', reviewed: true };
+  if (compact) {
+    const reviewed = reviewedLearningDetails(word, compact.meaning, compact.examples?.[0] || '', 'werkwoord');
+    if (reviewed) return reviewed;
+  }
   const atlas = allVerbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (!atlas) return null;
-  return {
-    definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
-    example: atlas.sentencePatterns?.hoofdzin || '',
-    source: 'werkwoord',
-    reviewed: true,
-  };
+  if (!atlas?.lexicalEnriched || atlas.verified !== true) return null;
+  return reviewedLearningDetails(word, atlas.definition || atlas.meaning, atlas.example || atlas.sentencePatterns?.hoofdzin || '', 'werkwoord');
 }
 
 function fallbackWordDetails(theme, group, word) {
@@ -11866,7 +11954,7 @@ function fallbackWordDetails(theme, group, word) {
 function wordLearningDetails(theme, group, word) {
   const normalized = normalizeLearningWord(word);
   const curated = commonWordLearningDetails[normalized];
-  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg', reviewed: true };
+  if (curated) return reviewedLearningDetails(word, curated[0], curated[1], 'uitleg') || fallbackWordDetails(theme, group, word);
   return highlightedWordDetails(theme, word)
     || verbLearningDetails(word)
     || fallbackWordDetails(theme, group, word);
@@ -12009,7 +12097,10 @@ function renderCourseThemeDetail(theme, level, completed) {
     <div class="a1-detail-body">
       <section class="a1-can-do"><span class="kicker">Na dit thema</span><h2>Dit kun je</h2><ul>${theme.canDo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
       <section><div class="section-heading compact"><div><span class="kicker">Betekenis in context</span><h2>Uitgelichte kernwoorden</h2></div><span class="plan-total">${theme.vocabulary.length} uitgebreid</span></div>
-        <div class="a1-word-grid">${theme.vocabulary.map(([word, meaning, example]) => `<article><strong>${escapeHtml(word)}</strong><p>${escapeHtml(meaning)}</p><small>${escapeHtml(example)}</small><div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button></div></article>`).join('')}</div>
+        <div class="a1-word-grid">${theme.vocabulary.map(([word]) => {
+          const details = wordLearningDetails(theme, 'Uitgelichte kernwoorden', word);
+          return `<article class="${details.reviewed === false ? 'needs-review' : ''}"><strong>${escapeHtml(word)}</strong><span class="word-kind">${escapeHtml(details.source)}</span><p>${escapeHtml(details.definition)}</p>${details.example ? `<small>${escapeHtml(details.example)}</small>` : ''}<div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>${details.example ? `<button class="speak" type="button" data-text="${escapeHtml(details.example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button>` : ''}</div></article>`;
+        }).join('')}</div>
       </section>
       <section class="full-word-bank"><div class="section-heading compact"><div><span class="kicker">Woorden leren</span><h2>${themeWordCount(theme)} woorden en vaste combinaties</h2></div><span class="plan-total">betekenis · voorbeeld · geluid</span></div><p class="word-bank-intro">Begin rustig met acht woorden per groep. Elke kaart geeft een korte betekenis; open de voorbeeldzin en luister normaal of langzaam.</p><div class="word-bank-toolbar"><label class="word-bank-search"><span>Zoek in dit thema</span><input type="search" data-theme-word-search placeholder="Bijvoorbeeld: familie, wonen, spreken…" autocomplete="off"></label><p class="word-bank-result" data-theme-word-result aria-live="polite">${themeWordCount(theme)} woorden beschikbaar</p></div>${renderThemeWordGroups(theme)}</section>
       <section><span class="kicker">Grammatica</span><h2>Vorm en betekenis</h2><div class="a1-grammar-grid">${theme.grammar.map(([title, explanation]) => `<article><strong>${escapeHtml(title)}</strong><p>${escapeHtml(explanation)}</p><button class="text-button" type="button" data-page="grammatica" data-grammar-level="${level}">Open in de grammatica-atlas →</button></article>`).join('')}</div></section>
