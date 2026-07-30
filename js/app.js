@@ -1,6 +1,13 @@
-/* Generated browser bundle. Source of truth: learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, exercises.js, profiles.js, verb-atlas.js, verb-details.js, content.js and main.js. */
+/* Generated browser bundle. Source of truth: app-meta.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, exercises.js, profiles.js, verb-atlas.js, verb-details.js, content.js and main.js. */
 (function () {
 'use strict';
+const APP_META = Object.freeze({
+  name: 'Nederlands, gewoon doen',
+  version: '19.0.0',
+  storageSchema: 1,
+  cacheName: 'nederlands-gewoon-doen-v19-0-0'
+});
+
 function normaliseSentence(value) {
   return String(value ?? '')
     .trim()
@@ -13296,9 +13303,20 @@ function initialize() {
   const hashPage = location.hash.slice(1);
   showPage(document.querySelector(`#page-${hashPage}`) ? hashPage : 'vandaag', false);
   if (!state.activeProfile) window.setTimeout(() => openProfileDialog({ required: true }), 40);
-  if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    navigator.serviceWorker.register('./service-worker.js').then((registration) => {
+      registration.update().catch(() => {});
+    }).catch(() => showToast('Offlinefunctie kon niet worden gestart.'));
+  }
 }
 
-initialize();
+try {
+  initialize();
+} catch (error) {
+  console.error('Applicatie kon niet volledig starten.', error);
+  document.documentElement.dataset.appError = 'true';
+  const toast = document.getElementById('toast');
+  if (toast) { toast.textContent = 'De leeromgeving kon niet volledig starten. Vernieuw de pagina.'; toast.classList.add('show'); }
+}
 
 })();

@@ -1802,7 +1802,18 @@ function initialize() {
   const hashPage = location.hash.slice(1);
   showPage(document.querySelector(`#page-${hashPage}`) ? hashPage : 'vandaag', false);
   if (!state.activeProfile) window.setTimeout(() => openProfileDialog({ required: true }), 40);
-  if ('serviceWorker' in navigator && location.protocol !== 'file:') navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    navigator.serviceWorker.register('./service-worker.js').then((registration) => {
+      registration.update().catch(() => {});
+    }).catch(() => showToast('Offlinefunctie kon niet worden gestart.'));
+  }
 }
 
-initialize();
+try {
+  initialize();
+} catch (error) {
+  console.error('Applicatie kon niet volledig starten.', error);
+  document.documentElement.dataset.appError = 'true';
+  const toast = document.getElementById('toast');
+  if (toast) { toast.textContent = 'De leeromgeving kon niet volledig starten. Vernieuw de pagina.'; toast.classList.add('show'); }
+}

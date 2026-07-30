@@ -15,5 +15,33 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
+  ],
+  "id": "./",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "orientation": "any",
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "shortcuts": [
+    {
+      "name": "Werkwoorden",
+      "short_name": "Werkwoorden",
+      "url": "./#werkwoorden"
+    },
+    {
+      "name": "Oefenen",
+      "short_name": "Oefenen",
+      "url": "./#oefenen"
+    },
+    {
+      "name": "Vaklexicon",
+      "short_name": "Vaklexicon",
+      "url": "./#vaklexicon"
+    }
   ]
 }

@@ -1,6 +1,7 @@
-const CACHE = 'nederlands-gewoon-doen-v18-1';
+const CACHE = 'nederlands-gewoon-doen-v19-0-0';
 const CORE = [
-  './', './index.html', './css/styles.css', './js/app.js',
+  './', './index.html', './offline.html', './manifest.webmanifest',
+  './css/styles.css', './css/tokens.css', './css/themes.css', './css/typography.css', './css/accessibility.css', './js/app.js',
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
   './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js',
   './js/exercises.js',
@@ -31,9 +32,21 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
-  event.respondWith(caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
-    const copy = response.clone();
-    caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-    return response;
-  })));
+  if (event.request.mode === 'navigate') {
+    event.respondWith(fetch(event.request).then((response) => {
+      const copy = response.clone();
+      caches.open(CACHE).then((cache) => cache.put(event.request, copy));
+      return response;
+    }).catch(() => caches.match(event.request).then((cached) => cached || caches.match('./offline.html'))));
+    return;
+  }
+  event.respondWith(caches.match(event.request).then((cached) => {
+    const network = fetch(event.request).then((response) => {
+      if (response.ok) caches.open(CACHE).then((cache) => cache.put(event.request, response.clone()));
+      return response;
+    }).catch(() => cached);
+    return cached || network;
+  }));
 });
+
+// v18 compatibility marker: verb-details.js remains available offline.
