@@ -1725,3 +1725,119 @@ html[data-contrast='high'] .professional-domain-card.active { outline-width: 4px
     white-space: normal;
   }
 }
+
+/* V19 journey layout hotfix */
+.quick-level-grid {
+  align-items: stretch;
+}
+
+.quick-level-card {
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  min-height: 7.25rem;
+  overflow: hidden;
+}
+
+.quick-level-code {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  align-self: start;
+}
+
+.quick-level-card strong {
+  grid-column: 2;
+  grid-row: 1;
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  font-size: .98rem;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quick-level-card small {
+  grid-column: 2;
+  grid-row: 2;
+  display: -webkit-box;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: .76rem;
+  line-height: 1.35;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.quick-level-card > i {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  width: calc(100% - 2.25rem);
+  margin-top: .75rem;
+  margin-right: 2.25rem;
+}
+
+.quick-level-card > em {
+  right: .75rem;
+  bottom: .62rem;
+  z-index: 2;
+  padding-left: .35rem;
+  background: var(--surface);
+}
+
+.quick-level-card.current > em {
+  background: transparent;
+}
+
+.trust-strip {
+  margin-top: 1.15rem;
+}
+
+.trust-strip > div {
+  display: grid;
+  grid-template-columns: 2.25rem minmax(0, 1fr);
+  align-items: center;
+}
+
+.trust-strip > div > span {
+  grid-column: 1;
+}
+
+.trust-strip p,
+.trust-strip > div > div {
+  grid-column: 2;
+  min-width: 0;
+  margin: 0;
+}
+
+.trust-strip strong {
+  display: block;
+  margin-bottom: .15rem;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.trust-strip small {
+  display: block;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+@media (max-width: 1250px) {
+  .quick-level-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .quick-level-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-level-card strong {
+    white-space: normal;
+  }
+}
