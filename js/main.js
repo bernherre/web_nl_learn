@@ -999,7 +999,28 @@ function renderVerbDetail(infinitive = state.selectedVerb) {
   const separableLabel = verb.separable ? `Scheidbaar · ${verb.prefix} + ${verb.root}` : 'Niet scheidbaar';
   const perfectForms = verb.perfectForms.map((form) => `<div class="verb-perfect-form"><strong>${escapeHtml(form)}</strong><button class="speak" type="button" data-text="${escapeHtml(form)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(form)}">🔊</button></div>`).join('');
   const patternLabels = { hoofdzin: 'Hoofdzin', verleden: 'Verleden tijd', perfectum: 'Perfectum', modaal: 'Met modaal werkwoord', bijzin: 'Bijzin', metTe: 'Met te' };
-  const patterns = Object.entries(verb.sentencePatterns || {}).map(([key, sentence]) => `<article><small>${escapeHtml(patternLabels[key] || key)}</small><p>${escapeHtml(sentence)}</p><button class="mini-audio speak" type="button" data-text="${escapeHtml(sentence.replace(/^… /, ''))}" data-rate="0.84">🔊 Luister</button></article>`).join('');
+  const patterns = Object.entries(verb.sentencePatterns || {})
+    .filter(([, sentence]) => (
+      typeof sentence === 'string' &&
+      sentence.trim().length > 0
+    ))
+    .map(([key, sentence]) => {
+      const safeSentence = sentence.trim();
+      const spokenSentence = safeSentence.replace(/^…\s*/, '');
+
+      return `<article>
+        <small>${escapeHtml(patternLabels[key] || key)}</small>
+        <p>${escapeHtml(safeSentence)}</p>
+        <button
+          class="mini-audio speak"
+          type="button"
+          data-text="${escapeHtml(spokenSentence)}"
+          data-rate="0.84"
+        >🔊 Luister</button>
+      </article>`;
+    })
+    .join('');
+
   const synonyms = (verb.synonyms || []).length
     ? `<div class="verb-synonyms"><strong>Synoniemen en nabije woorden</strong><div>${verb.synonyms.map((item) => `<button class="speak verb-word-chip" type="button" data-text="${escapeHtml(item)}" data-rate="0.78">${escapeHtml(item)} 🔊</button>`).join('')}</div></div>`
     : '<div class="verb-synonyms muted"><strong>Synoniemen</strong><p>Voor deze catalogusvorm is nog geen betrouwbaar direct synoniem toegevoegd.</p></div>';
@@ -1731,7 +1752,32 @@ function handleClick(event) {
   }
 
   const verbButton = event.target.closest('[data-verb-infinitive]');
-  if (verbButton) { renderVerbDetail(verbButton.dataset.verbInfinitive); return; }
+  if (verbButton) {
+    event.preventDefault();
+
+    const infinitive = verbButton.dataset.verbInfinitive;
+    state.selectedVerb = infinitive;
+    renderVerbDetail(infinitive);
+
+    elements.verbDetail.setAttribute('tabindex', '-1');
+
+    window.requestAnimationFrame(() => {
+      const compactLayout = window.matchMedia('(max-width: 1050px)').matches;
+
+      if (compactLayout) {
+        elements.verbDetail.scrollIntoView({
+          behavior: state.settings.reducedMotion ? 'auto' : 'smooth',
+          block: 'start',
+        });
+      }
+
+      elements.verbDetail.focus({
+        preventScroll: !compactLayout,
+      });
+    });
+
+    return;
+  }
   const wordGroupMore = event.target.closest('[data-word-group-more]');
   if (wordGroupMore) {
     const group = document.querySelector(`[data-word-group="${CSS.escape(wordGroupMore.dataset.wordGroupMore)}"]`);
@@ -1844,8 +1890,7 @@ function initializeEvents() {
   elements.verbSeparable.addEventListener('change', (event) => { state.verbSeparable = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbAuxiliary.addEventListener('change', (event) => { state.verbAuxiliary = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbFeature.addEventListener('change', (event) => { state.verbFeature = event.target.value; renderVerbs({ resetLimit: true }); });
-  elements.verbLoadMore.addEventListener('click', () => { state.verbLimit += 80; renderVerbs(); });
-  elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
+elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
   elements.mathSearch?.addEventListener('input', (event) => { state.mathQuery = event.target.value; renderMath(); });
   elements.physicsSearch?.addEventListener('input', (event) => { state.physicsQuery = event.target.value; renderPhysics(); });
   elements.softwareSearch?.addEventListener('input', (event) => { state.softwareQuery = event.target.value; renderSoftware(); });
