@@ -1841,3 +1841,23 @@ html[data-contrast='high'] .professional-domain-card.active { outline-width: 4px
     white-space: normal;
   }
 }
+
+/* V19 verb load-more interaction fix */
+#verb-load-more {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  pointer-events: auto;
+  touch-action: manipulation;
+  cursor: pointer;
+}
+
+#verb-atlas-list {
+  position: relative;
+  z-index: 1;
+}
+
+.verb-atlas-sidebar,
+.verb-browser-panel {
+  isolation: isolate;
+}

@@ -1722,6 +1722,14 @@ function handleClick(event) {
   if (structureButton) { renderStructures(structureButton.dataset.structure); return; }
   const verbLevelLink = event.target.closest('[data-verb-level-link]');
   if (verbLevelLink) { state.verbLevel = verbLevelLink.dataset.verbLevelLink; elements.verbLevel.value = state.verbLevel; renderVerbs({ resetLimit: true }); showPage('werkwoorden'); return; }
+  const verbLoadMore = event.target.closest('#verb-load-more');
+  if (verbLoadMore) {
+    event.preventDefault();
+    state.verbLimit += 80;
+    renderVerbs();
+    return;
+  }
+
   const verbButton = event.target.closest('[data-verb-infinitive]');
   if (verbButton) { renderVerbDetail(verbButton.dataset.verbInfinitive); return; }
   const wordGroupMore = event.target.closest('[data-word-group-more]');
