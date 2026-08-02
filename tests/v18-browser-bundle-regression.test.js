@@ -26,6 +26,24 @@ test('de eerste alfabetische verbatch staat vóór de toepassing in de browserbu
   assert.match(bundle, /"participle": "aanbeden"/);
 });
 
+test('V19-oefeningen en praktijksituaties staan vóór gebruik in de klassieke browserbundle', () => {
+  const exercisesDefinition = bundle.indexOf('const v19Exercises =');
+  const scenariosDefinition = bundle.indexOf('const v19PracticeScenarios =');
+  const exerciseBankUse = bundle.indexOf('...v19Exercises];');
+  const scenarioUse = bundle.indexOf('v19PracticeScenarios.find(');
+  assert.ok(exercisesDefinition >= 0, 'v19Exercises ontbreekt in js/app.js');
+  assert.ok(scenariosDefinition >= 0, 'v19PracticeScenarios ontbreekt in js/app.js');
+  assert.ok(exerciseBankUse > exercisesDefinition, 'v19Exercises wordt gebruikt vóór de definitie');
+  assert.ok(scenarioUse > scenariosDefinition, 'v19PracticeScenarios wordt gebruikt vóór de definitie');
+});
+
+test('C1- en C2-spiraaldata staan vóór gebruik in de klassieke browserbundle', () => {
+  const definition = bundle.indexOf('const advancedSpiralLevels =');
+  const use = bundle.indexOf('function spiralLevelData(');
+  assert.ok(definition >= 0, 'advancedSpiralLevels ontbreekt in js/app.js');
+  assert.ok(use > definition, 'advancedSpiralLevels wordt gebruikt vóór de definitie');
+});
+
 test('de klassieke browserbundle bevat de kennisgraafimplementatie vóór initialisatie', () => {
   const definition = bundle.indexOf('function createKnowledgeGraphExplorer(');
   const invocation = bundle.indexOf('knowledgeGraphExplorer = createKnowledgeGraphExplorer({');
@@ -62,15 +80,16 @@ test('de zichtbare werkwoordenaantallen zijn onderling consistent', () => {
   assert.match(index, /<strong>1\.013<\/strong> onregelmatig/);
 });
 
-test('V18.18 gebruikt netwerkverversing voor de shell, correctielagen en kennisgraaf', () => {
-  assert.equal(packageJson.version, '18.18.0');
-  assert.match(serviceWorker, /nederlands-gewoon-doen-v18-18-0/);
+test('V19.2 gebruikt netwerkverversing voor de shell, correctielagen en kennisgraaf', () => {
+  assert.equal(packageJson.version, '19.2.4');
+  assert.match(serviceWorker, /nederlands-gewoon-doen-v19-2-4/);
   assert.match(serviceWorker, /networkFirst/);
-  assert.match(index, /styles\.css\?v=18\.18\.0/);
-  assert.match(index, /app\.js\?v=18\.18\.0/);
+  assert.match(index, /styles\.css\?v=19\.2\.4/);
+  assert.match(index, /app\.js\?v=19\.2\.4/);
   assert.match(serviceWorker, /\.\/js\/verb-corrections\.js/);
   assert.match(serviceWorker, /\.\/js\/verb-core-review\.js/);
   assert.match(serviceWorker, /\.\/js\/verb-initial-review\.js/);
+  assert.match(serviceWorker, /\.\/js\/verb-final-review\.js/);
   assert.match(serviceWorker, /\.\/js\/knowledge-graph\.js/);
   assert.match(bundle, /createKnowledgeGraphExplorer/);
 });

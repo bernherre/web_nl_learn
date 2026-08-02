@@ -10,6 +10,7 @@ import {
 } from '../js/content.js';
 import { a0Themes } from '../js/starter-content.js';
 import { spiralThemes } from '../js/spiral-content.js';
+import { advancedSpiralLevels } from '../js/advanced-level-content.js';
 import {
   prepositionEntries,
   fixedPrepositionCombinations,
@@ -34,12 +35,14 @@ import { verbAtlas } from '../js/verb-atlas.js';
 import { applyVerbCorrections } from '../js/verb-corrections.js';
 import { applyCoreVerbReviews } from '../js/verb-core-review.js';
 import { applyInitialVerbReviews } from '../js/verb-initial-review.js';
+import { applyFinalVerbReviews } from '../js/verb-final-review.js';
 
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
+applyFinalVerbReviews(verbAtlas);
 
-const VERSION = '18.18.0';
+const VERSION = '19.2.4';
 const nodes = new Map();
 const edges = new Map();
 const issues = [];
@@ -134,9 +137,9 @@ function levelEdge(nodeId, level) {
     addEdge(nodeId, levelIds.get(level), 'has_level', level);
     return;
   }
-  const matches = String(level).match(/A0|A1|A2|B1|B2/gu) || [];
+  const matches = String(level).match(/A0|A1|A2|B1|B2|C1|C2/gu) || [];
   if (matches.length >= 2) {
-    const order = ['A0', 'A1', 'A2', 'B1', 'B2'];
+    const order = ['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
     const start = order.indexOf(matches[0]);
     const end = order.indexOf(matches.at(-1));
     if (start >= 0 && end >= start) {
@@ -218,7 +221,8 @@ for (const theme of allThemes) {
 for (const theme of spiralThemes) {
   const parentId = `spiral-theme:${theme.id}`;
   addNode({ id: parentId, type: 'spiral_theme', label: theme.title, subtitle: theme.subtitle, source: 'spiraalleerpad', data: { image: theme.image, accent: theme.accent } });
-  for (const [level, data] of Object.entries(theme.levels || {})) {
+  const levelVariants = { ...(theme.levels || {}), ...(advancedSpiralLevels[theme.id] || {}) };
+  for (const [level, data] of Object.entries(levelVariants)) {
     const id = `theme:${level}:spiral:${theme.id}`;
     addNode({
       id, type: 'theme', label: theme.title, subtitle: `${level} · ${theme.subtitle}`, level, source: `${level}-spiraalcursus`,

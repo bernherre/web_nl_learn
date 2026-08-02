@@ -27,10 +27,10 @@ test('de hoofdapp gebruikt geen twijfelachtige WAV-opnames', async () => {
   assert.match(html, /Langzaam/);
 });
 
-test('de inhoud bevat het leerpad A1 tot B2 en alle kerndomeinen', async () => {
+test('de inhoud bevat het leerpad A1 tot C2 en alle kerndomeinen', async () => {
   const content = await read('js/content.js');
   const { levels } = await import('../js/content.js');
-  assert.deepEqual(levels.map((level) => level.id), ['A1', 'A2', 'B1', 'B2']);
+  assert.deepEqual(levels.map((level) => level.id), ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
   for (const domain of ['Grammatica', 'Werkwoorden', 'Semantiek', 'Woordenschat', 'Uitspraak', 'Communicatie']) assert.match(content, new RegExp(domain));
 });
 
@@ -245,14 +245,14 @@ test('de klassieke bundle en offlinecache bevatten de vragenmodule', async () =>
 });
 
 
-test('V10 toont vijf zichtbare cursusroutes van A0 tot B2', async () => {
+test('V19.2.4 toont zeven zichtbare cursusroutes van A0 tot C2', async () => {
   const html = await read('index.html');
   const main = await read('js/main.js');
-  for (const level of ['a0', 'a1', 'a2', 'b1', 'b2']) {
+  for (const level of ['a0', 'a1', 'a2', 'b1', 'b2', 'c1', 'c2']) {
     assert.match(html, new RegExp(`data-page="${level}"`));
     assert.match(html, new RegExp(`id="page-${level}"`));
   }
-  for (const renderer of ['renderA0Themes', 'renderA1Themes', 'renderA2Themes', 'renderB1Themes', 'renderB2Themes']) {
+  for (const renderer of ['renderA0Themes', 'renderA1Themes', 'renderA2Themes', 'renderB1Themes', 'renderB2Themes', 'renderC1Themes', 'renderC2Themes']) {
     assert.match(main, new RegExp(renderer));
   }
 });

@@ -1,23 +1,23 @@
 # Content validation V18.8
 
 Status: **passed-with-declared-limitations**
-Generated: 2026-08-02T12:14:49.781Z
+Generated: 2026-08-02T18:32:52.389Z
 
 ## Summary
 
-- Checks: 69
-- Passed: 68
-- Warnings: 1
+- Checks: 70
+- Passed: 70
+- Warnings: 0
 - Failed: 0
 
 ## Verified scope
 
 - 71 grammar modules across the original, deep, advanced and source-review layers.
-- 8024 exercises; 24 were newly written from the supplied pedagogical coverage references.
-- 1886 verb lemmas; 1807 have manually reviewed definitions, contextual synonyms, usage notes and examples.
-- 79 verb lemmas remain explicitly marked as not lexically reviewed; the interface does not present generic text as a definition.
+- 8054 exercises; 24 were newly written from the supplied pedagogical coverage references.
+- 1886 verb lemmas; 1886 have manually reviewed definitions, contextual synonyms, usage notes and examples.
+- 0 verb lemmas remain explicitly marked as not lexically reviewed; the interface does not present generic text as a definition.
 - 10 reading articles and 12 writing tasks.
-- 24432 knowledge-graph nodes and 80099 validated relationships across 47 source collections.
+- 24857 knowledge-graph nodes and 81030 validated relationships across 46 source collections.
 
 ## Important limitation
 
@@ -57,25 +57,25 @@ The complete application structure, published content banks and graph integrity 
 
 ## exercises
 
-- **PASS — oefenbanktotaal is reproduceerbaar:** 8024 oefeningen.
-- **PASS — oefening-id’s zijn uniek:** 8024 unieke id's.
+- **PASS — oefenbanktotaal is reproduceerbaar:** 8054 oefeningen.
+- **PASS — oefening-id’s zijn uniek:** 8054 unieke id's.
 - **PASS — antwoorden, opties en feedback zijn controleerbaar:** Geen structureel onvolledige oefening gevonden.
-- **PASS — niveauverdeling:** {"A0":350,"A1":1058,"A2":1563,"B1":2253,"B2":2800}
+- **PASS — niveauverdeling:** {"A0":356,"A1":1064,"A2":1569,"B1":2259,"B2":2806}
 
 ## verbs
 
 - **PASS — atlasomvang is consistent:** 1886 unieke werkwoorden na correctielagen.
 - **PASS — werkwoorden zijn uniek:** Geen dubbele infinitieven.
-- **PASS — alle expliciete reviews zijn toegepast:** 1807 handmatig nagekeken fiches.
+- **PASS — alle expliciete reviews zijn toegepast:** 1886 handmatig nagekeken fiches.
 - **PASS — de eerste honderd alfabetische werkwoorden zijn volledig nagekeken:** 100 van 100 fiches zijn nagekeken.
 - **PASS — alle alfabetische reviewfiches hebben herleidbare reviewmetadata:** Reviewbatch, status en bronmethode zijn aanwezig.
-- **PASS — nagekeken fiches hebben specifieke definities en geldige metadata:** 1807 fiches voldoen.
-- **PASS — niet-nagekeken fiches tonen geen verzonnen definities of synoniemen:** 79 fiches blijven expliciet ongemarkeerd.
-- **WARNING — resterende lexicale review:** 79 werkwoorden hebben vervoegingsinformatie maar nog geen handmatig gevalideerde definitie of synoniemen. Ze worden in de interface niet als gedefinieerd gepresenteerd.
+- **PASS — nagekeken fiches hebben specifieke definities en geldige metadata:** 1886 fiches voldoen.
+- **PASS — niet-nagekeken fiches tonen geen verzonnen definities of synoniemen:** 0 fiches blijven expliciet ongemarkeerd.
+- **PASS — alle werkwoorden hebben een lexicale eindcontrole:** 1886 van 1886 werkwoorden zijn nagekeken.
 - **PASS — bekende V18.5-vervoegingsfouten zijn hersteld:** praten, antwoorden, horen, eten, wachten, ontmoeten, bellen, lijken, vallen
 - **PASS — onregelmatige vormen in de eerste alfabetische batch zijn expliciet gecontroleerd:** 10 risicowerkwoorden gecontroleerd.
 - **PASS — de eerste batch bevat geen bekende generatorfouten:** Geen geaan- of foutieve stamvormen gevonden.
-- **PASS — synoniemen zijn uniek, contextueel bruikbaar en spreken de verschilnotitie niet tegen:** 1807 fiches gecontroleerd.
+- **PASS — synoniemen zijn uniek, contextueel bruikbaar en spreken de verschilnotitie niet tegen:** 1886 fiches gecontroleerd.
 - **PASS — contextuele verschillen tussen synoniemen zijn uitgelegd voor de nieuwe en diep nagekeken fiches:** 1802 fiches hebben een verschilnotitie.
 
 ## language-structures
@@ -106,18 +106,19 @@ The complete application structure, published content banks and graph integrity 
 
 ## technical
 
-- **PASS — CSS en JavaScript hebben cache-busting:** Versie 18.18.0 staat in beide shell-assets.
+- **PASS — CSS en JavaScript hebben cache-busting:** Versie 19.2.1 staat in beide shell-assets.
 - **PASS — oude shell-assets kunnen niet permanent uit cache blijven komen:** Netwerk-eerst voor document, CSS en JavaScript; registratie omzeilt de HTTP-cache.
 - **PASS — startkaarten en toegankelijkheidsblok hebben componentstijlen:** Beide selectors aanwezig in styles.css.
-- **PASS — nieuwe inhoud zit in de klassieke browserbundle:** Kernreviews, eerste alfabetische batch en bronreview aangetroffen.
-- **PASS — de eerste werkwoordbatch wordt vóór gebruik gebundeld:** Definitiepositie=2280209, aanroeppositie=7158965.
+- **PASS — nieuwe inhoud zit in de klassieke browserbundle:** Kernreviews, alfabetische batches, eindcontrole en bronreview aangetroffen.
+- **PASS — de eerste werkwoordbatch wordt vóór gebruik gebundeld:** Definitiepositie=2280276, aanroeppositie=7340980.
+- **PASS — de lexicale eindcontrole wordt vóór gebruik gebundeld:** Definitiepositie=7009451, aanroeppositie=7341016.
 
 ## knowledge-graph
 
-- **PASS — graafversie is gelijk aan de applicatieversie:** Versie 18.18.0.
-- **PASS — alle grote inhoudsbanken zijn verbonden:** 24432 nodes en 80099 relaties.
+- **PASS — graafversie is gelijk aan de applicatieversie:** Versie 19.2.1.
+- **PASS — alle grote inhoudsbanken zijn verbonden:** 24857 nodes en 81030 relaties.
 - **PASS — alle relaties verwijzen naar bestaande nodes:** Geen gebroken relaties.
-- **PASS — lexicale reviewwachtrij is volledig en controleerbaar:** 79 werkwoorden in de wachtrij.
+- **PASS — lexicale reviewwachtrij is volledig en controleerbaar:** 0 werkwoorden in de wachtrij.
 - **PASS — de graaf is geïntegreerd zonder bestaande routes te vervangen:** Aparte, lui geladen kennisgraafpagina aangetroffen.
 - **PASS — de graaf werkt ook bij rechtstreeks openen vanaf schijf:** Lui geladen JavaScript-fallback voor file:// aangetroffen.
 

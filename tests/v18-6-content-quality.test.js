@@ -4,11 +4,13 @@ import { verbAtlas } from '../js/verb-atlas.js';
 import { applyVerbCorrections, modalAndCoreVerbCorrections } from '../js/verb-corrections.js';
 import { applyCoreVerbReviews, coreVerbReviews } from '../js/verb-core-review.js';
 import { applyInitialVerbReviews, initialVerbReviews } from '../js/verb-initial-review.js';
+import { applyFinalVerbReviews, finalVerbReviews } from '../js/verb-final-review.js';
 import { sourceReviewGrammarTopics, sourceReviewExercises } from '../js/source-review-content.js';
 
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
+applyFinalVerbReviews(verbAtlas);
 const get = (name) => verbAtlas.find((verb) => verb.infinitive === name);
 
 const genericMeanings = [
@@ -19,11 +21,12 @@ const genericMeanings = [
   'Gebruik vaak hebben voor de activiteit en zijn bij een duidelijke richting of bestemming.',
 ];
 
-test('V18.18 heeft 1.807 inhoudelijk uitgebreide werkwoordfiches zonder generieke definities', () => {
+test('V19.2.1 heeft 1.886 inhoudelijk uitgebreide werkwoordfiches zonder generieke definities', () => {
   assert.equal(modalAndCoreVerbCorrections.length, 19);
   assert.equal(coreVerbReviews.length, 73);
   assert.equal(initialVerbReviews.length, 1748);
-  assert.equal(verbAtlas.filter((verb) => verb.reviewed === true).length, 1807);
+  assert.equal(finalVerbReviews.length, 79);
+  assert.equal(verbAtlas.filter((verb) => verb.reviewed === true).length, 1886);
   for (const verb of verbAtlas.filter((item) => item.reviewed === true)) {
     assert.ok(verb.meaning.length >= 35, `${verb.infinitive}: te korte definitie`);
     assert.ok(!genericMeanings.includes(verb.meaning), `${verb.infinitive}: generieke definitie`);

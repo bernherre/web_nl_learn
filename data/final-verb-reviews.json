@@ -1,0 +1,1393 @@
+[
+  {
+    "infinitive": "vrijvechten",
+    "meaning": "zich door strijd, inspanning of verzet uit een belemmerende situatie bevrijden",
+    "semanticLabel": "bevrijding door strijd",
+    "synonyms": [
+      "zich bevrijden",
+      "zich losmaken"
+    ],
+    "synonymNote": "Zich bevrijden is de neutrale omschrijving; zich losmaken past alleen wanneer de nadruk op het verbreken van een band of beperking ligt.",
+    "usage": "Wordt meestal wederkerend gebruikt, vaak met uit: zich uit een benarde positie vrijvechten.",
+    "examples": [
+      "Na jaren van tegenwerking heeft zij zich binnen de organisatie vrijgevochten.",
+      "De ploeg vocht zich in de tweede helft vrij uit de verdediging."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "reflexive": true,
+    "level": "B2"
+  },
+  {
+    "infinitive": "vrijverklaren",
+    "meaning": "officieel vaststellen en bekendmaken dat een gebied, object of situatie veilig of vrij van een bepaald risico is",
+    "semanticLabel": "officiële veiligheidsverklaring",
+    "synonyms": [
+      "vrijgeven",
+      "veilig verklaren"
+    ],
+    "synonymNote": "Vrijgeven betekent toestemming geven voor gebruik; veilig verklaren benoemt explicieter dat er geen relevant gevaar meer wordt gezien.",
+    "usage": "Gebruik dit vooral in formele contexten, bijvoorbeeld bij infrastructuur, onderzoek of veiligheid.",
+    "examples": [
+      "De brandweer verklaarde het gebouw na de controle vrij.",
+      "Het terrein wordt pas vrijverklaard nadat alle metingen zijn afgerond."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2"
+  },
+  {
+    "infinitive": "vullen",
+    "meaning": "iets helemaal of gedeeltelijk voorzien van een inhoud, materiaal of gegevens",
+    "semanticLabel": "iets van inhoud voorzien",
+    "synonyms": [
+      "opvullen",
+      "volmaken"
+    ],
+    "synonymNote": "Opvullen benadrukt dat een lege ruimte wordt aangevuld; volmaken benadrukt dat de maximale capaciteit wordt bereikt.",
+    "usage": "Vullen is overgankelijk: je vult een glas, formulier, ruimte of databestand met iets.",
+    "examples": [
+      "Vul de fles tot aan de aangegeven lijn.",
+      "De medewerker vult het formulier met de ontbrekende gegevens aan."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "waaien",
+    "meaning": "van wind of luchtstroming bewegen of zich door de lucht verplaatsen",
+    "semanticLabel": "beweging door wind",
+    "synonyms": [
+      "blazen",
+      "stormen"
+    ],
+    "synonymNote": "Blazen beschrijft het verplaatsen van lucht in het algemeen; stormen wordt alleen gebruikt bij zeer krachtige wind.",
+    "usage": "Het onpersoonlijke het waait is zeer frequent; voor de verleden tijd komen zowel waaide als woei voor.",
+    "examples": [
+      "Het waait vandaag hard aan de kust.",
+      "De bladeren waaiden over het fietspad."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "past": "waaide",
+    "pastPlural": "waaiden",
+    "alternatePast": "woei/woeien"
+  },
+  {
+    "infinitive": "waarborgen",
+    "meaning": "ervoor zorgen of er formeel voor instaan dat iets behouden, beschermd of gerealiseerd wordt",
+    "semanticLabel": "garantie en bescherming",
+    "synonyms": [
+      "garanderen",
+      "verzekeren"
+    ],
+    "synonymNote": "Garanderen legt de nadruk op een toezegging; verzekeren kan hetzelfde betekenen, maar heeft ook andere betekenissen buiten deze context.",
+    "usage": "Komt veel voor in formele en professionele taal met abstracte objecten zoals kwaliteit, veiligheid en continuïteit.",
+    "examples": [
+      "Deze procedure moet de kwaliteit van de gegevens waarborgen.",
+      "De maatregelen waarborgen dat alle medewerkers veilig kunnen werken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "waarderen",
+    "meaning": "de waarde of positieve betekenis van iemand of iets erkennen en er respect of dankbaarheid voor tonen",
+    "semanticLabel": "positieve waardering",
+    "synonyms": [
+      "appreciëren",
+      "op prijs stellen"
+    ],
+    "synonymNote": "Appreciëren is correct maar formeler en in België gebruikelijker; op prijs stellen is een zeer natuurlijke vaste uitdrukking.",
+    "usage": "Voor financiële waardebepaling heeft waarderen een aparte vakbetekenis; daar passen taxeren en schatten.",
+    "examples": [
+      "Ik waardeer het dat je zo snel hebt gereageerd.",
+      "De medewerkers voelen zich meer gewaardeerd sinds het nieuwe beleid."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wandelen",
+    "meaning": "rustig te voet gaan, meestal voor ontspanning, plezier of beweging",
+    "semanticLabel": "recreatief lopen",
+    "synonyms": [
+      "een wandeling maken",
+      "kuieren"
+    ],
+    "synonymNote": "Een wandeling maken is neutraal en volledig equivalent in veel contexten; kuieren is informeler en benadrukt een rustig tempo.",
+    "usage": "Bij een activiteit zonder bestemming wordt meestal hebben gebruikt; met een duidelijke richting kan zijn voorkomen.",
+    "examples": [
+      "We hebben zondag twee uur in het bos gewandeld.",
+      "Na het eten wandelden we rustig naar huis."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wassen",
+    "meaning": "iets met water en eventueel zeep schoonmaken; ook zichzelf of een lichaamsdeel reinigen",
+    "semanticLabel": "reinigen met water",
+    "synonyms": [
+      "schoonmaken",
+      "reinigen"
+    ],
+    "synonymNote": "Schoonmaken is breder en hoeft niet met water te gebeuren; reinigen is formeler en kan ook technische processen aanduiden.",
+    "usage": "Wassen kan overgankelijk of wederkerend zijn: de auto wassen, je handen wassen, zich wassen.",
+    "examples": [
+      "Ik was mijn handen voordat ik ga koken.",
+      "Zij heeft de wollen trui op lage temperatuur gewassen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "weergeven",
+    "meaning": "informatie, geluid, beeld of een gebeurtenis opnieuw of zichtbaar presenteren",
+    "semanticLabel": "inhoud of beeld presenteren",
+    "synonyms": [
+      "afbeelden",
+      "reproduceren"
+    ],
+    "synonymNote": "Afbeelden past vooral bij visuele representatie; reproduceren benadrukt het opnieuw voortbrengen van beeld, geluid of tekst.",
+    "usage": "Gebruik weergeven voor grafieken, schermen, citaten, samenvattingen en de manier waarop iets wordt voorgesteld.",
+    "examples": [
+      "De grafiek geeft de ontwikkeling per maand weer.",
+      "Het scherm kan de kleuren niet helemaal correct weergeven."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "weerkomen",
+    "meaning": "terugkomen of opnieuw verschijnen; tegenwoordig weinig gebruikelijk in de standaardtaal",
+    "semanticLabel": "terugkeer",
+    "synonyms": [
+      "terugkomen",
+      "weerkeren"
+    ],
+    "synonymNote": "Terugkomen is in hedendaags Nederlands de gewone keuze; weerkeren is formeler of literairder.",
+    "usage": "Markeer dit lemma als weinig frequent of verouderend en leer actief liever terugkomen.",
+    "examples": [
+      "In oudere teksten komt het werkwoord weerkomen nog geregeld voor.",
+      "Dezelfde gedachte kwam later in het gesprek weer."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2",
+    "register": "weinig frequent/verouderend"
+  },
+  {
+    "infinitive": "weerleggen",
+    "meaning": "met argumenten of bewijs aantonen dat een bewering, theorie of conclusie niet klopt",
+    "semanticLabel": "met bewijs ontkrachten",
+    "synonyms": [
+      "ontkrachten",
+      "ontzenuwen"
+    ],
+    "synonymNote": "Ontkrachten is de neutraalste vervanging; ontzenuwen benadrukt dat bezwaren of argumenten hun overtuigingskracht verliezen.",
+    "usage": "Weerleggen is onscheidbaar en krijgt daarom geen ge- in het voltooid deelwoord: heeft weerlegd.",
+    "examples": [
+      "De onderzoeker weerlegde de bewering met nieuwe gegevens.",
+      "Deze resultaten hebben de oorspronkelijke theorie niet volledig weerlegd."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "separable": false,
+    "stem": "weerleg",
+    "past": "weerlegde",
+    "pastPlural": "weerlegden",
+    "participle": "weerlegd"
+  },
+  {
+    "infinitive": "weerzien",
+    "meaning": "iemand na een periode opnieuw zien of ontmoeten",
+    "semanticLabel": "opnieuw ontmoeten",
+    "synonyms": [
+      "terugzien",
+      "opnieuw ontmoeten"
+    ],
+    "synonymNote": "Terugzien kan ook betekenen dat je beelden opnieuw bekijkt; opnieuw ontmoeten maakt de persoonlijke betekenis expliciet.",
+    "usage": "Wordt vaak gebruikt met een persoon als object en ook als zelfstandig naamwoord in het weerzien.",
+    "examples": [
+      "Na tien jaar zag zij haar oude studievrienden weer.",
+      "Ik hoop je volgende zomer weer te zien."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegbergen",
+    "meaning": "iets op een vaste of veilige plaats leggen zodat het niet in de weg ligt of zichtbaar blijft",
+    "semanticLabel": "veilig opbergen",
+    "synonyms": [
+      "opbergen",
+      "wegstoppen"
+    ],
+    "synonymNote": "Opbergen is de neutrale keuze; wegstoppen benadrukt vaker dat iets uit het zicht wordt gehouden.",
+    "usage": "Gebruik wegbergen vooral voor voorwerpen die na gebruik netjes of veilig worden opgeborgen.",
+    "examples": [
+      "Berg de gereedschappen na gebruik zorgvuldig weg.",
+      "Hij borg de documenten in een afgesloten kast weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegblazen",
+    "meaning": "iets door een krachtige luchtstroom van zijn plaats of uit de omgeving laten verdwijnen",
+    "semanticLabel": "door lucht verwijderen",
+    "synonyms": [
+      "wegvagen",
+      "verjagen"
+    ],
+    "synonymNote": "Wegvagen benadrukt een krachtige, vaak volledige verwijdering; verjagen past vooral bij mensen, dieren, rook of wolken.",
+    "usage": "Het onderwerp is meestal wind, een explosie of een apparaat dat lucht blaast.",
+    "examples": [
+      "De storm blies enkele dakpannen weg.",
+      "Met perslucht blazen we het stof van de onderdelen weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegblijven",
+    "meaning": "niet komen of gedurende een periode afwezig blijven van een plaats of gebeurtenis",
+    "semanticLabel": "afwezig blijven",
+    "synonyms": [
+      "niet komen",
+      "afwezig blijven"
+    ],
+    "synonymNote": "Niet komen verwijst naar één verwacht moment; afwezig blijven benadrukt een langere of herhaalde afwezigheid.",
+    "usage": "Komt vaak voor met van: van school, het werk of een bijeenkomst wegblijven.",
+    "examples": [
+      "Hij bleef vanwege koorts twee dagen van school weg.",
+      "Veel bezoekers bleven door het slechte weer weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegbreken",
+    "meaning": "iets verwijderen door het af te breken, los te maken of te slopen",
+    "semanticLabel": "door breken verwijderen",
+    "synonyms": [
+      "afbreken",
+      "slopen"
+    ],
+    "synonymNote": "Afbreken kan zowel gedeeltelijk als volledig zijn; slopen duidt meestal op het volledig verwijderen van een constructie.",
+    "usage": "Gebruik dit bij muren, onderdelen, ijs of andere vaste delen die door breken verdwijnen.",
+    "examples": [
+      "De aannemer brak de oude muur voorzichtig weg.",
+      "Ze hebben het beschadigde beton rond de leiding weggebroken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegbrengen",
+    "meaning": "iemand of iets van de huidige plaats naar een andere bestemming brengen",
+    "semanticLabel": "naar een andere plaats brengen",
+    "synonyms": [
+      "afleveren",
+      "vervoeren"
+    ],
+    "synonymNote": "Afleveren benadrukt de bestemming en overdracht; vervoeren legt de nadruk op het transport zelf.",
+    "usage": "Veelgebruikte combinaties zijn afval wegbrengen, kinderen wegbrengen en een pakket wegbrengen.",
+    "examples": [
+      "Ik breng de kinderen elke ochtend naar school weg.",
+      "Kun je deze dozen vanmiddag naar het magazijn wegbrengen?"
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegdenken",
+    "meaning": "zich voorstellen dat iets niet bestaat of een factor bewust buiten beschouwing laten",
+    "semanticLabel": "mentaal buiten beschouwing laten",
+    "synonyms": [
+      "buiten beschouwing laten",
+      "negeren"
+    ],
+    "synonymNote": "Buiten beschouwing laten is neutraal en analytisch; negeren kan ook onbewust of onzorgvuldig overkomen.",
+    "usage": "Wordt vaak gebruikt in gedachte-experimenten: denk een bepaalde factor even weg.",
+    "examples": [
+      "Als je de tijdelijke kosten wegdenkt, is het plan rendabel.",
+      "Je kunt de menselijke factor in dit proces niet zomaar wegdenken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegdoen",
+    "meaning": "iets niet langer houden en het weggooien, verkopen, schenken of anders verwijderen",
+    "semanticLabel": "niet langer behouden",
+    "synonyms": [
+      "weggooien",
+      "van de hand doen"
+    ],
+    "synonymNote": "Weggooien is alleen één mogelijke manier; van de hand doen betekent meestal verkopen of overdragen.",
+    "usage": "Wegdoen is breder dan weggooien en zegt niet altijd wat er daarna met het voorwerp gebeurt.",
+    "examples": [
+      "We doen de oude meubels weg voordat we verhuizen.",
+      "Deze jas is nog goed, dus ik wil hem niet wegdoen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegdragen",
+    "meaning": "iets al dragend van een plaats verwijderen",
+    "semanticLabel": "dragend verwijderen",
+    "synonyms": [
+      "afvoeren",
+      "meenemen"
+    ],
+    "synonymNote": "Afvoeren wordt vaak gebruikt voor materiaal of afval; meenemen hoeft niet te betekenen dat iets definitief verdwijnt.",
+    "usage": "Het werkwoord benadrukt dat het verwijderen fysiek door dragen gebeurt.",
+    "examples": [
+      "De medewerkers droegen de kapotte stoelen weg.",
+      "Twee hulpverleners hebben de gewonde man van de weg weggedragen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegdrijven",
+    "meaning": "door stroming of wind geleidelijk van een plaats verwijderd raken",
+    "semanticLabel": "afdrijven",
+    "synonyms": [
+      "afdrijven",
+      "wegstromen"
+    ],
+    "synonymNote": "Afdrijven is de nauwste vervanging; wegstromen past alleen bij vloeistof of een massa die stroomt.",
+    "usage": "Het is meestal onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "De boot dreef langzaam van de kust weg.",
+      "De donkere wolken zijn naar het oosten weggedreven."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegdringen",
+    "meaning": "iemand of iets door druk, kracht of concurrentie naar achteren of uit een positie duwen",
+    "semanticLabel": "uit een positie verdringen",
+    "synonyms": [
+      "verdringen",
+      "terugdringen"
+    ],
+    "synonymNote": "Verdringen benadrukt het innemen van de plaats van iets anders; terugdringen betekent vooral de omvang of invloed verminderen.",
+    "usage": "Kan letterlijk en figuurlijk worden gebruikt, bijvoorbeeld bij een menigte of een marktpositie.",
+    "examples": [
+      "De beveiligers drongen de menigte van de ingang weg.",
+      "Nieuwe technologie heeft oudere systemen geleidelijk weggedrongen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegduiken",
+    "meaning": "snel naar beneden of opzij bewegen om iets te ontwijken of zich te verbergen",
+    "semanticLabel": "snel dekking zoeken",
+    "synonyms": [
+      "dekking zoeken",
+      "zich verbergen"
+    ],
+    "synonymNote": "Dekking zoeken benadrukt bescherming tegen gevaar; zich verbergen hoeft niet plotseling te gebeuren.",
+    "usage": "Het is onovergankelijk en vormt het perfectum in deze bewegingsbetekenis met zijn.",
+    "examples": [
+      "Hij dook weg toen de bal zijn kant op kwam.",
+      "De kat is onder de bank weggedoken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegduwen",
+    "meaning": "iemand of iets met een duw van een plaats of van zichzelf verwijderen",
+    "semanticLabel": "van zich af duwen",
+    "synonyms": [
+      "opzijduwen",
+      "afduwen"
+    ],
+    "synonymNote": "Opzijduwen geeft een richting naast het oorspronkelijke punt; afduwen benadrukt afstand creëren vanaf een oppervlak of persoon.",
+    "usage": "Het is overgankelijk: je duwt iemand, een voorwerp of een obstakel weg.",
+    "examples": [
+      "Duw de tafel een beetje van de muur weg.",
+      "Hij duwde de zware deur met beide handen weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegen",
+    "meaning": "vaststellen hoeveel iets of iemand weegt, of zelf een bepaald gewicht hebben",
+    "semanticLabel": "gewicht bepalen of hebben",
+    "synonyms": [
+      "afwegen",
+      "gewicht bepalen"
+    ],
+    "synonymNote": "Afwegen betekent meestal een gewenste hoeveelheid precies wegen en kan figuurlijk ook vergelijken betekenen.",
+    "usage": "Wegen kan overgankelijk zijn, zoals een pakket wegen, of onovergankelijk: het pakket weegt tien kilo.",
+    "examples": [
+      "De medewerker weegt elk pakket voor verzending.",
+      "Deze koffer weegt bijna twintig kilo."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegfietsen",
+    "meaning": "op de fiets van een plaats vertrekken en zich ervan verwijderen",
+    "semanticLabel": "met de fiets vertrekken",
+    "synonyms": [
+      "vertrekken op de fiets",
+      "ervandoor fietsen"
+    ],
+    "synonymNote": "Ervandoor fietsen klinkt informeler en kan een plotseling vertrek suggereren.",
+    "usage": "Door de inherente richting vormt het perfectum normaal met zijn: is weggefietst.",
+    "examples": [
+      "Na de vergadering fietste ze meteen weg.",
+      "De kinderen zijn zonder iets te zeggen weggefietst."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "weggaan",
+    "meaning": "een plaats verlaten en naar een andere plek vertrekken",
+    "semanticLabel": "vertrekken",
+    "synonyms": [
+      "vertrekken",
+      "heengaan"
+    ],
+    "synonymNote": "Vertrekken is neutraal en vaak iets formeler; heengaan is formeler of literair en minder gebruikelijk in alledaagse taal.",
+    "usage": "Zeer frequent werkwoord; het perfectum wordt met zijn gevormd.",
+    "examples": [
+      "Ik moet nu weggaan, anders mis ik de trein.",
+      "Ze zijn na het eten meteen weggegaan."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "weggeven",
+    "meaning": "iets gratis aan iemand anders geven en het daardoor niet langer zelf bezitten",
+    "semanticLabel": "gratis schenken",
+    "synonyms": [
+      "schenken",
+      "cadeau doen"
+    ],
+    "synonymNote": "Schenken is neutraler of formeler; cadeau doen wordt gebruikt wanneer iets als geschenk wordt gegeven.",
+    "usage": "Gebruik weggeven ook figuurlijk, bijvoorbeeld informatie, een voordeel of een geheim weggeven.",
+    "examples": [
+      "We geven de kinderboeken aan de bibliotheek weg.",
+      "Met die opmerking gaf hij de oplossing bijna weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegglijden",
+    "meaning": "zonder volledige controle glijdend van een plaats of positie raken",
+    "semanticLabel": "glijdend verdwijnen",
+    "synonyms": [
+      "afglijden",
+      "uitglijden"
+    ],
+    "synonymNote": "Afglijden benadrukt beweging langs een helling of een figuurlijke achteruitgang; uitglijden is meestal een plotseling verlies van houvast.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "De ladder gleed langzaam tegen de muur weg.",
+      "Mijn voet is op het natte perron weggeglijden."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "weggooien",
+    "meaning": "iets wegwerpen of bij het afval doen omdat je het niet meer wilt of nodig hebt",
+    "semanticLabel": "bij het afval doen",
+    "synonyms": [
+      "wegdoen",
+      "afdanken"
+    ],
+    "synonymNote": "Wegdoen is breder en kan ook verkopen of schenken betekenen; afdanken wordt vaak gebruikt voor oude spullen of apparatuur.",
+    "usage": "Het werkwoord is scheidbaar: ik gooi het weg, ik heb het weggegooid.",
+    "examples": [
+      "Gooi deze verpakking in de juiste afvalbak weg.",
+      "Hij heeft per ongeluk de bon weggegooid."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "separable": true,
+    "prefix": "weg",
+    "root": "gooien",
+    "stem": "gooi",
+    "past": "gooide weg",
+    "pastPlural": "gooiden weg",
+    "participle": "weggegooid",
+    "auxiliary": "hebben"
+  },
+  {
+    "infinitive": "weghalen",
+    "meaning": "iemand of iets ophalen of van een plaats verwijderen",
+    "semanticLabel": "ophalen of verwijderen",
+    "synonyms": [
+      "ophalen",
+      "verwijderen"
+    ],
+    "synonymNote": "Ophalen benadrukt dat iets naar de spreker of een bestemming wordt gebracht; verwijderen benadrukt dat iets niet op de plek blijft.",
+    "usage": "De precieze betekenis volgt uit het object en de context: kinderen weghalen, afval weghalen, een vlek weghalen.",
+    "examples": [
+      "Kun je de lege dozen uit de gang weghalen?",
+      "De gemeente haalt het grofvuil volgende week weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "weghangen",
+    "meaning": "kleding of een ander hangend voorwerp na gebruik op zijn vaste plaats hangen",
+    "semanticLabel": "hangend opbergen",
+    "synonyms": [
+      "ophangen",
+      "opbergen"
+    ],
+    "synonymNote": "Ophangen zegt alleen dat iets wordt gehangen; weghangen benadrukt dat het netjes uit de weg wordt opgeborgen.",
+    "usage": "Komt vooral voor bij kleding, handdoeken, kabels en gereedschap.",
+    "examples": [
+      "Hang je jas na binnenkomst meteen weg.",
+      "Na de voorstelling werden alle kostuums zorgvuldig weggehangen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegkijken",
+    "meaning": "de blik van iets afwenden; figuurlijk bewust niet reageren op een zichtbaar probleem",
+    "semanticLabel": "de blik afwenden",
+    "synonyms": [
+      "de andere kant op kijken",
+      "negeren"
+    ],
+    "synonymNote": "Negeren beschrijft het niet reageren, maar hoeft niet letterlijk met kijken te maken te hebben.",
+    "usage": "De figuurlijke betekenis komt vaak voor in discussies over verantwoordelijkheid: niet wegkijken bij misstanden.",
+    "examples": [
+      "Ze keek snel weg toen hij haar aankeek.",
+      "Een organisatie mag bij discriminatie niet wegkijken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegkomen",
+    "meaning": "een plaats kunnen verlaten, ontsnappen of zonder ernstige gevolgen aan iets ontkomen",
+    "semanticLabel": "kunnen ontsnappen",
+    "synonyms": [
+      "ontsnappen",
+      "ontkomen"
+    ],
+    "synonymNote": "Ontsnappen gaat vaak om fysiek wegkomen; ontkomen wordt veel gebruikt met aan en kan ook gevolgen betreffen.",
+    "usage": "Veel voorkomende patronen zijn ergens wegkomen en ergens mee wegkomen.",
+    "examples": [
+      "Door de drukte konden we nauwelijks van het station wegkomen.",
+      "Hij kwam met een waarschuwing weg in plaats van een boete."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegkopen",
+    "meaning": "iemand of iets door betaling bij een andere partij vandaan halen, vaak bij een werkgever of concurrent",
+    "semanticLabel": "tegen betaling overnemen",
+    "synonyms": [
+      "overkopen",
+      "aantrekken"
+    ],
+    "synonymNote": "Overkopen benadrukt de transactie; aantrekken is breder en zegt niet dat een lopend contract wordt afgekocht.",
+    "usage": "Komt vooral voor in sport en arbeidsmarktcontexten: een speler of specialist bij een concurrent wegkopen.",
+    "examples": [
+      "De club probeerde de spits bij zijn huidige werkgever weg te kopen.",
+      "Het bedrijf kocht meerdere ervaren ontwikkelaars bij een concurrent weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2"
+  },
+  {
+    "infinitive": "wegkruipen",
+    "meaning": "kruipend naar een verborgen of beschutte plaats gaan",
+    "semanticLabel": "zich kruipend verbergen",
+    "synonyms": [
+      "zich verstoppen",
+      "wegduiken"
+    ],
+    "synonymNote": "Zich verstoppen zegt niets over de manier van bewegen; wegduiken is plotselinger en hoeft niet kruipend te gebeuren.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "Het kind kroop achter de bank weg.",
+      "De muis is onder de kast weggekropen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "weglaten",
+    "meaning": "iets bewust niet opnemen, noemen, gebruiken of toevoegen",
+    "semanticLabel": "achterwege laten",
+    "synonyms": [
+      "overslaan",
+      "schrappen"
+    ],
+    "synonymNote": "Overslaan past bij een stap of onderdeel; schrappen betekent dat iets uit een bestaande tekst, lijst of planning wordt verwijderd.",
+    "usage": "Weglaten is overgankelijk en komt veel voor bij tekst, ingrediënten, details en onderdelen.",
+    "examples": [
+      "Je kunt de suiker uit dit recept weglaten.",
+      "De redactie heeft een onduidelijke alinea weggelaten."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "weglopen",
+    "meaning": "lopend een plaats verlaten, ontsnappen of zonder toestemming vertrekken",
+    "semanticLabel": "lopend vertrekken",
+    "synonyms": [
+      "vertrekken",
+      "ervandoor gaan"
+    ],
+    "synonymNote": "Vertrekken is neutraler en zegt niets over de manier; ervandoor gaan klinkt informeler en vaak plotseling.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn; figuurlijk kan water of kleur weglopen.",
+    "examples": [
+      "Hij liep boos uit de vergadering weg.",
+      "Onze hond is gisteren tijdens de wandeling weggelopen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegmaken",
+    "meaning": "iets laten verdwijnen, verbergen of zoekmaken; in sommige contexten ook iemand uitschakelen",
+    "semanticLabel": "laten verdwijnen",
+    "synonyms": [
+      "zoekmaken",
+      "doen verdwijnen"
+    ],
+    "synonymNote": "Zoekmaken betekent specifiek dat iets niet meer te vinden is; doen verdwijnen is breder en neutraler.",
+    "usage": "Het werkwoord is weinig frequent en kan een dreigende betekenis hebben wanneer het op een persoon slaat.",
+    "examples": [
+      "Hij maakte de sleutels weg en kon ze later nergens vinden.",
+      "De documenten werden bewust weggemaakt om controle te voorkomen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2",
+    "register": "weinig frequent"
+  },
+  {
+    "infinitive": "wegnemen",
+    "meaning": "iets van een plaats verwijderen of ervoor zorgen dat een gevoel, bezwaar of probleem verdwijnt",
+    "semanticLabel": "verwijderen of ontnemen",
+    "synonyms": [
+      "verwijderen",
+      "ontnemen"
+    ],
+    "synonymNote": "Verwijderen gaat vooral om een object of obstakel; ontnemen benadrukt dat iemand iets niet langer heeft.",
+    "usage": "Komt ook veel voor met abstracte objecten: twijfel, angst, bezwaar of risico wegnemen.",
+    "examples": [
+      "Deze uitleg neemt veel onzekerheid bij nieuwe gebruikers weg.",
+      "De verpleegkundige nam het verband voorzichtig weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegrijden",
+    "meaning": "met een voertuig van een plaats vertrekken",
+    "semanticLabel": "met een voertuig vertrekken",
+    "synonyms": [
+      "vertrekken",
+      "wegracen"
+    ],
+    "synonymNote": "Vertrekken is neutraler en noemt het voertuig niet; wegracen is informeel en benadrukt hoge snelheid.",
+    "usage": "Het is onovergankelijk en vormt in de gewone bewegingsbetekenis het perfectum met zijn.",
+    "examples": [
+      "De bus reed precies om acht uur weg.",
+      "De auto is zonder de lichten aan weggereden."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegroepen",
+    "meaning": "iemand door een oproep of dringend verzoek van zijn huidige plaats laten vertrekken",
+    "semanticLabel": "elders laten komen",
+    "synonyms": [
+      "ontbieden",
+      "laten weggaan"
+    ],
+    "synonymNote": "Ontbieden is formeler en betekent iemand officieel laten komen; laten weggaan zegt niet dat de persoon elders nodig is.",
+    "usage": "Het object is een persoon die vanwege een andere taak of noodsituatie wordt weggeroepen.",
+    "examples": [
+      "De arts werd tijdens het gesprek plotseling weggeroepen.",
+      "Een collega riep hem weg omdat er een storing was."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegschenken",
+    "meaning": "iets zonder betaling aan een ander geven, vaak aan een persoon of goed doel",
+    "semanticLabel": "gratis schenken",
+    "synonyms": [
+      "doneren",
+      "weggeven"
+    ],
+    "synonymNote": "Doneren wordt vooral gebruikt voor geld, goederen of materiaal aan een organisatie; weggeven is algemener en informeler.",
+    "usage": "Het object is doorgaans bezit dat bewust en definitief wordt overgedragen.",
+    "examples": [
+      "Ze schonk haar oude boeken aan de schoolbibliotheek weg.",
+      "Het bedrijf heeft de overgebleven computers weggeschonken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegscheren",
+    "meaning": "haar, begroeiing of een dunne laag door scheren verwijderen",
+    "semanticLabel": "door scheren verwijderen",
+    "synonyms": [
+      "afscheren",
+      "scheren"
+    ],
+    "synonymNote": "Afscheren is de nauwste vervanging; scheren alleen zegt niet altijd dat alles wordt verwijderd.",
+    "usage": "Gebruik het overgankelijk met het materiaal dat wordt verwijderd.",
+    "examples": [
+      "De kapper schoor het beschadigde haar voorzichtig weg.",
+      "Voor de behandeling werd een klein stukje vacht weggeschoren."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegschieten",
+    "meaning": "plotseling snel van een plaats bewegen, of iets met een schot of krachtige beweging weg laten gaan",
+    "semanticLabel": "plotseling wegbewegen",
+    "synonyms": [
+      "wegstuiven",
+      "ervandoor schieten"
+    ],
+    "synonymNote": "Wegstuiven is informeel en legt nadruk op snelheid; ervandoor schieten wordt vooral voor plotseling vertrek gebruikt.",
+    "usage": "Kan onovergankelijk met zijn of overgankelijk met hebben worden gebruikt; de context bepaalt de constructie.",
+    "examples": [
+      "De kat schoot onder de tafel weg.",
+      "De verdediger heeft de bal uit het strafschopgebied weggeschoten."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "hebben/zijn"
+  },
+  {
+    "infinitive": "wegslaan",
+    "meaning": "iets met een slag verwijderen, afweren of van richting laten veranderen",
+    "semanticLabel": "met een slag verwijderen",
+    "synonyms": [
+      "afslaan",
+      "wegkloppen"
+    ],
+    "synonymNote": "Afslaan heeft meerdere andere betekenissen; wegkloppen is concreter en past vooral bij kleine deeltjes of vocht.",
+    "usage": "Het is overgankelijk en komt voor bij een bal, hand, stof, water of een aanval.",
+    "examples": [
+      "De keeper sloeg de bal met één hand weg.",
+      "Hij sloeg het stof van zijn jas weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegsluiten",
+    "meaning": "iemand of iets achter een gesloten deur of in een afgesloten ruimte bewaren of afzonderen",
+    "semanticLabel": "afgesloten opbergen",
+    "synonyms": [
+      "opsluiten",
+      "achter slot bewaren"
+    ],
+    "synonymNote": "Opsluiten wordt vaak voor personen of dieren gebruikt; achter slot bewaren past vooral bij voorwerpen.",
+    "usage": "De context bepaalt of bescherming, straf of geheimhouding centraal staat.",
+    "examples": [
+      "De medicijnen moeten buiten bereik van kinderen worden weggesloten.",
+      "De verdachte werd tijdelijk in een aparte ruimte weggesloten."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegsmelten",
+    "meaning": "door smelten geleidelijk kleiner worden en uiteindelijk verdwijnen",
+    "semanticLabel": "smeltend verdwijnen",
+    "synonyms": [
+      "versmelten",
+      "oplossen"
+    ],
+    "synonymNote": "Versmelten betekent meestal samensmelten met iets anders; oplossen kan ook chemisch of figuurlijk zijn.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn; het kan ook figuurlijk over spanning of weerstand gaan.",
+    "examples": [
+      "De sneeuw is binnen enkele uren weggesmolten.",
+      "Zijn onzekerheid smolt weg toen het gesprek eenmaal begon."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegsnijden",
+    "meaning": "een deel verwijderen door er met een mes of ander scherp gereedschap langs te snijden",
+    "semanticLabel": "door snijden verwijderen",
+    "synonyms": [
+      "afsnijden",
+      "uitsnijden"
+    ],
+    "synonymNote": "Afsnijden maakt iets los van het geheel; uitsnijden benadrukt dat een vorm of beschadigd deel precies wordt verwijderd.",
+    "usage": "Het is overgankelijk en wordt gebruikt bij voedsel, materiaal en medisch weefsel.",
+    "examples": [
+      "Snijd de beschadigde rand van de groente weg.",
+      "De chirurg heeft het aangetaste weefsel weggesneden."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegspringen",
+    "meaning": "met een sprong plotseling afstand nemen van een plaats of gevaar",
+    "semanticLabel": "opzij of vandaan springen",
+    "synonyms": [
+      "opzij springen",
+      "terugspringen"
+    ],
+    "synonymNote": "Opzij springen benoemt de richting; terugspringen betekent specifiek naar achteren springen.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "Ze sprong weg toen de fiets te dichtbij kwam.",
+      "De vonk is bij het openen van de kabel weggesprongen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegsteken",
+    "meaning": "iets op een verborgen of veilige plaats stoppen zodat het niet zichtbaar of direct bereikbaar is",
+    "semanticLabel": "verborgen opbergen",
+    "synonyms": [
+      "verbergen",
+      "wegstoppen"
+    ],
+    "synonymNote": "Verbergen is breder; wegstoppen is informeler en benadrukt het ergens tussen of in stoppen.",
+    "usage": "Komt vooral voor met kleine voorwerpen, geld, papieren en handen.",
+    "examples": [
+      "Hij stak de brief snel in zijn jaszak weg.",
+      "Steek het gereedschap na gebruik veilig weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegstemmen",
+    "meaning": "een voorstel, persoon of maatregel door tegenstemmen verwerpen of uit een functie verwijderen",
+    "semanticLabel": "door stemming verwerpen",
+    "synonyms": [
+      "afstemmen",
+      "verwerpen"
+    ],
+    "synonymNote": "Afstemmen heeft ook de veel frequentere betekenis coördineren; verwerpen zegt niet noodzakelijk dat er formeel is gestemd.",
+    "usage": "Gebruik het alleen wanneer een stemming daadwerkelijk de afwijzing veroorzaakt.",
+    "examples": [
+      "De gemeenteraad stemde het voorstel met een kleine meerderheid weg.",
+      "De leden kunnen het bestuur tijdens de vergadering wegstemmen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2"
+  },
+  {
+    "infinitive": "wegsterven",
+    "meaning": "geleidelijk zwakker worden en uiteindelijk niet meer hoorbaar, zichtbaar of voelbaar zijn",
+    "semanticLabel": "geleidelijk verdwijnen",
+    "synonyms": [
+      "uitsterven",
+      "vervagen"
+    ],
+    "synonymNote": "Uitsterven wordt vooral voor soorten, gewoonten of een geluid gebruikt; vervagen kan ook beeld, kleur of herinnering betreffen.",
+    "usage": "Het is onovergankelijk en komt vaak voor bij geluid, licht, beweging of gevoelens.",
+    "examples": [
+      "Het geluid van de trein stierf langzaam weg.",
+      "De laatste hoop is na het slechte nieuws weggestorven."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegstoppen",
+    "meaning": "iets ergens stoppen om het op te bergen of uit het zicht te houden",
+    "semanticLabel": "uit het zicht opbergen",
+    "synonyms": [
+      "verbergen",
+      "opbergen"
+    ],
+    "synonymNote": "Verbergen benadrukt dat anderen het niet mogen zien; opbergen kan puur ordelijk of praktisch zijn.",
+    "usage": "Het is overgankelijk en vaak informeel; figuurlijk kun je ook gevoelens wegstoppen.",
+    "examples": [
+      "Ze stopte de cadeaus boven in de kast weg.",
+      "Je kunt moeilijke emoties niet altijd blijven wegstoppen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegstoten",
+    "meaning": "iemand of iets met een stoot van zich af of uit een positie duwen",
+    "semanticLabel": "van zich af stoten",
+    "synonyms": [
+      "afstoten",
+      "wegduwen"
+    ],
+    "synonymNote": "Afstoten kan ook figuurlijk afkeer oproepen betekenen; wegduwen is doorgaans minder plotseling of krachtig.",
+    "usage": "Het is overgankelijk en kan letterlijk of figuurlijk worden gebruikt.",
+    "examples": [
+      "Hij stootte de stoel met zijn knie weg.",
+      "Door zijn harde reactie stootte hij juist mensen van zich weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegstrijken",
+    "meaning": "iets met een strijkende beweging verwijderen of een oppervlak gladmaken",
+    "semanticLabel": "strijkend verwijderen",
+    "synonyms": [
+      "gladstrijken",
+      "wegvegen"
+    ],
+    "synonymNote": "Gladstrijken richt zich op het egaliseren van een oppervlak; wegvegen verwijdert iets met een vegende beweging.",
+    "usage": "Komt voor bij plooien, haren, tranen, stof en figuurlijk bij bezwaren.",
+    "examples": [
+      "Ze streek een losse haar uit haar gezicht weg.",
+      "De minister probeerde de bezwaren met één opmerking weg te strijken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegsturen",
+    "meaning": "iemand bevelen of verzoeken een plaats te verlaten, of iets naar een andere bestemming verzenden",
+    "semanticLabel": "laten vertrekken of verzenden",
+    "synonyms": [
+      "wegzenden",
+      "ontslaan"
+    ],
+    "synonymNote": "Wegzenden is formeler en breed; ontslaan past alleen wanneer iemand zijn functie of baan verliest.",
+    "usage": "Het object kan een persoon, bericht, pakket of bestand zijn; de context bepaalt de betekenis.",
+    "examples": [
+      "De beveiliger stuurde de bezoekers na sluitingstijd weg.",
+      "Ik heb het ingevulde formulier gisteren digitaal weggestuurd."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegtrekken",
+    "meaning": "zich van een plaats verwijderen of geleidelijk verdwijnen; ook iets door trekken verwijderen",
+    "semanticLabel": "vertrekken of verdwijnen",
+    "synonyms": [
+      "vertrekken",
+      "verdwijnen"
+    ],
+    "synonymNote": "Vertrekken past bij personen en groepen; verdwijnen is breder en past ook bij pijn, mist of kleur.",
+    "usage": "Kan onovergankelijk met zijn en overgankelijk met hebben voorkomen.",
+    "examples": [
+      "Na de toespraak trok de menigte langzaam weg.",
+      "De pijn is na een paar uur weggetrokken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "hebben/zijn"
+  },
+  {
+    "infinitive": "wegvallen",
+    "meaning": "plotseling of geleidelijk verdwijnen, ophouden of niet meer beschikbaar zijn",
+    "semanticLabel": "verdwijnen of uitvallen",
+    "synonyms": [
+      "uitvallen",
+      "verdwijnen"
+    ],
+    "synonymNote": "Uitvallen past vooral bij een functie, persoon of systeem; verdwijnen is algemener.",
+    "usage": "Het is onovergankelijk en wordt veel gebruikt voor geluid, inkomsten, steun, verbindingen en onderdelen.",
+    "examples": [
+      "Tijdens het gesprek viel de internetverbinding weg.",
+      "Een belangrijke inkomstenbron is vorig jaar weggevallen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "stem": "val",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegvaren",
+    "meaning": "met een boot of schip van een plaats vertrekken",
+    "semanticLabel": "per boot vertrekken",
+    "synonyms": [
+      "uitvaren",
+      "vertrekken"
+    ],
+    "synonymNote": "Uitvaren wordt vooral voor een haven of open water gebruikt; vertrekken noemt het vervoermiddel niet.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "De veerboot voer precies op tijd weg.",
+      "Het schip is vroeg in de ochtend weggevaren."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegvliegen",
+    "meaning": "vliegend of door de lucht snel van een plaats verdwijnen",
+    "semanticLabel": "door de lucht verdwijnen",
+    "synonyms": [
+      "opvliegen",
+      "ervandoor vliegen"
+    ],
+    "synonymNote": "Opvliegen betekent vaak plotseling omhoog vliegen; ervandoor vliegen is informeel en benadrukt vertrek.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn; figuurlijk kan tijd ook snel wegvliegen.",
+    "examples": [
+      "De vogels vlogen weg toen we dichterbij kwamen.",
+      "Het losse papier is door de wind weggevlogen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegvoeren",
+    "meaning": "iemand of iets naar een andere plaats vervoeren, vaak tegen diens wil of om materiaal af te voeren",
+    "semanticLabel": "naar elders vervoeren",
+    "synonyms": [
+      "afvoeren",
+      "meenemen"
+    ],
+    "synonymNote": "Afvoeren past vooral bij materiaal, afval, water of een arrestant; meenemen is neutraler en breder.",
+    "usage": "Het is overgankelijk en klinkt formeler dan wegbrengen.",
+    "examples": [
+      "De politie voerde de verdachte na het verhoor weg.",
+      "Het systeem voert overtollig regenwater automatisch weg."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegwaaien",
+    "meaning": "door de wind van een plaats verdwijnen of worden meegenomen",
+    "semanticLabel": "door wind verdwijnen",
+    "synonyms": [
+      "verwaaien",
+      "wegblazen"
+    ],
+    "synonymNote": "Verwaaien benadrukt verspreiding of beschadiging door wind; wegblazen kan ook een handelend onderwerp hebben.",
+    "usage": "Het is in de onovergankelijke betekenis een bewegingswerkwoord en vormt het perfectum met zijn.",
+    "examples": [
+      "Mijn pet waaide op het perron weg.",
+      "De losse papieren zijn tijdens de storm weggewaaid."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegwerken",
+    "meaning": "iets verwijderen, verwerken of snel volledig afhandelen",
+    "semanticLabel": "verwijderen of afhandelen",
+    "synonyms": [
+      "afhandelen",
+      "verwijderen"
+    ],
+    "synonymNote": "Afhandelen past bij taken en achterstanden; verwijderen past bij materiaal, afval of zichtbare onderdelen.",
+    "usage": "De betekenis wordt sterk door het object bepaald: een achterstand, maaltijd, kabel of oneffenheid wegwerken.",
+    "examples": [
+      "Het team werkte de achterstand in twee weken weg.",
+      "De monteur heeft de kabels netjes achter de wand weggewerkt."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wegwerpen",
+    "meaning": "iets van zich af gooien of definitief wegdoen; formeler dan weggooien",
+    "semanticLabel": "van zich af gooien",
+    "synonyms": [
+      "weggooien",
+      "van zich werpen"
+    ],
+    "synonymNote": "Weggooien is de gewone alledaagse keuze; van zich werpen klinkt letterlijker of literairder.",
+    "usage": "Komt ook figuurlijk voor in kansen, vrijheid of verantwoordelijkheid wegwerpen.",
+    "examples": [
+      "Hij wierp het lege blikje in de afvalbak weg.",
+      "Met die beslissing heeft ze een goede kans weggeworpen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2"
+  },
+  {
+    "infinitive": "wegzakken",
+    "meaning": "geleidelijk naar beneden, naar binnen of uit bewustzijn raken",
+    "semanticLabel": "naar beneden zakken",
+    "synonyms": [
+      "inzakken",
+      "verzinken"
+    ],
+    "synonymNote": "Inzakken past bij constructies of houding; verzinken is formeler en kan ook figuurlijk betekenen dat iemand volledig opgaat in iets.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "De stoel zakte langzaam in de zachte grond weg.",
+      "Hij is tijdens de lange vergadering bijna weggezakt."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "wegzinken",
+    "meaning": "geleidelijk onder een oppervlak verdwijnen of figuurlijk in een toestand terechtkomen",
+    "semanticLabel": "onder het oppervlak verdwijnen",
+    "synonyms": [
+      "zinken",
+      "verzinken"
+    ],
+    "synonymNote": "Zinken is neutraler; verzinken is formeler en wordt ook veel figuurlijk gebruikt.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "De boot zonk langzaam in het donkere water weg.",
+      "De stad is in de mist weggezonken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "weigeren",
+    "meaning": "bewust niet doen, aannemen of toestaan wat gevraagd, aangeboden of verwacht wordt",
+    "semanticLabel": "bewust afwijzen",
+    "synonyms": [
+      "afwijzen",
+      "niet willen"
+    ],
+    "synonymNote": "Afwijzen gebruikt men vooral bij een verzoek, voorstel of aanvraag; niet willen is informeler en minder formeel beslissend.",
+    "usage": "Kan met een zelfstandig naamwoord of te + infinitief: hulp weigeren, weigeren te tekenen.",
+    "examples": [
+      "De klant weigerde het beschadigde product te accepteren.",
+      "De aanvraag is geweigerd omdat informatie ontbrak."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "werpen",
+    "meaning": "iets met een krachtige armbeweging door de lucht laten gaan; formeler dan gooien",
+    "semanticLabel": "krachtig gooien",
+    "synonyms": [
+      "gooien",
+      "smijten"
+    ],
+    "synonymNote": "Gooien is de gewone neutrale keuze; smijten benadrukt kracht, boosheid of onvoorzichtigheid.",
+    "usage": "Komt veel voor in samenstellingen en vaste uitdrukkingen; als los werkwoord klinkt het vaak formeel of sportief.",
+    "examples": [
+      "De atleet wierp de speer ruim tachtig meter.",
+      "De lamp wierp een smalle lichtbundel op de muur."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "level": "B2"
+  },
+  {
+    "infinitive": "wijzigen",
+    "meaning": "iets veranderen of zelf veranderen ten opzichte van de eerdere toestand",
+    "semanticLabel": "veranderen",
+    "synonyms": [
+      "veranderen",
+      "aanpassen"
+    ],
+    "synonymNote": "Aanpassen betekent meestal gericht geschikt maken voor een doel; wijzigen is neutraler en vaak formeler.",
+    "usage": "Kan overgankelijk en onovergankelijk zijn: een afspraak wijzigen, de planning wijzigt.",
+    "examples": [
+      "We hebben de datum van de bijeenkomst gewijzigd.",
+      "De voorwaarden kunnen zonder voorafgaande aankondiging wijzigen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "winkelen",
+    "meaning": "winkels bezoeken om producten te bekijken of te kopen",
+    "semanticLabel": "boodschappen of aankopen doen",
+    "synonyms": [
+      "shoppen",
+      "boodschappen doen"
+    ],
+    "synonymNote": "Shoppen is informeler en vaak recreatief; boodschappen doen gaat meestal om dagelijkse noodzakelijke aankopen.",
+    "usage": "Winkelen is doorgaans een activiteit zonder genoemd direct object en vormt het perfectum met hebben.",
+    "examples": [
+      "We hebben zaterdag in het centrum gewinkeld.",
+      "Zij winkelt liever online dan in drukke winkelstraten."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "wrijven",
+    "meaning": "met druk herhaald over een oppervlak bewegen, meestal met een hand, doek of voorwerp",
+    "semanticLabel": "herhaald over een oppervlak bewegen",
+    "synonyms": [
+      "schuren",
+      "masseren"
+    ],
+    "synonymNote": "Schuren is ruwer en kan materiaal afslijten; masseren is gericht op spieren of huid en heeft een verzorgend doel.",
+    "usage": "Komt vaak voor met over, tegen of in: in je ogen wrijven, over een vlek wrijven.",
+    "examples": [
+      "Wrijf niet in je ogen met vuile handen.",
+      "Hij wreef met een droge doek over het scherm."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "zakken",
+    "meaning": "naar een lager niveau of een lagere positie gaan; ook voor een examen niet slagen",
+    "semanticLabel": "naar beneden gaan of niet slagen",
+    "synonyms": [
+      "dalen",
+      "niet slagen"
+    ],
+    "synonymNote": "Dalen past bij een meetbaar niveau; niet slagen benoemt alleen de examenbetekenis.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn: de prijs is gezakt, hij is gezakt voor het examen.",
+    "examples": [
+      "De temperatuur is vannacht vijf graden gezakt.",
+      "Hij is helaas voor zijn rijexamen gezakt."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "zingen",
+    "meaning": "met de stem muzikale tonen en meestal woorden voortbrengen",
+    "semanticLabel": "muziek met de stem maken",
+    "synonyms": [
+      "vocaliseren",
+      "een lied ten gehore brengen"
+    ],
+    "synonymNote": "Vocaliseren is technisch en kan zonder woorden; een lied ten gehore brengen is formeler en contextueel, geen algemene vervanging.",
+    "usage": "Kan zonder object, met een lied als object of met over/van in vaste constructies.",
+    "examples": [
+      "De kinderen zongen samen een bekend lied.",
+      "Zij heeft jarenlang in een professioneel koor gezongen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "zinken",
+    "meaning": "door eigen gewicht of verlies van drijfvermogen naar beneden gaan in water of een andere stof",
+    "semanticLabel": "onder het oppervlak zakken",
+    "synonyms": [
+      "wegzinken",
+      "ondergaan"
+    ],
+    "synonymNote": "Wegzinken benadrukt het geleidelijke verdwijnen; ondergaan wordt vooral voor schepen gebruikt en heeft ook andere betekenissen.",
+    "usage": "Het is onovergankelijk en vormt het perfectum met zijn.",
+    "examples": [
+      "Het beschadigde schip zonk vlak voor de kust.",
+      "De zware steen is meteen naar de bodem gezonken."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "",
+    "auxiliary": "zijn"
+  },
+  {
+    "infinitive": "zonnen",
+    "meaning": "in de zon liggen of zitten om van de warmte te genieten of bruin te worden",
+    "semanticLabel": "in de zon liggen",
+    "synonyms": [
+      "zonnebaden",
+      "in de zon zitten"
+    ],
+    "synonymNote": "Zonnebaden is formeler en explicieter recreatief; in de zon zitten zegt niet noodzakelijk dat bruin worden het doel is.",
+    "usage": "Het voltooid deelwoord is gezond, dat dezelfde spelling heeft als het bijvoeglijk naamwoord gezond.",
+    "examples": [
+      "We hebben een uur op het strand gezond.",
+      "Je moet je huid beschermen als je lang gaat zonnen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "zorgen",
+    "meaning": "ervoor instaan dat iets gebeurt of iemand verzorgen; wederkerend ook ongerust zijn",
+    "semanticLabel": "verantwoordelijkheid nemen of verzorgen",
+    "synonyms": [
+      "verzorgen",
+      "ervoor instaan"
+    ],
+    "synonymNote": "Verzorgen richt zich op concrete zorg voor iemand of iets; ervoor instaan benadrukt verantwoordelijkheid voor een resultaat.",
+    "usage": "Belangrijke patronen zijn zorgen voor, ervoor zorgen dat en zich zorgen maken over.",
+    "examples": [
+      "Zij zorgt drie dagen per week voor haar vader.",
+      "Kun je ervoor zorgen dat de deur om zes uur open is?"
+    ],
+    "relatedWords": [],
+    "fixedPreposition": "voor"
+  },
+  {
+    "infinitive": "zuigen",
+    "meaning": "door onderdruk lucht of vloeistof naar zich toe trekken, of met mond en lippen een zuigende beweging maken",
+    "semanticLabel": "door zuigkracht aantrekken",
+    "synonyms": [
+      "opzuigen",
+      "sabbelen"
+    ],
+    "synonymNote": "Opzuigen past bij vloeistof, stof of lucht; sabbelen beschrijft zacht zuigen met de mond en is veel specifieker.",
+    "usage": "Kan overgankelijk of onovergankelijk zijn en komt ook in technische samenstellingen voor.",
+    "examples": [
+      "De pomp zuigt water uit de kelder.",
+      "De baby zoog rustig op zijn duim."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  },
+  {
+    "infinitive": "zwijgen",
+    "meaning": "bewust niets zeggen of ophouden met spreken",
+    "semanticLabel": "stil blijven",
+    "synonyms": [
+      "stil blijven",
+      "niets zeggen"
+    ],
+    "synonymNote": "Stil blijven kan ook alleen op geluid of beweging slaan; zwijgen heeft specifiek betrekking op spreken.",
+    "usage": "Komt vaak voor met over: over een onderwerp zwijgen, en in de gebiedende wijs zwijg.",
+    "examples": [
+      "Hij zweeg toen de voorzitter om een reactie vroeg.",
+      "De getuige heeft jarenlang over het incident gezwegen."
+    ],
+    "relatedWords": [],
+    "fixedPreposition": ""
+  }
+]

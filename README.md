@@ -1,4 +1,31 @@
-# Nederlands, gewoon doen — V18.11.0
+# Nederlands, gewoon doen — V19.2.2
+
+
+## V19.2.2 — browserbundle-hotfix
+
+- Herstelt `ReferenceError: v19Exercises is not defined` in de klassieke browserbundle.
+- Bundelt `v19-learning-experience.js` vóór `exercises.js`.
+- Voegt regressietests toe voor `v19Exercises` en `v19PracticeScenarios`.
+- Vernieuwt cache-busting en service-worker-cache naar 19.2.2.
+
+
+## V19.2.1 — volledige lexicale afsluiting van de werkwoordenatlas
+
+De laatste 79 werkwoorden zijn individueel aangevuld met specifieke definities, contextuele synoniemen, gebruiksnotities en natuurlijke voorbeelden. De morfologische eindcontrole corrigeert onder meer de scheidbaarheid en het deelwoord van `weggooien`, het deelwoord van `weerleggen`, de stam van `wegvallen` en het hulpwerkwoord bij meerdere gerichte bewegingswerkwoorden.
+
+- **1.886/1.886** werkwoorden lexicaal nagekeken;
+- **0** open lexicale controles in de kennisgraaf;
+- **123/123** tests geslaagd;
+- **70/70** inhoudscontroles geslaagd;
+- geen oefeningen, afbeeldingen, routes of bestaande verbfiches verwijderd.
+
+Zie `VERB_FINAL_REVIEW_V19_2_1.md`, `CONTENT_VALIDATION_V19_2_1.md` en `RELEASE_SUMMARY_V19_2_1_ES.md`.
+
+## V19.2 — Learning Experience Release
+
+V19.2 behoudt V18.18 volledig en voegt een rustige, doelgerichte ingang **Praktijksituaties** toe. Zes situaties verbinden vragen, natuurlijke antwoorden, vervolgvragen, uitspraak en oefeningen. De oefenbank groeit van 8.024 naar **8.054** oefeningen, inclusief visuele oefeningen met de bestaande originele illustraties. De volledige werkwoordenatlas en alle eerdere validatielagen blijven intact.
+
+Zie `RELEASE_SUMMARY_V19_2_ES.md` en de documenten in `docs/`.
 
 
 ## V18.8 — primera tanda alfabética de verbos validada

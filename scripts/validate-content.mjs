@@ -1,6 +1,8 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import { a0Themes } from '../js/starter-content.js';
 import { a1Themes, a2Themes, grammarTopics, vocabulary, listeningScenes } from '../js/content.js';
+import { spiralThemes } from '../js/spiral-content.js';
+import { advancedSpiralLevels } from '../js/advanced-level-content.js';
 import { deepGrammarTopics, prepositionEntries, fixedPrepositionCombinations, separableVerbBank, conjunctionBank, idiomBank } from '../js/depth-content.js';
 import { questionTopics, pronominalAdverbs, questionPractice } from '../js/questions-content.js';
 import { advancedGrammarTopics, readingArticles, emailTasks } from '../js/advanced-practice-content.js';
@@ -13,9 +15,10 @@ import { verbAtlas as baseVerbAtlas } from '../js/verb-atlas.js';
 import { applyVerbCorrections, modalAndCoreVerbCorrections } from '../js/verb-corrections.js';
 import { applyCoreVerbReviews, coreVerbReviews } from '../js/verb-core-review.js';
 import { applyInitialVerbReviews, initialVerbReviews } from '../js/verb-initial-review.js';
+import { applyFinalVerbReviews, finalVerbReviews } from '../js/verb-final-review.js';
 
 const root = new URL('../', import.meta.url);
-const APP_VERSION = '18.18.0';
+const APP_VERSION = '19.2.4';
 const results = [];
 const add = (area, check, status, detail, evidence = null) => results.push({ area, check, status, detail, evidence });
 const pass = (area, check, detail, evidence = null) => add(area, check, 'pass', detail, evidence);
@@ -44,6 +47,15 @@ validateThemes('A0', a0Themes);
 validateThemes('A1', a1Themes);
 validateThemes('A2', a2Themes);
 expect(a1Themes.length === 8 && a2Themes.length === 8, 'curriculum', 'A1 en A2 behouden de bestaande hoofdstructuur', `A1=${a1Themes.length}, A2=${a2Themes.length}.`);
+const advancedLevelProblems = [];
+for (const theme of spiralThemes) {
+  for (const level of ['C1', 'C2']) {
+    const data = advancedSpiralLevels[theme.id]?.[level];
+    const itemCount = Object.values(data?.words || {}).flat().length;
+    if (!data || data.canDo?.length < 3 || data.grammar?.length < 3 || data.dialogue?.length < 4 || itemCount < 24) advancedLevelProblems.push(`${level}:${theme.id}`);
+  }
+}
+expect(advancedLevelProblems.length === 0, 'curriculum', 'C1 en C2 bevatten negen volledige spiraalthema’s', advancedLevelProblems.length ? advancedLevelProblems.join(', ') : '18 gevorderde themavarianten met doelen, grammatica, dialoog en minimaal 24 taalitems.');
 
 const uiGrammar = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics];
 const allGrammar = [...uiGrammar, ...deepGrammarTopics];
@@ -66,7 +78,7 @@ const coverage = [
 const grammarIds = new Set(allGrammar.map((item) => item.id));
 for (const [label, ids] of coverage) expect(ids.every((id) => grammarIds.has(id)), 'source-material', `dekking: ${label}`, ids.join(', '));
 
-expect(exerciseBank.length === 8024, 'exercises', 'oefenbanktotaal is reproduceerbaar', `${exerciseBank.length} oefeningen.`);
+expect(exerciseBank.length === 8072, 'exercises', 'oefenbanktotaal is reproduceerbaar', `${exerciseBank.length} oefeningen.`);
 expect(unique(exerciseBank.map((item) => item.id)), 'exercises', 'oefening-id’s zijn uniek', `${exerciseBank.length} unieke id's.`);
 const invalidExercises = exerciseBank.filter((item) => {
   if (!item.prompt || !item.explanation || !item.level || !item.type || !item.topic) return true;
@@ -84,11 +96,12 @@ const verbAtlas = structuredClone(baseVerbAtlas);
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
+applyFinalVerbReviews(verbAtlas);
 const reviewed = verbAtlas.filter((item) => item.reviewed === true);
 const unreviewed = verbAtlas.filter((item) => item.reviewed !== true);
 expect(verbAtlas.length === 1886, 'verbs', 'atlasomvang is consistent', `${verbAtlas.length} unieke werkwoorden na correctielagen.`);
 expect(unique(verbAtlas.map((item) => item.infinitive)), 'verbs', 'werkwoorden zijn uniek', 'Geen dubbele infinitieven.');
-const expectedReviewedCount = new Set([...modalAndCoreVerbCorrections, ...coreVerbReviews, ...initialVerbReviews].map((item) => item.infinitive)).size;
+const expectedReviewedCount = new Set([...modalAndCoreVerbCorrections, ...coreVerbReviews, ...initialVerbReviews, ...finalVerbReviews].map((item) => item.infinitive)).size;
 expect(reviewed.length === expectedReviewedCount, 'verbs', 'alle expliciete reviews zijn toegepast', `${reviewed.length} handmatig nagekeken fiches.`);
 const firstHundred = [...verbAtlas].sort((a, b) => a.infinitive.localeCompare(b.infinitive, 'nl-NL')).slice(0, 100);
 expect(firstHundred.length === 100 && firstHundred.every((verb) => verb.reviewed === true), 'verbs', 'de eerste honderd alfabetische werkwoorden zijn volledig nagekeken', firstHundred.filter((verb) => verb.reviewed !== true).map((verb) => verb.infinitive).join(', ') || '100 van 100 fiches zijn nagekeken.');
@@ -99,7 +112,7 @@ const invalidReviewed = reviewed.filter((verb) => !verb.meaning || verb.meaning.
 expect(invalidReviewed.length === 0, 'verbs', 'nagekeken fiches hebben specifieke definities en geldige metadata', invalidReviewed.length ? invalidReviewed.map((item) => item.infinitive).join(', ') : `${reviewed.length} fiches voldoen.`);
 const genericVisible = unreviewed.filter((verb) => genericMeanings.has(String(verb.meaning || '').trim()) || verb.synonyms?.length || verb.examples?.length);
 expect(genericVisible.length === 0, 'verbs', 'niet-nagekeken fiches tonen geen verzonnen definities of synoniemen', genericVisible.length ? genericVisible.slice(0, 20).map((item) => item.infinitive).join(', ') : `${unreviewed.length} fiches blijven expliciet ongemarkeerd.`);
-warn('verbs', 'resterende lexicale review', `${unreviewed.length} werkwoorden hebben vervoegingsinformatie maar nog geen handmatig gevalideerde definitie of synoniemen. Ze worden in de interface niet als gedefinieerd gepresenteerd.`, { reviewed: reviewed.length, pending: unreviewed.length });
+expect(unreviewed.length === 0, 'verbs', 'alle werkwoorden hebben een lexicale eindcontrole', unreviewed.length ? `${unreviewed.length} werkwoorden blijven open.` : `${reviewed.length} van ${verbAtlas.length} werkwoorden zijn nagekeken.`);
 
 const knownForms = {
   praten: ['ik praat', 'praatte', 'gepraat'], antwoorden: ['ik antwoord', 'antwoordde', 'geantwoord'],
@@ -174,10 +187,19 @@ const files = {
 expect(files.index.includes(`styles.css?v=${APP_VERSION}`) && files.index.includes(`app.js?v=${APP_VERSION}`), 'technical', 'CSS en JavaScript hebben cache-busting', `Versie ${APP_VERSION} staat in beide shell-assets.`);
 expect(/networkFirst/u.test(files.worker) && /updateViaCache: 'none'/u.test(files.main), 'technical', 'oude shell-assets kunnen niet permanent uit cache blijven komen', 'Netwerk-eerst voor document, CSS en JavaScript; registratie omzeilt de HTTP-cache.');
 expect(/\.quick-level-card/u.test(files.css) && /\.accessibility-summary/u.test(files.css), 'technical', 'startkaarten en toegankelijkheidsblok hebben componentstijlen', 'Beide selectors aanwezig in styles.css.');
-expect(/const coreVerbReviews =/u.test(files.bundle) && /const initialVerbReviews =/u.test(files.bundle) && /const sourceReviewGrammarTopics =/u.test(files.bundle), 'technical', 'nieuwe inhoud zit in de klassieke browserbundle', 'Kernreviews, eerste alfabetische batch en bronreview aangetroffen.');
+expect(/const coreVerbReviews =/u.test(files.bundle) && /const initialVerbReviews =/u.test(files.bundle) && /const finalVerbReviews =/u.test(files.bundle) && /const sourceReviewGrammarTopics =/u.test(files.bundle), 'technical', 'nieuwe inhoud zit in de klassieke browserbundle', 'Kernreviews, alfabetische batches, eindcontrole en bronreview aangetroffen.');
+const v19ExercisesDefinitionPosition = files.bundle.indexOf('const v19Exercises =');
+const v19ScenariosDefinitionPosition = files.bundle.indexOf('const v19PracticeScenarios =');
+const v19ExercisesUsePosition = files.bundle.indexOf('...v19Exercises];');
+const v19ScenariosUsePosition = files.bundle.indexOf('v19PracticeScenarios.find(');
+expect(v19ExercisesDefinitionPosition >= 0 && v19ExercisesUsePosition > v19ExercisesDefinitionPosition, 'technical', 'V19-oefeningen worden vóór gebruik gebundeld', `Definitiepositie=${v19ExercisesDefinitionPosition}, gebruikspositie=${v19ExercisesUsePosition}.`);
+expect(v19ScenariosDefinitionPosition >= 0 && v19ScenariosUsePosition > v19ScenariosDefinitionPosition, 'technical', 'V19-praktijksituaties worden vóór gebruik gebundeld', `Definitiepositie=${v19ScenariosDefinitionPosition}, gebruikspositie=${v19ScenariosUsePosition}.`);
 const initialDefinitionPosition = files.bundle.indexOf('const initialVerbReviews =');
 const initialInvocationPosition = files.bundle.indexOf('applyInitialVerbReviews(verbAtlas);');
+const finalDefinitionPosition = files.bundle.indexOf('const finalVerbReviews =');
+const finalInvocationPosition = files.bundle.indexOf('applyFinalVerbReviews(verbAtlas);');
 expect(initialDefinitionPosition >= 0 && initialInvocationPosition > initialDefinitionPosition, 'technical', 'de eerste werkwoordbatch wordt vóór gebruik gebundeld', `Definitiepositie=${initialDefinitionPosition}, aanroeppositie=${initialInvocationPosition}.`);
+expect(finalDefinitionPosition >= 0 && finalInvocationPosition > finalDefinitionPosition, 'technical', 'de lexicale eindcontrole wordt vóór gebruik gebundeld', `Definitiepositie=${finalDefinitionPosition}, aanroeppositie=${finalInvocationPosition}.`);
 
 
 const graph = JSON.parse(await readFile(new URL('data/content-knowledge-graph.json', root), 'utf8'));
@@ -192,7 +214,7 @@ expect(graphReport.metadata?.issueCount === unreviewed.length && graphReport.rev
 expect(/id="page-kennisgraaf"/u.test(files.index) && /createKnowledgeGraphExplorer/u.test(files.main), 'knowledge-graph', 'de graaf is geïntegreerd zonder bestaande routes te vervangen', 'Aparte, lui geladen kennisgraafpagina aangetroffen.');
 expect(/__NL_CONTENT_KNOWLEDGE_GRAPH__/u.test(graphScript) && /loadKnowledgeGraphScript/u.test(await readFile(new URL('js/knowledge-graph.js', root), 'utf8')), 'knowledge-graph', 'de graaf werkt ook bij rechtstreeks openen vanaf schijf', 'Lui geladen JavaScript-fallback voor file:// aangetroffen.');
 
-const sourceFiles = ['js/content.js', 'js/depth-content.js', 'js/questions-content.js', 'js/advanced-practice-content.js', 'js/source-review-content.js', 'js/verb-core-review.js', 'js/verb-initial-review.js'];
+const sourceFiles = ['js/content.js', 'js/depth-content.js', 'js/questions-content.js', 'js/advanced-practice-content.js', 'js/source-review-content.js', 'js/verb-core-review.js', 'js/verb-initial-review.js', 'js/verb-final-review.js'];
 const placeholderHits = [];
 for (const file of sourceFiles) {
   const text = await readFile(new URL(file, root), 'utf8');
@@ -212,7 +234,7 @@ const counts = {
 };
 const summary = {
   generatedAt: new Date().toISOString(), version: APP_VERSION,
-  status: results.some((item) => item.status === 'fail') ? 'failed' : 'passed-with-declared-limitations',
+  status: results.some((item) => item.status === 'fail') ? 'failed' : results.some((item) => item.status === 'warning') ? 'passed-with-warnings' : 'passed',
   totals: {
     checks: results.length,
     passed: results.filter((item) => item.status === 'pass').length,
@@ -226,7 +248,7 @@ await writeFile(new URL('data/content-validation.json', root), JSON.stringify(su
 
 const sections = [...new Set(results.map((item) => item.area))];
 const md = [
-  '# Content validation V18.8', '',
+  `# Content validation V${APP_VERSION}`, '',
   `Status: **${summary.status}**`,
   `Generated: ${summary.generatedAt}`, '',
   '## Summary', '',
@@ -239,7 +261,7 @@ const md = [
   `- ${counts.readingWriting.articles} reading articles and ${counts.readingWriting.emailTasks} writing tasks.`,
   `- ${counts.knowledgeGraph.nodes} knowledge-graph nodes and ${counts.knowledgeGraph.edges} validated relationships across ${counts.knowledgeGraph.sourceCollections} source collections.`, '',
   '## Important limitation', '',
-  'The complete application structure, published content banks and graph integrity were checked automatically. Lexical definitions and synonym relations are claimed as reviewed only for the 190 marked verb fiches. The first 100 alphabetic entries are complete; the graph exposes the remaining entries as review issues and does not invent definitions or synonyms.', '',
+  'The complete application structure, published content banks and graph integrity were checked automatically. The lexical review queue is empty. The final 79 verb fiches were reviewed individually for meaning, contextual synonymy, usage, examples, separability, auxiliary choice and core morphology. Automated QA complements, but does not replace, future corrections when stronger authoritative evidence becomes available.', '',
 ];
 for (const section of sections) {
   md.push(`## ${section}`, '');
@@ -249,7 +271,7 @@ for (const section of sections) {
   }
   md.push('');
 }
-await writeFile(new URL('CONTENT_VALIDATION_V18_8.md', root), md.join('\n') + '\n', 'utf8');
+await writeFile(new URL(`CONTENT_VALIDATION_V${APP_VERSION.replaceAll('.', '_')}.md`, root), md.join('\n') + '\n', 'utf8');
 
 console.log(JSON.stringify(summary.totals));
 if (summary.totals.failed) process.exitCode = 1;

@@ -1,11 +1,11 @@
-const CACHE = 'nederlands-gewoon-doen-v18-18-0';
-const APP_VERSION = '18.18.0';
+const CACHE = 'nederlands-gewoon-doen-v19-2-4';
+const APP_VERSION = '19.2.4';
 const CORE = [
   './', './index.html', `./css/styles.css?v=${APP_VERSION}`, `./js/app.js?v=${APP_VERSION}`,
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
-  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js',
-  './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js', './js/source-review-content.js', './js/exercises.js',
-  './js/profiles.js', './js/verb-atlas.js', './js/verb-corrections.js', './js/verb-core-review.js', './js/verb-initial-review.js', './js/knowledge-graph.js',
+  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/advanced-level-content.js',
+  './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js', './js/source-review-content.js', './js/v19-learning-experience.js', './js/exercises.js',
+  './js/profiles.js', './js/verb-atlas.js', './js/verb-corrections.js', './js/verb-core-review.js', './js/verb-initial-review.js', './js/verb-final-review.js', './js/knowledge-graph.js',
   './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg',
   './images/numbers-time-map.svg', './images/math-map.svg', './images/lesson-thuiswerken.svg',
   './images/woord-huis.svg', './images/woord-fiets.svg', './images/woord-appel.svg',

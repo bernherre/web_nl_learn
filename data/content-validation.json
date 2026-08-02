@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-08-02T12:14:49.781Z",
-  "version": "18.18.0",
-  "status": "passed-with-declared-limitations",
+  "generatedAt": "2026-08-02T19:05:30.633Z",
+  "version": "19.2.4",
+  "status": "passed",
   "totals": {
-    "checks": 69,
-    "passed": 68,
-    "warnings": 1,
+    "checks": 73,
+    "passed": 73,
+    "warnings": 0,
     "failed": 0
   },
   "counts": {
@@ -16,21 +16,23 @@
       "grammarModules": 71
     },
     "exercises": {
-      "total": 8024,
+      "total": 8072,
       "byLevel": {
-        "A0": 350,
-        "A1": 1058,
-        "A2": 1563,
-        "B1": 2253,
-        "B2": 2800
+        "A0": 356,
+        "A1": 1064,
+        "A2": 1569,
+        "B1": 2259,
+        "B2": 2806,
+        "C1": 9,
+        "C2": 9
       },
       "sourceReview": 24
     },
     "verbs": {
       "total": 1886,
-      "reviewed": 1807,
-      "pendingLexicalReview": 79,
-      "reviewedShare": 95.8
+      "reviewed": 1886,
+      "pendingLexicalReview": 0,
+      "reviewedShare": 100
     },
     "readingWriting": {
       "articles": 10,
@@ -42,10 +44,10 @@
       "newExercises": 24
     },
     "knowledgeGraph": {
-      "nodes": 24432,
-      "edges": 80099,
-      "issues": 79,
-      "sourceCollections": 47
+      "nodes": 25349,
+      "edges": 82078,
+      "issues": 0,
+      "sourceCollections": 50
     }
   },
   "results": [
@@ -117,6 +119,13 @@
       "check": "A1 en A2 behouden de bestaande hoofdstructuur",
       "status": "pass",
       "detail": "A1=8, A2=8.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "C1 en C2 bevatten negen volledige spiraalthema’s",
+      "status": "pass",
+      "detail": "18 gevorderde themavarianten met doelen, grammatica, dialoog en minimaal 24 taalitems.",
       "evidence": null
     },
     {
@@ -207,14 +216,14 @@
       "area": "exercises",
       "check": "oefenbanktotaal is reproduceerbaar",
       "status": "pass",
-      "detail": "8024 oefeningen.",
+      "detail": "8072 oefeningen.",
       "evidence": null
     },
     {
       "area": "exercises",
       "check": "oefening-id’s zijn uniek",
       "status": "pass",
-      "detail": "8024 unieke id's.",
+      "detail": "8072 unieke id's.",
       "evidence": null
     },
     {
@@ -235,7 +244,7 @@
       "area": "exercises",
       "check": "niveauverdeling",
       "status": "pass",
-      "detail": "{\"A0\":350,\"A1\":1058,\"A2\":1563,\"B1\":2253,\"B2\":2800}",
+      "detail": "{\"A0\":356,\"A1\":1064,\"A2\":1569,\"B1\":2259,\"B2\":2806,\"C1\":9,\"C2\":9}",
       "evidence": null
     },
     {
@@ -256,7 +265,7 @@
       "area": "verbs",
       "check": "alle expliciete reviews zijn toegepast",
       "status": "pass",
-      "detail": "1807 handmatig nagekeken fiches.",
+      "detail": "1886 handmatig nagekeken fiches.",
       "evidence": null
     },
     {
@@ -277,25 +286,22 @@
       "area": "verbs",
       "check": "nagekeken fiches hebben specifieke definities en geldige metadata",
       "status": "pass",
-      "detail": "1807 fiches voldoen.",
+      "detail": "1886 fiches voldoen.",
       "evidence": null
     },
     {
       "area": "verbs",
       "check": "niet-nagekeken fiches tonen geen verzonnen definities of synoniemen",
       "status": "pass",
-      "detail": "79 fiches blijven expliciet ongemarkeerd.",
+      "detail": "0 fiches blijven expliciet ongemarkeerd.",
       "evidence": null
     },
     {
       "area": "verbs",
-      "check": "resterende lexicale review",
-      "status": "warning",
-      "detail": "79 werkwoorden hebben vervoegingsinformatie maar nog geen handmatig gevalideerde definitie of synoniemen. Ze worden in de interface niet als gedefinieerd gepresenteerd.",
-      "evidence": {
-        "reviewed": 1807,
-        "pending": 79
-      }
+      "check": "alle werkwoorden hebben een lexicale eindcontrole",
+      "status": "pass",
+      "detail": "1886 van 1886 werkwoorden zijn nagekeken.",
+      "evidence": null
     },
     {
       "area": "verbs",
@@ -322,7 +328,7 @@
       "area": "verbs",
       "check": "synoniemen zijn uniek, contextueel bruikbaar en spreken de verschilnotitie niet tegen",
       "status": "pass",
-      "detail": "1807 fiches gecontroleerd.",
+      "detail": "1886 fiches gecontroleerd.",
       "evidence": null
     },
     {
@@ -455,7 +461,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 18.18.0 staat in beide shell-assets.",
+      "detail": "Versie 19.2.4 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -476,28 +482,49 @@
       "area": "technical",
       "check": "nieuwe inhoud zit in de klassieke browserbundle",
       "status": "pass",
-      "detail": "Kernreviews, eerste alfabetische batch en bronreview aangetroffen.",
+      "detail": "Kernreviews, alfabetische batches, eindcontrole en bronreview aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "V19-oefeningen worden vóór gebruik gebundeld",
+      "status": "pass",
+      "detail": "Definitiepositie=451357, gebruikspositie=483723.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
+      "status": "pass",
+      "detail": "Definitiepositie=447442, gebruikspositie=7444415.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=2280209, aanroeppositie=7158965.",
+      "detail": "Definitiepositie=2339653, aanroeppositie=7401328.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "de lexicale eindcontrole wordt vóór gebruik gebundeld",
+      "status": "pass",
+      "detail": "Definitiepositie=7068828, aanroeppositie=7401364.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 18.18.0.",
+      "detail": "Versie 19.2.4.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "alle grote inhoudsbanken zijn verbonden",
       "status": "pass",
-      "detail": "24432 nodes en 80099 relaties.",
+      "detail": "25349 nodes en 82078 relaties.",
       "evidence": null
     },
     {
@@ -511,7 +538,7 @@
       "area": "knowledge-graph",
       "check": "lexicale reviewwachtrij is volledig en controleerbaar",
       "status": "pass",
-      "detail": "79 werkwoorden in de wachtrij.",
+      "detail": "0 werkwoorden in de wachtrij.",
       "evidence": null
     },
     {

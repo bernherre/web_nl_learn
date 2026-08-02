@@ -63,5 +63,7 @@ export function safeProgress(raw = {}) {
     a2Completed: Array.isArray(raw.a2Completed) ? [...new Set(raw.a2Completed.filter((item) => typeof item === 'string'))] : [],
     b1Completed: Array.isArray(raw.b1Completed) ? [...new Set(raw.b1Completed.filter((item) => typeof item === 'string'))] : [],
     b2Completed: Array.isArray(raw.b2Completed) ? [...new Set(raw.b2Completed.filter((item) => typeof item === 'string'))] : [],
+    c1Completed: Array.isArray(raw.c1Completed) ? [...new Set(raw.c1Completed.filter((item) => typeof item === 'string'))] : [],
+    c2Completed: Array.isArray(raw.c2Completed) ? [...new Set(raw.c2Completed.filter((item) => typeof item === 'string'))] : [],
   };
 }

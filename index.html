@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123f38">
-  <meta name="description" content="Nederlands leren met beeld, geluid, betekenis en actief gebruik. Een volledig statische leeromgeving van A0 tot B2.">
+  <meta name="description" content="Nederlands leren met beeld, geluid, betekenis en actief gebruik. Een volledig statische leeromgeving van A0 tot C2.">
   <meta name="color-scheme" content="light dark">
   <title>Nederlands, gewoon doen</title>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/styles.css?v=18.18.0">
+  <link rel="stylesheet" href="css/styles.css?v=19.2.4">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -23,11 +23,14 @@
       <nav class="main-nav">
         <button class="nav-item active" type="button" data-page="vandaag"><span class="nav-icon" aria-hidden="true">⌂</span><span>Vandaag</span></button>
         <button class="nav-item" type="button" data-page="leerpad"><span class="nav-icon" aria-hidden="true">↗</span><span>Leerpad</span></button>
+        <button class="nav-item" type="button" data-page="praktijk"><span class="nav-icon" aria-hidden="true">◇</span><span>Praktijksituaties</span></button>
         <button class="nav-item" type="button" data-page="a0"><span class="nav-icon" aria-hidden="true">A0</span><span>A0-start</span></button>
         <button class="nav-item" type="button" data-page="a1"><span class="nav-icon" aria-hidden="true">A1</span><span>A1-cursus</span></button>
         <button class="nav-item" type="button" data-page="a2"><span class="nav-icon" aria-hidden="true">A2</span><span>A2-cursus</span></button>
         <button class="nav-item" type="button" data-page="b1"><span class="nav-icon" aria-hidden="true">B1</span><span>B1-cursus</span></button>
         <button class="nav-item" type="button" data-page="b2"><span class="nav-icon" aria-hidden="true">B2</span><span>B2-cursus</span></button>
+        <button class="nav-item" type="button" data-page="c1"><span class="nav-icon" aria-hidden="true">C1</span><span>C1-cursus</span></button>
+        <button class="nav-item" type="button" data-page="c2"><span class="nav-icon" aria-hidden="true">C2</span><span>C2-cursus</span></button>
         <button class="nav-item" type="button" data-page="concepten"><span class="nav-icon" aria-hidden="true">◎</span><span>Concepten</span></button>
         <button class="nav-item" type="button" data-page="kennisgraaf"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kennisgraaf</span></button>
         <button class="nav-item" type="button" data-page="grammatica"><span class="nav-icon" aria-hidden="true">¶</span><span>Grammatica</span></button>
@@ -133,6 +136,8 @@
                 <button class="quick-level-card" type="button" data-page="a2"><span class="quick-level-code">A2</span><strong>Zelfstandig</strong><small>Meer gesprekken en context</small><i><b style="width:0%"></b></i><em>0%</em></button>
                 <button class="quick-level-card" type="button" data-page="b1"><span class="quick-level-code">B1</span><strong>Vloeiend</strong><small>Vertellen en argumenteren</small><i><b style="width:0%"></b></i><em>0%</em></button>
                 <button class="quick-level-card" type="button" data-page="b2"><span class="quick-level-code">B2</span><strong>Nuance</strong><small>Professioneel en precies</small><i><b style="width:0%"></b></i><em>0%</em></button>
+                <button class="quick-level-card" type="button" data-page="c1"><span class="quick-level-code">C1</span><strong>Effectief</strong><small>Complexe ideeën en register</small><i><b style="width:0%"></b></i><em>0%</em></button>
+                <button class="quick-level-card" type="button" data-page="c2"><span class="quick-level-code">C2</span><strong>Meesterschap</strong><small>Stijl, discours en implicatuur</small><i><b style="width:0%"></b></i><em>0%</em></button>
               </div>
             </section>
 
@@ -159,13 +164,15 @@
             </section>
 
             <section class="section-block" aria-labelledby="routes-title">
-              <div class="section-heading"><div><span class="kicker">Vijf zichtbare routes</span><h2 id="routes-title">Kies jouw niveau</h2></div><button class="text-button" type="button" data-page="leerpad">Bekijk het hele leerpad →</button></div>
+              <div class="section-heading"><div><span class="kicker">Zeven zichtbare routes</span><h2 id="routes-title">Kies jouw niveau</h2></div><button class="text-button" type="button" data-page="leerpad">Bekijk het hele leerpad →</button></div>
               <div class="level-quick-grid">
                 <button class="card level-quick level-a0" type="button" data-page="a0"><strong>A0</strong><span>Eerste contact</span><small>Hallo, dank je, mijn naam is…</small></button>
                 <button class="card level-quick level-a1" type="button" data-page="a1"><strong>A1</strong><span>Dagelijkse basis</span><small>Wonen, eten, kleding en reizen</small></button>
                 <button class="card level-quick level-a2" type="button" data-page="a2"><strong>A2</strong><span>Zelfstandig handelen</span><small>Werk, winkels, gezin en gemeente</small></button>
                 <button class="card level-quick level-b1" type="button" data-page="b1"><strong>B1</strong><span>Uitleggen en deelnemen</span><small>Emoties, omgeving en argumentatie</small></button>
                 <button class="card level-quick level-b2" type="button" data-page="b2"><strong>B2</strong><span>Nuanceren en analyseren</span><small>Literatuur, beleid en professioneel register</small></button>
+                <button class="card level-quick level-c1" type="button" data-page="c1"><strong>C1</strong><span>Effectief en flexibel</span><small>Discours, synthese en bemiddeling</small></button>
+                <button class="card level-quick level-c2" type="button" data-page="c2"><strong>C2</strong><span>Stilistisch meesterschap</span><small>Implicatuur, ideologie en microanalyse</small></button>
               </div>
             </section>
 
@@ -239,8 +246,14 @@
           </section>
 
           <section class="page" id="page-leerpad" aria-labelledby="leerpad-title">
-            <div class="page-heading"><div><span class="kicker">Van A0 tot B2</span><h1 id="leerpad-title">Jouw leerpad</h1><p>Een duidelijke route van dagelijkse basis naar professioneel en natuurlijk Nederlands.</p></div><div class="legend"><span><i class="done"></i>afgerond</span><span><i class="current"></i>nu bezig</span><span><i></i>later</span></div></div>
+            <div class="page-heading"><div><span class="kicker">Van A0 tot C2</span><h1 id="leerpad-title">Jouw leerpad</h1><p>Een duidelijke route van dagelijkse basis naar professioneel en natuurlijk Nederlands.</p></div><div class="legend"><span><i class="done"></i>afgerond</span><span><i class="current"></i>nu bezig</span><span><i></i>later</span></div></div>
             <div class="level-path" id="level-path"></div>
+          </section>
+
+
+          <section class="page" id="page-praktijk" aria-labelledby="praktijk-title">
+            <div class="page-heading practice-heading"><div><span class="kicker">V19.2 · leren door echte situaties</span><h1 id="praktijk-title">Praktijksituaties</h1><p>Kies wat je vandaag wilt kunnen. Oefen vragen, natuurlijke antwoorden, vervolgvragen en uitspraak zonder de bestaande niveauroute te verlaten.</p></div><div class="practice-release-badge"><strong>6</strong><span>situaties</span><small>A0–C2</small></div></div>
+            <div class="practice-scenario-layout"><div class="practice-scenario-grid" id="practice-scenario-grid" aria-label="Praktijksituaties"></div><section class="card practice-scenario-detail" id="practice-scenario-detail" aria-live="polite"></section></div>
           </section>
 
           <section class="page" id="page-a0" aria-labelledby="a0-title">
@@ -310,6 +323,34 @@
             <div class="a1-layout">
               <div class="a1-theme-grid" id="b2-theme-grid" aria-label="B2-thema’s"></div>
               <section class="card a1-theme-detail" id="b2-theme-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-c1" aria-labelledby="c1-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Effectief, flexibel en precies taalgebruik</span><h1 id="c1-title">Nederlands C1 in 9 spiraalthema’s</h1><p>Analyseer aannames, verbind bronnen en perspectieven, bemiddel in complexe gesprekken en schakel bewust tussen academisch, professioneel en publiek register.</p></div><div class="a1-summary level-summary-c1"><strong>9</strong><span>thema’s</span><strong>216</strong><span>gevorderde taalitems</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk C1-thema">
+              <div><b>1</b><span><strong>Positioneren</strong><small>perspectief en bron</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Synthetiseren</strong><small>verbanden en aannames</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Bemiddelen</strong><small>nuance en tegenargument</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Produceren</strong><small>essay, advies en debat</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="c1-theme-grid" aria-label="C1-thema’s"></div>
+              <section class="card a1-theme-detail" id="c1-theme-detail" aria-live="polite"></section>
+            </div>
+          </section>
+
+          <section class="page" id="page-c2" aria-labelledby="c2-title">
+            <div class="page-heading a1-heading"><div><span class="kicker">Meesterschap, implicatuur en stilistische controle</span><h1 id="c2-title">Nederlands C2 in 9 spiraalthema’s</h1><p>Ontleed discours, ideologie, retoriek en meerstemmigheid. Formuleer zeer complexe ideeën spontaan, compact en stilistisch doelgericht voor uiteenlopende publieken.</p></div><div class="a1-summary level-summary-c2"><strong>9</strong><span>thema’s</span><strong>216</strong><span>taalitems op masterniveau</span></div></div>
+            <section class="method-strip" aria-label="Opbouw van elk C2-thema">
+              <div><b>1</b><span><strong>Ontleden</strong><small>implicatuur en macht</small></span></div><i aria-hidden="true">→</i>
+              <div><b>2</b><span><strong>Herijken</strong><small>kaders en interpretaties</small></span></div><i aria-hidden="true">→</i>
+              <div><b>3</b><span><strong>Stileren</strong><small>ritme, register en genre</small></span></div><i aria-hidden="true">→</i>
+              <div><b>4</b><span><strong>Transformeren</strong><small>academisch en publiek</small></span></div>
+            </section>
+            <div class="a1-layout">
+              <div class="a1-theme-grid" id="c2-theme-grid" aria-label="C2-thema’s"></div>
+              <section class="card a1-theme-detail" id="c2-theme-detail" aria-live="polite"></section>
             </div>
           </section>
 
@@ -523,11 +564,11 @@
           </section>
 
           <section class="page" id="page-oefenen" aria-labelledby="oefenen-title">
-            <div class="page-heading exercise-heading"><div><span class="kicker">Persoonlijke oefenbank</span><h1 id="oefenen-title">Oefenen</h1><p>Achtduizend originele oefeningen, verdeeld over A0–B2, met extra dekking voor connectors, bijwoorden, voorzetsels, vragen, tijden, scheidbare werkwoorden, lezen en schrijven. Je fouten en herhalingen horen alleen bij het actieve profiel.</p></div><div class="exercise-total"><strong id="exercise-total-count">8.000</strong><span>oefeningen</span></div></div>
+            <div class="page-heading exercise-heading"><div><span class="kicker">Persoonlijke oefenbank</span><h1 id="oefenen-title">Oefenen</h1><p>Meer dan achtduizend originele oefeningen, verdeeld over A0–C2, met extra dekking voor connectors, bijwoorden, voorzetsels, vragen, tijden, scheidbare werkwoorden, lezen en schrijven. Je fouten en herhalingen horen alleen bij het actieve profiel.</p></div><div class="exercise-total"><strong id="exercise-total-count">8.000</strong><span>oefeningen</span></div></div>
             <div class="exercise-layout">
               <aside class="card exercise-sidebar" aria-label="Oefeningen filteren">
                 <h2>Kies je sessie</h2>
-                <label>Niveau<select id="exercise-level"><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="alle">Alle niveaus</option></select></label>
+                <label>Niveau<select id="exercise-level"><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="C1">C1</option><option value="C2">C2</option><option value="alle">Alle niveaus</option></select></label>
                 <label>Oefening<select id="exercise-type"><option value="alle">Alle soorten</option><option value="choice">Meerkeuze</option><option value="input">Invullen</option><option value="order">Woordvolgorde</option><option value="listening">Luisteren</option><option value="selfcheck">Schrijven / e-mail</option><option value="reading">Begrijpend lezen</option></select></label>
                 <label>Thema<select id="exercise-topic"><option value="alle">Alle thema’s</option></select></label>
                 <div class="exercise-session-options">
@@ -590,6 +631,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">Deze leeromgeving heeft JavaScript nodig voor audio, oefeningen en navigatie.</div></noscript>
-  <script src="js/app.js?v=18.18.0"></script>
+  <script src="js/app.js?v=19.2.4"></script>
 </body>
 </html>

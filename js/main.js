@@ -18,18 +18,22 @@ import { verbAtlas } from './verb-atlas.js';
 import { applyVerbCorrections } from './verb-corrections.js';
 import { applyCoreVerbReviews } from './verb-core-review.js';
 import { applyInitialVerbReviews } from './verb-initial-review.js';
+import { applyFinalVerbReviews } from './verb-final-review.js';
 import { createKnowledgeGraphExplorer } from './knowledge-graph.js';
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
+applyFinalVerbReviews(verbAtlas);
 import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
 import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
+import { advancedSpiralLevels } from './advanced-level-content.js';
 import { numberTimeTopics, numberQuickReference, mathCategories, mathConcepts, mathStats } from './number-math-content.js';
 import { physicsCategories, physicsConcepts, softwareCategories, softwareConcepts, technicalStats } from './technical-content.js';
 import { professionalDomains, professionalConcepts, professionalStats } from './professional-content.js';
 import { advancedGrammarTopics, logicRelationGroups, readingArticles, emailTasks, advancedPracticeStats } from './advanced-practice-content.js';
 import { sourceReviewGrammarTopics } from './source-review-content.js';
+import { v19PracticeScenarios } from './v19-learning-experience.js';
 import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
 import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
 import {
@@ -65,6 +69,8 @@ const state = {
   a2Theme: 'verhuizen',
   b1Theme: 'kleding-uiterlijk',
   b2Theme: 'kleding-uiterlijk',
+  c1Theme: 'kleding-uiterlijk',
+  c2Theme: 'kleding-uiterlijk',
   grammarTopic: 'woordvolgorde',
   questionLevel: 'alle',
   questionTopic: 'ja-nee-vragen',
@@ -87,6 +93,7 @@ const state = {
   vocabularyCategory: 'alle',
   vocabularyQuery: '',
   practice: 'order',
+  practiceScenario: 'reizen',
   structure: 'voorzetsels',
   practiceSelection: [],
   verbQuery: '',
@@ -127,6 +134,8 @@ const elements = {
   a2ThemeGrid: el('a2-theme-grid'), a2ThemeDetail: el('a2-theme-detail'),
   b1ThemeGrid: el('b1-theme-grid'), b1ThemeDetail: el('b1-theme-detail'),
   b2ThemeGrid: el('b2-theme-grid'), b2ThemeDetail: el('b2-theme-detail'),
+  c1ThemeGrid: el('c1-theme-grid'), c1ThemeDetail: el('c1-theme-detail'),
+  c2ThemeGrid: el('c2-theme-grid'), c2ThemeDetail: el('c2-theme-detail'),
   conceptGrid: el('concept-grid'), conceptDetail: el('concept-detail'),
   grammarFilters: el('grammar-filters'), grammarList: el('grammar-list'), grammarDetail: el('grammar-detail'),
   questionFilters: el('question-filters'), questionList: el('question-list'), questionDetail: el('question-detail'),
@@ -160,6 +169,7 @@ const elements = {
   readingLevelFilters: el('reading-level-filters'), readingArticleList: el('reading-article-list'), readingArticleDetail: el('reading-article-detail'),
   emailLevelFilters: el('email-level-filters'), emailTaskList: el('email-task-list'), emailTaskDetail: el('email-task-detail'),
   logicRelationGrid: el('logic-relation-grid'),
+  practiceScenarioGrid: el('practice-scenario-grid'), practiceScenarioDetail: el('practice-scenario-detail'),
 };
 
 function readProfiles() {
@@ -459,6 +469,8 @@ function renderLevels() {
     A2: completionPercentage(state.progress.a2Completed.length, a2Themes.length),
     B1: completionPercentage(state.progress.b1Completed.length, spiralThemes.length),
     B2: completionPercentage(state.progress.b2Completed.length, spiralThemes.length),
+    C1: completionPercentage(state.progress.c1Completed.length, spiralThemes.length),
+    C2: completionPercentage(state.progress.c2Completed.length, spiralThemes.length),
   };
   const allLevels = [{
     id: 'A0', title: 'Eerste contact', description: 'Begroeten, bedanken, jezelf voorstellen, om herhaling vragen en de eerste praktische zinnen gebruiken.',
@@ -547,28 +559,38 @@ function renderCourseThemes(level) {
   detail.innerHTML = renderCourseThemeDetail(theme, level, completed.has(theme.id));
 }
 
+function spiralLevelData(theme, level) {
+  return theme.levels[level] || advancedSpiralLevels[theme.id]?.[level] || null;
+}
+
 function spiralWordCount(theme, level) {
-  return Object.values(theme.levels[level].words || {}).reduce((total, words) => total + words.length, 0);
+  const data = spiralLevelData(theme, level);
+  return Object.values(data?.words || {}).reduce((total, words) => total + words.length, 0);
 }
 
 function spiralDialogueText(theme, level) {
-  return theme.levels[level].dialogue.map(([speaker, line]) => `${speaker}: ${line}`).join(' ');
+  return (spiralLevelData(theme, level)?.dialogue || []).map(([speaker, line]) => `${speaker}: ${line}`).join(' ');
 }
 
 function renderSpiralWordGroups(theme, level) {
-  return Object.entries(theme.levels[level].words || {}).map(([group, words], index) => `<details class="theme-word-group spiral-word-group" ${index === 0 ? 'open' : ''}>
+  const data = spiralLevelData(theme, level);
+  return Object.entries(data?.words || {}).map(([group, words], index) => `<details class="theme-word-group spiral-word-group" ${index === 0 ? 'open' : ''}>
     <summary><span>${escapeHtml(group)}</span><strong>${words.length} items</strong></summary>
     <div class="theme-word-chip-grid">${words.map((word) => `<button class="theme-word-chip speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82"><span>${escapeHtml(word)}</span><small>luister</small></button>`).join('')}</div>
   </details>`).join('');
 }
 
 function renderSpiralDetail(theme, level, completed) {
-  const data = theme.levels[level];
+  const data = spiralLevelData(theme, level);
   const dialogue = spiralDialogueText(theme, level);
   const verbs = data.words.Werkwoorden || [];
-  const prompts = level === 'B1'
-    ? [`Vertel twee minuten over ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Geef je mening en noem minstens twee redenen.', 'Reageer beleefd op een andere mening.']
-    : [`Analyseer een spanningsveld binnen ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Formuleer een standpunt met voorbehoud en een tegenargument.', 'Vat je conclusie samen in professioneel Nederlands.'];
+  const promptSets = {
+    B1: [`Vertel twee minuten over ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Geef je mening en noem minstens twee redenen.', 'Reageer beleefd op een andere mening.'],
+    B2: [`Analyseer een spanningsveld binnen ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Formuleer een standpunt met voorbehoud en een tegenargument.', 'Vat je conclusie samen in professioneel Nederlands.'],
+    C1: [`Vergelijk twee perspectieven op ${theme.title.toLocaleLowerCase('nl-NL')} en benoem hun aannames.`, 'Formuleer een genuanceerd standpunt met bronmarkering en concessie.', 'Reageer spontaan op een kritisch tegenargument.'],
+    C2: [`Ontleed het dominante discours rond ${theme.title.toLocaleLowerCase('nl-NL')}.`, 'Verbind vorm, macht en impliciete betekenis in een bondige analyse.', 'Herformuleer hetzelfde argument voor een academisch en een publiek gehoor.'],
+  };
+  const prompts = promptSets[level] || promptSets.B2;
   return `<div class="a1-detail-hero course-detail-hero level-${level.toLowerCase()} spiral-detail-hero">
       <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}">
       <div><div class="eyebrow"><span>${level}</span> Spiraalthema</div><h1>${escapeHtml(theme.title)}</h1><p class="lead">${escapeHtml(theme.subtitle)}</p>
@@ -586,12 +608,18 @@ function renderSpiralDetail(theme, level, completed) {
     </div>`;
 }
 
+function spiralCourseConfig(level) {
+  const key = level.toLowerCase();
+  return {
+    stateKey: `${key}Theme`,
+    progressKey: `${key}Completed`,
+    grid: elements[`${key}ThemeGrid`],
+    detail: elements[`${key}ThemeDetail`],
+  };
+}
+
 function renderSpiralCourse(level) {
-  const isB1 = level === 'B1';
-  const stateKey = isB1 ? 'b1Theme' : 'b2Theme';
-  const progressKey = isB1 ? 'b1Completed' : 'b2Completed';
-  const grid = isB1 ? elements.b1ThemeGrid : elements.b2ThemeGrid;
-  const detail = isB1 ? elements.b1ThemeDetail : elements.b2ThemeDetail;
+  const { stateKey, progressKey, grid, detail } = spiralCourseConfig(level);
   if (!grid || !detail) return;
   const completed = new Set(state.progress[progressKey] || []);
   grid.innerHTML = spiralThemes.map((theme, index) => `<button class="card a1-theme-card course-theme-card spiral-theme-card ${theme.id === state[stateKey] ? 'active' : ''} ${completed.has(theme.id) ? 'done' : ''}" type="button" data-spiral-theme-select="${theme.id}" data-course-level="${level}">
@@ -608,6 +636,27 @@ function renderA1Themes() { renderCourseThemes('A1'); }
 function renderA2Themes() { renderCourseThemes('A2'); }
 function renderB1Themes() { renderSpiralCourse('B1'); }
 function renderB2Themes() { renderSpiralCourse('B2'); }
+function renderC1Themes() { renderSpiralCourse('C1'); }
+function renderC2Themes() { renderSpiralCourse('C2'); }
+
+
+function renderPracticeScenarios() {
+  if (!elements.practiceScenarioGrid || !elements.practiceScenarioDetail) return;
+  elements.practiceScenarioGrid.innerHTML = v19PracticeScenarios.map((scenario) => `<button class="card practice-scenario-card ${scenario.id === state.practiceScenario ? 'active' : ''}" type="button" data-practice-scenario="${escapeHtml(scenario.id)}">
+    <img src="${escapeHtml(scenario.image)}" alt="">
+    <span class="practice-scenario-icon" aria-hidden="true">${escapeHtml(scenario.icon)}</span>
+    <div><small>${escapeHtml(scenario.level)}</small><h2>${escapeHtml(scenario.title)}</h2><p>${escapeHtml(scenario.mission)}</p></div>
+  </button>`).join('');
+  const scenario = v19PracticeScenarios.find((item) => item.id === state.practiceScenario) || v19PracticeScenarios[0];
+  elements.practiceScenarioDetail.innerHTML = `<div class="practice-scenario-hero"><img src="${escapeHtml(scenario.image)}" alt="Illustratie bij ${escapeHtml(scenario.title)}"><div><div class="eyebrow"><span>${escapeHtml(scenario.level)}</span> praktijksituatie</div><h1>${escapeHtml(scenario.title)}</h1><p class="lead">${escapeHtml(scenario.mission)}</p></div></div>
+    <div class="practice-scenario-columns">
+      <section><span class="kicker">Vragen</span><h2>Open het gesprek</h2>${scenario.questions.map((line) => `<button class="scenario-line speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.84"><span>${escapeHtml(line)}</span><small>🔊 luister</small></button>`).join('')}</section>
+      <section><span class="kicker">Antwoorden</span><h2>Reageer natuurlijk</h2>${scenario.responses.map((line) => `<button class="scenario-line speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.84"><span>${escapeHtml(line)}</span><small>🔊 luister</small></button>`).join('')}</section>
+      <section><span class="kicker">Gesprek gaande houden</span><h2>Volgende stap</h2>${scenario.natural.map((line) => `<button class="scenario-line speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.84"><span>${escapeHtml(line)}</span><small>🔊 luister</small></button>`).join('')}</section>
+    </div>
+    <section class="pronunciation-focus"><div><span class="kicker">Uitspraakfocus</span><h2>Luister naar patronen</h2></div><div>${scenario.pronunciation.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div></section>
+    <button class="primary-button" type="button" data-page="oefenen">Oefen deze taal in de oefenbank →</button>`;
+}
 
 function renderConcepts() {
   elements.conceptGrid.innerHTML = concepts.map((concept) => `<button class="card concept-card ${concept.id === state.concept ? 'active' : ''}" type="button" data-concept="${concept.id}">
@@ -1179,7 +1228,8 @@ function activateProfile(profile) {
   updateProfileUI();
   updateProgressUI();
   renderLevels();
-  renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes();
+  renderPracticeScenarios();
+  renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes(); renderC1Themes(); renderC2Themes();
   renderExerciseEngine({ chooseNew: true });
   elements.profileDialog?.close();
   showToast(`${clean.name} is nu actief.`);
@@ -1304,9 +1354,11 @@ function renderExerciseEngine({ chooseNew = false } = {}) {
     return;
   }
   const readingPassage = exercise.type === 'reading' ? `<details class="engine-reading-passage" open><summary>${escapeHtml(exercise.passageTitle || 'Leestekst')}</summary><div>${(exercise.passage || []).map((paragraph, index) => `<p><span class="paragraph-number">${index + 1}</span>${escapeHtml(paragraph)}</p>`).join('')}</div></details>` : '';
+  const exerciseImage = exercise.image ? `<figure class="engine-visual"><img src="${escapeHtml(exercise.image)}" alt="${escapeHtml(exercise.imageAlt || '')}"></figure>` : '';
   const kicker = exercise.type === 'listening' ? 'Luisteroefening' : exercise.type === 'reading' ? 'Begrijpend lezen' : exercise.type === 'selfcheck' ? 'Productie' : 'Actieve oefening';
   elements.exerciseEngine.innerHTML = `<div class="exercise-card-header"><div><span class="level-badge">${exercise.level}</span><span class="topic-badge">${escapeHtml(exercise.topic)}</span><span class="type-badge">${escapeHtml(exercise.type)}</span></div><span>${escapeHtml(exercise.id)}</span></div>
     ${readingPassage}
+    ${exerciseImage}
     <div class="exercise-question"><span class="kicker">${kicker}</span><h2>${escapeHtml(exercise.prompt)}</h2>${exercise.type === 'listening' ? `<button class="sound-button speak" type="button" data-text="${escapeHtml(exercise.audio)}" data-rate="0.88">🔊 Luister</button>` : ''}</div>
     <div id="exercise-response-area">${exerciseResponseMarkup(exercise)}</div>
     <div class="exercise-feedback" id="exercise-engine-feedback" role="status">Kies of schrijf je antwoord.</div>
@@ -1455,6 +1507,8 @@ function handleClick(event) {
   }
   if (event.target.closest('[data-engine-next]')) { chooseNextExercise(); renderExerciseEngine(); return; }
   if (event.target.closest('[data-engine-skip]')) { chooseNextExercise(); renderExerciseEngine(); return; }
+  const practiceScenarioButton = event.target.closest('[data-practice-scenario]');
+  if (practiceScenarioButton) { state.practiceScenario = practiceScenarioButton.dataset.practiceScenario; renderPracticeScenarios(); return; }
   const pageButton = event.target.closest('[data-page]');
   if (pageButton) {
     if (pageButton.dataset.a0Theme) { state.a0Theme = pageButton.dataset.a0Theme; renderA0Themes(); }
@@ -1462,6 +1516,8 @@ function handleClick(event) {
     if (pageButton.dataset.a2Theme) { state.a2Theme = pageButton.dataset.a2Theme; renderA2Themes(); }
     if (pageButton.dataset.b1Theme) { state.b1Theme = pageButton.dataset.b1Theme; renderB1Themes(); }
     if (pageButton.dataset.b2Theme) { state.b2Theme = pageButton.dataset.b2Theme; renderB2Themes(); }
+    if (pageButton.dataset.c1Theme) { state.c1Theme = pageButton.dataset.c1Theme; renderC1Themes(); }
+    if (pageButton.dataset.c2Theme) { state.c2Theme = pageButton.dataset.c2Theme; renderC2Themes(); }
     if (pageButton.dataset.grammarLevel) { state.grammarLevel = pageButton.dataset.grammarLevel; renderGrammar(); }
     if (pageButton.dataset.topic) {
       state.grammarLevel = 'alle';
@@ -1529,7 +1585,8 @@ function handleClick(event) {
   const spiralThemeButton = event.target.closest('[data-spiral-theme-select]');
   if (spiralThemeButton) {
     const level = spiralThemeButton.dataset.courseLevel;
-    state[level === 'B1' ? 'b1Theme' : 'b2Theme'] = spiralThemeButton.dataset.spiralThemeSelect;
+    const { stateKey } = spiralCourseConfig(level);
+    state[stateKey] = spiralThemeButton.dataset.spiralThemeSelect;
     renderSpiralCourse(level);
     return;
   }
@@ -1570,7 +1627,7 @@ function handleClick(event) {
   if (completeSpiral) {
     const level = completeSpiral.dataset.courseLevel;
     const id = completeSpiral.dataset.completeSpiral;
-    const key = level === 'B1' ? 'b1Completed' : 'b2Completed';
+    const { progressKey: key } = spiralCourseConfig(level);
     const values = new Set(state.progress[key] || []);
     values.has(id) ? values.delete(id) : values.add(id);
     state.progress[key] = [...values];
@@ -1774,7 +1831,7 @@ function initializeEvents() {
       profileStorage(state.activeProfile).removeItem(profileExerciseKey(state.activeProfile.id));
     } catch { /* Opslag kan geblokkeerd zijn. */ }
     updateProgressUI(); renderExerciseEngine({ chooseNew: true });
-    renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes(); renderLevels();
+    renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes(); renderC1Themes(); renderC2Themes(); renderLevels();
     showToast(`De voortgang van ${state.activeProfile.name} is gewist.`);
   });
   window.addEventListener('hashchange', () => {
@@ -1791,11 +1848,14 @@ function initialize() {
   });
   renderDashboard();
   renderLevels();
+  renderPracticeScenarios();
   renderA0Themes();
   renderA1Themes();
   renderA2Themes();
   renderB1Themes();
   renderB2Themes();
+  renderC1Themes();
+  renderC2Themes();
   renderConcepts();
   renderGrammar();
   renderLogicRelations();

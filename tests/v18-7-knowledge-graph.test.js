@@ -11,16 +11,16 @@ for (const edge of graph.edges) {
   outgoing.get(edge.source).push(edge);
 }
 
-test('de V18.18-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties', () => {
-  assert.equal(graph.metadata.version, '18.18.0');
+test('de V19.2.1-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties', () => {
+  assert.equal(graph.metadata.version, '19.2.4');
   assert.equal(graph.nodes.length, graph.metadata.nodeCount);
   assert.equal(graph.edges.length, graph.metadata.edgeCount);
-  assert.equal(graph.metadata.exerciseCount, 8024);
-  assert.equal(graph.metadata.reviewedVerbs, 1807);
-  assert.equal(graph.metadata.unreviewedVerbs, 79);
+  assert.equal(graph.metadata.exerciseCount, 8072);
+  assert.equal(graph.metadata.reviewedVerbs, 1886);
+  assert.equal(graph.metadata.unreviewedVerbs, 0);
   assert.ok(graph.metadata.nodeCount >= 17500);
   assert.ok(graph.metadata.edgeCount >= 64000);
-  assert.equal(graph.metadata.typeCounts.theme, 56);
+  assert.equal(graph.metadata.typeCounts.theme, 74);
   assert.equal(graph.metadata.typeCounts.spiral_theme, 9);
   assert.equal(graph.metadata.typeCounts.practice, 10);
   assert.ok(graph.metadata.typeCounts.category >= 70);
@@ -28,7 +28,7 @@ test('de V18.18-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties'
     assert.ok(nodes.has(edge.source), `bron ontbreekt: ${edge.id}`);
     assert.ok(nodes.has(edge.target), `doel ontbreekt: ${edge.id}`);
   }
-  for (const type of ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'spiral_theme', 'grammar', 'structure', 'vocabulary', 'practice', 'exercise', 'issue']) {
+  for (const type of ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'spiral_theme', 'grammar', 'structure', 'vocabulary', 'practice', 'exercise']) {
     assert.ok(graph.metadata.typeCounts[type] > 0, `${type} ontbreekt`);
   }
 });
@@ -49,19 +49,15 @@ test('aaien heeft een nagekeken betekenislaag met contextuele synoniemen', () =>
   assert.ok(senseEdges.filter((edge) => edge.type === 'has_example').length >= 2);
 });
 
-test('een later nog niet nagekeken werkwoord blijft zichtbaar in de reviewwachtrij', () => {
+test('de voormalige reviewwachtrij is volledig afgewerkt', () => {
   const verb = nodes.get('verb:vrijvechten');
   assert.ok(verb);
-  assert.equal(verb.status, 'unreviewed');
-  assert.equal(verb.data.reviewed, false);
-  assert.equal(verb.data.meaning, '');
-  assert.deepEqual(verb.data.synonyms, []);
-  const issueEdge = (outgoing.get(verb.id) || []).find((edge) => edge.type === 'has_issue');
-  assert.ok(issueEdge, 'vrijvechten mist een controlepunt');
-  const issue = nodes.get(issueEdge.target);
-  for (const code of ['definition-missing-or-generic', 'synonyms-missing', 'examples-missing', 'usage-note-missing', 'generated-patterns-unreviewed']) {
-    assert.ok(issue.data.codes.includes(code), `${code} ontbreekt bij vrijvechten`);
-  }
+  assert.equal(verb.status, 'reviewed');
+  assert.equal(verb.data.reviewed, true);
+  assert.match(verb.data.meaning, /strijd|inspanning|verzet/u);
+  assert.ok(verb.data.synonyms.includes('zich bevrijden'));
+  assert.ok(!(outgoing.get(verb.id) || []).some((edge) => edge.type === 'has_issue'));
+  assert.equal(graph.metadata.issueCount, 0);
 });
 
 test('nagekeken werkwoorden koppelen synoniemen aan een betekenis en niet globaal aan het lemma', () => {

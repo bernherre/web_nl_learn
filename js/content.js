@@ -58,6 +58,32 @@ export const levels = [
       "Complexe teksten"
     ]
   }
+  ,{
+    "id": "C1",
+    "title": "Effectief en flexibel",
+    "description": "Complexe ideeën precies formuleren, impliciete betekenis herkennen en register bewust inzetten in academische, publieke en professionele contexten.",
+    "progress": 0,
+    "modules": [
+      "Discours en perspectief",
+      "Bronnen en synthese",
+      "Bemiddelen en onderhandelen",
+      "Stijl en register",
+      "Complexe argumentatie"
+    ]
+  },
+  {
+    "id": "C2",
+    "title": "Meesterschap en stilistische controle",
+    "description": "Zeer complexe taal spontaan, precies en stilistisch doelgericht gebruiken, met aandacht voor implicatuur, macht, genre en meerstemmigheid.",
+    "progress": 0,
+    "modules": [
+      "Retoriek en implicatuur",
+      "Ideologie- en discoursanalyse",
+      "Stilistische microanalyse",
+      "Hoog-complexe synthese",
+      "Publiek en academisch schakelen"
+    ]
+  }
 ];
 
 export const a1Themes = [
