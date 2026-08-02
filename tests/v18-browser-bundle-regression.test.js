@@ -81,11 +81,11 @@ test('de zichtbare werkwoordenaantallen zijn onderling consistent', () => {
 });
 
 test('V19.2 gebruikt netwerkverversing voor de shell, correctielagen en kennisgraaf', () => {
-  assert.equal(packageJson.version, '19.2.4');
-  assert.match(serviceWorker, /nederlands-gewoon-doen-v19-2-4/);
+  assert.equal(packageJson.version, '19.2.6');
+  assert.match(serviceWorker, /nederlands-gewoon-doen-v19-2-6/);
   assert.match(serviceWorker, /networkFirst/);
-  assert.match(index, /styles\.css\?v=19\.2\.4/);
-  assert.match(index, /app\.js\?v=19\.2\.4/);
+  assert.match(index, /styles\.css\?v=19\.2\.6/);
+  assert.match(index, /app\.js\?v=19\.2\.6/);
   assert.match(serviceWorker, /\.\/js\/verb-corrections\.js/);
   assert.match(serviceWorker, /\.\/js\/verb-core-review\.js/);
   assert.match(serviceWorker, /\.\/js\/verb-initial-review\.js/);

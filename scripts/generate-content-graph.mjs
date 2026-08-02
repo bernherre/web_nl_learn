@@ -42,7 +42,7 @@ applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
 applyFinalVerbReviews(verbAtlas);
 
-const VERSION = '19.2.4';
+const VERSION = '19.2.6';
 const nodes = new Map();
 const edges = new Map();
 const issues = [];

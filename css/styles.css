@@ -1101,8 +1101,11 @@ input[type="range"] { width: 100%; accent-color: var(--green-2); }
 .verb-atlas-list { flex: 1; min-height: 240px; overflow: auto; display: grid; align-content: start; gap: 6px; padding-right: 4px; }
 .verb-list-item { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; width: 100%; padding: 10px 11px; border: 1px solid transparent; border-radius: 12px; background: var(--bg); color: var(--ink); text-align: left; cursor: pointer; }
 .verb-list-item:hover, .verb-list-item.active { border-color: var(--green-2); background: var(--green-soft); }
-.verb-list-item strong, .verb-list-item small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.verb-list-item strong, .verb-list-item small { overflow: hidden; text-overflow: ellipsis; }
+.verb-list-copy { min-width: 0; }
 .verb-list-item small { display: block; margin-top: 2px; color: var(--muted); }
+.verb-list-definition { display: -webkit-box !important; margin-top: 4px !important; overflow: hidden; line-height: 1.35; white-space: normal; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.verb-list-meta { white-space: nowrap; font-size: .7rem; }
 .verb-list-badges { display: flex; align-items: center; gap: 4px; }
 .verb-list-badges span, .verb-meta-chips span { padding: 4px 7px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--muted); font-size: .68rem; white-space: nowrap; }
 .verb-list-badges .regular { background: var(--green-soft); color: var(--green); }
@@ -1912,8 +1915,10 @@ html[data-motion='reduced'] .knowledge-node, html[data-motion='reduced'] .knowle
 @media (max-width: 760px) { .practice-scenario-columns { grid-template-columns: 1fr; } .practice-scenario-hero { grid-template-columns: 1fr; } .pronunciation-focus { align-items: flex-start; flex-direction: column; } }
 @media (max-width: 560px) { .practice-scenario-grid { grid-template-columns: 1fr; } .practice-scenario-detail { padding: 15px; } }
 
-/* V19.2.4: visible C1-C2 learning routes. */
+/* V19.2.5: visible C1-C2 learning routes. */
 .level-quick.level-c1 strong { background: #e8f1f7; color: #24536f; }
 .level-quick.level-c2 strong { background: #eee9f5; color: #5f3d78; }
 .course-detail-hero.level-c1 { background: #eaf3f7; }
 .course-detail-hero.level-c2 { background: #f0ebf6; }
+
+/* V19.2.6: verb cards reuse the reviewed lexical definition shown in the detail panel. */

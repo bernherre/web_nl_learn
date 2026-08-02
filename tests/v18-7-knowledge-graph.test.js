@@ -12,7 +12,7 @@ for (const edge of graph.edges) {
 }
 
 test('de V19.2.1-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties', () => {
-  assert.equal(graph.metadata.version, '19.2.4');
+  assert.equal(graph.metadata.version, '19.2.6');
   assert.equal(graph.nodes.length, graph.metadata.nodeCount);
   assert.equal(graph.edges.length, graph.metadata.edgeCount);
   assert.equal(graph.metadata.exerciseCount, 8072);

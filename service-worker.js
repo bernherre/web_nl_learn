@@ -1,5 +1,5 @@
-const CACHE = 'nederlands-gewoon-doen-v19-2-4';
-const APP_VERSION = '19.2.4';
+const CACHE = 'nederlands-gewoon-doen-v19-2-6';
+const APP_VERSION = '19.2.6';
 const CORE = [
   './', './index.html', `./css/styles.css?v=${APP_VERSION}`, `./js/app.js?v=${APP_VERSION}`,
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',

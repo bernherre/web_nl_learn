@@ -491,3 +491,9 @@ npm run check
 ## Bestaand materiaal
 
 Het oorspronkelijke naslagwerk blijft beschikbaar in `reference.html`, maar is niet de hoofdapp. Oude audio blijft alleen als archiefmateriaal in de repository staan.
+
+### Actualización V19.2.5
+
+V19.2.5 reemplaza explícitamente la prueba heredada `tests/v18-verbs.test.js`, de modo que una
+actualización descomprimida sobre un checkout anterior no conserve una aserción obsoleta sobre
+`id="verb-feature"`. La interfaz actual se valida mediante sus filtros reales y el panel de detalle.

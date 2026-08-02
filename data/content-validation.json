@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T19:05:30.633Z",
-  "version": "19.2.4",
+  "generatedAt": "2026-08-02T19:24:56.372Z",
+  "version": "19.2.6",
   "status": "passed",
   "totals": {
     "checks": 73,
@@ -461,7 +461,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.2.4 staat in beide shell-assets.",
+      "detail": "Versie 19.2.6 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -517,7 +517,7 @@
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.2.4.",
+      "detail": "Versie 19.2.6.",
       "evidence": null
     },
     {
