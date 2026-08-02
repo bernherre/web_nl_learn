@@ -81,12 +81,12 @@ test('de zichtbare werkwoordenaantallen zijn onderling consistent', () => {
 });
 
 test('V19.2 gebruikt netwerkverversing voor de shell, correctielagen en kennisgraaf', () => {
-  assert.equal(packageJson.version, '19.3.0-rc.1');
+  assert.match(packageJson.version, /^19\.3\.0-rc\.\d+$/u);
   const cacheVersion = packageJson.version.replace(/\./gu, '-').replace(/[^a-z0-9-]/giu, '').replace(/-+/gu, '-');
   assert.ok(serviceWorker.includes(`nederlands-gewoon-doen-v${cacheVersion}`));
   assert.match(serviceWorker, /networkFirst/);
-  assert.match(index, /styles\.css\?v=19\.3\.0-rc\.1/);
-  assert.match(index, /app\.js\?v=19\.3\.0-rc\.1/);
+  assert.ok(index.includes(`styles.css?v=${packageJson.version}`));
+  assert.ok(index.includes(`app.js?v=${packageJson.version}`));
   assert.match(serviceWorker, /\.\/js\/verb-corrections\.js/);
   assert.match(serviceWorker, /\.\/js\/verb-core-review\.js/);
   assert.match(serviceWorker, /\.\/js\/verb-initial-review\.js/);
@@ -120,4 +120,21 @@ test('de bundle toont geen generieke classificatie meer als nagekeken definitie'
   assert.match(bundle, /Een specifieke definitie, synoniemen en gebruiksvoorbeelden volgen pas na taalcontrole/);
   assert.match(bundle, /aria-label="Luister naar de definitie van/);
   assert.match(bundle, /Synoniemen, gebruik en voorbeelden/);
+});
+
+test('de lexicale kwaliteitsfuncties staan vóór gebruik in de klassieke browserbundle', () => {
+  const definition = bundle.indexOf('function isReliableDefinition(term, definition)');
+  const exampleDefinition = bundle.indexOf('function isReliableExample(term, example)');
+  const use = bundle.indexOf('function highlightedWordDetails(theme, word)');
+  assert.ok(definition >= 0, 'isReliableDefinition ontbreekt in js/app.js');
+  assert.ok(exampleDefinition >= 0, 'isReliableExample ontbreekt in js/app.js');
+  assert.ok(use > definition, 'isReliableDefinition wordt gebruikt vóór de definitie');
+  assert.ok(use > exampleDefinition, 'isReliableExample wordt gebruikt vóór de definitie');
+});
+
+test('de applicatieversie staat vóór gebruik in de klassieke browserbundle', () => {
+  const definition = bundle.indexOf('const APP_VERSION =');
+  const use = bundle.indexOf('document.documentElement.dataset.appVersion = APP_VERSION');
+  assert.ok(definition >= 0, 'APP_VERSION ontbreekt in js/app.js');
+  assert.ok(use > definition, 'APP_VERSION wordt gebruikt vóór de definitie');
 });

@@ -2,6 +2,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 const root = new URL('../', import.meta.url);
 const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
 const version = pkg.version;
+const releaseMatch = version.match(/^(\d+)\.(\d+)\.\d+-rc\.(\d+)$/u);
+const releaseLabel = releaseMatch ? `V${releaseMatch[1]}.${releaseMatch[2]} RC${releaseMatch[3]}` : `V${version}`;
 const cacheVersion = version.replace(/\./gu, '-').replace(/[^a-z0-9-]/giu, '').replace(/-+/gu, '-');
 async function update(path, transform) {
   const url = new URL(path, root);
@@ -15,7 +17,7 @@ await update('index.html', (source) => source
   .replace(/css\/styles\.css\?v=[^"]+/gu, `css/styles.css?v=${version}`)
   .replace(/js\/app\.js\?v=[^"]+/gu, `js/app.js?v=${version}`));
 await update('js/app-config.js', () => `export const APP_VERSION = '${version}';
-export const APP_RELEASE = 'V19.3 RC1';
+export const APP_RELEASE = '${releaseLabel}';
 `);
 await update('service-worker.js', (source) => source
   .replace(/const CACHE = '[^']+';/u, `const CACHE = 'nederlands-gewoon-doen-v${cacheVersion}';`)

@@ -1,5 +1,14 @@
 # Changelog
 
+
+## 19.3.0-rc.3 — V19.3 RC3
+
+- Corrige el bundle clásico para incluir `lexical-quality.js` antes de su uso.
+- Añade regresión específica para `isReliableDefinition()` e `isReliableExample()`.
+- Sincroniza automáticamente la etiqueta visible de RC desde `package.json`.
+- Mantiene intactos el Atlas de 1.886 verbos, C1/C2 y los 8.072 ejercicios.
+- Valida 146/146 pruebas y 73/73 controles de contenido.
+
 ## 19.3.0-rc.1 — V19.3 RC1
 
 - Centrale lexicale betrouwbaarheidscontrole toegevoegd.

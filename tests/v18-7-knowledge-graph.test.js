@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 
 const root = new URL('../', import.meta.url);
 const graph = JSON.parse(await readFile(new URL('data/content-knowledge-graph.json', root), 'utf8'));
+const packageJson = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
 const nodes = new Map(graph.nodes.map((node) => [node.id, node]));
 const outgoing = new Map();
 for (const edge of graph.edges) {
@@ -12,7 +13,7 @@ for (const edge of graph.edges) {
 }
 
 test('de V19.2.1-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties', () => {
-  assert.equal(graph.metadata.version, '19.3.0-rc.1');
+  assert.equal(graph.metadata.version, packageJson.version);
   assert.equal(graph.nodes.length, graph.metadata.nodeCount);
   assert.equal(graph.edges.length, graph.metadata.edgeCount);
   assert.equal(graph.metadata.exerciseCount, 8072);

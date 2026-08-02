@@ -1,6 +1,6 @@
 {
   "name": "web-nl-learn",
-  "version": "19.3.0-rc.1",
+  "version": "19.3.0-rc.3",
   "private": true,
   "type": "module",
   "description": "Statische Nederlandstalige leeromgeving A0-C2 met gevalideerde lexicale weergave, lokale profielen, 1.886 nagekeken werkwoorden, een kennisgraaf, 8.072 oefeningen en een controleerbare PWA-basis.",

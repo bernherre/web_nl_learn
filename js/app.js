@@ -1,6 +1,43 @@
 /* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */
 (function () {
 'use strict';
+const APP_VERSION = '19.3.0-rc.3';
+const APP_RELEASE = 'V19.3 RC3';
+
+const GENERIC_DEFINITION_PATTERNS = [
+  /^Het werkwoord beschrijft vooral/u,
+  /^Het werkwoord beschrijft een toestand/u,
+  /^Het onderwerp verandert van toestand/u,
+  /^Een vaste combinatie(?: die| voor| om)/u,
+  /^Een zelfstandig naamwoord(?: dat| voor)/u,
+  /^Het zelfstandig naamwoord verwijst naar/u,
+  /^Een werkwoord voor een handeling/u,
+  /^Een woord waarmee je/u,
+  /nog geen gecontroleerde betekenis beschikbaar/iu,
+  /^Een .* uit deze les\.?$/u,
+];
+
+function normalizeLexicalText(value) {
+  return String(value || '')
+    .trim()
+    .toLocaleLowerCase('nl-NL')
+    .replace(/[“”„'‘’.,!?;:()]/gu, '')
+    .replace(/\s+/gu, ' ');
+}
+
+function isReliableDefinition(term, definition) {
+  const text = String(definition || '').trim();
+  if (text.length < 18 || GENERIC_DEFINITION_PATTERNS.some((pattern) => pattern.test(text))) return false;
+  return normalizeLexicalText(text) !== normalizeLexicalText(term);
+}
+
+function isReliableExample(term, example) {
+  const text = String(example || '').trim();
+  if (text.length < 12 || normalizeLexicalText(text) === normalizeLexicalText(term)) return false;
+  if (/^ik\s+[a-zà-ÿ-]+(?:en)\.?$/u.test(normalizeLexicalText(text))) return false;
+  return normalizeLexicalText(text).split(' ').filter(Boolean).length >= 3;
+}
+
 function normaliseSentence(value) {
   return String(value ?? '')
     .trim()
