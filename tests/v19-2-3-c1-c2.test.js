@@ -33,7 +33,10 @@ test('C1 en C2 zijn zichtbaar, navigeerbaar en hebben eigen voortgang', async ()
     assert.match(html, new RegExp(`id="${level}-theme-grid"`));
     assert.match(main, new RegExp(`render${level.toUpperCase()}Themes`));
   }
-  assert.ok(bundle.indexOf('const advancedSpiralLevels =') < bundle.indexOf('function spiralLevelData('));
+  const definition = bundle.indexOf('const advancedSpiralLevels =');
+  const use = bundle.indexOf('function spiralLevelData(');
+  assert.ok(definition >= 0, 'advancedSpiralLevels ontbreekt in js/app.js');
+  assert.ok(use > definition, 'advancedSpiralLevels wordt gebruikt vóór de definitie');
   assert.deepEqual(safeProgress().c1Completed, []);
   assert.deepEqual(safeProgress().c2Completed, []);
 });

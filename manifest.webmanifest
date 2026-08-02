@@ -15,5 +15,44 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
+  ],
+  "id": "./",
+  "shortcuts": [
+    {
+      "name": "Leerpad",
+      "short_name": "Leerpad",
+      "url": "./#leerpad",
+      "icons": [
+        {
+          "src": "images/logo.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Werkwoordenatlas",
+      "short_name": "Werkwoorden",
+      "url": "./#werkwoorden",
+      "icons": [
+        {
+          "src": "images/logo.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    },
+    {
+      "name": "Oefenen",
+      "short_name": "Oefenen",
+      "url": "./#oefeningen",
+      "icons": [
+        {
+          "src": "images/logo.svg",
+          "sizes": "any",
+          "type": "image/svg+xml"
+        }
+      ]
+    }
   ]
 }

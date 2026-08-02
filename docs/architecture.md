@@ -1,15 +1,3 @@
-# Architectuur
+# Architectuur V19.3 RC1
 
-De applicatie is een statische leeromgeving die zowel via GitHub Pages als rechtstreeks via `index.html` werkt.
-
-- `js/*-content.js`: inhoudsbanken.
-- `js/verb-atlas.js` en `js/verb-details.js`: conjugatie- en lexicale werkwoorddata.
-- `js/main.js`: rendering, routing en interactie.
-- `scripts/build-classic.mjs`: bouwt de importvrije browserbundle `js/app.js`.
-- `css/tokens.css`: centrale ontwerpwaarden.
-- `css/themes.css`: kleurmodi.
-- `css/typography.css`: typografische basis.
-- `css/accessibility.css`: focus, reduced motion en hulpklassen.
-- `service-worker.js`: PWA-cache en offlinefallback.
-
-`js/app.js` is gegenereerd en mag niet handmatig worden aangepast. Gebruik altijd `npm run build` of `npm run check`.
+De bronmodules in `js/` zijn de bron van waarheid. `scripts/build-classic.mjs` bundelt ze in `js/app.js` voor een statische browserdeploy zonder moduleloader. `package.json` is de centrale versiebron; `scripts/sync-version.mjs` synchroniseert shell, cache en browserconfiguratie. Lexicale kwaliteit wordt centraal afgedwongen door `js/lexical-quality.js` en `scripts/audit-learning-content.mjs`.

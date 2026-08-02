@@ -1,4 +1,4 @@
-/* Generated browser bundle. Source of truth: learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */
+/* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */
 (function () {
 'use strict';
 function normaliseSentence(value) {
@@ -4665,8 +4665,8 @@ const a0Themes = [
     ],
     vocabulary: [
       ['hallo', 'Een gewone begroeting voor bijna elke situatie.', 'Hallo, hoe gaat het?'],
-      ['goedemorgen', 'Een begroeting in de ochtend.', 'Goedemorgen, mevrouw.'],
-      ['goedemiddag', 'Een begroeting in de middag.', 'Goedemiddag, welkom.'],
+      ['goedemorgen', 'Een begroeting in de ochtend.', 'Goedemorgen, mevrouw De Vries.'],
+      ['goedemiddag', 'Een begroeting in de middag.', 'Goedemiddag, welkom bij de afspraak.'],
       ['goedenavond', 'Een begroeting in de avond.', 'Goedenavond, alles goed?'],
       ['dank je wel', 'Een informele manier om iemand te bedanken.', 'Dank je wel voor je hulp.'],
       ['dank u wel', 'Een beleefde manier om iemand te bedanken.', 'Dank u wel, meneer.'],
@@ -4715,9 +4715,9 @@ const a0Themes = [
       ['ik heet', 'Een korte manier om je naam te noemen.', 'Ik heet Amir.'],
       ['hoe heet je?', 'Een informele vraag naar iemands naam.', 'Hoi, hoe heet je?'],
       ['hoe heet u?', 'Een beleefde vraag naar iemands naam.', 'Goedemiddag, hoe heet u?'],
-      ['ik kom uit', 'Een vaste combinatie voor je land of plaats van herkomst.', 'Ik kom uit Colombia.'],
-      ['ik woon in', 'Een vaste combinatie voor je woonplaats.', 'Ik woon in Eindhoven.'],
-      ['ik spreek', 'Een vaste combinatie om een taal te noemen.', 'Ik spreek Spaans en Engels.'],
+      ['ik kom uit', 'Zeggen uit welk land of welke plaats je afkomstig bent.', 'Ik kom uit Colombia.'],
+      ['ik woon in', 'Zeggen welke stad, welk dorp of welk land je woonplaats is.', 'Ik woon in Eindhoven.'],
+      ['ik spreek', 'Zeggen welke taal of talen je mondeling kunt gebruiken.', 'Ik spreek Spaans en Engels.'],
       ['aangenaam', 'Een beleefde reactie wanneer je iemand ontmoet.', 'Aangenaam, ik ben Noor.']
     ],
     wordGroups: {
@@ -4760,9 +4760,9 @@ const a0Themes = [
     vocabulary: [
       ['ik begrijp het niet', 'Je zegt dat de betekenis niet duidelijk is.', 'Sorry, ik begrijp het niet.'],
       ['nog een keer', 'Een verzoek om iets te herhalen.', 'Kunt u dat nog een keer zeggen?'],
-      ['langzamer, alstublieft', 'Een verzoek om minder snel te spreken.', 'Langzamer, alstublieft.'],
-      ['wat betekent dat?', 'Een vraag naar de betekenis van een woord of zin.', 'Wat betekent dat?'],
-      ['kunt u mij helpen?', 'Een beleefde vraag om hulp.', 'Kunt u mij helpen?'],
+      ['langzamer, alstublieft', 'Een verzoek om minder snel te spreken.', 'Kunt u iets langzamer spreken, alstublieft?'],
+      ['wat betekent dat?', 'Een vraag naar de betekenis van een woord of zin.', 'Ik ken dit woord niet. Wat betekent dat?'],
+      ['kunt u mij helpen?', 'Een beleefde vraag om hulp.', 'Kunt u mij helpen met dit formulier?'],
       ['waar is ...?', 'Een basisvraag naar een plaats.', 'Waar is het station?'],
       ['ik zoek ...', 'Een vaste zin wanneer je iets nodig hebt.', 'Ik zoek de uitgang.'],
       ['sorry', 'Een woord om beleefd aandacht te vragen of je te verontschuldigen.', 'Sorry, waar is de bushalte?']
@@ -4805,10 +4805,10 @@ const a0Themes = [
       'Ik kan een eenvoudige basisbehoefte uitspreken.'
     ],
     vocabulary: [
-      ['ja', 'Een positief antwoord.', 'Ja, graag.'],
+      ['ja', 'Een positief antwoord.', 'Ja, ik wil graag koffie.'],
       ['nee', 'Een negatief antwoord.', 'Nee, dank u.'],
-      ['hoeveel kost het?', 'Een vraag naar de prijs.', 'Hoeveel kost het?'],
-      ['hoe laat is het?', 'Een vraag naar de tijd.', 'Hoe laat is het?'],
+      ['hoeveel kost het?', 'Een vraag naar de prijs.', 'Hoeveel kost het kaartje naar Utrecht?'],
+      ['hoe laat is het?', 'Een vraag naar de tijd.', 'Pardon, hoe laat is het nu?'],
       ['ik wil graag ...', 'Een beleefde manier om iets te vragen.', 'Ik wil graag water.'],
       ['waar is het toilet?', 'Een basisvraag naar het toilet.', 'Pardon, waar is het toilet?'],
       ['ik heb een probleem', 'Een korte zin om aan te geven dat iets niet goed gaat.', 'Ik heb een probleem met mijn kaart.'],
@@ -140622,15 +140622,15 @@ const grammarTopics = [
 const verbs = [
   { infinitive: 'zijn', meaning: 'een toestand of identiteit hebben', auxiliary: 'zijn', present: ['ik ben', 'jij bent', 'hij/zij is', 'wij zijn'], past: ['ik was', 'jij was', 'wij waren'], perfect: 'ik ben geweest', examples: ['Ik ben thuis.', 'Zij is docent.', 'Wij zijn moe.'] },
   { infinitive: 'hebben', meaning: 'iets bezitten of ervaren', auxiliary: 'hebben', present: ['ik heb', 'jij hebt', 'hij/zij heeft', 'wij hebben'], past: ['ik had', 'jij had', 'wij hadden'], perfect: 'ik heb gehad', examples: ['Ik heb een afspraak.', 'Hij heeft koorts.', 'Wij hebben tijd.'] },
-  { infinitive: 'heten', meaning: 'een naam hebben', auxiliary: 'hebben', present: ['ik heet', 'jij heet', 'hij/zij heet', 'wij heten'], past: ['ik heette', 'jij heette', 'wij heetten'], perfect: 'ik heb geheten', examples: ['Ik heet Lina.', 'Hoe heet u?', 'Onze docent heet Peter.'] },
+  { infinitive: 'heten', meaning: 'Een bepaalde naam hebben of zo genoemd worden.', auxiliary: 'hebben', present: ['ik heet', 'jij heet', 'hij/zij heet', 'wij heten'], past: ['ik heette', 'jij heette', 'wij heetten'], perfect: 'ik heb geheten', examples: ['Ik heet Lina.', 'Hoe heet u?', 'Onze docent heet Peter.'] },
   { infinitive: 'komen', meaning: 'naar een plaats bewegen of ergens vandaan zijn', auxiliary: 'zijn', present: ['ik kom', 'jij komt', 'hij/zij komt', 'wij komen'], past: ['ik kwam', 'jij kwam', 'wij kwamen'], perfect: 'ik ben gekomen', examples: ['Ik kom uit Colombia.', 'De bus komt om acht uur.', 'Zij is te laat gekomen.'] },
   { infinitive: 'wonen', meaning: 'op een plaats je huis hebben', auxiliary: 'hebben', present: ['ik woon', 'jij woont', 'hij/zij woont', 'wij wonen'], past: ['ik woonde', 'jij woonde', 'wij woonden'], perfect: 'ik heb gewoond', examples: ['Ik woon in Waalre.', 'Wij wonen bij een park.', 'Hij heeft in Duitsland gewoond.'] },
   { infinitive: 'leren', meaning: 'nieuwe kennis of vaardigheden krijgen', auxiliary: 'hebben', present: ['ik leer', 'jij leert', 'hij/zij leert', 'wij leren'], past: ['ik leerde', 'jij leerde', 'wij leerden'], perfect: 'ik heb geleerd', examples: ['Ik leer Nederlands.', 'De kinderen leren lezen.', 'Wij hebben veel geleerd.'] },
   { infinitive: 'spreken', meaning: 'met woorden communiceren', auxiliary: 'hebben', present: ['ik spreek', 'jij spreekt', 'hij/zij spreekt', 'wij spreken'], past: ['ik sprak', 'jij sprak', 'wij spraken'], perfect: 'ik heb gesproken', examples: ['Ik spreek Spaans.', 'Spreekt u Nederlands?', 'Wij hebben met de docent gesproken.'] },
   { infinitive: 'werken', meaning: 'een taak of beroep uitvoeren', auxiliary: 'hebben', present: ['ik werk', 'jij werkt', 'hij/zij werkt', 'wij werken'], past: ['ik werkte', 'jij werkte', 'wij werkten'], perfect: 'ik heb gewerkt', examples: ['Ik werk vandaag thuis.', 'Hij werkt op kantoor.', 'We hebben samen gewerkt.'] },
   { infinitive: 'gaan', meaning: 'zich naar een andere plaats bewegen', auxiliary: 'zijn', present: ['ik ga', 'jij gaat', 'hij/zij gaat', 'wij gaan'], past: ['ik ging', 'jij ging', 'wij gingen'], perfect: 'ik ben gegaan', examples: ['Wij gaan naar school.', 'Ik ga met de fiets.', 'Zij is naar huis gegaan.'] },
-  { infinitive: 'eten', meaning: 'voedsel nemen', auxiliary: 'hebben', present: ['ik eet', 'jij eet', 'hij/zij eet', 'wij eten'], past: ['ik at', 'jij at', 'wij aten'], perfect: 'ik heb gegeten', examples: ['Ik eet een appel.', 'Wat eten jullie?', 'Wij hebben soep gegeten.'] },
-  { infinitive: 'drinken', meaning: 'vloeistof nemen', auxiliary: 'hebben', present: ['ik drink', 'jij drinkt', 'hij/zij drinkt', 'wij drinken'], past: ['ik dronk', 'jij dronk', 'wij dronken'], perfect: 'ik heb gedronken', examples: ['Ik drink water.', 'Drinkt u koffie?', 'Hij heeft thee gedronken.'] },
+  { infinitive: 'eten', meaning: 'Voedsel in de mond nemen, kauwen en doorslikken.', auxiliary: 'hebben', present: ['ik eet', 'jij eet', 'hij/zij eet', 'wij eten'], past: ['ik at', 'jij at', 'wij aten'], perfect: 'ik heb gegeten', examples: ['Ik eet een appel.', 'Wat eten jullie?', 'Wij hebben soep gegeten.'] },
+  { infinitive: 'drinken', meaning: 'Vloeistof via de mond innemen.', auxiliary: 'hebben', present: ['ik drink', 'jij drinkt', 'hij/zij drinkt', 'wij drinken'], past: ['ik dronk', 'jij dronk', 'wij dronken'], perfect: 'ik heb gedronken', examples: ['Ik drink water.', 'Drinkt u koffie?', 'Hij heeft thee gedronken.'] },
   { infinitive: 'maken', meaning: 'iets doen, produceren of voorbereiden', auxiliary: 'hebben', present: ['ik maak', 'jij maakt', 'hij/zij maakt', 'wij maken'], past: ['ik maakte', 'jij maakte', 'wij maakten'], perfect: 'ik heb gemaakt', examples: ['Ik maak de opdracht.', 'Wij maken soep.', 'Zij heeft een afspraak gemaakt.'] },
   { infinitive: 'willen', meaning: 'een wens of bedoeling hebben', auxiliary: 'hebben', present: ['ik wil', 'jij wilt/wil', 'hij/zij wil', 'wij willen'], past: ['ik wilde', 'jij wilde', 'wij wilden'], perfect: 'ik heb gewild', examples: ['Ik wil graag koffie.', 'Wilt u pinnen?', 'Wij willen Nederlands leren.'] },
   { infinitive: 'kunnen', meaning: 'in staat zijn of een mogelijkheid hebben', auxiliary: 'hebben', present: ['ik kan', 'jij kunt/kan', 'hij/zij kan', 'wij kunnen'], past: ['ik kon', 'jij kon', 'wij konden'], perfect: 'ik heb gekund', examples: ['Ik kan Nederlands spreken.', 'Kunt u dat herhalen?', 'Wij kunnen morgen komen.'] },
@@ -142333,6 +142333,8 @@ const commonWordLearningDetails = {
   'de achternaam': ['De familienaam die je met andere familieleden kunt delen.', 'Mijn achternaam is Herrera.'],
   'het adres': ['De gegevens waarmee je precies kunt aangeven waar iemand woont.', 'Mijn adres is Marktstraat 12.'],
   'de straat': ['Een openbare weg met huizen of andere gebouwen erlangs.', 'Wij wonen in een rustige straat.'],
+  'de opslag': ['Een ruimte of voorziening waar spullen tijdelijk worden bewaard.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
+  'de schade': ['Nadeel of beschadiging waardoor iets minder goed of minder waardevol is.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
   'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
   'de postcode': ['Een combinatie van cijfers en letters die bij een gebied of adres hoort.', 'Wat is uw postcode?'],
   'de woonplaats': ['De stad of het dorp waar iemand woont.', 'Mijn woonplaats is Waalre.'],
@@ -142398,41 +142400,38 @@ function normalizeLearningWord(word) {
 function highlightedWordDetails(theme, word) {
   const normalized = normalizeLearningWord(word);
   const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
-  if (local) return { definition: local[1], example: local[2], source: 'thema' };
+  if (local && isReliableDefinition(word, local[1]) && isReliableExample(word, local[2])) {
+    return { definition: local[1], example: local[2], source: 'thema', reviewed: true };
+  }
   const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
-  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord' };
+  if (global && isReliableDefinition(word, global.definition) && isReliableExample(word, global.example)) {
+    return { definition: global.definition, example: global.example, source: 'beeldwoord', reviewed: true };
+  }
   return null;
 }
 
 function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord' };
+  const compactExample = compact?.examples?.[0] || '';
+  if (compact && isReliableDefinition(word, compact.meaning) && isReliableExample(word, compactExample)) {
+    return { definition: compact.meaning, example: compactExample, source: 'werkwoord', reviewed: true };
+  }
   const atlas = verbAtlas.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (!atlas) return null;
-  return {
-    definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
-    example: atlas.sentencePatterns?.hoofdzin || '',
-    source: 'werkwoord',
-  };
+  const atlasReviewed = atlas?.lexicalEnriched === true || (atlas ? hasReviewedVerbMetadata(atlas) : false);
+  const definition = atlas?.definition || atlas?.meaning || '';
+  const example = atlas?.example || atlas?.examples?.[0] || atlas?.sentencePatterns?.hoofdzin || '';
+  if (!atlasReviewed || !isReliableDefinition(word, definition) || !isReliableExample(word, example)) return null;
+  return { definition, example, source: 'werkwoord', reviewed: true };
 }
 
-function fallbackWordDetails(theme, group, word) {
-  const lowerGroup = normalizeLearningWord(group);
-  const themeName = theme.title.toLocaleLowerCase('nl-NL');
-  if (word.trim().endsWith('?')) {
-    return { definition: `Een vaste vraag die je gebruikt in gesprekken over ${themeName}.`, example: word, source: 'vraag' };
-  }
-  if (lowerGroup.includes('vaste') || lowerGroup.includes('combinatie') || word.trim().includes(' ')) {
-    return { definition: `Een vaste combinatie die je als één geheel gebruikt wanneer je over ${themeName} praat.`, example: word, source: 'combinatie' };
-  }
-  if (lowerGroup.includes('werkwoord')) {
-    return { definition: `Een werkwoord voor een handeling, toestand of gebeurtenis binnen het thema ${themeName}.`, example: '', source: 'werkwoord' };
-  }
-  if (lowerGroup.includes('beschrij') || lowerGroup.includes('eigenschap') || lowerGroup.includes('bijvoeg')) {
-    return { definition: `Een woord waarmee je een persoon, ding of situatie binnen het thema ${themeName} beschrijft.`, example: '', source: 'beschrijving' };
-  }
-  return { definition: `Een zelfstandig naamwoord dat je nodig hebt om over ${themeName} te praten.`, example: '', source: 'themawoord' };
+function fallbackWordDetails() {
+  return {
+    definition: 'Voor dit woord is nog geen gecontroleerde betekenis beschikbaar.',
+    example: '',
+    source: 'controle nodig',
+    reviewed: false,
+  };
 }
 
 function wordLearningDetails(theme, group, word) {
@@ -142554,7 +142553,7 @@ function renderThemeWordGroups(theme) {
     const cards = words.map((word, wordIndex) => {
       const details = wordLearningDetails(theme, group, word);
       const searchable = `${word} ${details.definition} ${details.example} ${group}`.toLocaleLowerCase('nl-NL');
-      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
+      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''} ${details.reviewed === false ? 'needs-review' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
         <div class="theme-word-card-top"><span class="word-kind">${escapeHtml(details.source)}</span><div class="word-audio-actions">
           <button class="icon-sound-button speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>
           <button class="icon-sound-button slow speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.58" aria-label="Luister langzaam naar ${escapeHtml(word)}">🐢</button>
@@ -143905,6 +143904,7 @@ function initializeEvents() {
 }
 
 function initialize() {
+  document.documentElement.dataset.appVersion = APP_VERSION;
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
     onOpenPage: (page) => showPage(page),
     onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },

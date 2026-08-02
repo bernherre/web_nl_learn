@@ -18,7 +18,7 @@ test('V19.2 voegt zes complete praktijksituaties toe', () => {
   }
 });
 
-test('V19.2.6 bevat oefeningen voor alle niveaus van A0 tot C2', () => {
+test('V19.3 RC1 bevat oefeningen voor alle niveaus van A0 tot C2', () => {
   assert.equal(v19Exercises.length, 48);
   assert.equal(new Set(v19Exercises.map((item) => item.id)).size, 48);
   for (const level of ['A0','A1','A2','B1','B2']) assert.equal(v19Exercises.filter((item) => item.level === level).length, 6);
@@ -34,5 +34,6 @@ test('de interface toont de praktijksituaties en visuele oefeningen', async () =
   assert.match(main, /renderPracticeScenarios/);
   assert.match(main, /engine-visual/);
   assert.match(styles, /practice-scenario-grid/);
-  assert.match(sw, /19\.2\.6/);
+  const pkg = JSON.parse(await read('package.json'));
+  assert.match(sw, new RegExp(pkg.version.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&'), 'u'));
 });

@@ -3,6 +3,8 @@ import { readFile, writeFile } from 'node:fs/promises';
 const stripExports = (source) => source.replace(/^export\s+/gmu, '');
 const stripImports = (source) => source.replace(/import\s*\{[\s\S]*?\}\s*from\s*['"][^'"]+['"];\s*/gu, '');
 
+const appConfig = stripExports(await readFile(new URL('../js/app-config.js', import.meta.url), 'utf8'));
+const lexicalQuality = stripExports(await readFile(new URL('../js/lexical-quality.js', import.meta.url), 'utf8'));
 const learning = stripExports(await readFile(new URL('../js/learning.js', import.meta.url), 'utf8'));
 const depthContent = stripExports(await readFile(new URL('../js/depth-content.js', import.meta.url), 'utf8'));
 const supplementContent = stripExports(await readFile(new URL('../js/supplement-content.js', import.meta.url), 'utf8'));
@@ -27,6 +29,6 @@ const knowledgeGraph = stripExports(await readFile(new URL('../js/knowledge-grap
 const content = stripImports(stripExports(await readFile(new URL('../js/content.js', import.meta.url), 'utf8')));
 const main = stripImports(await readFile(new URL('../js/main.js', import.meta.url), 'utf8'));
 
-const bundle = `/* Generated browser bundle. Source of truth: learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */\n(function () {\n'use strict';\n${learning}\n${depthContent}\n${supplementContent}\n${questionsContent}\n${starterContent}\n${spiralContent}\n${advancedLevelContent}\n${numberMathContent}\n${technicalContent}\n${professionalContent}\n${advancedPracticeContent}\n${sourceReviewContent}\n${v19LearningExperience}\n${exercises}\n${profiles}\n${verbAtlas}\n${verbCorrections}\n${verbCoreReview}\n${verbInitialReview}\n${verbFinalReview}\n${knowledgeGraph}\n${content}\n${main}\n})();\n`;
+const bundle = `/* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */\n(function () {\n'use strict';\n${learning}\n${depthContent}\n${supplementContent}\n${questionsContent}\n${starterContent}\n${spiralContent}\n${advancedLevelContent}\n${numberMathContent}\n${technicalContent}\n${professionalContent}\n${advancedPracticeContent}\n${sourceReviewContent}\n${v19LearningExperience}\n${exercises}\n${profiles}\n${verbAtlas}\n${verbCorrections}\n${verbCoreReview}\n${verbInitialReview}\n${verbFinalReview}\n${knowledgeGraph}\n${content}\n${main}\n})();\n`;
 await writeFile(new URL('../js/app.js', import.meta.url), bundle, 'utf8');
 console.log('js/app.js bijgewerkt.');

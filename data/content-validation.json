@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T19:24:56.372Z",
-  "version": "19.2.6",
+  "generatedAt": "2026-08-02T20:31:18.633Z",
+  "version": "19.3.0-rc.1",
   "status": "passed",
   "totals": {
     "checks": 73,
@@ -461,7 +461,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.2.6 staat in beide shell-assets.",
+      "detail": "Versie 19.3.0-rc.1 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -489,35 +489,35 @@
       "area": "technical",
       "check": "V19-oefeningen worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=451357, gebruikspositie=483723.",
+      "detail": "Definitiepositie=451553, gebruikspositie=483919.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=447442, gebruikspositie=7444415.",
+      "detail": "Definitiepositie=447638, gebruikspositie=7444662.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=2339653, aanroeppositie=7401328.",
+      "detail": "Definitiepositie=2339849, aanroeppositie=7401605.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de lexicale eindcontrole wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=7068828, aanroeppositie=7401364.",
+      "detail": "Definitiepositie=7069024, aanroeppositie=7401641.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.2.6.",
+      "detail": "Versie 19.3.0-rc.1.",
       "evidence": null
     },
     {

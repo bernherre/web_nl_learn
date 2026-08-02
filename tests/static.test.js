@@ -245,7 +245,7 @@ test('de klassieke bundle en offlinecache bevatten de vragenmodule', async () =>
 });
 
 
-test('V19.2.6 toont zeven zichtbare cursusroutes van A0 tot C2', async () => {
+test('V19.3 RC1 toont zeven zichtbare cursusroutes van A0 tot C2', async () => {
   const html = await read('index.html');
   const main = await read('js/main.js');
   for (const level of ['a0', 'a1', 'a2', 'b1', 'b2', 'c1', 'c2']) {

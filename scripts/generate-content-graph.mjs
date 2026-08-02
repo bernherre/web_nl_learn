@@ -1,4 +1,4 @@
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import {
   levels,
   a1Themes,
@@ -42,7 +42,8 @@ applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
 applyFinalVerbReviews(verbAtlas);
 
-const VERSION = '19.2.6';
+const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
+const VERSION = packageJson.version;
 const nodes = new Map();
 const edges = new Map();
 const issues = [];

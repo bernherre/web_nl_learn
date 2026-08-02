@@ -7,6 +7,8 @@ import {
   safeProgress,
   selectDutchVoice,
 } from './learning.js';
+import { APP_VERSION } from './app-config.js';
+import { isReliableDefinition, isReliableExample } from './lexical-quality.js';
 import {
   prepositionEntries,
   fixedPrepositionCombinations,
@@ -273,6 +275,8 @@ const commonWordLearningDetails = {
   'de achternaam': ['De familienaam die je met andere familieleden kunt delen.', 'Mijn achternaam is Herrera.'],
   'het adres': ['De gegevens waarmee je precies kunt aangeven waar iemand woont.', 'Mijn adres is Marktstraat 12.'],
   'de straat': ['Een openbare weg met huizen of andere gebouwen erlangs.', 'Wij wonen in een rustige straat.'],
+  'de opslag': ['Een ruimte of voorziening waar spullen tijdelijk worden bewaard.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
+  'de schade': ['Nadeel of beschadiging waardoor iets minder goed of minder waardevol is.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
   'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
   'de postcode': ['Een combinatie van cijfers en letters die bij een gebied of adres hoort.', 'Wat is uw postcode?'],
   'de woonplaats': ['De stad of het dorp waar iemand woont.', 'Mijn woonplaats is Waalre.'],
@@ -338,41 +342,38 @@ function normalizeLearningWord(word) {
 function highlightedWordDetails(theme, word) {
   const normalized = normalizeLearningWord(word);
   const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
-  if (local) return { definition: local[1], example: local[2], source: 'thema' };
+  if (local && isReliableDefinition(word, local[1]) && isReliableExample(word, local[2])) {
+    return { definition: local[1], example: local[2], source: 'thema', reviewed: true };
+  }
   const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
-  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord' };
+  if (global && isReliableDefinition(word, global.definition) && isReliableExample(word, global.example)) {
+    return { definition: global.definition, example: global.example, source: 'beeldwoord', reviewed: true };
+  }
   return null;
 }
 
 function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord' };
+  const compactExample = compact?.examples?.[0] || '';
+  if (compact && isReliableDefinition(word, compact.meaning) && isReliableExample(word, compactExample)) {
+    return { definition: compact.meaning, example: compactExample, source: 'werkwoord', reviewed: true };
+  }
   const atlas = verbAtlas.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (!atlas) return null;
-  return {
-    definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
-    example: atlas.sentencePatterns?.hoofdzin || '',
-    source: 'werkwoord',
-  };
+  const atlasReviewed = atlas?.lexicalEnriched === true || (atlas ? hasReviewedVerbMetadata(atlas) : false);
+  const definition = atlas?.definition || atlas?.meaning || '';
+  const example = atlas?.example || atlas?.examples?.[0] || atlas?.sentencePatterns?.hoofdzin || '';
+  if (!atlasReviewed || !isReliableDefinition(word, definition) || !isReliableExample(word, example)) return null;
+  return { definition, example, source: 'werkwoord', reviewed: true };
 }
 
-function fallbackWordDetails(theme, group, word) {
-  const lowerGroup = normalizeLearningWord(group);
-  const themeName = theme.title.toLocaleLowerCase('nl-NL');
-  if (word.trim().endsWith('?')) {
-    return { definition: `Een vaste vraag die je gebruikt in gesprekken over ${themeName}.`, example: word, source: 'vraag' };
-  }
-  if (lowerGroup.includes('vaste') || lowerGroup.includes('combinatie') || word.trim().includes(' ')) {
-    return { definition: `Een vaste combinatie die je als één geheel gebruikt wanneer je over ${themeName} praat.`, example: word, source: 'combinatie' };
-  }
-  if (lowerGroup.includes('werkwoord')) {
-    return { definition: `Een werkwoord voor een handeling, toestand of gebeurtenis binnen het thema ${themeName}.`, example: '', source: 'werkwoord' };
-  }
-  if (lowerGroup.includes('beschrij') || lowerGroup.includes('eigenschap') || lowerGroup.includes('bijvoeg')) {
-    return { definition: `Een woord waarmee je een persoon, ding of situatie binnen het thema ${themeName} beschrijft.`, example: '', source: 'beschrijving' };
-  }
-  return { definition: `Een zelfstandig naamwoord dat je nodig hebt om over ${themeName} te praten.`, example: '', source: 'themawoord' };
+function fallbackWordDetails() {
+  return {
+    definition: 'Voor dit woord is nog geen gecontroleerde betekenis beschikbaar.',
+    example: '',
+    source: 'controle nodig',
+    reviewed: false,
+  };
 }
 
 function wordLearningDetails(theme, group, word) {
@@ -494,7 +495,7 @@ function renderThemeWordGroups(theme) {
     const cards = words.map((word, wordIndex) => {
       const details = wordLearningDetails(theme, group, word);
       const searchable = `${word} ${details.definition} ${details.example} ${group}`.toLocaleLowerCase('nl-NL');
-      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
+      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''} ${details.reviewed === false ? 'needs-review' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
         <div class="theme-word-card-top"><span class="word-kind">${escapeHtml(details.source)}</span><div class="word-audio-actions">
           <button class="icon-sound-button speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>
           <button class="icon-sound-button slow speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.58" aria-label="Luister langzaam naar ${escapeHtml(word)}">🐢</button>
@@ -1845,6 +1846,7 @@ function initializeEvents() {
 }
 
 function initialize() {
+  document.documentElement.dataset.appVersion = APP_VERSION;
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
     onOpenPage: (page) => showPage(page),
     onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },

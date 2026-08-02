@@ -18,7 +18,8 @@ import { applyInitialVerbReviews, initialVerbReviews } from '../js/verb-initial-
 import { applyFinalVerbReviews, finalVerbReviews } from '../js/verb-final-review.js';
 
 const root = new URL('../', import.meta.url);
-const APP_VERSION = '19.2.6';
+const packageJson = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
+const APP_VERSION = packageJson.version;
 const results = [];
 const add = (area, check, status, detail, evidence = null) => results.push({ area, check, status, detail, evidence });
 const pass = (area, check, detail, evidence = null) => add(area, check, 'pass', detail, evidence);

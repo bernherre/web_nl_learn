@@ -1,9 +1,9 @@
 {
   "name": "web-nl-learn",
-  "version": "19.2.6",
+  "version": "19.3.0-rc.1",
   "private": true,
   "type": "module",
-  "description": "Statische Nederlandstalige leeromgeving A0-C2 met toegankelijke UX, lokale profielen, een brede grammaticale werkwoordenatlas, 1.886 inhoudelijk uitgebreide en lexicaal nagekeken werkwoorden, een kennisgraaf, 8.072 oefeningen en V19.2-praktijksituaties met natuurlijke antwoorden.",
+  "description": "Statische Nederlandstalige leeromgeving A0-C2 met gevalideerde lexicale weergave, lokale profielen, 1.886 nagekeken werkwoorden, een kennisgraaf, 8.072 oefeningen en een controleerbare PWA-basis.",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8080",
@@ -11,7 +11,9 @@
     "generate:graph": "node scripts/generate-content-graph.mjs",
     "validate:content": "node scripts/validate-content.mjs",
     "build": "node scripts/build-classic.mjs",
-    "check": "npm run generate:verbs && npm run generate:graph && npm run build && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/starter-content.js && node --check js/spiral-content.js && node --check js/advanced-level-content.js && node --check js/number-math-content.js && node --check js/technical-content.js && node --check js/professional-content.js && node --check js/advanced-practice-content.js && node --check js/source-review-content.js && node --check js/exercises.js && node --check js/profiles.js && node --check js/verb-atlas.js && node --check js/verb-corrections.js && node --check js/verb-core-review.js && node --check js/verb-initial-review.js && node --check js/verb-final-review.js && node --check js/knowledge-graph.js && node --check js/learning.js && node --check js/app.js && npm test && npm run validate:content"
+    "check": "npm run sync:version && npm run generate:verbs && npm run generate:graph && npm run build && node --check js/app-config.js && node --check js/lexical-quality.js && node --check js/main.js && node --check js/content.js && node --check js/depth-content.js && node --check js/supplement-content.js && node --check js/questions-content.js && node --check js/starter-content.js && node --check js/spiral-content.js && node --check js/advanced-level-content.js && node --check js/number-math-content.js && node --check js/technical-content.js && node --check js/professional-content.js && node --check js/advanced-practice-content.js && node --check js/source-review-content.js && node --check js/exercises.js && node --check js/profiles.js && node --check js/verb-atlas.js && node --check js/verb-corrections.js && node --check js/verb-core-review.js && node --check js/verb-initial-review.js && node --check js/verb-final-review.js && node --check js/knowledge-graph.js && node --check js/learning.js && node --check js/app.js && npm test && npm run audit:content && npm run validate:content",
+    "sync:version": "node scripts/sync-version.mjs",
+    "audit:content": "node scripts/audit-learning-content.mjs"
   },
   "engines": {
     "node": ">=20"
