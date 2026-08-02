@@ -1,0 +1,1532 @@
+[
+  {
+    "infinitive": "zijn",
+    "level": "A0",
+    "semantic": "toestand",
+    "semanticLabel": "identiteit, eigenschap en toestand",
+    "auxiliary": "zijn",
+    "conjugationClass": "zeer onregelmatig koppelwerkwoord",
+    "meaning": "Een identiteit, eigenschap, toestand, plaats of bestaan uitdrukken.",
+    "synonyms": [
+      "zich bevinden",
+      "bestaan"
+    ],
+    "synonymNote": "Zich bevinden past alleen bij plaats; bestaan alleen bij aanwezigheid of voortbestaan. In de meeste zinnen is zijn niet vervangbaar.",
+    "usage": "Zijn verbindt het onderwerp vaak met een naamwoord of eigenschap: Zij is arts; het huis is groot. Voor plaats staat het meestal met een plaatsbepaling.",
+    "examples": [
+      "Ik ben vandaag thuis.",
+      "Zij is arts en haar kantoor is in Utrecht.",
+      "Er zijn nog twee plaatsen vrij."
+    ],
+    "imperative": "wees"
+  },
+  {
+    "infinitive": "hebben",
+    "level": "A0",
+    "semantic": "toestand",
+    "semanticLabel": "bezit, relatie en ervaring",
+    "auxiliary": "hebben",
+    "conjugationClass": "zeer onregelmatig werkwoord",
+    "meaning": "Iets bezitten, een relatie of kenmerk hebben, of een lichamelijke of mentale ervaring ondergaan.",
+    "synonyms": [
+      "bezitten",
+      "beschikken over"
+    ],
+    "synonymNote": "Bezitten en beschikken over zijn formeler en passen vooral bij bezit of middelen; bij ervaringen zoals honger hebben zijn ze niet bruikbaar.",
+    "usage": "Hebben is ook hulpwerkwoord in het perfectum. De concrete betekenis hangt sterk af van het object: tijd hebben, pijn hebben, een auto hebben.",
+    "examples": [
+      "Wij hebben genoeg tijd voor de afspraak.",
+      "Ik heb hoofdpijn sinds vanochtend.",
+      "Zij heeft de e-mail al gelezen."
+    ],
+    "imperative": "heb"
+  },
+  {
+    "infinitive": "worden",
+    "level": "A1",
+    "semantic": "verandering",
+    "semanticLabel": "overgang naar een nieuwe toestand",
+    "auxiliary": "zijn",
+    "conjugationClass": "sterk werkwoord en hulpwerkwoord van de lijdende vorm",
+    "meaning": "In een nieuwe toestand, functie of situatie terechtkomen; ook de lijdende vorm maken.",
+    "synonyms": [
+      "veranderen in",
+      "uitgroeien tot"
+    ],
+    "synonymNote": "Veranderen in benadrukt de overgang; uitgroeien tot past bij een geleidelijke ontwikkeling. Worden is breder en vormt ook passieve zinnen.",
+    "usage": "Met een bijvoeglijk naamwoord drukt worden verandering uit: het wordt donker. Met een voltooid deelwoord vormt het de lijdende vorm: de brief wordt verstuurd.",
+    "examples": [
+      "Het wordt vanavond koud.",
+      "Mijn zus wil architect worden.",
+      "De aanvraag wordt morgen beoordeeld."
+    ]
+  },
+  {
+    "infinitive": "maken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "produceren, voorbereiden of veroorzaken",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Iets produceren, samenstellen, voorbereiden, herstellen of een resultaat veroorzaken.",
+    "synonyms": [
+      "produceren",
+      "vervaardigen",
+      "voorbereiden"
+    ],
+    "synonymNote": "Produceren en vervaardigen zijn formeler en gaan vooral over voortbrengen; voorbereiden past slechts bij bepaalde objecten, zoals een maaltijd of presentatie.",
+    "usage": "Maken heeft veel vaste combinaties, bijvoorbeeld een afspraak maken, een fout maken en zich zorgen maken. Kies het preciezere werkwoord wanneer dat beschikbaar is.",
+    "examples": [
+      "Ik maak vanmiddag een afspraak bij de huisarts.",
+      "De monteur heeft de fiets gemaakt.",
+      "Deze maatregel maakt het proces eenvoudiger."
+    ]
+  },
+  {
+    "infinitive": "zeggen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "informatie mondeling uitdrukken",
+    "auxiliary": "hebben",
+    "conjugationClass": "onregelmatig werkwoord",
+    "meaning": "Woorden uitspreken om informatie, een mening, opdracht of reactie te geven.",
+    "synonyms": [
+      "meedelen",
+      "vertellen",
+      "uitspreken"
+    ],
+    "synonymNote": "Meedelen is formeler; vertellen introduceert meestal uitgebreidere informatie; uitspreken legt nadruk op het daadwerkelijk verwoorden.",
+    "usage": "Bij zeggen kan de ontvanger met tegen worden genoemd: ik zeg het tegen haar. Voor indirecte rede volgt vaak dat.",
+    "examples": [
+      "Kun je zeggen hoe laat de trein vertrekt?",
+      "De arts zei dat ik rust moest nemen.",
+      "Zeg dat nog eens, alstublieft."
+    ]
+  },
+  {
+    "infinitive": "zien",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "visueel waarnemen en begrijpen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Met de ogen waarnemen; in ruimere zin iets opmerken, ontmoeten of begrijpen.",
+    "synonyms": [
+      "waarnemen",
+      "opmerken",
+      "bekijken"
+    ],
+    "synonymNote": "Waarnemen is neutraler en formeler; opmerken betekent dat iets je aandacht trekt; bekijken is een bewuste, gerichte handeling.",
+    "usage": "Zien kan met een infinitief zonder te: ik zie hem lopen. In vaste uitdrukkingen betekent het ook begrijpen of afwachten, zoals ik zie wat je bedoelt.",
+    "examples": [
+      "Ik zie de bus al aankomen.",
+      "We hebben elkaar gisteren nog gezien.",
+      "Nu zie ik waarom deze regel belangrijk is."
+    ]
+  },
+  {
+    "infinitive": "doen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "uitvoeren, veroorzaken en functioneren",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk en zeer algemeen werkwoord",
+    "meaning": "Een handeling uitvoeren, iets veroorzaken, ergens aan deelnemen of aangeven hoe iets functioneert.",
+    "synonyms": [
+      "uitvoeren",
+      "verrichten",
+      "handelen"
+    ],
+    "synonymNote": "Uitvoeren en verrichten zijn preciezer en formeler bij taken; handelen beschrijft gedrag. Doen blijft nodig in veel vaste combinaties.",
+    "usage": "Doen komt voor in vaste combinaties zoals boodschappen doen, pijn doen en zijn best doen. In verzorgde tekst is een specifieker werkwoord vaak duidelijker.",
+    "examples": [
+      "Wat doe je voor werk?",
+      "Ik heb vandaag boodschappen gedaan.",
+      "Deze schoenen doen pijn aan mijn voeten."
+    ]
+  },
+  {
+    "infinitive": "staan",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "rechtop zijn, geplaatst zijn of vermeld worden",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk positiewerkwoord",
+    "meaning": "Zich rechtop bevinden, op een bepaalde plaats opgesteld zijn, of in een tekst vermeld zijn.",
+    "synonyms": [
+      "zich bevinden",
+      "geplaatst zijn",
+      "vermeld staan"
+    ],
+    "synonymNote": "Zich bevinden is algemener en zegt niets over houding; geplaatst zijn past bij voorwerpen; vermeld staan alleen bij informatie in tekst of systemen.",
+    "usage": "Gebruik staan bij personen op de voeten en bij voorwerpen met een verticale of vaste positie. Met te + infinitief kan het een voortdurende handeling aanduiden: hij staat te wachten.",
+    "examples": [
+      "De fiets staat naast de deur.",
+      "Uw naam staat niet op de lijst.",
+      "We stonden een halfuur te wachten."
+    ]
+  },
+  {
+    "infinitive": "weten",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "kennis van een feit hebben",
+    "auxiliary": "hebben",
+    "conjugationClass": "onregelmatig werkwoord",
+    "meaning": "Kennis hebben van een feit, antwoord, manier of situatie.",
+    "synonyms": [
+      "op de hoogte zijn",
+      "kennis hebben van"
+    ],
+    "synonymNote": "Op de hoogte zijn gaat meestal over actuele informatie; kennis hebben van is formeler. Kennen gebruik je eerder voor personen, plaatsen en vertrouwde zaken.",
+    "usage": "Weten wordt vaak gevolgd door een bijzin of vraagwoord: ik weet dat…, ik weet waar…. Voor een persoon of plaats gebruik je doorgaans kennen.",
+    "examples": [
+      "Weet je waar het station is?",
+      "Ik wist niet dat de winkel gesloten was.",
+      "Niemand heeft het antwoord geweten."
+    ]
+  },
+  {
+    "infinitive": "denken",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "overwegen, menen en gedachten richten",
+    "auxiliary": "hebben",
+    "conjugationClass": "onregelmatig werkwoord",
+    "meaning": "Gedachten vormen of ergens over nadenken; ook een mening of verwachting uitdrukken.",
+    "synonyms": [
+      "nadenken",
+      "menen",
+      "veronderstellen"
+    ],
+    "synonymNote": "Nadenken is een bewuste activiteit; menen geeft een mening; veronderstellen is een voorlopige aanname. Denken kan al deze functies hebben.",
+    "usage": "Denk aan betekent iets niet vergeten; denken over betekent een onderwerp overwegen. Met dat volgt vaak een mening of verwachting.",
+    "examples": [
+      "Ik denk dat de vergadering om negen uur begint.",
+      "Denk je aan je identiteitsbewijs?",
+      "We hebben lang over het voorstel gedacht."
+    ]
+  },
+  {
+    "infinitive": "geven",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "overdragen, aanbieden of veroorzaken",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets aan iemand overdragen, aanbieden, verstrekken of een bepaald effect veroorzaken.",
+    "synonyms": [
+      "overhandigen",
+      "verstrekken",
+      "aanbieden"
+    ],
+    "synonymNote": "Overhandigen is fysiek en vrij formeel; verstrekken past bij informatie of middelen; aanbieden benadrukt dat de ontvanger nog kan kiezen.",
+    "usage": "De ontvanger kan zonder voorzetsel of met aan staan: ik geef haar het boek; ik geef het boek aan haar. Veel combinaties zijn vast, zoals advies geven.",
+    "examples": [
+      "Kunt u mij wat informatie geven?",
+      "Zij gaf haar collega een duidelijk antwoord.",
+      "De cursus heeft mij meer zelfvertrouwen gegeven."
+    ]
+  },
+  {
+    "infinitive": "kijken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "gericht visueel waarnemen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "De ogen bewust op iets richten om het waar te nemen of te onderzoeken.",
+    "synonyms": [
+      "bekijken",
+      "observeren",
+      "toekijken"
+    ],
+    "synonymNote": "Bekijken heeft meestal een direct object; observeren is aandachtig en vaak systematisch; toekijken betekent naar een handeling van anderen kijken.",
+    "usage": "Kijken naar is de gewone combinatie met een object. Kijk uit is een waarschuwing; kijken of introduceert een controle: ik kijk of de deur dicht is.",
+    "examples": [
+      "We kijken vanavond naar een Nederlandse film.",
+      "Kun je even kijken of het raam dicht is?",
+      "De kinderen keken aandachtig toe."
+    ]
+  },
+  {
+    "infinitive": "vinden",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "ontdekken, aantreffen of beoordelen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets ontdekken of aantreffen; ook een persoonlijke beoordeling of mening geven.",
+    "synonyms": [
+      "aantreffen",
+      "ontdekken",
+      "van mening zijn"
+    ],
+    "synonymNote": "Aantreffen gaat om ergens aanwezig zijn; ontdekken om iets nieuws opmerken; van mening zijn vervangt alleen de beoordelende betekenis.",
+    "usage": "Bij een mening volgt vaak een bijvoeglijk naamwoord of bijzin: ik vind dit handig; ik vind dat het beter kan. Zoeken beschrijft het proces, vinden het resultaat.",
+    "examples": [
+      "Ik kan mijn sleutels nergens vinden.",
+      "Wat vind je van deze oplossing?",
+      "De politie heeft het document teruggevonden."
+    ]
+  },
+  {
+    "infinitive": "houden",
+    "level": "A2",
+    "semantic": "handeling",
+    "semanticLabel": "vasthouden, bewaren en waarderen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets vasthouden of in een toestand bewaren; in vaste combinaties ook waarderen, organiseren of rekening nemen.",
+    "synonyms": [
+      "vasthouden",
+      "bewaren",
+      "behouden"
+    ],
+    "synonymNote": "Vasthouden is fysiek; bewaren gaat om later gebruik; behouden betekent niet verliezen. Houden van is een aparte combinatie voor liefde of voorkeur.",
+    "usage": "Leer de vaste combinaties afzonderlijk: houden van, rekening houden met, een vergadering houden en iets schoon houden.",
+    "examples": [
+      "Ik houd van rustige buurten.",
+      "Wilt u rekening houden met de levertijd?",
+      "Zij hield de deur voor mij open."
+    ]
+  },
+  {
+    "infinitive": "nemen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "pakken, kiezen of gebruiken",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets pakken, meenemen, kiezen, gebruiken of als besluit of maatregel uitvoeren.",
+    "synonyms": [
+      "pakken",
+      "kiezen",
+      "gebruiken"
+    ],
+    "synonymNote": "Pakken is concreter en informeler; kiezen gaat om een optie; gebruiken om een middel. Nemen vormt veel vaste combinaties, zoals een besluit nemen.",
+    "usage": "De precieze betekenis komt vaak uit het object: de trein nemen, medicijnen nemen, tijd nemen, afscheid nemen.",
+    "examples": [
+      "Ik neem elke ochtend de trein naar mijn werk.",
+      "De directie heeft een belangrijk besluit genomen.",
+      "Neem rustig de tijd om het formulier te lezen."
+    ]
+  },
+  {
+    "infinitive": "liggen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "horizontale positie en locatie",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk positiewerkwoord",
+    "meaning": "Zich horizontaal bevinden, op een bepaalde plaats liggen of als oorzaak of verantwoordelijkheid ergens berusten.",
+    "synonyms": [
+      "zich bevinden",
+      "gelegen zijn",
+      "berusten bij"
+    ],
+    "synonymNote": "Gelegen zijn is formeler voor locaties; berusten bij past alleen bij verantwoordelijkheid of oorzaak; zich bevinden zegt niets over horizontale positie.",
+    "usage": "Gebruik liggen voor horizontale voorwerpen en geografische locaties. In het ligt aan betekent het dat iets door een oorzaak of persoon komt.",
+    "examples": [
+      "Het boek ligt op tafel.",
+      "Maastricht ligt in het zuiden van Nederland.",
+      "De vertraging lag aan een technische storing."
+    ]
+  },
+  {
+    "infinitive": "krijgen",
+    "level": "A1",
+    "semantic": "verandering",
+    "semanticLabel": "ontvangen of in een toestand komen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets ontvangen, verkrijgen of een nieuwe toestand, reactie of ervaring krijgen.",
+    "synonyms": [
+      "ontvangen",
+      "verkrijgen",
+      "bemachtigen"
+    ],
+    "synonymNote": "Ontvangen is neutraler bij iets dat wordt gegeven; verkrijgen is formeler en resultaatgericht; bemachtigen suggereert moeite of concurrentie.",
+    "usage": "Krijgen vormt veel alledaagse combinaties: een bericht krijgen, honger krijgen, toestemming krijgen en iets gedaan krijgen.",
+    "examples": [
+      "Ik heb gisteren een bevestiging gekregen.",
+      "Na de wandeling kregen we honger.",
+      "Kun je de deur nog open krijgen?"
+    ]
+  },
+  {
+    "infinitive": "vragen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "informatie, toestemming of iets concreets verzoeken",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Informatie willen weten of iemand verzoeken iets te geven of te doen.",
+    "synonyms": [
+      "informeren naar",
+      "verzoeken",
+      "navragen"
+    ],
+    "synonymNote": "Informeren naar en navragen gaan om informatie; verzoeken is formeler en gaat om een handeling of voorziening.",
+    "usage": "Vraag iemand iets, vraag om iets, of vraag of iemand iets kan doen. Naar iets vragen betekent informeren waar of hoe iets is.",
+    "examples": [
+      "Mag ik u iets vragen?",
+      "Zij vroeg om een schriftelijke bevestiging.",
+      "Ik heb bij de gemeente naar de procedure gevraagd."
+    ]
+  },
+  {
+    "infinitive": "horen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "auditief waarnemen en vernemen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord met klinkerverlenging in de stam",
+    "meaning": "Geluid met de oren waarnemen; ook informatie vernemen of aangeven dat iets ergens bij hoort.",
+    "synonyms": [
+      "vernemen",
+      "beluisteren",
+      "waarnemen"
+    ],
+    "synonymNote": "Vernemen gaat om informatie; beluisteren is een bewuste luisterhandeling; waarnemen is algemener en formeler.",
+    "usage": "Horen is meestal onbedoelde waarneming, terwijl luisteren naar een bewuste activiteit is. Horen bij betekent deel uitmaken van.",
+    "examples": [
+      "Ik hoor iemand op de deur kloppen.",
+      "Heb je al gehoord dat de afspraak is verzet?",
+      "Deze sleutel hoort bij de achterdeur."
+    ]
+  },
+  {
+    "infinitive": "brengen",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "iets of iemand naar een bestemming verplaatsen",
+    "auxiliary": "hebben",
+    "conjugationClass": "onregelmatig werkwoord",
+    "meaning": "Iets of iemand meenemen naar een andere persoon of plaats, of in een bepaalde toestand veroorzaken.",
+    "synonyms": [
+      "bezorgen",
+      "vervoeren",
+      "meenemen naar"
+    ],
+    "synonymNote": "Bezorgen legt nadruk op aflevering; vervoeren op transport; meenemen naar beschrijft de richting maar niet altijd de overdracht.",
+    "usage": "Brengen bevat doorgaans een bestemming: breng het naar kantoor. Vergelijk halen: daarbij beweegt de handelende persoon eerst naar de bron.",
+    "examples": [
+      "Kun je dit pakket morgen naar het postkantoor brengen?",
+      "De buurvrouw bracht de kinderen naar school.",
+      "Het nieuws heeft veel onzekerheid gebracht."
+    ]
+  },
+  {
+    "infinitive": "beginnen",
+    "level": "A1",
+    "semantic": "gebeurtenis",
+    "semanticLabel": "een handeling of periode starten",
+    "auxiliary": "zijn",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Het eerste deel van een handeling, gebeurtenis, periode of proces laten plaatsvinden.",
+    "synonyms": [
+      "starten",
+      "aanvangen",
+      "van start gaan"
+    ],
+    "synonymNote": "Starten is algemeen en ook transitief; aanvangen is formeel; van start gaan wordt vooral bij activiteiten en projecten gebruikt.",
+    "usage": "Beginnen met wordt gevolgd door een zelfstandig naamwoord of infinitief: beginnen met oefenen. Beginnen te komt ook voor, vooral bij een geleidelijke ontwikkeling.",
+    "examples": [
+      "De les begint om half negen.",
+      "We zijn met een nieuwe oefening begonnen.",
+      "Het begon langzaam te regenen."
+    ]
+  },
+  {
+    "infinitive": "lopen",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "te voet bewegen en functioneren",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "sterk bewegingswerkwoord",
+    "meaning": "Zich te voet voortbewegen; ook aangeven dat een route, proces of apparaat functioneert of verloopt.",
+    "synonyms": [
+      "wandelen",
+      "stappen",
+      "functioneren"
+    ],
+    "synonymNote": "Wandelen is recreatief; stappen beschrijft de beweging; functioneren vervangt alleen de figuurlijke betekenis van een systeem of apparaat.",
+    "usage": "Met richting of bestemming staat het perfectum vaak met zijn; bij de activiteit zonder bestemming vaak met hebben. In de praktijk komen beide voor afhankelijk van de nadruk.",
+    "examples": [
+      "We zijn naar het station gelopen.",
+      "Ik heb vanmiddag een uur gelopen.",
+      "Het project loopt volgens planning."
+    ]
+  },
+  {
+    "infinitive": "voelen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "lichamelijk of emotioneel ervaren",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Een lichamelijke sensatie, emotie of indruk ervaren; ook iets door aanraking waarnemen.",
+    "synonyms": [
+      "ervaren",
+      "waarnemen",
+      "aanvoelen"
+    ],
+    "synonymNote": "Ervaren is breder; waarnemen is neutraler; aanvoelen betekent vaak intuïtief begrijpen of met de tast onderzoeken.",
+    "usage": "Zich voelen krijgt meestal een bijvoeglijk naamwoord: ik voel me moe. Zonder zich kan voelen een object hebben: ik voel de wind.",
+    "examples": [
+      "Ik voel me vandaag veel beter.",
+      "Voel eens hoe koud het water is.",
+      "Zij voelde dat er iets niet klopte."
+    ]
+  },
+  {
+    "infinitive": "spreken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "mondeling communiceren en een taal beheersen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Met woorden mondeling communiceren, een taal gebruiken of formeel met iemand over een onderwerp praten.",
+    "synonyms": [
+      "praten",
+      "overleggen",
+      "toespreken"
+    ],
+    "synonymNote": "Praten is informeler; overleggen is doelgericht en wederzijds; toespreken betekent dat één persoon zich tot een groep of persoon richt.",
+    "usage": "Spreken met noemt de gesprekspartner; spreken over het onderwerp. Een taal spreken heeft geen voorzetsel.",
+    "examples": [
+      "Spreekt u Nederlands of Engels?",
+      "Ik heb met mijn leidinggevende over de planning gesproken.",
+      "De voorzitter spreekt de deelnemers toe."
+    ]
+  },
+  {
+    "infinitive": "vertellen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "informatie of een verhaal uitvoerig meedelen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Iemand informatie, gebeurtenissen of een verhaal in woorden meedelen.",
+    "synonyms": [
+      "meedelen",
+      "verhalen",
+      "uitleggen"
+    ],
+    "synonymNote": "Meedelen is korter en formeler; verhalen is literair en narratief; uitleggen betekent iets begrijpelijk maken en is niet altijd hetzelfde.",
+    "usage": "Vertel iemand iets of vertel iets aan iemand. Een bijzin met dat kan de inhoud geven.",
+    "examples": [
+      "Kun je mij vertellen hoe dit apparaat werkt?",
+      "Mijn opa vertelde vroeger verhalen over zijn jeugd.",
+      "Zij heeft verteld dat ze later komt."
+    ]
+  },
+  {
+    "infinitive": "leven",
+    "level": "A2",
+    "semantic": "toestand",
+    "semanticLabel": "in leven zijn en een levenswijze hebben",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "In leven zijn, een bepaalde levenswijze hebben of gedurende een periode bestaan.",
+    "synonyms": [
+      "bestaan",
+      "in leven zijn",
+      "een bestaan leiden"
+    ],
+    "synonymNote": "Bestaan is algemener en geldt ook voor zaken; in leven zijn benoemt de biologische toestand; een bestaan leiden benadrukt levensomstandigheden of levensstijl.",
+    "usage": "Leven van betekent financieel of lichamelijk afhankelijk zijn van iets; leven met betekent een situatie aanvaarden of ermee omgaan.",
+    "examples": [
+      "Mijn grootouders leven nog zelfstandig.",
+      "Veel mensen leven van een vast inkomen.",
+      "We moeten leren leven met onzekerheid."
+    ]
+  },
+  {
+    "infinitive": "kennen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "vertrouwd zijn met personen, plaatsen of zaken",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Een persoon, plaats, taalvorm of zaak uit ervaring herkennen en ermee vertrouwd zijn.",
+    "synonyms": [
+      "vertrouwd zijn met",
+      "bekend zijn met",
+      "herkennen"
+    ],
+    "synonymNote": "Bekend zijn met is formeler; herkennen betekent opnieuw identificeren. Weten gebruik je voor feiten en antwoorden, kennen voor vertrouwdheid.",
+    "usage": "Kennen krijgt meestal een direct object: ik ken haar; ik ken de stad. Voor een feit of bijzin gebruik je weten.",
+    "examples": [
+      "Ken je een goed restaurant in de buurt?",
+      "Ik ken deze procedure nog niet goed.",
+      "We hebben elkaar tijdens de cursus leren kennen."
+    ]
+  },
+  {
+    "infinitive": "zitten",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "zittende positie, verblijf en inhoud",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk positiewerkwoord",
+    "meaning": "In zittende houding zijn; ook ergens verblijven, ergens in opgesloten zijn of zich in een inhoud bevinden.",
+    "synonyms": [
+      "gezeten zijn",
+      "verblijven",
+      "zich bevinden"
+    ],
+    "synonymNote": "Verblijven is formeler en tijdelijk; zich bevinden is algemener. Zitten bevat vaak informatie over houding, omsluiting of informele aanwezigheid.",
+    "usage": "Met te + infinitief geeft zitten een voortdurende activiteit: ik zit te lezen. In er zit… in beschrijft het inhoud of een verborgen aspect.",
+    "examples": [
+      "We zitten bij het raam.",
+      "Hij zat de hele avond te studeren.",
+      "Er zit een fout in deze berekening."
+    ]
+  },
+  {
+    "infinitive": "begrijpen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "betekenis, reden of samenhang doorzien",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "De betekenis, bedoeling, reden of samenhang van iets mentaal kunnen volgen.",
+    "synonyms": [
+      "snappen",
+      "doorzien",
+      "vatten"
+    ],
+    "synonymNote": "Snappen is informeel; doorzien suggereert dieper inzicht; vatten is formeler en komt vaak in ontkennende zinnen voor.",
+    "usage": "Begrijpen kan een object of bijzin krijgen. Iemand begrijpen kan zowel diens woorden als diens gevoelens of keuzes betekenen.",
+    "examples": [
+      "Ik begrijp de uitleg, maar nog niet alle voorbeelden.",
+      "Begrijpt u waarom deze documenten nodig zijn?",
+      "Pas later heb ik haar beslissing begrepen."
+    ]
+  },
+  {
+    "infinitive": "zetten",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "plaatsen, inschakelen of omzetten",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord met dubbele medeklinker",
+    "meaning": "Iets in een bepaalde positie of toestand plaatsen, of een handeling in gang zetten.",
+    "synonyms": [
+      "plaatsen",
+      "neerzetten",
+      "instellen"
+    ],
+    "synonymNote": "Plaatsen is algemeen en formeler; neerzetten is concreet en fysiek; instellen past bij apparaten, waarden en procedures.",
+    "usage": "Zetten is transitief: iemand zet iets ergens. Vergelijk zitten, dat een toestand beschrijft. Veel scheidbare werkwoorden zijn op zetten gebaseerd.",
+    "examples": [
+      "Zet de glazen maar op tafel.",
+      "Kun je de verwarming iets lager zetten?",
+      "De organisatie heeft een nieuw project opgezet."
+    ]
+  },
+  {
+    "infinitive": "spelen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "spel, muziek, rol of werking uitvoeren",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Aan een spel deelnemen, muziek uitvoeren, een rol vertolken of een factor van betekenis zijn.",
+    "synonyms": [
+      "musiceren",
+      "deelnemen",
+      "vertolken"
+    ],
+    "synonymNote": "Musiceren geldt alleen voor muziek; deelnemen voor deelname aan een activiteit; vertolken voor een toneel- of filmrol.",
+    "usage": "Bij een sport staat meestal geen voorzetsel: voetbal spelen. Bij een instrument kan op: op de piano spelen. Een rol spelen is vaak figuurlijk.",
+    "examples": [
+      "De kinderen spelen buiten.",
+      "Zij speelt al tien jaar piano.",
+      "Kosten spelen een belangrijke rol in de keuze."
+    ]
+  },
+  {
+    "infinitive": "zoeken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "proberen iets of iemand te vinden",
+    "auxiliary": "hebben",
+    "conjugationClass": "onregelmatig werkwoord",
+    "meaning": "Gericht proberen een persoon, voorwerp, oplossing, informatie of mogelijkheid te vinden.",
+    "synonyms": [
+      "opsporen",
+      "uitkijken naar",
+      "onderzoeken"
+    ],
+    "synonymNote": "Opsporen is doelgericht en vaak officieel; uitkijken naar drukt verwachting uit; onderzoeken past wanneer je systematisch naar een antwoord zoekt.",
+    "usage": "Zoeken naar noemt het gezochte. Een baan zoeken kan ook zonder naar. Vergelijk vinden: zoeken is het proces, vinden het resultaat.",
+    "examples": [
+      "Ik zoek een woning dicht bij mijn werk.",
+      "We hebben lang naar de oorzaak gezocht.",
+      "De politie zoekt getuigen van het ongeval."
+    ]
+  },
+  {
+    "infinitive": "proberen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "een poging doen of testen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord zonder ge- in het deelwoord",
+    "meaning": "Een poging doen om iets te bereiken, of iets testen om het effect te beoordelen.",
+    "synonyms": [
+      "trachten",
+      "een poging doen",
+      "uitproberen"
+    ],
+    "synonymNote": "Trachten is formeler; een poging doen is omschrijvend; uitproberen betekent vooral praktisch testen.",
+    "usage": "Proberen te + infinitief drukt een poging uit. Iets proberen of uitproberen betekent het testen of ervaren.",
+    "examples": [
+      "Ik probeer elke dag Nederlands te spreken.",
+      "Heb je deze functie al geprobeerd?",
+      "We probeerden het probleem zonder vertraging op te lossen."
+    ]
+  },
+  {
+    "infinitive": "vallen",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "onbedoeld omlaaggaan of binnen een categorie komen",
+    "auxiliary": "zijn",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Door zwaartekracht of verlies van evenwicht omlaaggaan; figuurlijk ook plaatsvinden of onder een categorie behoren.",
+    "synonyms": [
+      "neerkomen",
+      "omvallen",
+      "behoren tot"
+    ],
+    "synonymNote": "Neerkomen beschrijft het einde van een val; omvallen past bij verlies van verticale houding; behoren tot vervangt alleen de categoriserende betekenis, zoals onder een regeling vallen.",
+    "usage": "Vallen gebruikt zijn in het perfectum. Vaste combinaties zijn meevallen, tegenvallen, opvallen en onder een regel vallen.",
+    "examples": [
+      "Pas op dat je niet van de trap valt.",
+      "De afspraak valt dit jaar op een vrijdag.",
+      "Deze kosten vallen niet onder de garantie."
+    ]
+  },
+  {
+    "infinitive": "schrijven",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "tekst vastleggen en aan iemand communiceren",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Taaltekens of tekst op papier of digitaal vastleggen; ook schriftelijk met iemand communiceren.",
+    "synonyms": [
+      "noteren",
+      "opstellen",
+      "formuleren"
+    ],
+    "synonymNote": "Noteren is kort vastleggen; opstellen gaat om een volledig document; formuleren benadrukt de precieze woordkeuze.",
+    "usage": "Schrijven aan noemt de ontvanger; schrijven over het onderwerp. Een document schrijven kan vaak preciezer als opstellen of invullen worden benoemd.",
+    "examples": [
+      "Ik schrijf vanavond een e-mail aan de verhuurder.",
+      "Noteer uw naam en schrijf duidelijk.",
+      "De commissie heeft een uitgebreid rapport geschreven."
+    ]
+  },
+  {
+    "infinitive": "wachten",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "tijd laten verstrijken tot iets gebeurt",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord met -te",
+    "meaning": "Op dezelfde plaats of in dezelfde toestand blijven totdat iemand komt of iets gebeurt.",
+    "synonyms": [
+      "afwachten",
+      "blijven tot"
+    ],
+    "synonymNote": "Afwachten benadrukt dat je eerst ziet wat er gebeurt; blijven tot omschrijft de duur. Wachten is de gewone neutrale vorm wanneer tijd verstrijkt tot een persoon of gebeurtenis komt.",
+    "usage": "Wachten op is de vaste combinatie met een persoon of gebeurtenis. Wachten met betekent een handeling nog niet uitvoeren.",
+    "examples": [
+      "We wachten op de bus naar Eindhoven.",
+      "Kunt u even wachten met betalen?",
+      "Ik heb bijna een uur gewacht."
+    ]
+  },
+  {
+    "infinitive": "gebruiken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "inzetten voor een doel",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord zonder extra ge-",
+    "meaning": "Een voorwerp, middel, woord, methode of hoeveelheid inzetten om een doel te bereiken.",
+    "synonyms": [
+      "benutten",
+      "toepassen",
+      "hanteren"
+    ],
+    "synonymNote": "Benutten benadrukt voordeel; toepassen past bij regels en methoden; hanteren is formeler en kan ook een beleid of begrip betreffen.",
+    "usage": "Gebruik krijgt een direct object. Bij regels en technieken is toepassen vaak preciezer; bij grondstoffen kan verbruiken bedoeld zijn.",
+    "examples": [
+      "Je kunt deze kaart in de hele regio gebruiken.",
+      "De arts gebruikte eenvoudige woorden.",
+      "We hebben dezelfde methode op alle datasets toegepast."
+    ]
+  },
+  {
+    "infinitive": "leggen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "horizontaal plaatsen en verbanden vastleggen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Iets horizontaal of op een bepaalde plaats neerplaatsen; in vaste combinaties ook uitleggen, verbinden of registreren.",
+    "synonyms": [
+      "neerleggen",
+      "plaatsen",
+      "aanbrengen"
+    ],
+    "synonymNote": "Neerleggen is concreet; plaatsen is algemener; aanbrengen past bij lagen, verbindingen of voorzieningen.",
+    "usage": "Leggen is transitief: iemand legt iets. Vergelijk liggen, dat de toestand beschrijft. Vaste combinaties zijn contact leggen en de nadruk leggen op.",
+    "examples": [
+      "Leg de documenten op mijn bureau.",
+      "De docent legde de nadruk op de woordvolgorde.",
+      "We hebben contact gelegd met de leverancier."
+    ]
+  },
+  {
+    "infinitive": "geloven",
+    "level": "A2",
+    "semantic": "toestand",
+    "semanticLabel": "iets voor waar aannemen of vertrouwen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Iets als waar of waarschijnlijk beschouwen, vertrouwen in iemand hebben, of een religieuze overtuiging hebben.",
+    "synonyms": [
+      "aannemen",
+      "vertrouwen",
+      "ervan overtuigd zijn"
+    ],
+    "synonymNote": "Aannemen drukt een voorlopige veronderstelling uit; vertrouwen richt zich op personen of betrouwbaarheid; overtuigd zijn is sterker dan geloven.",
+    "usage": "Geloven dat introduceert een overtuiging; geloven in kan vertrouwen, een ideaal of religie betreffen; iemand geloven betekent diens woorden aannemen.",
+    "examples": [
+      "Ik geloof dat deze oplossing zal werken.",
+      "Zij gelooft sterk in gelijke kansen.",
+      "Waarom heb je hem niet geloofd?"
+    ]
+  },
+  {
+    "infinitive": "praten",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "informeel mondeling communiceren",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord met lange klinker in de stam",
+    "meaning": "Mondeling en meestal informeel woorden uitwisselen over een onderwerp.",
+    "synonyms": [
+      "spreken",
+      "converseren",
+      "overleggen"
+    ],
+    "synonymNote": "Spreken is neutraler of formeler; converseren is formeel en wederzijds; overleggen heeft een concreet doel of besluit.",
+    "usage": "Praten met noemt de gesprekspartner en praten over het onderwerp. In formele contexten klinkt spreken vaak passender.",
+    "examples": [
+      "We praten thuis vaak Nederlands.",
+      "Ik wil graag met u over de factuur praten.",
+      "De buren hebben lang met elkaar gepraat."
+    ]
+  },
+  {
+    "infinitive": "trekken",
+    "level": "A2",
+    "semantic": "handeling",
+    "semanticLabel": "naar zich toe bewegen, reizen of een gevolg afleiden",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets naar zich toe bewegen; ook reizen, verhuizen, aantrekken of een conclusie afleiden.",
+    "synonyms": [
+      "slepen",
+      "reizen",
+      "afleiden"
+    ],
+    "synonymNote": "Slepen impliceert weerstand; reizen vervangt alleen de bewegingsbetekenis; afleiden past bij een conclusie uit gegevens.",
+    "usage": "Het hulpwerkwoord hangt van de betekenis af: hij heeft aan het touw getrokken; zij is naar het zuiden getrokken. Veel betekenissen staan in scheidbare samenstellingen.",
+    "examples": [
+      "Trek de deur voorzichtig naar je toe.",
+      "Veel vogels zijn naar het zuiden getrokken.",
+      "Welke conclusie kunnen we uit deze cijfers trekken?"
+    ]
+  },
+  {
+    "infinitive": "halen",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "ophalen, bereiken of slagen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Naar een bron gaan en iets of iemand meenemen; ook een doel, resultaat of voldoende niveau bereiken.",
+    "synonyms": [
+      "ophalen",
+      "bereiken",
+      "bemachtigen"
+    ],
+    "synonymNote": "Ophalen is de concrete bewegingsbetekenis; bereiken geldt voor doelen; bemachtigen suggereert moeite. Halen blijft gebruikelijk bij examens en deadlines.",
+    "usage": "Vergelijk brengen: halen begint met bewegen naar de bron, brengen eindigt bij de bestemming. Een examen halen betekent slagen.",
+    "examples": [
+      "Ik haal de kinderen om drie uur van school.",
+      "Denk je dat we de deadline halen?",
+      "Zij heeft haar taalexamen gehaald."
+    ]
+  },
+  {
+    "infinitive": "werken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "arbeid verrichten en functioneren",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Betaald of onbetaald arbeid verrichten; ook aangeven dat een apparaat, methode of middel functioneert.",
+    "synonyms": [
+      "arbeiden",
+      "functioneren",
+      "werkzaam zijn"
+    ],
+    "synonymNote": "Arbeiden is formeel; functioneren vervangt alleen de werking van systemen; werkzaam zijn beschrijft een beroep of organisatieverband.",
+    "usage": "Werken aan noemt een taak of verbetering; werken bij een organisatie; werken als een functie; werken met een middel of collega.",
+    "examples": [
+      "Ik werk drie dagen per week op kantoor.",
+      "We werken aan een duurzamere oplossing.",
+      "De nieuwe toegangscode heeft niet gewerkt."
+    ]
+  },
+  {
+    "infinitive": "leren",
+    "level": "A1",
+    "semantic": "verandering",
+    "semanticLabel": "kennis of vaardigheid verwerven of onderwijzen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Kennis of een vaardigheid verwerven; in informeel Nederlands ook iemand iets onderwijzen.",
+    "synonyms": [
+      "bestuderen",
+      "oefenen",
+      "aanleren"
+    ],
+    "synonymNote": "Bestuderen is grondig onderzoeken; oefenen herhaalt een vaardigheid; aanleren kan zowel verwerven als iemand iets bijbrengen betekenen.",
+    "usage": "Leren + infinitief heeft geen te: leren fietsen. Voor formeel onderwijzen is iemand iets leren mogelijk, maar iemand iets aanleren of onderwijzen is vaak preciezer.",
+    "examples": [
+      "Ik leer Nederlands voor mijn werk.",
+      "De kinderen leren zelfstandig fietsen.",
+      "We hebben van deze fout veel geleerd."
+    ]
+  },
+  {
+    "infinitive": "lezen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "geschreven tekens begrijpen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Geschreven of gedrukte tekens waarnemen en de inhoud ervan begrijpen of interpreteren.",
+    "synonyms": [
+      "doornemen",
+      "bestuderen",
+      "raadplegen"
+    ],
+    "synonymNote": "Doornemen betekent gericht nalopen; bestuderen is grondig; raadplegen gaat om informatie opzoeken in een bron.",
+    "usage": "Lezen kan stil of hardop. Een meter of grafiek lezen betekent de weergegeven informatie interpreteren.",
+    "examples": [
+      "Lees eerst de instructies op het formulier.",
+      "Ik heb het contract aandachtig gelezen.",
+      "Kun jij deze grafiek goed lezen?"
+    ]
+  },
+  {
+    "infinitive": "gebeuren",
+    "level": "A1",
+    "semantic": "gebeurtenis",
+    "semanticLabel": "plaatsvinden zonder genoemd handelend onderwerp",
+    "auxiliary": "zijn",
+    "conjugationClass": "zwak onpersoonlijk werkwoord zonder extra ge-",
+    "meaning": "Plaatsvinden of zich voordoen, meestal zonder dat een handelende persoon centraal staat.",
+    "synonyms": [
+      "plaatsvinden",
+      "zich voordoen",
+      "geschieden"
+    ],
+    "synonymNote": "Plaatsvinden past bij geplande gebeurtenissen; zich voordoen bij situaties of problemen; geschieden is formeel en verouderd.",
+    "usage": "Gebeuren wordt vaak met wat, er of een gebeurtenis als onderwerp gebruikt. Het perfectum is is gebeurd.",
+    "examples": [
+      "Wat is er gisteren gebeurd?",
+      "De ceremonie gebeurt buiten als het droog blijft.",
+      "Zoiets mag niet opnieuw gebeuren."
+    ]
+  },
+  {
+    "infinitive": "helpen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "ondersteunen en een probleem verminderen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iemand ondersteunen bij een handeling of ervoor zorgen dat een middel een probleem vermindert.",
+    "synonyms": [
+      "ondersteunen",
+      "bijstaan",
+      "assisteren"
+    ],
+    "synonymNote": "Ondersteunen is breed; bijstaan is persoonlijk en vaak formeel; assisteren past bij een taak of professional.",
+    "usage": "Help iemand met iets of help iemand iets te doen. Bij een middel kan helpen tegen: dit medicijn helpt tegen pijn.",
+    "examples": [
+      "Kunt u mij helpen met dit formulier?",
+      "Mijn collega heeft mij de gegevens helpen controleren.",
+      "Rust helpt meestal tegen deze klachten."
+    ]
+  },
+  {
+    "infinitive": "wonen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "een vaste verblijfplaats hebben",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Een huis of andere plaats als gewone verblijfplaats hebben.",
+    "synonyms": [
+      "verblijven",
+      "gehuisvest zijn",
+      "resideren"
+    ],
+    "synonymNote": "Verblijven is vaak tijdelijk; gehuisvest zijn benadrukt onderdak; resideren is zeer formeel. Wonen is de normale term voor een vaste thuisbasis.",
+    "usage": "Wonen in wordt gebruikt voor stad, land of gebouw; wonen op voor een adres, verdieping of eiland; wonen bij voor samenwonen bij iemand.",
+    "examples": [
+      "Wij wonen sinds vorig jaar in Waalre.",
+      "Hij woont tijdelijk bij zijn broer.",
+      "Ik heb vijf jaar in Duitsland gewoond."
+    ]
+  },
+  {
+    "infinitive": "lijken",
+    "level": "A2",
+    "semantic": "toestand",
+    "semanticLabel": "een indruk geven of overeenkomst vertonen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Een bepaalde indruk geven zonder volledige zekerheid, of qua uiterlijk of eigenschappen overeenkomst vertonen.",
+    "synonyms": [
+      "schijnen",
+      "overkomen",
+      "gelijken op"
+    ],
+    "synonymNote": "Schijnen drukt eveneens onzekerheid uit; overkomen benoemt de indruk op iemand; gelijken op geldt alleen voor overeenkomst.",
+    "usage": "Lijken + bijvoeglijk naamwoord of te + infinitief geeft een voorzichtige conclusie. Lijken op vergelijkt twee personen of zaken.",
+    "examples": [
+      "Deze oplossing lijkt eenvoudiger dan de vorige.",
+      "Hij lijkt op zijn vader.",
+      "Het heeft even geleken alsof de trein niet zou komen."
+    ]
+  },
+  {
+    "infinitive": "luisteren",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "bewust aandacht geven aan geluid of advies",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Bewust aandacht geven aan geluid, gesproken taal, muziek, een persoon of een aanwijzing.",
+    "synonyms": [
+      "beluisteren",
+      "aanhoren",
+      "gehoor geven aan"
+    ],
+    "synonymNote": "Beluisteren heeft een direct object en is gericht; aanhoren kan passief of formeel klinken; gehoor geven aan geldt voor advies of verzoeken.",
+    "usage": "Luisteren naar is de vaste combinatie. Vergelijk horen: horen is vaak onbedoelde waarneming, luisteren is actief.",
+    "examples": [
+      "Luister goed naar de uitspraak van de klinkers.",
+      "Ik heb onderweg naar een podcast geluisterd.",
+      "De gemeente luisterde naar de bezwaren van bewoners."
+    ]
+  },
+  {
+    "infinitive": "slapen",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "in natuurlijke rusttoestand zijn",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Gedurende een periode in de natuurlijke toestand van lichamelijke en mentale rust zijn.",
+    "synonyms": [
+      "rusten",
+      "overnachten",
+      "een dutje doen"
+    ],
+    "synonymNote": "Rusten hoeft geen slaap te zijn; overnachten noemt de plaats of nacht; een dutje doen is kort slapen overdag.",
+    "usage": "Slapen gebruikt hebben in het perfectum. Bij de plaats kan in, op of bij staan afhankelijk van de situatie.",
+    "examples": [
+      "Ik slaap meestal zeven uur per nacht.",
+      "Heb je goed geslapen?",
+      "Tijdens de reis overnachten we in een klein hotel."
+    ]
+  },
+  {
+    "infinitive": "sluiten",
+    "level": "A2",
+    "semantic": "handeling",
+    "semanticLabel": "dichtmaken, beëindigen of overeenkomen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets dichtmaken, een activiteit beëindigen, een verbinding maken of een overeenkomst aangaan.",
+    "synonyms": [
+      "dichtdoen",
+      "beëindigen",
+      "afsluiten"
+    ],
+    "synonymNote": "Dichtdoen is concreet en informeel; beëindigen geldt voor activiteiten; afsluiten kan zowel fysiek als administratief zijn.",
+    "usage": "De winkel sluit kan onovergankelijk zijn; iemand sluit de deur is transitief. Vaste combinaties zijn een contract sluiten en vrede sluiten.",
+    "examples": [
+      "Wilt u het raam sluiten?",
+      "De bibliotheek sluit vandaag om zes uur.",
+      "Beide partijen hebben een overeenkomst gesloten."
+    ]
+  },
+  {
+    "infinitive": "eten",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "voedsel tot zich nemen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Voedsel in de mond nemen en consumeren, of een maaltijd gebruiken.",
+    "synonyms": [
+      "consumeren",
+      "nuttigen",
+      "een maaltijd gebruiken"
+    ],
+    "synonymNote": "Consumeren is technisch of economisch; nuttigen is formeel; een maaltijd gebruiken klinkt formeel en verwijst naar een volledige maaltijd.",
+    "usage": "Eten kan zonder object wanneer het om de maaltijdactiviteit gaat. Met op betekent het volledig consumeren: eet je bord leeg/op.",
+    "examples": [
+      "We eten vanavond samen.",
+      "Ik eet geen vlees, maar wel vis.",
+      "Heb je al iets gegeten?"
+    ]
+  },
+  {
+    "infinitive": "drinken",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "vloeistof tot zich nemen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Een vloeistof via de mond tot zich nemen; zonder object soms specifiek alcohol gebruiken.",
+    "synonyms": [
+      "nuttigen",
+      "consumeren",
+      "een slok nemen"
+    ],
+    "synonymNote": "Nuttigen is formeel; consumeren technisch; een slok nemen beschrijft slechts een kleine hoeveelheid.",
+    "usage": "Drinken kan een direct object hebben. In hij drinkt niet kan contextueel bedoeld zijn dat iemand geen alcohol drinkt.",
+    "examples": [
+      "Drink voldoende water tijdens warm weer.",
+      "Wilt u koffie of thee drinken?",
+      "We hebben na de wandeling iets gedronken."
+    ]
+  },
+  {
+    "infinitive": "bellen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "telefonisch contact opnemen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Via een telefoon contact opnemen met iemand, of een bel laten klinken.",
+    "synonyms": [
+      "telefoneren",
+      "opbellen",
+      "contact opnemen"
+    ],
+    "synonymNote": "Telefoneren is formeler; opbellen benadrukt het starten van een gesprek; contact opnemen kan ook per e-mail of bericht.",
+    "usage": "Iemand bellen heeft geen voorzetsel. Bellen naar komt regionaal voor, maar in de standaardtaal is iemand bellen de gewone vorm.",
+    "examples": [
+      "Ik bel morgen de huisarts voor een afspraak.",
+      "Heb je de klantenservice al gebeld?",
+      "Er belde iemand aan bij de voordeur."
+    ]
+  },
+  {
+    "infinitive": "antwoorden",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "reageren op een vraag, bericht of situatie",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Mondeling of schriftelijk reageren op een vraag, opmerking, oproep of bericht.",
+    "synonyms": [
+      "reageren",
+      "beantwoorden",
+      "repliceren"
+    ],
+    "synonymNote": "Reageren is breder; beantwoorden krijgt een direct object; repliceren is formeel en kan tegenspreken suggereren.",
+    "usage": "Antwoorden op is onovergankelijk: ik antwoord op de vraag. Beantwoorden is transitief: ik beantwoord de vraag.",
+    "examples": [
+      "Kunt u op mijn e-mail antwoorden?",
+      "Zij antwoordde dat ze later zou komen.",
+      "De meeste deelnemers hebben correct geantwoord."
+    ]
+  },
+  {
+    "infinitive": "ontmoeten",
+    "level": "A1",
+    "semantic": "gebeurtenis",
+    "semanticLabel": "iemand tegenkomen of voor het eerst leren kennen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord zonder extra ge-",
+    "meaning": "Met iemand samenkomen, toevallig tegenkomen of voor het eerst persoonlijk kennismaken.",
+    "synonyms": [
+      "tegenkomen",
+      "kennismaken met",
+      "treffen"
+    ],
+    "synonymNote": "Tegenkomen is vaak toevallig; kennismaken met geldt voor de eerste ontmoeting; treffen is neutraler of formeler en kan gepland zijn.",
+    "usage": "Ontmoeten krijgt een direct object: ik ontmoet haar. Elkaar ontmoeten benadrukt wederkerigheid.",
+    "examples": [
+      "We ontmoeten elkaar om tien uur bij het station.",
+      "Ik heb mijn nieuwe collega's gisteren ontmoet.",
+      "Tijdens de reis ontmoetten we veel vriendelijke mensen."
+    ]
+  },
+  {
+    "infinitive": "kiezen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "een optie selecteren na afweging",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Uit meerdere mogelijkheden één of meer opties selecteren, meestal na een afweging.",
+    "synonyms": [
+      "selecteren",
+      "uitkiezen",
+      "een keuze maken"
+    ],
+    "synonymNote": "Selecteren is formeler en vaak systematisch; uitkiezen klinkt concreet en alledaags; een keuze maken benadrukt het beslismoment.",
+    "usage": "Kiezen voor noemt de gekozen optie; kiezen tussen noemt de alternatieven. Iemand kiezen kan bij verkiezingen of selectie.",
+    "examples": [
+      "Ik kies voor de trein omdat die duurzamer is.",
+      "U kunt tussen drie pakketten kiezen.",
+      "De commissie heeft twee kandidaten gekozen."
+    ]
+  },
+  {
+    "infinitive": "betalen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "geld geven ter voldoening van kosten",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord zonder extra ge-",
+    "meaning": "Geld overmaken of geven om een product, dienst, schuld of verplichting te voldoen.",
+    "synonyms": [
+      "afrekenen",
+      "voldoen",
+      "overmaken"
+    ],
+    "synonymNote": "Afrekenen gebeurt meestal bij aankoop; voldoen is formeel voor een bedrag of factuur; overmaken beschrijft een banktransactie.",
+    "usage": "Iets betalen noemt het bedrag of de rekening; betalen voor noemt product of dienst; betalen aan noemt de ontvanger.",
+    "examples": [
+      "Kan ik hier met pin betalen?",
+      "De factuur moet binnen veertien dagen worden betaald.",
+      "We hebben te veel voor de reparatie betaald."
+    ]
+  },
+  {
+    "infinitive": "openen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "toegang geven of officieel beginnen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Iets dat gesloten is toegankelijk maken, een bestand of account activeren, of een bijeenkomst officieel beginnen.",
+    "synonyms": [
+      "opendoen",
+      "ontsluiten",
+      "beginnen"
+    ],
+    "synonymNote": "Opendoen is alledaags en meestal fysiek; ontsluiten is formeler of technisch; beginnen vervangt openen alleen bij een vergadering, rekening, gesprek of andere activiteit.",
+    "usage": "Openen is transitief: iemand opent iets. Voor winkels kan het ook onovergankelijk: de winkel opent om negen uur.",
+    "examples": [
+      "Kunt u het bijgevoegde bestand openen?",
+      "De voorzitter opende de vergadering.",
+      "De nieuwe vestiging is vorige maand geopend."
+    ]
+  },
+  {
+    "infinitive": "stoppen",
+    "level": "A1",
+    "semantic": "gebeurtenis",
+    "semanticLabel": "ophouden, beëindigen of ergens in doen",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Niet verdergaan met een handeling of beweging; transitief ook iets beëindigen of ergens in plaatsen.",
+    "synonyms": [
+      "ophouden",
+      "beëindigen",
+      "staken"
+    ],
+    "synonymNote": "Ophouden is alledaags; beëindigen is transitief en formeler; staken is formeel en vaak bewust of collectief.",
+    "usage": "Stoppen met noemt een activiteit. Bij beweging gebruikt het perfectum vaak zijn; bij iets beëindigen of ergens instoppen hebben.",
+    "examples": [
+      "De bus stopt bij het volgende station.",
+      "Ik ben vorig jaar met roken gestopt.",
+      "De organisatie heeft het project tijdelijk gestopt."
+    ]
+  },
+  {
+    "infinitive": "fietsen",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "zich per fiets verplaatsen",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "zwak bewegingswerkwoord",
+    "meaning": "Een fiets besturen om zich te verplaatsen of als sportieve activiteit.",
+    "synonyms": [
+      "per fiets gaan",
+      "wielrennen",
+      "rijden op de fiets"
+    ],
+    "synonymNote": "Wielrennen is sportief en meestal sneller; per fiets gaan benadrukt vervoer; rijden op de fiets is omschrijvend.",
+    "usage": "Met een bestemming staat vaak zijn; bij de activiteit zonder bestemming vaak hebben. Beide hulpwerkwoorden hangen van de nadruk af.",
+    "examples": [
+      "Ik fiets elke dag naar mijn werk.",
+      "We zijn langs de rivier naar het dorp gefietst.",
+      "Zij heeft vanmiddag twintig kilometer gefietst."
+    ]
+  },
+  {
+    "infinitive": "reizen",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "een afstand afleggen tussen plaatsen",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "zwak bewegingswerkwoord",
+    "meaning": "Van de ene plaats naar een andere gaan, vaak over een grotere afstand en met vervoer.",
+    "synonyms": [
+      "op reis gaan",
+      "zich verplaatsen",
+      "trekken"
+    ],
+    "synonymNote": "Op reis gaan benadrukt vertrek; zich verplaatsen is algemener; trekken klinkt langduriger of groepsgewijs.",
+    "usage": "Reizen naar noemt de bestemming, via de route en met het vervoermiddel. Zijn benadrukt bestemming; hebben de activiteit of ervaring.",
+    "examples": [
+      "Morgen reizen we met de trein naar Brussel.",
+      "Ik heb veel door Europa gereisd.",
+      "Zij is voor haar werk naar Japan gereisd."
+    ]
+  },
+  {
+    "infinitive": "sturen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "verzenden, richting geven of besturen",
+    "auxiliary": "hebben",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "Een bericht of voorwerp verzenden, iemand in een richting laten gaan, of een voertuig of proces besturen.",
+    "synonyms": [
+      "verzenden",
+      "zenden",
+      "besturen"
+    ],
+    "synonymNote": "Verzenden is formeler voor post of data; zenden is technisch; besturen vervangt alleen de leidinggevende of voertuigbetekenis.",
+    "usage": "Stuur iets naar iemand of stuur iemand ergensheen. Bij een voertuig kan sturen ook alleen de richting bepalen betekenen.",
+    "examples": [
+      "Ik stuur u vandaag de bevestiging per e-mail.",
+      "De arts stuurde mij door naar een specialist.",
+      "Wie heeft dit project gestuurd?"
+    ]
+  },
+  {
+    "infinitive": "ontvangen",
+    "level": "A2",
+    "semantic": "gebeurtenis",
+    "semanticLabel": "iets krijgen of iemand welkom heten",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord zonder extra ge-",
+    "meaning": "Een bericht, voorwerp, betaling of persoon krijgen; ook gasten of bezoekers welkom heten.",
+    "synonyms": [
+      "krijgen",
+      "in ontvangst nemen",
+      "verwelkomen"
+    ],
+    "synonymNote": "Krijgen is alledaagser; in ontvangst nemen is bewust en formeel; verwelkomen geldt alleen voor personen.",
+    "usage": "Ontvangen is formeler dan krijgen en wordt veel gebruikt in zakelijke communicatie. Een persoon ontvangen impliceert gastheerschap of een afspraak.",
+    "examples": [
+      "Wij hebben uw aanvraag in goede orde ontvangen.",
+      "De directeur ontvangt de bezoekers om tien uur.",
+      "Wanneer ontvang ik de terugbetaling?"
+    ]
+  },
+  {
+    "infinitive": "vergeten",
+    "level": "A1",
+    "semantic": "toestand",
+    "semanticLabel": "informatie of een handeling niet meer herinneren",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "sterk werkwoord zonder extra ge-",
+    "meaning": "Iets niet meer in het geheugen hebben of nalaten een geplande handeling uit te voeren.",
+    "synonyms": [
+      "niet onthouden",
+      "uit het oog verliezen",
+      "nalaten"
+    ],
+    "synonymNote": "Uit het oog verliezen is figuurlijk; nalaten benadrukt dat een handeling niet is uitgevoerd. Niet onthouden is de directe omschrijving.",
+    "usage": "Iets vergeten gebruikt vaak zijn in Nederland en hebben komt ook voor, vooral regionaal of wanneer de handeling wordt benadrukt. Vergeten te + infinitief noemt een nagelaten handeling.",
+    "examples": [
+      "Ik ben mijn afspraak helemaal vergeten.",
+      "Vergeet niet het formulier te ondertekenen.",
+      "Zij heeft haar wachtwoord opnieuw vergeten."
+    ]
+  },
+  {
+    "infinitive": "kopen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "tegen betaling verkrijgen",
+    "auxiliary": "hebben",
+    "conjugationClass": "onregelmatig werkwoord",
+    "meaning": "Een product, dienst, recht of bezit verkrijgen door ervoor te betalen.",
+    "synonyms": [
+      "aanschaffen",
+      "aankopen",
+      "verwerven"
+    ],
+    "synonymNote": "Aanschaffen is neutraler en iets formeler; aankopen is formeel of Belgisch-Nederlands; verwerven is breder en niet altijd tegen betaling.",
+    "usage": "Iets kopen bij een winkel of van een persoon; kopen voor een prijs of doel. Bij tickets en diensten blijft kopen gebruikelijk.",
+    "examples": [
+      "Waar kan ik een ov-chipkaart kopen?",
+      "We hebben online nieuwe meubels gekocht.",
+      "Zij kocht de fiets van een buurman."
+    ]
+  },
+  {
+    "infinitive": "rijden",
+    "level": "A1",
+    "semantic": "beweging",
+    "semanticLabel": "een voertuig besturen of ermee bewegen",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "sterk bewegingswerkwoord",
+    "meaning": "Een voertuig besturen of zich met een voertuig over een route verplaatsen.",
+    "synonyms": [
+      "besturen",
+      "zich per voertuig verplaatsen",
+      "toeren"
+    ],
+    "synonymNote": "Besturen legt nadruk op de bestuurder; zich per voertuig verplaatsen op de reis; toeren betekent voor plezier rondrijden. Geen van deze vormen vervangt rijden in iedere context.",
+    "usage": "Met een bestemming gebruikt rijden vaak zijn; voor de activiteit of het besturen vaak hebben. Met op kan een brandstof of energiebron worden genoemd.",
+    "examples": [
+      "Ik rijd morgen met de auto naar Antwerpen.",
+      "Zij heeft jarenlang vrachtwagen gereden.",
+      "De trein is langzaam het station binnengereden."
+    ]
+  },
+  {
+    "infinitive": "dragen",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "ondersteunen, meenemen of aanhebben",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Iets met het lichaam ondersteunen of meenemen; ook kleding aanhebben of verantwoordelijkheid op zich hebben.",
+    "synonyms": [
+      "torsen",
+      "aanhebben",
+      "verantwoordelijkheid hebben"
+    ],
+    "synonymNote": "Torsen betekent met merkbare fysieke inspanning dragen; aanhebben geldt alleen voor kleding; verantwoordelijkheid hebben vervangt de figuurlijke betekenis van verantwoordelijkheid dragen.",
+    "usage": "De betekenis volgt uit het object: een tas dragen, een jas dragen, kosten dragen, verantwoordelijkheid dragen.",
+    "examples": [
+      "Zij draagt vandaag een blauwe jas.",
+      "Kun je deze doos even dragen?",
+      "De werkgever draagt een deel van de kosten."
+    ]
+  },
+  {
+    "infinitive": "verliezen",
+    "level": "A2",
+    "semantic": "verandering",
+    "semanticLabel": "niet langer bezitten, kwijtraken of niet winnen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord zonder extra ge-",
+    "meaning": "Iets of iemand kwijtraken, niet behouden, of bij een wedstrijd of conflict niet winnen.",
+    "synonyms": [
+      "kwijtraken",
+      "verspelen",
+      "niet winnen"
+    ],
+    "synonymNote": "Kwijtraken is vaak onbedoeld; verspelen suggereert eigen handelen of risico; niet winnen is de directe wedstrijdtegenstelling.",
+    "usage": "Verliezen krijgt een direct object. Zich verliezen in betekent zo opgaan in iets dat de omgeving minder aandacht krijgt.",
+    "examples": [
+      "Ik ben mijn portemonnee onderweg verloren.",
+      "Het team verloor de finale met één punt verschil.",
+      "We mogen het doel van het project niet uit het oog verliezen."
+    ]
+  },
+  {
+    "infinitive": "veranderen",
+    "level": "A2",
+    "semantic": "verandering",
+    "semanticLabel": "anders worden of iets anders maken",
+    "auxiliary": "hebben/zijn",
+    "conjugationClass": "zwak werkwoord zonder extra ge-",
+    "meaning": "Anders worden of bewust iets aanpassen zodat toestand, vorm, gedrag of situatie wijzigt.",
+    "synonyms": [
+      "wijzigen",
+      "aanpassen",
+      "omvormen"
+    ],
+    "synonymNote": "Wijzigen en aanpassen zijn meestal transitief en doelgericht; omvormen is een ingrijpende verandering. Veranderen kan ook vanzelf gebeuren.",
+    "usage": "Onovergankelijk gebruikt veranderen zijn: de situatie is veranderd. Transitief gebruikt het hebben: we hebben de planning veranderd.",
+    "examples": [
+      "De situatie is snel veranderd.",
+      "We hebben de planning na overleg veranderd.",
+      "Zijn houding tegenover thuiswerken veranderde geleidelijk."
+    ]
+  },
+  {
+    "infinitive": "groeien",
+    "level": "A2",
+    "semantic": "verandering",
+    "semanticLabel": "groter, sterker of omvangrijker worden",
+    "auxiliary": "zijn",
+    "conjugationClass": "zwak werkwoord",
+    "meaning": "In afmeting, aantal, vermogen, kennis of betekenis toenemen door ontwikkeling.",
+    "synonyms": [
+      "toenemen",
+      "uitbreiden",
+      "zich ontwikkelen"
+    ],
+    "synonymNote": "Toenemen is kwantitatief; uitbreiden is vaak bewust en transitief; zich ontwikkelen is breder en hoeft geen groei in omvang te zijn.",
+    "usage": "Groeien is meestal onovergankelijk en vormt het perfectum met zijn. Groeien naar of uitgroeien tot benoemt een eindtoestand.",
+    "examples": [
+      "De kinderen zijn snel gegroeid.",
+      "Het aantal deelnemers groeit elk jaar.",
+      "De kleine onderneming groeide uit tot een internationaal bedrijf."
+    ]
+  },
+  {
+    "infinitive": "winnen",
+    "level": "A2",
+    "semantic": "verandering",
+    "semanticLabel": "een wedstrijd, voordeel of steun verkrijgen",
+    "auxiliary": "hebben",
+    "conjugationClass": "sterk werkwoord",
+    "meaning": "Als beste eindigen, een conflict of prijs verkrijgen, of geleidelijk voordeel, tijd of steun verkrijgen.",
+    "synonyms": [
+      "zegevieren",
+      "behalen",
+      "verkrijgen"
+    ],
+    "synonymNote": "Zegevieren is formeel en onovergankelijk; behalen past bij resultaten of prijzen; verkrijgen is breder en niet noodzakelijk competitief.",
+    "usage": "Een wedstrijd of prijs winnen krijgt een direct object. Winnen van noemt de tegenstander; aan populariteit winnen betekent toenemen.",
+    "examples": [
+      "Ons team heeft de wedstrijd gewonnen.",
+      "Met deze aanpassing winnen we veel tijd.",
+      "Het voorstel won langzaam aan steun."
+    ]
+  }
+]

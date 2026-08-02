@@ -9,7 +9,7 @@ test('de startpagina is Nederlandstalig en werkt ook via dubbelklik', async () =
   const html = await read('index.html');
   assert.match(html, /<html lang="nl"/);
   assert.match(html, /css\/styles\.css/);
-  assert.match(html, /<script src="js\/app\.js"><\/script>/);
+  assert.match(html, /<script src="js\/app\.js(?:\?v=[^"]+)?"><\/script>/);
   assert.doesNotMatch(html, /type="module"/);
   assert.match(html, /manifest\.webmanifest/);
   assert.match(html, /images\/concept-map\.svg/);
@@ -413,4 +413,26 @@ test('V15 toont de modulaire oefenbank met filters en persoonlijke fouten', asyn
   assert.match(app, /const exerciseBank =/);
   assert.match(worker, /exercises\.js/);
   assert.match(worker, /profiles\.js/);
+});
+
+
+test('de startkaarten en toegankelijkheidsblokken hebben eigen componentstijlen', async () => {
+  const html = await read('index.html');
+  const css = await read('css/styles.css');
+  for (const className of ['quick-level-grid', 'quick-level-card', 'quick-level-code', 'accessibility-summary']) {
+    assert.match(html, new RegExp(`class="[^"]*${className}`));
+    assert.match(css, new RegExp(`\\.${className}\\s*\\{`));
+  }
+  assert.match(css, /\.quick-level-card\s*\{[\s\S]*?appearance:\s*none/);
+});
+
+test('werkwoorddetails maken onderscheid tussen nagekeken en niet-nagekeken metadata', async () => {
+  const main = await read('js/main.js');
+  const css = await read('css/styles.css');
+  assert.match(main, /Betekenis nog niet handmatig nagekeken/);
+  assert.match(main, /verb-definition-line/);
+  assert.match(main, /Synoniemen, gebruik en voorbeelden/);
+  for (const className of ['verb-definition-line', 'verb-review-status', 'verb-example-list']) {
+    assert.match(css, new RegExp(`\\.${className}\\s*\\{`));
+  }
 });

@@ -4,15 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#123f38">
-  <meta name="application-name" content="Nederlands, gewoon doen">
-  <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="description" content="Nederlands leren met beeld, geluid, betekenis en actief gebruik. Een volledig statische leeromgeving van A0 tot B2.">
   <meta name="color-scheme" content="light dark">
   <title>Nederlands, gewoon doen</title>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=18.18.0">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -32,6 +29,7 @@
         <button class="nav-item" type="button" data-page="b1"><span class="nav-icon" aria-hidden="true">B1</span><span>B1-cursus</span></button>
         <button class="nav-item" type="button" data-page="b2"><span class="nav-icon" aria-hidden="true">B2</span><span>B2-cursus</span></button>
         <button class="nav-item" type="button" data-page="concepten"><span class="nav-icon" aria-hidden="true">◎</span><span>Concepten</span></button>
+        <button class="nav-item" type="button" data-page="kennisgraaf"><span class="nav-icon" aria-hidden="true">⌘</span><span>Kennisgraaf</span></button>
         <button class="nav-item" type="button" data-page="grammatica"><span class="nav-icon" aria-hidden="true">¶</span><span>Grammatica</span></button>
         <button class="nav-item" type="button" data-page="vragen"><span class="nav-icon" aria-hidden="true">?</span><span>Vragen</span></button>
         <button class="nav-item" type="button" data-page="getallen"><span class="nav-icon" aria-hidden="true">123</span><span>Getallen & tijd</span></button>
@@ -55,7 +53,6 @@
         </div>
         <button class="sidebar-action" id="open-settings" type="button"><span aria-hidden="true">⚙</span> Instellingen</button>
         <a class="reference-link" href="reference.html">Oorspronkelijk naslagwerk <span aria-hidden="true">↗</span></a>
-        <small class="app-version" aria-label="Applicatieversie">v19.0.2</small>
       </div>
     </aside>
 
@@ -323,6 +320,38 @@
             <section class="card concept-detail" id="concept-detail" aria-live="polite"></section>
           </section>
 
+          <section class="page" id="page-kennisgraaf" aria-labelledby="kennisgraaf-title">
+            <div class="page-heading knowledge-graph-heading">
+              <div><span class="kicker">Synoniemen · gebruik · oefeningen · controles</span><h1 id="kennisgraaf-title">Kennisgraaf van alle inhoud</h1><p>Doorzoek de leeromgeving als één semantisch netwerk. Een werkwoord is verbonden met zijn betekenis, gecontroleerde synoniemen, thema’s, grammatica, voorbeelden, oefeningen en open inhoudscontroles.</p></div>
+              <div class="knowledge-graph-version"><strong>V18.18.0</strong><span>eerste 1.750 alfabetische posities inhoudelijk uitgebreid</span></div>
+            </div>
+            <div class="notice-card knowledge-graph-notice"><span aria-hidden="true">◎</span><div><strong>De graaf maakt hiaten zichtbaar; hij vult ze niet automatisch in.</strong><p>Een synoniem wordt alleen als gecontroleerde relatie getoond wanneer de werkwoordfiche handmatig is nagekeken. Ontbrekende definities, synoniemen, gebruiksnotities en voorbeelden verschijnen als controlepunten.</p></div></div>
+            <p class="knowledge-graph-status" id="knowledge-graph-status" role="status" aria-live="polite">Open deze pagina om de kennisgraaf te laden.</p>
+            <section class="knowledge-graph-stats" id="knowledge-graph-stats" aria-label="Omvang van de kennisgraaf"></section>
+            <section class="card knowledge-graph-controls" aria-label="Kennisgraaf zoeken en filteren">
+              <label class="knowledge-search" for="knowledge-graph-search"><span>Zoek in alle inhoud</span><input id="knowledge-graph-search" type="search" placeholder="bijv. aaien, wachten op, werk, klacht…" autocomplete="off"></label>
+              <label><span>Inhoudstype</span><select id="knowledge-graph-type"><option value="all">Alle typen</option></select></label>
+              <label><span>Niveau</span><select id="knowledge-graph-level"><option value="all">Alle niveaus</option><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option></select></label>
+              <label><span>Relaties in beeld</span><select id="knowledge-graph-mode"><option value="all">Directe omgeving</option><option value="synonyms">Betekenis en synoniemen</option><option value="usage">Plaatsen van gebruik</option><option value="exercises">Oefeningen</option><option value="issues">Fouten en controles</option></select></label>
+              <label class="knowledge-check"><input id="knowledge-graph-issues-only" type="checkbox"><span>Alleen inhoud met open controles</span></label>
+            </section>
+            <div class="knowledge-graph-layout">
+              <aside class="card knowledge-results-panel" aria-label="Zoekresultaten">
+                <div class="section-heading compact"><h2>Inhoud</h2><span id="knowledge-graph-result-count">0 gevonden</span></div>
+                <div class="knowledge-results" id="knowledge-graph-results"></div>
+                <button class="secondary-button knowledge-load-more" id="knowledge-graph-load-more" type="button" hidden>Toon meer</button>
+              </aside>
+              <div class="knowledge-graph-main">
+                <section class="card knowledge-canvas-panel" aria-labelledby="knowledge-canvas-title">
+                  <div class="section-heading compact"><div><span class="kicker">Klik om verder te volgen</span><h2 id="knowledge-canvas-title">Lokale omgeving</h2></div><span>maximaal 32 nodes</span></div>
+                  <div class="knowledge-graph-legend" id="knowledge-graph-legend" aria-label="Legenda"></div>
+                  <div class="knowledge-graph-canvas" id="knowledge-graph-canvas"><p class="empty-state">De graaf wordt geladen wanneer deze pagina wordt geopend.</p></div>
+                </section>
+                <section class="card knowledge-detail" id="knowledge-graph-detail" aria-live="polite"><p class="empty-state">Kies een node om definities, synoniemen, gebruiksplaatsen en controles te bekijken.</p></section>
+              </div>
+            </div>
+          </section>
+
           <section class="page" id="page-grammatica" aria-labelledby="grammatica-title">
             <div class="page-heading"><div><span class="kicker">Van vorm naar betekenis</span><h1 id="grammatica-title">Grammatica-atlas</h1><p>Regels in eenvoudige taal, met visuele modellen, audio en verbindingen naar andere concepten.</p></div></div>
             <section class="grammar-discovery" aria-labelledby="grammar-discovery-title"><div class="section-heading compact"><div><span class="kicker">Binnen twee klikken</span><h2 id="grammar-discovery-title">Veelgezochte structuren</h2></div><p>Zoek op functie, niet alleen op woordsoort.</p></div><div class="grammar-shortcuts"><button type="button" data-page="grammatica" data-topic="bijwoorden-overzicht">Bijwoorden</button><button type="button" data-page="grammatica" data-topic="signaalwoorden-logische-relaties">Connectors & signaalwoorden</button><button type="button" data-page="grammatica" data-topic="voorzetsels-plaats">Voorzetsels</button><button type="button" data-page="grammatica" data-topic="gevolg-zodat-waardoor">Zodat · waardoor · daardoor</button><button type="button" data-page="grammatica" data-topic="voorwaarden-als-mits-tenzij">Voorwaarden</button><button type="button" data-page="grammatica" data-topic="nuancerende-bijwoorden">Nuance B2</button></div></section>
@@ -453,8 +482,8 @@
 
           <section class="page" id="page-werkwoorden" aria-labelledby="werkwoorden-title">
             <div class="page-heading verb-page-heading">
-              <div><span class="kicker">Vorm, betekenis en zinsgedrag</span><h1 id="werkwoorden-title">Werkwoordenatlas</h1><p>Zoek in 1.905 werkwoorden. Begin met de lexicografisch verrijkte kern: definitie, voorbeeld, synoniemen, reflexief gebruik, vaste voorzetsels en gecontroleerde vervoeging.</p></div>
-              <div class="verb-atlas-stats" aria-label="Omvang van de werkwoordenatlas"><span><strong>1.905</strong> werkwoorden</span><span><strong>160</strong> verrijkte kernwerkwoorden</span><span><strong>reflexief + voorzetsels</strong> zichtbaar</span></div>
+              <div><span class="kicker">Vorm, betekenis en zinsgedrag</span><h1 id="werkwoorden-title">Werkwoordenatlas</h1><p>Zoek in 1.886 werkwoorden. Vergelijk regelmatige en onregelmatige vormen en herken beweging, verandering, toestand, handeling, gebeurtenis en modaliteit.</p></div>
+              <div class="verb-atlas-stats" aria-label="Omvang van de werkwoordenatlas"><span><strong>1.886</strong> werkwoorden</span><span><strong>873</strong> regelmatig</span><span><strong>1.013</strong> onregelmatig</span></div>
             </div>
             <div class="verb-atlas-layout">
               <aside class="card verb-atlas-sidebar" aria-label="Werkwoorden zoeken en filteren">
@@ -466,7 +495,6 @@
                   <label>Niveau<select id="verb-level"><option value="alle">A1–B2</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option></select></label>
                   <label>Scheidbaarheid<select id="verb-separable"><option value="alle">Alle</option><option value="ja">Scheidbaar</option><option value="nee">Niet scheidbaar</option></select></label>
                   <label>Hulpwerkwoord<select id="verb-auxiliary"><option value="alle">Alle</option><option value="hebben">Hebben</option><option value="zijn">Zijn</option><option value="hebben/zijn">Hebben of zijn</option></select></label>
-                  <label>Speciale selectie<select id="verb-feature"><option value="verrijkt">Verrijkte kern</option><option value="alle">Alle catalogusvormen</option><option value="wederkerend">Wederkerend</option><option value="voorzetsel">Vast voorzetsel</option><option value="geverifieerd">Handmatig gecontroleerd</option></select></label>
                 </div>
                 <div class="verb-results-summary" id="verb-results-summary" aria-live="polite"></div>
                 <div class="verb-atlas-list" id="verb-atlas-list" role="listbox" aria-label="Gevonden werkwoorden"></div>
@@ -562,6 +590,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">Deze leeromgeving heeft JavaScript nodig voor audio, oefeningen en navigatie.</div></noscript>
-  <script src="js/app.js"></script>
+  <script src="js/app.js?v=18.18.0"></script>
 </body>
 </html>

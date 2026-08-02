@@ -15,7 +15,13 @@ import {
   idiomBank,
 } from './depth-content.js';
 import { verbAtlas } from './verb-atlas.js';
-import { enrichVerbAtlas, enrichedVerbCount } from './verb-details.js';
+import { applyVerbCorrections } from './verb-corrections.js';
+import { applyCoreVerbReviews } from './verb-core-review.js';
+import { applyInitialVerbReviews } from './verb-initial-review.js';
+import { createKnowledgeGraphExplorer } from './knowledge-graph.js';
+applyVerbCorrections(verbAtlas);
+applyCoreVerbReviews(verbAtlas);
+applyInitialVerbReviews(verbAtlas);
 import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
 import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
@@ -23,6 +29,7 @@ import { numberTimeTopics, numberQuickReference, mathCategories, mathConcepts, m
 import { physicsCategories, physicsConcepts, softwareCategories, softwareConcepts, technicalStats } from './technical-content.js';
 import { professionalDomains, professionalConcepts, professionalStats } from './professional-content.js';
 import { advancedGrammarTopics, logicRelationGroups, readingArticles, emailTasks, advancedPracticeStats } from './advanced-practice-content.js';
+import { sourceReviewGrammarTopics } from './source-review-content.js';
 import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
 import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
 import {
@@ -41,10 +48,11 @@ const LEGACY_STORAGE_KEY = 'nederlands-gewoon-doen-progress-v2';
 const SETTINGS_KEY = 'nederlands-gewoon-doen-settings-v2';
 const EXERCISE_WORDS = ['Vandaag', 'werk', 'ik', 'thuis'];
 const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
-const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics];
-const allVerbs = enrichVerbAtlas(verbAtlas);
+const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics];
 
 const initialProfile = readActiveProfileSession();
+
+let knowledgeGraphExplorer = null;
 
 const state = {
   page: 'vandaag',
@@ -87,7 +95,6 @@ const state = {
   verbLevel: 'alle',
   verbSeparable: 'alle',
   verbAuxiliary: 'alle',
-  verbFeature: 'verrijkt',
   verbLimit: 80,
   selectedVerb: 'zijn',
   activeProfile: initialProfile,
@@ -131,7 +138,7 @@ const elements = {
   professionalDomainTabs: el('professional-domain-tabs'), professionalCategoryFilters: el('professional-category-filters'), professionalSearch: el('professional-search'), professionalConceptGrid: el('professional-concept-grid'), professionalConceptCount: el('professional-concept-count'), professionalDomainSummary: el('professional-domain-summary'), professionalLoadMore: el('professional-load-more'),
   structureTabs: el('structure-tabs'), structureSummary: el('structure-summary'), structureContent: el('structure-content'),
   verbSearch: el('verb-search'), verbRegularity: el('verb-regularity'), verbSemantic: el('verb-semantic'),
-  verbLevel: el('verb-level'), verbSeparable: el('verb-separable'), verbAuxiliary: el('verb-auxiliary'), verbFeature: el('verb-feature'),
+  verbLevel: el('verb-level'), verbSeparable: el('verb-separable'), verbAuxiliary: el('verb-auxiliary'),
   verbResultsSummary: el('verb-results-summary'), verbAtlasList: el('verb-atlas-list'), verbLoadMore: el('verb-load-more'),
   verbDetail: el('verb-detail'),
   vocabularyFilters: el('vocabulary-filters'), vocabularyGrid: el('vocabulary-grid'), wordSearch: el('word-search'),
@@ -257,57 +264,6 @@ const commonWordLearningDetails = {
   'het adres': ['De gegevens waarmee je precies kunt aangeven waar iemand woont.', 'Mijn adres is Marktstraat 12.'],
   'de straat': ['Een openbare weg met huizen of andere gebouwen erlangs.', 'Wij wonen in een rustige straat.'],
   'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
-  'de opslag': ['Een ruimte waar je spullen tijdelijk bewaart, bijvoorbeeld tijdens een verhuizing.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
-  'de schade': ['Beschadiging, verlies of nadeel dat door een ongeluk, fout of andere gebeurtenis ontstaat.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
-  'inpakken': ['Spullen in dozen, tassen of papier doen om ze te bewaren, te vervoeren of cadeau te geven.', 'We pakken de boeken zorgvuldig in voordat de verhuiswagen komt.'],
-  'uitpakken': ['Spullen uit een doos, tas of verpakking halen.', 'Na de verhuizing pakken we eerst de keukenspullen uit.'],
-  'tillen': ['Iets met je handen omhoogbrengen of op een andere plaats zetten.', 'Kun je deze zware doos samen met mij tillen?'],
-  'dragen': ['Iets vasthouden en ermee naar een andere plaats lopen.', 'De verhuizers dragen de kast voorzichtig naar boven.'],
-  'inrichten': ['Een ruimte bruikbaar en prettig maken door meubels en spullen een plaats te geven.', 'We richten de woonkamer in met een bank en twee kasten.'],
-  'ophangen': ['Iets hoger vastmaken, bijvoorbeeld aan een muur of plafond.', 'Zij hangt de lamp boven de eettafel op.'],
-  'monteren': ['Onderdelen op de juiste manier aan elkaar bevestigen zodat ze één geheel vormen.', 'We monteren de nieuwe kast volgens de handleiding.'],
-  'doorgeven': ['Informatie aan een andere persoon of organisatie melden.', 'Geef je nieuwe adres op tijd aan de gemeente door.'],
-  'inschrijven': ['Een persoon officieel registreren voor een plaats, activiteit of organisatie.', 'Na de verhuizing schrijft hij zich bij de gemeente in.'],
-  'opzeggen': ['Laten weten dat een contract, abonnement of afspraak moet eindigen.', 'We zeggen het oude huurcontract schriftelijk op.'],
-  'regelen': ['Ervoor zorgen dat iets wordt afgesproken, georganiseerd of uitgevoerd.', 'Ik regel een verhuiswagen voor zaterdagochtend.'],
-  'afspreken': ['Samen bepalen wanneer, waar of hoe iets gebeurt.', 'We spreken met de verhuurder af dat de oplevering vrijdag is.'],
-  'lenen': ['Iets tijdelijk van iemand gebruiken en het later teruggeven.', 'We lenen een steekwagen van de buren.'],
-  'beschadigen': ['Ervoor zorgen dat iets kapotgaat of minder goed wordt.', 'Pas op dat je de vloer niet beschadigt.'],
-  'controleren': ['Nauwkeurig kijken of iets klopt, compleet is of goed werkt.', 'Tijdens de oplevering controleren we alle kamers.'],
-  'beschikbaar': ['Vrij en gereed om gebruikt, gekozen of verkregen te worden.', 'De verhuiswagen is zaterdagmiddag beschikbaar.'],
-  'geschikt': ['Goed passend bij een bepaald doel, persoon of situatie.', 'Deze kast is geschikt voor een kleine slaapkamer.'],
-  'praktisch': ['Handig en gemakkelijk te gebruiken in een concrete situatie.', 'Een verhuisdoos met handgrepen is erg praktisch.'],
-  'zwaar': ['Met veel gewicht en daardoor moeilijk op te tillen.', 'Deze doos is te zwaar om alleen te dragen.'],
-  'licht': ['Met weinig gewicht en daardoor gemakkelijk op te tillen.', 'De lege verhuisdoos is heel licht.'],
-  'breekbaar': ['Gemakkelijk kapot te maken of te breken.', 'Zet breekbaar servies in een aparte doos.'],
-  'compleet': ['Met alle noodzakelijke delen; er ontbreekt niets.', 'Controleer of de sleutelset compleet is.'],
-  'leeg': ['Zonder mensen, spullen of inhoud.', 'De oude woning moet bij de oplevering leeg zijn.'],
-  'gemeubileerd': ['Met meubels die al in de woning of kamer aanwezig zijn.', 'Zij huurt tijdelijk een gemeubileerd appartement.'],
-  'ongemeubileerd': ['Zonder meubels die door de verhuurder zijn geplaatst.', 'De woning wordt ongemeubileerd opgeleverd.'],
-  'tijdelijk': ['Voor een beperkte periode en niet voor altijd.', 'Tijdens de verbouwing wonen we tijdelijk bij familie.'],
-  'definitief': ['Vast en bedoeld om niet meer te veranderen.', 'Volgende week maken we de verhuisdatum definitief.'],
-  'adres wijzigen': ['Een oud adres officieel vervangen door een nieuw adres.', 'Na de verhuizing moet je je adres bij meerdere organisaties wijzigen.'],
-  'huur opzeggen': ['De verhuurder laten weten dat je het huurcontract wilt beëindigen.', 'Zij zegt de huur drie maanden voor de verhuizing op.'],
-  'borg betalen': ['Een bedrag als zekerheid aan de verhuurder overmaken.', 'Voor de sleuteloverdracht moeten we de borg betalen.'],
-  'sleutel ophalen': ['Naar een afgesproken plaats gaan om een sleutel te ontvangen.', 'Vrijdag halen we de sleutel bij de makelaar op.'],
-  'dozen inpakken': ['Spullen geordend in verhuisdozen doen.', 'We pakken eerst de boeken en het servies in dozen in.'],
-  'meubels verplaatsen': ['Meubels van de ene plaats naar een andere plaats brengen.', 'De verhuizers verplaatsen de meubels zonder de vloer te beschadigen.'],
-  'kennis maken met de buren': ['De buren voor het eerst ontmoeten en iets over elkaar vertellen.', 'Na de verhuizing maken we kennis met de buren.'],
-  'rekening houden met': ['Bij een plan of beslissing aandacht geven aan een omstandigheid of persoon.', 'Houd bij het tillen rekening met de smalle trap.'],
-  'op tijd doorgeven': ['Informatie vóór de afgesproken of noodzakelijke datum melden.', 'Geef de meterstanden op tijd aan de leverancier door.'],
-  'een afspraak bevestigen': ['Laten weten dat een eerder gemaakte afspraak doorgaat.', 'De makelaar bevestigt de afspraak per e-mail.'],
-  'schade melden': ['Een beschadiging officieel aan de verantwoordelijke persoon of organisatie doorgeven.', 'De huurder meldt de schade direct bij de verhuurder.'],
-  'een woning opleveren': ['Een woning na controle officieel aan de eigenaar of nieuwe bewoner overdragen.', 'We leveren de woning schoon en leeg op.'],
-  'de borg': ['Een bedrag dat je vooraf betaalt als zekerheid en meestal terugkrijgt wanneer je alles netjes achterlaat.', 'Bij het tekenen van het huurcontract betaalden we twee maanden borg.'],
-  'de sleuteloverdracht': ['Het moment waarop de sleutels officieel aan de nieuwe bewoner worden gegeven.', 'De sleuteloverdracht vindt vrijdagmiddag bij de woning plaats.'],
-  'de bezichtiging': ['Een afspraak waarbij je een woning of gebouw bekijkt voordat je beslist.', 'Tijdens de bezichtiging controleerden we de keuken en de badkamer.'],
-  'de inschrijving': ['De officiële registratie van een persoon, activiteit of aanvraag.', 'Na de verhuizing regelde zij haar inschrijving bij de gemeente.'],
-  'de verhuurder': ['De persoon of organisatie die een woning tegen betaling aan iemand laat gebruiken.', 'De verhuurder laat de kapotte verwarming repareren.'],
-  'de huurder': ['De persoon die betaalt om een woning, kamer of ander object te gebruiken.', 'De huurder meldt de lekkage direct aan de verhuurder.'],
-  'de makelaar': ['Een professional die helpt bij het kopen, verkopen of huren van een woning.', 'De makelaar plant drie bezichtigingen op zaterdag.'],
-  'de verhuisdoos': ['Een stevige doos waarin je spullen tijdens een verhuizing inpakt.', 'We schrijven de naam van elke kamer op de verhuisdoos.'],
-  'de verhuiswagen': ['Een voertuig waarmee meubels en andere spullen naar een nieuwe woning worden gebracht.', 'De verhuiswagen staat om acht uur voor de deur.'],
-  'de oplevering': ['Het officiële moment waarop een woning wordt gecontroleerd en overgedragen.', 'Bij de oplevering noteerden we alle bestaande beschadigingen.'],
   'de postcode': ['Een combinatie van cijfers en letters die bij een gebied of adres hoort.', 'Wat is uw postcode?'],
   'de woonplaats': ['De stad of het dorp waar iemand woont.', 'Mijn woonplaats is Waalre.'],
   'het land': ['Een gebied met eigen grenzen en meestal een eigen regering.', 'Nederland is een klein land.'],
@@ -369,91 +325,50 @@ function normalizeLearningWord(word) {
   return String(word || '').trim().toLocaleLowerCase('nl-NL');
 }
 
-
-const GENERIC_LEXICAL_PATTERNS = [
-  /^Het werkwoord beschrijft vooral/u,
-  /^Het werkwoord beschrijft een toestand/u,
-  /^Het onderwerp verandert van toestand/u,
-  /^Een vaste combinatie(?: die| voor| om)/u,
-  /^Een zelfstandig naamwoord(?: dat| voor)/u,
-  /^Het zelfstandig naamwoord verwijst naar/u,
-  /^Een .* uit deze les\.?$/u,
-];
-
-function normalizedLexicalText(value) {
-  return String(value || '')
-    .trim()
-    .toLocaleLowerCase('nl-NL')
-    .replace(/[“”„'‘’.,!?;:()]/gu, '')
-    .replace(/\s+/gu, ' ');
-}
-
-function isReliableDefinition(term, definition) {
-  const text = String(definition || '').trim();
-  if (text.length < 18 || GENERIC_LEXICAL_PATTERNS.some((pattern) => pattern.test(text))) return false;
-  const normalizedTerm = normalizedLexicalText(term).replace(/^(de|het|een)\s+/u, '');
-  const normalizedDefinition = normalizedLexicalText(text);
-  if (!normalizedTerm || normalizedDefinition === normalizedTerm) return false;
-  return ![`${normalizedTerm} is `, `${normalizedTerm} betekent `].some((start) => normalizedDefinition.startsWith(start));
-}
-
-function isReliableExample(term, example) {
-  const text = String(example || '').trim();
-  if (text.length < 12) return false;
-  const normalizedTerm = normalizedLexicalText(term);
-  const normalizedExample = normalizedLexicalText(text);
-  if (!normalizedExample || normalizedExample === normalizedTerm) return false;
-  if (/^ik\s+[a-zà-ÿ-]+(?:en)\.?$/u.test(normalizedExample)) return false;
-  const words = normalizedExample.split(' ').filter(Boolean);
-  return words.length >= 3;
-}
-
-function reviewedLearningDetails(term, definition, example, source) {
-  const definitionOk = isReliableDefinition(term, definition);
-  const exampleOk = isReliableExample(term, example);
-  if (!definitionOk) return null;
-  return {
-    definition: String(definition).trim(),
-    example: exampleOk ? String(example).trim() : '',
-    source,
-    reviewed: true,
-  };
-}
-
 function highlightedWordDetails(theme, word) {
   const normalized = normalizeLearningWord(word);
   const local = (theme.vocabulary || []).find(([item]) => normalizeLearningWord(item) === normalized);
-  if (local) return reviewedLearningDetails(word, local[1], local[2], 'thema');
+  if (local) return { definition: local[1], example: local[2], source: 'thema' };
   const global = vocabulary.find((item) => normalizeLearningWord(item.word) === normalized);
-  if (global) return reviewedLearningDetails(word, global.definition, global.example, 'beeldwoord');
+  if (global) return { definition: global.definition, example: global.example, source: 'beeldwoord' };
   return null;
 }
 
 function verbLearningDetails(word) {
   const normalized = normalizeLearningWord(word);
   const compact = verbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (compact) {
-    const reviewed = reviewedLearningDetails(word, compact.meaning, compact.examples?.[0] || '', 'werkwoord');
-    if (reviewed) return reviewed;
-  }
-  const atlas = allVerbs.find((item) => normalizeLearningWord(item.infinitive) === normalized);
-  if (!atlas?.lexicalEnriched || atlas.verified !== true) return null;
-  return reviewedLearningDetails(word, atlas.definition || atlas.meaning, atlas.example || atlas.sentencePatterns?.hoofdzin || '', 'werkwoord');
+  if (compact) return { definition: compact.meaning, example: compact.examples?.[0] || '', source: 'werkwoord' };
+  const atlas = verbAtlas.find((item) => normalizeLearningWord(item.infinitive) === normalized);
+  if (!atlas) return null;
+  return {
+    definition: atlas.meaning || `Een ${atlas.semanticLabel || 'werkwoord'} uit deze les.`,
+    example: atlas.sentencePatterns?.hoofdzin || '',
+    source: 'werkwoord',
+  };
 }
 
 function fallbackWordDetails(theme, group, word) {
-  return {
-    definition: 'Voor dit woord is nog geen gecontroleerde betekenis beschikbaar.',
-    example: '',
-    source: 'controle nodig',
-    reviewed: false,
-  };
+  const lowerGroup = normalizeLearningWord(group);
+  const themeName = theme.title.toLocaleLowerCase('nl-NL');
+  if (word.trim().endsWith('?')) {
+    return { definition: `Een vaste vraag die je gebruikt in gesprekken over ${themeName}.`, example: word, source: 'vraag' };
+  }
+  if (lowerGroup.includes('vaste') || lowerGroup.includes('combinatie') || word.trim().includes(' ')) {
+    return { definition: `Een vaste combinatie die je als één geheel gebruikt wanneer je over ${themeName} praat.`, example: word, source: 'combinatie' };
+  }
+  if (lowerGroup.includes('werkwoord')) {
+    return { definition: `Een werkwoord voor een handeling, toestand of gebeurtenis binnen het thema ${themeName}.`, example: '', source: 'werkwoord' };
+  }
+  if (lowerGroup.includes('beschrij') || lowerGroup.includes('eigenschap') || lowerGroup.includes('bijvoeg')) {
+    return { definition: `Een woord waarmee je een persoon, ding of situatie binnen het thema ${themeName} beschrijft.`, example: '', source: 'beschrijving' };
+  }
+  return { definition: `Een zelfstandig naamwoord dat je nodig hebt om over ${themeName} te praten.`, example: '', source: 'themawoord' };
 }
 
 function wordLearningDetails(theme, group, word) {
   const normalized = normalizeLearningWord(word);
   const curated = commonWordLearningDetails[normalized];
-  if (curated) return reviewedLearningDetails(word, curated[0], curated[1], 'uitleg') || fallbackWordDetails(theme, group, word);
+  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg' };
   return highlightedWordDetails(theme, word)
     || verbLearningDetails(word)
     || fallbackWordDetails(theme, group, word);
@@ -475,6 +390,7 @@ function showPage(page, updateHash = true) {
   elements.menuButton?.setAttribute('aria-expanded', 'false');
   if (updateHash) history.replaceState(null, '', `#${page}`);
   window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (page === 'kennisgraaf') knowledgeGraphExplorer?.open();
 }
 
 function loadVoices() {
@@ -566,7 +482,7 @@ function renderThemeWordGroups(theme) {
     const cards = words.map((word, wordIndex) => {
       const details = wordLearningDetails(theme, group, word);
       const searchable = `${word} ${details.definition} ${details.example} ${group}`.toLocaleLowerCase('nl-NL');
-      return `<article class="theme-word-card ${details.reviewed === false ? 'needs-review' : ''} ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
+      return `<article class="theme-word-card ${wordIndex >= 8 ? 'is-extra' : ''}" data-theme-word-card data-search="${escapeHtml(searchable)}">
         <div class="theme-word-card-top"><span class="word-kind">${escapeHtml(details.source)}</span><div class="word-audio-actions">
           <button class="icon-sound-button speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>
           <button class="icon-sound-button slow speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.58" aria-label="Luister langzaam naar ${escapeHtml(word)}">🐢</button>
@@ -596,10 +512,7 @@ function renderCourseThemeDetail(theme, level, completed) {
     <div class="a1-detail-body">
       <section class="a1-can-do"><span class="kicker">Na dit thema</span><h2>Dit kun je</h2><ul>${theme.canDo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
       <section><div class="section-heading compact"><div><span class="kicker">Betekenis in context</span><h2>Uitgelichte kernwoorden</h2></div><span class="plan-total">${theme.vocabulary.length} uitgebreid</span></div>
-        <div class="a1-word-grid">${theme.vocabulary.map(([word]) => {
-          const details = wordLearningDetails(theme, 'Uitgelichte kernwoorden', word);
-          return `<article class="${details.reviewed === false ? 'needs-review' : ''}"><strong>${escapeHtml(word)}</strong><span class="word-kind">${escapeHtml(details.source)}</span><p>${escapeHtml(details.definition)}</p>${details.example ? `<small>${escapeHtml(details.example)}</small>` : ''}<div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button>${details.example ? `<button class="speak" type="button" data-text="${escapeHtml(details.example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button>` : ''}</div></article>`;
-        }).join('')}</div>
+        <div class="a1-word-grid">${theme.vocabulary.map(([word, meaning, example]) => `<article><strong>${escapeHtml(word)}</strong><p>${escapeHtml(meaning)}</p><small>${escapeHtml(example)}</small><div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button></div></article>`).join('')}</div>
       </section>
       <section class="full-word-bank"><div class="section-heading compact"><div><span class="kicker">Woorden leren</span><h2>${themeWordCount(theme)} woorden en vaste combinaties</h2></div><span class="plan-total">betekenis · voorbeeld · geluid</span></div><p class="word-bank-intro">Begin rustig met acht woorden per groep. Elke kaart geeft een korte betekenis; open de voorbeeldzin en luister normaal of langzaam.</p><div class="word-bank-toolbar"><label class="word-bank-search"><span>Zoek in dit thema</span><input type="search" data-theme-word-search placeholder="Bijvoorbeeld: familie, wonen, spreken…" autocomplete="off"></label><p class="word-bank-result" data-theme-word-result aria-live="polite">${themeWordCount(theme)} woorden beschikbaar</p></div>${renderThemeWordGroups(theme)}</section>
       <section><span class="kicker">Grammatica</span><h2>Vorm en betekenis</h2><div class="a1-grammar-grid">${theme.grammar.map(([title, explanation]) => `<article><strong>${escapeHtml(title)}</strong><p>${escapeHtml(explanation)}</p><button class="text-button" type="button" data-page="grammatica" data-grammar-level="${level}">Open in de grammatica-atlas →</button></article>`).join('')}</div></section>
@@ -956,13 +869,10 @@ function renderQuestions() {
 
 function getFilteredVerbs() {
   const query = state.verbQuery.trim().toLocaleLowerCase('nl-NL');
-  return allVerbs.filter((verb) => {
+  return verbAtlas.filter((verb) => {
     if (query) {
-      const haystack = [
-        verb.infinitive, verb.root, verb.prefix, verb.semanticLabel, verb.participle,
-        verb.definition, verb.example, ...(verb.synonyms || []),
-        ...(verb.fixedPrepositions || []).flatMap((item) => [item[0], item[1], item[2]]),
-      ].filter(Boolean).join(' ').toLocaleLowerCase('nl-NL');
+      const haystack = [verb.infinitive, verb.root, verb.prefix, verb.semanticLabel, verb.participle, verb.meaning, verb.usage, ...(verb.synonyms || [])]
+        .filter(Boolean).join(' ').toLocaleLowerCase('nl-NL');
       if (!haystack.includes(query)) return false;
     }
     if (state.verbRegularity !== 'alle' && verb.regularity !== state.verbRegularity) return false;
@@ -971,10 +881,6 @@ function getFilteredVerbs() {
     if (state.verbSeparable === 'ja' && !verb.separable) return false;
     if (state.verbSeparable === 'nee' && verb.separable) return false;
     if (state.verbAuxiliary !== 'alle' && verb.auxiliary !== state.verbAuxiliary) return false;
-    if (state.verbFeature === 'verrijkt' && !verb.lexicalEnriched) return false;
-    if (state.verbFeature === 'wederkerend' && !verb.reflexive) return false;
-    if (state.verbFeature === 'voorzetsel' && !(verb.fixedPrepositions || []).length) return false;
-    if (state.verbFeature === 'geverifieerd' && !verb.verified) return false;
     return true;
   });
 }
@@ -992,60 +898,55 @@ function renderConjugationTable(forms) {
   }).join('')}</tbody></table>`;
 }
 
+function hasReviewedVerbMetadata(verb) {
+  const genericMeanings = new Set([
+    'Het werkwoord beschrijft vooral een handeling of activiteit.',
+    'Het werkwoord beschrijft een toestand, ervaring, houding of waarneming.',
+    'Het onderwerp verandert van toestand, omvang, kwaliteit of situatie.',
+    'Een gecontroleerde omschrijving van het gebruik van ' + verb.infinitive + '.'
+  ]);
+  return verb.reviewed === true
+    && typeof verb.meaning === 'string'
+    && verb.meaning.trim().length >= 20
+    && !genericMeanings.has(verb.meaning.trim())
+    && Array.isArray(verb.synonyms)
+    && verb.synonyms.length > 0
+    && Array.isArray(verb.examples)
+    && verb.examples.length > 0
+    && typeof verb.usage === 'string'
+    && verb.usage.trim().length >= 12;
+}
+
 function renderVerbDetail(infinitive = state.selectedVerb) {
-  const verb = allVerbs.find((item) => item.infinitive === infinitive) || allVerbs.find((item) => item.infinitive === 'zijn') || allVerbs[0];
+  const verb = verbAtlas.find((item) => item.infinitive === infinitive) || verbAtlas.find((item) => item.infinitive === 'zijn') || verbAtlas[0];
   state.selectedVerb = verb.infinitive;
   const regularityLabel = verb.regularity === 'regelmatig' ? 'Regelmatig' : 'Onregelmatig';
   const separableLabel = verb.separable ? `Scheidbaar · ${verb.prefix} + ${verb.root}` : 'Niet scheidbaar';
-  const perfectForms = verb.perfectForms.map((form) => `<div class="verb-perfect-form"><strong>${escapeHtml(form)}</strong><button class="speak" type="button" data-text="${escapeHtml(form)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(form)}">🔊</button></div>`).join('');
-  const patternLabels = { hoofdzin: 'Hoofdzin', verleden: 'Verleden tijd', perfectum: 'Perfectum', modaal: 'Met modaal werkwoord', bijzin: 'Bijzin', metTe: 'Met te' };
-  const patterns = Object.entries(verb.sentencePatterns || {})
-    .filter(([, sentence]) => (
-      typeof sentence === 'string' &&
-      sentence.trim().length > 0
-    ))
-    .map(([key, sentence]) => {
-      const safeSentence = sentence.trim();
-      const spokenSentence = safeSentence.replace(/^…\s*/, '');
+  const perfectForms = (verb.perfectForms || []).map((form) => `<div class="verb-perfect-form"><strong>${escapeHtml(form)}</strong><button class="speak" type="button" data-text="${escapeHtml(form)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(form)}">🔊</button></div>`).join('');
+  const perfectContent = perfectForms || `<p class="verb-perfect-note">${escapeHtml(verb.perfectNote || 'Voor dit gebruik is geen zelfstandig perfectum opgenomen.')}</p>`;
+  const patternLabels = {
+    hoofdzin: 'Hoofdzin', verleden: 'Verleden tijd', perfectum: 'Perfectum', modaal: 'Met een ander modaal werkwoord',
+    bijzin: 'Bijzin', metTe: 'Met te', vraag: 'Vraag', negatie: 'Ontkenning', voorstel: 'Voorstel',
+    voorwaarde: 'Voorwaarde', beleefd: 'Beleefd verzoek', gebiedend: 'Gebiedende wijs', toekomst: 'Toekomstplan',
+    metInfinitief: 'Met infinitief', richting: 'Richting of bestemming'
+  };
+  const patterns = Object.entries(verb.sentencePatterns || {}).map(([key, sentence]) => `<article><small>${escapeHtml(patternLabels[key] || key)}</small><p>${escapeHtml(sentence)}</p><button class="mini-audio speak" type="button" data-text="${escapeHtml(sentence.replace(/^… /, ''))}" data-rate="0.84">🔊 Luister</button></article>`).join('');
+  const reviewed = hasReviewedVerbMetadata(verb);
+  const definition = reviewed
+    ? `<div class="verb-definition-line"><p>${escapeHtml(verb.meaning)}</p><button class="mini-audio speak" type="button" data-text="${escapeHtml(verb.meaning)}" data-rate="0.82" aria-label="Luister naar de definitie van ${escapeHtml(verb.infinitive)}">🔊 Definitie</button></div>`
+    : `<div class="verb-review-status" role="note"><strong>Betekenis nog niet handmatig nagekeken</strong><span>De vervoeging en grammaticale indeling zijn beschikbaar. Een specifieke definitie, synoniemen en gebruiksvoorbeelden volgen pas na taalcontrole.</span></div>`;
+  const metadata = reviewed
+    ? `<div class="verb-semantic-note reviewed"><div class="section-heading compact"><strong>Synoniemen, gebruik en voorbeelden</strong></div><p><strong>Synoniemen en verwante uitdrukkingen:</strong> ${verb.synonyms.map(escapeHtml).join(' · ')}</p>${verb.synonymNote ? `<p><strong>Verschil in gebruik:</strong> ${escapeHtml(verb.synonymNote)}</p>` : ''}${verb.relatedWords?.length ? `<p><strong>Woordfamilie:</strong> ${verb.relatedWords.map(escapeHtml).join(' · ')}</p>` : ''}<p><strong>Let op:</strong> ${escapeHtml(verb.usage)}</p><div class="verb-example-list">${verb.examples.map((example) => `<p><em>${escapeHtml(example)}</em> <button class="mini-audio speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.84" aria-label="Luister naar voorbeeldzin">🔊</button></p>`).join('')}</div>${verb.semantic === 'beweging' && verb.auxiliary === 'hebben/zijn' ? '<p><strong>Hulpwerkwoord:</strong> <em>hebben</em> legt vaak de nadruk op de activiteit; <em>zijn</em> op richting of bestemming.</p>' : ''}</div>`
+    : `<div class="verb-semantic-note unreviewed"><div class="section-heading compact"><strong>Grammaticale basisinformatie</strong><span>Nog niet lexicaal nagekeken</span></div><p><strong>Globale categorie:</strong> ${escapeHtml(verb.semanticLabel)}</p>${verb.semantic === 'beweging' && verb.auxiliary === 'hebben/zijn' ? '<p><strong>Hulpwerkwoord:</strong> <em>hebben</em> legt vaak de nadruk op de activiteit; <em>zijn</em> op richting of bestemming.</p>' : ''}</div>`;
+  const auxiliaryChip = verb.auxiliary === '—' ? '<span>geen zelfstandig perfectum</span>' : `<span>hulpwerkwoord: ${escapeHtml(verb.auxiliary)}</span>`;
 
-      return `<article>
-        <small>${escapeHtml(patternLabels[key] || key)}</small>
-        <p>${escapeHtml(safeSentence)}</p>
-        <button
-          class="mini-audio speak"
-          type="button"
-          data-text="${escapeHtml(spokenSentence)}"
-          data-rate="0.84"
-        >🔊 Luister</button>
-      </article>`;
-    })
-    .join('');
-
-  const synonyms = (verb.synonyms || []).length
-    ? `<div class="verb-synonyms"><strong>Synoniemen en nabije woorden</strong><div>${verb.synonyms.map((item) => `<button class="speak verb-word-chip" type="button" data-text="${escapeHtml(item)}" data-rate="0.78">${escapeHtml(item)} 🔊</button>`).join('')}</div></div>`
-    : '<div class="verb-synonyms muted"><strong>Synoniemen</strong><p>Voor deze catalogusvorm is nog geen betrouwbaar direct synoniem toegevoegd.</p></div>';
-  const senses = (verb.senses || []).length
-    ? `<section class="conjugation-panel verb-senses"><div class="section-heading compact"><h3>Betekenissen</h3><span>${verb.senses.length} gebruik${verb.senses.length === 1 ? '' : 'en'}</span></div><div class="verb-sense-grid">${verb.senses.map(([definition, example, related], index) => `<article><small>Betekenis ${index + 1}</small><p>${escapeHtml(definition)}</p><blockquote>${escapeHtml(example)}</blockquote><div class="sense-related">${(related || []).map((item) => `<span>${escapeHtml(item)}</span>`).join('')}</div><button class="mini-audio speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.82">🔊 Voorbeeld</button></article>`).join('')}</div></section>`
-    : '';
-  const fixedPrepositions = (verb.fixedPrepositions || []).length
-    ? `<section class="conjugation-panel verb-preposition-panel"><div class="section-heading compact"><h3>Vaste voorzetsels en patronen</h3><span>${verb.fixedPrepositions.length} combinatie${verb.fixedPrepositions.length === 1 ? '' : 's'}</span></div><div class="verb-preposition-grid">${verb.fixedPrepositions.map(([pattern, meaning, example]) => `<article><strong>${escapeHtml(pattern)}</strong><p>${escapeHtml(meaning)}</p><blockquote>${escapeHtml(example)}</blockquote><button class="mini-audio speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.82">🔊 Luister</button></article>`).join('')}</div></section>`
-    : '';
-  const reflexivePanel = verb.reflexive && verb.reflexiveForms?.length
-    ? `<section class="conjugation-panel reflexive-panel"><div class="section-heading compact"><h3>Wederkerend gebruik</h3><span>me · je · zich · ons</span></div><p class="panel-intro">Het wederkerend voornaamwoord verandert met het onderwerp. Leer de volledige combinatie als één patroon.</p><div class="verb-conjugation-grid"><div><h4>Tegenwoordige tijd</h4>${renderConjugationTable(verb.reflexiveForms)}</div><div><h4>Verleden tijd</h4>${renderConjugationTable(verb.reflexivePastForms || [])}</div></div></section>`
-    : '';
-  const enrichedNotice = verb.lexicalEnriched
-    ? '<span class="verb-quality-badge verified">✓ lexicografisch verrijkt</span>'
-    : '<span class="verb-quality-badge catalog">catalogusvorm</span>';
-  elements.verbDetail.innerHTML = `<div class="verb-detail-header"><div class="verb-detail-title"><div class="verb-title-kicker"><span class="kicker">${escapeHtml(verb.level)} · ${escapeHtml(verb.semanticLabel)}</span>${enrichedNotice}</div><h1>${escapeHtml(verb.infinitive)}</h1><p class="verb-definition">${escapeHtml(verb.definition || verb.meaning)}</p><blockquote class="verb-main-example">${escapeHtml(verb.example || verb.sentencePatterns?.hoofdzin || '')}</blockquote></div><div class="verb-audio-stack"><button class="sound-button speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.72">🔊 Uitspraak</button>${verb.example ? `<button class="secondary-button speak" type="button" data-text="${escapeHtml(verb.example)}" data-rate="0.82">🐢 Voorbeeld</button>` : ''}</div></div>
-    <div class="verb-meta-chips"><span class="primary">${regularityLabel}</span><span class="semantic">${escapeHtml(verb.semanticLabel)}</span><span>${escapeHtml(separableLabel)}</span>${verb.reflexive ? '<span class="reflexive">Wederkerend</span>' : ''}${(verb.fixedPrepositions || []).length ? '<span class="preposition">Vast voorzetsel</span>' : ''}<span>hulpwerkwoord: ${escapeHtml(verb.auxiliary)}</span><span>${escapeHtml(verb.conjugationClass)}</span></div>
-    <div class="verb-lexical-grid"><div class="verb-semantic-note"><strong>Definitie</strong><p>${escapeHtml(verb.definition || verb.meaning)}</p>${verb.semantic === 'beweging' && verb.auxiliary === 'hebben/zijn' ? '<p><strong>Let op:</strong> <em>hebben</em> legt vaak de nadruk op de activiteit; <em>zijn</em> op richting of bestemming.</p>' : ''}</div>${synonyms}</div>
-    ${senses}
-    ${fixedPrepositions}
-    ${reflexivePanel}
-    <div class="verb-conjugation-grid"><section class="conjugation-panel"><h3>Tegenwoordige tijd</h3>${renderConjugationTable(verb.presentForms)}</section><section class="conjugation-panel"><h3>Onvoltooid verleden tijd</h3>${renderConjugationTable(verb.pastForms)}</section></div>
-    <section class="conjugation-panel"><div class="section-heading compact"><h3>Voltooide tijd</h3><span>voltooid deelwoord: <strong>${escapeHtml(verb.participle)}</strong></span></div><div class="verb-perfect-grid">${perfectForms}</div></section>
+  elements.verbDetail.innerHTML = `<div class="verb-detail-header"><div class="verb-detail-title"><span class="kicker">${escapeHtml(verb.level)} · ${escapeHtml(verb.semanticLabel)}</span><h1>${escapeHtml(verb.infinitive)}</h1>${definition}</div><button class="sound-button speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.72">🔊 Uitspraak</button></div>
+    <div class="verb-meta-chips"><span class="primary">${regularityLabel}</span><span class="semantic">${escapeHtml(verb.semanticLabel)}</span><span>${escapeHtml(separableLabel)}</span>${auxiliaryChip}<span>${escapeHtml(verb.conjugationClass)}</span>${reviewed && verb.reflexive ? '<span>wederkerend</span>' : ''}${reviewed && verb.fixedPreposition ? `<span>vaste prepositie: ${escapeHtml(verb.fixedPreposition)}</span>` : ''}</div>
+    ${metadata}
+    <div class="verb-conjugation-grid"><section class="conjugation-panel"><h3>Tegenwoordige tijd</h3>${renderConjugationTable(verb.presentForms || [])}</section><section class="conjugation-panel"><h3>Onvoltooid verleden tijd</h3>${renderConjugationTable(verb.pastForms || [])}</section></div>
+    <section class="conjugation-panel"><div class="section-heading compact"><h3>Voltooide tijd</h3><span>voltooid deelwoord: <strong>${escapeHtml(verb.participle)}</strong></span></div><div class="verb-perfect-grid">${perfectContent}</div></section>
     <section class="conjugation-panel"><div class="section-heading compact"><h3>Zinspositie en gebruik</h3><span>gebiedende wijs: <strong>${escapeHtml(verb.imperative)}</strong></span></div><div class="verb-pattern-grid">${patterns}</div></section>
-    <p class="verb-source-note">De verrijkte kernwerkwoorden zijn handmatig gecontroleerd en voorzien van originele definities, voorbeelden, synoniemen, wederkerende patronen en vaste voorzetsels. De overige catalogusvormen blijven beschikbaar, maar zijn nog niet allemaal lexicografisch verrijkt.</p>`;
+    <p class="verb-source-note">De grammaticale atlas is automatisch opgebouwd. Alleen fiches met het label handmatig nagekeken tonen een specifieke definitie en gecontroleerde synoniemen. De kernvormen zijn vergeleken met een Nederlandse werkwoordenlexicon; specialistisch gebruik blijft woordenboekcontrole vereisen.</p>`;
   document.querySelectorAll('.verb-list-item').forEach((button) => {
     const active = button.dataset.verbInfinitive === verb.infinitive;
     button.classList.toggle('active', active);
@@ -1060,8 +961,8 @@ function renderVerbs({ resetLimit = false } = {}) {
   const visible = filtered.slice(0, state.verbLimit);
   const regularCount = filtered.filter((verb) => verb.regularity === 'regelmatig').length;
   const irregularCount = filtered.length - regularCount;
-  elements.verbResultsSummary.innerHTML = `<span><strong>${filtered.length.toLocaleString('nl-NL')}</strong> resultaten</span><span>${regularCount} regelmatig · ${irregularCount} onregelmatig</span><span>${enrichedVerbCount} lexicografisch verrijkt</span>`;
-  elements.verbAtlasList.innerHTML = visible.length ? visible.map((verb) => `<button class="verb-list-item ${verb.infinitive === state.selectedVerb ? 'active' : ''}" type="button" role="option" aria-selected="${verb.infinitive === state.selectedVerb}" data-verb-infinitive="${escapeHtml(verb.infinitive)}"><span><strong>${escapeHtml(verb.infinitive)}</strong><small>${escapeHtml(verb.lexicalEnriched ? verb.definition : verb.semanticLabel)} · ${escapeHtml(verb.auxiliary)}</small></span><span class="verb-list-badges"><span class="${verb.regularity === 'regelmatig' ? 'regular' : 'irregular'}">${verb.regularity === 'regelmatig' ? 'R' : 'OR'}</span>${verb.lexicalEnriched ? '<span class="enriched">✓</span>' : ''}${verb.reflexive ? '<span class="reflexive">W</span>' : ''}${(verb.fixedPrepositions || []).length ? '<span class="preposition">P</span>' : ''}${verb.separable ? '<span>S</span>' : ''}<span>${escapeHtml(verb.level)}</span></span></button>`).join('') : '<div class="empty-state"><strong>Geen werkwoorden gevonden.</strong><p>Maak de zoekopdracht korter of zet een filter terug op “Alle”.</p></div>';
+  elements.verbResultsSummary.innerHTML = `<span><strong>${filtered.length.toLocaleString('nl-NL')}</strong> resultaten</span><span>${regularCount} regelmatig · ${irregularCount} onregelmatig</span>`;
+  elements.verbAtlasList.innerHTML = visible.length ? visible.map((verb) => `<button class="verb-list-item ${verb.infinitive === state.selectedVerb ? 'active' : ''}" type="button" role="option" aria-selected="${verb.infinitive === state.selectedVerb}" data-verb-infinitive="${escapeHtml(verb.infinitive)}"><span><strong>${escapeHtml(verb.infinitive)}</strong><small>${escapeHtml(verb.semanticLabel)} · ${escapeHtml(verb.auxiliary)}</small></span><span class="verb-list-badges"><span class="${verb.regularity === 'regelmatig' ? 'regular' : 'irregular'}">${verb.regularity === 'regelmatig' ? 'R' : 'OR'}</span>${verb.separable ? '<span>S</span>' : ''}<span>${escapeHtml(verb.level)}</span></span></button>`).join('') : '<div class="empty-state"><strong>Geen werkwoorden gevonden.</strong><p>Maak de zoekopdracht korter of zet een filter terug op “Alle”.</p></div>';
   elements.verbLoadMore.hidden = visible.length >= filtered.length;
   elements.verbLoadMore.textContent = `Toon meer (${Math.min(80, filtered.length - visible.length)} van ${filtered.length - visible.length} resterend)`;
   renderVerbDetail(state.selectedVerb);
@@ -1743,41 +1644,8 @@ function handleClick(event) {
   if (structureButton) { renderStructures(structureButton.dataset.structure); return; }
   const verbLevelLink = event.target.closest('[data-verb-level-link]');
   if (verbLevelLink) { state.verbLevel = verbLevelLink.dataset.verbLevelLink; elements.verbLevel.value = state.verbLevel; renderVerbs({ resetLimit: true }); showPage('werkwoorden'); return; }
-  const verbLoadMore = event.target.closest('#verb-load-more');
-  if (verbLoadMore) {
-    event.preventDefault();
-    state.verbLimit += 80;
-    renderVerbs();
-    return;
-  }
-
   const verbButton = event.target.closest('[data-verb-infinitive]');
-  if (verbButton) {
-    event.preventDefault();
-
-    const infinitive = verbButton.dataset.verbInfinitive;
-    state.selectedVerb = infinitive;
-    renderVerbDetail(infinitive);
-
-    elements.verbDetail.setAttribute('tabindex', '-1');
-
-    window.requestAnimationFrame(() => {
-      const compactLayout = window.matchMedia('(max-width: 1050px)').matches;
-
-      if (compactLayout) {
-        elements.verbDetail.scrollIntoView({
-          behavior: state.settings.reducedMotion ? 'auto' : 'smooth',
-          block: 'start',
-        });
-      }
-
-      elements.verbDetail.focus({
-        preventScroll: !compactLayout,
-      });
-    });
-
-    return;
-  }
+  if (verbButton) { renderVerbDetail(verbButton.dataset.verbInfinitive); return; }
   const wordGroupMore = event.target.closest('[data-word-group-more]');
   if (wordGroupMore) {
     const group = document.querySelector(`[data-word-group="${CSS.escape(wordGroupMore.dataset.wordGroupMore)}"]`);
@@ -1889,8 +1757,8 @@ function initializeEvents() {
   elements.verbLevel.addEventListener('change', (event) => { state.verbLevel = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbSeparable.addEventListener('change', (event) => { state.verbSeparable = event.target.value; renderVerbs({ resetLimit: true }); });
   elements.verbAuxiliary.addEventListener('change', (event) => { state.verbAuxiliary = event.target.value; renderVerbs({ resetLimit: true }); });
-  elements.verbFeature.addEventListener('change', (event) => { state.verbFeature = event.target.value; renderVerbs({ resetLimit: true }); });
-elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
+  elements.verbLoadMore.addEventListener('click', () => { state.verbLimit += 80; renderVerbs(); });
+  elements.questionMatrixSearch.addEventListener('input', (event) => { state.questionMatrixQuery = event.target.value; renderQuestionMatrix(); });
   elements.mathSearch?.addEventListener('input', (event) => { state.mathQuery = event.target.value; renderMath(); });
   elements.physicsSearch?.addEventListener('input', (event) => { state.physicsQuery = event.target.value; renderPhysics(); });
   elements.softwareSearch?.addEventListener('input', (event) => { state.softwareQuery = event.target.value; renderSoftware(); });
@@ -1916,6 +1784,11 @@ elements.questionMatrixSearch.addEventListener('input', (event) => { state.quest
 }
 
 function initialize() {
+  knowledgeGraphExplorer = createKnowledgeGraphExplorer({
+    onOpenPage: (page) => showPage(page),
+    onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },
+    notify: showToast,
+  });
   renderDashboard();
   renderLevels();
   renderA0Themes();
@@ -1951,17 +1824,10 @@ function initialize() {
   showPage(document.querySelector(`#page-${hashPage}`) ? hashPage : 'vandaag', false);
   if (!state.activeProfile) window.setTimeout(() => openProfileDialog({ required: true }), 40);
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    navigator.serviceWorker.register('./service-worker.js').then((registration) => {
-      registration.update().catch(() => {});
-    }).catch(() => showToast('Offlinefunctie kon niet worden gestart.'));
+    navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'none' })
+      .then((registration) => registration.update())
+      .catch(() => {});
   }
 }
 
-try {
-  initialize();
-} catch (error) {
-  console.error('Applicatie kon niet volledig starten.', error);
-  document.documentElement.dataset.appError = 'true';
-  const toast = document.getElementById('toast');
-  if (toast) { toast.textContent = 'De leeromgeving kon niet volledig starten. Vernieuw de pagina.'; toast.classList.add('show'); }
-}
+initialize();

@@ -1,0 +1,539 @@
+{
+  "generatedAt": "2026-08-02T12:14:49.781Z",
+  "version": "18.18.0",
+  "status": "passed-with-declared-limitations",
+  "totals": {
+    "checks": 69,
+    "passed": 68,
+    "warnings": 1,
+    "failed": 0
+  },
+  "counts": {
+    "curriculum": {
+      "a0Themes": 4,
+      "a1Themes": 8,
+      "a2Themes": 8,
+      "grammarModules": 71
+    },
+    "exercises": {
+      "total": 8024,
+      "byLevel": {
+        "A0": 350,
+        "A1": 1058,
+        "A2": 1563,
+        "B1": 2253,
+        "B2": 2800
+      },
+      "sourceReview": 24
+    },
+    "verbs": {
+      "total": 1886,
+      "reviewed": 1807,
+      "pendingLexicalReview": 79,
+      "reviewedShare": 95.8
+    },
+    "readingWriting": {
+      "articles": 10,
+      "emailTasks": 12
+    },
+    "sourceMaterial": {
+      "suppliedImages": 57,
+      "newGrammarModules": 12,
+      "newExercises": 24
+    },
+    "knowledgeGraph": {
+      "nodes": 24432,
+      "edges": 80099,
+      "issues": 79,
+      "sourceCollections": 47
+    }
+  },
+  "results": [
+    {
+      "area": "curriculum",
+      "check": "A0 heeft thema's",
+      "status": "pass",
+      "detail": "4 thema's aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A0 thema-id's zijn uniek",
+      "status": "pass",
+      "detail": "Geen dubbele thema-id aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A0 thema's zijn inhoudelijk compleet",
+      "status": "pass",
+      "detail": "Titel, uitleg, dialoog en oefening zijn aanwezig.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A1 heeft thema's",
+      "status": "pass",
+      "detail": "8 thema's aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A1 thema-id's zijn uniek",
+      "status": "pass",
+      "detail": "Geen dubbele thema-id aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A1 thema's zijn inhoudelijk compleet",
+      "status": "pass",
+      "detail": "Titel, uitleg, dialoog en oefening zijn aanwezig.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A2 heeft thema's",
+      "status": "pass",
+      "detail": "8 thema's aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A2 thema-id's zijn uniek",
+      "status": "pass",
+      "detail": "Geen dubbele thema-id aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A2 thema's zijn inhoudelijk compleet",
+      "status": "pass",
+      "detail": "Titel, uitleg, dialoog en oefening zijn aanwezig.",
+      "evidence": null
+    },
+    {
+      "area": "curriculum",
+      "check": "A1 en A2 behouden de bestaande hoofdstructuur",
+      "status": "pass",
+      "detail": "A1=8, A2=8.",
+      "evidence": null
+    },
+    {
+      "area": "grammar",
+      "check": "grammatica-id’s zijn uniek binnen elke gepubliceerde bank",
+      "status": "pass",
+      "detail": "58 zoekbare modules en 13 verdiepingsmodules gecontroleerd.",
+      "evidence": null
+    },
+    {
+      "area": "grammar",
+      "check": "uitleg, regel en voorbeelden zijn aanwezig",
+      "status": "pass",
+      "detail": "71 modules voldoen aan de minimumstructuur.",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "aangeleverd fotomateriaal heeft een eigen herhalingslaag",
+      "status": "pass",
+      "detail": "12 nieuw geschreven modules zonder overname van boektekst.",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: lidwoorden en zelfstandige naamwoorden",
+      "status": "pass",
+      "detail": "bepaald-lidwoord, onbepaald-lidwoord, zelfstandig-naamwoord",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: meervoud en spelling",
+      "status": "pass",
+      "detail": "meervoud, bronreview-meervoud-spelling",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: bijvoeglijke naamwoorden en vergelijking",
+      "status": "pass",
+      "detail": "bijvoeglijk-naamwoord, vergelijking, bronreview-bijvoeglijk-e, bronreview-vergelijking-onregelmatig",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: voornaamwoorden",
+      "status": "pass",
+      "detail": "persoonlijk-onderwerp, persoonlijk-voorwerp, bezittelijk, aanwijzend, bronreview-voornaamwoord-nadruk, bronreview-ons-onze",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: werkwoordstam en zwak verleden",
+      "status": "pass",
+      "detail": "tegenwoordige-tijd, bronreview-stam-spelling, bronreview-t-kofschip",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: sterke en onregelmatige werkwoorden",
+      "status": "pass",
+      "detail": "bronreview-sterke-patronen",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: hebben of zijn",
+      "status": "pass",
+      "detail": "hebben-zijn, bronreview-hebben-zijn-perfectum",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: scheidbare en wederkerende werkwoorden",
+      "status": "pass",
+      "detail": "bronreview-scheidbaar-posities, bronreview-wederkerend",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "dekking: Engelse leenwerkwoorden",
+      "status": "pass",
+      "detail": "bronreview-engelse-werkwoorden",
+      "evidence": null
+    },
+    {
+      "area": "exercises",
+      "check": "oefenbanktotaal is reproduceerbaar",
+      "status": "pass",
+      "detail": "8024 oefeningen.",
+      "evidence": null
+    },
+    {
+      "area": "exercises",
+      "check": "oefening-id’s zijn uniek",
+      "status": "pass",
+      "detail": "8024 unieke id's.",
+      "evidence": null
+    },
+    {
+      "area": "exercises",
+      "check": "antwoorden, opties en feedback zijn controleerbaar",
+      "status": "pass",
+      "detail": "Geen structureel onvolledige oefening gevonden.",
+      "evidence": null
+    },
+    {
+      "area": "source-material",
+      "check": "brongerichte oefeningen zijn geïntegreerd",
+      "status": "pass",
+      "detail": "24 oefeningen geïntegreerd in de normale oefenbank.",
+      "evidence": null
+    },
+    {
+      "area": "exercises",
+      "check": "niveauverdeling",
+      "status": "pass",
+      "detail": "{\"A0\":350,\"A1\":1058,\"A2\":1563,\"B1\":2253,\"B2\":2800}",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "atlasomvang is consistent",
+      "status": "pass",
+      "detail": "1886 unieke werkwoorden na correctielagen.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "werkwoorden zijn uniek",
+      "status": "pass",
+      "detail": "Geen dubbele infinitieven.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "alle expliciete reviews zijn toegepast",
+      "status": "pass",
+      "detail": "1807 handmatig nagekeken fiches.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "de eerste honderd alfabetische werkwoorden zijn volledig nagekeken",
+      "status": "pass",
+      "detail": "100 van 100 fiches zijn nagekeken.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "alle alfabetische reviewfiches hebben herleidbare reviewmetadata",
+      "status": "pass",
+      "detail": "Reviewbatch, status en bronmethode zijn aanwezig.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "nagekeken fiches hebben specifieke definities en geldige metadata",
+      "status": "pass",
+      "detail": "1807 fiches voldoen.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "niet-nagekeken fiches tonen geen verzonnen definities of synoniemen",
+      "status": "pass",
+      "detail": "79 fiches blijven expliciet ongemarkeerd.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "resterende lexicale review",
+      "status": "warning",
+      "detail": "79 werkwoorden hebben vervoegingsinformatie maar nog geen handmatig gevalideerde definitie of synoniemen. Ze worden in de interface niet als gedefinieerd gepresenteerd.",
+      "evidence": {
+        "reviewed": 1807,
+        "pending": 79
+      }
+    },
+    {
+      "area": "verbs",
+      "check": "bekende V18.5-vervoegingsfouten zijn hersteld",
+      "status": "pass",
+      "detail": "praten, antwoorden, horen, eten, wachten, ontmoeten, bellen, lijken, vallen",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "onregelmatige vormen in de eerste alfabetische batch zijn expliciet gecontroleerd",
+      "status": "pass",
+      "detail": "10 risicowerkwoorden gecontroleerd.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "de eerste batch bevat geen bekende generatorfouten",
+      "status": "pass",
+      "detail": "Geen geaan- of foutieve stamvormen gevonden.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "synoniemen zijn uniek, contextueel bruikbaar en spreken de verschilnotitie niet tegen",
+      "status": "pass",
+      "detail": "1807 fiches gecontroleerd.",
+      "evidence": null
+    },
+    {
+      "area": "verbs",
+      "check": "contextuele verschillen tussen synoniemen zijn uitgelegd voor de nieuwe en diep nagekeken fiches",
+      "status": "pass",
+      "detail": "1802 fiches hebben een verschilnotitie.",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "voorzetsels",
+      "status": "pass",
+      "detail": "36 items (minimum 35).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "vaste voorzetselcombinaties",
+      "status": "pass",
+      "detail": "83 items (minimum 80).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "scheidbare werkwoorden",
+      "status": "pass",
+      "detail": "87 items (minimum 80).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "voegwoorden",
+      "status": "pass",
+      "detail": "44 items (minimum 40).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "idiomen",
+      "status": "pass",
+      "detail": "80 items (minimum 75).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "vraagonderwerpen",
+      "status": "pass",
+      "detail": "14 items (minimum 14).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "voornaamwoordelijke bijwoorden",
+      "status": "pass",
+      "detail": "22 items (minimum 20).",
+      "evidence": null
+    },
+    {
+      "area": "language-structures",
+      "check": "vraagoefeningen",
+      "status": "pass",
+      "detail": "10 items (minimum 10).",
+      "evidence": null
+    },
+    {
+      "area": "reading-writing",
+      "check": "B1-B2-leesteksten hebben vragen, bewijs en woordenschat",
+      "status": "pass",
+      "detail": "10 artikelen gevalideerd.",
+      "evidence": null
+    },
+    {
+      "area": "reading-writing",
+      "check": "e-mailtaken bevatten opdrachtpunten, taalsteun en model",
+      "status": "pass",
+      "detail": "12 taken gevalideerd.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "woordenschat",
+      "status": "pass",
+      "detail": "128 items.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "luisterscènes",
+      "status": "pass",
+      "detail": "17 items.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "getallen en tijd",
+      "status": "pass",
+      "detail": "14 items.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "wiskunde",
+      "status": "pass",
+      "detail": "50 items.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "natuurkunde",
+      "status": "pass",
+      "detail": "105 items.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "software",
+      "status": "pass",
+      "detail": "120 items.",
+      "evidence": null
+    },
+    {
+      "area": "content-banks",
+      "check": "vaklexicon",
+      "status": "pass",
+      "detail": "304 items.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "CSS en JavaScript hebben cache-busting",
+      "status": "pass",
+      "detail": "Versie 18.18.0 staat in beide shell-assets.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "oude shell-assets kunnen niet permanent uit cache blijven komen",
+      "status": "pass",
+      "detail": "Netwerk-eerst voor document, CSS en JavaScript; registratie omzeilt de HTTP-cache.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "startkaarten en toegankelijkheidsblok hebben componentstijlen",
+      "status": "pass",
+      "detail": "Beide selectors aanwezig in styles.css.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "nieuwe inhoud zit in de klassieke browserbundle",
+      "status": "pass",
+      "detail": "Kernreviews, eerste alfabetische batch en bronreview aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "technical",
+      "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
+      "status": "pass",
+      "detail": "Definitiepositie=2280209, aanroeppositie=7158965.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "graafversie is gelijk aan de applicatieversie",
+      "status": "pass",
+      "detail": "Versie 18.18.0.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "alle grote inhoudsbanken zijn verbonden",
+      "status": "pass",
+      "detail": "24432 nodes en 80099 relaties.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "alle relaties verwijzen naar bestaande nodes",
+      "status": "pass",
+      "detail": "Geen gebroken relaties.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "lexicale reviewwachtrij is volledig en controleerbaar",
+      "status": "pass",
+      "detail": "79 werkwoorden in de wachtrij.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "de graaf is geïntegreerd zonder bestaande routes te vervangen",
+      "status": "pass",
+      "detail": "Aparte, lui geladen kennisgraafpagina aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "de graaf werkt ook bij rechtstreeks openen vanaf schijf",
+      "status": "pass",
+      "detail": "Lui geladen JavaScript-fallback voor file:// aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "content-quality",
+      "check": "geen TODO- of placeholdertekst in gepubliceerde inhoud",
+      "status": "pass",
+      "detail": "Geen placeholders gevonden.",
+      "evidence": null
+    }
+  ]
+}

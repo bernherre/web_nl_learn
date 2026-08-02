@@ -16,8 +16,8 @@ export const a0Themes = [
     ],
     vocabulary: [
       ['hallo', 'Een gewone begroeting voor bijna elke situatie.', 'Hallo, hoe gaat het?'],
-      ['goedemorgen', 'Een begroeting die je vanaf het begin van de dag tot ongeveer twaalf uur gebruikt.', 'Goedemorgen, mevrouw De Vries. Heeft u goed geslapen?'],
-      ['goedemiddag', 'Een begroeting die je na twaalf uur en vóór de avond gebruikt.', 'Goedemiddag, welkom bij de gemeente. Waarmee kan ik u helpen?'],
+      ['goedemorgen', 'Een begroeting in de ochtend.', 'Goedemorgen, mevrouw.'],
+      ['goedemiddag', 'Een begroeting in de middag.', 'Goedemiddag, welkom.'],
       ['goedenavond', 'Een begroeting in de avond.', 'Goedenavond, alles goed?'],
       ['dank je wel', 'Een informele manier om iemand te bedanken.', 'Dank je wel voor je hulp.'],
       ['dank u wel', 'Een beleefde manier om iemand te bedanken.', 'Dank u wel, meneer.'],
@@ -66,9 +66,9 @@ export const a0Themes = [
       ['ik heet', 'Een korte manier om je naam te noemen.', 'Ik heet Amir.'],
       ['hoe heet je?', 'Een informele vraag naar iemands naam.', 'Hoi, hoe heet je?'],
       ['hoe heet u?', 'Een beleefde vraag naar iemands naam.', 'Goedemiddag, hoe heet u?'],
-      ['ik kom uit', 'Met deze woorden vertel je uit welk land, welke stad of welke plaats je afkomstig bent.', 'Ik kom uit Colombia, maar ik woon nu in Eindhoven.'],
-      ['ik woon in', 'Met deze woorden vertel je in welke plaats, straat of woning je huis is.', 'Ik woon in Eindhoven, vlak bij het station.'],
-      ['ik spreek', 'Met deze woorden vertel je welke taal je mondeling kunt gebruiken.', 'Ik spreek Spaans en Engels en ik leer nu Nederlands.'],
+      ['ik kom uit', 'Een vaste combinatie voor je land of plaats van herkomst.', 'Ik kom uit Colombia.'],
+      ['ik woon in', 'Een vaste combinatie voor je woonplaats.', 'Ik woon in Eindhoven.'],
+      ['ik spreek', 'Een vaste combinatie om een taal te noemen.', 'Ik spreek Spaans en Engels.'],
       ['aangenaam', 'Een beleefde reactie wanneer je iemand ontmoet.', 'Aangenaam, ik ben Noor.']
     ],
     wordGroups: {
@@ -111,9 +111,9 @@ export const a0Themes = [
     vocabulary: [
       ['ik begrijp het niet', 'Je zegt dat de betekenis niet duidelijk is.', 'Sorry, ik begrijp het niet.'],
       ['nog een keer', 'Een verzoek om iets te herhalen.', 'Kunt u dat nog een keer zeggen?'],
-      ['langzamer, alstublieft', 'Een beleefd verzoek aan iemand om minder snel te spreken.', 'Kunt u iets langzamer spreken, alstublieft?'],
-      ['wat betekent dat?', 'Een vraag waarmee je om uitleg van een onbekend woord, teken of zin vraagt.', 'Ik ken het woord afspraak niet. Wat betekent dat?'],
-      ['kunt u mij helpen?', 'Een beleefde vraag waarmee je iemand vraagt iets voor je te doen of uit te leggen.', 'Pardon, kunt u mij helpen met deze automaat?'],
+      ['langzamer, alstublieft', 'Een verzoek om minder snel te spreken.', 'Langzamer, alstublieft.'],
+      ['wat betekent dat?', 'Een vraag naar de betekenis van een woord of zin.', 'Wat betekent dat?'],
+      ['kunt u mij helpen?', 'Een beleefde vraag om hulp.', 'Kunt u mij helpen?'],
       ['waar is ...?', 'Een basisvraag naar een plaats.', 'Waar is het station?'],
       ['ik zoek ...', 'Een vaste zin wanneer je iets nodig hebt.', 'Ik zoek de uitgang.'],
       ['sorry', 'Een woord om beleefd aandacht te vragen of je te verontschuldigen.', 'Sorry, waar is de bushalte?']
@@ -156,10 +156,10 @@ export const a0Themes = [
       'Ik kan een eenvoudige basisbehoefte uitspreken.'
     ],
     vocabulary: [
-      ['ja', 'Een positief antwoord waarmee je instemt of bevestigt dat iets klopt.', 'Wilt u koffie? Ja, graag.'],
+      ['ja', 'Een positief antwoord.', 'Ja, graag.'],
       ['nee', 'Een negatief antwoord.', 'Nee, dank u.'],
-      ['hoeveel kost het?', 'Een vraag waarmee je wilt weten welke prijs je voor iets moet betalen.', 'Deze jas heeft geen prijskaartje. Hoeveel kost hij?'],
-      ['hoe laat is het?', 'Een vraag waarmee je naar het huidige tijdstip vraagt.', 'Mijn telefoon is leeg. Weet u hoe laat het is?'],
+      ['hoeveel kost het?', 'Een vraag naar de prijs.', 'Hoeveel kost het?'],
+      ['hoe laat is het?', 'Een vraag naar de tijd.', 'Hoe laat is het?'],
       ['ik wil graag ...', 'Een beleefde manier om iets te vragen.', 'Ik wil graag water.'],
       ['waar is het toilet?', 'Een basisvraag naar het toilet.', 'Pardon, waar is het toilet?'],
       ['ik heb een probleem', 'Een korte zin om aan te geven dat iets niet goed gaat.', 'Ik heb een probleem met mijn kaart.'],

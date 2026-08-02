@@ -1,12 +1,13 @@
-const CACHE = 'nederlands-gewoon-doen-v19-0-2';
+const CACHE = 'nederlands-gewoon-doen-v18-18-0';
+const APP_VERSION = '18.18.0';
 const CORE = [
-  './', './index.html', './offline.html', './manifest.webmanifest',
-  './css/styles.css', './css/tokens.css', './css/themes.css', './css/typography.css', './css/accessibility.css', './js/app.js',
+  './', './index.html', `./css/styles.css?v=${APP_VERSION}`, `./js/app.js?v=${APP_VERSION}`,
   './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
-  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js',
-  './js/exercises.js',
-  './js/profiles.js', './js/verb-atlas.js', './js/verb-details.js',
-  './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg', './images/numbers-time-map.svg', './images/math-map.svg', './images/lesson-thuiswerken.svg',
+  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js',
+  './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js', './js/source-review-content.js', './js/exercises.js',
+  './js/profiles.js', './js/verb-atlas.js', './js/verb-corrections.js', './js/verb-core-review.js', './js/verb-initial-review.js', './js/knowledge-graph.js',
+  './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg',
+  './images/numbers-time-map.svg', './images/math-map.svg', './images/lesson-thuiswerken.svg',
   './images/woord-huis.svg', './images/woord-fiets.svg', './images/woord-appel.svg',
   './images/woord-kantoor.svg', './images/woord-trein.svg', './images/woord-huisarts.svg',
   './images/woord-school.svg', './images/woord-regen.svg', './images/woord-koffie.svg',
@@ -20,33 +21,53 @@ const CORE = [
   './images/theme-literatuur.svg', './images/theme-omgeving.svg'
 ];
 
+async function putInCache(request, response) {
+  if (!response || !response.ok) return response;
+  const cache = await caches.open(CACHE);
+  await cache.put(request, response.clone());
+  return response;
+}
+
+async function networkFirst(request, fallback = null) {
+  try {
+    return await putInCache(request, await fetch(request));
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    if (fallback) return caches.match(fallback);
+    throw new Error('Netwerk en cache zijn niet beschikbaar.');
+  }
+}
+
+async function staleWhileRevalidate(request) {
+  const cached = await caches.match(request);
+  const update = fetch(request).then((response) => putInCache(request, response)).catch(() => null);
+  return cached || update;
+}
+
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE)));
   self.skipWaiting();
 });
 
 self.addEventListener('activate', (event) => {
-  event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key)))));
+  event.waitUntil(
+    caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))
+  );
   self.clients.claim();
 });
 
 self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
-  if (event.request.mode === 'navigate') {
-    event.respondWith(fetch(event.request).then((response) => {
-      const copy = response.clone();
-      caches.open(CACHE).then((cache) => cache.put(event.request, copy));
-      return response;
-    }).catch(() => caches.match(event.request).then((cached) => cached || caches.match('./offline.html'))));
-    return;
-  }
-  event.respondWith(caches.match(event.request).then((cached) => {
-    const network = fetch(event.request).then((response) => {
-      if (response.ok) caches.open(CACHE).then((cache) => cache.put(event.request, response.clone()));
-      return response;
-    }).catch(() => cached);
-    return cached || network;
-  }));
-});
+  const url = new URL(event.request.url);
+  if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
 
-// v18 compatibility marker: verb-details.js remains available offline.
+  const isShellAsset = event.request.mode === 'navigate'
+    || ['script', 'style', 'document'].includes(event.request.destination)
+    || /\.(?:html|css|js)$/u.test(url.pathname);
+
+  event.respondWith(
+    isShellAsset
+      ? networkFirst(event.request, event.request.mode === 'navigate' ? './index.html' : null)
+      : staleWhileRevalidate(event.request)
+  );
+});

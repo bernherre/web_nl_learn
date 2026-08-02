@@ -21,3 +21,18 @@ A copy of the applicable license is included in data/OpenTaal-LICENSE.txt.
 The verb atlas is an adaptation generated from curated verb roots, morphological
 rules and spelling validation; it is not a reproduction of Van Dale content.
 
+Pattern Dutch verb morphology
+-----------------------------
+The file data/sources/pattern-nl-verbs.txt is derived from the Dutch verb
+resource distributed with Pattern by the University of Antwerp. It is used
+only as a morphology comparison source for the manually written core review.
+Pattern is distributed under the BSD 3-Clause license. A copy is included in
+data/Pattern-LICENSE.txt.
+Source repository: https://github.com/clips/pattern
+
+Supplied pedagogical photographs
+--------------------------------
+The 57 supplied reference photographs are not redistributed in this project.
+They were used only to audit topic coverage. New explanations, examples,
+answers and exercises in js/source-review-content.js were written independently.
+

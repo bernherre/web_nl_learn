@@ -9,7 +9,7 @@ async function read(path) { return readFile(new URL(path, root), 'utf8'); }
 
 test('V16 voegt brede grammatica-oefeningen toe zonder alleen het totaal te verhogen', () => {
   assert.equal(advancedExerciseBank.length, 3950);
-  assert.equal(exerciseBank.length, 8000);
+  assert.equal(exerciseBank.length, 8024);
   const requiredTopics = [
     'bijwoorden', 'connectors', 'connectors en signaalwoorden', 'vaste voorzetsels',
     'scheidbare werkwoorden', 'werkwoordstijden', 'condities', 'hypothetische condities',

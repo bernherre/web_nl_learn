@@ -8,6 +8,16 @@ Bouwt `js/app.js`, zodat de statische web ook zonder modules en via een eenvoudi
 npm run build
 ```
 
+## `generate-initial-verb-review.mjs`
+
+Genereert de eerste alfabetische reviewbatch uit `data/initial-verb-definitions.json`. Het script valideert definities, synoniemen, voorbeelden, vervoegingen, scheidbaarheid en reviewmetadata voordat `js/verb-initial-review.js` wordt geschreven.
+
+```bash
+npm run generate:verbs
+```
+
+De generator weigert bekende foutpatronen, waaronder onmogelijke `geaan...`-participia en foutieve persoonsvormen bij onregelmatige `aan-`-werkwoorden.
+
 ## `generate_verb_atlas.py`
 
 Genereert de grote werkwoordenatlas uit gecureerde basisvormen, Nederlandse morfologische regels en een externe OpenTaal-woordenlijst voor spellingsvalidatie.
