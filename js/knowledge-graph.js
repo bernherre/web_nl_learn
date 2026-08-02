@@ -3,7 +3,7 @@ const KNOWLEDGE_GRAPH_SCRIPT_URL = './data/content-knowledge-graph.js';
 
 const graphTypeLabels = {
   graph_root: 'Overzicht', source_collection: 'Collectie', level: 'Niveau', theme: 'Thema', spiral_theme: 'Spiraalthema', term: 'Term', vocabulary: 'Woordenschat',
-  grammar: 'Grammatica', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
+  grammar: 'Grammatica', grammar_focus: 'Curriculumfocus', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
   technical_concept: 'Vakbegrip', professional_concept: 'Professioneel begrip', listening: 'Luisteren', reading: 'Lezen', writing: 'Schrijven',
   logic_relation: 'Logische relatie', verb: 'Werkwoord', sense: 'Betekenis', usage: 'Gebruik', example: 'Voorbeeld', synonym_term: 'Synoniem',
   exercise: 'Oefening', practice: 'Mini-oefening', exercise_topic: 'Oefeningsthema', exercise_type: 'Oefeningstype', reference_group: 'Naslaggroep', category: 'Categorie', domain: 'Domein', issue: 'Controlepunt', known_error: 'Veelgemaakte fout',
@@ -14,14 +14,14 @@ const graphRelationLabels = {
   has_level: 'niveau', contains_term: 'bevat', teaches_word: 'leert', used_in_theme: 'gebruikt in thema', documents_error: 'beschrijft fout',
   has_part: 'onderdeel', has_semantic_domain: 'betekenisdomein', uses_auxiliary: 'hulpwerkwoord', has_regularity: 'vervoeging',
   requires_preposition: 'vaste prepositie', has_issue: 'controlepunt', has_sense: 'betekenis', has_usage: 'gebruik', has_example: 'voorbeeld',
-  has_synonym: 'synoniem', used_in_content: 'komt voor in', practises_topic: 'oefent thema', has_exercise_type: 'oefeningstype',
+  has_synonym: 'synoniem', used_in_content: 'komt voor in', uses_grammar_focus: 'grammaticafocus', refines_grammar: 'uitwerking van', applies_grammar: 'past grammatica toe', practises_topic: 'oefent thema', has_exercise_type: 'oefeningstype',
   practised_by: 'geoefend in', related_to: 'verbonden met', has_level_variant: 'niveauvariant', has_category: 'categorie', has_collection: 'collectie', part_of_collection: 'broncollectie',
 };
 
 const graphModeRelations = {
   all: null,
   synonyms: new Set(['has_sense', 'has_synonym', 'has_usage', 'has_example']),
-  usage: new Set(['used_in_theme', 'used_in_content', 'practised_by', 'requires_preposition', 'has_semantic_domain', 'has_usage', 'has_example']),
+  usage: new Set(['used_in_theme', 'used_in_content', 'uses_grammar_focus', 'refines_grammar', 'applies_grammar', 'practised_by', 'requires_preposition', 'has_semantic_domain', 'has_usage', 'has_example']),
   issues: new Set(['has_issue', 'documents_error']),
   exercises: new Set(['practised_by', 'practises_topic', 'has_exercise_type']),
 };
@@ -79,7 +79,7 @@ async function readKnowledgeGraph() {
 
 function routeForNode(node) {
   const routes = {
-    verb: 'werkwoorden', grammar: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
+    verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
     vocabulary: 'woordenschat', listening: 'luisteren', reading: 'lezen-schrijven', writing: 'lezen-schrijven', exercise: 'oefenen',
     technical_concept: node?.source === 'software' ? 'software' : node?.source === 'natuurkunde' ? 'natuurkunde' : 'wiskunde',
     professional_concept: 'vaklexicon', theme: node?.level?.toLocaleLowerCase('nl-NL'), level: node?.label?.toLocaleLowerCase('nl-NL'),
@@ -134,7 +134,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } 
   }
 
   function sortedResults() {
-    const priority = { issue: 0, verb: 1, sense: 2, usage: 3, theme: 4, grammar: 5, structure: 6, exercise: 8 };
+    const priority = { issue: 0, verb: 1, sense: 2, usage: 3, theme: 4, grammar: 5, grammar_focus: 6, question_topic: 7, structure: 8, exercise: 9 };
     return graph.nodes.filter(matchesFilters).sort((a, b) => {
       const selectedDelta = Number(b.id === selectedId) - Number(a.id === selectedId);
       if (selectedDelta) return selectedDelta;
@@ -159,7 +159,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } 
   function populateFilters() {
     const el = elements();
     if (!el.type || el.type.options.length > 1) return;
-    const preferred = ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'grammar', 'structure', 'vocabulary', 'exercise', 'issue'];
+    const preferred = ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'grammar', 'grammar_focus', 'question_topic', 'structure', 'vocabulary', 'exercise', 'issue'];
     const types = Object.keys(graph.metadata.typeCounts).sort((a, b) => {
       const ai = preferred.indexOf(a); const bi = preferred.indexOf(b);
       return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi) || (graphTypeLabels[a] || a).localeCompare(graphTypeLabels[b] || b, 'nl');

@@ -1,8 +1,8 @@
-/* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */
+/* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, c1-c2-language-systems.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */
 (function () {
 'use strict';
-const APP_VERSION = '19.3.0-rc.3';
-const APP_RELEASE = 'V19.3 RC3';
+const APP_VERSION = '19.3.0-rc.5';
+const APP_RELEASE = 'V19.3 RC5';
 
 const GENERIC_DEFINITION_PATTERNS = [
   /^Het werkwoord beschrijft vooral/u,
@@ -4445,7 +4445,7 @@ const supplementaryWordGroups = {
 };
 
 // Original question-system content for the Dutch-learning application.
-// The examples are written for this project and organised from A1 to B2.
+// The examples are written for this project and organised from A1 to B2; C1-C2 extensions live in c1-c2-language-systems.js.
 
 const questionTopics = [
   {
@@ -4672,16 +4672,16 @@ const pronominalAdverbs = [
 ];
 
 const questionPractice = [
-  { id: 'q1', level: 'A1', prompt: 'Maak een ja/nee-vraag van: “Je woont in Waalre.”', options: ['Woon je in Waalre?', 'Waar je woont in Waalre?', 'Je woont waar in Waalre?'], answer: 0, explanation: 'Een ja/nee-vraag begint met de persoonsvorm: Woon + je.', audio: 'Woon je in Waalre?' },
-  { id: 'q2', level: 'A1', prompt: 'Je wilt de kloktijd weten.', options: ['Hoe lang begint de les?', 'Hoe laat begint de les?', 'Wanneer lang begint de les?'], answer: 1, explanation: 'Hoe laat vraagt naar een kloktijd.', audio: 'Hoe laat begint de les?' },
-  { id: 'q3', level: 'A2', prompt: 'Kies de vraag bij “het boek”.', options: ['Welke boek lees je?', 'Welk boek lees je?', 'Wat voor een boek lees je?'], answer: 1, explanation: 'Boek is een het-woord, dus: welk boek.', audio: 'Welk boek lees je?' },
-  { id: 'q4', level: 'A2', prompt: 'Vraag beleefd of iemand de zin kan herhalen.', options: ['Herhaal de zin.', 'Zou u de zin kunnen herhalen?', 'U herhaalt de zin?'], answer: 1, explanation: 'Zou u … kunnen is een zachte, beleefde vraag.', audio: 'Zou u de zin kunnen herhalen?' },
-  { id: 'q5', level: 'B1', prompt: 'Je vraagt naar het instrument waarmee iemand schrijft.', options: ['Met wie schrijf je?', 'Waarmee schrijf je?', 'Waar schrijf je?'], answer: 1, explanation: 'Voor een zaak combineer je waar + mee: waarmee.', audio: 'Waarmee schrijf je?' },
-  { id: 'q6', level: 'B1', prompt: 'Maak de indirecte vraag correct.', options: ['Weet je waar is de halte?', 'Weet je waar de halte is?', 'Weet je de halte waar is?'], answer: 1, explanation: 'In een indirecte vraag staat de persoonsvorm aan het einde van de bijzin.', audio: 'Weet je waar de halte is?' },
-  { id: 'q7', level: 'B1', prompt: 'Je vraagt naar een persoon.', options: ['Waarmee werk je samen?', 'Met wie werk je samen?', 'Ermee wie werk je samen?'], answer: 1, explanation: 'Bij een persoon is met wie de duidelijke vorm.', audio: 'Met wie werk je samen?' },
-  { id: 'q8', level: 'B1', prompt: 'Vervang “op de uitslag” door een neutrale verwijzing.', options: ['Ik wacht daarop de uitslag.', 'Ik wacht erop.', 'Ik wacht op er.'], answer: 1, explanation: 'Op de uitslag wordt erop.', audio: 'Ik wacht erop.' },
-  { id: 'q9', level: 'B2', prompt: 'Kies de professioneel genuanceerde vraag.', options: ['Waarom is dit zo?', 'Kun je toelichten waarop deze keuze is gebaseerd?', 'Zeg waarop dit is gebaseerd.'], answer: 1, explanation: 'De vraag is beleefd, precies en gebruikt de juiste indirecte structuur.', audio: 'Kun je toelichten waarop deze keuze is gebaseerd?' },
-  { id: 'q10', level: 'B2', prompt: 'Kies de correcte relatieve vorm.', options: ['De pen met wat ik schrijf.', 'De pen waarmee ik schrijf.', 'De pen ermee ik schrijf.'], answer: 1, explanation: 'Waarmee verbindt de bijzin met de genoemde zaak: de pen.', audio: 'De pen waarmee ik schrijf ligt hier.' },
+  { id: 'q1', topic: 'ja-nee-vragen', level: 'A1', prompt: 'Maak een ja/nee-vraag van: “Je woont in Waalre.”', options: ['Woon je in Waalre?', 'Waar je woont in Waalre?', 'Je woont waar in Waalre?'], answer: 0, explanation: 'Een ja/nee-vraag begint met de persoonsvorm: Woon + je.', audio: 'Woon je in Waalre?' },
+  { id: 'q2', topic: 'hoe-combinaties', level: 'A1', prompt: 'Je wilt de kloktijd weten.', options: ['Hoe lang begint de les?', 'Hoe laat begint de les?', 'Wanneer lang begint de les?'], answer: 1, explanation: 'Hoe laat vraagt naar een kloktijd.', audio: 'Hoe laat begint de les?' },
+  { id: 'q3', topic: 'welk-welke-wat-voor', level: 'A2', prompt: 'Kies de vraag bij “het boek”.', options: ['Welke boek lees je?', 'Welk boek lees je?', 'Wat voor een boek lees je?'], answer: 1, explanation: 'Boek is een het-woord, dus: welk boek.', audio: 'Welk boek lees je?' },
+  { id: 'q4', topic: 'beleefde-vragen', level: 'A2', prompt: 'Vraag beleefd of iemand de zin kan herhalen.', options: ['Herhaal de zin.', 'Zou u de zin kunnen herhalen?', 'U herhaalt de zin?'], answer: 1, explanation: 'Zou u … kunnen is een zachte, beleefde vraag.', audio: 'Zou u de zin kunnen herhalen?' },
+  { id: 'q5', topic: 'waar-voorzetsel', level: 'B1', prompt: 'Je vraagt naar het instrument waarmee iemand schrijft.', options: ['Met wie schrijf je?', 'Waarmee schrijf je?', 'Waar schrijf je?'], answer: 1, explanation: 'Voor een zaak combineer je waar + mee: waarmee.', audio: 'Waarmee schrijf je?' },
+  { id: 'q6', topic: 'indirecte-vragen', level: 'B1', prompt: 'Maak de indirecte vraag correct.', options: ['Weet je waar is de halte?', 'Weet je waar de halte is?', 'Weet je de halte waar is?'], answer: 1, explanation: 'In een indirecte vraag staat de persoonsvorm aan het einde van de bijzin.', audio: 'Weet je waar de halte is?' },
+  { id: 'q7', topic: 'personen-en-zaken', level: 'B1', prompt: 'Je vraagt naar een persoon.', options: ['Waarmee werk je samen?', 'Met wie werk je samen?', 'Ermee wie werk je samen?'], answer: 1, explanation: 'Bij een persoon is met wie de duidelijke vorm.', audio: 'Met wie werk je samen?' },
+  { id: 'q8', topic: 'waar-daar-er-hier', level: 'B1', prompt: 'Vervang “op de uitslag” door een neutrale verwijzing.', options: ['Ik wacht daarop de uitslag.', 'Ik wacht erop.', 'Ik wacht op er.'], answer: 1, explanation: 'Op de uitslag wordt erop.', audio: 'Ik wacht erop.' },
+  { id: 'q9', topic: 'vragen-nuanceren', level: 'B2', prompt: 'Kies de professioneel genuanceerde vraag.', options: ['Waarom is dit zo?', 'Kun je toelichten waarop deze keuze is gebaseerd?', 'Zeg waarop dit is gebaseerd.'], answer: 1, explanation: 'De vraag is beleefd, precies en gebruikt de juiste indirecte structuur.', audio: 'Kun je toelichten waarop deze keuze is gebaseerd?' },
+  { id: 'q10', topic: 'relatieve-waarvormen', level: 'B2', prompt: 'Kies de correcte relatieve vorm.', options: ['De pen met wat ik schrijf.', 'De pen waarmee ik schrijf.', 'De pen ermee ik schrijf.'], answer: 1, explanation: 'Waarmee verbindt de bijzin met de genoemde zaak: de pen.', audio: 'De pen waarmee ik schrijf ligt hier.' },
 ];
 
 // A0-instaproute: minimale taal om vanaf de eerste minuut contact te maken.
@@ -7157,6 +7157,438 @@ const sourceReviewExercises = [
   { id: 'bron-b1-leenwerkwoord-01', level: 'B1', difficulty: 4, skill: 'grammatica', topic: 'leenwerkwoorden', type: 'input', prompt: 'Vul aan: We hebben de software ___. (updaten)', answer: 'geüpdatet', explanation: 'Het Nederlandse deelwoord krijgt ge- en -t; de trema houdt de klinkers leesbaar.' },
   { id: 'bron-b1-leenwerkwoord-02', level: 'B1', difficulty: 4, skill: 'grammatica', topic: 'leenwerkwoorden', type: 'input', prompt: 'Vul aan: Gisteren ___ zij de vergadering. (plannen)', answer: 'plande', explanation: 'Plannen heeft de stam plan en krijgt in het verleden -de: plande.' },
   { id: 'bron-b1-register-01', level: 'B1', difficulty: 4, skill: 'schrijven', topic: 'grammaticale uitleg', type: 'selfcheck', prompt: 'Leg in twee eigen zinnen het verschil uit tussen “ik heb gefietst” en “ik ben naar huis gefietst”.', modelAnswer: '“Ik heb gefietst” benadrukt de activiteit. “Ik ben naar huis gefietst” benadrukt de bestemming.', explanation: 'Een goede uitleg benoemt zowel de activiteit als de gerichte verplaatsing.' },
+];
+
+// C1-C2 grammar and question systems aligned with the advanced spiral curriculum.
+// Each canonical module groups the recurring structures from the nine C1/C2 themes.
+
+const c1c2GrammarTopics = [
+  {
+    id: 'c1-bronmarkering-evidentialiteit', level: 'C1', title: 'Bronmarkering en evidentialiteit',
+    summary: 'Maak zichtbaar van wie informatie afkomstig is en hoe direct of zeker de bron is.',
+    rule: 'bronformule + bewering: volgens X, naar verluidt, uit onderzoek blijkt dat, X zou ...',
+    examples: ['Volgens de bewoners neemt de drukte toe.', 'Naar verluidt wordt het voorstel volgende maand aangepast.', 'Uit meerdere onderzoeken blijkt dat de maatregel beperkt effect heeft.', 'De organisatie zou de cijfers te laat hebben gedeeld.'],
+    connections: ['Argumentatie', 'Indirecte rede', 'Epistemische modaliteit', 'Academisch schrijven'],
+    sections: [
+      { title: 'Expliciete bron', items: ['volgens + persoon of bron', 'uit het rapport blijkt dat ...', 'de auteur stelt/betoogt/constateert dat ...'] },
+      { title: 'Niet-bevestigde informatie', items: ['naar verluidt', 'X zou ...', 'er gaan berichten dat ...'] },
+      { title: 'Afstand en verantwoordelijkheid', items: ['Markeer duidelijk wat de bron beweert en wat je zelf concludeert.', 'Gebruik “zou” niet als algemene verleden tijd.'] },
+    ],
+    contrasts: ['Volgens de onderzoekers ... ↔ De onderzoekers bewijzen ...', 'Het bedrijf zou reorganiseren. ↔ Het bedrijf reorganiseert.'],
+    mistakes: ['Een bronformule maakt een bewering niet automatisch betrouwbaar; zij maakt alleen de herkomst zichtbaar.'],
+    aliases: ['bronmarkering met volgens, naar verluidt en uit onderzoek blijkt', 'citerend en parafraserend brongebruik', 'epistemische positionering in academische interpretatie'],
+  },
+  {
+    id: 'c1-epistemische-modaliteit', level: 'C1', title: 'Zekerheid, waarschijnlijkheid en voorbehoud',
+    summary: 'Doseer zekerheid met werkwoorden, bijwoorden en constructies die bewijs, inschatting of twijfel markeren.',
+    rule: 'claim + passende zekerheidsmarkeerder: blijkt, lijkt, vermoedelijk, aannemelijk, mogelijk, niet uit te sluiten',
+    examples: ['De maatregel blijkt minder effectief dan verwacht.', 'Het verband lijkt aannemelijk, maar is nog niet aangetoond.', 'Een tijdelijke stijging valt niet uit te sluiten.', 'De uitkomst is vermoedelijk mede door selectie beïnvloed.'],
+    connections: ['Bronmarkering', 'Nuance', 'Wetenschappelijke stijl', 'Modaliteit'],
+    sections: [
+      { title: 'Sterke aanwijzing', items: ['blijken uit', 'duiden op', 'er zijn sterke aanwijzingen dat'] },
+      { title: 'Voorzichtige inschatting', items: ['lijken', 'vermoedelijk', 'aannemelijk', 'waarschijnlijk'] },
+      { title: 'Open mogelijkheid', items: ['mogelijk', 'wellicht', 'niet uit te sluiten', 'kan erop wijzen dat'] },
+    ],
+    contrasts: ['Het is zo. ↔ Het lijkt erop dat ...', 'Dit bewijst X. ↔ Dit ondersteunt de hypothese dat X.'],
+    mistakes: ['Combineer geen tegenstrijdige markeerders zoals “zeker vermoedelijk” zonder retorische bedoeling.'],
+    aliases: ['voorzichtig formuleren met lijken, blijken en in zekere mate', 'gradaties van zekerheid met vermoedelijk, aannemelijk en niet uit te sluiten', 'voorbehoud bij causaliteit en generalisatie'],
+  },
+  {
+    id: 'c1-concessie-correctie', level: 'C1', title: 'Concessie, correctie en begrenzing',
+    summary: 'Erken een geldig punt, begrens het en formuleer daarna het eigenlijke standpunt.',
+    rule: 'weliswaar X, maar Y · niet zozeer X als wel Y · voor zover X, geldt Y · dat neemt niet weg dat Y',
+    examples: ['Weliswaar is de campagne zichtbaarder, maar de toegankelijkheid blijft beperkt.', 'Het probleem is niet zozeer de prijs als wel de onduidelijke informatie.', 'Voor zover de gegevens vergelijkbaar zijn, zien we een lichte verbetering.', 'Dat neemt niet weg dat aanvullende maatregelen nodig zijn.'],
+    connections: ['Argumentatie', 'Contrast', 'Nuance', 'Tekstopbouw'],
+    sections: [
+      { title: 'Concessie', items: ['weliswaar ... maar', 'hoewel ... toch', 'ook al ...'] },
+      { title: 'Herformulering', items: ['niet zozeer ... als wel', 'eerder ... dan', 'met andere woorden'] },
+      { title: 'Begrenzing', items: ['voor zover', 'in zoverre', 'binnen de beschikbare gegevens'] },
+    ],
+    contrasts: ['X is fout. ↔ X is begrijpelijk, maar onvoldoende onderbouwd.', 'Niet X, maar Y. ↔ Niet zozeer X als wel Y.'],
+    mistakes: ['Na “weliswaar” moet het contrasterende tweede deel inhoudelijk duidelijk zijn.'],
+    aliases: ['concessie en correctie: weliswaar...maar, niet zozeer...als wel', 'discourse markers voor herstel, begrenzing en herformulering', 'argumentatieve signaalwoorden voor afweging en aanbeveling', 'modale verzachting en empathische parafrase'],
+  },
+  {
+    id: 'c1-nominalisatie-verdichting', level: 'C1', title: 'Nominalisatie en informatiedichtheid',
+    summary: 'Verdicht processen tot naamwoordgroepen, maar wissel af met actieve zinnen om leesbaarheid te behouden.',
+    rule: 'werkwoordelijke formulering ↔ nominale formulering: men onderzoekt X ↔ het onderzoek naar X',
+    examples: ['De invoering van de regeling leidde tot een daling van het verbruik.', 'Na beoordeling van de aanvragen volgt een schriftelijk besluit.', 'De door de commissie voorgestelde aanpassing blijft omstreden.', 'We beoordelen de aanvragen eerst; daarna nemen we een besluit.'],
+    connections: ['Formele stijl', 'Deelwoordconstructies', 'Tekstsamenhang', 'Beleidsregister'],
+    sections: [
+      { title: 'Proces als naamwoord', items: ['invoeren → de invoering', 'beoordelen → de beoordeling', 'toenemen → de toename'] },
+      { title: 'Deelwoordconstructie', items: ['de door de raad vastgestelde norm', 'rekening houdend met de kosten', 'gebaseerd op drie onderzoeken'] },
+      { title: 'Leesbaarheid', items: ['Beperk lange stapelingen.', 'Herstel een duidelijke handelende persoon wanneer verantwoordelijkheid belangrijk is.'] },
+    ],
+    contrasts: ['De gemeente besloot ... ↔ Het besluit van de gemeente ...', 'Na de evaluatie ... ↔ Nadat we het plan hadden geëvalueerd ...'],
+    mistakes: ['Een nominalisatie is niet automatisch formeler of beter; te veel nominalisaties verbergen handelingen en actoren.'],
+    aliases: ['informatie verdichten met nominalisaties en deelwoordconstructies', 'nominale beleidsstijl afgewisseld met actieve formuleringen', 'afstandelijke rapportage en samenvatting'],
+  },
+  {
+    id: 'c1-complexe-voorwaarden-scenarios', level: 'C1', title: 'Complexe voorwaarden en scenario’s',
+    summary: 'Formuleer reële, hypothetische en begrensde voorwaarden met nauwkeurige modaliteit.',
+    rule: 'indien/mits/tenzij/mocht/voor zover/behoudens + voorwaarde; gevolg met zal, kan, zou of dient te',
+    examples: ['Indien de vraag stijgt, wordt de capaciteit uitgebreid.', 'Mocht de financiering wegvallen, dan wordt het project herzien.', 'De regeling geldt, behoudens wettelijke uitzonderingen.', 'Verdichting is verdedigbaar, mits de leefkwaliteit gewaarborgd blijft.'],
+    connections: ['Voorwaarden', 'Modaliteit', 'Beleidsstijl', 'Contrafactualiteit'],
+    sections: [
+      { title: 'Formele voorwaarde', items: ['indien', 'mits', 'op voorwaarde dat'] },
+      { title: 'Mogelijk toekomstscenario', items: ['mocht ... dan', 'in het geval dat', 'bij een verdere stijging'] },
+      { title: 'Beperking en uitzondering', items: ['tenzij', 'behoudens', 'voor zover'] },
+    ],
+    contrasts: ['Als het gebeurt ... ↔ Mocht het gebeuren ...', 'mits = alleen als ↔ tenzij = behalve als'],
+    mistakes: ['“Mits” introduceert een noodzakelijke voorwaarde en kan niet als neutraal synoniem van “als” worden gebruikt.'],
+    aliases: ['hypothetische gevolgen met mocht, zou en indien', 'voorwaardelijke beperkingen met tenzij, behoudens en voor zover', 'juridische voorwaarden en uitzonderingen', 'scenarioformulering met bandbreedtes en voorwaarden', 'contrafactische reflectie op verleden keuzes'],
+  },
+  {
+    id: 'c1-verwijzing-cohesie', level: 'C1', title: 'Abstracte verwijzing en tekstcohesie',
+    summary: 'Verbind langere redeneringen met precieze verwijzingen naar eerdere beweringen, processen en tekstgedeelten.',
+    rule: 'verwijs naar een eerdere inhoud met dit/dat, hetgeen, daarbij, hierin, dienovereenkomstig of een hernomen kernwoord',
+    examples: ['De vraag bleef onbeantwoord, hetgeen het vertrouwen verder schaadde.', 'De norm wordt aangescherpt; daarbij geldt een overgangstermijn.', 'Deze aanname is problematisch. Hierop komen we later terug.', 'De auteur introduceert eerst schaarste en werkt dit motief vervolgens verder uit.'],
+    connections: ['Voornaamwoordelijke bijwoorden', 'Betrekkelijke bijzinnen', 'Lexicale ketens', 'Tekstsamenhang'],
+    sections: [
+      { title: 'Verwijzing naar een hele zin', items: ['hetgeen', 'wat', 'dit', 'dat'] },
+      { title: 'Logische voortzetting', items: ['daarbij', 'hierop', 'daaruit', 'dienovereenkomstig'] },
+      { title: 'Lexicale keten', items: ['Herhaal niet mechanisch; wissel kernwoord, hyperoniem en passende verwijzing af.'] },
+    ],
+    contrasts: ['wat = vaak neutraler/spreektaal ↔ hetgeen = formeel en schriftelijk', 'daarbij = toevoeging ↔ daardoor = gevolg'],
+    mistakes: ['Een verwijswoord is alleen duidelijk als de lezer zonder twijfel kan bepalen waarnaar het verwijst.'],
+    aliases: ['samengestelde verwijzingen met hetgeen, daarbij en dienovereenkomstig', 'thematische samenhang door lexicale ketens en verwijzing', 'definiërende en uitbreidende betrekkelijke bijzinnen'],
+  },
+  {
+    id: 'c1-passief-onpersoonlijk-beleid', level: 'C1', title: 'Passieve, onpersoonlijke en beleidsmatige formuleringen',
+    summary: 'Kies bewust tussen actieve verantwoordelijkheid, passieve focus en onpersoonlijke algemene geldigheid.',
+    rule: 'actief: actor + handeling · passief: worden/zijn + deelwoord · onpersoonlijk: er/men + werkwoord · beleid: dienen te/beogen/voorzien in',
+    examples: ['De commissie beoordeelt de aanvragen.', 'De aanvragen worden door de commissie beoordeeld.', 'Er wordt verwacht dat de vraag verder stijgt.', 'De regeling beoogt te voorzien in tijdelijke ondersteuning.'],
+    connections: ['Passief', 'Register', 'Beleidsstijl', 'Verantwoordelijkheid'],
+    sections: [
+      { title: 'Passieve focus', items: ['Gebruik passief wanneer proces of resultaat centraal staat.', 'Noem de actor met door wanneer die relevant is.'] },
+      { title: 'Onpersoonlijk', items: ['er wordt aangenomen dat', 'men gaat ervan uit dat', 'naar verwachting'] },
+      { title: 'Beleidstaal', items: ['dienen te', 'beogen', 'voorzien in', 'strekkende tot'] },
+    ],
+    contrasts: ['Wij besluiten ... ↔ Er is besloten ...', 'De regeling geeft steun. ↔ De regeling voorziet in ondersteuning.'],
+    mistakes: ['Gebruik passief niet om verantwoordelijkheid onbedoeld te verbergen.'],
+    aliases: ['passieve en onpersoonlijke formuleringen in wetenschappelijke stijl', 'beleidsstijl met dienen te, beogen en voorzien in', 'nominale beleidsstijl afgewisseld met actieve formuleringen'],
+  },
+  {
+    id: 'c1-precisie-valentie-collocatie', level: 'C1', title: 'Precieze valentie, collocatie en registerkeuze',
+    summary: 'Gebruik analytische werkwoorden met hun vaste aanvulling en kies combinaties die in het register natuurlijk zijn.',
+    rule: 'werkwoord + vereiste aanvulling: bijdragen aan, berusten op, voorzien in, afwijken van, duiden op',
+    examples: ['De analyse berust op drie onafhankelijke bronnen.', 'Deze bevinding draagt bij aan een bredere discussie.', 'De resultaten wijken af van de oorspronkelijke verwachting.', 'De formulering doet onvoldoende recht aan de complexiteit.'],
+    connections: ['Vaste voorzetsels', 'Werkwoordenatlas', 'Academisch register', 'Collocaties'],
+    sections: [
+      { title: 'Onderzoek en analyse', items: ['berusten op', 'duiden op', 'voortvloeien uit', 'toeschrijven aan'] },
+      { title: 'Beleid en beoordeling', items: ['voorzien in', 'voldoen aan', 'afwijken van', 'recht doen aan'] },
+      { title: 'Controle', items: ['Controleer niet alleen betekenis, maar ook voorzetsel, objecttype en register.'] },
+    ],
+    contrasts: ['wijzen naar = richting ↔ wijzen op = aanwijzing', 'voorzien van = iets geven ↔ voorzien in = een behoefte dekken'],
+    mistakes: ['Vertaal vaste combinaties niet woord voor woord uit het Engels of Duits.'],
+    aliases: ['analytische werkwoorden met precieze valentie', 'precisie met respectievelijk, met name en in het bijzonder', 'evaluatieve adjectieven en zintuiglijke precisie', 'samengestelde vergelijking en gradatie'],
+  },
+  {
+    id: 'c1-argumentatie-afweging-aanbeveling', level: 'C1', title: 'Afweging, causaliteit en aanbeveling',
+    summary: 'Bouw een genuanceerde redenering waarin bewijs, beperkingen, alternatieven en aanbevelingen zichtbaar van elkaar verschillen.',
+    rule: 'stelling + onderbouwing + voorbehoud + afweging + aanbeveling',
+    examples: ['De maatregel kan de uitstoot beperken, al blijft het effect afhankelijk van de uitvoering.', 'Enerzijds vergroot de norm de duidelijkheid; anderzijds brengt zij extra kosten mee.', 'Alles afwegende verdient een gefaseerde invoering de voorkeur.', 'Op grond van deze bevindingen bevelen wij nader onderzoek aan.'],
+    connections: ['Concessie', 'Causaliteit', 'Advies', 'Argumentatiestructuur'],
+    sections: [
+      { title: 'Bewijs en beperking', items: ['op grond van', 'voor zover bekend', 'met de beschikbare gegevens'] },
+      { title: 'Afweging', items: ['enerzijds ... anderzijds', 'daar staat tegenover dat', 'alles afwegende'] },
+      { title: 'Aanbeveling', items: ['het verdient aanbeveling om', 'wij bevelen aan dat', 'een gefaseerde aanpak ligt voor de hand'] },
+    ],
+    contrasts: ['dus = directe conclusie ↔ alles afwegende = conclusie na vergelijking', 'moet = dwingend ↔ verdient aanbeveling = gemotiveerd advies'],
+    mistakes: ['Presenteer een correlatie niet zonder verdere onderbouwing als directe oorzaak.'],
+    aliases: ['complexe oorzaak-gevolgrelaties met naarmate, doordat en voor zover', 'argumentatieve signaalwoorden voor afweging en aanbeveling', 'voorbehoud bij causaliteit en generalisatie'],
+  },
+
+  {
+    id: 'c2-retorisch-parallelisme', level: 'C2', title: 'Retorisch contrast, parallelisme en climactische opbouw',
+    summary: 'Stuur nadruk en ritme met herhaalde syntactische patronen, scherpe contrasten en doelbewuste opbouw.',
+    rule: 'herhaal een structuur met variatie; plaats contrasterende of steeds sterkere elementen op overeenkomstige posities',
+    examples: ['Niet omdat het eenvoudig is, maar omdat het noodzakelijk is.', 'We moeten niet alleen meten, niet alleen vergelijken, maar vooral begrijpen.', 'Eerst werd het probleem ontkend, vervolgens verkleind en uiteindelijk genormaliseerd.', 'Wie zwijgt, stemt niet altijd toe; soms ontbreekt eenvoudigweg de ruimte om te spreken.'],
+    connections: ['Retoriek', 'Zinsritme', 'Contrast', 'Publieke argumentatie'],
+    sections: [
+      { title: 'Parallelisme', items: ['gelijke grammaticale vorm', 'semantische variatie', 'herkenbaar ritme'] },
+      { title: 'Climax en anticlimax', items: ['ordening naar intensiteit', 'bewuste breuk voor ironisch of kritisch effect'] },
+      { title: 'Dissociatie', items: ['niet X, maar Y', 'veeleer Y dan X', 'minder X dan Y'] },
+    ],
+    contrasts: ['opsomming = informatie naast elkaar ↔ climax = toenemende intensiteit', 'herhaling = mogelijk redundantie ↔ parallelisme = functionele structuur'],
+    mistakes: ['Parallelle delen moeten grammaticaal vergelijkbaar blijven; anders verliest de constructie haar ritme.'],
+    aliases: ['retorische contrasten en parallelle formuleringen', 'ritmische opsomming en climactische opbouw', 'strategische herhaling en contrast in publieke argumentatie', 'strategische dissociatie: niet X, maar Y; veeleer dan'],
+  },
+  {
+    id: 'c2-perspectief-polyfonie', level: 'C2', title: 'Perspectief, polyfonie en ingebedde stemmen',
+    summary: 'Laat meerdere stemmen of standpunten tegelijk hoorbaar zijn zonder hun verantwoordelijkheid te verwarren.',
+    rule: 'markeer stem, afstand en evaluatie met citaat, indirecte rede, vrije indirecte weergave en metadiscursieve signalen',
+    examples: ['Volgens het bestuur was uitstel onvermijdelijk; voor de bewoners voelde het vooral als opnieuw genegeerd worden.', 'Eindelijk duidelijkheid, dacht ze — al bleef onduidelijk voor wie.', 'De auteur neemt de term “vooruitgang” over, maar plaatst hem systematisch tussen aanhalingstekens.', 'Wat voor de één efficiëntie heet, verschijnt bij de ander als verlies van zeggenschap.'],
+    connections: ['Bronmarkering', 'Discoursanalyse', 'Indirecte rede', 'Stijl'],
+    sections: [
+      { title: 'Stem identificeren', items: ['Wie spreekt?', 'Wie wordt samengevat?', 'Wie evalueert?'] },
+      { title: 'Afstand markeren', items: ['volgens', 'zogenaamd', 'in de woorden van', 'aanhalingstekens'] },
+      { title: 'Vrije indirecte weergave', items: ['derde persoon met de woordkeuze en nabijheid van het personage', 'geen expliciet “dacht hij” nodig'] },
+    ],
+    contrasts: ['De verteller stelt ... ↔ Het personage ervaart ...', 'citaat ↔ parafrase ↔ vrije indirecte rede'],
+    mistakes: ['Maak bij complexe meerstemmigheid duidelijk welke evaluatieve woorden van welke stem afkomstig zijn.'],
+    aliases: ['ingebedde perspectieven en vrije indirecte weergave', 'polyfone formuleringen met meerdere stemmen in één zin', 'meerstemmigheid en ingebedde discoursen', 'perspectiefverschuiving zonder expliciete signaalwoorden'],
+  },
+  {
+    id: 'c2-ellips-inversie-ritme', level: 'C2', title: 'Ellips, gemarkeerde inversie en syntactisch ritme',
+    summary: 'Wijk gecontroleerd van neutrale zinsbouw af om tempo, contrast of perspectief te sturen.',
+    rule: 'laat herstelbare elementen weg of verplaats zinsdelen alleen wanneer context en register de interpretatie dragen',
+    examples: ['De eerste optie: betaalbaar maar tijdelijk. De tweede: duurder, wel structureel.', 'Nauwelijks was het besluit gepubliceerd, of de kritiek barstte los.', 'Wat overbleef, was twijfel.', 'Geen overwinning dus, eerder uitstel van verlies.'],
+    connections: ['Woordvolgorde', 'Stijl', 'Tekstritme', 'Informatiestructuur'],
+    sections: [
+      { title: 'Ellips', items: ['weggelaten persoonsvorm of herhaald zinsdeel', 'alleen gebruiken wanneer de aanvulling eenduidig is'] },
+      { title: 'Gemarkeerde inversie', items: ['nauwelijks ... of', 'zelden had ...', 'wat X betreft ...'] },
+      { title: 'Ritme', items: ['wissel korte en lange zinnen', 'plaats kerninformatie op een prominente eindpositie'] },
+    ],
+    contrasts: ['onvolledige zin als fout ↔ functionele ellips in context', 'neutrale volgorde ↔ gemarkeerde volgorde met nadruk'],
+    mistakes: ['Stilistische inversie is geen vrijbrief om de Nederlandse werkwoordplaats te negeren.'],
+    aliases: ['ellips, inversie en ritmische zinsbouw voor stilistisch effect', 'stilistische inversie, ellips en syntactische iconiek'],
+  },
+  {
+    id: 'c2-implicatuur-ironie-understatement', level: 'C2', title: 'Implicatuur, understatement en ironische afstand',
+    summary: 'Herken en produceer betekenis die niet letterlijk wordt uitgesproken maar uit context, verwachting en toon volgt.',
+    rule: 'letterlijke formulering + gedeelde context/verwachting → impliciete evaluatie of bedoeling',
+    examples: ['Dat resultaat is niet bepaald overtuigend.', 'Een opmerkelijke timing, zo vlak voor de verkiezingen.', 'Hij was “verrast” dat niemand het plan had begrepen.', 'Het overleg leverde, om het voorzichtig te formuleren, weinig duidelijkheid op.'],
+    connections: ['Pragmatiek', 'Ironie', 'Register', 'Discoursanalyse'],
+    sections: [
+      { title: 'Understatement', items: ['niet bepaald', 'niet zonder problemen', 'op zijn zachtst gezegd'] },
+      { title: 'Ironische afstand', items: ['contextuele tegenstelling', 'aanhalingstekens', 'overdreven neutraliteit'] },
+      { title: 'Gespreksimplicatuur', items: ['Wat wordt niet letterlijk gezegd?', 'Welke verwachting wordt geschonden?'] },
+    ],
+    contrasts: ['letterlijke ontkenning ↔ litotes/understatement', 'humor ↔ ironische kritiek'],
+    mistakes: ['Ironie zonder voldoende context kan als letterlijke bewering worden gelezen.'],
+    aliases: ['argumentatieve implicatuur en ironische afstand', 'pragmatische implicatuur, understatement en geladen stiltes', 'impliciete evaluatie via woordkeuze en informatierangschikking'],
+  },
+  {
+    id: 'c2-modale-fijnschakering', level: 'C2', title: 'Modale fijnschakering en juridisch genuanceerde verplichting',
+    summary: 'Onderscheid mogelijkheid, waarschijnlijkheid, wenselijkheid, bevoegdheid, noodzaak en juridische verplichting.',
+    rule: 'kies modaal werkwoord of omschrijving op basis van bron en sterkte: kan, zou kunnen, behoort te, dient te, is gehouden te, mag',
+    examples: ['De maatregel kan effect hebben, maar hoeft niet doorslaggevend te zijn.', 'De commissie behoort alle belangen kenbaar af te wegen.', 'De aanvrager is gehouden de wijziging tijdig te melden.', 'Een andere interpretatie zou verdedigbaar kunnen zijn.'],
+    connections: ['Modaliteit', 'Juridisch register', 'Voorwaarden', 'Epistemische zekerheid'],
+    sections: [
+      { title: 'Epistemisch', items: ['kan', 'zou kunnen', 'moet wel', 'lijkt'] },
+      { title: 'Deontisch', items: ['mag', 'moet', 'dient te', 'is gehouden te'] },
+      { title: 'Evaluatief', items: ['is wenselijk', 'verdient aanbeveling', 'valt te verdedigen'] },
+    ],
+    contrasts: ['moet = sterke noodzaak ↔ behoort te = normatieve verwachting', 'kan = mogelijkheid/bevoegdheid afhankelijk van context'],
+    mistakes: ['Bepaal expliciet of modaliteit over waarheid, wenselijkheid, bevoegdheid of verplichting gaat.'],
+    aliases: ['modale fijnschakering tussen mogelijkheid, wenselijkheid en noodzaak', 'juridisch genuanceerde modaliteit', 'juridisch-economische polysemie'],
+  },
+  {
+    id: 'c2-conceptuele-compressie', level: 'C2', title: 'Conceptuele compressie en leesbare nominale ketens',
+    summary: 'Vat complexe redeneringen compact samen zonder relaties, actoren of voorwaarden onzichtbaar te maken.',
+    rule: 'comprimeer alleen informatie die de lezer kan reconstrueren; behoud kernrelaties met voorzetsels, deelwoorden en expliciete ankers',
+    examples: ['De na langdurig overleg overeengekomen, gefaseerde invoering van de norm begint in januari.', 'De analyse van de door regionale verschillen beïnvloede resultaten vraagt om terughoudendheid.', 'Kort samengevat: groei zonder herverdeling vergroot de bestaande ongelijkheid.', 'Het voorstel combineert kostenbeheersing met behoud van lokale autonomie.'],
+    connections: ['Nominalisatie', 'Academische stijl', 'Samenvatten', 'Informatiestructuur'],
+    sections: [
+      { title: 'Keten bouwen', items: ['kernnaamwoord bepalen', 'modificaties hiërarchisch ordenen', 'actor en oorzaak zichtbaar houden'] },
+      { title: 'Decomprimeren', items: ['Splits wanneer de lezer meerdere relaties tegelijk moet reconstrueren.', 'Gebruik een werkwoord om de hoofdhandeling terug te brengen.'] },
+      { title: 'Samenvatten', items: ['behoud concessie, causaliteit en voorwaarde', 'schrap voorbeelden, niet de logica'] },
+    ],
+    contrasts: ['compact ↔ cryptisch', 'nominale keten ↔ reeks duidelijke werkwoordelijke zinnen'],
+    mistakes: ['Plaats niet onbeperkt zelfstandige naamwoorden achter elkaar; Nederlandse relaties vragen vaak een voorzetsel of bijzin.'],
+    aliases: ['nominale ketens zonder verlies van leesbaarheid', 'zeer compacte samenvatting met behoud van nuance', 'conceptuele compressie in academisch en beleidsregister', 'compacte betoogstructuren met thematische progressie'],
+  },
+  {
+    id: 'c2-anafora-abstracte-referentie', level: 'C2', title: 'Anaforische ketens en abstracte referentie',
+    summary: 'Beheer verwijzingen over langere tekstafstanden en voorkom ambiguïteit tussen concurrerende antecedenten.',
+    rule: 'introduceer kernbegrip → herneem met passende nominale of pronominale vorm → herstel expliciet wanneer interpretatie onzeker wordt',
+    examples: ['Het rapport onderscheidt betaalbaarheid en beschikbaarheid. Dat laatste probleem blijkt regionaal het grootst.', 'De theorie veronderstelt stabiele voorkeuren. Deze aanname wordt later gedeeltelijk losgelaten.', 'Het besluit leidde tot protest; dit dwong de raad tot heroverweging.', 'De twee modellen verschillen vooral in schaal. Dat verschil bepaalt ook hun toepasbaarheid.'],
+    connections: ['Tekstcohesie', 'Verwijswoorden', 'Discours', 'Informatiestructuur'],
+    sections: [
+      { title: 'Nominale herneming', items: ['deze aanname', 'dat onderscheid', 'een dergelijke benadering'] },
+      { title: 'Contrastieve verwijzing', items: ['het eerste / het laatste', 'enerzijds / anderzijds', 'de eerstgenoemde'] },
+      { title: 'Herstel', items: ['Herhaal het kernwoord wanneer “dit”, “dat” of “het” meerdere antecedenten kan hebben.'] },
+    ],
+    contrasts: ['dit = vaak directe vorige inhoud ↔ deze + zelfstandig naamwoord = explicietere herneming', 'lexicale variatie ↔ ongewenste betekenisverschuiving'],
+    mistakes: ['Een lange verwijsketen moet periodiek opnieuw lexicaal worden verankerd.'],
+    aliases: ['abstracte referentie en anaforische ketens', 'temporele perspectivering over generaties heen'],
+  },
+  {
+    id: 'c2-metaforiek-metonymie', level: 'C2', title: 'Metaforiek, metonymie en gecontroleerde ambiguïteit',
+    summary: 'Gebruik figuurlijke verbanden doelgericht en maak duidelijk welke interpretatieruimte functioneel is.',
+    rule: 'brongebied of nabijheidsrelatie projecteert betekenis op een doelgebied; context begrenst de mogelijke lezing',
+    examples: ['De markt verteerde het nieuws slecht.', 'Den Haag reageerde terughoudend op het voorstel.', 'De bittere nasmaak van het akkoord bleef maanden hangen.', 'Het debat bevroor zodra de kosten ter sprake kwamen.'],
+    connections: ['Semantiek', 'Stijl', 'Discoursanalyse', 'Polysemie'],
+    sections: [
+      { title: 'Metafoor', items: ['markt als organisme', 'debat als beweging of temperatuur', 'smaak als evaluatie'] },
+      { title: 'Metonymie', items: ['plaats voor instelling: Den Haag', 'maker voor werk', 'middel voor activiteit'] },
+      { title: 'Ambiguïteit', items: ['Laat meerdere lezingen alleen bestaan wanneer ze inhoudelijk bijdragen.'] },
+    ],
+    contrasts: ['lexicale polysemie ↔ contextuele metafoor', 'poëtische openheid ↔ onbedoelde onduidelijkheid'],
+    mistakes: ['Meng metaforische kaders niet zonder stilistische reden, bijvoorbeeld een “koers die wortel schiet”.'],
+    aliases: ['metaforische en metonymische formuleringen met gecontroleerde ambiguïteit', 'gelaagde metaforiek en synesthesie'],
+  },
+  {
+    id: 'c2-discoursarchitectuur', level: 'C2', title: 'Discoursarchitectuur en thematische progressie',
+    summary: 'Orden informatie zo dat elk tekstdeel voortbouwt op bekende inhoud en tegelijk een nieuwe stap in de redenering zet.',
+    rule: 'bekend thema → nieuwe informatie → hernomen nieuw thema; varieer patroon bewust voor nadruk, spanning of weerlegging',
+    examples: ['De maatregel verlaagt de directe kosten. Die besparing gaat echter gepaard met extra uitvoeringslasten.', 'Eerst staat de haalbaarheid centraal. Vervolgens verschuift de auteur naar legitimiteit.', 'Een mogelijk bezwaar betreft de representativiteit. Dat bezwaar is relevant, maar niet doorslaggevend.', 'De tekst opent met individuele ervaring en eindigt met een institutionele diagnose.'],
+    connections: ['Tekstopbouw', 'Argumentatie', 'Cohesie', 'Genre'],
+    sections: [
+      { title: 'Lineaire progressie', items: ['nieuwe informatie uit zin 1 wordt thema van zin 2'] },
+      { title: 'Constant thema', items: ['hetzelfde onderwerp krijgt opeenvolgende nieuwe aspecten'] },
+      { title: 'Strategische breuk', items: ['perspectiefwisseling', 'anticipatie op bezwaar', 'terugkeer naar hoofdstelling'] },
+    ],
+    contrasts: ['cohesie = lokale verbinding ↔ coherentie = globale betekenisstructuur', 'samenvatting ↔ herhaling zonder nieuwe functie'],
+    mistakes: ['Signaalwoorden kunnen een ontbrekende inhoudelijke relatie niet repareren.'],
+    aliases: ['compacte betoogstructuren met thematische progressie', 'retorische concessie, anticipatie en weerlegging', 'metacommunicatie over toon, positie en gespreksvoorwaarden'],
+  },
+  {
+    id: 'c2-registertransformatie', level: 'C2', title: 'Register- en genretransformatie',
+    summary: 'Behoud dezelfde inhoud terwijl je formulering, informatiedichtheid, explicietheid en toon aanpast aan publiek en genre.',
+    rule: 'inhoudelijke kern constant; wijzig terminologie, zinsbouw, bronmarkering, uitleg en mate van stelligheid voor het doelpubliek',
+    examples: ['Academisch: De resultaten ondersteunen een beperkte causale interpretatie.', 'Publiek: De cijfers wijzen op een verband, maar bewijzen nog geen directe oorzaak.', 'Juridisch: De aanvrager is gehouden wijzigingen onverwijld te melden.', 'Servicegericht: Geef veranderingen zo snel mogelijk aan ons door.'],
+    connections: ['Register', 'Genre', 'Parafrase', 'Publieksgericht schrijven'],
+    sections: [
+      { title: 'Academisch naar publiek', items: ['verklaar vakterm', 'maak actor en gevolg expliciet', 'behoud onzekerheid'] },
+      { title: 'Juridisch naar servicegericht', items: ['behoud verplichting', 'verminder nominalisatie', 'gebruik directe maar beleefde instructie'] },
+      { title: 'Stijlcontrole', items: ['controleer toon, lengte, aanspreekvorm en veronderstelde voorkennis'] },
+    ],
+    contrasts: ['vereenvoudigen ↔ versimpelen', 'formeler ↔ preciezer: niet altijd hetzelfde'],
+    mistakes: ['Bij registerwisseling mag belangrijke nuance, voorwaarde of bronstatus niet verdwijnen.'],
+    aliases: ['zeer compacte samenvatting met behoud van nuance', 'herformuleer hetzelfde argument voor een academisch en een publiek gehoor', 'conceptuele compressie in academisch en beleidsregister'],
+  },
+];
+
+const c1c2QuestionTopics = [
+  {
+    id: 'c1-bron-en-bewijs-bevragen', level: 'C1', title: 'Bronnen, bewijs en geldigheid bevragen',
+    summary: 'Vraag precies waar een bewering op berust en welk type bewijs de conclusie ondersteunt.',
+    rule: 'waaruit/op basis waarvan + persoonsvorm + onderwerp ...? · welke gegevens ondersteunen ...?',
+    examples: ['Waaruit blijkt dat deze maatregel effectief is?', 'Op basis waarvan is deze selectie gemaakt?', 'Welke gegevens ondersteunen die conclusie?', 'In hoeverre zijn de resultaten generaliseerbaar?'],
+    connections: ['Bronmarkering en evidentialiteit', 'Argumentatie', 'Onderzoeksregister'],
+    relatedGrammar: ['c1-bronmarkering-evidentialiteit', 'c1-epistemische-modaliteit'],
+    sections: [
+      { title: 'Herkomst', items: ['Volgens welke bron?', 'Waar is dit cijfer op gebaseerd?', 'Wie heeft dit vastgesteld?'] },
+      { title: 'Kwaliteit', items: ['Hoe is dit gemeten?', 'Welke alternatieve verklaring is onderzocht?', 'Wat zijn de beperkingen?'] },
+      { title: 'Reikwijdte', items: ['Voor welke groep geldt dit?', 'In hoeverre kan dit worden veralgemeniseerd?'] },
+    ],
+    contrasts: ['Is dit waar? ↔ Welke gegevens ondersteunen deze bewering?', 'Waarom? ↔ Welke causale stap wordt hier verondersteld?'],
+    mistakes: ['Een kritische vraag is sterker wanneer zij het ontbrekende bewijs benoemt in plaats van alleen twijfel uit te spreken.'],
+  },
+  {
+    id: 'c1-aannames-en-kaders', level: 'C1', title: 'Aannames, definities en kaders blootleggen',
+    summary: 'Onderzoek welke begrippen, normen en impliciete keuzes een redenering sturen.',
+    rule: 'welke aanname/definitie/maatstaf + ligt ten grondslag aan ...? · wat wordt hier onder X verstaan?',
+    examples: ['Welke aanname ligt aan deze voorspelling ten grondslag?', 'Wat wordt in dit rapport precies onder betaalbaarheid verstaan?', 'Vanuit welk perspectief wordt succes hier beoordeeld?', 'Welke alternatieven vallen buiten dit kader?'],
+    connections: ['Discours', 'Definitie', 'Perspectief', 'Argumentatie'],
+    relatedGrammar: ['c1-verwijzing-cohesie', 'c1-argumentatie-afweging-aanbeveling'],
+    sections: [
+      { title: 'Begrip', items: ['Wat betekent X in deze context?', 'Welke criteria horen bij deze definitie?'] },
+      { title: 'Norm', items: ['Op grond van welke maatstaf wordt dit als beter beschouwd?'] },
+      { title: 'Kader', items: ['Wat blijft buiten beeld?', 'Welke andere indeling is mogelijk?'] },
+    ],
+    contrasts: ['Wat bedoel je? ↔ Welke operationele definitie gebruik je?', 'Ben je bevooroordeeld? ↔ Welk perspectief structureert deze analyse?'],
+    mistakes: ['Vermijd vragen die al één omstreden aanname als feit inbouwen.'],
+  },
+  {
+    id: 'c1-voorwaarden-gevolgen', level: 'C1', title: 'Voorwaarden, scenario’s en gevolgen onderzoeken',
+    summary: 'Maak zichtbaar onder welke omstandigheden een conclusie, maatregel of voorspelling geldig blijft.',
+    rule: 'onder welke voorwaarden ...? · wat zou er gebeuren indien/mocht ...? · welke gevolgen heeft X voor Y?',
+    examples: ['Onder welke voorwaarden is deze aanpak haalbaar?', 'Wat zou er gebeuren mocht de financiering wegvallen?', 'Welke gevolgen heeft deze keuze voor kleinere gemeenten?', 'Tot op welke hoogte blijft de conclusie geldig bij andere aannames?'],
+    connections: ['Voorwaarden', 'Modaliteit', 'Causaliteit', 'Scenarioanalyse'],
+    relatedGrammar: ['c1-complexe-voorwaarden-scenarios', 'c1-argumentatie-afweging-aanbeveling'],
+    sections: [
+      { title: 'Voorwaarde', items: ['mits welke garanties?', 'behoudens welke uitzonderingen?', 'voor zover welke gegevens?'] },
+      { title: 'Scenario', items: ['Wat als ...?', 'Wat zou veranderen indien ...?', 'Welke bandbreedte is realistisch?'] },
+      { title: 'Neveneffect', items: ['Voor wie ontstaan kosten?', 'Welke onbedoelde effecten zijn denkbaar?'] },
+    ],
+    contrasts: ['Werkt het? ↔ Onder welke omstandigheden werkt het?', 'Wat gebeurt er? ↔ Welke mechanismen verbinden oorzaak en gevolg?'],
+    mistakes: ['Maak duidelijk of je vraagt naar een voorspelling, een juridische voorwaarde of een hypothetisch gedachte-experiment.'],
+  },
+  {
+    id: 'c1-herformuleren-metacommunicatie', level: 'C1', title: 'Herformuleren en metacommunicatief doorvragen',
+    summary: 'Controleer begrip, benoem de gespreksbeweging en vraag om precisie zonder de ander verkeerd te citeren.',
+    rule: 'begrijp ik goed dat ...? · bedoel je daarmee dat ...? · kun je het onderscheid tussen X en Y verduidelijken?',
+    examples: ['Begrijp ik goed dat je vooral de uitvoering bekritiseert, niet het doel?', 'Bedoel je daarmee dat de norm tijdelijk moet worden opgeschort?', 'Kun je verduidelijken welk deel van mijn samenvatting niet klopt?', 'Mogen we eerst vaststellen waarover we het wel eens zijn?'],
+    connections: ['Parafrase', 'Gespreksregie', 'Nuance', 'Bemiddeling'],
+    relatedGrammar: ['c1-concessie-correctie', 'c1-precisie-valentie-collocatie'],
+    sections: [
+      { title: 'Begripscontrole', items: ['Begrijp ik goed dat ...?', 'Als ik je goed begrijp ...'] },
+      { title: 'Afbakening', items: ['Gaat je bezwaar over X of over Y?', 'Waar ligt voor jou de grens?'] },
+      { title: 'Gespreksvoorwaarde', items: ['Kunnen we eerst ...?', 'Welke informatie hebben we nodig om verder te komen?'] },
+    ],
+    contrasts: ['Dus je zegt dat ... ↔ Begrijp ik goed dat ...?', 'Dat klopt niet. ↔ Welk deel vraagt volgens jou om correctie?'],
+    mistakes: ['Een parafrase moet als controleerbare interpretatie worden aangeboden, niet als definitieve toeschrijving.'],
+  },
+
+  {
+    id: 'c2-presupposities-implicaturen', level: 'C2', title: 'Presupposities en implicaturen onderzoeken',
+    summary: 'Vraag welke informatie als vanzelfsprekend wordt verondersteld en welke conclusie de formulering suggereert zonder haar uit te spreken.',
+    rule: 'welke vooronderstelling bevat ...? · wat suggereert de formulering ...? · welke conclusie wordt impliciet uitgenodigd?',
+    examples: ['Welke vooronderstelling bevat de vraag wanneer de hervorming eindelijk wordt uitgevoerd?', 'Wat suggereert de keuze voor het woord “last” over de betrokken groep?', 'Welke conclusie wordt impliciet uitgenodigd door deze tegenstelling?', 'Wat blijft onuitgesproken maar is nodig om de grap te begrijpen?'],
+    connections: ['Pragmatiek', 'Implicatuur', 'Framing', 'Discoursanalyse'],
+    relatedGrammar: ['c2-implicatuur-ironie-understatement', 'c2-metaforiek-metonymie'],
+    sections: [
+      { title: 'Presuppositie', items: ['Welke informatie moet al als waar worden aangenomen?', 'Kan de vraag worden beantwoord zonder die aanname te accepteren?'] },
+      { title: 'Implicatuur', items: ['Wat wordt gesuggereerd?', 'Welke gespreksnorm maakt de gevolgtrekking mogelijk?'] },
+      { title: 'Lexicale framing', items: ['Welke evaluatie zit in het gekozen woord?', 'Welke neutralere formulering is mogelijk?'] },
+    ],
+    contrasts: ['letterlijke inhoud ↔ geïmpliceerde inhoud', 'vraag naar feit ↔ vraag die een feit vooronderstelt'],
+    mistakes: ['Niet elke mogelijke associatie is een implicatuur; zij moet uit taalgebruik en context redelijk afleidbaar zijn.'],
+  },
+  {
+    id: 'c2-polyfonie-stemmen', level: 'C2', title: 'Stemmen, posities en verantwoordelijkheid bevragen',
+    summary: 'Ontleed wie spreekt, wie wordt weergegeven en wie verantwoordelijk is voor een evaluatie of claim.',
+    rule: 'wie formuleert/evalueert/veronderstelt ...? · aan welke stem behoort ...? · hoe positioneert de verteller zich?',
+    examples: ['Aan welke stem behoort de kwalificatie “onvermijdelijk”?', 'Hoe positioneert de auteur zich tegenover het geciteerde standpunt?', 'Welke stemmen worden samengevat en welke krijgen rechtstreeks het woord?', 'Waar verschuift de tekst van beschrijving naar evaluatie?'],
+    connections: ['Polyfonie', 'Bronmarkering', 'Vertelperspectief', 'Stijl'],
+    relatedGrammar: ['c2-perspectief-polyfonie', 'c2-anafora-abstracte-referentie'],
+    sections: [
+      { title: 'Toeschrijving', items: ['Wie is bron?', 'Wie parafraseert?', 'Wie neemt afstand?'] },
+      { title: 'Selectie', items: ['Wie krijgt spreekruimte?', 'Welke positie wordt alleen indirect weergegeven?'] },
+      { title: 'Verteller/auteur', items: ['Waar wordt evaluatie zichtbaar?', 'Hoe wordt instemming of afstand gemarkeerd?'] },
+    ],
+    contrasts: ['de tekst zegt ↔ een geciteerde actor zegt', 'vrije indirecte rede ↔ expliciete indirecte rede'],
+    mistakes: ['Schrijf een evaluatief woord niet automatisch aan de auteur toe wanneer het uit een geciteerde stem komt.'],
+  },
+  {
+    id: 'c2-retorische-vraagfunctie', level: 'C2', title: 'Retorische vragen en strategische vraagreeksen',
+    summary: 'Analyseer of een vraag informatie zoekt, een standpunt versterkt, een bezwaar anticipeert of het publiek positioneert.',
+    rule: 'vraagvorm + contextuele antwoordverwachting; reeks vragen kan diagnose, escalatie of weerlegging structureren',
+    examples: ['Wie zou tegen meer transparantie kunnen zijn?', 'Maar welke transparantie, voor wie en tegen welke prijs?', 'Is dit werkelijk efficiënt, of verplaatst het systeem slechts de kosten?', 'Wat resteert er van keuzevrijheid wanneer alle alternatieven verdwijnen?'],
+    connections: ['Retoriek', 'Argumentatie', 'Publiekspositionering', 'Implicatuur'],
+    relatedGrammar: ['c2-retorisch-parallelisme', 'c2-discoursarchitectuur'],
+    sections: [
+      { title: 'Retorische functie', items: ['instemming oproepen', 'twijfel zaaien', 'tegenargument voorbereiden'] },
+      { title: 'Vraagreeks', items: ['van breed naar precies', 'van feit naar norm', 'van diagnose naar consequentie'] },
+      { title: 'Antwoordverwachting', items: ['Is het antwoord open, gestuurd of impliciet gegeven?'] },
+    ],
+    contrasts: ['echte informatievraag ↔ retorische vraag', 'open onderzoek ↔ suggestieve vraag'],
+    mistakes: ['Een retorische vraag kan manipulatief worden wanneer zij een betwist standpunt als vanzelfsprekend antwoord presenteert.'],
+  },
+  {
+    id: 'c2-discours-macht-uitsluiting', level: 'C2', title: 'Discours, macht en uitsluiting bevragen',
+    summary: 'Onderzoek hoe categorieën, formuleringen en informatierangschikking bepaalde belangen zichtbaar of onzichtbaar maken.',
+    rule: 'wie profiteert/draagt de last/wordt benoemd/blijft buiten beeld ...? · welke categorieën worden als natuurlijk voorgesteld?',
+    examples: ['Wie wordt in deze probleemdefinitie als verantwoordelijke actor voorgesteld?', 'Welke groepen blijven buiten de gehanteerde categorieën?', 'Hoe verandert de interpretatie wanneer we de kosten per huishouden in plaats van totaal presenteren?', 'Welke alternatieve probleemformulering maakt andere oplossingen denkbaar?'],
+    connections: ['Discoursanalyse', 'Framing', 'Informatiestructuur', 'Register'],
+    relatedGrammar: ['c2-discoursarchitectuur', 'c2-registertransformatie', 'c2-implicatuur-ironie-understatement'],
+    sections: [
+      { title: 'Actor', items: ['Wie handelt?', 'Wie ondergaat?', 'Wie verdwijnt in passieve formulering?'] },
+      { title: 'Categorie', items: ['Wie past niet?', 'Welke grens wordt genaturaliseerd?', 'Welke naamgeving stuurt evaluatie?'] },
+      { title: 'Presentatie', items: ['Wat staat vooraan?', 'Welke vergelijking ontbreekt?', 'Welke schaal verandert het beeld?'] },
+    ],
+    contrasts: ['neutrale beschrijving ↔ formulering met impliciete norm', 'data tonen ↔ data selecteren en rangschikken'],
+    mistakes: ['Discoursanalyse vraagt tekstueel bewijs; schrijf geen intentie toe die niet uit formulering of context blijkt.'],
+  },
+];
+
+const c1c2QuestionPractice = [
+  { id: 'q-c1-01', level: 'C1', topic: 'c1-bron-en-bewijs-bevragen', prompt: 'Welke vraag onderzoekt de empirische basis het preciesst?', options: ['Waarom geloof je dat?', 'Welke gegevens ondersteunen de conclusie dat de maatregel de uitstoot verlaagt?', 'Is de maatregel goed?'], answer: 1, explanation: 'De vraag benoemt de concrete conclusie en vraagt naar ondersteunende gegevens.', audio: 'Welke gegevens ondersteunen de conclusie dat de maatregel de uitstoot verlaagt?' },
+  { id: 'q-c1-02', level: 'C1', topic: 'c1-aannames-en-kaders', prompt: 'Je wilt de gebruikte norm expliciet maken.', options: ['Wat vind je ervan?', 'Op grond van welke maatstaf wordt deze uitkomst als succesvol beschouwd?', 'Waarom is succes belangrijk?'], answer: 1, explanation: 'De vraag maakt de beoordelingsmaatstaf expliciet zonder al een antwoord te veronderstellen.', audio: 'Op grond van welke maatstaf wordt deze uitkomst als succesvol beschouwd?' },
+  { id: 'q-c1-03', level: 'C1', topic: 'c1-voorwaarden-gevolgen', prompt: 'Kies de vraag die een begrensd scenario onderzoekt.', options: ['Gaat het project door?', 'Wat zou er gebeuren mocht de financiering na het eerste jaar wegvallen?', 'Wanneer begint het project?'], answer: 1, explanation: '“Mocht” introduceert een mogelijk maar onzeker scenario met een duidelijke tijdsgrens.', audio: 'Wat zou er gebeuren mocht de financiering na het eerste jaar wegvallen?' },
+  { id: 'q-c1-04', level: 'C1', topic: 'c1-herformuleren-metacommunicatie', prompt: 'Welke formulering controleert begrip zonder woorden toe te schrijven?', options: ['Dus jij bent tegen iedere verandering.', 'Begrijp ik goed dat je bezwaar vooral de uitvoering betreft?', 'Je bedoelt duidelijk dat het plan moet stoppen.'], answer: 1, explanation: 'De spreker presenteert de interpretatie als controleerbare parafrase.', audio: 'Begrijp ik goed dat je bezwaar vooral de uitvoering betreft?' },
+  { id: 'q-c1-05', level: 'C1', topic: 'c1-bron-en-bewijs-bevragen', prompt: 'Welke vraag onderzoekt de reikwijdte van onderzoek?', options: ['Is het onderzoek interessant?', 'In hoeverre zijn deze resultaten toepasbaar op kleinere gemeenten?', 'Wie heeft het onderzoek gelezen?'], answer: 1, explanation: 'De vraag richt zich op generaliseerbaarheid en doelgroep.', audio: 'In hoeverre zijn deze resultaten toepasbaar op kleinere gemeenten?' },
+  { id: 'q-c1-06', level: 'C1', topic: 'c1-voorwaarden-gevolgen', prompt: 'Welke vraag maakt een noodzakelijke voorwaarde zichtbaar?', options: ['Onder welke voorwaarden blijft de leefkwaliteit bij verdichting gewaarborgd?', 'Is verdichting modern?', 'Wie woont er in de stad?'], answer: 0, explanation: 'De formulering vraagt expliciet naar voorwaarden voor behoud van leefkwaliteit.', audio: 'Onder welke voorwaarden blijft de leefkwaliteit bij verdichting gewaarborgd?' },
+
+  { id: 'q-c2-01', level: 'C2', topic: 'c2-presupposities-implicaturen', prompt: 'Welke vraag legt de vooronderstelling in “Wanneer neemt de overheid eindelijk verantwoordelijkheid?” bloot?', options: ['Wanneer gebeurt dat?', 'Welke aanname over eerdere verantwoordelijkheid bevat deze vraag?', 'Wie is de overheid?'], answer: 1, explanation: '“Eindelijk” veronderstelt dat verantwoordelijkheid eerder had moeten worden genomen.', audio: 'Welke aanname over eerdere verantwoordelijkheid bevat deze vraag?' },
+  { id: 'q-c2-02', level: 'C2', topic: 'c2-polyfonie-stemmen', prompt: 'Welke vraag onderscheidt auteur en geciteerde stem?', options: ['Wat staat er in de tekst?', 'Aan wie behoort de kwalificatie “onvermijdelijk”, en hoe markeert de auteur afstand?', 'Is onvermijdelijk een lang woord?'], answer: 1, explanation: 'De vraag onderzoekt zowel toeschrijving als de positie van de auteur.', audio: 'Aan wie behoort de kwalificatie onvermijdelijk, en hoe markeert de auteur afstand?' },
+  { id: 'q-c2-03', level: 'C2', topic: 'c2-retorische-vraagfunctie', prompt: 'Welke analyse past bij “Wie zou tegen transparantie kunnen zijn?”', options: ['De spreker vraagt om een namenlijst.', 'De vraag stuurt naar instemming en presenteert transparantie als vanzelfsprekend positief.', 'De spreker kent het woord transparantie niet.'], answer: 1, explanation: 'De vraag verwacht geen feitelijk antwoord maar positioneert het publiek.', audio: 'De vraag stuurt naar instemming en presenteert transparantie als vanzelfsprekend positief.' },
+  { id: 'q-c2-04', level: 'C2', topic: 'c2-discours-macht-uitsluiting', prompt: 'Welke vraag onderzoekt uitsluiting door categorisering?', options: ['Hoeveel categorieën zijn er?', 'Welke groepen vallen buiten de definitie van een standaardhuishouden?', 'Wie heeft de tabel gemaakt?'], answer: 1, explanation: 'De vraag onderzoekt wie door de gekozen categorie onzichtbaar wordt.', audio: 'Welke groepen vallen buiten de definitie van een standaardhuishouden?' },
+  { id: 'q-c2-05', level: 'C2', topic: 'c2-presupposities-implicaturen', prompt: 'Welke vraag onderzoekt impliciete evaluatie in woordkeuze?', options: ['Hoeveel letters heeft “last”?', 'Wat suggereert het woord “last” over de manier waarop de betrokken groep wordt voorgesteld?', 'Wanneer is het woord geschreven?'], answer: 1, explanation: 'De vraag richt zich op de evaluatieve framing van de groep.', audio: 'Wat suggereert het woord last over de manier waarop de betrokken groep wordt voorgesteld?' },
+  { id: 'q-c2-06', level: 'C2', topic: 'c2-discours-macht-uitsluiting', prompt: 'Welke vraag maakt de invloed van informatierangschikking zichtbaar?', options: ['Welke kleur heeft de grafiek?', 'Hoe verandert het beeld wanneer kosten per huishouden in plaats van als totaal worden gepresenteerd?', 'Is de tabel groot?'], answer: 1, explanation: 'De vraag vergelijkt twee presentatiewijzen en hun interpretatieve effect.', audio: 'Hoe verandert het beeld wanneer kosten per huishouden in plaats van als totaal worden gepresenteerd?' },
 ];
 
 const v19PracticeScenarios = [
@@ -137562,7 +137994,7 @@ const KNOWLEDGE_GRAPH_SCRIPT_URL = './data/content-knowledge-graph.js';
 
 const graphTypeLabels = {
   graph_root: 'Overzicht', source_collection: 'Collectie', level: 'Niveau', theme: 'Thema', spiral_theme: 'Spiraalthema', term: 'Term', vocabulary: 'Woordenschat',
-  grammar: 'Grammatica', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
+  grammar: 'Grammatica', grammar_focus: 'Curriculumfocus', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
   technical_concept: 'Vakbegrip', professional_concept: 'Professioneel begrip', listening: 'Luisteren', reading: 'Lezen', writing: 'Schrijven',
   logic_relation: 'Logische relatie', verb: 'Werkwoord', sense: 'Betekenis', usage: 'Gebruik', example: 'Voorbeeld', synonym_term: 'Synoniem',
   exercise: 'Oefening', practice: 'Mini-oefening', exercise_topic: 'Oefeningsthema', exercise_type: 'Oefeningstype', reference_group: 'Naslaggroep', category: 'Categorie', domain: 'Domein', issue: 'Controlepunt', known_error: 'Veelgemaakte fout',
@@ -137573,14 +138005,14 @@ const graphRelationLabels = {
   has_level: 'niveau', contains_term: 'bevat', teaches_word: 'leert', used_in_theme: 'gebruikt in thema', documents_error: 'beschrijft fout',
   has_part: 'onderdeel', has_semantic_domain: 'betekenisdomein', uses_auxiliary: 'hulpwerkwoord', has_regularity: 'vervoeging',
   requires_preposition: 'vaste prepositie', has_issue: 'controlepunt', has_sense: 'betekenis', has_usage: 'gebruik', has_example: 'voorbeeld',
-  has_synonym: 'synoniem', used_in_content: 'komt voor in', practises_topic: 'oefent thema', has_exercise_type: 'oefeningstype',
+  has_synonym: 'synoniem', used_in_content: 'komt voor in', uses_grammar_focus: 'grammaticafocus', refines_grammar: 'uitwerking van', applies_grammar: 'past grammatica toe', practises_topic: 'oefent thema', has_exercise_type: 'oefeningstype',
   practised_by: 'geoefend in', related_to: 'verbonden met', has_level_variant: 'niveauvariant', has_category: 'categorie', has_collection: 'collectie', part_of_collection: 'broncollectie',
 };
 
 const graphModeRelations = {
   all: null,
   synonyms: new Set(['has_sense', 'has_synonym', 'has_usage', 'has_example']),
-  usage: new Set(['used_in_theme', 'used_in_content', 'practised_by', 'requires_preposition', 'has_semantic_domain', 'has_usage', 'has_example']),
+  usage: new Set(['used_in_theme', 'used_in_content', 'uses_grammar_focus', 'refines_grammar', 'applies_grammar', 'practised_by', 'requires_preposition', 'has_semantic_domain', 'has_usage', 'has_example']),
   issues: new Set(['has_issue', 'documents_error']),
   exercises: new Set(['practised_by', 'practises_topic', 'has_exercise_type']),
 };
@@ -137638,7 +138070,7 @@ async function readKnowledgeGraph() {
 
 function routeForNode(node) {
   const routes = {
-    verb: 'werkwoorden', grammar: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
+    verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
     vocabulary: 'woordenschat', listening: 'luisteren', reading: 'lezen-schrijven', writing: 'lezen-schrijven', exercise: 'oefenen',
     technical_concept: node?.source === 'software' ? 'software' : node?.source === 'natuurkunde' ? 'natuurkunde' : 'wiskunde',
     professional_concept: 'vaklexicon', theme: node?.level?.toLocaleLowerCase('nl-NL'), level: node?.label?.toLocaleLowerCase('nl-NL'),
@@ -137693,7 +138125,7 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } = {}) {
   }
 
   function sortedResults() {
-    const priority = { issue: 0, verb: 1, sense: 2, usage: 3, theme: 4, grammar: 5, structure: 6, exercise: 8 };
+    const priority = { issue: 0, verb: 1, sense: 2, usage: 3, theme: 4, grammar: 5, grammar_focus: 6, question_topic: 7, structure: 8, exercise: 9 };
     return graph.nodes.filter(matchesFilters).sort((a, b) => {
       const selectedDelta = Number(b.id === selectedId) - Number(a.id === selectedId);
       if (selectedDelta) return selectedDelta;
@@ -137718,7 +138150,7 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } = {}) {
   function populateFilters() {
     const el = elements();
     if (!el.type || el.type.options.length > 1) return;
-    const preferred = ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'grammar', 'structure', 'vocabulary', 'exercise', 'issue'];
+    const preferred = ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'grammar', 'grammar_focus', 'question_topic', 'structure', 'vocabulary', 'exercise', 'issue'];
     const types = Object.keys(graph.metadata.typeCounts).sort((a, b) => {
       const ai = preferred.indexOf(a); const bi = preferred.indexOf(b);
       return (ai < 0 ? 999 : ai) - (bi < 0 ? 999 : bi) || (graphTypeLabels[a] || a).localeCompare(graphTypeLabels[b] || b, 'nl');
@@ -142141,6 +142573,8 @@ for (const theme of [...a1Themes, ...a2Themes]) {
   });
 }
 
+const baseQuestionTopics = questionTopics;
+const baseQuestionPractice = questionPractice;
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
@@ -142149,7 +142583,9 @@ const LEGACY_STORAGE_KEY = 'nederlands-gewoon-doen-progress-v2';
 const SETTINGS_KEY = 'nederlands-gewoon-doen-settings-v2';
 const EXERCISE_WORDS = ['Vandaag', 'werk', 'ik', 'thuis'];
 const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
-const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics];
+const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics, ...c1c2GrammarTopics];
+const allQuestionTopics = [...baseQuestionTopics, ...c1c2QuestionTopics];
+const allQuestionPractice = [...baseQuestionPractice, ...c1c2QuestionPractice];
 
 const initialProfile = readActiveProfileSession();
 
@@ -142888,7 +143324,7 @@ function renderProfessionalLexicon() {
 }
 
 function renderGrammarFilters() {
-  const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
+  const filters = ['alle', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   elements.grammarFilters.innerHTML = filters.map((level) => `<button class="${state.grammarLevel === level ? 'active' : ''}" type="button" data-grammar-level="${level}">${level === 'alle' ? 'Alle niveaus' : level}</button>`).join('');
 }
 
@@ -142958,7 +143394,7 @@ function renderEmailWriting() {
 }
 
 function renderQuestionFilters() {
-  const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
+  const filters = ['alle', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   elements.questionFilters.innerHTML = filters.map((level) => `<button class="${state.questionLevel === level ? 'active' : ''}" type="button" data-question-level="${level}">${level === 'alle' ? 'Alle niveaus' : level}</button>`).join('');
 }
 
@@ -142994,9 +143430,15 @@ function renderQuestionMatrix() {
   </article>`).join('') : '<div class="empty-state"><strong>Geen vorm gevonden.</strong><p>Zoek bijvoorbeeld op “waarop”, “ermee”, “persoon” of “richting”.</p></div>';
 }
 
+function questionPracticePool() {
+  const filtered = state.questionLevel === 'alle' ? allQuestionPractice : allQuestionPractice.filter((item) => item.level === state.questionLevel);
+  return filtered.length ? filtered : allQuestionPractice;
+}
+
 function renderQuestionPractice() {
-  const item = questionPractice[state.questionPracticeIndex % questionPractice.length];
-  elements.questionPractice.innerHTML = `<div class="question-practice-heading"><div><span class="kicker">Actieve herhaling · ${escapeHtml(item.level)}</span><h2>Kies de beste vraag</h2><p>${escapeHtml(item.prompt)}</p></div><span class="practice-counter">${state.questionPracticeIndex + 1} / ${questionPractice.length}</span></div>
+  const pool = questionPracticePool();
+  const item = pool[state.questionPracticeIndex % pool.length];
+  elements.questionPractice.innerHTML = `<div class="question-practice-heading"><div><span class="kicker">Actieve herhaling · ${escapeHtml(item.level)}</span><h2>Kies de beste vraag</h2><p>${escapeHtml(item.prompt)}</p></div><span class="practice-counter">${(state.questionPracticeIndex % pool.length) + 1} / ${pool.length}</span></div>
     <div class="question-practice-options">${item.options.map((option, index) => `<button type="button" data-question-practice-answer="${index}" ${state.questionPracticeAnswered ? 'disabled' : ''}>${escapeHtml(option)}</button>`).join('')}</div>
     <p class="feedback" id="question-practice-feedback">Kies één antwoord en bekijk waarom het klopt.</p>
     <div class="question-practice-actions"><button class="sound-button speak" type="button" data-text="${escapeHtml(item.audio)}" data-rate="0.84">🔊 Luister naar de juiste vorm</button><button class="primary-button" type="button" data-question-practice-next>Volgende vraag →</button></div>`;
@@ -143004,10 +143446,10 @@ function renderQuestionPractice() {
 
 function renderQuestions() {
   renderQuestionFilters();
-  const filtered = questionTopics.filter((topic) => state.questionLevel === 'alle' || topic.level === state.questionLevel);
-  if (!filtered.some((topic) => topic.id === state.questionTopic)) state.questionTopic = filtered[0]?.id || questionTopics[0].id;
+  const filtered = allQuestionTopics.filter((topic) => state.questionLevel === 'alle' || topic.level === state.questionLevel);
+  if (!filtered.some((topic) => topic.id === state.questionTopic)) state.questionTopic = filtered[0]?.id || allQuestionTopics[0].id;
   elements.questionList.innerHTML = filtered.map((topic) => `<button class="topic-button ${topic.id === state.questionTopic ? 'active' : ''}" type="button" data-question-topic="${escapeHtml(topic.id)}"><small>${escapeHtml(topic.level)}</small><strong>${escapeHtml(topic.title)}</strong><span>${escapeHtml(topic.summary)}</span></button>`).join('');
-  renderQuestionDetail(questionTopics.find((topic) => topic.id === state.questionTopic) || questionTopics[0]);
+  renderQuestionDetail(allQuestionTopics.find((topic) => topic.id === state.questionTopic) || allQuestionTopics[0]);
   renderQuestionMatrix();
   renderQuestionPractice();
 }
@@ -143738,12 +144180,13 @@ function handleClick(event) {
     return;
   }
   const questionLevel = event.target.closest('[data-question-level]');
-  if (questionLevel) { state.questionLevel = questionLevel.dataset.questionLevel; renderQuestions(); return; }
+  if (questionLevel) { state.questionLevel = questionLevel.dataset.questionLevel; state.questionPracticeIndex = 0; state.questionPracticeAnswered = false; renderQuestions(); return; }
   const questionTopic = event.target.closest('[data-question-topic]');
   if (questionTopic) { state.questionTopic = questionTopic.dataset.questionTopic; renderQuestions(); return; }
   const questionAnswer = event.target.closest('[data-question-practice-answer]');
   if (questionAnswer) {
-    const item = questionPractice[state.questionPracticeIndex % questionPractice.length];
+    const pool = questionPracticePool();
+    const item = pool[state.questionPracticeIndex % pool.length];
     const selected = Number(questionAnswer.dataset.questionPracticeAnswer);
     state.questionPracticeAnswered = true;
     questionAnswer.parentElement.querySelectorAll('button').forEach((button, index) => {
@@ -143757,7 +144200,8 @@ function handleClick(event) {
     return;
   }
   if (event.target.closest('[data-question-practice-next]')) {
-    state.questionPracticeIndex = (state.questionPracticeIndex + 1) % questionPractice.length;
+    const pool = questionPracticePool();
+    state.questionPracticeIndex = (state.questionPracticeIndex + 1) % pool.length;
     state.questionPracticeAnswered = false;
     renderQuestionPractice();
     return;
@@ -143942,6 +144386,14 @@ function initializeEvents() {
 
 function initialize() {
   document.documentElement.dataset.appVersion = APP_VERSION;
+  const graphRelease = el('knowledge-graph-release');
+  const graphScope = el('knowledge-graph-scope');
+  const questionLessonCount = el('question-lesson-count');
+  const questionPracticeCount = el('question-practice-count');
+  if (graphRelease) graphRelease.textContent = APP_RELEASE;
+  if (graphScope) graphScope.textContent = `${allGrammarTopics.length} grammaticamodules · ${allQuestionTopics.length} vraaglessen · A0–C2`;
+  if (questionLessonCount) questionLessonCount.textContent = String(allQuestionTopics.length);
+  if (questionPracticeCount) questionPracticeCount.textContent = String(allQuestionPractice.length);
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
     onOpenPage: (page) => showPage(page),
     onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },

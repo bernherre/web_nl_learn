@@ -1,5 +1,5 @@
-const CACHE = 'nederlands-gewoon-doen-v19-3-0-rc-3';
-const APP_VERSION = '19.3.0-rc.3';
+const CACHE = 'nederlands-gewoon-doen-v19-3-0-rc-5';
+const APP_VERSION = '19.3.0-rc.5';
 const OFFLINE_URL = './offline.html';
 const CORE = [
   './', './index.html', OFFLINE_URL,

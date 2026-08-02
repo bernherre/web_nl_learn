@@ -1,5 +1,14 @@
 # Changelog
 
+## 19.3.0-rc.5 — V19.3 RC5
+
+- Corrige la bundle clásica para conservar alias de importaciones ES Modules como `questionTopics as baseQuestionTopics`.
+- Evita el error de navegador `baseQuestionTopics is not defined` al combinar preguntas A1–B2 con C1/C2.
+- Añade una transformación genérica de alias en `build-classic.mjs`, no un parche específico de variable.
+- Añade una prueba de regresión que valida definición y orden de los alias antes de su uso.
+- Sincroniza también la versión visible del Knowledge Graph desde `package.json`.
+- Mantiene la gramática, preguntas, Knowledge Graph, 1.886 verbos y 8.072 ejercicios de RC4.
+
 
 ## 19.3.0-rc.3 — V19.3 RC3
 

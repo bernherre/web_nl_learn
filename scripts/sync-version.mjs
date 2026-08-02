@@ -15,7 +15,8 @@ await update('index.html', (source) => source
   .replace(/css\/tokens\.css\?v=[^"]+/gu, `css/tokens.css?v=${version}`)
   .replace(/css\/typography\.css\?v=[^"]+/gu, `css/typography.css?v=${version}`)
   .replace(/css\/styles\.css\?v=[^"]+/gu, `css/styles.css?v=${version}`)
-  .replace(/js\/app\.js\?v=[^"]+/gu, `js/app.js?v=${version}`));
+  .replace(/js\/app\.js\?v=[^"]+/gu, `js/app.js?v=${version}`)
+  .replace(/(<strong id="knowledge-graph-release">)[^<]+(<\/strong>)/u, `$1${releaseLabel}$2`));
 await update('js/app-config.js', () => `export const APP_VERSION = '${version}';
 export const APP_RELEASE = '${releaseLabel}';
 `);

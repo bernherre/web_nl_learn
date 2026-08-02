@@ -12,7 +12,7 @@ for (const edge of graph.edges) {
   outgoing.get(edge.source).push(edge);
 }
 
-test('de V19.2.1-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties', () => {
+test('de actuele kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties', () => {
   assert.equal(graph.metadata.version, packageJson.version);
   assert.equal(graph.nodes.length, graph.metadata.nodeCount);
   assert.equal(graph.edges.length, graph.metadata.edgeCount);
@@ -23,13 +23,15 @@ test('de V19.2.1-kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties
   assert.ok(graph.metadata.edgeCount >= 64000);
   assert.equal(graph.metadata.typeCounts.theme, 74);
   assert.equal(graph.metadata.typeCounts.spiral_theme, 9);
-  assert.equal(graph.metadata.typeCounts.practice, 10);
+  assert.equal(graph.metadata.typeCounts.practice, 22);
+  assert.equal(graph.metadata.typeCounts.question_topic, 22);
+  assert.equal(graph.metadata.typeCounts.grammar_focus, 162);
   assert.ok(graph.metadata.typeCounts.category >= 70);
   for (const edge of graph.edges) {
     assert.ok(nodes.has(edge.source), `bron ontbreekt: ${edge.id}`);
     assert.ok(nodes.has(edge.target), `doel ontbreekt: ${edge.id}`);
   }
-  for (const type of ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'spiral_theme', 'grammar', 'structure', 'vocabulary', 'practice', 'exercise']) {
+  for (const type of ['verb', 'sense', 'synonym_term', 'usage', 'theme', 'spiral_theme', 'grammar', 'grammar_focus', 'question_topic', 'structure', 'vocabulary', 'practice', 'exercise']) {
     assert.ok(graph.metadata.typeCounts[type] > 0, `${type} ontbreekt`);
   }
 });

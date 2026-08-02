@@ -138,3 +138,15 @@ test('de applicatieversie staat vóór gebruik in de klassieke browserbundle', (
   assert.ok(definition >= 0, 'APP_VERSION ontbreekt in js/app.js');
   assert.ok(use > definition, 'APP_VERSION wordt gebruikt vóór de definitie');
 });
+
+
+test('aliassen uit ES-module-imports worden vóór gebruik in de klassieke browserbundle behouden', () => {
+  const topicsAlias = bundle.indexOf('const baseQuestionTopics = questionTopics;');
+  const practiceAlias = bundle.indexOf('const baseQuestionPractice = questionPractice;');
+  const topicsUse = bundle.indexOf('const allQuestionTopics = [...baseQuestionTopics, ...c1c2QuestionTopics];');
+  const practiceUse = bundle.indexOf('const allQuestionPractice = [...baseQuestionPractice, ...c1c2QuestionPractice];');
+  assert.ok(topicsAlias >= 0, 'baseQuestionTopics-alias ontbreekt in js/app.js');
+  assert.ok(practiceAlias >= 0, 'baseQuestionPractice-alias ontbreekt in js/app.js');
+  assert.ok(topicsUse > topicsAlias, 'baseQuestionTopics wordt gebruikt vóór de aliasdefinitie');
+  assert.ok(practiceUse > practiceAlias, 'baseQuestionPractice wordt gebruikt vóór de aliasdefinitie');
+});

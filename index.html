@@ -9,9 +9,9 @@
   <title>Nederlands, gewoon doen</title>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/tokens.css?v=19.3.0-rc.3">
-  <link rel="stylesheet" href="css/typography.css?v=19.3.0-rc.3">
-  <link rel="stylesheet" href="css/styles.css?v=19.3.0-rc.3">
+  <link rel="stylesheet" href="css/tokens.css?v=19.3.0-rc.5">
+  <link rel="stylesheet" href="css/typography.css?v=19.3.0-rc.5">
+  <link rel="stylesheet" href="css/styles.css?v=19.3.0-rc.5">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -366,7 +366,7 @@
           <section class="page" id="page-kennisgraaf" aria-labelledby="kennisgraaf-title">
             <div class="page-heading knowledge-graph-heading">
               <div><span class="kicker">Synoniemen · gebruik · oefeningen · controles</span><h1 id="kennisgraaf-title">Kennisgraaf van alle inhoud</h1><p>Doorzoek de leeromgeving als één semantisch netwerk. Een werkwoord is verbonden met zijn betekenis, gecontroleerde synoniemen, thema’s, grammatica, voorbeelden, oefeningen en open inhoudscontroles.</p></div>
-              <div class="knowledge-graph-version"><strong>V18.18.0</strong><span>eerste 1.750 alfabetische posities inhoudelijk uitgebreid</span></div>
+              <div class="knowledge-graph-version"><strong id="knowledge-graph-release">V19.3 RC5</strong><span id="knowledge-graph-scope">76 grammaticamodules · 22 vraaglessen · A0–C2</span></div>
             </div>
             <div class="notice-card knowledge-graph-notice"><span aria-hidden="true">◎</span><div><strong>De graaf maakt hiaten zichtbaar; hij vult ze niet automatisch in.</strong><p>Een synoniem wordt alleen als gecontroleerde relatie getoond wanneer de werkwoordfiche handmatig is nagekeken. Ontbrekende definities, synoniemen, gebruiksnotities en voorbeelden verschijnen als controlepunten.</p></div></div>
             <p class="knowledge-graph-status" id="knowledge-graph-status" role="status" aria-live="polite">Open deze pagina om de kennisgraaf te laden.</p>
@@ -374,7 +374,7 @@
             <section class="card knowledge-graph-controls" aria-label="Kennisgraaf zoeken en filteren">
               <label class="knowledge-search" for="knowledge-graph-search"><span>Zoek in alle inhoud</span><input id="knowledge-graph-search" type="search" placeholder="bijv. aaien, wachten op, werk, klacht…" autocomplete="off"></label>
               <label><span>Inhoudstype</span><select id="knowledge-graph-type"><option value="all">Alle typen</option></select></label>
-              <label><span>Niveau</span><select id="knowledge-graph-level"><option value="all">Alle niveaus</option><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option></select></label>
+              <label><span>Niveau</span><select id="knowledge-graph-level"><option value="all">Alle niveaus</option><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="C1">C1</option><option value="C2">C2</option></select></label>
               <label><span>Relaties in beeld</span><select id="knowledge-graph-mode"><option value="all">Directe omgeving</option><option value="synonyms">Betekenis en synoniemen</option><option value="usage">Plaatsen van gebruik</option><option value="exercises">Oefeningen</option><option value="issues">Fouten en controles</option></select></label>
               <label class="knowledge-check"><input id="knowledge-graph-issues-only" type="checkbox"><span>Alleen inhoud met open controles</span></label>
             </section>
@@ -397,7 +397,7 @@
 
           <section class="page" id="page-grammatica" aria-labelledby="grammatica-title">
             <div class="page-heading"><div><span class="kicker">Van vorm naar betekenis</span><h1 id="grammatica-title">Grammatica-atlas</h1><p>Regels in eenvoudige taal, met visuele modellen, audio en verbindingen naar andere concepten.</p></div></div>
-            <section class="grammar-discovery" aria-labelledby="grammar-discovery-title"><div class="section-heading compact"><div><span class="kicker">Binnen twee klikken</span><h2 id="grammar-discovery-title">Veelgezochte structuren</h2></div><p>Zoek op functie, niet alleen op woordsoort.</p></div><div class="grammar-shortcuts"><button type="button" data-page="grammatica" data-topic="bijwoorden-overzicht">Bijwoorden</button><button type="button" data-page="grammatica" data-topic="signaalwoorden-logische-relaties">Connectors & signaalwoorden</button><button type="button" data-page="grammatica" data-topic="voorzetsels-plaats">Voorzetsels</button><button type="button" data-page="grammatica" data-topic="gevolg-zodat-waardoor">Zodat · waardoor · daardoor</button><button type="button" data-page="grammatica" data-topic="voorwaarden-als-mits-tenzij">Voorwaarden</button><button type="button" data-page="grammatica" data-topic="nuancerende-bijwoorden">Nuance B2</button></div></section>
+            <section class="grammar-discovery" aria-labelledby="grammar-discovery-title"><div class="section-heading compact"><div><span class="kicker">Binnen twee klikken</span><h2 id="grammar-discovery-title">Veelgezochte structuren</h2></div><p>Zoek op functie, niet alleen op woordsoort.</p></div><div class="grammar-shortcuts"><button type="button" data-page="grammatica" data-topic="bijwoorden-overzicht">Bijwoorden</button><button type="button" data-page="grammatica" data-topic="signaalwoorden-logische-relaties">Connectors & signaalwoorden</button><button type="button" data-page="grammatica" data-topic="voorzetsels-plaats">Voorzetsels</button><button type="button" data-page="grammatica" data-topic="gevolg-zodat-waardoor">Zodat · waardoor · daardoor</button><button type="button" data-page="grammatica" data-topic="voorwaarden-als-mits-tenzij">Voorwaarden</button><button type="button" data-page="grammatica" data-topic="nuancerende-bijwoorden">Nuance B2</button><button type="button" data-page="grammatica" data-topic="c1-bronmarkering-evidentialiteit">Bronnen C1</button><button type="button" data-page="grammatica" data-topic="c2-implicatuur-ironie-understatement">Implicatuur C2</button></div></section>
             <div class="filter-row" id="grammar-filters" aria-label="Filter grammatica op niveau"></div>
             <div class="library-layout">
               <div class="topic-list" id="grammar-list"></div>
@@ -410,11 +410,11 @@
           <section class="page" id="page-vragen" aria-labelledby="vragen-title">
             <div class="page-heading question-page-heading">
               <div><span class="kicker">Van eenvoudige vraag tot genuanceerd gesprek</span><h1 id="vragen-title">Vragen in het Nederlands</h1><p>Leer ja/nee-vragen, open vragen, indirecte vragen en het complete systeem met <strong>waar, daar, er en hier + voorzetsel</strong>.</p></div>
-              <div class="question-stats"><span><strong>14</strong> lessen</span><span><strong>22</strong> waar/daar/er-patronen</span><span><strong>10</strong> oefeningen</span></div>
+              <div class="question-stats"><span><strong id="question-lesson-count">22</strong> lessen</span><span><strong>22</strong> waar/daar/er-patronen</span><span><strong id="question-practice-count">22</strong> oefeningen</span></div>
             </div>
             <section class="card question-visual-hero">
               <img src="images/questions-map.svg" alt="Visuele kaart van Nederlandse vraagsoorten en voornaamwoordelijke bijwoorden">
-              <div><span class="kicker">Eén verbonden systeem</span><h2>Van “Woon je hier?” tot “Waarop is dat gebaseerd?”</h2><p>Elke les combineert zinsvolgorde, betekenis, register, audio en contrasten tussen personen en zaken.</p><div class="question-route"><span>A1 basis</span><i>→</i><span>A2 context</span><i>→</i><span>B1 waar/er</span><i>→</i><span>B2 nuance</span></div></div>
+              <div><span class="kicker">Eén verbonden systeem</span><h2>Van “Woon je hier?” tot “Waarop is dat gebaseerd?”</h2><p>Elke les combineert zinsvolgorde, betekenis, register, audio en contrasten tussen personen en zaken.</p><div class="question-route"><span>A1 basis</span><i>→</i><span>A2 context</span><i>→</i><span>B1 waar/er</span><i>→</i><span>B2 nuance</span><i>→</i><span>C1 bewijs</span><i>→</i><span>C2 discours</span></div></div>
             </section>
             <div class="filter-row" id="question-filters" aria-label="Filter vragen op niveau"></div>
             <div class="library-layout question-library-layout">
@@ -633,6 +633,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">Deze leeromgeving heeft JavaScript nodig voor audio, oefeningen en navigatie.</div></noscript>
-  <script src="js/app.js?v=19.3.0-rc.3"></script>
+  <script src="js/app.js?v=19.3.0-rc.5"></script>
 </body>
 </html>

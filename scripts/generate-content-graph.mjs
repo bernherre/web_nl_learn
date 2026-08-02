@@ -30,6 +30,7 @@ import {
   emailTasks,
 } from '../js/advanced-practice-content.js';
 import { sourceReviewGrammarTopics } from '../js/source-review-content.js';
+import { c1c2GrammarTopics, c1c2QuestionTopics, c1c2QuestionPractice } from '../js/c1-c2-language-systems.js';
 import { exerciseBank } from '../js/exercises.js';
 import { verbAtlas } from '../js/verb-atlas.js';
 import { applyVerbCorrections } from '../js/verb-corrections.js';
@@ -48,6 +49,9 @@ const nodes = new Map();
 const edges = new Map();
 const issues = [];
 const sourceCounts = {};
+const pendingGrammarFocuses = [];
+const allQuestionTopics = [...questionTopics, ...c1c2QuestionTopics];
+const allQuestionPractice = [...questionPractice, ...c1c2QuestionPractice];
 
 const clean = (value) => String(value ?? '').replace(/\s+/gu, ' ').trim();
 const normalise = (value) => clean(value)
@@ -231,6 +235,7 @@ for (const theme of spiralThemes) {
     });
     addEdge(parentId, id, 'has_level_variant', level);
     levelEdge(id, level);
+    for (const grammarFocus of data.grammar || []) pendingGrammarFocuses.push({ themeId: id, themeKey: theme.id, level, label: grammarFocus });
     for (const [group, words] of Object.entries(data.words || {})) {
       for (const word of words || []) {
         const termId = `spiral-term:${level}:${theme.id}:${normalise(word)}`;
@@ -268,7 +273,8 @@ const grammarCollections = [
   ['grammatica', grammarTopics],
   ['gevorderde-grammatica', advancedGrammarTopics],
   ['bronmateriaal-review', sourceReviewGrammarTopics],
-  ['vragen', questionTopics],
+  ['c1-c2-grammatica', c1c2GrammarTopics],
+  ['vragen', allQuestionTopics],
   ['getallen-en-tijd', numberTimeTopics],
 ];
 const grammarIdsByLabel = new Map();
@@ -290,10 +296,13 @@ for (const [source, collection] of grammarCollections) {
         sections: item.sections || [],
         contrasts: item.contrasts || [],
         mistakes: item.mistakes || [],
+        aliases: item.aliases || [],
+        relatedGrammar: item.relatedGrammar || [],
       },
     });
     grammarIdsByLabel.set(normalise(item.title), id);
     grammarIdsByLabel.set(normalise(item.id), id);
+    for (const alias of item.aliases || []) grammarIdsByLabel.set(normalise(alias), id);
     levelEdge(id, item.level);
     if (!clean(item.rule) || clean(item.rule).length < 20) addIssue(id, 'rule-too-short', 'Grammaticaregel ontbreekt of is te kort.', 'warning');
     if (!Array.isArray(item.examples) || item.examples.length === 0) addIssue(id, 'examples-missing', 'Grammaticaonderwerp heeft geen voorbeelden.', 'warning');
@@ -302,10 +311,23 @@ for (const [source, collection] of grammarCollections) {
       addNode({ id: issueNode, type: 'known_error', label: 'Veelgemaakte fout', subtitle: text(mistake), level: item.level, source, data: { mistake } });
       addEdge(id, issueNode, 'documents_error', 'veelgemaakte fout');
     }
+    for (const relatedId of item.relatedGrammar || []) {
+      const target = grammarIdsByLabel.get(normalise(relatedId));
+      if (target) addEdge(id, target, 'applies_grammar', 'past grammatica toe');
+    }
   }
 }
 
-for (const item of questionPractice) {
+for (const focus of pendingGrammarFocuses) {
+  const id = `grammar-focus:${focus.level}:${focus.themeKey}:${normalise(focus.label)}`;
+  addNode({ id, type: 'grammar_focus', label: focus.label, subtitle: `${focus.level} · grammaticale focus in spiraalthema`, level: focus.level, source: `${focus.level}-spiraalgrammatica`, data: focus });
+  addEdge(focus.themeId, id, 'uses_grammar_focus', 'grammaticale focus');
+  levelEdge(id, focus.level);
+  const canonical = grammarIdsByLabel.get(normalise(focus.label));
+  if (canonical) addEdge(id, canonical, 'refines_grammar', 'uitwerking van');
+}
+
+for (const item of allQuestionPractice) {
   const id = `question-practice:${item.id}`;
   addNode({ id, type: 'practice', label: item.prompt, subtitle: item.explanation, level: item.level, source: 'vragen-oefenreeks', data: item });
   levelEdge(id, item.level);

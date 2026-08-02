@@ -7,7 +7,7 @@ import {
   safeProgress,
   selectDutchVoice,
 } from './learning.js';
-import { APP_VERSION } from './app-config.js';
+import { APP_RELEASE, APP_VERSION } from './app-config.js';
 import { isReliableDefinition, isReliableExample } from './lexical-quality.js';
 import {
   prepositionEntries,
@@ -26,7 +26,7 @@ applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
 applyFinalVerbReviews(verbAtlas);
-import { questionTopics, pronominalAdverbs, questionPractice } from './questions-content.js';
+import { questionTopics as baseQuestionTopics, pronominalAdverbs, questionPractice as baseQuestionPractice } from './questions-content.js';
 import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
 import { advancedSpiralLevels } from './advanced-level-content.js';
@@ -35,6 +35,7 @@ import { physicsCategories, physicsConcepts, softwareCategories, softwareConcept
 import { professionalDomains, professionalConcepts, professionalStats } from './professional-content.js';
 import { advancedGrammarTopics, logicRelationGroups, readingArticles, emailTasks, advancedPracticeStats } from './advanced-practice-content.js';
 import { sourceReviewGrammarTopics } from './source-review-content.js';
+import { c1c2GrammarTopics, c1c2QuestionTopics, c1c2QuestionPractice } from './c1-c2-language-systems.js';
 import { v19PracticeScenarios } from './v19-learning-experience.js';
 import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
 import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
@@ -54,7 +55,9 @@ const LEGACY_STORAGE_KEY = 'nederlands-gewoon-doen-progress-v2';
 const SETTINGS_KEY = 'nederlands-gewoon-doen-settings-v2';
 const EXERCISE_WORDS = ['Vandaag', 'werk', 'ik', 'thuis'];
 const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
-const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics];
+const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics, ...c1c2GrammarTopics];
+const allQuestionTopics = [...baseQuestionTopics, ...c1c2QuestionTopics];
+const allQuestionPractice = [...baseQuestionPractice, ...c1c2QuestionPractice];
 
 const initialProfile = readActiveProfileSession();
 
@@ -793,7 +796,7 @@ function renderProfessionalLexicon() {
 }
 
 function renderGrammarFilters() {
-  const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
+  const filters = ['alle', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   elements.grammarFilters.innerHTML = filters.map((level) => `<button class="${state.grammarLevel === level ? 'active' : ''}" type="button" data-grammar-level="${level}">${level === 'alle' ? 'Alle niveaus' : level}</button>`).join('');
 }
 
@@ -863,7 +866,7 @@ function renderEmailWriting() {
 }
 
 function renderQuestionFilters() {
-  const filters = ['alle', 'A1', 'A2', 'B1', 'B2'];
+  const filters = ['alle', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
   elements.questionFilters.innerHTML = filters.map((level) => `<button class="${state.questionLevel === level ? 'active' : ''}" type="button" data-question-level="${level}">${level === 'alle' ? 'Alle niveaus' : level}</button>`).join('');
 }
 
@@ -899,9 +902,15 @@ function renderQuestionMatrix() {
   </article>`).join('') : '<div class="empty-state"><strong>Geen vorm gevonden.</strong><p>Zoek bijvoorbeeld op “waarop”, “ermee”, “persoon” of “richting”.</p></div>';
 }
 
+function questionPracticePool() {
+  const filtered = state.questionLevel === 'alle' ? allQuestionPractice : allQuestionPractice.filter((item) => item.level === state.questionLevel);
+  return filtered.length ? filtered : allQuestionPractice;
+}
+
 function renderQuestionPractice() {
-  const item = questionPractice[state.questionPracticeIndex % questionPractice.length];
-  elements.questionPractice.innerHTML = `<div class="question-practice-heading"><div><span class="kicker">Actieve herhaling · ${escapeHtml(item.level)}</span><h2>Kies de beste vraag</h2><p>${escapeHtml(item.prompt)}</p></div><span class="practice-counter">${state.questionPracticeIndex + 1} / ${questionPractice.length}</span></div>
+  const pool = questionPracticePool();
+  const item = pool[state.questionPracticeIndex % pool.length];
+  elements.questionPractice.innerHTML = `<div class="question-practice-heading"><div><span class="kicker">Actieve herhaling · ${escapeHtml(item.level)}</span><h2>Kies de beste vraag</h2><p>${escapeHtml(item.prompt)}</p></div><span class="practice-counter">${(state.questionPracticeIndex % pool.length) + 1} / ${pool.length}</span></div>
     <div class="question-practice-options">${item.options.map((option, index) => `<button type="button" data-question-practice-answer="${index}" ${state.questionPracticeAnswered ? 'disabled' : ''}>${escapeHtml(option)}</button>`).join('')}</div>
     <p class="feedback" id="question-practice-feedback">Kies één antwoord en bekijk waarom het klopt.</p>
     <div class="question-practice-actions"><button class="sound-button speak" type="button" data-text="${escapeHtml(item.audio)}" data-rate="0.84">🔊 Luister naar de juiste vorm</button><button class="primary-button" type="button" data-question-practice-next>Volgende vraag →</button></div>`;
@@ -909,10 +918,10 @@ function renderQuestionPractice() {
 
 function renderQuestions() {
   renderQuestionFilters();
-  const filtered = questionTopics.filter((topic) => state.questionLevel === 'alle' || topic.level === state.questionLevel);
-  if (!filtered.some((topic) => topic.id === state.questionTopic)) state.questionTopic = filtered[0]?.id || questionTopics[0].id;
+  const filtered = allQuestionTopics.filter((topic) => state.questionLevel === 'alle' || topic.level === state.questionLevel);
+  if (!filtered.some((topic) => topic.id === state.questionTopic)) state.questionTopic = filtered[0]?.id || allQuestionTopics[0].id;
   elements.questionList.innerHTML = filtered.map((topic) => `<button class="topic-button ${topic.id === state.questionTopic ? 'active' : ''}" type="button" data-question-topic="${escapeHtml(topic.id)}"><small>${escapeHtml(topic.level)}</small><strong>${escapeHtml(topic.title)}</strong><span>${escapeHtml(topic.summary)}</span></button>`).join('');
-  renderQuestionDetail(questionTopics.find((topic) => topic.id === state.questionTopic) || questionTopics[0]);
+  renderQuestionDetail(allQuestionTopics.find((topic) => topic.id === state.questionTopic) || allQuestionTopics[0]);
   renderQuestionMatrix();
   renderQuestionPractice();
 }
@@ -1643,12 +1652,13 @@ function handleClick(event) {
     return;
   }
   const questionLevel = event.target.closest('[data-question-level]');
-  if (questionLevel) { state.questionLevel = questionLevel.dataset.questionLevel; renderQuestions(); return; }
+  if (questionLevel) { state.questionLevel = questionLevel.dataset.questionLevel; state.questionPracticeIndex = 0; state.questionPracticeAnswered = false; renderQuestions(); return; }
   const questionTopic = event.target.closest('[data-question-topic]');
   if (questionTopic) { state.questionTopic = questionTopic.dataset.questionTopic; renderQuestions(); return; }
   const questionAnswer = event.target.closest('[data-question-practice-answer]');
   if (questionAnswer) {
-    const item = questionPractice[state.questionPracticeIndex % questionPractice.length];
+    const pool = questionPracticePool();
+    const item = pool[state.questionPracticeIndex % pool.length];
     const selected = Number(questionAnswer.dataset.questionPracticeAnswer);
     state.questionPracticeAnswered = true;
     questionAnswer.parentElement.querySelectorAll('button').forEach((button, index) => {
@@ -1662,7 +1672,8 @@ function handleClick(event) {
     return;
   }
   if (event.target.closest('[data-question-practice-next]')) {
-    state.questionPracticeIndex = (state.questionPracticeIndex + 1) % questionPractice.length;
+    const pool = questionPracticePool();
+    state.questionPracticeIndex = (state.questionPracticeIndex + 1) % pool.length;
     state.questionPracticeAnswered = false;
     renderQuestionPractice();
     return;
@@ -1847,6 +1858,14 @@ function initializeEvents() {
 
 function initialize() {
   document.documentElement.dataset.appVersion = APP_VERSION;
+  const graphRelease = el('knowledge-graph-release');
+  const graphScope = el('knowledge-graph-scope');
+  const questionLessonCount = el('question-lesson-count');
+  const questionPracticeCount = el('question-practice-count');
+  if (graphRelease) graphRelease.textContent = APP_RELEASE;
+  if (graphScope) graphScope.textContent = `${allGrammarTopics.length} grammaticamodules · ${allQuestionTopics.length} vraaglessen · A0–C2`;
+  if (questionLessonCount) questionLessonCount.textContent = String(allQuestionTopics.length);
+  if (questionPracticeCount) questionPracticeCount.textContent = String(allQuestionPractice.length);
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
     onOpenPage: (page) => showPage(page),
     onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },

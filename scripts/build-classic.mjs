@@ -3,6 +3,22 @@ import { readFile, writeFile } from 'node:fs/promises';
 const stripExports = (source) => source.replace(/^export\s+/gmu, '');
 const stripImports = (source) => source.replace(/import\s*\{[\s\S]*?\}\s*from\s*['"][^'"]+['"];\s*/gu, '');
 
+const stripImportsPreservingAliases = (source) => {
+  const aliases = [];
+  const withoutImports = source.replace(
+    /import\s*\{([\s\S]*?)\}\s*from\s*['"][^'"]+['"];\s*/gu,
+    (_match, specifiers) => {
+      for (const rawSpecifier of specifiers.split(',')) {
+        const specifier = rawSpecifier.trim();
+        const aliasMatch = specifier.match(/^([A-Za-z_$][\w$]*)\s+as\s+([A-Za-z_$][\w$]*)$/u);
+        if (aliasMatch) aliases.push(`const ${aliasMatch[2]} = ${aliasMatch[1]};`);
+      }
+      return '';
+    },
+  );
+  return `${aliases.join('\n')}\n${withoutImports}`;
+};
+
 const appConfig = stripExports(await readFile(new URL('../js/app-config.js', import.meta.url), 'utf8'));
 const lexicalQuality = stripExports(await readFile(new URL('../js/lexical-quality.js', import.meta.url), 'utf8'));
 const learning = stripExports(await readFile(new URL('../js/learning.js', import.meta.url), 'utf8'));
@@ -17,6 +33,7 @@ const technicalContent = stripExports(await readFile(new URL('../js/technical-co
 const professionalContent = stripExports(await readFile(new URL('../js/professional-content.js', import.meta.url), 'utf8'));
 const advancedPracticeContent = stripExports(await readFile(new URL('../js/advanced-practice-content.js', import.meta.url), 'utf8'));
 const sourceReviewContent = stripExports(await readFile(new URL('../js/source-review-content.js', import.meta.url), 'utf8'));
+const c1c2LanguageSystems = stripExports(await readFile(new URL('../js/c1-c2-language-systems.js', import.meta.url), 'utf8'));
 const v19LearningExperience = stripExports(await readFile(new URL('../js/v19-learning-experience.js', import.meta.url), 'utf8'));
 const exercises = stripImports(stripExports(await readFile(new URL('../js/exercises.js', import.meta.url), 'utf8')));
 const profiles = stripExports(await readFile(new URL('../js/profiles.js', import.meta.url), 'utf8'));
@@ -27,8 +44,8 @@ const verbInitialReview = stripExports(await readFile(new URL('../js/verb-initia
 const verbFinalReview = stripExports(await readFile(new URL('../js/verb-final-review.js', import.meta.url), 'utf8'));
 const knowledgeGraph = stripExports(await readFile(new URL('../js/knowledge-graph.js', import.meta.url), 'utf8'));
 const content = stripImports(stripExports(await readFile(new URL('../js/content.js', import.meta.url), 'utf8')));
-const main = stripImports(await readFile(new URL('../js/main.js', import.meta.url), 'utf8'));
+const main = stripImportsPreservingAliases(await readFile(new URL('../js/main.js', import.meta.url), 'utf8'));
 
-const bundle = `/* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */\n(function () {\n'use strict';\n${appConfig}\n${lexicalQuality}\n${learning}\n${depthContent}\n${supplementContent}\n${questionsContent}\n${starterContent}\n${spiralContent}\n${advancedLevelContent}\n${numberMathContent}\n${technicalContent}\n${professionalContent}\n${advancedPracticeContent}\n${sourceReviewContent}\n${v19LearningExperience}\n${exercises}\n${profiles}\n${verbAtlas}\n${verbCorrections}\n${verbCoreReview}\n${verbInitialReview}\n${verbFinalReview}\n${knowledgeGraph}\n${content}\n${main}\n})();\n`;
+const bundle = `/* Generated browser bundle. Source of truth: app-config.js, lexical-quality.js, learning.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, c1-c2-language-systems.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, knowledge-graph.js, content.js and main.js. */\n(function () {\n'use strict';\n${appConfig}\n${lexicalQuality}\n${learning}\n${depthContent}\n${supplementContent}\n${questionsContent}\n${starterContent}\n${spiralContent}\n${advancedLevelContent}\n${numberMathContent}\n${technicalContent}\n${professionalContent}\n${advancedPracticeContent}\n${sourceReviewContent}\n${c1c2LanguageSystems}\n${v19LearningExperience}\n${exercises}\n${profiles}\n${verbAtlas}\n${verbCorrections}\n${verbCoreReview}\n${verbInitialReview}\n${verbFinalReview}\n${knowledgeGraph}\n${content}\n${main}\n})();\n`;
 await writeFile(new URL('../js/app.js', import.meta.url), bundle, 'utf8');
 console.log('js/app.js bijgewerkt.');

@@ -7,6 +7,7 @@ import { deepGrammarTopics, prepositionEntries, fixedPrepositionCombinations, se
 import { questionTopics, pronominalAdverbs, questionPractice } from '../js/questions-content.js';
 import { advancedGrammarTopics, readingArticles, emailTasks } from '../js/advanced-practice-content.js';
 import { sourceReviewGrammarTopics, sourceReviewExercises } from '../js/source-review-content.js';
+import { c1c2GrammarTopics, c1c2QuestionTopics, c1c2QuestionPractice } from '../js/c1-c2-language-systems.js';
 import { exerciseBank, exerciseStats } from '../js/exercises.js';
 import { numberTimeTopics, mathConcepts } from '../js/number-math-content.js';
 import { physicsConcepts, softwareConcepts } from '../js/technical-content.js';
@@ -58,12 +59,22 @@ for (const theme of spiralThemes) {
 }
 expect(advancedLevelProblems.length === 0, 'curriculum', 'C1 en C2 bevatten negen volledige spiraalthema’s', advancedLevelProblems.length ? advancedLevelProblems.join(', ') : '18 gevorderde themavarianten met doelen, grammatica, dialoog en minimaal 24 taalitems.');
 
-const uiGrammar = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics];
+const uiGrammar = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics, ...c1c2GrammarTopics];
+const allQuestionTopics = [...questionTopics, ...c1c2QuestionTopics];
+const allQuestionPractice = [...questionPractice, ...c1c2QuestionPractice];
 const allGrammar = [...uiGrammar, ...deepGrammarTopics];
 expect(unique(uiGrammar.map((item) => item.id)) && unique(deepGrammarTopics.map((item) => item.id)), 'grammar', 'grammatica-id’s zijn uniek binnen elke gepubliceerde bank', `${uiGrammar.length} zoekbare modules en ${deepGrammarTopics.length} verdiepingsmodules gecontroleerd.`);
 const weakGrammar = allGrammar.filter((item) => String(item.summary || '').length < 35 || String(item.rule || '').length < 15 || !Array.isArray(item.examples) || item.examples.length < 2);
 expect(weakGrammar.length === 0, 'grammar', 'uitleg, regel en voorbeelden zijn aanwezig', weakGrammar.length ? `Onvoldoende: ${weakGrammar.map((item) => item.id).join(', ')}` : `${allGrammar.length} modules voldoen aan de minimumstructuur.`);
 expect(sourceReviewGrammarTopics.length === 12, 'source-material', 'aangeleverd fotomateriaal heeft een eigen herhalingslaag', '12 nieuw geschreven modules zonder overname van boektekst.');
+
+expect(c1c2GrammarTopics.length === 19 && c1c2GrammarTopics.filter((item) => item.level === 'C1').length === 9 && c1c2GrammarTopics.filter((item) => item.level === 'C2').length === 10, 'grammar', 'C1 en C2 hebben een volledige canonieke grammaticalaag', `${c1c2GrammarTopics.length} modules: C1=${c1c2GrammarTopics.filter((item) => item.level === 'C1').length}, C2=${c1c2GrammarTopics.filter((item) => item.level === 'C2').length}.`);
+expect(c1c2QuestionTopics.length === 8 && ['C1', 'C2'].every((level) => c1c2QuestionTopics.filter((item) => item.level === level).length === 4), 'questions', 'C1 en C2 hebben elk vier gevorderde vraagmodules', `${c1c2QuestionTopics.length} modules.`);
+expect(c1c2QuestionPractice.length === 12 && ['C1', 'C2'].every((level) => c1c2QuestionPractice.filter((item) => item.level === level).length === 6), 'questions', 'C1 en C2 hebben niveaugebonden vraagtraining', `${c1c2QuestionPractice.length} oefeningen.`);
+const questionTopicIds = new Set(allQuestionTopics.map((item) => item.id));
+const unresolvedQuestionPractice = allQuestionPractice.filter((item) => !questionTopicIds.has(item.topic));
+expect(unresolvedQuestionPractice.length === 0, 'questions', 'alle vraagoefeningen verwijzen naar een bestaande vraagmodule', unresolvedQuestionPractice.map((item) => `${item.id}:${item.topic}`).join(', ') || `${allQuestionPractice.length} geldige koppelingen.`);
+
 
 const coverage = [
   ['lidwoorden en zelfstandige naamwoorden', ['bepaald-lidwoord', 'onbepaald-lidwoord', 'zelfstandig-naamwoord']],
@@ -163,7 +174,7 @@ expect(missingSynonymNotes.length === 0, 'verbs', 'contextuele verschillen tusse
 const structuralBanks = [
   ['voorzetsels', prepositionEntries, 35], ['vaste voorzetselcombinaties', fixedPrepositionCombinations, 80],
   ['scheidbare werkwoorden', separableVerbBank, 80], ['voegwoorden', conjunctionBank, 40], ['idiomen', idiomBank, 75],
-  ['vraagonderwerpen', questionTopics, 14], ['voornaamwoordelijke bijwoorden', pronominalAdverbs, 20], ['vraagoefeningen', questionPractice, 10],
+  ['vraagonderwerpen', allQuestionTopics, 22], ['voornaamwoordelijke bijwoorden', pronominalAdverbs, 20], ['vraagoefeningen', allQuestionPractice, 22],
 ];
 for (const [label, bank, minimum] of structuralBanks) expect(bank.length >= minimum, 'language-structures', label, `${bank.length} items (minimum ${minimum}).`);
 
@@ -215,6 +226,15 @@ expect(graphReport.metadata?.issueCount === unreviewed.length && graphReport.rev
 expect(/id="page-kennisgraaf"/u.test(files.index) && /createKnowledgeGraphExplorer/u.test(files.main), 'knowledge-graph', 'de graaf is geïntegreerd zonder bestaande routes te vervangen', 'Aparte, lui geladen kennisgraafpagina aangetroffen.');
 expect(/__NL_CONTENT_KNOWLEDGE_GRAPH__/u.test(graphScript) && /loadKnowledgeGraphScript/u.test(await readFile(new URL('js/knowledge-graph.js', root), 'utf8')), 'knowledge-graph', 'de graaf werkt ook bij rechtstreeks openen vanaf schijf', 'Lui geladen JavaScript-fallback voor file:// aangetroffen.');
 
+const advancedGrammarFocuses = graph.nodes.filter((node) => node.type === 'grammar_focus' && ['C1', 'C2'].includes(node.level));
+const advancedQuestionNodes = graph.nodes.filter((node) => node.type === 'question_topic' && ['C1', 'C2'].includes(node.level));
+const advancedQuestionPracticeNodes = graph.nodes.filter((node) => node.type === 'practice' && ['C1', 'C2'].includes(node.level));
+expect(advancedGrammarFocuses.length === 54, 'knowledge-graph', 'alle C1-C2-spiraalgrammatica staat als expliciete focus in de graaf', `${advancedGrammarFocuses.length} van 54 focussen.`);
+expect((graph.metadata?.relationCounts?.refines_grammar || 0) >= 54, 'knowledge-graph', 'C1-C2-curriculumfocus is gekoppeld aan canonieke grammatica', `${graph.metadata?.relationCounts?.refines_grammar || 0} verfijningsrelaties.`);
+expect(advancedQuestionNodes.length === 8 && advancedQuestionPracticeNodes.length === 12, 'knowledge-graph', 'gevorderde vragen en oefeningen zijn in de graaf opgenomen', `${advancedQuestionNodes.length} vraagmodules en ${advancedQuestionPracticeNodes.length} oefeningen.`);
+expect((graph.metadata?.relationCounts?.applies_grammar || 0) >= 8, 'knowledge-graph', 'gevorderde vraagmodules zijn aan grammatica gekoppeld', `${graph.metadata?.relationCounts?.applies_grammar || 0} grammaticale koppelingen.`);
+
+
 const sourceFiles = ['js/content.js', 'js/depth-content.js', 'js/questions-content.js', 'js/advanced-practice-content.js', 'js/source-review-content.js', 'js/verb-core-review.js', 'js/verb-initial-review.js', 'js/verb-final-review.js'];
 const placeholderHits = [];
 for (const file of sourceFiles) {
@@ -226,7 +246,7 @@ for (const file of sourceFiles) {
 expect(placeholderHits.length === 0, 'content-quality', 'geen TODO- of placeholdertekst in gepubliceerde inhoud', placeholderHits.join(', ') || 'Geen placeholders gevonden.');
 
 const counts = {
-  curriculum: { a0Themes: a0Themes.length, a1Themes: a1Themes.length, a2Themes: a2Themes.length, grammarModules: allGrammar.length },
+  curriculum: { a0Themes: a0Themes.length, a1Themes: a1Themes.length, a2Themes: a2Themes.length, grammarModules: allGrammar.length, questionModules: allQuestionTopics.length, questionPractice: allQuestionPractice.length },
   exercises: { total: exerciseBank.length, byLevel: exerciseStats.byLevel, sourceReview: sourceReviewExercises.length },
   verbs: { total: verbAtlas.length, reviewed: reviewed.length, pendingLexicalReview: unreviewed.length, reviewedShare: Number((reviewed.length / verbAtlas.length * 100).toFixed(1)) },
   readingWriting: { articles: readingArticles.length, emailTasks: emailTasks.length },
@@ -255,7 +275,8 @@ const md = [
   '## Summary', '',
   `- Checks: ${summary.totals.checks}`, `- Passed: ${summary.totals.passed}`, `- Warnings: ${summary.totals.warnings}`, `- Failed: ${summary.totals.failed}`, '',
   '## Verified scope', '',
-  `- ${counts.curriculum.grammarModules} grammar modules across the original, deep, advanced and source-review layers.`,
+  `- ${counts.curriculum.grammarModules} grammar modules across A1-C2 and all original, deep, advanced and source-review layers.`,
+  `- ${counts.curriculum.questionModules} question modules and ${counts.curriculum.questionPractice} level-linked question exercises from A1 through C2.`,
   `- ${counts.exercises.total} exercises; ${counts.sourceMaterial.newExercises} were newly written from the supplied pedagogical coverage references.`,
   `- ${counts.verbs.total} verb lemmas; ${counts.verbs.reviewed} have manually reviewed definitions, contextual synonyms, usage notes and examples.`,
   `- ${counts.verbs.pendingLexicalReview} verb lemmas remain explicitly marked as not lexically reviewed; the interface does not present generic text as a definition.`,

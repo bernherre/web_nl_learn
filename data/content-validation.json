@@ -1,10 +1,10 @@
 {
-  "generatedAt": "2026-08-02T20:53:23.643Z",
-  "version": "19.3.0-rc.3",
+  "generatedAt": "2026-08-02T21:40:13.066Z",
+  "version": "19.3.0-rc.5",
   "status": "passed",
   "totals": {
-    "checks": 73,
-    "passed": 73,
+    "checks": 81,
+    "passed": 81,
     "warnings": 0,
     "failed": 0
   },
@@ -13,7 +13,9 @@
       "a0Themes": 4,
       "a1Themes": 8,
       "a2Themes": 8,
-      "grammarModules": 71
+      "grammarModules": 90,
+      "questionModules": 22,
+      "questionPractice": 22
     },
     "exercises": {
       "total": 8072,
@@ -44,10 +46,10 @@
       "newExercises": 24
     },
     "knowledgeGraph": {
-      "nodes": 25349,
-      "edges": 82078,
+      "nodes": 25641,
+      "edges": 83087,
       "issues": 0,
-      "sourceCollections": 50
+      "sourceCollections": 57
     }
   },
   "results": [
@@ -132,14 +134,14 @@
       "area": "grammar",
       "check": "grammatica-id’s zijn uniek binnen elke gepubliceerde bank",
       "status": "pass",
-      "detail": "58 zoekbare modules en 13 verdiepingsmodules gecontroleerd.",
+      "detail": "77 zoekbare modules en 13 verdiepingsmodules gecontroleerd.",
       "evidence": null
     },
     {
       "area": "grammar",
       "check": "uitleg, regel en voorbeelden zijn aanwezig",
       "status": "pass",
-      "detail": "71 modules voldoen aan de minimumstructuur.",
+      "detail": "90 modules voldoen aan de minimumstructuur.",
       "evidence": null
     },
     {
@@ -147,6 +149,34 @@
       "check": "aangeleverd fotomateriaal heeft een eigen herhalingslaag",
       "status": "pass",
       "detail": "12 nieuw geschreven modules zonder overname van boektekst.",
+      "evidence": null
+    },
+    {
+      "area": "grammar",
+      "check": "C1 en C2 hebben een volledige canonieke grammaticalaag",
+      "status": "pass",
+      "detail": "19 modules: C1=9, C2=10.",
+      "evidence": null
+    },
+    {
+      "area": "questions",
+      "check": "C1 en C2 hebben elk vier gevorderde vraagmodules",
+      "status": "pass",
+      "detail": "8 modules.",
+      "evidence": null
+    },
+    {
+      "area": "questions",
+      "check": "C1 en C2 hebben niveaugebonden vraagtraining",
+      "status": "pass",
+      "detail": "12 oefeningen.",
+      "evidence": null
+    },
+    {
+      "area": "questions",
+      "check": "alle vraagoefeningen verwijzen naar een bestaande vraagmodule",
+      "status": "pass",
+      "detail": "22 geldige koppelingen.",
       "evidence": null
     },
     {
@@ -377,7 +407,7 @@
       "area": "language-structures",
       "check": "vraagonderwerpen",
       "status": "pass",
-      "detail": "14 items (minimum 14).",
+      "detail": "22 items (minimum 22).",
       "evidence": null
     },
     {
@@ -391,7 +421,7 @@
       "area": "language-structures",
       "check": "vraagoefeningen",
       "status": "pass",
-      "detail": "10 items (minimum 10).",
+      "detail": "22 items (minimum 22).",
       "evidence": null
     },
     {
@@ -461,7 +491,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.3.0-rc.3 staat in beide shell-assets.",
+      "detail": "Versie 19.3.0-rc.5 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -489,42 +519,42 @@
       "area": "technical",
       "check": "V19-oefeningen worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=452893, gebruikspositie=485259.",
+      "detail": "Definitiepositie=500733, gebruikspositie=533099.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=448978, gebruikspositie=7446002.",
+      "detail": "Definitiepositie=496818, gebruikspositie=7494417.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=2341189, aanroeppositie=7402945.",
+      "detail": "Definitiepositie=2389029, aanroeppositie=7451184.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de lexicale eindcontrole wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=7070364, aanroeppositie=7402981.",
+      "detail": "Definitiepositie=7118204, aanroeppositie=7451220.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.3.0-rc.3.",
+      "detail": "Versie 19.3.0-rc.5.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "alle grote inhoudsbanken zijn verbonden",
       "status": "pass",
-      "detail": "25349 nodes en 82078 relaties.",
+      "detail": "25641 nodes en 83087 relaties.",
       "evidence": null
     },
     {
@@ -553,6 +583,34 @@
       "check": "de graaf werkt ook bij rechtstreeks openen vanaf schijf",
       "status": "pass",
       "detail": "Lui geladen JavaScript-fallback voor file:// aangetroffen.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "alle C1-C2-spiraalgrammatica staat als expliciete focus in de graaf",
+      "status": "pass",
+      "detail": "54 van 54 focussen.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "C1-C2-curriculumfocus is gekoppeld aan canonieke grammatica",
+      "status": "pass",
+      "detail": "56 verfijningsrelaties.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "gevorderde vragen en oefeningen zijn in de graaf opgenomen",
+      "status": "pass",
+      "detail": "8 vraagmodules en 12 oefeningen.",
+      "evidence": null
+    },
+    {
+      "area": "knowledge-graph",
+      "check": "gevorderde vraagmodules zijn aan grammatica gekoppeld",
+      "status": "pass",
+      "detail": "17 grammaticale koppelingen.",
       "evidence": null
     },
     {
