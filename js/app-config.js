@@ -1,2 +1,2 @@
-export const APP_VERSION = '19.3.0-rc.5';
-export const APP_RELEASE = 'V19.3 RC5';
+export const APP_VERSION = '19.4.0-alpha.2';
+export const APP_RELEASE = 'V19.4 Alpha 2';

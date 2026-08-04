@@ -249,7 +249,7 @@ export const supplementaryWordGroups = {
     "de Tweede Kamer",
     "de politieke partij",
     "het stembureau",
-    "de waterschap",
+    "het waterschap",
     "de verzorgingsstaat",
     "de vrijheid van meningsuiting",
     "de gelijkheid",

@@ -2,8 +2,13 @@ import { readFile, writeFile } from 'node:fs/promises';
 const root = new URL('../', import.meta.url);
 const pkg = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
 const version = pkg.version;
-const releaseMatch = version.match(/^(\d+)\.(\d+)\.\d+-rc\.(\d+)$/u);
-const releaseLabel = releaseMatch ? `V${releaseMatch[1]}.${releaseMatch[2]} RC${releaseMatch[3]}` : `V${version}`;
+const rcMatch = version.match(/^(\d+)\.(\d+)\.\d+-rc\.(\d+)$/u);
+const alphaMatch = version.match(/^(\d+)\.(\d+)\.\d+-alpha\.(\d+)$/u);
+const releaseLabel = rcMatch
+  ? `V${rcMatch[1]}.${rcMatch[2]} RC${rcMatch[3]}`
+  : alphaMatch
+    ? `V${alphaMatch[1]}.${alphaMatch[2]} Alpha ${alphaMatch[3]}`
+    : `V${version}`;
 const cacheVersion = version.replace(/\./gu, '-').replace(/[^a-z0-9-]/giu, '').replace(/-+/gu, '-');
 async function update(path, transform) {
   const url = new URL(path, root);

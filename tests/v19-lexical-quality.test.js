@@ -8,7 +8,7 @@ test('onbeoordeelde woorden tonen geen verzonnen definitie of schijnvoorbeeld', 
   assert.match(main, /example: ''/);
 });
 test('opslag en schade hebben een echte betekenis en voorbeeldzin', async () => {
-  const main = await readFile(new URL('../js/main.js', import.meta.url), 'utf8');
-  assert.match(main, /Tijdens de verhuizing bewaren we onze meubels in de opslag\./);
-  assert.match(main, /De storm heeft veel schade aan het dak veroorzaakt\./);
+  const lexicon = await readFile(new URL('../js/lexicon.js', import.meta.url), 'utf8');
+  assert.match(lexicon, /Tijdens de verhuizing bewaren we onze meubels in de opslag\./);
+  assert.match(lexicon, /De storm heeft veel schade aan het dak veroorzaakt\./);
 });

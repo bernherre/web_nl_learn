@@ -1,5 +1,33 @@
 # Changelog
 
+## 19.4.0-alpha.2 — V19.4 Alpha 2
+
+- Verrijkt de volledige resterende lexicale schuld van A1 en A2 met specifieke definities en contextuele voorbeelden.
+- Voegt `js/lexicon-a1.js` toe met 666 redactioneel beoordeelde entries.
+- Voegt `js/lexicon-a2.js` toe met 679 redactioneel beoordeelde entries.
+- Vergroot het centrale lexicon van 302 naar 1.647 entries.
+- Brengt A0 op 178/178, A1 op 966/966 en A2 op 917/917 betrouwbare kaarttermen.
+- Verwijdert geen fallback: `controle nodig` blijft beschikbaar, maar heeft 0 actieve kaarten in A0–A2.
+- Corrigeert de lidwoorden naar `het duin` en `het waterschap` in de broninhoud.
+- Neemt beide nieuwe lexiconmodules op in de klassieke bundle en offlinecache.
+- Breidt de Knowledge Graph uit naar 27.289 nodes en 90.155 relaties.
+- Laat de lexiconaudit falen zodra A0, A1 of A2 opnieuw een open kaart bevat.
+- Valideert 160/160 tests en 81/81 inhoudscontroles zonder waarschuwingen.
+
+## 19.4.0-alpha.1 — V19.4 Alpha 1
+
+- Introduceert `js/lexicon.js` als centrale bron voor gedeelde definities, contextzinnen en reviewmetadata.
+- Verrijkt alle 178 unieke A0-termen; A0 bevat daardoor geen kaarten met `controle nodig` meer.
+- Verrijkt alle 145 termen van het eerste A1-thema **Hallo**; 82 daarvan zijn nieuw centraal beoordeeld.
+- Behoudt 42 eerder gevalideerde A1/A2-kernwoorden, waaronder `de opslag` en `de schade`, in het centrale lexicon.
+- Laat niet-beoordeelde A1/A2-termen bewust zichtbaar als `controle nodig`; de schuld wordt niet verborgen.
+- Laat zowel woordgroepkaarten als uitgelichte kernwoorden eerst het centrale lexicon gebruiken.
+- Voegt 302 lexemen en hun relaties toe aan de Knowledge Graph.
+- Voegt `audit:lexicon` toe met dekking, kwaliteit en openstaande termen per niveau.
+- Vervangt de foutgevoelige handmatige browserbundle-samenstelling door één geordend bronmanifest.
+- Ondersteunt versie-labels voor Alpha-releases naast RC-releases.
+- Valideert 158/158 tests en 81/81 inhoudscontroles zonder waarschuwingen.
+
 ## 19.3.0-rc.5 — V19.3 RC5
 
 - Corrige la bundle clásica para conservar alias de importaciones ES Modules como `questionTopics as baseQuestionTopics`.

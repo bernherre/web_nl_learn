@@ -1,4 +1,19 @@
-# Nederlands, gewoon doen — V19.2.2
+# Nederlands, gewoon doen — V19.4 Alpha 2
+
+## V19.4 Alpha 2 — A0, A1 en A2 zonder open lexicale kaarten
+
+Deze versie voltooit de eerste lexicale migratiefase. Alle woordgroepkaarten van A0, A1 en A2 hebben nu een specifieke definitie en een contextuele voorbeeldzin. De technische fallback `controle nodig` blijft bestaan voor toekomstige inhoud, maar wordt in deze drie niveaus niet meer geactiveerd.
+
+- **1.647** centraal beheerde en redactioneel beoordeelde lexicale entries;
+- **666** nieuwe A1-entries en **679** nieuwe A2-entries;
+- A0: **178/178**, A1: **966/966**, A2: **917/917** betrouwbare kaarttermen;
+- **0** kaarten met `controle nodig` in A0, A1 of A2;
+- `het duin` en `het waterschap` gecorrigeerd in de inhoudsbronnen;
+- Knowledge Graph: **27.289 nodes** en **90.155 relaties**;
+- klassieke bundle opgebouwd uit één manifest met **29 bronnen**;
+- **160/160** tests en **81/81** inhoudscontroles geslaagd.
+
+Zie `RELEASE_SUMMARY_V19_4_ALPHA2_ES.md`, `QA_REPORT_V19_4_ALPHA2.md` en `docs/central-lexicon-audit.md`.
 
 
 ## V19.2.2 — browserbundle-hotfix

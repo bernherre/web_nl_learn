@@ -657,7 +657,7 @@ export const expandedWordGroups = {
       "de rivier",
       "het kanaal",
       "het meer",
-      "de duin",
+      "het duin",
       "het bos",
       "de heide",
       "het platteland",

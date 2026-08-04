@@ -9,6 +9,7 @@ import {
   listeningScenes,
 } from '../js/content.js';
 import { a0Themes } from '../js/starter-content.js';
+import { centralLexiconEntries, findLexiconEntry } from '../js/lexicon.js';
 import { spiralThemes } from '../js/spiral-content.js';
 import { advancedSpiralLevels } from '../js/advanced-level-content.js';
 import {
@@ -155,6 +156,28 @@ function levelEdge(nodeId, level) {
   addIssue(nodeId, 'invalid-level', `Onbekend niveau: ${level}`, 'error');
 }
 
+const lexemeIds = new Map();
+for (const entry of centralLexiconEntries) {
+  const id = `lexeme:${normalise(entry.term)}`;
+  lexemeIds.set(normalise(entry.term), id);
+  addNode({
+    id,
+    type: 'lexeme',
+    label: entry.term,
+    subtitle: entry.definition,
+    level: entry.level,
+    source: 'centraal-lexicon',
+    data: {
+      definition: entry.definition,
+      example: entry.example,
+      kind: entry.kind,
+      reviewStatus: entry.status,
+      lexicalSource: entry.source,
+    },
+  });
+  levelEdge(id, entry.level);
+}
+
 const allThemes = [
   ...a0Themes.map((theme) => ({ ...theme, level: 'A0' })),
   ...a1Themes.map((theme) => ({ ...theme, level: 'A1' })),
@@ -196,6 +219,12 @@ for (const theme of allThemes) {
         data: { group, themeId: theme.id },
       });
       addEdge(id, termId, 'contains_term', group);
+      const lexiconEntry = findLexiconEntry(word);
+      const lexemeId = lexiconEntry ? lexemeIds.get(normalise(lexiconEntry.term)) : null;
+      if (lexemeId) {
+        addEdge(termId, lexemeId, 'resolves_to_lexeme', 'centrale betekenis');
+        addEdge(id, lexemeId, 'teaches_lexeme', group);
+      }
       const key = normalise(word.replace(/^(de|het|een)\s+/iu, ''));
       if (/werkwoord/iu.test(group)) {
         if (!themeVerbs.has(key)) themeVerbs.set(key, new Set());
@@ -217,6 +246,9 @@ for (const theme of allThemes) {
       data: { definition, example, themeId: theme.id },
     });
     addEdge(id, vocabId, 'teaches_word', 'kernwoord');
+    const lexiconEntry = findLexiconEntry(word);
+    const lexemeId = lexiconEntry ? lexemeIds.get(normalise(lexiconEntry.term)) : null;
+    if (lexemeId) addEdge(vocabId, lexemeId, 'resolves_to_lexeme', 'centrale betekenis');
     if (!clean(definition) || clean(definition).length < 12) addIssue(vocabId, 'definition-too-short', 'Definitie ontbreekt of is te kort.', 'warning');
     if (!clean(example)) addIssue(vocabId, 'example-missing', 'Voorbeeldzin ontbreekt.', 'warning');
   }

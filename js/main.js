@@ -9,6 +9,7 @@ import {
 } from './learning.js';
 import { APP_RELEASE, APP_VERSION } from './app-config.js';
 import { isReliableDefinition, isReliableExample } from './lexical-quality.js';
+import { findLexiconEntry, normalizeLexeme } from './lexicon.js';
 import {
   prepositionEntries,
   fixedPrepositionCombinations,
@@ -272,74 +273,20 @@ function escapeHtml(value) {
 }
 
 
-const commonWordLearningDetails = {
-  'de naam': ['Het woord waarmee een persoon, plaats of ding wordt genoemd.', 'Mijn naam is Noor.'],
-  'de voornaam': ['De persoonlijke naam die vóór de achternaam staat.', 'Mijn voornaam is Bernardo.'],
-  'de achternaam': ['De familienaam die je met andere familieleden kunt delen.', 'Mijn achternaam is Herrera.'],
-  'het adres': ['De gegevens waarmee je precies kunt aangeven waar iemand woont.', 'Mijn adres is Marktstraat 12.'],
-  'de straat': ['Een openbare weg met huizen of andere gebouwen erlangs.', 'Wij wonen in een rustige straat.'],
-  'de opslag': ['Een ruimte of voorziening waar spullen tijdelijk worden bewaard.', 'Tijdens de verhuizing bewaren we onze meubels in de opslag.'],
-  'de schade': ['Nadeel of beschadiging waardoor iets minder goed of minder waardevol is.', 'De storm heeft veel schade aan het dak veroorzaakt.'],
-  'het huisnummer': ['Het nummer waarmee een huis in een straat wordt aangeduid.', 'Ons huisnummer is 24.'],
-  'de postcode': ['Een combinatie van cijfers en letters die bij een gebied of adres hoort.', 'Wat is uw postcode?'],
-  'de woonplaats': ['De stad of het dorp waar iemand woont.', 'Mijn woonplaats is Waalre.'],
-  'het land': ['Een gebied met eigen grenzen en meestal een eigen regering.', 'Nederland is een klein land.'],
-  'de nationaliteit': ['De officiële verbondenheid van een persoon met een land.', 'Wat is uw nationaliteit?'],
-  'de taal': ['Een systeem van woorden en regels waarmee mensen communiceren.', 'Nederlands is de taal die ik leer.'],
-  'de familie': ['Alle verwanten samen, ook buiten het huishouden, zoals ooms, tantes en grootouders.', 'Mijn familie woont in verschillende landen.'],
-  'het gezin': ['Ouders of verzorgers en kinderen die samen een huishouden vormen.', 'Ons gezin bestaat uit vier personen.'],
-  'de ouder': ['Een vader, moeder of verzorger van een kind.', 'Elke ouder krijgt informatie van de school.'],
-  'de vader': ['Een man die een kind heeft of verzorgt.', 'Mijn vader woont in Colombia.'],
-  'de moeder': ['Een vrouw die een kind heeft of verzorgt.', 'Haar moeder werkt in een ziekenhuis.'],
-  'de broer': ['Een jongen of man met dezelfde ouder of ouders als jij.', 'Mijn broer is ouder dan ik.'],
-  'de zus': ['Een meisje of vrouw met dezelfde ouder of ouders als jij.', 'Mijn zus spreekt drie talen.'],
-  'de man': ['Een volwassen persoon van het mannelijke geslacht; ook een huwelijkspartner.', 'De man wacht bij de ingang.'],
-  'de vrouw': ['Een volwassen persoon van het vrouwelijke geslacht; ook een huwelijkspartner.', 'De vrouw fietst naar haar werk.'],
-  'het kind': ['Een jonge persoon; ook een zoon of dochter van iemand.', 'Het kind speelt buiten.'],
-  'heten': ['Een bepaalde naam hebben.', 'Ik heet Sofia.'],
-  'zijn': ['Een identiteit, eigenschap, plaats of toestand uitdrukken.', 'Wij zijn vandaag thuis.'],
-  'hebben': ['Iets bezitten, ontvangen of ervaren.', 'Ik heb een afspraak.'],
-  'komen': ['Zich naar een plaats bewegen of uit een plaats afkomstig zijn.', 'Ik kom uit Colombia.'],
-  'wonen': ['Op een bepaalde plaats je huis hebben.', 'Wij wonen dicht bij een park.'],
-  'spreken': ['Met woorden mondeling communiceren.', 'Spreekt u Nederlands?'],
-  'begrijpen': ['De betekenis van iets kennen of volgen.', 'Ik begrijp de vraag.'],
-  'spellen': ['De letters van een woord één voor één noemen.', 'Kunt u uw naam spellen?'],
-  'vragen': ['Iets zeggen om informatie, hulp of toestemming te krijgen.', 'Ik vraag de docent om hulp.'],
-  'antwoorden': ['Reageren op een vraag of bericht.', 'Zij antwoordt rustig.'],
-  'begroeten': ['Iemand vriendelijk aanspreken wanneer je die persoon ontmoet.', 'Wij begroeten de nieuwe buren.'],
-  'voorstellen': ['Vertellen wie jezelf of een andere persoon is.', 'Ik stel mezelf aan de groep voor.'],
-  'kennismaken': ['Iemand voor het eerst ontmoeten en informatie uitwisselen.', 'Morgen maken we kennis met het team.'],
-  'ontmoeten': ['Bij iemand komen en die persoon zien of spreken.', 'Ik ontmoet mijn collega bij het station.'],
-  'bellen': ['Telefonisch contact met iemand opnemen.', 'Ik bel vanmiddag de huisarts.'],
-  'kennen': ['Weten wie of wat iemand of iets is door eerdere ervaring.', 'Ken je onze nieuwe docent?'],
-  'nederlands': ['Behorend bij Nederland of de Nederlandse taal.', 'Ik volg een Nederlandse taalles.'],
-  'buitenlands': ['Afkomstig uit of verbonden met een ander land.', 'Zij heeft een buitenlands diploma.'],
-  'getrouwd': ['Door een huwelijk officieel met iemand verbonden.', 'Mijn zus is getrouwd.'],
-  'alleenstaand': ['Niet getrouwd en zonder vaste partner in het huishouden.', 'Hij is alleenstaand.'],
-  'jong': ['Nog niet oud; met een lage leeftijd.', 'De kinderen zijn nog jong.'],
-  'oud': ['Al lang bestaand of met een hoge leeftijd.', 'Hoe oud ben je?'],
-  'vriendelijk': ['Aardig, beleefd en prettig tegenover andere mensen.', 'De buurvrouw is erg vriendelijk.'],
-  'nieuw': ['Nog niet lang bestaand, gekocht of bekend.', 'Wij hebben een nieuwe buurman.'],
-  'hetzelfde': ['Niet verschillend; precies gelijk aan iets anders.', 'Wij hebben hetzelfde adres.'],
-  'anders': ['Niet hetzelfde of op een andere manier.', 'Vandaag gaat het anders.'],
-  'samen': ['Met één of meer andere mensen.', 'Wij leren samen Nederlands.'],
-  'alleen': ['Zonder andere mensen of zonder hulp.', 'Ik woon niet alleen.'],
-  'goedemorgen': ['Een beleefde begroeting die je in de ochtend gebruikt.', 'Goedemorgen, hoe gaat het?'],
-  'goedemiddag': ['Een beleefde begroeting die je in de middag gebruikt.', 'Goedemiddag, waarmee kan ik u helpen?'],
-  'goedenavond': ['Een beleefde begroeting die je in de avond gebruikt.', 'Goedenavond, welkom bij ons thuis.'],
-  'tot ziens': ['Een neutrale of beleefde manier om afscheid te nemen.', 'Bedankt voor uw bezoek. Tot ziens!'],
-  'tot morgen': ['Een afscheid waarmee je zegt dat je iemand morgen weer ziet.', 'Tot morgen op school!'],
-  'hoe heet je?': ['Een informele vraag naar de naam van een persoon.', 'Hallo, hoe heet je?'],
-  'waar kom je vandaan?': ['Een vraag naar het land, de stad of plaats van herkomst.', 'Waar kom je vandaan? Ik kom uit Spanje.'],
-  'aangenaam kennis te maken': ['Een beleefde reactie wanneer je iemand voor het eerst ontmoet.', 'Aangenaam kennis te maken, ik ben Lina.'],
-  'hoe gaat het?': ['Een vraag naar hoe iemand zich voelt of hoe het met iemand gaat.', 'Hoi Sam, hoe gaat het?'],
-  'het gaat goed': ['Een positief antwoord op de vraag hoe het gaat.', 'Dank je, het gaat goed.'],
-  'dank je wel': ['Een informele uitdrukking waarmee je iemand bedankt.', 'Dank je wel voor je hulp.'],
-  'alstublieft': ['Een beleefd woord bij een verzoek of wanneer je iets aan iemand geeft.', 'Een koffie, alstublieft.'],
-};
-
 function normalizeLearningWord(word) {
-  return String(word || '').trim().toLocaleLowerCase('nl-NL');
+  return normalizeLexeme(word);
+}
+
+function centralWordDetails(word) {
+  const entry = findLexiconEntry(word);
+  if (!entry || !isReliableDefinition(word, entry.definition) || !isReliableExample(word, entry.example)) return null;
+  return {
+    definition: entry.definition,
+    example: entry.example,
+    source: `${entry.level} · ${entry.kind}`,
+    reviewed: entry.status === 'editorially-reviewed',
+    lexiconEntry: entry,
+  };
 }
 
 function highlightedWordDetails(theme, word) {
@@ -380,10 +327,8 @@ function fallbackWordDetails() {
 }
 
 function wordLearningDetails(theme, group, word) {
-  const normalized = normalizeLearningWord(word);
-  const curated = commonWordLearningDetails[normalized];
-  if (curated) return { definition: curated[0], example: curated[1], source: 'uitleg' };
-  return highlightedWordDetails(theme, word)
+  return centralWordDetails(word)
+    || highlightedWordDetails(theme, word)
     || verbLearningDetails(word)
     || fallbackWordDetails(theme, group, word);
 }
@@ -528,7 +473,10 @@ function renderCourseThemeDetail(theme, level, completed) {
     <div class="a1-detail-body">
       <section class="a1-can-do"><span class="kicker">Na dit thema</span><h2>Dit kun je</h2><ul>${theme.canDo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
       <section><div class="section-heading compact"><div><span class="kicker">Betekenis in context</span><h2>Uitgelichte kernwoorden</h2></div><span class="plan-total">${theme.vocabulary.length} uitgebreid</span></div>
-        <div class="a1-word-grid">${theme.vocabulary.map(([word, meaning, example]) => `<article><strong>${escapeHtml(word)}</strong><p>${escapeHtml(meaning)}</p><small>${escapeHtml(example)}</small><div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button><button class="speak" type="button" data-text="${escapeHtml(example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button></div></article>`).join('')}</div>
+        <div class="a1-word-grid">${theme.vocabulary.map(([word, meaning, example]) => {
+          const details = centralWordDetails(word) || { definition: meaning, example, source: 'thema' };
+          return `<article><span class="word-kind">${escapeHtml(details.source)}</span><strong>${escapeHtml(word)}</strong><p>${escapeHtml(details.definition)}</p><small>${escapeHtml(details.example)}</small><div><button class="speak" type="button" data-text="${escapeHtml(word)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(word)}">🔊</button><button class="speak" type="button" data-text="${escapeHtml(details.example)}" data-rate="0.88" aria-label="Luister naar de voorbeeldzin">Zin ▶</button></div></article>`;
+        }).join('')}</div>
       </section>
       <section class="full-word-bank"><div class="section-heading compact"><div><span class="kicker">Woorden leren</span><h2>${themeWordCount(theme)} woorden en vaste combinaties</h2></div><span class="plan-total">betekenis · voorbeeld · geluid</span></div><p class="word-bank-intro">Begin rustig met acht woorden per groep. Elke kaart geeft een korte betekenis; open de voorbeeldzin en luister normaal of langzaam.</p><div class="word-bank-toolbar"><label class="word-bank-search"><span>Zoek in dit thema</span><input type="search" data-theme-word-search placeholder="Bijvoorbeeld: familie, wonen, spreken…" autocomplete="off"></label><p class="word-bank-result" data-theme-word-result aria-live="polite">${themeWordCount(theme)} woorden beschikbaar</p></div>${renderThemeWordGroups(theme)}</section>
       <section><span class="kicker">Grammatica</span><h2>Vorm en betekenis</h2><div class="a1-grammar-grid">${theme.grammar.map(([title, explanation]) => `<article><strong>${escapeHtml(title)}</strong><p>${escapeHtml(explanation)}</p><button class="text-button" type="button" data-page="grammatica" data-grammar-level="${level}">Open in de grammatica-atlas →</button></article>`).join('')}</div></section>

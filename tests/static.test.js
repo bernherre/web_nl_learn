@@ -373,7 +373,7 @@ test('V14 toont rustige woordkaarten met betekenis, voorbeelden en progressieve 
   const main = await read('js/main.js');
   const css = await read('css/styles.css');
   const app = await read('js/app.js');
-  assert.match(main, /commonWordLearningDetails/);
+  assert.match(main, /findLexiconEntry/);
   assert.match(main, /theme-word-definition/);
   assert.match(main, /Voorbeeldzin/);
   assert.match(main, /wordIndex >= 8 \? 'is-extra'/);
@@ -382,7 +382,7 @@ test('V14 toont rustige woordkaarten met betekenis, voorbeelden en progressieve 
   assert.match(css, /\.theme-word-card-grid/);
   assert.match(css, /grid-template-columns: repeat\(2/);
   assert.match(css, /\.theme-word-card\.is-extra \{ display: none; \}/);
-  assert.match(app, /Een korte Nederlandse definitie|Het woord waarmee een persoon/);
+  assert.match(app, /V19\.4 centrale lexiconredactie|Het woord of de combinatie van woorden/);
 });
 
 test('V15 bevat lokale profielen, gastmodus en een gescheiden voortgangsmodel', async () => {

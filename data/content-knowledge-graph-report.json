@@ -1,16 +1,17 @@
 {
   "metadata": {
-    "version": "19.3.0-rc.5",
-    "generatedAt": "2026-08-02T21:39:58.551Z",
+    "version": "19.4.0-alpha.2",
+    "generatedAt": "2026-08-04T08:50:27.134Z",
     "language": "nl",
-    "nodeCount": 25641,
-    "edgeCount": 83087,
+    "nodeCount": 27289,
+    "edgeCount": 90155,
     "reviewedVerbs": 1886,
     "unreviewedVerbs": 0,
     "exerciseCount": 8072,
     "issueCount": 0,
     "typeCounts": {
       "level": 7,
+      "lexeme": 1647,
       "theme": 74,
       "term": 3697,
       "vocabulary": 288,
@@ -45,11 +46,13 @@
       "exercise_topic": 89,
       "exercise_type": 6,
       "graph_root": 1,
-      "source_collection": 57
+      "source_collection": 58
     },
     "relationCounts": {
-      "has_level": 10855,
+      "has_level": 12502,
       "contains_term": 3697,
+      "resolves_to_lexeme": 1903,
+      "teaches_lexeme": 1870,
       "teaches_word": 160,
       "has_level_variant": 54,
       "used_in_theme": 596,
@@ -72,12 +75,13 @@
       "has_exercise_type": 8072,
       "practised_by": 6580,
       "related_to": 318,
-      "has_collection": 57,
-      "part_of_collection": 25583
+      "has_collection": 58,
+      "part_of_collection": 27230
     },
     "severityCounts": {},
     "sourceCounts": {
       "leerpad": 7,
+      "centraal-lexicon": 1647,
       "A0-cursus": 4,
       "A0-woordenbank": 187,
       "A0-kernwoordenschat": 32,
@@ -134,7 +138,7 @@
       "graph-taxonomie": 220,
       "handmatige-werkwoordreview": 9624,
       "oefenbank": 8167,
-      "kennisgraaf": 58
+      "kennisgraaf": 59
     }
   },
   "reviewQueues": {

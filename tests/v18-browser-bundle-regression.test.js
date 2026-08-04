@@ -81,7 +81,7 @@ test('de zichtbare werkwoordenaantallen zijn onderling consistent', () => {
 });
 
 test('V19.2 gebruikt netwerkverversing voor de shell, correctielagen en kennisgraaf', () => {
-  assert.match(packageJson.version, /^19\.3\.0-rc\.\d+$/u);
+  assert.match(packageJson.version, /^19\.(?:3|4)\.0-(?:rc|alpha)\.\d+$/u);
   const cacheVersion = packageJson.version.replace(/\./gu, '-').replace(/[^a-z0-9-]/giu, '').replace(/-+/gu, '-');
   assert.ok(serviceWorker.includes(`nederlands-gewoon-doen-v${cacheVersion}`));
   assert.match(serviceWorker, /networkFirst/);

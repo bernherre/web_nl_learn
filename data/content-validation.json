@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-02T21:40:13.066Z",
-  "version": "19.3.0-rc.5",
+  "generatedAt": "2026-08-04T08:50:51.790Z",
+  "version": "19.4.0-alpha.2",
   "status": "passed",
   "totals": {
     "checks": 81,
@@ -46,10 +46,10 @@
       "newExercises": 24
     },
     "knowledgeGraph": {
-      "nodes": 25641,
-      "edges": 83087,
+      "nodes": 27289,
+      "edges": 90155,
       "issues": 0,
-      "sourceCollections": 57
+      "sourceCollections": 58
     }
   },
   "results": [
@@ -491,7 +491,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.3.0-rc.5 staat in beide shell-assets.",
+      "detail": "Versie 19.4.0-alpha.2 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -519,42 +519,42 @@
       "area": "technical",
       "check": "V19-oefeningen worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=500733, gebruikspositie=533099.",
+      "detail": "Definitiepositie=801681, gebruikspositie=834047.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=496818, gebruikspositie=7494417.",
+      "detail": "Definitiepositie=797766, gebruikspositie=7789097.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=2389029, aanroeppositie=7451184.",
+      "detail": "Definitiepositie=2689977, aanroeppositie=7752132.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de lexicale eindcontrole wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=7118204, aanroeppositie=7451220.",
+      "detail": "Definitiepositie=7419152, aanroeppositie=7752168.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.3.0-rc.5.",
+      "detail": "Versie 19.4.0-alpha.2.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "alle grote inhoudsbanken zijn verbonden",
       "status": "pass",
-      "detail": "25641 nodes en 83087 relaties.",
+      "detail": "27289 nodes en 90155 relaties.",
       "evidence": null
     },
     {
