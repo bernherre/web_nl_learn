@@ -1,5 +1,24 @@
 # Changelog
 
+## 19.4.0-alpha.9
+
+- Corrige la carga del Knowledge Graph bajo Service Worker.
+- Evita almacenar en Cache Storage los payloads de grafo de aproximadamente 43 MB.
+- Un fallo de cuota de caché ya no descarta una respuesta de red válida.
+- `networkFirst` y `staleWhileRevalidate` siempre devuelven una `Response`.
+- Elimina el fallback con `Promise.reject` que provocaba errores `FetchEvent`.
+- Registra la Service Worker con la versión y recarga una vez tras el cambio de controlador.
+- Conserva intactas las 1.886 fichas del Atlas y todas las correcciones de `Zinspositie en gebruik` de Alpha 8.
+
+
+## 19.4.0-alpha.8
+
+- Reconstrucción desde Alpha 2 para preservar las 1.886 fichas del Atlas.
+- Corrección manual de 51 series B1 de `Zinspositie en gebruik`, incluida `aanstaan`.
+- A0 y A1 permanecen intactos; no se modifica ninguna otra sección verbal.
+- Pruebas de regresión para preservar fichas, estructura, orden y contenido externo a la sección.
+- Sin filtrado, retirada ni reducción del Atlas o del Knowledge Graph.
+
 ## 19.4.0-alpha.2 — V19.4 Alpha 2
 
 - Verrijkt de volledige resterende lexicale schuld van A1 en A2 met specifieke definities en contextuele voorbeelden.
@@ -60,3 +79,10 @@
 ## 19.2.6
 
 - De werkwoordenlijst toont dezelfde gecontroleerde definitie als de detailfiche.
+
+## V19.4 Alpha 11
+
+- Corrige el selector del Atlas de Verbos, que ocultaba C1 y C2 aunque sus fichas ya existían.
+- Amplía el filtro visual desde A0 hasta C2 y renombra la opción general como `Alle niveaus`.
+- Conserva las 1.886 fichas sin modificar ninguna sección de contenido verbal.
+- Añade pruebas de regresión para los niveles y fichas C1/C2.

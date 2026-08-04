@@ -17,6 +17,7 @@ import { applyVerbCorrections, modalAndCoreVerbCorrections } from '../js/verb-co
 import { applyCoreVerbReviews, coreVerbReviews } from '../js/verb-core-review.js';
 import { applyInitialVerbReviews, initialVerbReviews } from '../js/verb-initial-review.js';
 import { applyFinalVerbReviews, finalVerbReviews } from '../js/verb-final-review.js';
+import { applyVerbSentencePatternFixes } from '../js/verb-sentence-pattern-fixes.js';
 
 const root = new URL('../', import.meta.url);
 const packageJson = JSON.parse(await readFile(new URL('package.json', root), 'utf8'));
@@ -109,6 +110,7 @@ applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
 applyFinalVerbReviews(verbAtlas);
+applyVerbSentencePatternFixes(verbAtlas);
 const reviewed = verbAtlas.filter((item) => item.reviewed === true);
 const unreviewed = verbAtlas.filter((item) => item.reviewed !== true);
 expect(verbAtlas.length === 1886, 'verbs', 'atlasomvang is consistent', `${verbAtlas.length} unieke werkwoorden na correctielagen.`);

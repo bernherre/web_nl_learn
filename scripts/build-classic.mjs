@@ -49,6 +49,7 @@ const sourceManifest = [
   ['verb-core-review.js', stripExports],
   ['verb-initial-review.js', stripExports],
   ['verb-final-review.js', stripExports],
+  ['verb-sentence-pattern-fixes.js', stripExports],
   ['knowledge-graph.js', stripExports],
   ['content.js', (source) => stripImports(stripExports(source))],
   ['main.js', stripImportsPreservingAliases],

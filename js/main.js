@@ -22,11 +22,13 @@ import { applyVerbCorrections } from './verb-corrections.js';
 import { applyCoreVerbReviews } from './verb-core-review.js';
 import { applyInitialVerbReviews } from './verb-initial-review.js';
 import { applyFinalVerbReviews } from './verb-final-review.js';
+import { applyVerbSentencePatternFixes, getVerbSentencePatternImperative } from './verb-sentence-pattern-fixes.js';
 import { createKnowledgeGraphExplorer } from './knowledge-graph.js';
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
 applyFinalVerbReviews(verbAtlas);
+applyVerbSentencePatternFixes(verbAtlas);
 import { questionTopics as baseQuestionTopics, pronominalAdverbs, questionPractice as baseQuestionPractice } from './questions-content.js';
 import { a0Themes } from './starter-content.js';
 import { spiralThemes, spiralStats } from './spiral-content.js';
@@ -952,7 +954,7 @@ function renderVerbDetail(infinitive = state.selectedVerb) {
     ${metadata}
     <div class="verb-conjugation-grid"><section class="conjugation-panel"><h3>Tegenwoordige tijd</h3>${renderConjugationTable(verb.presentForms || [])}</section><section class="conjugation-panel"><h3>Onvoltooid verleden tijd</h3>${renderConjugationTable(verb.pastForms || [])}</section></div>
     <section class="conjugation-panel"><div class="section-heading compact"><h3>Voltooide tijd</h3><span>voltooid deelwoord: <strong>${escapeHtml(verb.participle)}</strong></span></div><div class="verb-perfect-grid">${perfectContent}</div></section>
-    <section class="conjugation-panel"><div class="section-heading compact"><h3>Zinspositie en gebruik</h3><span>gebiedende wijs: <strong>${escapeHtml(verb.imperative)}</strong></span></div><div class="verb-pattern-grid">${patterns}</div></section>
+    <section class="conjugation-panel"><div class="section-heading compact"><h3>Zinspositie en gebruik</h3><span>gebiedende wijs: <strong>${escapeHtml(getVerbSentencePatternImperative(verb))}</strong></span></div><div class="verb-pattern-grid">${patterns}</div></section>
     <p class="verb-source-note">De grammaticale atlas is automatisch opgebouwd. Alleen fiches met het label handmatig nagekeken tonen een specifieke definitie en gecontroleerde synoniemen. De kernvormen zijn vergeleken met een Nederlandse werkwoordenlexicon; specialistisch gebruik blijft woordenboekcontrole vereisen.</p>`;
   document.querySelectorAll('.verb-list-item').forEach((button) => {
     const active = button.dataset.verbInfinitive === verb.infinitive;
@@ -1857,7 +1859,13 @@ function initialize() {
   showPage(document.querySelector(`#page-${hashPage}`) ? hashPage : 'vandaag', false);
   if (!state.activeProfile) window.setTimeout(() => openProfileDialog({ required: true }), 40);
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
-    navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'none' })
+    let refreshingServiceWorker = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (refreshingServiceWorker) return;
+      refreshingServiceWorker = true;
+      location.reload();
+    });
+    navigator.serviceWorker.register(`./service-worker.js?v=${APP_VERSION}`, { updateViaCache: 'none' })
       .then((registration) => registration.update())
       .catch(() => {});
   }

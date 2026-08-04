@@ -38,11 +38,13 @@ import { applyVerbCorrections } from '../js/verb-corrections.js';
 import { applyCoreVerbReviews } from '../js/verb-core-review.js';
 import { applyInitialVerbReviews } from '../js/verb-initial-review.js';
 import { applyFinalVerbReviews } from '../js/verb-final-review.js';
+import { applyVerbSentencePatternFixes } from '../js/verb-sentence-pattern-fixes.js';
 
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
 applyFinalVerbReviews(verbAtlas);
+applyVerbSentencePatternFixes(verbAtlas);
 
 const packageJson = JSON.parse(await readFile(new URL('../package.json', import.meta.url), 'utf8'));
 const VERSION = packageJson.version;

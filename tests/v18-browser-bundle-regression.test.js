@@ -150,3 +150,12 @@ test('aliassen uit ES-module-imports worden vóór gebruik in de klassieke brows
   assert.ok(topicsUse > topicsAlias, 'baseQuestionTopics wordt gebruikt vóór de aliasdefinitie');
   assert.ok(practiceUse > practiceAlias, 'baseQuestionPractice wordt gebruikt vóór de aliasdefinitie');
 });
+
+test('de Alpha 8-zinspatroonlaag staat vóór toepassing in de browserbundle', () => {
+  const definition = bundle.indexOf('function applyVerbSentencePatternFixes(atlas)');
+  const invocation = bundle.indexOf('applyVerbSentencePatternFixes(verbAtlas);');
+  assert.ok(definition >= 0, 'applyVerbSentencePatternFixes ontbreekt in js/app.js');
+  assert.ok(invocation > definition, 'de zinspatroonlaag wordt aangeroepen voordat zij bestaat');
+  assert.match(bundle, /Die harde muziek staat mij niet aan\./);
+  assert.match(bundle, /Die houding heeft mij nooit aangestaan\./);
+});

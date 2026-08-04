@@ -1,6 +1,7 @@
-const CACHE = 'nederlands-gewoon-doen-v19-4-0-alpha-2';
-const APP_VERSION = '19.4.0-alpha.2';
+const CACHE = 'nederlands-gewoon-doen-v19-4-0-alpha-11';
+const APP_VERSION = '19.4.0-alpha.11';
 const OFFLINE_URL = './offline.html';
+const KNOWLEDGE_GRAPH_ASSETS = ['/data/content-knowledge-graph.json', '/data/content-knowledge-graph.js'];
 const CORE = [
   './', './index.html', OFFLINE_URL,
   `./css/tokens.css?v=${APP_VERSION}`, `./css/typography.css?v=${APP_VERSION}`, `./css/styles.css?v=${APP_VERSION}`, `./js/app.js?v=${APP_VERSION}`,
@@ -15,26 +16,59 @@ const CORE = [
   './images/a2-verhuizen.svg', './images/a2-nederland.svg', './images/a2-kinderen.svg', './images/a2-winkels.svg', './images/a2-opleidingen.svg', './images/a2-werk-zoeken.svg', './images/a2-werken.svg', './images/a2-gemeente.svg',
   './images/a0-groeten.svg', './images/a0-voorstellen.svg', './images/a0-hulp.svg', './images/a0-dagelijks.svg', './images/theme-vakantie.svg', './images/theme-dieren.svg', './images/theme-markt.svg', './images/theme-emoties.svg', './images/theme-literatuur.svg', './images/theme-omgeving.svg'
 ];
+function isKnowledgeGraphAsset(pathname) {
+  return KNOWLEDGE_GRAPH_ASSETS.some((asset) => pathname.endsWith(asset));
+}
+function unavailableResponse(request) {
+  const pathname = new URL(request.url).pathname;
+  const isJson = pathname.endsWith('.json');
+  return new Response(isJson ? JSON.stringify({ error: 'resource_unavailable' }) : '', {
+    status: 503,
+    statusText: 'Service Unavailable',
+    headers: { 'Content-Type': isJson ? 'application/json; charset=utf-8' : 'text/plain; charset=utf-8' },
+  });
+}
 async function putInCache(request, response) {
   if (!response || !response.ok) return response;
-  const cache = await caches.open(CACHE);
-  await cache.put(request, response.clone());
+  try {
+    const cache = await caches.open(CACHE);
+    await cache.put(request, response.clone());
+  } catch {
+    // A cache quota error must never discard a valid network response.
+  }
   return response;
 }
 async function networkFirst(request, fallback = null) {
-  try { return await putInCache(request, await fetch(request)); }
-  catch { return (await caches.match(request)) || (fallback ? caches.match(fallback) : Promise.reject(new Error('Netwerk en cache zijn niet beschikbaar.'))); }
+  try {
+    return await putInCache(request, await fetch(request));
+  } catch {
+    const cached = await caches.match(request);
+    if (cached) return cached;
+    if (fallback) {
+      const fallbackResponse = await caches.match(fallback);
+      if (fallbackResponse) return fallbackResponse;
+    }
+    return unavailableResponse(request);
+  }
 }
 async function staleWhileRevalidate(request) {
   const cached = await caches.match(request);
   const update = fetch(request).then((response) => putInCache(request, response)).catch(() => null);
-  return cached || update;
+  if (cached) {
+    void update;
+    return cached;
+  }
+  return (await update) || unavailableResponse(request);
 }
+
 self.addEventListener('install', (event) => { event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(CORE))); self.skipWaiting(); });
 self.addEventListener('activate', (event) => { event.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((key) => key !== CACHE).map((key) => caches.delete(key))))); self.clients.claim(); });
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
   if (event.request.method !== 'GET' || url.origin !== self.location.origin) return;
+  // The graph payload is about 43 MB per representation. Let the browser fetch it
+  // directly so a service-worker cache quota failure cannot turn success into ERR_FAILED.
+  if (isKnowledgeGraphAsset(url.pathname)) return;
   const shell = event.request.mode === 'navigate' || ['script', 'style', 'document'].includes(event.request.destination) || /\.(?:html|css|js)$/u.test(url.pathname);
   event.respondWith(shell ? networkFirst(event.request, event.request.mode === 'navigate' ? OFFLINE_URL : null) : staleWhileRevalidate(event.request));
 });

@@ -1,6 +1,6 @@
-# Curriculumaudit 19.4.0-alpha.2
+# Curriculumaudit 19.4.0-alpha.11
 
-- Applicatieversie: 19.4.0-alpha.2
+- Applicatieversie: 19.4.0-alpha.11
 - C1-C2-grammaticamodules: 19
 - C1-C2-vraagmodules: 8
 - C1-C2-vraagoefeningen: 12
