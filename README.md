@@ -1,7 +1,9 @@
+[![CI](https://github.com/bernherre/web_nl_learn/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/bernherre/checkwithai/actions/workflows/deploy-pages.yml)
+[![Release](https://img.shields.io/github/v/release/bernherre/web_nl_learn?display_name=tag&sort=semver)](https://github.com/bernherre/web_nl_learn/releases)
+
 <p align="center">
   <img src="https://img.shields.io/badge/version-v19.4.0--alpha.11-0078D4?style=for-the-badge" alt="Version v19.4.0 Alpha 11">
   <img src="https://img.shields.io/badge/license-CC%20BY%204.0-F9A825?style=for-the-badge&logo=creativecommons&logoColor=white" alt="CC BY 4.0">
-  <img src="https://img.shields.io/badge/CI-passing-2EA44F?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI passing">
 </p>
 
 <p align="center">
