@@ -1,4 +1,4 @@
-[![CI](https://github.com/bernherre/web_nl_learn/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/bernherre/checkwithai/actions/workflows/deploy-pages.yml)
+[![CI](https://github.com/bernherre/web_nl_learn/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/bernherre/web_nl_learn/actions/workflows/deploy-pages.yml)
 [![Release](https://img.shields.io/github/v/release/bernherre/web_nl_learn?display_name=tag&sort=semver)](https://github.com/bernherre/web_nl_learn/releases)
 
 <p align="center">
