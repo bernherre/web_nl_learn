@@ -1,3 +1,25 @@
+<p align="center">
+  <img src="https://img.shields.io/badge/version-v19.4.0--alpha.11-0078D4?style=for-the-badge" alt="Version v19.4.0 Alpha 11">
+  <img src="https://img.shields.io/badge/license-CC%20BY%204.0-F9A825?style=for-the-badge&logo=creativecommons&logoColor=white" alt="CC BY 4.0">
+  <img src="https://img.shields.io/badge/CI-passing-2EA44F?style=for-the-badge&logo=githubactions&logoColor=white" alt="CI passing">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000000" alt="JavaScript ES2022">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white" alt="CSS3">
+  <img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js 20+">
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/CEFR-A0--C2-7B61FF?style=for-the-badge" alt="CEFR A0-C2">
+  <img src="https://img.shields.io/badge/werkwoorden-1.886-FF7A45?style=for-the-badge" alt="1.886 werkwoorden">
+  <img src="https://img.shields.io/badge/oefeningen-8.072%2B-0088CC?style=for-the-badge" alt="8.072+ oefeningen">
+  <img src="https://img.shields.io/badge/PWA-ready-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA ready">
+  <img src="https://img.shields.io/badge/Kennisgraaf-active-00A67E?style=for-the-badge" alt="Kennisgraaf active">
+</p>
+
+
 # Nederlands, gewoon doen — V19.4 Alpha 2
 
 ## V19.4 Alpha 2 — A0, A1 en A2 zonder open lexicale kaarten
