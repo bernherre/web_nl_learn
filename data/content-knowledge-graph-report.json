@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "version": "19.4.0-alpha.11",
-    "generatedAt": "2026-08-04T23:27:23.258Z",
+    "version": "19.4.0-alpha.12",
+    "generatedAt": "2026-08-12T15:36:52.857Z",
     "language": "nl",
-    "nodeCount": 27289,
-    "edgeCount": 90155,
+    "nodeCount": 27346,
+    "edgeCount": 91063,
     "reviewedVerbs": 1886,
     "unreviewedVerbs": 0,
     "exerciseCount": 8072,
@@ -45,11 +45,12 @@
       "exercise": 8072,
       "exercise_topic": 89,
       "exercise_type": 6,
+      "learning_path": 56,
       "graph_root": 1,
-      "source_collection": 58
+      "source_collection": 59
     },
     "relationCounts": {
-      "has_level": 12502,
+      "has_level": 12558,
       "contains_term": 3697,
       "resolves_to_lexeme": 1903,
       "teaches_lexeme": 1870,
@@ -57,8 +58,8 @@
       "has_level_variant": 54,
       "used_in_theme": 596,
       "documents_error": 60,
-      "applies_grammar": 17,
-      "uses_grammar_focus": 162,
+      "applies_grammar": 77,
+      "uses_grammar_focus": 270,
       "refines_grammar": 56,
       "practises_topic": 8094,
       "has_part": 36,
@@ -74,9 +75,13 @@
       "used_in_content": 1214,
       "has_exercise_type": 8072,
       "practised_by": 6580,
+      "guides_through_theme": 56,
+      "uses_lexeme": 42,
+      "uses_exercise": 168,
+      "uses_verb": 361,
       "related_to": 318,
-      "has_collection": 58,
-      "part_of_collection": 27230
+      "has_collection": 59,
+      "part_of_collection": 27286
     },
     "severityCounts": {},
     "sourceCounts": {
@@ -138,7 +143,8 @@
       "graph-taxonomie": 220,
       "handmatige-werkwoordreview": 9624,
       "oefenbank": 8167,
-      "kennisgraaf": 59
+      "begeleid-leerpad": 56,
+      "kennisgraaf": 60
     }
   },
   "reviewQueues": {

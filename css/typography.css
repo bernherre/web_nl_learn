@@ -1,6 +1,6 @@
 html { font-size: 100%; }
-body { font-size: 1rem; line-height: 1.62; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
+body { font-size: 1rem; line-height: 1.62; text-rendering: optimizeLegibility; font-kerning: normal; font-optical-sizing: auto; -webkit-font-smoothing: antialiased; }
 button, input, select, textarea { font: inherit; }
-h1, h2, h3 { text-wrap: balance; }
+h1, h2, h3 { text-wrap: balance; font-kerning: normal; }
 p { max-width: var(--text-measure); }
 strong, b { font-weight: 720; }

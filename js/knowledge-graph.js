@@ -2,7 +2,7 @@ const KNOWLEDGE_GRAPH_URL = './data/content-knowledge-graph.json';
 const KNOWLEDGE_GRAPH_SCRIPT_URL = './data/content-knowledge-graph.js';
 
 const graphTypeLabels = {
-  graph_root: 'Overzicht', source_collection: 'Collectie', level: 'Niveau', theme: 'Thema', spiral_theme: 'Spiraalthema', term: 'Term', vocabulary: 'Woordenschat',
+  graph_root: 'Overzicht', source_collection: 'Collectie', level: 'Niveau', learning_path: 'Leerpad', theme: 'Thema', spiral_theme: 'Spiraalthema', term: 'Term', vocabulary: 'Woordenschat',
   grammar: 'Grammatica', grammar_focus: 'Curriculumfocus', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
   technical_concept: 'Vakbegrip', professional_concept: 'Professioneel begrip', listening: 'Luisteren', reading: 'Lezen', writing: 'Schrijven',
   logic_relation: 'Logische relatie', verb: 'Werkwoord', sense: 'Betekenis', usage: 'Gebruik', example: 'Voorbeeld', synonym_term: 'Synoniem',
@@ -15,7 +15,7 @@ const graphRelationLabels = {
   has_part: 'onderdeel', has_semantic_domain: 'betekenisdomein', uses_auxiliary: 'hulpwerkwoord', has_regularity: 'vervoeging',
   requires_preposition: 'vaste prepositie', has_issue: 'controlepunt', has_sense: 'betekenis', has_usage: 'gebruik', has_example: 'voorbeeld',
   has_synonym: 'synoniem', used_in_content: 'komt voor in', uses_grammar_focus: 'grammaticafocus', refines_grammar: 'uitwerking van', applies_grammar: 'past grammatica toe', practises_topic: 'oefent thema', has_exercise_type: 'oefeningstype',
-  practised_by: 'geoefend in', related_to: 'verbonden met', has_level_variant: 'niveauvariant', has_category: 'categorie', has_collection: 'collectie', part_of_collection: 'broncollectie',
+  practised_by: 'geoefend in', related_to: 'verbonden met', has_level_variant: 'niveauvariant', has_category: 'categorie', has_collection: 'collectie', part_of_collection: 'broncollectie', guides_through_theme: 'begeleidt door thema', uses_lexeme: 'gebruikt woord', uses_verb: 'werkwoord in route', uses_exercise: 'oefening in route',
 };
 
 const graphModeRelations = {
@@ -82,12 +82,12 @@ function routeForNode(node) {
     verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
     vocabulary: 'woordenschat', listening: 'luisteren', reading: 'lezen-schrijven', writing: 'lezen-schrijven', exercise: 'oefenen',
     technical_concept: node?.source === 'software' ? 'software' : node?.source === 'natuurkunde' ? 'natuurkunde' : 'wiskunde',
-    professional_concept: 'vaklexicon', theme: node?.level?.toLocaleLowerCase('nl-NL'), level: node?.label?.toLocaleLowerCase('nl-NL'),
+    professional_concept: 'vaklexicon', learning_path: 'leerpad', theme: node?.level?.toLocaleLowerCase('nl-NL'), level: node?.label?.toLocaleLowerCase('nl-NL'),
   };
   return routes[node?.type] || '';
 }
 
-export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } = {}) {
+export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, notify } = {}) {
   let graph = null;
   let nodesById = new Map();
   let adjacency = new Map();
@@ -310,7 +310,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } 
 
     el.detail.innerHTML = `<div class="knowledge-detail-heading"><div><span class="kicker">${graphEscape(graphTypeLabels[node.type] || node.type)}${node.level ? ` · ${graphEscape(node.level)}` : ''}</span><h2>${graphEscape(node.label)}</h2><p>${graphEscape(node.subtitle || node.source)}</p></div>${status ? `<span class="knowledge-detail-status ${graphEscape(node.status)}">${graphEscape(status)}</span>` : ''}</div>
       ${verbDetails}${issueDetails}${exerciseDetails}${genericData}
-      ${route ? `<button class="secondary-button" type="button" data-graph-open-page="${graphEscape(route)}" ${node.type === 'verb' ? `data-graph-open-verb="${graphEscape(node.label)}"` : ''}>Open in de leeromgeving →</button>` : ''}
+      ${route ? `<button class="secondary-button" type="button" data-graph-open-page="${graphEscape(route)}" ${node.type === 'verb' ? `data-graph-open-verb="${graphEscape(node.label)}"` : ''} ${node.type === 'learning_path' ? `data-graph-open-path="${graphEscape(node.data?.pathId || '')}"` : ''}>Open in de leeromgeving →</button>` : ''}
       <section class="knowledge-relations"><div class="section-heading compact"><h3>Relaties</h3><span>${compactNumber(relations.length)} totaal</span></div>${Object.entries(relationGroups).sort((a, b) => b[1].length - a[1].length).slice(0, 12).map(([label, items]) => `<details ${['synoniem', 'controlepunt', 'gebruikt in thema', 'komt voor in'].includes(label) ? 'open' : ''}><summary>${graphEscape(label)} <span>${items.length}</span></summary><div>${items.slice(0, 30).map((item) => item.node ? `<button type="button" data-graph-node="${graphEscape(item.node.id)}"><small>${graphEscape(graphTypeLabels[item.node.type] || item.node.type)}</small><strong>${graphEscape(shortLabel(item.node.label, 55))}</strong></button>` : '').join('')}</div></details>`).join('')}</section>`;
   }
 
@@ -355,6 +355,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } 
       const pageButton = event.target.closest('[data-graph-open-page]');
       if (pageButton) {
         if (pageButton.dataset.graphOpenVerb) onOpenVerb?.(pageButton.dataset.graphOpenVerb);
+        else if (pageButton.dataset.graphOpenPath) onOpenPath?.(pageButton.dataset.graphOpenPath);
         else onOpenPage?.(pageButton.dataset.graphOpenPage);
       }
     });
@@ -381,5 +382,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, notify } 
     }
   }
 
-  return { open: load, selectNode };
+  async function openNode(id) { await load(); selectNode(id); }
+
+  return { open: load, selectNode, openNode };
 }

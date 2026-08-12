@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 const read=(path)=>readFile(new URL(`../${path}`,import.meta.url),'utf8');
 test('V19.3 centraliseert versie, design tokens en typografie', async()=>{
- const [pkgText,index,tokens,type,config]=await Promise.all([read('package.json'),read('index.html'),read('css/tokens.css'),read('css/typography.css'),read('js/app-config.js')]);
+ const [pkgText,index,tokens,type,styles,config]=await Promise.all([read('package.json'),read('index.html'),read('css/tokens.css'),read('css/typography.css'),read('css/styles.css'),read('js/app-config.js')]);
  const pkg=JSON.parse(pkgText);
- assert.ok(index.includes(`v=${pkg.version}`)); assert.ok(config.includes(pkg.version)); assert.match(tokens,/--font-body/u); assert.match(type,/text-rendering/u);
+ assert.ok(index.includes(`v=${pkg.version}`)); assert.ok(config.includes(pkg.version)); assert.match(tokens,/--font-body/u); assert.match(tokens,/--font-display/u); assert.match(tokens,/Segoe UI Variable Text/u); assert.match(tokens,/Aptos Display/u); assert.match(type,/text-rendering/u); assert.doesNotMatch(styles,/--font-body\s*:/u); assert.doesNotMatch(styles,/--font-display\s*:/u); assert.doesNotMatch(index,/fonts\.googleapis|use\.typekit/u);
 });
 test('V19.3 heeft een controleerbare PWA-basis',async()=>{
  const [manifestText,sw,offline,pkgText]=await Promise.all([read('manifest.webmanifest'),read('service-worker.js'),read('offline.html'),read('package.json')]);

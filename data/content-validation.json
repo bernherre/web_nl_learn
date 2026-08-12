@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-04T23:27:53.699Z",
-  "version": "19.4.0-alpha.11",
+  "generatedAt": "2026-08-12T15:37:20.580Z",
+  "version": "19.4.0-alpha.12",
   "status": "passed",
   "totals": {
     "checks": 81,
@@ -46,10 +46,10 @@
       "newExercises": 24
     },
     "knowledgeGraph": {
-      "nodes": 27289,
-      "edges": 90155,
+      "nodes": 27346,
+      "edges": 91063,
       "issues": 0,
-      "sourceCollections": 58
+      "sourceCollections": 59
     }
   },
   "results": [
@@ -491,7 +491,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.4.0-alpha.11 staat in beide shell-assets.",
+      "detail": "Versie 19.4.0-alpha.12 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -519,42 +519,42 @@
       "area": "technical",
       "check": "V19-oefeningen worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=801715, gebruikspositie=834081.",
+      "detail": "Definitiepositie=806239, gebruikspositie=838605.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=797800, gebruikspositie=7892991.",
+      "detail": "Definitiepositie=802324, gebruikspositie=7915092.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=2690011, aanroeppositie=7855984.",
+      "detail": "Definitiepositie=2694535, aanroeppositie=7860997.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de lexicale eindcontrole wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=7419186, aanroeppositie=7856020.",
+      "detail": "Definitiepositie=7423710, aanroeppositie=7861033.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.4.0-alpha.11.",
+      "detail": "Versie 19.4.0-alpha.12.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "alle grote inhoudsbanken zijn verbonden",
       "status": "pass",
-      "detail": "27289 nodes en 90155 relaties.",
+      "detail": "27346 nodes en 91063 relaties.",
       "evidence": null
     },
     {
@@ -610,7 +610,7 @@
       "area": "knowledge-graph",
       "check": "gevorderde vraagmodules zijn aan grammatica gekoppeld",
       "status": "pass",
-      "detail": "17 grammaticale koppelingen.",
+      "detail": "77 grammaticale koppelingen.",
       "evidence": null
     },
     {

@@ -24,6 +24,7 @@ import { applyInitialVerbReviews } from './verb-initial-review.js';
 import { applyFinalVerbReviews } from './verb-final-review.js';
 import { applyVerbSentencePatternFixes, getVerbSentencePatternImperative } from './verb-sentence-pattern-fixes.js';
 import { createKnowledgeGraphExplorer } from './knowledge-graph.js';
+import { buildGuidedPaths, findGuidedPath, guidedPathNodeId } from './learning-paths.js';
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
 applyInitialVerbReviews(verbAtlas);
@@ -61,6 +62,8 @@ const EXPECTED_SENTENCE = 'Vandaag werk ik thuis.';
 const allGrammarTopics = [...grammarTopics, ...advancedGrammarTopics, ...sourceReviewGrammarTopics, ...c1c2GrammarTopics];
 const allQuestionTopics = [...baseQuestionTopics, ...c1c2QuestionTopics];
 const allQuestionPractice = [...baseQuestionPractice, ...c1c2QuestionPractice];
+const guidedPaths = buildGuidedPaths({ a0Themes, a1Themes, a2Themes, spiralThemes, advancedSpiralLevels, exerciseBank });
+const LEERPAD_SUPPORT_LANGUAGE_KEY = 'nederlands-gewoon-doen-leerpad-support-language-v1';
 
 const initialProfile = readActiveProfileSession();
 
@@ -68,6 +71,13 @@ let knowledgeGraphExplorer = null;
 
 const state = {
   page: 'vandaag',
+  guidedLevel: 'alle',
+  guidedPathId: guidedPaths[0]?.id || '',
+  guidedStep: 0,
+  guidedExerciseId: '',
+  guidedExerciseAnswered: false,
+  guidedExerciseResponse: '',
+  guidedReturn: false,
   voices: [],
   dutchVoice: null,
   selectedWords: [],
@@ -137,6 +147,7 @@ const elements = {
   checkAnswer: el('check-answer'), resetExercise: el('reset-exercise'), listenAnswer: el('listen-answer'),
   voiceStatus: el('voice-status'), settingsVoiceStatus: el('settings-voice-status'),
   dailyPlan: el('daily-plan'), dailyVocabulary: el('daily-vocabulary'), levelPath: el('level-path'),
+  guidedPathGrid: el('guided-path-grid'), guidedPathDetail: el('guided-path-detail'), guidedLevelFilter: el('leerpad-level-filter'), guidedSupportLanguage: el('leerpad-support-language'), guidedReturn: el('leerpad-return'),
   a0ThemeGrid: el('a0-theme-grid'), a0ThemeDetail: el('a0-theme-detail'),
   a1ThemeGrid: el('a1-theme-grid'), a1ThemeDetail: el('a1-theme-detail'),
   a2ThemeGrid: el('a2-theme-grid'), a2ThemeDetail: el('a2-theme-detail'),
@@ -343,6 +354,7 @@ function showPage(page, updateHash = true) {
   const target = document.querySelector(`#page-${page}`);
   if (!target) return;
   state.page = page;
+  updateGuidedReturnVisibility(page);
   document.querySelectorAll('.page').forEach((node) => node.classList.toggle('active', node === target));
   document.querySelectorAll('.nav-item').forEach((node) => node.classList.toggle('active', node.dataset.page === page));
   const activeNav = document.querySelector(`.nav-item[data-page="${page}"] span:last-child`);
@@ -433,6 +445,188 @@ function renderLevels() {
     <div><span class="kicker">${level.title}</span><h2>${level.description}</h2><div class="module-tags">${level.modules.map((module) => `<span>${module}</span>`).join('')}</div></div>
     <div class="level-progress"><strong>${level.progress}%</strong><div class="meter"><i style="width:${level.progress}%"></i></div><button class="text-button" type="button" data-page="${level.page}">Open ${level.id} →</button></div>
   </article>`).join('');
+}
+
+function guidedSupportLanguage() {
+  const fallback = 'es';
+  try { return localStorage.getItem(LEERPAD_SUPPORT_LANGUAGE_KEY) || fallback; } catch { return fallback; }
+}
+
+function saveGuidedSupportLanguage(value) {
+  try { localStorage.setItem(LEERPAD_SUPPORT_LANGUAGE_KEY, value); } catch { /* Statische web werkt ook zonder opslag. */ }
+}
+
+function openGuidedTranslation(text) {
+  const definition = String(text || '').trim();
+  if (!definition) return;
+  const target = elements.guidedSupportLanguage?.value || guidedSupportLanguage();
+  const url = new URL('https://translate.google.com/');
+  url.searchParams.set('sl', 'nl');
+  url.searchParams.set('tl', target);
+  url.searchParams.set('text', definition);
+  url.searchParams.set('op', 'translate');
+  window.open(url.toString(), '_blank', 'noopener,noreferrer');
+}
+
+function guidedPath() {
+  return findGuidedPath(guidedPaths, state.guidedPathId);
+}
+
+function guidedWordDetails(path) {
+  const local = new Map((path?.wordCards || []).map((item) => [normalizeLexeme(item.term), item]));
+  return (path?.terms || []).map((term) => {
+    const central = centralWordDetails(term);
+    if (central && central.reviewed !== false) return { term, details: central };
+    const fallback = local.get(normalizeLexeme(term));
+    if (!fallback?.definition) return { term, details: null };
+    return { term, details: { definition: fallback.definition, example: fallback.example || '', source: 'bestaande les', reviewed: true } };
+  }).filter((item) => item.details);
+}
+
+function guidedVerbDetails(path) {
+  const found = [];
+  const seen = new Set();
+  for (const raw of path?.verbs || []) {
+    const term = String(raw || '').trim();
+    const verb = verbAtlas.find((item) => item.infinitive === term)
+      || verbAtlas.find((item) => term.startsWith(`${item.infinitive} `));
+    if (!verb || seen.has(verb.infinitive)) continue;
+    seen.add(verb.infinitive);
+    found.push(verb);
+  }
+  return found;
+}
+
+function guidedGrammarTarget(path, exercise = null) {
+  const query = [exercise?.topic, exercise?.explanation, ...(path?.grammar || []).map((item) => item.title)].filter(Boolean).join(' ').toLocaleLowerCase('nl-NL');
+  const tokens = query.split(/[^\p{L}\p{N}]+/u).filter((token) => token.length >= 4);
+  const candidates = allGrammarTopics.filter((topic) => topic.level === path?.level || path?.level === 'A0');
+  let best = null;
+  let bestScore = -1;
+  for (const topic of candidates) {
+    const haystack = `${topic.id} ${topic.title} ${topic.summary || ''} ${topic.rule || ''}`.toLocaleLowerCase('nl-NL');
+    const score = tokens.reduce((total, token) => total + (haystack.includes(token) ? 1 : 0), 0);
+    if (score > bestScore) { best = topic; bestScore = score; }
+  }
+  return best;
+}
+
+function currentGuidedExercise(path) {
+  const ids = path?.exerciseIds || [];
+  const id = ids.includes(state.guidedExerciseId) ? state.guidedExerciseId : ids[0];
+  return exerciseBank.find((item) => item.id === id) || null;
+}
+
+function guidedStepNames(path) {
+  const words = guidedWordDetails(path).length;
+  const verbs = guidedVerbDetails(path).length;
+  return [
+    ['context', 'Situatie'],
+    ...(words ? [['words', 'Woorden']] : []),
+    ...(path?.grammar?.length ? [['grammar', 'Grammatica']] : []),
+    ...(verbs ? [['verbs', 'Werkwoorden']] : []),
+    ...(path?.dialogue?.length ? [['dialogue', 'Gesprek']] : []),
+    ...(path?.exerciseIds?.length || path?.miniTest ? [['exercise', 'Oefenen']] : []),
+    ['finish', 'Afronden'],
+  ];
+}
+
+function guidedWordCards(path) {
+  const items = guidedWordDetails(path);
+  if (!items.length) return '<div class="guided-empty"><strong>Geen centrale definities in deze route.</strong><p>De bestaande niveaupagina blijft beschikbaar; het Leerpad dupliceert geen ongereviseerde definities.</p></div>';
+  return `<div class="guided-word-grid">${items.map(({ term, details }) => `<article class="guided-word-card"><div class="guided-word-top"><span class="word-kind">${escapeHtml(details.source || 'centraal lexicon')}</span><div><button class="icon-sound-button speak" type="button" data-text="${escapeHtml(term)}" data-rate="0.82" aria-label="Luister naar ${escapeHtml(term)}">🔊</button><button class="icon-sound-button slow speak" type="button" data-text="${escapeHtml(term)}" data-rate="0.58" aria-label="Luister langzaam naar ${escapeHtml(term)}">🐢</button></div></div><h3>${escapeHtml(term)}</h3><p>${escapeHtml(details.definition)}</p>${details.example ? `<small>${escapeHtml(details.example)}</small>` : ''}<div class="guided-word-actions">${details.example ? `<button class="text-button speak" type="button" data-text="${escapeHtml(details.example)}" data-rate="0.84">Zin 🔊</button>` : ''}<button class="text-button" type="button" data-guided-translate="${escapeHtml(details.definition)}">🌐 Vertaal definitie</button></div></article>`).join('')}</div>`;
+}
+
+function renderGuidedExercise(path) {
+  const exercise = currentGuidedExercise(path);
+  if (!exercise && path?.miniTest) {
+    const test = path.miniTest;
+    return `<div class="guided-exercise-card"><span class="kicker">Bestaande mini-toets</span><h3>${escapeHtml(test.question)}</h3><div class="guided-choice-list">${test.options.map((option, index) => `<button type="button" data-guided-mini-answer="${index}">${escapeHtml(option)}</button>`).join('')}</div><div class="guided-feedback" id="guided-exercise-feedback" aria-live="polite"></div></div>`;
+  }
+  if (!exercise) return '<div class="guided-empty"><strong>Geen gekoppelde oefening gevonden.</strong><p>Open de volledige oefenbank voor dit niveau.</p><button class="secondary-button" type="button" data-page="oefenen">Open Oefenen →</button></div>';
+  const answered = state.guidedExerciseAnswered;
+  let controls = '';
+  if (exercise.type === 'choice') {
+    controls = `<div class="guided-choice-list">${(exercise.options || []).map((option) => `<button type="button" data-guided-answer="${escapeHtml(option)}" ${answered ? 'disabled' : ''}>${escapeHtml(option)}</button>`).join('')}</div>`;
+  } else {
+    controls = `<label class="guided-answer-input">Jouw antwoord<input id="guided-answer-input" type="text" autocomplete="off" spellcheck="false" ${answered ? 'disabled' : ''}></label><button class="primary-button" type="button" data-guided-check ${answered ? 'disabled' : ''}>Controleren</button>`;
+  }
+  let feedback = '';
+  if (answered) {
+    const correct = checkExerciseAnswer(exercise, state.guidedExerciseResponse);
+    const grammarTarget = guidedGrammarTarget(path, exercise);
+    const candidateVerb = guidedVerbDetails(path).find((verb) => `${exercise.prompt} ${exercise.explanation || ''}`.toLocaleLowerCase('nl-NL').includes(verb.infinitive.toLocaleLowerCase('nl-NL')));
+    feedback = `<div class="guided-feedback ${correct ? 'correct' : 'wrong'}"><strong>${correct ? '✓ Goed' : 'Nog niet goed'}</strong><p>${escapeHtml(exercise.explanation || '')}</p>${!correct ? `<div class="guided-error-links">${grammarTarget ? `<button class="secondary-button" type="button" data-guided-open-grammar="${escapeHtml(grammarTarget.id)}">📖 Volledige grammatica-uitleg</button>` : ''}${candidateVerb ? `<button class="secondary-button" type="button" data-guided-open-verb="${escapeHtml(candidateVerb.infinitive)}">↻ Open ${escapeHtml(candidateVerb.infinitive)}</button>` : ''}<button class="secondary-button" type="button" data-guided-graph-node="exercise:${escapeHtml(exercise.id)}">⌘ Bekijk in Kennisgraaf</button>${exercise.explanation ? `<button class="text-button" type="button" data-guided-translate="${escapeHtml(exercise.explanation)}">🌐 Vertaal uitleg</button>` : ''}<button class="text-button" type="button" data-guided-retry>↻ Probeer opnieuw</button></div>` : ''}</div>`;
+  }
+  const ids = path.exerciseIds || [];
+  const index = Math.max(0, ids.indexOf(exercise.id));
+  return `<div class="guided-exercise-card"><div class="guided-exercise-meta"><span>${escapeHtml(exercise.level)}</span><span>${escapeHtml(exercise.topic)}</span><span>${index + 1}/${ids.length}</span></div><span class="kicker">Bestaande oefening · ${escapeHtml(exercise.type)}</span><h3>${escapeHtml(exercise.prompt)}</h3>${controls}${feedback}<div class="guided-exercise-nav">${ids.length > 1 ? `<button class="text-button" type="button" data-guided-exercise-prev ${index <= 0 ? 'disabled' : ''}>← Vorige oefening</button><button class="text-button" type="button" data-guided-exercise-next ${index >= ids.length - 1 ? 'disabled' : ''}>Volgende oefening →</button>` : ''}</div></div>`;
+}
+
+function renderGuidedStep(path) {
+  const steps = guidedStepNames(path);
+  if (state.guidedStep >= steps.length) state.guidedStep = steps.length - 1;
+  const [stepId, stepLabel] = steps[state.guidedStep];
+  let content = '';
+  if (stepId === 'context') content = `<div class="guided-context"><img src="${escapeHtml(path.image)}" alt="Illustratie bij ${escapeHtml(path.title)}"><div><span class="kicker">${escapeHtml(path.level)} · praktijksituatie</span><h2>${escapeHtml(path.title)}</h2><p>${escapeHtml(path.subtitle)}</p><h3>Na deze route</h3><ul>${(path.canDo || []).map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul><button class="text-button" type="button" data-page="${escapeHtml(path.sourcePage)}" data-${path.level.toLowerCase()}-theme="${escapeHtml(path.themeId)}">Open de oorspronkelijke les →</button></div></div>`;
+  if (stepId === 'words') content = `<div class="section-heading compact"><div><span class="kicker">Lezen · luisteren · begrijpen</span><h2>Woorden uit het centrale lexicon</h2></div><span class="plan-total">${guidedWordDetails(path).length} definities</span></div><p class="word-bank-intro">Elke kaart gebruikt dezelfde definitie als de bestaande leeromgeving. De vertaaloptie opent alleen de definitie in een externe online vertaler.</p>${guidedWordCards(path)}`;
+  if (stepId === 'grammar') content = `<div class="section-heading compact"><div><span class="kicker">Bestaande grammatica</span><h2>Structuren die je in deze situatie nodig hebt</h2></div><button class="text-button" type="button" data-guided-open-grammar="">Open ${escapeHtml(path.level)}-grammatica →</button></div><div class="guided-grammar-grid">${path.grammar.map((item) => `<article><strong>${escapeHtml(item.title)}</strong>${item.explanation ? `<p>${escapeHtml(item.explanation)}</p>` : ''}<button class="text-button" type="button" data-guided-open-grammar="${escapeHtml(item.title)}">Volledige uitleg →</button></article>`).join('')}</div>`;
+  if (stepId === 'verbs') content = `<div class="section-heading compact"><div><span class="kicker">Atlas van werkwoorden</span><h2>Werkwoorden voor deze route</h2></div><button class="text-button" type="button" data-page="werkwoorden" data-verb-level-link="${escapeHtml(path.level)}">Open het volledige niveau →</button></div><div class="guided-verb-grid">${guidedVerbDetails(path).map((verb) => `<article><div><strong>${escapeHtml(verb.infinitive)}</strong><span>${escapeHtml(verb.meaning || verb.semanticLabel || '')}</span></div><div><button class="icon-sound-button speak" type="button" data-text="${escapeHtml(verb.infinitive)}" data-rate="0.8">🔊</button><button class="text-button" type="button" data-guided-open-verb="${escapeHtml(verb.infinitive)}">Open fiche →</button></div></article>`).join('')}</div>`;
+  if (stepId === 'dialogue') content = `<div class="section-heading compact"><div><span class="kicker">Context</span><h2>Lees en luister naar het bestaande gesprek</h2></div><button class="sound-button speak" type="button" data-text="${escapeHtml((path.dialogue || []).map((item) => `${item.speaker}: ${item.line}`).join(' '))}" data-rate="0.84">🔊 Alles</button></div><div class="guided-dialogue">${path.dialogue.map((item) => `<p><b>${escapeHtml(item.speaker)}</b><span>${escapeHtml(item.line)}</span><button class="speak" type="button" data-text="${escapeHtml(item.line)}" data-rate="0.84">🔊</button></p>`).join('')}</div>`;
+  if (stepId === 'exercise') content = `<div class="section-heading compact"><div><span class="kicker">Oefenen en herstellen</span><h2>Pas de route meteen toe</h2></div><button class="text-button" type="button" data-page="oefenen">Volledige oefenbank →</button></div>${renderGuidedExercise(path)}`;
+  if (stepId === 'finish') content = `<div class="guided-finish"><span class="guided-finish-mark">✓</span><div><span class="kicker">Route afgerond</span><h2>${escapeHtml(path.title)}</h2><p>De route heeft alleen bestaande leerinhoud verbonden. Je kunt nu verder oefenen, de oorspronkelijke les openen of de relaties in de Kennisgraaf bekijken.</p><div class="button-row"><button class="primary-button" type="button" data-guided-graph-node="${escapeHtml(guidedPathNodeId(path))}">⌘ Open deze route in Kennisgraaf</button><button class="secondary-button" type="button" data-page="${escapeHtml(path.sourcePage)}">Open ${escapeHtml(path.level)}-cursus</button><button class="text-button" type="button" data-guided-restart>Route opnieuw</button></div></div></div>`;
+  return { steps, stepId, stepLabel, content };
+}
+
+function renderGuidedPathGrid() {
+  if (!elements.guidedPathGrid) return;
+  const visible = guidedPaths.filter((path) => state.guidedLevel === 'alle' || path.level === state.guidedLevel);
+  elements.guidedPathGrid.innerHTML = visible.map((path) => `<button class="guided-path-card ${path.id === state.guidedPathId ? 'active' : ''}" type="button" data-guided-path="${escapeHtml(path.id)}"><img src="${escapeHtml(path.image)}" alt=""><span>${escapeHtml(path.level)}</span><strong>${escapeHtml(path.title)}</strong><small>${guidedWordDetails(path).length} definities · ${guidedVerbDetails(path).length} werkwoorden · ${path.exerciseIds.length} oefeningen</small></button>`).join('');
+}
+
+function renderGuidedPath() {
+  if (!elements.guidedPathDetail) return;
+  const path = guidedPath();
+  if (!path) return;
+  if (!state.guidedExerciseId || !(path.exerciseIds || []).includes(state.guidedExerciseId)) state.guidedExerciseId = path.exerciseIds?.[0] || '';
+  const { steps, stepLabel, content } = renderGuidedStep(path);
+  const pct = Math.round(((state.guidedStep + 1) / steps.length) * 100);
+  elements.guidedPathDetail.innerHTML = `<article class="card guided-path-stage"><div class="guided-stage-header"><div><span class="eyebrow"><span>${escapeHtml(path.level)}</span> ${escapeHtml(path.title)}</span><h2>${escapeHtml(stepLabel)}</h2></div><div class="guided-stage-progress"><strong>${state.guidedStep + 1}/${steps.length}</strong><div class="meter"><i style="width:${pct}%"></i></div></div></div><nav class="guided-stepper" aria-label="Stappen in deze route">${steps.map(([id, label], index) => `<button type="button" data-guided-step="${index}" class="${index === state.guidedStep ? 'active' : ''} ${index < state.guidedStep ? 'done' : ''}" aria-current="${index === state.guidedStep ? 'step' : 'false'}"><span>${index < state.guidedStep ? '✓' : index + 1}</span>${escapeHtml(label)}</button>`).join('')}</nav><div class="guided-stage-content">${content}</div><div class="guided-stage-actions"><button class="secondary-button" type="button" data-guided-prev ${state.guidedStep === 0 ? 'disabled' : ''}>← Vorige</button><button class="primary-button" type="button" data-guided-next ${state.guidedStep >= steps.length - 1 ? 'disabled' : ''}>Volgende →</button></div></article>`;
+}
+
+function renderGuidedPaths() {
+  if (elements.guidedLevelFilter) elements.guidedLevelFilter.value = state.guidedLevel;
+  if (elements.guidedSupportLanguage) elements.guidedSupportLanguage.value = guidedSupportLanguage();
+  renderGuidedPathGrid();
+  renderGuidedPath();
+}
+
+function openGuidedGrammar(reference = '') {
+  const path = guidedPath();
+  if (!path) return;
+  state.grammarLevel = path.level === 'A0' ? 'alle' : path.level;
+  const query = String(reference || '').trim();
+  if (query) {
+    const target = allGrammarTopics.find((topic) => topic.id === query)
+      || guidedGrammarTarget({ ...path, grammar: [{ title: query }] });
+    if (target) state.grammarTopic = target.id;
+  }
+  renderGrammar();
+  state.guidedReturn = true;
+  showPage('grammatica');
+}
+
+function openGuidedVerb(infinitive) {
+  if (!infinitive) return;
+  state.selectedVerb = infinitive;
+  renderVerbDetail(infinitive);
+  state.guidedReturn = true;
+  showPage('werkwoorden');
+}
+
+function updateGuidedReturnVisibility(page) {
+  if (!elements.guidedReturn) return;
+  elements.guidedReturn.hidden = !(state.guidedReturn && page !== 'leerpad');
 }
 
 function themeWordCount(theme) {
@@ -1192,6 +1386,7 @@ function activateProfile(profile) {
   updateProfileUI();
   updateProgressUI();
   renderLevels();
+  renderGuidedPaths();
   renderPracticeScenarios();
   renderA0Themes(); renderA1Themes(); renderA2Themes(); renderB1Themes(); renderB2Themes(); renderC1Themes(); renderC2Themes();
   renderExerciseEngine({ chooseNew: true });
@@ -1471,6 +1666,70 @@ function handleClick(event) {
   }
   if (event.target.closest('[data-engine-next]')) { chooseNextExercise(); renderExerciseEngine(); return; }
   if (event.target.closest('[data-engine-skip]')) { chooseNextExercise(); renderExerciseEngine(); return; }
+  const guidedPathButton = event.target.closest('[data-guided-path]');
+  if (guidedPathButton) {
+    state.guidedPathId = guidedPathButton.dataset.guidedPath;
+    state.guidedStep = 0;
+    state.guidedExerciseId = '';
+    state.guidedExerciseAnswered = false;
+    state.guidedExerciseResponse = '';
+    renderGuidedPaths();
+    return;
+  }
+  const guidedStepButton = event.target.closest('[data-guided-step]');
+  if (guidedStepButton) { state.guidedStep = Number(guidedStepButton.dataset.guidedStep) || 0; state.guidedExerciseAnswered = false; state.guidedExerciseResponse = ''; renderGuidedPaths(); return; }
+  if (event.target.closest('[data-guided-prev]')) { state.guidedStep = Math.max(0, state.guidedStep - 1); renderGuidedPaths(); return; }
+  if (event.target.closest('[data-guided-next]')) { state.guidedStep += 1; state.guidedExerciseAnswered = false; state.guidedExerciseResponse = ''; renderGuidedPaths(); return; }
+  if (event.target.closest('[data-guided-restart]')) { state.guidedStep = 0; state.guidedExerciseAnswered = false; state.guidedExerciseResponse = ''; renderGuidedPaths(); return; }
+  const guidedTranslate = event.target.closest('[data-guided-translate]');
+  if (guidedTranslate) { openGuidedTranslation(guidedTranslate.dataset.guidedTranslate); return; }
+  const guidedGrammar = event.target.closest('[data-guided-open-grammar]');
+  if (guidedGrammar) { openGuidedGrammar(guidedGrammar.dataset.guidedOpenGrammar); return; }
+  const guidedVerb = event.target.closest('[data-guided-open-verb]');
+  if (guidedVerb) { openGuidedVerb(guidedVerb.dataset.guidedOpenVerb); return; }
+  const guidedGraph = event.target.closest('[data-guided-graph-node]');
+  if (guidedGraph) {
+    state.guidedReturn = true;
+    showPage('kennisgraaf');
+    knowledgeGraphExplorer?.openNode?.(guidedGraph.dataset.guidedGraphNode);
+    return;
+  }
+  const guidedAnswer = event.target.closest('[data-guided-answer]');
+  if (guidedAnswer && !state.guidedExerciseAnswered) {
+    state.guidedExerciseResponse = guidedAnswer.dataset.guidedAnswer;
+    state.guidedExerciseAnswered = true;
+    renderGuidedPaths();
+    return;
+  }
+  if (event.target.closest('[data-guided-check]') && !state.guidedExerciseAnswered) {
+    state.guidedExerciseResponse = el('guided-answer-input')?.value || '';
+    state.guidedExerciseAnswered = true;
+    renderGuidedPaths();
+    return;
+  }
+  if (event.target.closest('[data-guided-retry]')) { state.guidedExerciseAnswered = false; state.guidedExerciseResponse = ''; renderGuidedPaths(); return; }
+  const miniAnswer = event.target.closest('[data-guided-mini-answer]');
+  if (miniAnswer) {
+    const path = guidedPath();
+    const test = path?.miniTest;
+    const feedback = el('guided-exercise-feedback');
+    if (!test || !feedback) return;
+    const selected = Number(miniAnswer.dataset.guidedMiniAnswer);
+    miniAnswer.parentElement.querySelectorAll('button').forEach((button, index) => { button.disabled = true; button.classList.toggle('correct', index === test.answer); button.classList.toggle('wrong', button === miniAnswer && selected !== test.answer); });
+    feedback.innerHTML = `<strong>${selected === test.answer ? '✓ Goed' : 'Nog niet goed'}</strong><p>${escapeHtml(test.explanation || '')}</p>${selected !== test.answer ? `<button class="secondary-button" type="button" data-guided-open-grammar="">📖 Open de grammatica-uitleg</button>${test.explanation ? `<button class="text-button" type="button" data-guided-translate="${escapeHtml(test.explanation)}">🌐 Vertaal uitleg</button>` : ''}` : ''}`;
+    return;
+  }
+  if (event.target.closest('[data-guided-exercise-prev]') || event.target.closest('[data-guided-exercise-next]')) {
+    const path = guidedPath();
+    const ids = path?.exerciseIds || [];
+    const current = Math.max(0, ids.indexOf(state.guidedExerciseId));
+    const delta = event.target.closest('[data-guided-exercise-next]') ? 1 : -1;
+    state.guidedExerciseId = ids[Math.min(ids.length - 1, Math.max(0, current + delta))] || '';
+    state.guidedExerciseAnswered = false;
+    state.guidedExerciseResponse = '';
+    renderGuidedPaths();
+    return;
+  }
   const practiceScenarioButton = event.target.closest('[data-practice-scenario]');
   if (practiceScenarioButton) { state.practiceScenario = practiceScenarioButton.dataset.practiceScenario; renderPracticeScenarios(); return; }
   const pageButton = event.target.closest('[data-page]');
@@ -1750,6 +2009,9 @@ function initializeEvents() {
   document.addEventListener('click', handleClick);
   document.addEventListener('input', handleDynamicInput);
   elements.profileButton?.addEventListener('click', () => openProfileDialog());
+  elements.guidedLevelFilter?.addEventListener('change', (event) => { state.guidedLevel = event.target.value; const first = guidedPaths.find((path) => state.guidedLevel === 'alle' || path.level === state.guidedLevel); if (first && !guidedPaths.some((path) => path.id === state.guidedPathId && (state.guidedLevel === 'alle' || path.level === state.guidedLevel))) { state.guidedPathId = first.id; state.guidedStep = 0; } renderGuidedPaths(); });
+  elements.guidedSupportLanguage?.addEventListener('change', (event) => { saveGuidedSupportLanguage(event.target.value); });
+  elements.guidedReturn?.addEventListener('click', () => { showPage('leerpad'); renderGuidedPaths(); });
   elements.closeProfileDialog?.addEventListener('click', () => { if (state.activeProfile) elements.profileDialog?.close(); });
   elements.profileDialog?.addEventListener('cancel', (event) => { if (!state.activeProfile) event.preventDefault(); });
   elements.newProfileForm?.addEventListener('submit', (event) => { event.preventDefault(); const name = elements.newProfileName.value.trim(); if (name) { createProfile(name); elements.newProfileForm.reset(); } });
@@ -1819,6 +2081,7 @@ function initialize() {
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
     onOpenPage: (page) => showPage(page),
     onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },
+    onOpenPath: (pathId) => { if (guidedPaths.some((path) => path.id === pathId)) { state.guidedPathId = pathId; state.guidedStep = 0; state.guidedExerciseId = ''; state.guidedExerciseAnswered = false; renderGuidedPaths(); showPage('leerpad'); } },
     notify: showToast,
   });
   renderDashboard();

@@ -1,12 +1,12 @@
-const CACHE = 'nederlands-gewoon-doen-v19-4-0-alpha-11';
-const APP_VERSION = '19.4.0-alpha.11';
+const CACHE = 'nederlands-gewoon-doen-v19-4-0-alpha-12';
+const APP_VERSION = '19.4.0-alpha.12';
 const OFFLINE_URL = './offline.html';
 const KNOWLEDGE_GRAPH_ASSETS = ['/data/content-knowledge-graph.json', '/data/content-knowledge-graph.js'];
 const CORE = [
   './', './index.html', OFFLINE_URL,
   `./css/tokens.css?v=${APP_VERSION}`, `./css/typography.css?v=${APP_VERSION}`, `./css/styles.css?v=${APP_VERSION}`, `./js/app.js?v=${APP_VERSION}`,
   './js/app-config.js', './js/lexical-quality.js', './js/lexicon-a1.js', './js/lexicon-a2.js', './js/lexicon.js', './js/main.js', './js/learning.js', './js/content.js', './js/depth-content.js', './js/supplement-content.js',
-  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/advanced-level-content.js',
+  './js/questions-content.js', './js/advanced-practice-content.js', './js/starter-content.js', './js/spiral-content.js', './js/advanced-level-content.js', './js/learning-paths.js',
   './js/number-math-content.js', './js/technical-content.js', './js/professional-content.js', './js/source-review-content.js', './js/v19-learning-experience.js', './js/exercises.js',
   './js/profiles.js', './js/verb-atlas.js', './js/verb-corrections.js', './js/verb-core-review.js', './js/verb-initial-review.js', './js/verb-final-review.js', './js/knowledge-graph.js',
   './images/logo.svg', './images/concept-map.svg', './images/questions-map.svg', './images/numbers-time-map.svg', './images/math-map.svg',

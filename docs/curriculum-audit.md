@@ -1,12 +1,12 @@
-# Curriculumaudit 19.4.0-alpha.11
+# Curriculumaudit 19.4.0-alpha.12
 
-- Applicatieversie: 19.4.0-alpha.11
+- Applicatieversie: 19.4.0-alpha.12
 - C1-C2-grammaticamodules: 19
 - C1-C2-vraagmodules: 8
 - C1-C2-vraagoefeningen: 12
 - C1-C2-spiraalgrammaticafocussen: 54
-- Kennisgraafnodes: 27289
-- Kennisgraafrelaties: 90155
+- Kennisgraafnodes: 27346
+- Kennisgraafrelaties: 91063
 - Blokkerende bevindingen: 0
 
 Alle grammatica-, vragen- en graafkoppelingen zijn actueel en intern consistent.

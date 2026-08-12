@@ -1,28 +1,14 @@
-[![CI](https://github.com/bernherre/web_nl_learn/actions/workflows/deploy-pages.yml/badge.svg)](https://github.com/bernherre/web_nl_learn/actions/workflows/deploy-pages.yml)
-[![Release](https://img.shields.io/github/v/release/bernherre/web_nl_learn?display_name=tag&sort=semver)](https://github.com/bernherre/web_nl_learn/releases)
+# Nederlands, gewoon doen — V19.4 Alpha 12
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-v19.4.0--alpha.11-0078D4?style=for-the-badge" alt="Version v19.4.0 Alpha 11">
-  <img src="https://img.shields.io/badge/license-CC%20BY%204.0-F9A825?style=for-the-badge&logo=creativecommons&logoColor=white" alt="CC BY 4.0">
-</p>
+## V19.4 Alpha 12 — Begeleide leerpaden zonder inhoudsduplicatie
 
-<p align="center">
-  <img src="https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?style=for-the-badge&logo=javascript&logoColor=000000" alt="JavaScript ES2022">
-  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" alt="HTML5">
-  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css&logoColor=white" alt="CSS3">
-  <img src="https://img.shields.io/badge/Node.js-20%2B-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" alt="Node.js 20+">
-</p>
+- 56 begeleide routes van A0 tot C2.
+- Hergebruik van bestaande situaties, woorden, grammatica, werkwoorden, dialogen en oefeningen.
+- Woordkaarten behouden luisteren, definitie en contextvoorbeeld.
+- Optionele externe vertaling van alleen de definitie, zonder API of backend.
+- Foutfeedback kan terugverwijzen naar grammatica, werkwoordfiche en Kennisgraaf.
+- De bestaande cursuspagina's blijven de bron van waarheid.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/CEFR-A0--C2-7B61FF?style=for-the-badge" alt="CEFR A0-C2">
-  <img src="https://img.shields.io/badge/werkwoorden-1.886-FF7A45?style=for-the-badge" alt="1.886 werkwoorden">
-  <img src="https://img.shields.io/badge/oefeningen-8.072%2B-0088CC?style=for-the-badge" alt="8.072+ oefeningen">
-  <img src="https://img.shields.io/badge/PWA-ready-5A0FC8?style=for-the-badge&logo=pwa&logoColor=white" alt="PWA ready">
-  <img src="https://img.shields.io/badge/Kennisgraaf-active-00A67E?style=for-the-badge" alt="Kennisgraaf active">
-</p>
-
-
-# Nederlands, gewoon doen — V19.4 Alpha 2
 
 ## V19.4 Alpha 2 — A0, A1 en A2 zonder open lexicale kaarten
 
@@ -466,11 +452,21 @@ Open `index.html` met Chrome of Edge. De app laadt `js/app.js` als klassieke bro
 
 Voor Service Worker- en PWA-functies:
 
+**Windows (dubbelklik):** `run-local.bat`
+
+De launcher opent automatisch `http://localhost:8000` en start:
+
+```bat
+py -m http.server 8000
+```
+
+**macOS/Linux of via npm:**
+
 ```bash
 npm run serve
 ```
 
-Open daarna `http://localhost:8080`.
+Open daarna `http://localhost:8000`.
 
 ## Ontwikkelen en valideren
 

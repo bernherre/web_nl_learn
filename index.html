@@ -9,9 +9,9 @@
   <title>Nederlands, gewoon doen</title>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/tokens.css?v=19.4.0-alpha.11">
-  <link rel="stylesheet" href="css/typography.css?v=19.4.0-alpha.11">
-  <link rel="stylesheet" href="css/styles.css?v=19.4.0-alpha.11">
+  <link rel="stylesheet" href="css/tokens.css?v=19.4.0-alpha.12">
+  <link rel="stylesheet" href="css/typography.css?v=19.4.0-alpha.12">
+  <link rel="stylesheet" href="css/styles.css?v=19.4.0-alpha.12">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -81,6 +81,7 @@
           <button class="menu-more" id="open-settings-top" type="button" aria-label="Open toegankelijkheidsinstellingen">☰</button>
         </div>
       </header>
+      <button class="leerpad-return" id="leerpad-return" type="button" hidden>↩ Terug naar je Leerpad</button>
 
       <main id="main-content" tabindex="-1">
         <div class="content-wrap">
@@ -248,8 +249,13 @@
           </section>
 
           <section class="page" id="page-leerpad" aria-labelledby="leerpad-title">
-            <div class="page-heading"><div><span class="kicker">Van A0 tot C2</span><h1 id="leerpad-title">Jouw leerpad</h1><p>Een duidelijke route van dagelijkse basis naar professioneel en natuurlijk Nederlands.</p></div><div class="legend"><span><i class="done"></i>afgerond</span><span><i class="current"></i>nu bezig</span><span><i></i>later</span></div></div>
-            <div class="level-path" id="level-path"></div>
+            <div class="page-heading leerpad-heading"><div><span class="kicker">Van A0 tot C2 · begeleid door bestaande inhoud</span><h1 id="leerpad-title">Jouw begeleide leerpad</h1><p>Kies een situatie en volg stap voor stap de woorden, grammatica, werkwoorden, dialoog en oefeningen die al in de leeromgeving bestaan.</p></div><div class="leerpad-help"><label for="leerpad-support-language">Hulptaal voor definities</label><select id="leerpad-support-language" aria-label="Kies een hulptaal voor het vertalen van definities"><option value="es">Español</option><option value="en">English</option><option value="de">Deutsch</option><option value="fr">Français</option><option value="it">Italiano</option><option value="pt">Português</option><option value="pl">Polski</option><option value="tr">Türkçe</option><option value="uk">Українська</option><option value="ar">العربية</option></select><small>Alleen de definitie wordt extern vertaald; er wordt niets opgeslagen of via een API verstuurd door deze web.</small></div></div>
+            <section class="card guided-path-browser" aria-labelledby="guided-paths-title">
+              <div class="guided-path-toolbar"><div><span class="kicker">Situatie kiezen</span><h2 id="guided-paths-title">56 routes met dezelfde bestaande lesinhoud</h2></div><label>Niveau<select id="leerpad-level-filter" aria-label="Filter leerpaden op niveau"><option value="alle">Alle niveaus</option><option>A0</option><option>A1</option><option>A2</option><option>B1</option><option>B2</option><option>C1</option><option>C2</option></select></label></div>
+              <div class="guided-path-grid" id="guided-path-grid" aria-label="Begeleide routes"></div>
+            </section>
+            <section class="guided-path-detail" id="guided-path-detail" aria-live="polite"></section>
+            <details class="legacy-level-path"><summary>Bekijk ook het niveau-overzicht A0–C2</summary><div class="level-path" id="level-path"></div></details>
           </section>
 
 
@@ -366,7 +372,7 @@
           <section class="page" id="page-kennisgraaf" aria-labelledby="kennisgraaf-title">
             <div class="page-heading knowledge-graph-heading">
               <div><span class="kicker">Synoniemen · gebruik · oefeningen · controles</span><h1 id="kennisgraaf-title">Kennisgraaf van alle inhoud</h1><p>Doorzoek de leeromgeving als één semantisch netwerk. Een werkwoord is verbonden met zijn betekenis, gecontroleerde synoniemen, thema’s, grammatica, voorbeelden, oefeningen en open inhoudscontroles.</p></div>
-              <div class="knowledge-graph-version"><strong id="knowledge-graph-release">V19.4 Alpha 11</strong><span id="knowledge-graph-scope">76 grammaticamodules · 22 vraaglessen · A0–C2</span></div>
+              <div class="knowledge-graph-version"><strong id="knowledge-graph-release">V19.4 Alpha 12</strong><span id="knowledge-graph-scope">76 grammaticamodules · 22 vraaglessen · A0–C2</span></div>
             </div>
             <div class="notice-card knowledge-graph-notice"><span aria-hidden="true">◎</span><div><strong>De graaf maakt hiaten zichtbaar; hij vult ze niet automatisch in.</strong><p>Een synoniem wordt alleen als gecontroleerde relatie getoond wanneer de werkwoordfiche handmatig is nagekeken. Ontbrekende definities, synoniemen, gebruiksnotities en voorbeelden verschijnen als controlepunten.</p></div></div>
             <p class="knowledge-graph-status" id="knowledge-graph-status" role="status" aria-live="polite">Open deze pagina om de kennisgraaf te laden.</p>
@@ -633,6 +639,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">Deze leeromgeving heeft JavaScript nodig voor audio, oefeningen en navigatie.</div></noscript>
-  <script src="js/app.js?v=19.4.0-alpha.11"></script>
+  <script src="js/app.js?v=19.4.0-alpha.12"></script>
 </body>
 </html>

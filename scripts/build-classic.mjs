@@ -35,6 +35,7 @@ const sourceManifest = [
   ['starter-content.js', stripExports],
   ['spiral-content.js', stripExports],
   ['advanced-level-content.js', stripExports],
+  ['learning-paths.js', stripExports],
   ['number-math-content.js', stripExports],
   ['technical-content.js', stripExports],
   ['professional-content.js', stripExports],

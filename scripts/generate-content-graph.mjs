@@ -39,6 +39,7 @@ import { applyCoreVerbReviews } from '../js/verb-core-review.js';
 import { applyInitialVerbReviews } from '../js/verb-initial-review.js';
 import { applyFinalVerbReviews } from '../js/verb-final-review.js';
 import { applyVerbSentencePatternFixes } from '../js/verb-sentence-pattern-fixes.js';
+import { buildGuidedPaths, guidedPathNodeId, guidedThemeNodeId } from '../js/learning-paths.js';
 
 applyVerbCorrections(verbAtlas);
 applyCoreVerbReviews(verbAtlas);
@@ -55,6 +56,7 @@ const sourceCounts = {};
 const pendingGrammarFocuses = [];
 const allQuestionTopics = [...questionTopics, ...c1c2QuestionTopics];
 const allQuestionPractice = [...questionPractice, ...c1c2QuestionPractice];
+const guidedPaths = buildGuidedPaths({ a0Themes, a1Themes, a2Themes, spiralThemes, advancedSpiralLevels, exerciseBank });
 
 const clean = (value) => String(value ?? '').replace(/\s+/gu, ' ').trim();
 const normalise = (value) => clean(value)
@@ -696,6 +698,57 @@ for (const exercise of exerciseBank) {
     if (!options.map(clean).includes(clean(exercise.answer))) addIssue(id, 'answer-not-in-options', 'Het juiste antwoord staat niet tussen de opties.', 'error');
   }
   if (exercise.type === 'selfcheck' && !clean(exercise.modelAnswer)) addIssue(id, 'model-answer-missing', 'Schrijfoefening heeft geen modelantwoord.', 'warning');
+}
+
+// Begeleide leerpaden zijn een dunne navigatielaag bovenop bestaande inhoud.
+for (const path of guidedPaths) {
+  const pathId = guidedPathNodeId(path);
+  addNode({
+    id: pathId,
+    type: 'learning_path',
+    label: path.title,
+    subtitle: `${path.level} · begeleide route`,
+    level: path.level,
+    source: 'begeleid-leerpad',
+    searchText: text(path.title, path.subtitle, path.level, path.canDo, path.terms, path.grammar, path.verbs, path.exerciseIds),
+    data: {
+      pathId: path.id,
+      themeId: path.themeId,
+      sourcePage: path.sourcePage,
+      canDo: path.canDo,
+      terms: path.terms,
+      grammar: path.grammar.map((item) => item.title),
+      verbs: path.verbs,
+      exerciseIds: path.exerciseIds,
+    },
+  });
+  levelEdge(pathId, path.level);
+  const themeId = guidedThemeNodeId(path);
+  if (nodes.has(themeId)) addEdge(pathId, themeId, 'guides_through_theme', 'begeleidt door thema');
+  for (const term of path.terms || []) {
+    const entry = findLexiconEntry(term);
+    const lexemeId = entry ? lexemeIds.get(normalise(entry.term)) : null;
+    if (lexemeId) addEdge(pathId, lexemeId, 'uses_lexeme', 'gebruikt woord');
+  }
+  for (const grammar of path.grammar || []) {
+    const focusId = `grammar-focus:${path.level}:${path.themeId}:${normalise(grammar.title)}`;
+    if (nodes.has(focusId)) addEdge(pathId, focusId, 'uses_grammar_focus', 'grammaticale stap');
+    const canonical = grammarIdsByLabel.get(normalise(grammar.title));
+    if (canonical) addEdge(pathId, canonical, 'applies_grammar', 'grammaticale stap');
+  }
+  for (const rawVerb of path.verbs || []) {
+    const key = normalise(rawVerb);
+    let verbId = verbByNormalised.get(key);
+    if (!verbId) {
+      const match = [...verbByNormalised.entries()].find(([verbKey]) => key.startsWith(`${verbKey}-`));
+      verbId = match?.[1];
+    }
+    if (verbId) addEdge(pathId, verbId, 'uses_verb', 'werkwoord in route');
+  }
+  for (const exerciseId of path.exerciseIds || []) {
+    const target = `exercise:${exerciseId}`;
+    if (nodes.has(target)) addEdge(pathId, target, 'uses_exercise', 'oefening in route');
+  }
 }
 
 // Verbind expliciete inhoudsrelaties nadat alle nodes bestaan.

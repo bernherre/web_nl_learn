@@ -311,7 +311,7 @@ test('V11 bevat een volledige leerlijn voor getallen, datum, tijd en wiskundetaa
 test('de toegankelijkheidsbediening is functioneel gekoppeld en gebruikt leesbare profielen', async () => {
   const html = await read('index.html');
   const main = await read('js/main.js');
-  const css = await read('css/styles.css');
+  const [css, tokens] = await Promise.all([read('css/styles.css'), read('css/tokens.css')]);
   for (const id of ['theme-light', 'theme-dark', 'contrast-toggle', 'color-profile', 'high-contrast-setting', 'reduced-motion-setting', 'text-scale-setting']) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
@@ -319,8 +319,8 @@ test('de toegankelijkheidsbediening is functioneel gekoppeld en gebruikt leesbar
   assert.match(main, /function applySettings/);
   assert.match(main, /dataset\.contrast/);
   assert.match(main, /dataset\.colorProfile/);
-  assert.match(css, /data-contrast="high"/);
-  assert.match(css, /data-color-profile="color-safe"/);
+  assert.match(tokens, /data-contrast="high"/);
+  assert.match(tokens, /data-color-profile="color-safe"/);
   assert.match(css, /:focus-visible/);
 });
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## 19.4.0-alpha.12 — V19.4 Alpha 12
+
+- Convierte Leerpad en 56 rutas guiadas de A0 a C2 sin duplicar ni sustituir contenido existente.
+- Reutiliza situaciones, vocabulario disponible, gramática, Atlas de Verbos, diálogos y ejercicios existentes.
+- Cada palabra mostrada en una ruta conserva lectura, audio, definición y ejemplo existentes.
+- Añade traducción opcional de la definición mediante una página web externa, sin API, backend ni traducciones almacenadas.
+- Añade feedback de error con enlaces a gramática, verbos y Kennisgraaf, además de retorno al Leerpad.
+- Integra 56 nodos `learning_path` y 907 relaciones nuevas en el Kennisgraaf.
+- Mantiene intactos los archivos fuente del Atlas, `Zinspositie en gebruik`, gramática, preguntas, ejercicios y lexicon A0–A2 respecto a Alpha 11.
+- Valida 181/181 tests y 81/81 controles de contenido sin errores ni advertencias.
+- Centraliza la tipografía en los design tokens y elimina la sobrescritura duplicada de `styles.css`.
+- Usa una pila local/sistema más amable y legible para texto y títulos, sin fuentes externas, descargas ni aumento del peso del sitio.
+- Mejora ligeramente el interlineado efectivo, kerning y espaciado de títulos para lectura prolongada.
+- Incluye `run-local.bat` para abrir la web con `py -m http.server 8000`.
+- Suaviza la paleta visual manteniendo la identidad verde, naranja, azul y violeta existente.
+- Usa fondos cálidos, acentos menos saturados y sombras más ligeras sin cambiar layout, componentes ni contenido.
+- Centraliza también los modos claro, oscuro, alto contraste y perfil `color-safe` en `css/tokens.css`.
+- Conserva contrastes legibles en los pares principales de texto, acentos y navegación lateral.
+
 ## 19.4.0-alpha.9
 
 - Corrige la carga del Knowledge Graph bajo Service Worker.
