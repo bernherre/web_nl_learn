@@ -1,3 +1,4 @@
+import { a1ExpansionVerbs } from '../js/a1-expansion-verbs.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { verbAtlas } from '../js/verb-atlas.js';
@@ -33,7 +34,7 @@ const expectedCore = {
 test('V18.5 behoudt exact de negentien expliciet gecontroleerde werkwoorden', () => {
   assert.equal(reviewedNames.length, 19);
   assert.equal(new Set(reviewedNames).size, reviewedNames.length, 'dubbele correctienaam');
-  const actual = verbAtlas.filter((verb) => verb.reviewed).map((verb) => verb.infinitive);
+  const actual = verbAtlas.filter((verb) => verb.reviewed && !a1ExpansionVerbs.some((item) => item.infinitive === verb.infinitive)).map((verb) => verb.infinitive);
   assert.deepEqual(new Set(actual), new Set(reviewedNames));
   assert.equal(get('aanbouwen').reviewed, undefined);
   assert.equal(get('aanvangen').reviewed, undefined);
@@ -44,9 +45,9 @@ test('de drie ontbrekende modale werkwoorden zijn zonder duplicaten toegevoegd',
     assert.equal(verbAtlas.filter((verb) => verb.infinitive === infinitive).length, 1, `${infinitive}: dubbel of ontbrekend`);
     assert.equal(get(infinitive).reviewed, true);
   }
-  assert.equal(verbAtlas.length, 1883);
-  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'regelmatig').length, 872);
-  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'onregelmatig').length, 1011);
+  assert.equal(verbAtlas.length, 1895);
+  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'regelmatig').length, 881);
+  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'onregelmatig').length, 1014);
 });
 
 test('alle sinds V18 gewijzigde basisvormen en hulpwerkwoorden zijn expliciet gevalideerd', () => {

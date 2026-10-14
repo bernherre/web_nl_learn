@@ -1,4 +1,28 @@
-# Nederlands, gewoon doen — V19.4 Alpha 12
+# Nederlands, gewoon doen — V19.4 Alpha 14
+
+## V19.4 Alpha 14 — A1-cursus, werkwoorden en verbonden oefeningen
+
+- 32 aanvullende lessen in de acht bestaande A1-thema’s, gekoppeld aan de onderwerpen van alle 90 aangeleverde referentiefoto’s.
+- 12 nieuwe volledige werkwoordfiches; 1.898 werkwoorden in de atlas. De oorspronkelijke 1.886 fiches blijven inhoudelijk identiek.
+- 1.713 centrale lexiconentries: 66 meer dan in Alpha 12, waarvan 56 in deze uitbreiding.
+- 32 nieuwe luisterdialogen met normale en langzame Nederlandse browserspraak, uitspraak per beurt en per woord/voorbeeld. Geen boekopnamen of nieuwe MP3-bestanden.
+- 120 nieuwe oefeningen: 32 luisteren, 32 woordbetekenissen, 32 taalregels en 24 werkwoordopgaven. Feedback linkt terug naar de les en de werkwoordfiche.
+- Bestaande oefen-IDs blijven behouden. Herhaalde inhoud wordt bij de selectie vermeden; dubbele B1-keuzeopties zijn vervangen door contextgebonden, onderscheiden antwoorden.
+- Alle oorspronkelijke graafnodes en relaties blijven bestaan. Nieuwe les-, audio-, lexicon-, werkwoord- en oefenrelaties zijn expliciet toegevoegd; historische leerpadkeuzes zijn vastgelegd.
+- Bestaande profielen, opslagvelden, audiobestanden en rechten blijven behouden. De 24 Cheat Sheet-kaarten uit Alpha 13 blijven beschikbaar.
+- Validatie: 196 tests, 81 inhoudscontroles; DOM-interactiecontrole voor alle nieuwe lessen en oefeningen; Chromium-controle van de keten les → werkwoord → oefening → feedback → graaf → les, inclusief mobiele breedte.
+
+Zie [de verbenaudit](docs/a1-verb-audit.md), [de brondekking](docs/a1-source-coverage.md) en [het QA-verslag](docs/a1-alpha14-qa.md).
+
+## V19.4 Alpha 13 — A1 Cheat Sheet
+
+- 24 oorspronkelijke naslagkaarten over de acht bestaande A1-thema’s, met zoeken en Nederlandse spraakweergave.
+- Eén nieuwe bron: `js/a1-reference-content.js`; definities komen uit het centrale lexicon, werkwoorden en grammatica uit hun bestaande bronnen.
+- Tien aanvullende lexiconentries; geen bestaande IDs, oefeningen, audiobestanden of profielopslag verwijderd of hernoemd.
+- Elke kaart verbindt in de kennisgraaf met niveau, thema, lexemen, werkwoorden en waar relevant grammatica. Vanuit de graaf opent de exacte kaart.
+- De 90 nieuwe boekfoto’s dienen alleen als thematische referentie. Bestaande cursusillustraties worden hergebruikt; zie `NOTICE` voor rechten.
+- Vergelijking met de vorige graaf: alle 27.346 nodes en 91.063 relaties behouden; nu 27.381 nodes en 91.287 relaties.
+- Browserweergave nog handmatig te controleren: de Chromium-download in de ontwikkelomgeving mislukte. Automatische inhouds- en regressiecontroles zijn beschikbaar via `npm run check`.
 
 ## V19.4 Alpha 12 — Begeleide leerpaden zonder inhoudsduplicatie
 

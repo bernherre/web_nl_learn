@@ -1,3 +1,4 @@
+import { a1ExpansionExercises } from './a1-expansion-content.js';
 import { advancedExerciseBank } from './advanced-practice-content.js';
 import { sourceReviewExercises } from './source-review-content.js';
 import { v19Exercises } from './v19-learning-experience.js';
@@ -80,7 +81,7 @@ function makeB1(index) {
   const [verb, prep, complement] = pick(prepositions, index, 2);
   const variants = [
     () => ({ topic: 'bijzinnen', type: 'order', prompt: `Maak een zin met “${connector}”.`, answer: `${person} blijft thuis, ${connector} ${clause}.`, tokens: shuffleDeterministic([`${person}`, 'blijft', 'thuis,', connector, ...clause.split(' '), '.'], index), explanation: `Na “${connector}” staat de persoonsvorm meestal achteraan in de bijzin.` }),
-    () => ({ topic: 'vaste combinaties', type: 'choice', prompt: `Welke combinatie is correct?`, answer: `${verb} ${prep}`, options: shuffleDeterministic([`${verb} ${prep}`, `${verb} met`, `${verb} voor`], index), explanation: `Leer “${verb} ${prep}” als één vaste combinatie.` }),
+    () => ({ topic: 'vaste combinaties', type: 'choice', prompt: `${({ wachten: 'Je blijft bij de halte tot de bus komt.', denken: 'Je familie komt in je gedachten.', praten: 'Het werk is het onderwerp van het gesprek.', zorgen: 'Je geeft de kinderen de hulp en aandacht die zij nodig hebben.', luisteren: 'Je probeert de woorden van de docent goed te horen.', rekenen: 'Je vertrouwt erop dat iemand je helpt.' })[verb]} Welke vaste combinatie past hierbij?`, answer: `${verb} ${prep}`, options: shuffleDeterministic([`${verb} ${prep}`, ...['met', 'voor', 'naar', 'op'].filter((item) => item !== prep).slice(0, 2).map((item) => `${verb} ${item}`)], index), explanation: `Leer “${verb} ${prep}” als één vaste combinatie.` }),
     () => ({ topic: 'vertellen', type: 'input', prompt: 'Vul aan: Toen ik thuiskwam, ___ ik meteen gegeten. (hebben)', answer: 'heb', explanation: 'In een hoofdzin staat de persoonsvorm na het eerste zinsdeel.' }),
     () => ({ topic: 'formele vragen', type: 'choice', prompt: 'Welke vraag klinkt het beleefdst?', answer: 'Zou u dat kunnen toelichten?', options: ['Zou u dat kunnen toelichten?', 'Leg dat uit.', 'Waarom doe je dat zo?'], explanation: '“Zou u … kunnen” maakt een verzoek beleefd en professioneel.' }),
     () => ({ topic: 'schrijven', type: 'selfcheck', prompt: 'Schrijf twee zinnen waarin je een mening geeft en een reden noemt.', modelAnswer: 'Ik vind openbaar vervoer belangrijk, omdat het de stad bereikbaar houdt.', explanation: 'Gebruik een mening en verbind de reden met “omdat” of “want”.' }),
@@ -119,7 +120,7 @@ function createLevelExercises(level, count) {
 }
 
 const baseExerciseBank = Object.entries(LEVEL_TARGETS).flatMap(([level, count]) => createLevelExercises(level, count));
-export const exerciseBank = [...baseExerciseBank, ...advancedExerciseBank, ...sourceReviewExercises, ...v19Exercises];
+export const exerciseBank = [...baseExerciseBank, ...advancedExerciseBank, ...sourceReviewExercises, ...v19Exercises, ...a1ExpansionExercises];
 export const exerciseStats = {
   total: exerciseBank.length,
   byLevel: Object.fromEntries(['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((level) => [level, exerciseBank.filter((item) => item.level === level).length])),
@@ -152,4 +153,22 @@ export function filterExercises(bank, { level = 'alle', type = 'alle', topic = '
   return bank.filter((item) => (level === 'alle' || item.level === level)
     && (type === 'alle' || item.type === type)
     && (topic === 'alle' || item.topic === topic));
+}
+
+// Keep every historic ID in the bank; vary the practice session by content.
+export function exerciseContentKey(exercise) {
+  return JSON.stringify([exercise.level, exercise.type, exercise.prompt, exercise.audio || '', exercise.answer || '', exercise.modelAnswer || '', [...(exercise.options || [])].sort(), [...(exercise.tokens || [])].sort()]);
+}
+
+export function distinctExerciseCandidates(pool, recentIds = []) {
+  const recent = new Set(recentIds);
+  const recentContent = new Set(pool.filter((exercise) => recent.has(exercise.id)).map(exerciseContentKey));
+  const seen = new Set();
+  const distinct = pool.filter((exercise) => {
+    const key = exerciseContentKey(exercise);
+    if (seen.has(key)) return false;
+    seen.add(key); return true;
+  });
+  const fresh = distinct.filter((exercise) => !recentContent.has(exerciseContentKey(exercise)));
+  return fresh.length ? fresh : distinct;
 }

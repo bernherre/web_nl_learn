@@ -12,6 +12,18 @@ function a1Entry(term, definition, example, kind = "woord", theme = "algemeen") 
 }
 
 export const a1LexiconEntries = [
+  // Additive A1 reference vocabulary.
+  a1Entry("de avond", "Het deel van de dag tussen de middag en de nacht.", "In de avond lees ik een boek.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("het bed", "Een meubel waarop je slaapt.", "Het bed staat in de slaapkamer.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de stoel", "Een meubel voor één persoon om op te zitten.", "Zet de stoel naast de tafel.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de tafel", "Een meubel met een plat blad waarop je bijvoorbeeld eet of werkt.", "Het boek ligt op de tafel.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de tomaat", "Een vrucht die je vaak als groente in gerechten gebruikt.", "Ik snijd een tomaat voor de salade.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de soep", "Een vloeibaar gerecht dat je met een lepel eet.", "De soep zit in een kom.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de maat", "Een aanduiding van de grootte van bijvoorbeeld kleding.", "Heeft u deze broek in mijn maat?", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("het uur", "Een periode van zestig minuten.", "De reis duurt een uur.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de maand", "Een van de twaalf delen van een kalenderjaar.", "April is de vierde maand.", "zelfstandig naamwoord", "algemeen"),
+  a1Entry("de week", "Een periode van zeven dagen.", "Volgende week begint de cursus.", "zelfstandig naamwoord", "algemeen"),
+
   // School en leren.
   a1Entry("de school", "Een onderwijsinstelling waar kinderen of volwassenen lessen volgen.", "Mijn dochter gaat elke ochtend om half negen naar de school.", "zelfstandig naamwoord", "school"),
   a1Entry("de klas", "Een groep leerlingen die samen les krijgt, of het lokaal waarin zij zitten.", "Onze klas oefent vandaag de Nederlandse uitspraak.", "zelfstandig naamwoord", "school"),

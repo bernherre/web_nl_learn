@@ -1,3 +1,5 @@
+import { a1ExpansionLexicon } from './a1-expansion-lexicon.js';
+import { a1ExpansionVerbs } from './a1-expansion-verbs.js';
 import { a1LexiconEntries } from './lexicon-a1.js';
 import { a2LexiconEntries } from './lexicon-a2.js';
 
@@ -341,6 +343,11 @@ export const centralLexiconEntries = [
   lexeme('aangenaam kennis te maken', 'Een beleefde reactie wanneer je iemand voor het eerst ontmoet.', 'Aangenaam kennis te maken, ik ben Lina.', 'uitdrukking', 'A1'),
   lexeme('het gaat goed', 'Een positief antwoord op de vraag hoe het gaat.', 'Dank je, het gaat goed.', 'uitdrukking', 'A1'),
 
+  ...a1ExpansionLexicon,
+  ...a1ExpansionVerbs.filter((verb) => !['vertrekken', 'bezoeken'].includes(verb.infinitive)).map((verb) => ({
+    term: verb.infinitive, definition: verb.meaning, example: verb.examples[0], kind: 'werkwoord',
+    level: 'A1', status: 'editorially-reviewed', source: 'A1-werkwoordenatlas · centrale lexiconredactie', verbId: verb.infinitive,
+  })),
   ...a1LexiconEntries,
   ...a2LexiconEntries,
 ];

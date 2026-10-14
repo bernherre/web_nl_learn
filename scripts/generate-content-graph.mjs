@@ -1,3 +1,6 @@
+import { a1ExpansionVerbs } from '../js/a1-expansion-verbs.js';
+import { a1ExpansionLessons, a1ExpansionExercises, a1LessonAudio, a1LessonNodeId } from '../js/a1-expansion-content.js';
+import { a1ReferenceCards, a1ReferenceNodeId } from '../js/a1-reference-content.js';
 import { readFile, writeFile } from 'node:fs/promises';
 import {
   levels,
@@ -608,7 +611,8 @@ for (const verb of verbAtlas) {
         continue;
       }
       synonymSeen.add(synonymKey);
-      const targetId = verbByNormalised.get(synonymKey) || `synonym:${synonymKey}`;
+      const isNewA1Verb = a1ExpansionVerbs.some((item) => normalise(item.infinitive) === synonymKey);
+      const targetId = (!isNewA1Verb && verbByNormalised.get(synonymKey)) || `synonym:${synonymKey}`;
       if (!nodes.has(targetId)) addNode({ id: targetId, type: 'synonym_term', label: synonym, subtitle: 'Synoniem of verwante uitdrukking', source: 'handmatige-werkwoordreview' });
       addEdge(senseId, targetId, 'has_synonym', 'synoniem', { note: verb.synonymNote || '', scope: 'sense' });
     }
@@ -621,7 +625,9 @@ for (const edge of [...edges.values()]) {
   const key = edge.target.slice('synonym:'.length);
   const verbTarget = verbByNormalised.get(key);
   if (!verbTarget) continue;
-  edges.delete(edge.id);
+  if (a1ExpansionVerbs.some((item) => normalise(item.infinitive) === key)) {
+    addEdge(edge.target, verbTarget, 'resolves_to_verb', 'werkwoordfiche');
+  } else edges.delete(edge.id);
   addEdge(edge.source, verbTarget, 'has_synonym', edge.label, edge.data);
 }
 
@@ -765,6 +771,60 @@ for (const node of nodes.values()) {
       addEdge(node.id, targetId, 'related_to', 'verbonden met');
     }
   }
+}
+
+// Additive A1 reference view: resolve canonical entities and fail on broken references.
+for (const card of a1ReferenceCards) {
+  const id = a1ReferenceNodeId(card.id);
+  addNode({ id, type: 'a1_reference', label: card.title, subtitle: card.rule, level: 'A1', source: 'a1-cheatsheet', data: { referenceId: card.id, rule: card.rule, examples: card.examples } });
+  addEdge(id, 'level:A1', 'has_level', 'niveau');
+  addEdge(id, `theme:A1:${card.themeId}`, 'guides_through_theme', 'begeleidt door thema');
+  for (const term of card.terms) {
+    const entry = findLexiconEntry(term);
+    if (!entry) throw new Error(`Unknown A1 reference term: ${term}`);
+    addEdge(id, `lexeme:${normalise(entry.term)}`, 'uses_lexeme', 'gebruikt woord');
+  }
+  for (const verb of card.verbs) {
+    const target = verbByNormalised.get(normalise(verb));
+    if (!target) throw new Error(`Unknown A1 reference verb: ${verb}`);
+    addEdge(id, target, 'uses_verb', 'gebruikt werkwoord');
+  }
+  for (const grammarId of card.grammarIds) addEdge(id, `grammar:${grammarId}`, 'applies_grammar', 'past grammatica toe');
+}
+
+// Full A1 lessons and their playable speech-synthesis transcripts.
+for (const lesson of a1ExpansionLessons) {
+  const id = a1LessonNodeId(lesson.id);
+  addNode({ id, type: 'a1_lesson', label: lesson.title, subtitle: lesson.explanation, level: 'A1', source: 'a1-cursusuitbreiding',
+    data: { lessonId: lesson.id, themeId: lesson.themeId, explanation: lesson.explanation, dialogue: lesson.dialogue, referencePhotos: lesson.referencePhotos } });
+  levelEdge(id, 'A1');
+  addEdge(`theme:A1:${lesson.themeId}`, id, 'has_lesson', 'bevat les');
+  for (const term of lesson.terms) {
+    const entry = findLexiconEntry(term);
+    if (!entry) throw new Error(`A1 lesson lexeme missing: ${term}`);
+    addEdge(id, `lexeme:${normalise(entry.term)}`, 'uses_lexeme', 'gebruikt woord');
+  }
+  for (const verb of lesson.verbs) {
+    const target = verbByNormalised.get(normalise(verb));
+    if (!target) throw new Error(`A1 lesson verb missing: ${verb}`);
+    addEdge(id, target, 'uses_verb', 'gebruikt werkwoord');
+  }
+  for (const grammarId of lesson.grammarIds) addEdge(id, `grammar:${grammarId}`, 'applies_grammar', 'past grammatica toe');
+  for (const exerciseId of lesson.exerciseIds) addEdge(id, `exercise:${exerciseId}`, 'uses_exercise', 'oefening in les');
+  const audio = a1LessonAudio.find((item) => item.id === lesson.audioId);
+  addNode({ id: audio.id, type: 'lesson_audio', label: `Luister: ${lesson.title}`, subtitle: 'Nederlandse browserspraak · normaal of langzaam', level: 'A1', source: 'a1-lesaudio', data: audio });
+  addEdge(id, audio.id, 'has_audio', 'heeft audio');
+  addEdge(`exercise:${lesson.exerciseIds[0]}`, audio.id, 'has_audio', 'gebruikt lesaudio');
+}
+
+for (const exercise of a1ExpansionExercises.filter((item) => item.verbId)) {
+  addEdge(`verb:${normalise(exercise.verbId)}`, `exercise:${exercise.id}`, 'practised_by', 'geoefend in');
+}
+
+for (const verb of a1ExpansionVerbs) {
+  const entry = findLexiconEntry(verb.infinitive);
+  if (!entry) throw new Error(`Missing dictionary entry for new A1 verb: ${verb.infinitive}`);
+  addEdge(`lexeme:${normalise(entry.term)}`, `verb:${normalise(verb.infinitive)}`, 'uses_verb', 'werkwoordfiche');
 }
 
 // Maak de herkomst zelf navigeerbaar: iedere inhoudsnode hoort bij een broncollectie.

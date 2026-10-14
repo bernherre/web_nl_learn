@@ -1,3 +1,287 @@
+// Stable exercise assignments from Alpha 12: additions must not silently replace existing routes.
+export const legacyGuidedExerciseIds = {
+  "a0-dagelijkse-basis": [
+    "v16-a0-vragen-0001",
+    "v16-a0-vragen-0005",
+    "v16-a0-vragen-0009"
+  ],
+  "a0-jezelf-voorstellen": [
+    "a0-voorstellen-0002",
+    "a0-voorstellen-0007",
+    "a0-voorstellen-0012"
+  ],
+  "a0-groeten-afscheid": [
+    "v16-a0-vragen-0001",
+    "v16-a0-vragen-0005",
+    "v16-a0-vragen-0009"
+  ],
+  "a0-begrijpen-hulp": [
+    "v16-a0-beleefd-vragen-0004",
+    "v16-a0-beleefd-vragen-0008",
+    "v16-a0-beleefd-vragen-0012"
+  ],
+  "a1-eten": [
+    "v16-a1-bijwoorden-0001",
+    "v16-a1-bijwoorden-0007",
+    "v16-a1-bijwoorden-0013"
+  ],
+  "a1-gezondheid": [
+    "v19-a1-waarom-antwoord",
+    "bron-a1-meervoud-02",
+    "bron-a1-meervoud-01"
+  ],
+  "a1-hallo": [
+    "a1-vragen-0004",
+    "a1-vragen-0009",
+    "a1-vragen-0014"
+  ],
+  "a1-kleding": [
+    "a1-vragen-0004",
+    "a1-vragen-0009",
+    "a1-vragen-0014"
+  ],
+  "a1-reizen": [
+    "v19-a1-beeld-reizen",
+    "a1-tegenwoordige-tijd-0003",
+    "a1-tegenwoordige-tijd-0008"
+  ],
+  "a1-school": [
+    "v16-a1-tegenwoordige-tijd-0005",
+    "v16-a1-tegenwoordige-tijd-0011",
+    "v16-a1-tegenwoordige-tijd-0017"
+  ],
+  "a1-vrije-tijd": [
+    "v16-a1-bijwoorden-0001",
+    "v16-a1-bijwoorden-0007",
+    "v16-a1-bijwoorden-0013"
+  ],
+  "a1-wonen": [
+    "v16-a1-vragen-0006",
+    "v16-a1-vragen-0012",
+    "v16-a1-vragen-0018"
+  ],
+  "a2-gemeente": [
+    "a2-voorzetsels-0016",
+    "a2-voorzetsels-0046",
+    "a2-voorzetsels-0076"
+  ],
+  "a2-kinderen": [
+    "bron-a2-wederkerend-02",
+    "a2-voorzetsels-0016",
+    "a2-voorzetsels-0046"
+  ],
+  "a2-nederland": [
+    "v16-a2-perfectum-0005",
+    "v16-a2-perfectum-0011",
+    "v16-a2-perfectum-0017"
+  ],
+  "a2-opleidingen": [
+    "bron-a2-vergelijking-01",
+    "v19-a2-beeld-gezondheid",
+    "bron-a2-sterk-01"
+  ],
+  "a2-verhuizen": [
+    "bron-a2-perfectum-01",
+    "v16-a2-perfectum-0005",
+    "v16-a2-perfectum-0011"
+  ],
+  "a2-werk-zoeken": [
+    "v16-a2-perfectum-0005",
+    "v16-a2-perfectum-0011",
+    "v16-a2-perfectum-0017"
+  ],
+  "a2-werken": [
+    "bron-a2-voornaamwoord-01",
+    "v19-a2-beeld-gezondheid",
+    "bron-a2-sterk-01"
+  ],
+  "a2-winkels": [
+    "v16-a2-perfectum-0005",
+    "v16-a2-perfectum-0011",
+    "v16-a2-perfectum-0017"
+  ],
+  "b1-dieren-natuur": [
+    "v16-b1-connectors-0010",
+    "v16-b1-connectors-0028",
+    "v16-b1-connectors-0046"
+  ],
+  "b1-emoties-relaties": [
+    "v16-b1-connectors-0055",
+    "v16-b1-connectors-0127",
+    "v16-b1-connectors-0199"
+  ],
+  "b1-eten-koken": [
+    "b1-vaste-combinaties-0002",
+    "b1-vaste-combinaties-0032",
+    "b1-vaste-combinaties-0062"
+  ],
+  "b1-huis-huishouden": [
+    "b1-formele-vragen-0004",
+    "b1-formele-vragen-0009",
+    "b1-formele-vragen-0014"
+  ],
+  "b1-kleding-uiterlijk": [
+    "v16-b1-connectors-0010",
+    "v16-b1-connectors-0037",
+    "v16-b1-connectors-0082"
+  ],
+  "b1-literatuur-verhalen": [
+    "b1-vaste-combinaties-0002",
+    "b1-vaste-combinaties-0027",
+    "b1-vaste-combinaties-0032"
+  ],
+  "b1-omgeving-milieu": [
+    "v16-b1-connectors-0010",
+    "v16-b1-connectors-0019",
+    "v16-b1-connectors-0028"
+  ],
+  "b1-supermarkt-markt": [
+    "v16-b1-connectors-0064",
+    "v16-b1-connectors-0136",
+    "v16-b1-connectors-0208"
+  ],
+  "b1-vakantie-reizen": [
+    "v19-b1-werk-voorzetsel",
+    "v16-b1-bijwoorden-0039",
+    "v16-b1-bijwoorden-0138"
+  ],
+  "b2-dieren-natuur": [
+    "v16-b2-connectors-en-signaalwoorden-0001",
+    "v16-b2-connectors-en-signaalwoorden-0002",
+    "v16-b2-connectors-en-signaalwoorden-0011"
+  ],
+  "b2-emoties-relaties": [
+    "v16-b2-nuancerende-bijwoorden-0010",
+    "v16-b2-nuancerende-bijwoorden-0020",
+    "v16-b2-nuancerende-bijwoorden-0030"
+  ],
+  "b2-eten-koken": [
+    "v16-b2-nuancerende-bijwoorden-0010",
+    "v16-b2-nuancerende-bijwoorden-0020",
+    "v16-b2-nuancerende-bijwoorden-0030"
+  ],
+  "b2-huis-huishouden": [
+    "b2-precisie-0006",
+    "b2-precisie-0036",
+    "b2-precisie-0066"
+  ],
+  "b2-kleding-uiterlijk": [
+    "v16-b2-nuancerende-bijwoorden-0010",
+    "v16-b2-nuancerende-bijwoorden-0020",
+    "v16-b2-nuancerende-bijwoorden-0030"
+  ],
+  "b2-literatuur-verhalen": [
+    "b2-argumentatie-0003",
+    "b2-argumentatie-0008",
+    "b2-argumentatie-0013"
+  ],
+  "b2-omgeving-milieu": [
+    "v16-b2-nuancerende-bijwoorden-0010",
+    "v16-b2-nuancerende-bijwoorden-0020",
+    "v16-b2-nuancerende-bijwoorden-0030"
+  ],
+  "b2-supermarkt-markt": [
+    "b2-register-0002",
+    "b2-register-0007",
+    "b2-register-0012"
+  ],
+  "b2-vakantie-reizen": [
+    "b2-precisie-0006",
+    "b2-precisie-0036",
+    "b2-precisie-0066"
+  ],
+  "c1-dieren-natuur": [
+    "v19-c1-natuur-onzekerheid",
+    "v19-c1-emoties-bemiddelen",
+    "v19-c1-literatuur-bewijs"
+  ],
+  "c1-emoties-relaties": [
+    "v19-c1-emoties-bemiddelen",
+    "v19-c1-eten-causaliteit",
+    "v19-c1-kleding-nuance"
+  ],
+  "c1-eten-koken": [
+    "v19-c1-eten-causaliteit",
+    "v19-c1-natuur-onzekerheid",
+    "v19-c1-emoties-bemiddelen"
+  ],
+  "c1-huis-huishouden": [
+    "v19-c1-kleding-nuance",
+    "v19-c1-emoties-bemiddelen",
+    "v19-c1-eten-causaliteit"
+  ],
+  "c1-kleding-uiterlijk": [
+    "v19-c1-kleding-nuance",
+    "v19-c1-emoties-bemiddelen",
+    "v19-c1-natuur-onzekerheid"
+  ],
+  "c1-literatuur-verhalen": [
+    "v19-c1-literatuur-bewijs",
+    "v19-c1-eten-causaliteit",
+    "v19-c1-emoties-bemiddelen"
+  ],
+  "c1-omgeving-milieu": [
+    "v19-c1-milieu-scenario",
+    "v19-c1-emoties-bemiddelen",
+    "v19-c1-eten-causaliteit"
+  ],
+  "c1-supermarkt-markt": [
+    "v19-c1-emoties-bemiddelen",
+    "v19-c1-eten-causaliteit",
+    "v19-c1-kleding-nuance"
+  ],
+  "c1-vakantie-reizen": [
+    "v19-c1-reizen-bron",
+    "v19-c1-eten-causaliteit",
+    "v19-c1-emoties-bemiddelen"
+  ],
+  "c2-dieren-natuur": [
+    "v19-c2-milieu-uitstel",
+    "v19-c2-wonen-legitimiteit",
+    "v19-c2-emoties-stilte"
+  ],
+  "c2-emoties-relaties": [
+    "v19-c2-emoties-stilte",
+    "v19-c2-eten-moralisering",
+    "v19-c2-literatuur-meerstemmigheid"
+  ],
+  "c2-eten-koken": [
+    "v19-c2-emoties-stilte",
+    "v19-c2-wonen-legitimiteit",
+    "v19-c2-eten-moralisering"
+  ],
+  "c2-huis-huishouden": [
+    "v19-c2-wonen-legitimiteit",
+    "v19-c2-emoties-stilte",
+    "v19-c2-eten-moralisering"
+  ],
+  "c2-kleding-uiterlijk": [
+    "v19-c2-kleding-discours",
+    "v19-c2-natuur-referentie",
+    "v19-c2-wonen-legitimiteit"
+  ],
+  "c2-literatuur-verhalen": [
+    "v19-c2-literatuur-meerstemmigheid",
+    "v19-c2-emoties-stilte",
+    "v19-c2-wonen-legitimiteit"
+  ],
+  "c2-omgeving-milieu": [
+    "v19-c2-wonen-legitimiteit",
+    "v19-c2-emoties-stilte",
+    "v19-c2-eten-moralisering"
+  ],
+  "c2-supermarkt-markt": [
+    "v19-c2-wonen-legitimiteit",
+    "v19-c2-emoties-stilte",
+    "v19-c2-eten-moralisering"
+  ],
+  "c2-vakantie-reizen": [
+    "v19-c2-literatuur-meerstemmigheid",
+    "v19-c2-reizen-paradox",
+    "v19-c2-wonen-legitimiteit"
+  ]
+};
+
 const guidedLevelOrder = ['A0', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
 const guidedClean = (value) => String(value ?? '').replace(/\s+/gu, ' ').trim();
@@ -62,6 +346,11 @@ function tokenSet(...values) {
 }
 
 function selectExercises(exerciseBank, level, title, themeId, grammar, verbs) {
+  const preserved = legacyGuidedExerciseIds[`${level.toLowerCase()}-${themeId}`];
+  if (preserved) {
+    for (const id of preserved) if (!exerciseBank.some((exercise) => exercise.id === id)) throw new Error(`Missing preserved route exercise: ${id}`);
+    return [...preserved];
+  }
   const wanted = tokenSet(title, themeId, grammar, verbs);
   const candidates = exerciseBank.filter((exercise) => exercise.level === level && ['choice', 'input', 'order'].includes(exercise.type));
   const scored = candidates.map((exercise) => {

@@ -9,9 +9,9 @@
   <title>Nederlands, gewoon doen</title>
   <link rel="icon" href="images/logo.svg" type="image/svg+xml">
   <link rel="manifest" href="manifest.webmanifest">
-  <link rel="stylesheet" href="css/tokens.css?v=19.4.0-alpha.12">
-  <link rel="stylesheet" href="css/typography.css?v=19.4.0-alpha.12">
-  <link rel="stylesheet" href="css/styles.css?v=19.4.0-alpha.12">
+  <link rel="stylesheet" href="css/tokens.css?v=19.4.0-alpha.18">
+  <link rel="stylesheet" href="css/typography.css?v=19.4.0-alpha.18">
+  <link rel="stylesheet" href="css/styles.css?v=19.4.0-alpha.18">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -27,6 +27,7 @@
         <button class="nav-item" type="button" data-page="leerpad"><span class="nav-icon" aria-hidden="true">↗</span><span>Leerpad</span></button>
         <button class="nav-item" type="button" data-page="praktijk"><span class="nav-icon" aria-hidden="true">◇</span><span>Praktijksituaties</span></button>
         <button class="nav-item" type="button" data-page="a0"><span class="nav-icon" aria-hidden="true">A0</span><span>A0-start</span></button>
+        <button class="nav-item" type="button" data-page="a1-cheatsheet"><span class="nav-icon" aria-hidden="true">A1</span><span>Cheat Sheet</span></button>
         <button class="nav-item" type="button" data-page="a1"><span class="nav-icon" aria-hidden="true">A1</span><span>A1-cursus</span></button>
         <button class="nav-item" type="button" data-page="a2"><span class="nav-icon" aria-hidden="true">A2</span><span>A2-cursus</span></button>
         <button class="nav-item" type="button" data-page="b1"><span class="nav-icon" aria-hidden="true">B1</span><span>B1-cursus</span></button>
@@ -292,6 +293,14 @@
             </div>
           </section>
 
+          <section class="page" id="page-a1-cheatsheet" aria-labelledby="a1-reference-title">
+            <div class="page-heading"><div><span class="kicker">A1 · Snel herhalen</span><h1 id="a1-reference-title">A1 Cheat Sheet</h1><p>24 korte kaarten: bekijk de regel, luister naar een voorbeeld en ontdek de verbonden woorden en werkwoorden.</p></div></div>
+            <label>Zoek een onderwerp <input type="search" id="a1-reference-search" placeholder="Bijvoorbeeld: klok, niet, kleding"></label>
+            <p id="a1-reference-count" aria-live="polite"></p>
+            <div id="a1-reference-cards" class="a1-reference-grid"></div>
+            <p class="a1-reference-credit">Oorspronkelijke samenvattingen en bestaande cursusillustraties: Bernardo Herrera · CC BY 4.0. Boekfoto’s zijn uitsluitend als thematische referentie gebruikt en worden niet herpubliceerd. Uitspraak gebruikt de beschikbare Nederlandse systeemstem.</p>
+          </section>
+
           <section class="page" id="page-a2" aria-labelledby="a2-title">
             <div class="page-heading a1-heading"><div><span class="kicker">Van A1 naar zelfstandig dagelijks Nederlands</span><h1 id="a2-title">Nederlands A2 in 8 thema’s</h1><p>Verdiep woordenschat, grammatica, luistervaardigheid en praktische communicatie in wonen, samenleving, gezin, winkels, opleidingen, werk en gemeente.</p></div><div class="a1-summary"><strong>8</strong><span>thema’s</span><strong>1000+</strong><span>woorden en combinaties</span></div></div>
             <section class="method-strip" aria-label="Opbouw van elk A2-thema">
@@ -372,16 +381,17 @@
           <section class="page" id="page-kennisgraaf" aria-labelledby="kennisgraaf-title">
             <div class="page-heading knowledge-graph-heading">
               <div><span class="kicker">Synoniemen · gebruik · oefeningen · controles</span><h1 id="kennisgraaf-title">Kennisgraaf van alle inhoud</h1><p>Doorzoek de leeromgeving als één semantisch netwerk. Een werkwoord is verbonden met zijn betekenis, gecontroleerde synoniemen, thema’s, grammatica, voorbeelden, oefeningen en open inhoudscontroles.</p></div>
-              <div class="knowledge-graph-version"><strong id="knowledge-graph-release">V19.4 Alpha 12</strong><span id="knowledge-graph-scope">76 grammaticamodules · 22 vraaglessen · A0–C2</span></div>
+              <div class="knowledge-graph-version"><strong id="knowledge-graph-release">V19.4 Alpha 18</strong><span id="knowledge-graph-scope">76 grammaticamodules · 22 vraaglessen · A0–C2</span></div>
             </div>
             <div class="notice-card knowledge-graph-notice"><span aria-hidden="true">◎</span><div><strong>De graaf maakt hiaten zichtbaar; hij vult ze niet automatisch in.</strong><p>Een synoniem wordt alleen als gecontroleerde relatie getoond wanneer de werkwoordfiche handmatig is nagekeken. Ontbrekende definities, synoniemen, gebruiksnotities en voorbeelden verschijnen als controlepunten.</p></div></div>
             <p class="knowledge-graph-status" id="knowledge-graph-status" role="status" aria-live="polite">Open deze pagina om de kennisgraaf te laden.</p>
             <section class="knowledge-graph-stats" id="knowledge-graph-stats" aria-label="Omvang van de kennisgraaf"></section>
             <section class="card knowledge-graph-controls" aria-label="Kennisgraaf zoeken en filteren">
               <label class="knowledge-search" for="knowledge-graph-search"><span>Zoek in alle inhoud</span><input id="knowledge-graph-search" type="search" placeholder="bijv. aaien, wachten op, werk, klacht…" autocomplete="off"></label>
-              <label><span>Inhoudstype</span><select id="knowledge-graph-type"><option value="all">Alle typen</option></select></label>
+              <label><span>Inhoudstype</span><select id="knowledge-graph-type"><option value="all">Alle typen</option><option value="words">Alle woorden</option></select></label>
               <label><span>Niveau</span><select id="knowledge-graph-level"><option value="all">Alle niveaus</option><option value="A0">A0</option><option value="A1">A1</option><option value="A2">A2</option><option value="B1">B1</option><option value="B2">B2</option><option value="C1">C1</option><option value="C2">C2</option></select></label>
-              <label><span>Relaties in beeld</span><select id="knowledge-graph-mode"><option value="all">Directe omgeving</option><option value="synonyms">Betekenis en synoniemen</option><option value="usage">Plaatsen van gebruik</option><option value="exercises">Oefeningen</option><option value="issues">Fouten en controles</option></select></label>
+              <label><span>Relaties in beeld</span><select id="knowledge-graph-mode"><option value="all">Alle relaties</option><option value="synonyms">Betekenis en synoniemen</option><option value="usage">Plaatsen van gebruik</option><option value="exercises">Oefeningen</option><option value="issues">Fouten en controles</option></select></label>
+              <label><span>Beginletter · A–Z</span><select id="knowledge-graph-initial"><option value="all">Alle beginletters</option><option value="#">#</option><option value="A">A</option><option value="B">B</option><option value="C">C</option><option value="D">D</option><option value="E">E</option><option value="F">F</option><option value="G">G</option><option value="H">H</option><option value="I">I</option><option value="J">J</option><option value="K">K</option><option value="L">L</option><option value="M">M</option><option value="N">N</option><option value="O">O</option><option value="P">P</option><option value="Q">Q</option><option value="R">R</option><option value="S">S</option><option value="T">T</option><option value="U">U</option><option value="V">V</option><option value="W">W</option><option value="X">X</option><option value="Y">Y</option><option value="Z">Z</option></select></label><label><span>Verbindingen volgen</span><select id="knowledge-graph-depth"><option value="1">1 stap · direct</option><option value="2" selected>2 stappen · met context</option></select></label><label><span>Weergave</span><select id="knowledge-graph-representation"><option value="canonical">Woorden samenvoegen</option><option value="original">Alle oorspronkelijke nodes</option></select></label>
               <label class="knowledge-check"><input id="knowledge-graph-issues-only" type="checkbox"><span>Alleen inhoud met open controles</span></label>
             </section>
             <div class="knowledge-graph-layout">
@@ -392,9 +402,9 @@
               </aside>
               <div class="knowledge-graph-main">
                 <section class="card knowledge-canvas-panel" aria-labelledby="knowledge-canvas-title">
-                  <div class="section-heading compact"><div><span class="kicker">Klik om verder te volgen</span><h2 id="knowledge-canvas-title">Lokale omgeving</h2></div><span>maximaal 32 nodes</span></div>
+                  <div class="section-heading compact"><div><span class="kicker">Klik om verder te volgen</span><h2 id="knowledge-canvas-title">Lokale omgeving</h2></div><span>Alle verbindingen · blader voor meer</span></div>
                   <div class="knowledge-graph-legend" id="knowledge-graph-legend" aria-label="Legenda"></div>
-                  <div class="knowledge-graph-canvas" id="knowledge-graph-canvas"><p class="empty-state">De graaf wordt geladen wanneer deze pagina wordt geopend.</p></div>
+                  <label class="knowledge-search"><span>Zoek een verbinding rond deze node</span><input id="knowledge-graph-neighbour-search" type="search" placeholder="Bijvoorbeeld: koorts, tandarts, grammatica…"></label><p class="muted">Twee stappen volgt inhoudelijke verbanden; algemene niveau- en collectiehubs worden niet verder uitgeklapt. Alle directe relaties blijven beschikbaar.</p><div class="knowledge-graph-canvas" id="knowledge-graph-canvas"><p class="empty-state">De graaf wordt geladen wanneer deze pagina wordt geopend.</p></div>
                 </section>
                 <section class="card knowledge-detail" id="knowledge-graph-detail" aria-live="polite"><p class="empty-state">Kies een node om definities, synoniemen, gebruiksplaatsen en controles te bekijken.</p></section>
               </div>
@@ -639,6 +649,6 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <noscript><div class="noscript">Deze leeromgeving heeft JavaScript nodig voor audio, oefeningen en navigatie.</div></noscript>
-  <script src="js/app.js?v=19.4.0-alpha.12"></script>
+  <script src="js/app.js?v=19.4.0-alpha.18"></script>
 </body>
 </html>

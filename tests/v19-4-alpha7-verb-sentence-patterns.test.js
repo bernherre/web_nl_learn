@@ -37,8 +37,8 @@ test('Alpha 7 behoudt alle 1.886 fiches en verandert geen A0- of A1-fiche', () =
   const after = clone(before);
   applyVerbSentencePatternFixes(after);
 
-  assert.equal(before.length, 1886);
-  assert.equal(after.length, 1886);
+  assert.equal(before.length, 1898);
+  assert.equal(after.length, 1898);
 
   for (const original of before.filter((verb) => ['A0', 'A1'].includes(verb.level))) {
     const current = after.find((verb) => verb.infinitive === original.infinitive);

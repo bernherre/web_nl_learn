@@ -7,6 +7,8 @@ import {
   safeProgress,
   selectDutchVoice,
 } from './learning.js';
+import { a1ExpansionLessons, a1LessonNodeId } from './a1-expansion-content.js';
+import { a1ReferenceCards, a1ReferenceNodeId } from './a1-reference-content.js';
 import { APP_RELEASE, APP_VERSION } from './app-config.js';
 import { isReliableDefinition, isReliableExample } from './lexical-quality.js';
 import { findLexiconEntry, normalizeLexeme } from './lexicon.js';
@@ -41,7 +43,7 @@ import { advancedGrammarTopics, logicRelationGroups, readingArticles, emailTasks
 import { sourceReviewGrammarTopics } from './source-review-content.js';
 import { c1c2GrammarTopics, c1c2QuestionTopics, c1c2QuestionPractice } from './c1-c2-language-systems.js';
 import { v19PracticeScenarios } from './v19-learning-experience.js';
-import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
+import { exerciseBank, exerciseStats, distinctExerciseCandidates, checkExerciseAnswer, filterExercises, safeExerciseStats } from './exercises.js';
 import { ACTIVE_PROFILE_KEY, GUEST_PROFILE_ID, PROFILE_REGISTRY_KEY, exportProfilePayload, normaliseProfile, profileExerciseKey, profileProgressKey, uniqueProfileId, validateProfileImport } from './profiles.js';
 import {
   a1Themes,
@@ -78,6 +80,7 @@ const state = {
   guidedExerciseAnswered: false,
   guidedExerciseResponse: '',
   guidedReturn: false,
+  a1ReturnLessonId: '',
   voices: [],
   dutchVoice: null,
   selectedWords: [],
@@ -618,15 +621,26 @@ function openGuidedGrammar(reference = '') {
 
 function openGuidedVerb(infinitive) {
   if (!infinitive) return;
+  if (!verbAtlas.some((verb) => verb.infinitive === infinitive)) return;
   state.selectedVerb = infinitive;
-  renderVerbDetail(infinitive);
+  state.verbQuery = infinitive;
+  elements.verbSearch.value = infinitive;
+  for (const key of ['verbRegularity', 'verbSemantic', 'verbLevel', 'verbSeparable', 'verbAuxiliary']) {
+    state[key] = 'alle';
+    if (elements[key]) elements[key].value = 'alle';
+  }
+  renderVerbs({ resetLimit: true });
   state.guidedReturn = true;
   showPage('werkwoorden');
 }
 
 function updateGuidedReturnVisibility(page) {
   if (!elements.guidedReturn) return;
-  elements.guidedReturn.hidden = !(state.guidedReturn && page !== 'leerpad');
+  const returningToLesson = Boolean(state.a1ReturnLessonId);
+  elements.guidedReturn.textContent = returningToLesson ? '← Terug naar de A1-les' : '← Terug naar je Leerpad';
+  elements.guidedReturn.hidden = returningToLesson
+    ? !['werkwoorden', 'grammatica', 'kennisgraaf', 'oefenen'].includes(page)
+    : !(state.guidedReturn && page !== 'leerpad');
 }
 
 function themeWordCount(theme) {
@@ -666,6 +680,7 @@ function renderCourseThemeDetail(theme, level, completed) {
       <div class="course-metrics"><span><strong>${themeWordCount(theme)}</strong> woorden</span><span><strong>${theme.grammar.length}</strong> grammaticale doelen</span><span><strong>2</strong> luistersnelheden</span></div>
       <div class="button-row"><button class="sound-button speak" type="button" data-text="${escapeHtml(theme.dialogue.join(' '))}" data-rate="0.9">🔊 Luister naar de dialoog</button><button class="sound-button secondary speak" type="button" data-text="${escapeHtml(theme.dialogue.join(' '))}" data-rate="0.62">🐢 Langzaam</button></div></div>
     </div>
+    ${level === 'A1' ? renderA1LessonIndex(theme) : ''}
     <div class="a1-detail-body">
       <section class="a1-can-do"><span class="kicker">Na dit thema</span><h2>Dit kun je</h2><ul>${theme.canDo.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></section>
       <section><div class="section-heading compact"><div><span class="kicker">Betekenis in context</span><h2>Uitgelichte kernwoorden</h2></div><span class="plan-total">${theme.vocabulary.length} uitgebreid</span></div>
@@ -692,6 +707,71 @@ function courseConfig(level) {
   return configs[level];
 }
 
+function openA1Lesson(id) {
+  const lesson = a1ExpansionLessons.find((item) => item.id === id);
+  if (!lesson) return;
+  state.a1ReturnLessonId = id;
+  state.guidedReturn = false;
+  state.a1Theme = lesson.themeId;
+  renderA1Themes();
+  showPage('a1');
+  const panel = el(`a1-lesson-${id}`);
+  if (panel) { panel.open = true; panel.scrollIntoView({ block: 'start' }); panel.querySelector('summary')?.focus(); }
+}
+
+function renderA1LessonIndex(theme) {
+  return `<nav class="a1-detail-body a1-lesson-index" aria-label="Lessen in ${escapeHtml(theme.title)}"><span class="kicker">Kies je les</span><h2>Lessen in ${escapeHtml(theme.title)}</h2><p>Open een les om te lezen, luisteren en oefenen.</p><div class="a1-lesson-links">${(theme.lessons || []).map((lesson, index) => `<button type="button" class="a1-lesson-link" data-a1-lesson="${lesson.id}"><span class="a1-lesson-position">${index + 1}</span><span><strong>${escapeHtml(lesson.title)}</strong><small>${lesson.terms.map(escapeHtml).join(' · ')}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div><div class="button-row">${a1ReferenceCards.filter((card) => card.themeId === theme.id).map((card) => `<button type="button" class="text-button" data-a1-reference="${card.id}">Cheat Sheet · ${escapeHtml(card.title)} →</button>`).join('')}</div></nav>`;
+}
+
+function renderA1Lessons(theme) {
+  return `<section class="a1-detail-body a1-expanded-lessons"><span class="kicker">A1 · Lezen, luisteren en oefenen</span><h2>Lessen: ${escapeHtml(theme.title)}</h2>
+    <p>Lees de uitleg, luister naar het gesprek en oefen met de gekoppelde woorden en werkwoorden.</p>
+    ${(theme.lessons || []).map((lesson) => `<details id="a1-lesson-${lesson.id}" class="a1-expanded-lesson"><summary>${escapeHtml(lesson.title)}</summary>
+      <h3>Zo werkt het</h3><p>${escapeHtml(lesson.explanation)}</p>
+      <h3>Woorden in context</h3><div class="a1-word-grid">${lesson.terms.map((term) => {
+        const entry = findLexiconEntry(term);
+        return `<article><strong>${escapeHtml(entry.term)}</strong><p>${escapeHtml(entry.definition)}</p><small>${escapeHtml(entry.example)}</small><div class="button-row"><button class="speak" type="button" data-text="${escapeHtml(entry.term)}" data-rate="0.8">🔊 Woord</button><button class="speak" type="button" data-text="${escapeHtml(entry.example)}" data-rate="0.82">🔊 Voorbeeld</button></div></article>`;
+      }).join('')}</div>
+      <h3>Werkwoorden: betekenis, vormen en gebruik</h3><div class="button-row">${lesson.verbs.map((verb) => `<button class="secondary-button" type="button" data-guided-open-verb="${escapeHtml(verb)}">${escapeHtml(verb)} →</button>`).join('')}</div>
+      <h3>Luister en reageer</h3><div class="button-row"><button class="sound-button speak" type="button" data-text="${escapeHtml(lesson.dialogue.join(' '))}" data-rate="0.86">🔊 Hele gesprek</button><button class="sound-button secondary speak" type="button" data-text="${escapeHtml(lesson.dialogue.join(' '))}" data-rate="0.62">🐢 Langzaam</button></div>
+      <div class="a1-dialogue">${lesson.dialogue.map((line, index) => `<p><b>${index % 2 ? 'B' : 'A'}</b><span>${escapeHtml(line)}</span><button class="speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.82" aria-label="Luister: ${escapeHtml(line)}">🔊</button></p>`).join('')}</div>
+      <p>Oefen met een partner: neem om de beurt rol A en rol B. Vervang daarna één detail door je eigen informatie.</p>
+      <div class="button-row">${lesson.grammarIds.map((id) => `<button class="text-button" type="button" data-a1-grammar="${id}">${escapeHtml(allGrammarTopics.find((topic) => topic.id === id).title)} →</button>`).join('')}
+      ${lesson.exerciseIds.map((id) => { const exercise = exerciseBank.find((item) => item.id === id); return `<button class="secondary-button" type="button" data-a1-exercise="${id}">${exercise.verbId ? escapeHtml(exercise.verbId) + ' · ' : ''}${exercise.type === 'listening' ? 'Luisteren' : exercise.type === 'input' ? 'Werkwoordvorm' : exercise.skill === 'grammatica' ? 'Taalregel' : 'Betekenis'} →</button>`; }).join('')}
+      <button class="text-button" type="button" data-guided-graph-node="${a1LessonNodeId(lesson.id)}">Les in de kennisgraaf →</button></div>
+    </details>`).join('')}</section>`;
+}
+
+function openA1Reference(id) {
+  const search = el('a1-reference-search');
+  if (search) search.value = '';
+  renderA1Reference();
+  showPage('a1-cheatsheet');
+  const card = el(`a1-reference-${id}`);
+  card?.scrollIntoView({ block: 'start' });
+  card?.focus({ preventScroll: true });
+}
+
+function renderA1Reference() {
+  const container = el('a1-reference-cards');
+  if (!container) return;
+  const query = normalizeLexeme(el('a1-reference-search')?.value || '');
+  const cards = a1ReferenceCards.filter((card) => normalizeLexeme([card.title, card.rule, ...card.examples, ...card.terms].join(' ')).includes(query));
+  el('a1-reference-count').textContent = `${cards.length} van ${a1ReferenceCards.length} kaarten`;
+  container.innerHTML = cards.map((card) => {
+    const theme = a1Themes.find((item) => item.id === card.themeId);
+    return `<article class="card a1-reference-card" id="a1-reference-${card.id}" tabindex="-1">
+      <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}" loading="lazy">
+      <div><span class="kicker">A1 · ${escapeHtml(theme.title)}</span><h2>${escapeHtml(card.title)}</h2><p>${escapeHtml(card.rule)}</p>
+      <ul>${card.examples.map((sentence) => `<li>${escapeHtml(sentence)} <button class="speak" type="button" data-text="${escapeHtml(sentence)}" data-rate="0.82" aria-label="Luister: ${escapeHtml(sentence)}">🔊</button></li>`).join('')}</ul>
+      <details><summary>Woorden, werkwoorden en grammatica</summary>
+      ${card.terms.map((term) => { const entry = findLexiconEntry(term); return `<p><strong>${escapeHtml(entry.term)}</strong> — ${escapeHtml(entry.definition)}</p>`; }).join('')}
+      <div class="button-row">${card.verbs.map((verb) => `<button class="text-button" type="button" data-guided-open-verb="${escapeHtml(verb)}">${escapeHtml(verb)} →</button>`).join('')}</div>
+      ${card.grammarIds.map((id) => { const grammar = allGrammarTopics.find((item) => item.id === id); return `<button class="text-button" type="button" data-a1-grammar="${escapeHtml(grammar.id)}">${escapeHtml(grammar.title)} →</button>`; }).join('')}
+      </details><div class="button-row"><button class="text-button" type="button" data-page="a1" data-a1-theme="${card.themeId}">Open thema →</button><button class="text-button" type="button" data-guided-graph-node="${a1ReferenceNodeId(card.id)}">Ontdek verbanden →</button></div></div></article>`;
+  }).join('') || '<p>Geen kaarten gevonden. Probeer een ander woord.</p>';
+}
+
 function renderCourseThemes(level) {
   const config = courseConfig(level);
   if (!config?.grid || !config?.detail) return;
@@ -701,10 +781,12 @@ function renderCourseThemes(level) {
   grid.innerHTML = themes.map((theme) => `<button class="card a1-theme-card course-theme-card ${theme.id === currentId ? 'active' : ''} ${completed.has(theme.id) ? 'done' : ''}" type="button" data-course-theme-select="${theme.id}" data-course-level="${level}">
     <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}">
     <span class="a1-theme-number">${completed.has(theme.id) ? '✓' : theme.number}</span>
-    <div><small>${level} · ${themeWordCount(theme)} woorden</small><h2>${escapeHtml(theme.title)}</h2><p>${escapeHtml(theme.subtitle)}</p></div>
+    <div><small>${level} · ${themeWordCount(theme)} woorden</small><h2>${escapeHtml(theme.title)}</h2><p>${escapeHtml(theme.subtitle)}</p>${level === 'A1' ? `<small class="a1-theme-lesson-preview">${(theme.lessons || []).map((lesson) => escapeHtml(lesson.title)).join(' · ')}</small>` : ''}</div>
   </button>`).join('');
   const theme = themes.find((item) => item.id === currentId) || themes[0];
   detail.innerHTML = renderCourseThemeDetail(theme, level, completed.has(theme.id));
+  if (level === 'A1') detail.insertAdjacentHTML('beforeend', renderA1Lessons(theme));
+  if (level === 'A1') detail.insertAdjacentHTML('beforeend', `<section class="a1-detail-body"><h2>Snel herhalen · Cheat Sheet</h2><div class="button-row">${a1ReferenceCards.filter((card) => card.themeId === theme.id).map((card) => `<button class="secondary-button" type="button" data-a1-reference="${card.id}">${escapeHtml(card.title)}</button>`).join('')}</div></section>`);
 }
 
 function spiralLevelData(theme, level) {
@@ -1471,9 +1553,7 @@ function refreshExerciseTopics() {
 function chooseNextExercise() {
   const pool = getExercisePool();
   if (!pool.length) { state.currentExercise = null; return; }
-  const recent = new Set(state.exerciseStats.history.slice(-40));
-  const available = pool.filter((item) => !recent.has(item.id));
-  const candidates = available.length ? available : pool;
+  const candidates = distinctExerciseCandidates(pool, state.exerciseStats.history.slice(-40));
   const index = (state.exerciseStats.answered * 37 + state.exerciseStats.correct * 11 + candidates.length) % candidates.length;
   state.currentExercise = candidates[index];
   state.exerciseResponse = [];
@@ -1549,6 +1629,7 @@ function recordExerciseResult(correct, response = '') {
   if (feedback) feedback.innerHTML = exercise.type === 'selfcheck'
     ? `<strong>Modelantwoord</strong><br><span class="model-answer-text">${escapeHtml(exercise.modelAnswer)}</span><br><span>${escapeHtml(exercise.explanation)}</span>`
     : `<strong>${correct ? 'Goed gedaan.' : 'Nog niet correct.'}</strong> ${escapeHtml(exercise.explanation)}${exercise.evidence ? `<br><span>Bewijs: <b>${escapeHtml(exercise.evidence)}</b></span>` : ''}${!correct && exercise.answer ? `<br><span>Antwoord: <b>${escapeHtml(exercise.answer)}</b></span>` : ''}`;
+  if (feedback && exercise.lessonId) feedback.insertAdjacentHTML('beforeend', `<div class="button-row"><button class="text-button" type="button" data-a1-lesson="${exercise.lessonId}">Terug naar de uitleg →</button>${exercise.verbId ? `<button class="text-button" type="button" data-guided-open-verb="${exercise.verbId}">Bekijk ${exercise.verbId} →</button>` : ''}</div>`);
   document.querySelector('[data-engine-next]')?.removeAttribute('disabled');
   document.querySelectorAll('[data-engine-option], [data-engine-check], [data-engine-reveal], [data-engine-word], [data-engine-remove-word]').forEach((button) => { button.disabled = true; });
 }
@@ -1636,6 +1717,12 @@ function initializeSettings() {
 }
 
 function handleClick(event) {
+  const sourceLesson = event.target.closest('.a1-expanded-lesson');
+  if (sourceLesson) state.a1ReturnLessonId = sourceLesson.id.replace('a1-lesson-', '');
+  else if (event.target.closest('.nav-item[data-page], #page-leerpad')) {
+    if (state.a1ReturnLessonId) state.guidedReturn = false;
+    state.a1ReturnLessonId = '';
+  }
   const profileSelect = event.target.closest('[data-profile-select]');
   if (profileSelect) { const profile = readProfiles().find((item) => item.id === profileSelect.dataset.profileSelect); if (profile) activateProfile(profile); return; }
   const profileDelete = event.target.closest('[data-profile-delete]');
@@ -1681,6 +1768,26 @@ function handleClick(event) {
   if (event.target.closest('[data-guided-prev]')) { state.guidedStep = Math.max(0, state.guidedStep - 1); renderGuidedPaths(); return; }
   if (event.target.closest('[data-guided-next]')) { state.guidedStep += 1; state.guidedExerciseAnswered = false; state.guidedExerciseResponse = ''; renderGuidedPaths(); return; }
   if (event.target.closest('[data-guided-restart]')) { state.guidedStep = 0; state.guidedExerciseAnswered = false; state.guidedExerciseResponse = ''; renderGuidedPaths(); return; }
+  const lessonReturn = event.target.closest('[data-a1-lesson]');
+  if (lessonReturn) { openA1Lesson(lessonReturn.dataset.a1Lesson); return; }
+  const lessonExercise = event.target.closest('[data-a1-exercise]');
+  if (lessonExercise) {
+    const exercise = exerciseBank.find((item) => item.id === lessonExercise.dataset.a1Exercise);
+    if (!exercise) return;
+    state.exerciseLevel = 'A1'; state.exerciseType = 'alle'; state.exerciseTopic = 'alle'; state.exerciseMistakesOnly = false;
+    elements.exerciseMistakes?.classList.remove('active');
+    elements.exerciseLevel.value = 'A1'; elements.exerciseType.value = 'alle';
+    refreshExerciseTopics(); state.currentExercise = exercise; state.exerciseResponse = []; state.exerciseAnswered = false;
+    renderExerciseEngine(); showPage('oefenen'); return;
+  }
+  const referenceGrammar = event.target.closest('[data-a1-grammar]');
+  if (referenceGrammar) {
+    state.grammarLevel = 'alle';
+    state.grammarTopic = referenceGrammar.dataset.a1Grammar;
+    renderGrammar(); showPage('grammatica'); return;
+  }
+  const referenceButton = event.target.closest('[data-a1-reference]');
+  if (referenceButton) { openA1Reference(referenceButton.dataset.a1Reference); return; }
   const guidedTranslate = event.target.closest('[data-guided-translate]');
   if (guidedTranslate) { openGuidedTranslation(guidedTranslate.dataset.guidedTranslate); return; }
   const guidedGrammar = event.target.closest('[data-guided-open-grammar]');
@@ -2011,7 +2118,10 @@ function initializeEvents() {
   elements.profileButton?.addEventListener('click', () => openProfileDialog());
   elements.guidedLevelFilter?.addEventListener('change', (event) => { state.guidedLevel = event.target.value; const first = guidedPaths.find((path) => state.guidedLevel === 'alle' || path.level === state.guidedLevel); if (first && !guidedPaths.some((path) => path.id === state.guidedPathId && (state.guidedLevel === 'alle' || path.level === state.guidedLevel))) { state.guidedPathId = first.id; state.guidedStep = 0; } renderGuidedPaths(); });
   elements.guidedSupportLanguage?.addEventListener('change', (event) => { saveGuidedSupportLanguage(event.target.value); });
-  elements.guidedReturn?.addEventListener('click', () => { showPage('leerpad'); renderGuidedPaths(); });
+  elements.guidedReturn?.addEventListener('click', () => {
+    if (state.a1ReturnLessonId) { openA1Lesson(state.a1ReturnLessonId); return; }
+    showPage('leerpad'); renderGuidedPaths();
+  });
   elements.closeProfileDialog?.addEventListener('click', () => { if (state.activeProfile) elements.profileDialog?.close(); });
   elements.profileDialog?.addEventListener('cancel', (event) => { if (!state.activeProfile) event.preventDefault(); });
   elements.newProfileForm?.addEventListener('submit', (event) => { event.preventDefault(); const name = elements.newProfileName.value.trim(); if (name) { createProfile(name); elements.newProfileForm.reset(); } });
@@ -2079,11 +2189,15 @@ function initialize() {
   if (questionLessonCount) questionLessonCount.textContent = String(allQuestionTopics.length);
   if (questionPracticeCount) questionPracticeCount.textContent = String(allQuestionPractice.length);
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
+    onOpenLesson: openA1Lesson,
+    onOpenReference: openA1Reference,
     onOpenPage: (page) => showPage(page),
-    onOpenVerb: (infinitive) => { state.selectedVerb = infinitive; renderVerbDetail(infinitive); showPage('werkwoorden'); },
+    onOpenVerb: openGuidedVerb,
     onOpenPath: (pathId) => { if (guidedPaths.some((path) => path.id === pathId)) { state.guidedPathId = pathId; state.guidedStep = 0; state.guidedExerciseId = ''; state.guidedExerciseAnswered = false; renderGuidedPaths(); showPage('leerpad'); } },
     notify: showToast,
   });
+  renderA1Reference();
+  el('a1-reference-search')?.addEventListener('input', renderA1Reference);
   renderDashboard();
   renderLevels();
   renderPracticeScenarios();

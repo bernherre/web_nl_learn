@@ -4198,3 +4198,31 @@ for (const theme of [...a1Themes, ...a2Themes]) {
     return true;
   });
 }
+
+
+// Additive source-based A1 lessons. Preserve all existing themes and entries.
+import { a1ExpansionLessons, a1LessonAudio } from './a1-expansion-content.js';
+import { findLexiconEntry } from './lexicon.js';
+for (const theme of a1Themes) {
+  theme.lessons = a1ExpansionLessons.filter((lesson) => lesson.themeId === theme.id);
+  const existingTerms = new Set(Object.values(theme.wordGroups).flat());
+  const newTerms = [...new Set(theme.lessons.flatMap((lesson) => lesson.terms))].filter((term) => !existingTerms.has(term));
+  theme.wordGroups['Aanvullende leswoorden'] = newTerms;
+  const existingVerbs = new Set(theme.wordGroups.Werkwoorden || []);
+  for (const verb of new Set(theme.lessons.flatMap((lesson) => lesson.verbs))) {
+    if (!existingTerms.has(verb) && !existingVerbs.has(verb)) { theme.wordGroups.Werkwoorden.push(verb); existingVerbs.add(verb); }
+  }
+  for (const lesson of theme.lessons) {
+    const audio = a1LessonAudio.find((item) => item.id === lesson.audioId);
+    listeningScenes.push({ id: `a1-expanded-${lesson.id}`, lessonId: lesson.id, level: 'A1', title: lesson.title,
+      image: theme.image, intro: lesson.explanation, text: audio.text, question: lesson.question,
+      options: [lesson.answer, ...lesson.distractors], answer: 0 });
+    for (const term of lesson.terms) {
+      if (vocabulary.some((word) => word.word === term)) continue;
+      const entry = findLexiconEntry(term);
+      if (!entry) throw new Error(`Missing A1 lexeme: ${term}`);
+      vocabulary.push({ word: entry.term, article: /^(de|het) /.exec(term)?.[1] || '', category: `A1 · ${theme.id}`,
+        level: 'A1', theme: theme.id, image: theme.image, alt: `Illustratie bij ${theme.title}`, definition: entry.definition, example: entry.example });
+    }
+  }
+}

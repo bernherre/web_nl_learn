@@ -1896,3 +1896,35 @@ html[data-motion='reduced'] .knowledge-node, html[data-motion='reduced'] .knowle
 @media (max-width: 1180px) { .guided-path-grid, .guided-word-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 900px) { .guided-path-grid, .guided-word-grid, .guided-grammar-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .guided-context { grid-template-columns: 1fr; } }
 @media (max-width: 680px) { .leerpad-heading, .guided-path-toolbar, .guided-stage-header { align-items: stretch; flex-direction: column; } .leerpad-help, .guided-path-toolbar label, .guided-stage-progress { width: 100%; min-width: 0; text-align: left; } .guided-path-grid, .guided-word-grid, .guided-grammar-grid, .guided-verb-grid { grid-template-columns: 1fr; } .guided-stage-actions, .guided-exercise-nav { flex-direction: column; } .guided-dialogue p { grid-template-columns: 42px 1fr auto; } .guided-finish { grid-template-columns: 1fr; } .leerpad-return { top: 62px; margin-left: 10px; } }
+
+/* Additive A1 reference view; existing course selectors are unchanged. */
+.a1-reference-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr)); gap:1rem; }
+.a1-reference-card { overflow:hidden; scroll-margin-top:2rem; }
+.a1-reference-card > img { width:100%; height:140px; object-fit:contain; background:#eef5f3; }
+.a1-reference-card > div { padding:1.2rem; }
+.a1-reference-card h2 { font-size:1.25rem; margin:.5rem 0; }
+.a1-reference-card li { margin:.7rem 0; line-height:1.6; }
+.a1-reference-card summary { cursor:pointer; padding:.7rem 0; font-weight:600; }
+.a1-reference-card .button-row { flex-wrap:wrap; }
+.a1-reference-card:focus { outline:3px solid #207b6a; outline-offset:3px; }
+.a1-reference-credit { margin-top:2rem; font-size:.85rem; }
+#a1-reference-search { padding:.65rem; margin:.5rem; max-width:100%; }
+
+.a1-expanded-lesson { margin:1rem 0; border:1px solid #cbd8d3; border-radius:12px; padding:1rem; scroll-margin-top:1rem; }
+.a1-expanded-lesson > summary { font-size:1.15rem; font-weight:700; cursor:pointer; }
+.a1-expanded-lesson h3 { margin-top:1.5rem; }
+.a1-expanded-lesson .button-row { flex-wrap:wrap; gap:.5rem; }
+.a1-expanded-lesson .a1-dialogue { margin-top:1rem; }
+
+/* Direct lesson access keeps A1 topics visible before the word bank. */
+.a1-lesson-index { border-bottom: 1px solid #cbd8d3; }
+.a1-lesson-links { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .75rem; margin: 1rem 0; }
+.a1-lesson-link { display: flex; align-items: center; gap: .75rem; width: 100%; padding: 1rem; text-align: left; background: #f2f7f4; color: #173e32; border: 1px solid #b6cec1; border-radius: 12px; cursor: pointer; font: inherit; }
+.a1-lesson-link:hover { background: #e3efe8; border-color: #287455; }
+.a1-lesson-link:focus-visible { outline: 3px solid #287455; outline-offset: 3px; }
+.a1-lesson-link > span:nth-child(2) { flex: 1; min-width: 0; }
+.a1-lesson-link strong, .a1-lesson-link small { display: block; overflow-wrap: anywhere; }
+.a1-lesson-link small { margin-top: .35rem; line-height: 1.5; }
+.a1-lesson-position { font-weight: 700; }
+.a1-theme-lesson-preview { display: block; margin-top: .7rem; line-height: 1.5; }
+@media (max-width: 640px) { .a1-lesson-links { grid-template-columns: 1fr; } }

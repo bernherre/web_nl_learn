@@ -52,9 +52,9 @@ test('het centrale lexicon bevat alle unieke A0-termen', () => {
 });
 
 test('de nieuwe centrale batches bevatten exact de verrijkte A1- en A2-schuld', () => {
-  assert.equal(a1LexiconEntries.length, 666);
+  assert.equal(a1LexiconEntries.length, 676);
   assert.equal(a2LexiconEntries.length, 679);
-  assert.equal(centralLexiconEntries.length, 1647);
+  assert.equal(centralLexiconEntries.length, 1713);
 });
 
 test('A0, A1 en A2 hebben geen kaarten meer met controle nodig', () => {

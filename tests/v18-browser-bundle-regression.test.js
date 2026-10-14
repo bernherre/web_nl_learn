@@ -29,7 +29,7 @@ test('de eerste alfabetische verbatch staat vóór de toepassing in de browserbu
 test('V19-oefeningen en praktijksituaties staan vóór gebruik in de klassieke browserbundle', () => {
   const exercisesDefinition = bundle.indexOf('const v19Exercises =');
   const scenariosDefinition = bundle.indexOf('const v19PracticeScenarios =');
-  const exerciseBankUse = bundle.indexOf('...v19Exercises];');
+  const exerciseBankUse = bundle.indexOf('...v19Exercises, ...a1ExpansionExercises];');
   const scenarioUse = bundle.indexOf('v19PracticeScenarios.find(');
   assert.ok(exercisesDefinition >= 0, 'v19Exercises ontbreekt in js/app.js');
   assert.ok(scenariosDefinition >= 0, 'v19PracticeScenarios ontbreekt in js/app.js');

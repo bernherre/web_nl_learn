@@ -1,9 +1,9 @@
 {
   "name": "web-nl-learn",
-  "version": "19.4.0-alpha.12",
+  "version": "19.4.0-alpha.18",
   "private": true,
   "type": "module",
-  "description": "Statische Nederlandstalige leeromgeving A0-C2 met centraal lexicon, begeleide leerpaden, 1.886 werkwoorden, 8.072+ oefeningen en een verbonden kennisgraaf.",
+  "description": "Statische Nederlandstalige leeromgeving A0-C2 met centraal lexicon, begeleide leerpaden, 1.898 werkwoorden, 8.192+ oefeningen en een verbonden kennisgraaf.",
   "scripts": {
     "test": "node --test tests/*.test.js",
     "serve": "python3 -m http.server 8000",

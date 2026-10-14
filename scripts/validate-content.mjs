@@ -1,3 +1,5 @@
+import { a1ExpansionVerbs } from '../js/a1-expansion-verbs.js';
+import { a1ExpansionExercises } from '../js/a1-expansion-content.js';
 import { readFile, writeFile } from 'node:fs/promises';
 import { a0Themes } from '../js/starter-content.js';
 import { a1Themes, a2Themes, grammarTopics, vocabulary, listeningScenes } from '../js/content.js';
@@ -91,7 +93,7 @@ const coverage = [
 const grammarIds = new Set(allGrammar.map((item) => item.id));
 for (const [label, ids] of coverage) expect(ids.every((id) => grammarIds.has(id)), 'source-material', `dekking: ${label}`, ids.join(', '));
 
-expect(exerciseBank.length === 8072, 'exercises', 'oefenbanktotaal is reproduceerbaar', `${exerciseBank.length} oefeningen.`);
+expect(exerciseBank.length === 8072 + a1ExpansionExercises.length, 'exercises', 'oefenbanktotaal is reproduceerbaar', `${exerciseBank.length} oefeningen.`);
 expect(unique(exerciseBank.map((item) => item.id)), 'exercises', 'oefening-id’s zijn uniek', `${exerciseBank.length} unieke id's.`);
 const invalidExercises = exerciseBank.filter((item) => {
   if (!item.prompt || !item.explanation || !item.level || !item.type || !item.topic) return true;
@@ -113,9 +115,9 @@ applyFinalVerbReviews(verbAtlas);
 applyVerbSentencePatternFixes(verbAtlas);
 const reviewed = verbAtlas.filter((item) => item.reviewed === true);
 const unreviewed = verbAtlas.filter((item) => item.reviewed !== true);
-expect(verbAtlas.length === 1886, 'verbs', 'atlasomvang is consistent', `${verbAtlas.length} unieke werkwoorden na correctielagen.`);
+expect(verbAtlas.length === 1886 + a1ExpansionVerbs.length, 'verbs', 'atlasomvang is consistent', `${verbAtlas.length} unieke werkwoorden na correctielagen.`);
 expect(unique(verbAtlas.map((item) => item.infinitive)), 'verbs', 'werkwoorden zijn uniek', 'Geen dubbele infinitieven.');
-const expectedReviewedCount = new Set([...modalAndCoreVerbCorrections, ...coreVerbReviews, ...initialVerbReviews, ...finalVerbReviews].map((item) => item.infinitive)).size;
+const expectedReviewedCount = new Set([...modalAndCoreVerbCorrections, ...coreVerbReviews, ...initialVerbReviews, ...finalVerbReviews, ...a1ExpansionVerbs].map((item) => item.infinitive)).size;
 expect(reviewed.length === expectedReviewedCount, 'verbs', 'alle expliciete reviews zijn toegepast', `${reviewed.length} handmatig nagekeken fiches.`);
 const firstHundred = [...verbAtlas].sort((a, b) => a.infinitive.localeCompare(b.infinitive, 'nl-NL')).slice(0, 100);
 expect(firstHundred.length === 100 && firstHundred.every((verb) => verb.reviewed === true), 'verbs', 'de eerste honderd alfabetische werkwoorden zijn volledig nagekeken', firstHundred.filter((verb) => verb.reviewed !== true).map((verb) => verb.infinitive).join(', ') || '100 van 100 fiches zijn nagekeken.');
@@ -204,7 +206,7 @@ expect(/\.quick-level-card/u.test(files.css) && /\.accessibility-summary/u.test(
 expect(/const coreVerbReviews =/u.test(files.bundle) && /const initialVerbReviews =/u.test(files.bundle) && /const finalVerbReviews =/u.test(files.bundle) && /const sourceReviewGrammarTopics =/u.test(files.bundle), 'technical', 'nieuwe inhoud zit in de klassieke browserbundle', 'Kernreviews, alfabetische batches, eindcontrole en bronreview aangetroffen.');
 const v19ExercisesDefinitionPosition = files.bundle.indexOf('const v19Exercises =');
 const v19ScenariosDefinitionPosition = files.bundle.indexOf('const v19PracticeScenarios =');
-const v19ExercisesUsePosition = files.bundle.indexOf('...v19Exercises];');
+const v19ExercisesUsePosition = files.bundle.indexOf('...v19Exercises, ...a1ExpansionExercises];');
 const v19ScenariosUsePosition = files.bundle.indexOf('v19PracticeScenarios.find(');
 expect(v19ExercisesDefinitionPosition >= 0 && v19ExercisesUsePosition > v19ExercisesDefinitionPosition, 'technical', 'V19-oefeningen worden vóór gebruik gebundeld', `Definitiepositie=${v19ExercisesDefinitionPosition}, gebruikspositie=${v19ExercisesUsePosition}.`);
 expect(v19ScenariosDefinitionPosition >= 0 && v19ScenariosUsePosition > v19ScenariosDefinitionPosition, 'technical', 'V19-praktijksituaties worden vóór gebruik gebundeld', `Definitiepositie=${v19ScenariosDefinitionPosition}, gebruikspositie=${v19ScenariosUsePosition}.`);
