@@ -723,11 +723,19 @@ function renderA1LessonIndex(theme) {
   return `<nav class="a1-detail-body a1-lesson-index" aria-label="Lessen in ${escapeHtml(theme.title)}"><span class="kicker">Kies je les</span><h2>Lessen in ${escapeHtml(theme.title)}</h2><p>Open een les om te lezen, luisteren en oefenen.</p><div class="a1-lesson-links">${(theme.lessons || []).map((lesson, index) => `<button type="button" class="a1-lesson-link" data-a1-lesson="${lesson.id}"><span class="a1-lesson-position">${index + 1}</span><span><strong>${escapeHtml(lesson.title)}</strong><small>${lesson.terms.map(escapeHtml).join(' · ')}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div><div class="button-row">${a1ReferenceCards.filter((card) => card.themeId === theme.id).map((card) => `<button type="button" class="text-button" data-a1-reference="${card.id}">Cheat Sheet · ${escapeHtml(card.title)} →</button>`).join('')}</div></nav>`;
 }
 
+function renderA1SourcePages(pages) {
+ return `<section class="a1-source-pages"><h3>Leerinhoud per bronpagina</h3><p>De woorden en regels hieronder zijn gecontroleerd aan de hand van de aangeleverde foto’s. Luisteren gebruikt de Nederlandse browserstem.</p>${pages.map(page=>`<details><summary>${escapeHtml(page.title)} · foto ${page.photo} · ${page.terms.length} leerwoorden</summary><p>${escapeHtml(page.rule)}</p><button class="speak secondary-button" type="button" data-text="${escapeHtml(page.rule)}" data-rate="0.8">Luister naar de uitleg</button><div class="button-row">${page.terms.map(term=>`<button type="button" class="speak text-button" data-text="${escapeHtml(term)}" data-rate="0.8">${escapeHtml(term)} 🔊</button>`).join('')}</div><small>Bron: ${escapeHtml(page.file)}</small><div><button class="text-button" type="button" data-guided-graph-node="${page.id}">Deze bronpagina in de graaf →</button></div></details>`).join('')}</section>`;
+}
+function renderA1FamilyTree() {
+ const rows=[['Hans en Nel','vader en moeder · ouders'],['Max en Karen','oom en tante · Max is de broer van Hans'],['Kees en Nienke','neef en nicht · kinderen van Max en Karen'],['Julia','vrouw van Tom'],['David en Lisa','zoon en dochter van Tom en Julia'],['Bram en Helma','broer en schoonzus'],['Vincent en Vera','neef en nicht · kinderen van Bram en Helma'],['Meike en Johan','zus en zwager']];
+ return `<section class="a1-family-tree"><h3>Familieboom: de relaties met Tom</h3><p>Deze personen en relaties staan in bronfoto 5.</p><table><thead><tr><th>Personen</th><th>Relatie met Tom</th></tr></thead><tbody>${rows.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join('')}</tbody></table><p>Hans en Nel hebben vier kleinkinderen: David, Lisa, Vincent en Vera. Kees en Vincent zijn allebei een neef van Tom, maar via verschillende familierelaties.</p></section>`;
+}
+
 function renderA1Lessons(theme) {
   return `<section class="a1-detail-body a1-expanded-lessons"><span class="kicker">A1 · Lezen, luisteren en oefenen</span><h2>Lessen: ${escapeHtml(theme.title)}</h2>
     <p>Lees de uitleg, luister naar het gesprek en oefen met de gekoppelde woorden en werkwoorden.</p>
     ${(theme.lessons || []).map((lesson) => `<details id="a1-lesson-${lesson.id}" class="a1-expanded-lesson"><summary>${escapeHtml(lesson.title)}</summary>
-      <h3>Zo werkt het</h3><p>${escapeHtml(lesson.explanation)}</p>
+      <h3>Zo werkt het</h3><p>${escapeHtml(lesson.explanation)}</p>${lesson.id === "familierelaties" ? renderA1FamilyTree() : ""}${renderA1SourcePages(lesson.sourcePages)}
       <h3>Woorden in context</h3><div class="a1-word-grid">${lesson.terms.map((term) => {
         const entry = findLexiconEntry(term);
         return `<article><strong>${escapeHtml(entry.term)}</strong><p>${escapeHtml(entry.definition)}</p><small>${escapeHtml(entry.example)}</small><div class="button-row"><button class="speak" type="button" data-text="${escapeHtml(entry.term)}" data-rate="0.8">🔊 Woord</button><button class="speak" type="button" data-text="${escapeHtml(entry.example)}" data-rate="0.82">🔊 Voorbeeld</button></div></article>`;
@@ -737,8 +745,8 @@ function renderA1Lessons(theme) {
       <div class="a1-dialogue">${lesson.dialogue.map((line, index) => `<p><b>${index % 2 ? 'B' : 'A'}</b><span>${escapeHtml(line)}</span><button class="speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.82" aria-label="Luister: ${escapeHtml(line)}">🔊</button></p>`).join('')}</div>
       <p>Oefen met een partner: neem om de beurt rol A en rol B. Vervang daarna één detail door je eigen informatie.</p>
       <div class="button-row">${lesson.grammarIds.map((id) => `<button class="text-button" type="button" data-a1-grammar="${id}">${escapeHtml(allGrammarTopics.find((topic) => topic.id === id).title)} →</button>`).join('')}
-      ${lesson.exerciseIds.map((id) => { const exercise = exerciseBank.find((item) => item.id === id); return `<button class="secondary-button" type="button" data-a1-exercise="${id}">${exercise.verbId ? escapeHtml(exercise.verbId) + ' · ' : ''}${exercise.type === 'listening' ? 'Luisteren' : exercise.type === 'input' ? 'Werkwoordvorm' : exercise.skill === 'grammatica' ? 'Taalregel' : 'Betekenis'} →</button>`; }).join('')}
-      <button class="text-button" type="button" data-guided-graph-node="${a1LessonNodeId(lesson.id)}">Les in de kennisgraaf →</button></div>
+      </div><details class="a1-lesson-exercises"><summary>Oefeningen bij deze les (${lesson.exerciseIds.length})</summary><div class="button-row">${lesson.exerciseIds.map((id) => { const exercise = exerciseBank.find((item) => item.id === id); return `<button class="secondary-button" type="button" data-a1-exercise="${id}">${exercise.verbId ? escapeHtml(exercise.verbId) + ' · ' : ''}${exercise.type === 'listening' ? 'Luisteren' : exercise.type === 'input' ? 'Werkwoordvorm' : exercise.skill === 'grammatica' ? 'Taalregel' : exercise.term ? escapeHtml(exercise.term) : 'Betekenis'} →</button>`; }).join('')}
+      </div></details><div class="button-row"><button class="text-button" type="button" data-guided-graph-node="${a1LessonNodeId(lesson.id)}">Les in de kennisgraaf →</button></div>
     </details>`).join('')}</section>`;
 }
 
@@ -764,11 +772,11 @@ function renderA1Reference() {
       <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}" loading="lazy">
       <div><span class="kicker">A1 · ${escapeHtml(theme.title)}</span><h2>${escapeHtml(card.title)}</h2><p>${escapeHtml(card.rule)}</p>
       <ul>${card.examples.map((sentence) => `<li>${escapeHtml(sentence)} <button class="speak" type="button" data-text="${escapeHtml(sentence)}" data-rate="0.82" aria-label="Luister: ${escapeHtml(sentence)}">🔊</button></li>`).join('')}</ul>
-      <details><summary>Woorden, werkwoorden en grammatica</summary>
+      ${card.id === "familie" ? renderA1FamilyTree() : ""}${renderA1SourcePages(card.sourcePages)}<details open><summary>${card.terms.length} woorden, werkwoorden en grammatica</summary>
       ${card.terms.map((term) => { const entry = findLexiconEntry(term); return `<p><strong>${escapeHtml(entry.term)}</strong> — ${escapeHtml(entry.definition)}</p>`; }).join('')}
       <div class="button-row">${card.verbs.map((verb) => `<button class="text-button" type="button" data-guided-open-verb="${escapeHtml(verb)}">${escapeHtml(verb)} →</button>`).join('')}</div>
       ${card.grammarIds.map((id) => { const grammar = allGrammarTopics.find((item) => item.id === id); return `<button class="text-button" type="button" data-a1-grammar="${escapeHtml(grammar.id)}">${escapeHtml(grammar.title)} →</button>`; }).join('')}
-      </details><div class="button-row"><button class="text-button" type="button" data-page="a1" data-a1-theme="${card.themeId}">Open thema →</button><button class="text-button" type="button" data-guided-graph-node="${a1ReferenceNodeId(card.id)}">Ontdek verbanden →</button></div></div></article>`;
+      </details><div class="button-row">${card.lessonIds.map(id=>`<button class="secondary-button" type="button" data-a1-lesson="${id}">Open les: ${escapeHtml(a1ExpansionLessons.find(l=>l.id===id).title)} →</button>`).join('')}<button class="text-button" type="button" data-page="a1" data-a1-theme="${card.themeId}">Thema: ${escapeHtml(theme.title)} →</button><button class="text-button" type="button" data-guided-graph-node="${a1ReferenceNodeId(card.id)}">Ontdek verbanden →</button></div></div></article>`;
   }).join('') || '<p>Geen kaarten gevonden. Probeer een ander woord.</p>';
 }
 
@@ -2189,6 +2197,11 @@ function initialize() {
   if (questionLessonCount) questionLessonCount.textContent = String(allQuestionTopics.length);
   if (questionPracticeCount) questionPracticeCount.textContent = String(allQuestionPractice.length);
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
+    onOpenTheme: (nodeId) => {
+      const match=/^theme:(A0|A1|A2|B1|B2|C1|C2):(.+)$/.exec(nodeId);
+      if(match){const [,level,id]=match; state[`${level.toLowerCase()}Theme`]=id; if(['A0','A1','A2'].includes(level))renderCourseThemes(level);else renderSpiralCourse(level);showPage(level.toLowerCase());}
+      else if(nodeId.startsWith('spiral-theme:')){state.b1Theme=nodeId.slice('spiral-theme:'.length);renderSpiralCourse('B1');showPage('b1');}
+    },
     onOpenLesson: openA1Lesson,
     onOpenReference: openA1Reference,
     onOpenPage: (page) => showPage(page),

@@ -4,8 +4,8 @@ import { exerciseBank, exerciseStats, checkExerciseAnswer, filterExercises, safe
 import { exportProfilePayload, profileExerciseKey, profileIdFromName, profileProgressKey, uniqueProfileId, validateProfileImport } from '../js/profiles.js';
 
 test('de V16-oefenbank bevat achtduizend oefeningen met brede dekking', () => {
-  assert.equal(exerciseBank.length, 8192);
-  assert.deepEqual(exerciseStats.byLevel, { A0: 356, A1: 1184, A2: 1569, B1: 2259, B2: 2806, C1: 9, C2: 9 });
+  assert.equal(exerciseBank.length, 9048);
+  assert.deepEqual(exerciseStats.byLevel, { A0: 356, A1: 2040, A2: 1569, B1: 2259, B2: 2806, C1: 9, C2: 9 });
   assert.equal(new Set(exerciseBank.map((item) => item.id)).size, exerciseBank.length);
   for (const item of exerciseBank) {
     assert.ok(item.prompt);

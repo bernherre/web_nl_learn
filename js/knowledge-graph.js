@@ -2,7 +2,7 @@ const KNOWLEDGE_GRAPH_URL = './data/content-knowledge-graph.json';
 const KNOWLEDGE_GRAPH_SCRIPT_URL = './data/content-knowledge-graph.js';
 
 const graphTypeLabels = {
-  a1_lesson: 'A1-les', lesson_audio: 'Lesaudio', a1_reference: 'A1 Cheat Sheet', lexeme: 'Woordenboek',
+  a1_source_page: 'Bronpagina A1', a1_lesson: 'A1-les', lesson_audio: 'Lesaudio', a1_reference: 'A1 Cheat Sheet', lexeme: 'Woordenboek',
   graph_root: 'Overzicht', source_collection: 'Collectie', level: 'Niveau', learning_path: 'Leerpad', theme: 'Thema', spiral_theme: 'Spiraalthema', term: 'Term', vocabulary: 'Woordenschat',
   grammar: 'Grammatica', grammar_focus: 'Curriculumfocus', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
   technical_concept: 'Vakbegrip', professional_concept: 'Professioneel begrip', listening: 'Luisteren', reading: 'Lezen', writing: 'Schrijven',
@@ -81,7 +81,7 @@ async function readKnowledgeGraph() {
 
 function routeForNode(node) {
   const routes = {
-    a1_lesson: 'a1', lesson_audio: 'a1', a1_reference: 'a1-cheatsheet', lexeme: 'woordenschat', verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
+    a1_source_page: 'a1', spiral_theme: 'b1', a1_lesson: 'a1', lesson_audio: 'a1', a1_reference: 'a1-cheatsheet', lexeme: 'woordenschat', verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
     vocabulary: 'woordenschat', listening: 'luisteren', reading: 'lezen-schrijven', writing: 'lezen-schrijven', exercise: 'oefenen',
     technical_concept: node?.source === 'software' ? 'software' : node?.source === 'natuurkunde' ? 'natuurkunde' : 'wiskunde',
     professional_concept: 'vaklexicon', learning_path: 'leerpad', theme: node?.level?.toLocaleLowerCase('nl-NL'), level: node?.label?.toLocaleLowerCase('nl-NL'),
@@ -123,7 +123,7 @@ export function canonicalGraphView(source) {
   return { ...source, nodes: source.nodes.filter((node) => !aliases.has(node.id)).map((node) => contexts.has(node.id) ? { ...node, sourceContexts: contexts.get(node.id), searchText: [node.searchText, ...contexts.get(node.id).map((item) => item.searchText)].join(' ') } : node), edges: [...edges.values()], aliases };
 }
 
-export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOpenReference, onOpenLesson, notify } = {}) {
+export function createKnowledgeGraphExplorer({ onOpenTheme, onOpenPage, onOpenVerb, onOpenPath, onOpenReference, onOpenLesson, notify } = {}) {
   let graph = null;
   let sourceGraph = null;
   let nodesById = new Map();
@@ -136,7 +136,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
   let resultLimit = 80;
   let neighbourPage = 0;
   let previousNodeId = null;
-  const state = { query: '', type: 'all', level: 'all', mode: 'all', issuesOnly: false, depth: 2, representation: 'canonical', initial: 'all', neighbourQuery: '' };
+  const state = { query: '', type: 'words', level: 'all', mode: 'all', issuesOnly: false, depth: 2, representation: 'canonical', initial: 'all', neighbourQuery: '', fullMap: true };
 
   const get = (id) => document.getElementById(id);
   const elements = () => ({
@@ -186,7 +186,14 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
   }
 
   function sortedResults() {
-    return sourceGraph.nodes.filter(matchesFilters).sort(compareGraphLabels);
+    // Filter original contexts first so no theme/level association disappears.
+    const matches = sourceGraph.nodes.filter(matchesFilters);
+    const unique = new Map();
+    for (const node of matches) {
+      const id = graph.aliases.get(node.id) || node.id;
+      unique.set(id, nodesById.get(id) || node);
+    }
+    return [...unique.values()].sort(compareGraphLabels);
   }
 
   function renderStats() {
@@ -275,7 +282,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
     const pageSize = state.depth === 2 ? 12 : pinned ? 23 : 24;
     const pages = Math.max(1, Math.ceil(remaining.length / pageSize));
     neighbourPage = Math.min(neighbourPage, pages - 1);
-    const visible = remaining.slice(neighbourPage * pageSize, (neighbourPage + 1) * pageSize);
+    const visible = state.fullMap ? [...remaining] : remaining.slice(neighbourPage * pageSize, (neighbourPage + 1) * pageSize);
     if (pinned) visible.unshift(pinned);
     const visibleIds = new Set([startId, ...visible, ...visible.map((id) => parents.get(id))]);
     const visibleEdges = new Map();
@@ -299,7 +306,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
     selectedId = selected.id;
     const neighbourhoodData = neighbourhood(selected.id);
     const neighbours = neighbourhoodData.nodes.filter((node) => node.id !== selected.id);
-    const width = 1200; const height = 800; const cx = width / 2; const cy = height / 2;
+    const width = 1200; const height = state.fullMap ? Math.max(800,200+Math.ceil(neighbours.length/5)*110) : 800; const cx = width / 2; const cy = state.fullMap ? 65 : height / 2;
     const positions = new Map([[selected.id, { x: cx, y: cy }]]);
     const firstRing = neighbours.slice(0, 10);
     const secondRing = neighbours.slice(10);
@@ -312,24 +319,26 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
       positions.set(node.id, { x: cx + Math.cos(angle) * 510, y: cy + Math.sin(angle) * 345 });
     });
 
+    if(state.fullMap)neighbours.forEach((node,index)=>positions.set(node.id,{x:120+(index%5)*240,y:200+Math.floor(index/5)*110}));
+    el.canvas.classList.toggle('knowledge-map-full',state.fullMap);
     const visibleIds = new Set(positions.keys());
     const lines = neighbourhoodData.edges.filter((edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target)).map((edge) => {
       const start = positions.get(edge.source); const end = positions.get(edge.target);
       const mx = (start.x + end.x) / 2; const my = (start.y + end.y) / 2;
-      return `<g class="knowledge-edge"><line x1="${start.x}" y1="${start.y}" x2="${end.x}" y2="${end.y}"></line><text x="${mx}" y="${my - 4}">${graphEscape(shortLabel(graphRelationLabels[edge.type] || edge.label, 18))}</text></g>`;
+      return `<g class="knowledge-edge" data-edge-source="${graphEscape(edge.source)}" data-edge-target="${graphEscape(edge.target)}"><line x1="${start.x}" y1="${start.y}" x2="${end.x}" y2="${end.y}"></line><text x="${mx}" y="${my - 4}">${graphEscape(shortLabel(graphRelationLabels[edge.type] || edge.label, 18))}</text></g>`;
     }).join('');
     const nodeMarkup = [...positions.entries()].map(([id, position]) => {
       const node = nodesById.get(id);
       const active = id === selected.id;
       const w = active ? 180 : 142; const h = active ? 68 : 54;
-      return `<g class="knowledge-node ${graphNodeClass(node)} ${active ? 'selected' : ''}" data-graph-node="${graphEscape(id)}" role="button" aria-label="${graphEscape(node.label)}" transform="translate(${position.x - w / 2} ${position.y - h / 2})">
-        <rect width="${w}" height="${h}" rx="14"></rect>
+      return `<g class="knowledge-node ${graphNodeClass(node)} ${active ? 'selected' : ''}" data-graph-node="${graphEscape(id)}" role="button" tabindex="0" aria-label="${graphEscape(node.label)}" transform="translate(${position.x - w / 2} ${position.y - h / 2})">
+        <title>${graphEscape(node.label)}</title><rect width="${w}" height="${h}" rx="14"></rect>
         <text class="node-type" x="${w / 2}" y="${active ? 20 : 17}" text-anchor="middle">${graphEscape(graphTypeLabels[node.type] || node.type)}</text>
         <text class="node-label" x="${w / 2}" y="${active ? 43 : 37}" text-anchor="middle">${graphEscape(shortLabel(node.label, active ? 25 : 19))}</text>
         ${node.level ? `<text class="node-level" x="${w - 9}" y="12" text-anchor="end">${graphEscape(node.level)}</text>` : ''}
       </g>`;
     }).join('');
-    el.canvas.innerHTML = `<div class="button-row knowledge-neighbour-pages"><span role="status">${neighbours.length} van ${neighbourhoodData.total} verbonden items (${state.depth} ${state.depth === 1 ? 'stap' : 'stappen'}) · pagina ${neighbourPage + 1}/${neighbourhoodData.pages}</span><button type="button" class="secondary-button" data-graph-neighbour-page="-1" ${neighbourPage === 0 ? 'disabled' : ''}>Vorige</button><button type="button" class="secondary-button" data-graph-neighbour-page="1" ${neighbourPage + 1 >= neighbourhoodData.pages ? 'disabled' : ''}>Volgende</button></div><svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="knowledge-graph-svg-title knowledge-graph-svg-desc">
+    el.canvas.innerHTML = `<div class="button-row knowledge-neighbour-pages"><span role="status">${neighbours.length} van ${neighbourhoodData.total} verbonden items (${state.depth} ${state.depth === 1 ? 'stap' : 'stappen'}) ${state.fullMap ? '· volledig overzicht' : `· pagina ${neighbourPage + 1}/${neighbourhoodData.pages}`}</span><button type="button" class="secondary-button" data-graph-neighbour-page="-1" ${state.fullMap || neighbourPage === 0 ? 'disabled' : ''}>Vorige</button><button type="button" class="secondary-button" data-graph-neighbour-page="1" ${state.fullMap || neighbourPage + 1 >= neighbourhoodData.pages ? 'disabled' : ''}>Volgende</button></div><svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="knowledge-graph-svg-title knowledge-graph-svg-desc">
       <title id="knowledge-graph-svg-title">Relaties rond ${graphEscape(selected.label)}</title>
       <desc id="knowledge-graph-svg-desc">${compactNumber(neighbours.length)} zichtbare verbonden inhoudseenheden. Gebruik de resultatenlijst of klik op een node om verder te navigeren.</desc>
       ${lines}${nodeMarkup}
@@ -369,7 +378,7 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
     el.detail.innerHTML = `<div class="knowledge-detail-heading"><div><span class="kicker">${graphEscape(graphTypeLabels[node.type] || node.type)}${node.level ? ` · ${graphEscape(node.level)}` : ''}</span><h2>${graphEscape(node.label)}</h2><p>${graphEscape(node.subtitle || node.source)}</p></div>${status ? `<span class="knowledge-detail-status ${graphEscape(node.status)}">${graphEscape(status)}</span>` : ''}</div>
       ${verbDetails}${issueDetails}${exerciseDetails}${genericData}
       ${node.sourceContexts?.length ? `<details><summary>Gebruik in thema’s en oorspronkelijke inhoud (${node.sourceContexts.length})</summary>${node.sourceContexts.map((item) => `<section><h3>${graphEscape(item.label)} · ${graphEscape(item.level || '')}</h3><p>${graphEscape(item.source)} · ${graphEscape(item.subtitle)}</p>${renderPrimitive(item.data)}</section>`).join('')}</details>` : ''}
-      ${route ? `<button class="secondary-button" type="button" data-graph-open-page="${graphEscape(route)}" ${node.type === 'verb' ? `data-graph-open-verb="${graphEscape(node.label)}"` : ''} ${['a1_lesson', 'lesson_audio'].includes(node.type) ? `data-graph-open-lesson="${graphEscape(node.data?.lessonId)}"` : ''} ${node.type === 'a1_reference' ? `data-graph-open-reference="${graphEscape(node.data?.referenceId)}"` : ''} ${node.type === 'learning_path' ? `data-graph-open-path="${graphEscape(node.data?.pathId || '')}"` : ''}>Open in de leeromgeving →</button>` : ''}
+      ${route ? `<button class="secondary-button" type="button" data-graph-open-page="${graphEscape(route)}" ${['theme','spiral_theme'].includes(node.type) ? `data-graph-open-theme="${graphEscape(node.id)}"` : ''} ${node.type === 'verb' ? `data-graph-open-verb="${graphEscape(node.label)}"` : ''} ${['a1_lesson', 'lesson_audio', 'a1_source_page'].includes(node.type) ? `data-graph-open-lesson="${graphEscape(node.data?.lessonId)}"` : ''} ${node.type === 'a1_reference' ? `data-graph-open-reference="${graphEscape(node.data?.referenceId)}"` : ''} ${node.type === 'learning_path' ? `data-graph-open-path="${graphEscape(node.data?.pathId || '')}"` : ''}>Open in de leeromgeving →</button>` : ''}
       <section class="knowledge-relations"><div class="section-heading compact"><h3>Relaties</h3><span>${compactNumber(relations.length)} totaal</span></div>${Object.entries(relationGroups).sort((a, b) => b[1].length - a[1].length).map(([label, items]) => `<details ${['synoniem', 'controlepunt', 'gebruikt in thema', 'komt voor in'].includes(label) ? 'open' : ''}><summary>${graphEscape(label)} <span>${items.length}</span></summary><div>${items.map((item) => item.node ? `<button type="button" data-graph-node="${graphEscape(item.node.id)}"><small>${graphEscape(graphTypeLabels[item.node.type] || item.node.type)}</small><strong>${graphEscape(shortLabel(item.node.label, 55))}</strong></button>` : '').join('')}</div></details>`).join('')}</section>`;
   }
 
@@ -412,6 +421,14 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
     if (!el.search || el.search.dataset.graphBound === 'true') return;
     el.search.dataset.graphBound = 'true';
     el.search.addEventListener('input', (event) => { state.query = event.target.value; resultLimit = 80; renderResults(); });
+    get('knowledge-graph-layout')?.addEventListener('change', event=>{state.fullMap=event.target.value==='full';neighbourPage=0;renderGraph();});
+    const highlight = event => {
+      const id=event.target.closest('[data-graph-node]')?.dataset.graphNode;
+      for(const edge of el.canvas.querySelectorAll('.knowledge-edge'))edge.classList.toggle('highlighted',Boolean(id)&&(edge.dataset.edgeSource===id||edge.dataset.edgeTarget===id));
+    };
+    el.canvas?.addEventListener('pointerover',highlight);
+    el.canvas?.addEventListener('focusin',highlight);
+    el.canvas?.addEventListener('keydown',event=>{const node=event.target.closest('[data-graph-node]');if(node&&['Enter',' '].includes(event.key)){event.preventDefault();selectNode(node.dataset.graphNode);}});
     el.type?.addEventListener('change', (event) => { state.type = event.target.value; resultLimit = 80; renderResults(); });
     el.level?.addEventListener('change', (event) => { state.level = event.target.value; resultLimit = 80; renderResults(); });
     el.mode?.addEventListener('change', (event) => { state.mode = event.target.value; neighbourPage = 0; renderGraph(); });
@@ -424,7 +441,8 @@ export function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPat
       if (nodeButton) { selectNode(nodeButton.dataset.graphNode); return; }
       const pageButton = event.target.closest('[data-graph-open-page]');
       if (pageButton) {
-        if (pageButton.dataset.graphOpenVerb) onOpenVerb?.(pageButton.dataset.graphOpenVerb);
+        if (pageButton.dataset.graphOpenTheme) onOpenTheme?.(pageButton.dataset.graphOpenTheme);
+        else if (pageButton.dataset.graphOpenVerb) onOpenVerb?.(pageButton.dataset.graphOpenVerb);
         else if (pageButton.dataset.graphOpenLesson) onOpenLesson?.(pageButton.dataset.graphOpenLesson);
         else if (pageButton.dataset.graphOpenReference) onOpenReference?.(pageButton.dataset.graphOpenReference);
         else if (pageButton.dataset.graphOpenPath) onOpenPath?.(pageButton.dataset.graphOpenPath);

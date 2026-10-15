@@ -1,8 +1,8 @@
-/* Generated browser bundle. Source of truth and order: app-config.js, lexical-quality.js, a1-expansion-verbs.js, a1-expansion-lexicon.js, lexicon-a1.js, lexicon-a2.js, lexicon.js, learning.js, a1-reference-content.js, a1-expansion-content.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, learning-paths.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, c1-c2-language-systems.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, verb-sentence-pattern-fixes.js, knowledge-graph.js, content.js, main.js. */
+/* Generated browser bundle. Source of truth and order: app-config.js, lexical-quality.js, a1-expansion-verbs.js, a1-expansion-lexicon.js, a1-source-lexicon.js, a1-source-pages.js, lexicon-a1.js, lexicon-a2.js, lexicon.js, learning.js, a1-expansion-content.js, a1-reference-content.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, learning-paths.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, c1-c2-language-systems.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, verb-sentence-pattern-fixes.js, knowledge-graph.js, content.js, main.js. */
 (function () {
 'use strict';
-const APP_VERSION = '19.4.0-alpha.18';
-const APP_RELEASE = 'V19.4 Alpha 18';
+const APP_VERSION = '19.4.0-alpha.21';
+const APP_RELEASE = 'V19.4 Alpha 21';
 
 const GENERIC_DEFINITION_PATTERNS = [
   /^Het werkwoord beschrijft vooral/u,
@@ -38,7 +38,6 @@ function isReliableExample(term, example) {
   return normalizeLexicalText(text).split(' ').filter(Boolean).length >= 3;
 }
 
-// Original, complete A1 entries. Applied through the canonical atlas.
 const a1ExpansionVerbs = [
   {
     "infinitive": "groeten",
@@ -824,6 +823,396 @@ const a1ExpansionVerbs = [
       "modaal": "Ik moet de tafel dekken.",
       "bijzin": "Ik pak de borden omdat ik de tafel dek."
     }
+  },
+  {
+    "infinitive": "trouwen",
+    "stem": "trouw",
+    "past": "trouwde",
+    "pastPlural": "trouwden",
+    "participle": "getrouwd",
+    "auxiliary": "zijn",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Met een partner een huwelijk aangaan en echtgenoten worden.",
+    "synonyms": [
+      "in het huwelijk treden"
+    ],
+    "synonymNote": "Hier gaat het om zelf een huwelijk aangaan, niet om het huwelijk van anderen voltrekken.",
+    "usage": "Hier gaat het om zelf een huwelijk aangaan, niet om het huwelijk van anderen voltrekken.",
+    "examples": [
+      "Ik trouw met mijn partner.",
+      "Wij trouwden met mijn partner."
+    ],
+    "regularity": "regelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik trouw",
+      "jij trouwt",
+      "hij/zij trouwt",
+      "wij trouwen",
+      "jullie trouwen",
+      "zij trouwen"
+    ],
+    "pastForms": [
+      "ik trouwde",
+      "jij trouwde",
+      "hij/zij trouwde",
+      "wij trouwden",
+      "jullie trouwden",
+      "zij trouwden"
+    ],
+    "perfectForms": [
+      "ik ben getrouwd",
+      "wij zijn getrouwd"
+    ],
+    "imperative": "trouw",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik trouw met mijn partner.",
+      "inversie": "Vandaag trouw ik met mijn partner.",
+      "vraag": "Trouw jij met mijn partner?",
+      "verleden": "Ik trouwde met mijn partner.",
+      "perfectum": "Ik ben met mijn partner getrouwd.",
+      "modaal": "Ik wil met mijn partner trouwen.",
+      "bijzin": "Ik ben blij omdat ik met mijn partner trouw."
+    }
+  },
+  {
+    "infinitive": "sporten",
+    "stem": "sport",
+    "past": "sportte",
+    "pastPlural": "sportten",
+    "participle": "gesport",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Een sport beoefenen voor beweging, ontspanning of een wedstrijd.",
+    "synonyms": [
+      "bewegen"
+    ],
+    "synonymNote": "Bewegen is ruimer dan sporten; niet elke beweging is sport.",
+    "usage": "Bewegen is ruimer dan sporten; niet elke beweging is sport.",
+    "examples": [
+      "Ik sport in het park.",
+      "Wij sportten in het park."
+    ],
+    "regularity": "regelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik sport",
+      "jij sport",
+      "hij/zij sport",
+      "wij sporten",
+      "jullie sporten",
+      "zij sporten"
+    ],
+    "pastForms": [
+      "ik sportte",
+      "jij sportte",
+      "hij/zij sportte",
+      "wij sportten",
+      "jullie sportten",
+      "zij sportten"
+    ],
+    "perfectForms": [
+      "ik heb gesport",
+      "wij hebben gesport"
+    ],
+    "imperative": "sport",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik sport in het park.",
+      "inversie": "Vandaag sport ik in het park.",
+      "vraag": "Sport jij in het park?",
+      "verleden": "Ik sportte in het park.",
+      "perfectum": "Ik heb in het park gesport.",
+      "modaal": "Ik wil in het park sporten.",
+      "bijzin": "Ik ben blij omdat ik in het park sport."
+    }
+  },
+  {
+    "infinitive": "voetballen",
+    "stem": "voetbal",
+    "past": "voetbalde",
+    "pastPlural": "voetbalden",
+    "participle": "gevoetbald",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "De sport voetbal spelen en proberen de bal in het doel te krijgen.",
+    "synonyms": [
+      "een voetbalwedstrijd spelen"
+    ],
+    "synonymNote": "Een wedstrijd is één vorm van voetballen; je kunt ook oefenen.",
+    "usage": "Een wedstrijd is één vorm van voetballen; je kunt ook oefenen.",
+    "examples": [
+      "Ik voetbal met mijn vrienden.",
+      "Wij voetbalden met mijn vrienden."
+    ],
+    "regularity": "regelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik voetbal",
+      "jij voetbalt",
+      "hij/zij voetbalt",
+      "wij voetballen",
+      "jullie voetballen",
+      "zij voetballen"
+    ],
+    "pastForms": [
+      "ik voetbalde",
+      "jij voetbalde",
+      "hij/zij voetbalde",
+      "wij voetbalden",
+      "jullie voetbalden",
+      "zij voetbalden"
+    ],
+    "perfectForms": [
+      "ik heb gevoetbald",
+      "wij hebben gevoetbald"
+    ],
+    "imperative": "voetbal",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik voetbal met mijn vrienden.",
+      "inversie": "Vandaag voetbal ik met mijn vrienden.",
+      "vraag": "Voetbal jij met mijn vrienden?",
+      "verleden": "Ik voetbalde met mijn vrienden.",
+      "perfectum": "Ik heb met mijn vrienden gevoetbald.",
+      "modaal": "Ik wil met mijn vrienden voetballen.",
+      "bijzin": "Ik ben blij omdat ik met mijn vrienden voetbal."
+    }
+  },
+  {
+    "infinitive": "onthouden",
+    "stem": "onthoud",
+    "past": "onthield",
+    "pastPlural": "onthielden",
+    "participle": "onthouden",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Informatie in je geheugen bewaren zodat je die later nog weet.",
+    "synonyms": [
+      "in het geheugen bewaren"
+    ],
+    "synonymNote": "Deze betekenis gaat over herinneren; iemand iets onthouden is een andere betekenis.",
+    "usage": "Deze betekenis gaat over herinneren; iemand iets onthouden is een andere betekenis.",
+    "examples": [
+      "Ik onthoud dit woord.",
+      "Wij onthielden dit woord."
+    ],
+    "regularity": "onregelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik onthoud",
+      "jij onthoudt",
+      "hij/zij onthoudt",
+      "wij onthouden",
+      "jullie onthouden",
+      "zij onthouden"
+    ],
+    "pastForms": [
+      "ik onthield",
+      "jij onthield",
+      "hij/zij onthield",
+      "wij onthielden",
+      "jullie onthielden",
+      "zij onthielden"
+    ],
+    "perfectForms": [
+      "ik heb onthouden",
+      "wij hebben onthouden"
+    ],
+    "imperative": "onthoud",
+    "conjugationClass": "sterk / onregelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik onthoud dit woord.",
+      "inversie": "Vandaag onthoud ik dit woord.",
+      "vraag": "Onthoud jij dit woord?",
+      "verleden": "Ik onthield dit woord.",
+      "perfectum": "Ik heb dit woord onthouden.",
+      "modaal": "Ik wil dit woord onthouden.",
+      "bijzin": "Ik ben blij omdat ik dit woord onthoud."
+    }
+  },
+  {
+    "infinitive": "opletten",
+    "stem": "let op",
+    "past": "lette op",
+    "pastPlural": "letten op",
+    "participle": "opgelet",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Je aandacht richten op wat er gebeurt zodat je iets goed waarneemt.",
+    "synonyms": [
+      "aandacht schenken"
+    ],
+    "synonymNote": "Opletten kan zonder aanvulling of met op: let op het verkeer.",
+    "usage": "Opletten kan zonder aanvulling of met op: let op het verkeer.",
+    "examples": [
+      "Ik let op het verkeer.",
+      "Wij letten goed op tijdens de les."
+    ],
+    "regularity": "regelmatig",
+    "separable": true,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik let op",
+      "jij let op",
+      "hij/zij let op",
+      "wij letten op",
+      "jullie letten op",
+      "zij letten op"
+    ],
+    "pastForms": [
+      "ik lette op",
+      "jij lette op",
+      "hij/zij lette op",
+      "wij letten op",
+      "jullie letten op",
+      "zij letten op"
+    ],
+    "perfectForms": [
+      "ik heb opgelet",
+      "wij hebben opgelet"
+    ],
+    "imperative": "let op",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik let goed op.",
+      "inversie": "Vandaag let ik goed op.",
+      "vraag": "Let jij goed op?",
+      "verleden": "Ik lette goed op.",
+      "perfectum": "Ik heb goed opgelet.",
+      "modaal": "Ik moet goed opletten.",
+      "bijzin": "Ik begrijp de uitleg omdat ik goed oplet."
+    }
+  },
+  {
+    "infinitive": "aanwijzen",
+    "stem": "wijs aan",
+    "past": "wees aan",
+    "pastPlural": "wezen aan",
+    "participle": "aangewezen",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Met een vinger, gebaar of woorden laten zien welke persoon of zaak je bedoelt.",
+    "synonyms": [
+      "aanduiden"
+    ],
+    "synonymNote": "Aanduiden kan ook alleen met woorden; aanwijzen gebeurt vaak met een gebaar.",
+    "usage": "Je wijst iemand of iets aan. In de hoofdzin staat aan los; in de infinitief is aanwijzen één woord.",
+    "examples": [
+      "Ik wijs dit boek aan.",
+      "Wij wezen de juiste tas aan."
+    ],
+    "regularity": "onregelmatig",
+    "separable": true,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik wijs aan",
+      "jij wijst aan",
+      "hij/zij wijst aan",
+      "wij wijzen aan",
+      "jullie wijzen aan",
+      "zij wijzen aan"
+    ],
+    "pastForms": [
+      "ik wees aan",
+      "jij wees aan",
+      "hij/zij wees aan",
+      "wij wezen aan",
+      "jullie wezen aan",
+      "zij wezen aan"
+    ],
+    "perfectForms": [
+      "ik heb aangewezen",
+      "wij hebben aangewezen"
+    ],
+    "imperative": "wijs aan",
+    "conjugationClass": "sterk / onregelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik wijs dit boek aan.",
+      "inversie": "Vandaag wijs ik dit boek aan.",
+      "vraag": "Wijs jij dit boek aan?",
+      "verleden": "Ik wees dit boek aan.",
+      "perfectum": "Ik heb dit boek aangewezen.",
+      "modaal": "Ik kan dit boek aanwijzen.",
+      "bijzin": "Ik zie dat jij dit boek aanwijst."
+    }
   }
 ];
 
@@ -1288,6 +1677,6051 @@ const a1ExpansionLexicon = [
     "theme": "bronuitbreiding",
     "status": "editorially-reviewed",
     "source": "A1-bronuitbreiding · centrale lexiconredactie 2026-10"
+  }
+];
+
+const a1SourceLexicon = [
+  {
+    "term": "het jaar",
+    "definition": "Een periode van twaalf maanden.",
+    "example": "Een jaar heeft twaalf maanden.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "ik",
+    "definition": "De persoon die zelf spreekt of schrijft.",
+    "example": "Ik leer Nederlands.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het touw",
+    "definition": "Een lang, sterk koord om iets vast te maken.",
+    "example": "Het touw zit aan de boot.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het Nederlands",
+    "definition": "De Nederlandse taal.",
+    "example": "Het Nederlands heeft lange en korte klinkers.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de mevrouw",
+    "definition": "Een beleefde aanduiding voor een volwassen vrouw.",
+    "example": "De mevrouw wacht buiten.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de meneer",
+    "definition": "Een beleefde aanduiding voor een volwassen man.",
+    "example": "De meneer helpt mij.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de zoon",
+    "definition": "Een mannelijk kind in relatie tot zijn ouders.",
+    "example": "Hun zoon zit op school.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de dochter",
+    "definition": "Een vrouwelijk kind in relatie tot haar ouders.",
+    "example": "Mijn dochter leest een boek.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het kleinkind",
+    "definition": "Een kind van je zoon of dochter.",
+    "example": "Ons kleinkind komt op bezoek.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "mijn",
+    "definition": "Geeft aan dat iets bij de spreker hoort.",
+    "example": "Dit is mijn jas.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het ijs",
+    "definition": "Bevroren water of een koud, bevroren nagerecht.",
+    "example": "Ik eet graag ijs.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "en",
+    "definition": "Verbindt woorden of zinnen met een toevoeging.",
+    "example": "Ik drink koffie en jij drinkt thee.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de boom",
+    "definition": "Een grote plant met een houten stam en takken.",
+    "example": "De boom staat in de tuin.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "drinken",
+    "definition": "Een vloeistof via de mond tot zich nemen; zonder object soms specifiek alcohol gebruiken.",
+    "example": "Drink voldoende water tijdens warm weer.",
+    "verbId": "drinken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "leren",
+    "definition": "Kennis of een vaardigheid verwerven; in informeel Nederlands ook iemand iets onderwijzen.",
+    "example": "Ik leer Nederlands voor mijn werk.",
+    "verbId": "leren",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "luisteren",
+    "definition": "Bewust aandacht geven aan geluid, gesproken taal, muziek, een persoon of een aanwijzing.",
+    "example": "Luister goed naar de uitspraak van de klinkers.",
+    "verbId": "luisteren",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "schrijven",
+    "definition": "Taaltekens of tekst op papier of digitaal vastleggen; ook schriftelijk met iemand communiceren.",
+    "example": "Ik schrijf vanavond een e-mail aan de verhuurder.",
+    "verbId": "schrijven",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "lezen",
+    "definition": "Geschreven of gedrukte tekens waarnemen en de inhoud ervan begrijpen of interpreteren.",
+    "example": "Lees eerst de instructies op het formulier.",
+    "verbId": "lezen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de computer",
+    "definition": "Een elektronisch apparaat voor informatie en programma’s.",
+    "example": "Ik typ op de computer.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "maken",
+    "definition": "Iets produceren, samenstellen, voorbereiden, herstellen of een resultaat veroorzaken.",
+    "example": "Ik maak vanmiddag een afspraak bij de huisarts.",
+    "verbId": "maken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de opdracht",
+    "definition": "Een taak die je moet uitvoeren.",
+    "example": "Lees de opdracht goed.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "kiezen",
+    "definition": "Uit meerdere mogelijkheden één of meer opties selecteren, meestal na een afweging.",
+    "example": "Ik kies voor de trein omdat die duurzamer is.",
+    "verbId": "kiezen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de streep",
+    "definition": "Een meestal rechte, langwerpige markering.",
+    "example": "Zet een streep onder het woord.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de lijn",
+    "definition": "Een doorlopend spoor dat recht of gebogen kan zijn.",
+    "example": "Trek een lijn tussen de plaatjes.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het plaatje",
+    "definition": "Een kleine afbeelding of illustratie.",
+    "example": "Kijk naar het plaatje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "moeten",
+    "definition": "Door noodzaak, verplichting of sterke verwachting gehouden zijn iets te doen.",
+    "example": "In deze context gebruiken we moeten om een noodzakelijke of verplichte handeling uitdrukken.",
+    "verbId": "moeten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "op school",
+    "definition": "Op de plaats waar je onderwijs krijgt.",
+    "example": "Wij leren op school.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "willen",
+    "definition": "Een wens, voorkeur, bereidheid of bedoeling uitdrukken.",
+    "example": "Ik wil Nederlands leren.",
+    "verbId": "willen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "nee dank je",
+    "definition": "Een vriendelijke manier om een aanbod af te wijzen.",
+    "example": "Nee dank je, ik wil geen koffie.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de dag",
+    "definition": "Een periode van vierentwintig uur of het lichte deel daarvan.",
+    "example": "Morgen is een nieuwe dag.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dinsdag",
+    "definition": "De dag tussen maandag en woensdag.",
+    "example": "Op dinsdag heb ik les.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "woensdag",
+    "definition": "De dag tussen dinsdag en donderdag.",
+    "example": "Op woensdag werk ik thuis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "donderdag",
+    "definition": "De dag tussen woensdag en vrijdag.",
+    "example": "Op donderdag gaan wij sporten.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "vrijdag",
+    "definition": "De dag tussen donderdag en zaterdag.",
+    "example": "Vrijdag is mijn vrije dag.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zaterdag",
+    "definition": "De dag tussen vrijdag en zondag.",
+    "example": "Op zaterdag gaan we winkelen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zondag",
+    "definition": "De dag tussen zaterdag en maandag.",
+    "example": "Zondag bezoeken wij oma.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "binnen",
+    "definition": "Aan de binnenkant van een ruimte of gebouw.",
+    "example": "Wij zitten binnen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zeggen",
+    "definition": "Woorden uitspreken om informatie, een mening, opdracht of reactie te geven.",
+    "example": "Kun je zeggen hoe laat de trein vertrekt?",
+    "verbId": "zeggen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "lopen",
+    "definition": "Zich te voet voortbewegen; ook aangeven dat een route, proces of apparaat functioneert of verloopt.",
+    "example": "We zijn naar het station gelopen.",
+    "verbId": "lopen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "buiten",
+    "definition": "Niet in een gebouw of afgesloten ruimte.",
+    "example": "De kinderen spelen buiten.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "gaan",
+    "definition": "Zich van de huidige plaats naar een andere plaats bewegen of een toestand ingaan.",
+    "example": "We proberen vandaag zorgvuldig te gaan.",
+    "verbId": "gaan",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "naar",
+    "definition": "Geeft een richting of bestemming aan.",
+    "example": "Ik loop naar school.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "veel",
+    "definition": "Een grote hoeveelheid of een groot aantal.",
+    "example": "Er staan veel mensen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de mens",
+    "definition": "Een persoon, zoals een kind of volwassene.",
+    "example": "Ieder mens heeft een naam.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "wat",
+    "definition": "Vraagt naar een zaak, handeling of betekenis.",
+    "example": "Wat betekent dit woord?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "hoe",
+    "definition": "Vraagt naar de manier, toestand of mate.",
+    "example": "Hoe schrijf je dat?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "staan",
+    "definition": "Zich rechtop bevinden, op een bepaalde plaats opgesteld zijn, of in een tekst vermeld zijn.",
+    "example": "De fiets staat naast de deur.",
+    "verbId": "staan",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "zitten",
+    "definition": "In zittende houding zijn; ook ergens verblijven, ergens in opgesloten zijn of zich in een inhoud bevinden.",
+    "example": "We zitten bij het raam.",
+    "verbId": "zitten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "zien",
+    "definition": "Met de ogen waarnemen; in ruimere zin iets opmerken, ontmoeten of begrijpen.",
+    "example": "Ik zie de bus al aankomen.",
+    "verbId": "zien",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het papier",
+    "definition": "Dun materiaal waarop je kunt schrijven of drukken.",
+    "example": "Ik schrijf op papier.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het ding",
+    "definition": "Een voorwerp dat je niet preciezer benoemt.",
+    "example": "Wat is dat ding?",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "geven",
+    "definition": "Iets aan iemand overdragen, aanbieden, verstrekken of een bepaald effect veroorzaken.",
+    "example": "Kunt u mij wat informatie geven?",
+    "verbId": "geven",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "krijgen",
+    "definition": "Iets ontvangen, verkrijgen of een nieuwe toestand, reactie of ervaring krijgen.",
+    "example": "Ik heb gisteren een bevestiging gekregen.",
+    "verbId": "krijgen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "iemand",
+    "definition": "Een persoon zonder te zeggen wie.",
+    "example": "Er staat iemand voor de deur.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de garage",
+    "definition": "Een ruimte om een auto te stallen.",
+    "example": "De auto staat in de garage.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "weinig",
+    "definition": "Een kleine hoeveelheid of een klein aantal.",
+    "example": "Er is weinig melk.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "mooi",
+    "definition": "Prettig om te zien of te horen.",
+    "example": "Dat is een mooie tuin.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "aardig",
+    "definition": "Vriendelijk in de omgang met anderen.",
+    "example": "Mijn buurvrouw is aardig.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "hoog",
+    "definition": "Op grote afstand boven de grond of met grote hoogte.",
+    "example": "Het gebouw is hoog.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "eerste",
+    "definition": "Op plaats één in een volgorde.",
+    "example": "Dit is de eerste les.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tweede",
+    "definition": "Op plaats twee in een volgorde.",
+    "example": "Hij woont op de tweede verdieping.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "derde",
+    "definition": "Op plaats drie in een volgorde.",
+    "example": "Neem de derde straat.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "vierde",
+    "definition": "Op plaats vier in een volgorde.",
+    "example": "Dit is mijn vierde poging.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "vijfde",
+    "definition": "Op plaats vijf in een volgorde.",
+    "example": "Zij staat op de vijfde plaats.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zesde",
+    "definition": "Op plaats zes in een volgorde.",
+    "example": "Wij lezen de zesde zin.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zevende",
+    "definition": "Op plaats zeven in een volgorde.",
+    "example": "Hij woont op de zevende verdieping.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "achtste",
+    "definition": "Op plaats acht in een volgorde.",
+    "example": "Augustus is de achtste maand.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "negende",
+    "definition": "Op plaats negen in een volgorde.",
+    "example": "Lees het negende woord.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tiende",
+    "definition": "Op plaats tien in een volgorde.",
+    "example": "Oktober is de tiende maand.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "oranje",
+    "definition": "De kleur tussen rood en geel.",
+    "example": "De lamp is oranje.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "geel",
+    "definition": "De kleur van een rijpe citroen.",
+    "example": "De tafel is geel.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "paars",
+    "definition": "Een kleur tussen rood en blauw.",
+    "example": "De gum is paars.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "roze",
+    "definition": "Een lichte kleur tussen wit en rood.",
+    "example": "Het potlood is roze.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "grijs",
+    "definition": "Een kleur tussen wit en zwart.",
+    "example": "De deur is grijs.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "bruin",
+    "definition": "De kleur van bijvoorbeeld chocolade of veel houtsoorten.",
+    "example": "De kast is bruin.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de televisie",
+    "definition": "Een apparaat waarop je bewegende beelden bekijkt.",
+    "example": "De televisie staat in de woonkamer.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de douche",
+    "definition": "Een voorziening om je met stromend water te wassen.",
+    "example": "De douche is in de badkamer.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het bad",
+    "definition": "Een grote kuip waarin je je kunt wassen.",
+    "example": "Het bad is leeg.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het meubel",
+    "definition": "Een verplaatsbaar voorwerp voor de inrichting, zoals een kast.",
+    "example": "Dit meubel staat in de slaapkamer.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de wc",
+    "definition": "Het toilet of de ruimte waarin het toilet staat.",
+    "example": "De wc is beneden.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "boven",
+    "definition": "Op een hogere plaats of verdieping.",
+    "example": "Mijn slaapkamer is boven.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "beneden",
+    "definition": "Op een lagere plaats of verdieping.",
+    "example": "De keuken is beneden.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de liter",
+    "definition": "Een eenheid om de inhoud van vloeistof te meten.",
+    "example": "De fles bevat een liter water.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de ui",
+    "definition": "Een groente met lagen en een scherpe geur.",
+    "example": "Ik snijd een ui.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het zout",
+    "definition": "Een witte stof die je gebruikt om eten smaak te geven.",
+    "example": "Er zit zout in de soep.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "we",
+    "definition": "De spreker samen met één of meer anderen.",
+    "example": "We gaan naar school.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zij",
+    "definition": "Verwijst naar een vrouw of naar meerdere personen.",
+    "example": "Zij woont naast mij.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "hij",
+    "definition": "Verwijst naar een eerder genoemde man of jongen.",
+    "example": "Hij leest een boek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het werkwoord",
+    "definition": "Een woord dat een handeling, toestand of gebeurtenis uitdrukt.",
+    "example": "Lopen is een werkwoord.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de hoofdzin",
+    "definition": "Een zelfstandige zin die niet afhankelijk is van een andere zin.",
+    "example": "In deze hoofdzin staat de persoonsvorm op plaats twee.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de kip",
+    "definition": "Een gehouden vogel, of het vlees van die vogel.",
+    "example": "Ik eet rijst met kip.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de boterham",
+    "definition": "Een snee brood, vaak met beleg.",
+    "example": "Ik eet een boterham met kaas.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de worst",
+    "definition": "Een langwerpig vleesproduct of plantaardige vervanger.",
+    "example": "Er ligt worst op de boterham.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de bloemkool",
+    "definition": "Een groente met een compacte, meestal witte bloemkop.",
+    "example": "Wij eten bloemkool bij de aardappels.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "vinden",
+    "definition": "Iets ontdekken of aantreffen; ook een persoonlijke beoordeling of mening geven.",
+    "example": "Ik kan mijn sleutels nergens vinden.",
+    "verbId": "vinden",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "nooit",
+    "definition": "Op geen enkel moment of bij geen enkele gelegenheid.",
+    "example": "Ik drink nooit koffie.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "altijd",
+    "definition": "Op ieder moment of bij iedere gelegenheid.",
+    "example": "Zij komt altijd op tijd.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "meestal",
+    "definition": "In de meeste gevallen, maar niet altijd.",
+    "example": "Ik eet meestal thuis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zoeken",
+    "definition": "Gericht proberen een persoon, voorwerp, oplossing, informatie of mogelijkheid te vinden.",
+    "example": "Ik zoek een woning dicht bij mijn werk.",
+    "verbId": "zoeken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het internet",
+    "definition": "Een wereldwijd netwerk waarmee computers informatie uitwisselen.",
+    "example": "Ik zoek het woord op internet.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "huren",
+    "definition": "Tegen betaling tijdelijk gebruikmaken van een woning, voertuig of ander bezit.",
+    "example": "Je kunt huren een appartement voor zes maanden.",
+    "verbId": "huren",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "zonder",
+    "definition": "Geeft aan dat iets of iemand ontbreekt.",
+    "example": "Ik drink koffie zonder suiker.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het aantal",
+    "definition": "Hoeveel dingen of personen er zijn.",
+    "example": "Het aantal kamers staat in de advertentie.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "per",
+    "definition": "Voor iedere genoemde eenheid.",
+    "example": "De huur is per maand.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "wie",
+    "definition": "Vraagt naar de identiteit van een persoon.",
+    "example": "Wie is die mevrouw?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "wanneer",
+    "definition": "Vraagt naar een moment of periode.",
+    "example": "Wanneer begint de les?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "hoeveel",
+    "definition": "Vraagt naar een hoeveelheid of aantal.",
+    "example": "Hoeveel kost dit brood?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het vraagwoord",
+    "definition": "Leidt een vraag naar bepaalde informatie in, zoals wie, wat of waar.",
+    "example": "Waar is een vraagwoord.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "op slot",
+    "definition": "Afgesloten met een slot.",
+    "example": "De deur is op slot.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "liggen",
+    "definition": "Zich horizontaal bevinden, op een bepaalde plaats liggen of als oorzaak of verantwoordelijkheid ergens berusten.",
+    "example": "Het boek ligt op tafel.",
+    "verbId": "liggen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "lachen",
+    "definition": "Met gezichtsuitdrukking en geluid vreugde, plezier of spot tonen.",
+    "example": "Je kunt lachen om een onverwachte grap.",
+    "verbId": "lachen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "vaak",
+    "definition": "Op veel momenten of met regelmaat.",
+    "example": "Ik fiets vaak naar school.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de boter",
+    "definition": "Een smeerbaar vetproduct dat van melk wordt gemaakt.",
+    "example": "Ik smeer boter op mijn brood.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "boodschappen",
+    "definition": "Eten en andere dagelijkse benodigdheden die je koopt.",
+    "example": "Ik doe boodschappen op de markt.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "doen",
+    "definition": "Een handeling uitvoeren, iets veroorzaken, ergens aan deelnemen of aangeven hoe iets functioneert.",
+    "example": "Wat doe je voor werk?",
+    "verbId": "doen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "kopen",
+    "definition": "Een product, dienst, recht of bezit verkrijgen door ervoor te betalen.",
+    "example": "Waar kan ik een ov-chipkaart kopen?",
+    "verbId": "kopen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "kunnen",
+    "definition": "In staat zijn of de mogelijkheid hebben om iets te doen.",
+    "example": "Je kunt kunnen de taak zonder extra hulp uitvoeren.",
+    "verbId": "kunnen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "snijden",
+    "definition": "Met een scherp voorwerp verdelen binnen de bedoelde context en constructie.",
+    "example": "Deze zin gebruikt snijden in de betekenis: met een scherp voorwerp verdelen.",
+    "verbId": "snijden",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "koken",
+    "definition": "Voedsel bereiden door verhitting, of een vloeistof tot het kookpunt brengen.",
+    "example": "Je kunt koken de aardappelen in licht gezouten water.",
+    "verbId": "koken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "roepen",
+    "definition": "Met luide stem iets zeggen of iemand laten komen.",
+    "example": "Deze zin gebruikt roepen in de betekenis: met luide stem iets zeggen of iemand laten komen.",
+    "verbId": "roepen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het eten",
+    "definition": "Voedsel of de handeling van een maaltijd gebruiken.",
+    "example": "Het eten staat op tafel.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zetten",
+    "definition": "Iets in een bepaalde positie of toestand plaatsen, of een handeling in gang zetten.",
+    "example": "Zet de glazen maar op tafel.",
+    "verbId": "zetten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "allemaal",
+    "definition": "Alle genoemde mensen of dingen zonder uitzondering.",
+    "example": "Wij eten allemaal mee.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "op",
+    "definition": "Op een oppervlak; in de combinatie op zijn: niets meer over.",
+    "example": "Het eten is op.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de taart",
+    "definition": "Een vaak versierd gebak dat je in stukken verdeelt.",
+    "example": "Wij bakken een taart.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de gram",
+    "definition": "Een eenheid van gewicht; duizend gram is een kilo.",
+    "example": "Het pak bevat vijfhonderd gram meel.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "aan",
+    "definition": "In contact met iets; bij een apparaat: ingeschakeld.",
+    "example": "De oven staat aan.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "uit",
+    "definition": "Van binnen naar buiten; bij een apparaat: uitgeschakeld.",
+    "example": "De lamp is uit.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "meer",
+    "definition": "Een grotere hoeveelheid dan eerder of dan iets anders.",
+    "example": "Ik wil meer water.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "minder",
+    "definition": "Een kleinere hoeveelheid dan eerder of dan iets anders.",
+    "example": "Er zit minder suiker in.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dan",
+    "definition": "Verbindt de twee delen van een ongelijkheidsvergelijking.",
+    "example": "Deze tas is groter dan die tas.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de euro",
+    "definition": "De munteenheid die uit honderd cent bestaat.",
+    "example": "Dit kost één euro.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de cent",
+    "definition": "Een honderdste deel van een euro.",
+    "example": "Deze munt is vijf cent waard.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het briefje",
+    "definition": "Een klein beschreven papier; hier een bankbiljet.",
+    "example": "Ik betaal met een briefje van tien euro.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "verschillend",
+    "definition": "Niet hetzelfde in vorm, soort of een ander kenmerk.",
+    "example": "Deze munten zijn verschillend.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het bedrag",
+    "definition": "Een hoeveelheid geld.",
+    "example": "Het bedrag staat op de bon.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de schouder",
+    "definition": "Het lichaamsdeel waar de arm aan de romp aansluit.",
+    "example": "Mijn schouder doet pijn.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de vinger",
+    "definition": "Een van de beweeglijke delen aan een hand.",
+    "example": "Ik wijs met mijn vinger.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de teen",
+    "definition": "Een van de kleine delen vooraan een voet.",
+    "example": "Mijn teen zit in de schoen.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de bil",
+    "definition": "Een van de twee ronde delen van het zitvlak.",
+    "example": "Ik ben op mijn bil gevallen.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de wortel",
+    "definition": "Een vaak oranje groente die onder de grond groeit.",
+    "example": "Ik snijd de wortel.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de boon",
+    "definition": "Een eetbaar zaad of peul van een bonenplant.",
+    "example": "Er zit een boon in de soep.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de sla",
+    "definition": "Een bladgroente die vaak rauw wordt gegeten.",
+    "example": "Wij eten sla bij de maaltijd.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de banaan",
+    "definition": "Een langwerpige vrucht met meestal een gele schil.",
+    "example": "Ik eet een banaan.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de peer",
+    "definition": "Een sappige vrucht die meestal bovenaan smaller is.",
+    "example": "De peer is rijp.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de sinaasappel",
+    "definition": "Een ronde citrusvrucht met een oranje schil.",
+    "example": "Ik schil de sinaasappel.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de citroen",
+    "definition": "Een gele citrusvrucht met een zure smaak.",
+    "example": "Er zit citroen in de thee.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de druif",
+    "definition": "Een kleine vrucht die in trossen groeit.",
+    "example": "Deze druif smaakt zoet.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de kilo",
+    "definition": "Een eenheid van gewicht gelijk aan duizend gram.",
+    "example": "Ik koop een kilo appels.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het woord",
+    "definition": "Een betekenisvolle eenheid van gesproken of geschreven taal.",
+    "example": "Ik leer een nieuw woord.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de lettergreep",
+    "definition": "Een deel van een woord dat rond één klinkerklank wordt uitgesproken.",
+    "example": "Water heeft twee lettergrepen.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de klemtoon",
+    "definition": "De nadruk die een lettergreep bij uitspraak krijgt.",
+    "example": "Waar ligt de klemtoon?",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "december",
+    "definition": "De twaalfde en laatste maand van het jaar.",
+    "example": "In december is het vaak koud.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het enkelvoud",
+    "definition": "De grammaticale vorm voor één persoon of ding.",
+    "example": "Kind is enkelvoud.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het meervoud",
+    "definition": "De grammaticale vorm voor meer dan één persoon of ding.",
+    "example": "Kinderen is het meervoud van kind.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de wang",
+    "definition": "De zijkant van het gezicht onder het oog.",
+    "example": "Mijn wang is rood.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de tand",
+    "definition": "Een hard deel in de mond om te bijten.",
+    "example": "De tandarts bekijkt mijn tand.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de lip",
+    "definition": "Een van de twee randen van de mondopening.",
+    "example": "Mijn lip is droog.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "gebruiken",
+    "definition": "Een voorwerp, middel, woord, methode of hoeveelheid inzetten om een doel te bereiken.",
+    "example": "Je kunt deze kaart in de hele regio gebruiken.",
+    "verbId": "gebruiken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "kosten",
+    "definition": "Een bepaalde hoeveelheid geld, tijd of moeite vereisen.",
+    "example": "Je kunt kosten meer tijd dan oorspronkelijk gepland.",
+    "verbId": "kosten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "bijna",
+    "definition": "Net niet helemaal of net vóór een grens.",
+    "example": "Het is bijna acht uur.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het gezicht",
+    "definition": "De voorkant van het hoofd met ogen, neus en mond.",
+    "example": "Ik was mijn gezicht.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het haar",
+    "definition": "De dunne draden die op de huid groeien, vooral op het hoofd.",
+    "example": "Mijn haar is nat.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de kin",
+    "definition": "Het onderste deel van het gezicht onder de mond.",
+    "example": "Hij heeft een baard op zijn kin.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de snor",
+    "definition": "Gezichtshaar boven de bovenlip.",
+    "example": "Mijn oom heeft een snor.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de mond",
+    "definition": "De opening in het gezicht waarmee je eet en spreekt.",
+    "example": "Doe je mond open.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de baard",
+    "definition": "Haar op de kin en wangen.",
+    "example": "De man heeft een baard.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de nek",
+    "definition": "Het achterste deel van de hals.",
+    "example": "Ik heb pijn in mijn nek.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de komkommer",
+    "definition": "Een langwerpige groene groente met veel water.",
+    "example": "Ik snijd de komkommer.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "terug",
+    "definition": "Naar de plaats of toestand waar iets eerder was.",
+    "example": "Ik ga terug naar huis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de helft",
+    "definition": "Eén van twee gelijke delen.",
+    "example": "Ik eet de helft van de taart.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het ons",
+    "definition": "In Nederlands dagelijks gewichtsgebruik: honderd gram.",
+    "example": "Ik koop een ons kaas.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het pond",
+    "definition": "In Nederlands dagelijks gewichtsgebruik: vijfhonderd gram.",
+    "example": "Een pond appels is een halve kilo.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "nog iets",
+    "definition": "Een vraag of er iets extra’s gewenst is.",
+    "example": "Wilt u nog iets?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "fijn",
+    "definition": "Aangenaam of prettig om te ervaren.",
+    "example": "Dat is fijn nieuws.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de zegel",
+    "definition": "Een klein plakbriefje, bijvoorbeeld voor een spaaractie.",
+    "example": "Ik krijg een zegel bij de kassa.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het geld",
+    "definition": "Munten, bankbiljetten of een saldo waarmee je betaalt.",
+    "example": "Ik heb genoeg geld.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de bon",
+    "definition": "Een bewijs waarop staat wat je gekocht en betaald hebt.",
+    "example": "Bewaar de bon voor het ruilen.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "iets",
+    "definition": "Een zaak of ding zonder het precies te benoemen.",
+    "example": "Ik wil iets drinken.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "mee",
+    "definition": "Samen met een persoon of in dezelfde richting.",
+    "example": "Ga je met mij mee?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "daarna",
+    "definition": "Na het eerder genoemde moment of de eerdere handeling.",
+    "example": "Eerst eten we, daarna gaan we weg.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "want",
+    "definition": "Verbindt een uitspraak met de reden ervoor.",
+    "example": "Ik blijf thuis, want ik ben ziek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de foto",
+    "definition": "Een beeld dat met een camera of beeldapparaat is gemaakt.",
+    "example": "De tandarts maakt een foto.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "poetsen",
+    "definition": "Door wrijven schoon of glanzend maken.",
+    "example": "Deze zin gebruikt poetsen in de betekenis: door wrijven schoon of glanzend maken.",
+    "verbId": "poetsen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "vullen",
+    "definition": "iets helemaal of gedeeltelijk voorzien van een inhoud, materiaal of gegevens",
+    "example": "Vul de fles tot aan de aangegeven lijn.",
+    "verbId": "vullen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het gebit",
+    "definition": "Alle tanden en kiezen samen.",
+    "example": "De tandarts controleert mijn gebit.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "in orde",
+    "definition": "Goed of zonder het genoemde probleem.",
+    "example": "Alles is in orde.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "helaas",
+    "definition": "Drukt spijt over een ongunstige situatie uit.",
+    "example": "Helaas is de winkel dicht.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "vervelend",
+    "definition": "Onaangenaam of hinderlijk.",
+    "example": "Dat is een vervelend probleem.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "elk",
+    "definition": "Ieder afzonderlijk lid van een groep.",
+    "example": "Elk kind krijgt een boek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "helemaal",
+    "definition": "Volledig, zonder iets over te laten.",
+    "example": "Ik begrijp het helemaal.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de pil",
+    "definition": "Een kleine vaste vorm van een geneesmiddel.",
+    "example": "De pil zit in het doosje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "innemen",
+    "definition": "Iets naar binnen gebruiken, een plaats bezetten of bezit van iets nemen.",
+    "example": "Je kunt innemen het medicijn na de maaltijd.",
+    "verbId": "innemen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de drogist",
+    "definition": "Een winkel of verkoper van verzorgingsproducten en bepaalde geneesmiddelen.",
+    "example": "De drogist verkoopt shampoo.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de keer",
+    "definition": "Een afzonderlijk moment waarop iets gebeurt.",
+    "example": "Dit is de eerste keer.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dagelijks",
+    "definition": "Op iedere dag, zonder een dag over te slaan.",
+    "example": "Wij wandelen dagelijks.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "sommige",
+    "definition": "Een deel van een groep, maar niet allemaal.",
+    "example": "Sommige winkels zijn open.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de controle",
+    "definition": "Een onderzoek om te kijken of alles in orde is.",
+    "example": "Ik heb een afspraak voor controle.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dus",
+    "definition": "Geeft een gevolg of conclusie aan.",
+    "example": "Het regent, dus ik neem een jas mee.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "maar",
+    "definition": "Verbindt uitspraken met een tegenstelling of beperking.",
+    "example": "Ik wil gaan, maar ik heb geen tijd.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "later",
+    "definition": "Na het genoemde of huidige moment.",
+    "example": "Ik bel je later.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "eerder",
+    "definition": "Vóór het genoemde of huidige moment.",
+    "example": "Kun je eerder komen?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het hemd",
+    "definition": "Een kledingstuk dat je op het bovenlichaam draagt, vaak onder andere kleding.",
+    "example": "Hij draagt een wit hemd.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het ziekenhuis",
+    "definition": "Een instelling waar mensen medisch onderzocht en behandeld worden.",
+    "example": "Zij werkt in het ziekenhuis.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "soms",
+    "definition": "Op bepaalde momenten, maar niet vaak of altijd.",
+    "example": "Soms neem ik de bus.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "halen",
+    "definition": "Naar een bron gaan en iets of iemand meenemen; ook een doel, resultaat of voldoende niveau bereiken.",
+    "example": "Ik haal de kinderen om drie uur van school.",
+    "verbId": "halen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "ander",
+    "definition": "Niet hetzelfde als het eerder genoemde.",
+    "example": "Ik kies een ander boek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "bijvoorbeeld",
+    "definition": "Leidt één mogelijk voorbeeld van een groep in.",
+    "example": "Je kunt fruit eten, bijvoorbeeld een appel.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de klacht",
+    "definition": "Een probleem dat iemand meldt, bijvoorbeeld pijn.",
+    "example": "De dokter vraagt naar mijn klacht.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de spier",
+    "definition": "Lichaamsweefsel dat kan samentrekken en beweging mogelijk maakt.",
+    "example": "Deze spier zit in mijn arm.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "hoesten",
+    "definition": "Met een krachtige luchtstoot uit de longen de keel of luchtwegen vrijmaken.",
+    "example": "Je kunt hoesten door de droge lucht.",
+    "verbId": "hoesten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de griep",
+    "definition": "Een besmettelijke ziekte door een influenzavirus.",
+    "example": "Hij is thuis met griep.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het recept",
+    "definition": "In deze context een voorschrift voor een geneesmiddel.",
+    "example": "De apotheek ontvangt het recept.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "sinds",
+    "definition": "Vanaf een genoemd beginpunt tot het bedoelde moment.",
+    "example": "Ik woon hier sinds juni.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "erg",
+    "definition": "In sterke mate, of ernstig en onaangenaam.",
+    "example": "Ik ben erg moe.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "waarschijnlijk",
+    "definition": "Met een grote kans, maar niet zeker.",
+    "example": "Het gaat waarschijnlijk regenen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "beterschap",
+    "definition": "Een wens dat iemand weer gezond wordt.",
+    "example": "Ik wens je beterschap.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het broekje",
+    "definition": "Een kleine broek, bijvoorbeeld voor een baby.",
+    "example": "Het kind draagt een rood broekje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het huisje",
+    "definition": "Een klein huis, bijvoorbeeld een vakantiewoning.",
+    "example": "Wij huren een huisje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het kindje",
+    "definition": "Een klein kind, vaak een baby of peuter.",
+    "example": "Het kindje slaapt rustig.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "u",
+    "definition": "Een beleefde aanspreekvorm voor de persoon tegen wie je spreekt.",
+    "example": "Wilt u gaan zitten?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "jij",
+    "definition": "De persoon tegen wie je informeel spreekt.",
+    "example": "Jij woont naast mij.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de jongen",
+    "definition": "Een mannelijk kind of een jonge man.",
+    "example": "De jongen speelt buiten.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het meisje",
+    "definition": "Een vrouwelijk kind of een jonge vrouw.",
+    "example": "Het meisje leest een boek.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het tasje",
+    "definition": "Een kleine tas om spullen in mee te nemen.",
+    "example": "Mijn sleutel zit in het tasje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dicht",
+    "definition": "Gesloten, zodat de opening niet toegankelijk is.",
+    "example": "De winkel is dicht.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de openingstijden",
+    "definition": "De uren waarop een winkel of instelling toegankelijk is.",
+    "example": "De openingstijden staan op de deur.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "online",
+    "definition": "Via een verbinding met internet.",
+    "example": "Ik bestel online een boek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "bestellen",
+    "definition": "Goederen of diensten aanvragen, of iemand bevel geven.",
+    "example": "In deze situatie gebruiken we 'bestellen' voor de beschreven handeling of toestand.",
+    "verbId": "bestellen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "brengen",
+    "definition": "Iets of iemand meenemen naar een andere persoon of plaats, of in een bepaalde toestand veroorzaken.",
+    "example": "Kun je dit pakket morgen naar het postkantoor brengen?",
+    "verbId": "brengen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "ophalen",
+    "definition": "De handeling ergens vandaan halen of iemand met vervoer ophalen, waarbij het resultaat volledig, omhoog, zichtbaar of gereed wordt.",
+    "example": "Het werkwoord ophalen wordt hier gebruikt in de betekenis: de handeling ergens vandaan halen of iemand met vervoer ophalen, waarbij het resultaat volledig, omhoog, zichtbaar of gereed wordt.",
+    "verbId": "ophalen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "toch",
+    "definition": "Geeft aan dat iets ondanks een verwachting gebeurt.",
+    "example": "De winkel is dicht, maar ik ga toch kijken.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "behalve",
+    "definition": "Met uitzondering van het genoemde.",
+    "example": "Wij werken elke dag behalve zondag.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de feestdag",
+    "definition": "Een dag waarop een bijzondere gebeurtenis wordt gevierd.",
+    "example": "Op deze feestdag is de winkel dicht.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de seconde",
+    "definition": "Een tijdseenheid; zestig seconden vormen een minuut.",
+    "example": "Wacht een seconde.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "half",
+    "definition": "Eén van twee gelijke delen van een geheel.",
+    "example": "Een half uur is dertig minuten.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de ochtend",
+    "definition": "Het vroege deel van de dag tot de middag.",
+    "example": "In de ochtend drink ik thee.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de middag",
+    "definition": "Het dagdeel na de ochtend en vóór de avond.",
+    "example": "In de middag heb ik les.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de nacht",
+    "definition": "Het donkere dagdeel tussen avond en ochtend.",
+    "example": "In de nacht slaap ik.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "voor",
+    "definition": "Eerder dan een moment of aan de voorkant van iets.",
+    "example": "Ik wacht voor de deur.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "over",
+    "definition": "Aan de andere kant, bovenlangs of na een genoemde tijdsduur.",
+    "example": "Over een uur kom ik terug.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "net",
+    "definition": "Verzorgd; als tijdswoord ook heel kort geleden.",
+    "example": "Hij draagt een net pak.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de kleren",
+    "definition": "Kledingstukken die iemand draagt.",
+    "example": "Mijn kleren zijn schoon.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dragen",
+    "definition": "Iets met het lichaam ondersteunen of meenemen; ook kleding aanhebben of verantwoordelijkheid op zich hebben.",
+    "example": "Zij draagt vandaag een blauwe jas.",
+    "verbId": "dragen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "aanhebben",
+    "definition": "Kleding, schoenen of accessoires dragen; soms ook een apparaat of licht ingeschakeld hebben.",
+    "example": "Hij heeft vandaag een blauwe jas aan.",
+    "verbId": "aanhebben",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "vrij",
+    "definition": "Niet bezet of niet verplicht om te werken.",
+    "example": "Vandaag ben ik vrij.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "allebei",
+    "definition": "De twee genoemde personen of dingen samen.",
+    "example": "Wij zijn allebei thuis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de boot",
+    "definition": "Een vaartuig dat op het water drijft.",
+    "example": "De boot vaart naar het eiland.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "reizen",
+    "definition": "Van de ene plaats naar een andere gaan, vaak over een grotere afstand en met vervoer.",
+    "example": "Morgen reizen we met de trein naar Brussel.",
+    "verbId": "reizen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "nemen",
+    "definition": "Iets pakken, meenemen, kiezen, gebruiken of als besluit of maatregel uitvoeren.",
+    "example": "Ik neem elke ochtend de trein naar mijn werk.",
+    "verbId": "nemen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de klok",
+    "definition": "Een instrument dat de tijd aangeeft.",
+    "example": "De klok hangt aan de muur.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de tijd",
+    "definition": "Het verloop van momenten, of een bepaald tijdstip.",
+    "example": "Hoeveel tijd hebben we?",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "’s nachts",
+    "definition": "Tijdens het donkere dagdeel tussen avond en ochtend.",
+    "example": "Ik werk ’s nachts.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het gat",
+    "definition": "Een opening in iets dat normaal gesloten is.",
+    "example": "Er zit een gat in mijn sok.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "werken",
+    "definition": "Betaald of onbetaald arbeid verrichten; ook aangeven dat een apparaat, methode of middel functioneert.",
+    "example": "Ik werk drie dagen per week op kantoor.",
+    "verbId": "werken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "ruilen",
+    "definition": "Het ene geven in ruil voor iets anders.",
+    "example": "Deze zin gebruikt ruilen in de betekenis: het ene geven in ruil voor iets anders.",
+    "verbId": "ruilen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "dezelfde",
+    "definition": "Precies de persoon of zaak die eerder genoemd is.",
+    "example": "Wij hebben dezelfde jas.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "een ogenblik",
+    "definition": "Een kort moment om even te wachten.",
+    "example": "Een ogenblik, ik kom eraan.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "sturen",
+    "definition": "Een bericht of voorwerp verzenden, iemand in een richting laten gaan, of een voertuig of proces besturen.",
+    "example": "Ik stuur u vandaag de bevestiging per e-mail.",
+    "verbId": "sturen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "even",
+    "definition": "Gedurende een korte tijd.",
+    "example": "Ik wacht hier even.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "jammer",
+    "definition": "Een uitdrukking van spijt of teleurstelling.",
+    "example": "Jammer dat je niet komt.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "wel",
+    "definition": "Bevestigt iets, vaak tegenover een ontkenning.",
+    "example": "Ik kan morgen wel komen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "meenemen",
+    "definition": "Iemand of iets van de huidige plaats naar een andere plaats brengen.",
+    "example": "In deze context gebruiken we meenemen om iemand of iets van de huidige plaats naar een andere plaats brengen..",
+    "verbId": "meenemen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de hoed",
+    "definition": "Een hoofddeksel met een rand.",
+    "example": "De man draagt een hoed.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de oorbel",
+    "definition": "Een sieraad dat je aan of in het oor draagt.",
+    "example": "Zij draagt een gouden oorbel.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de armband",
+    "definition": "Een sieraad dat je om je pols draagt.",
+    "example": "Mijn armband is blauw.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het sieraad",
+    "definition": "Een voorwerp dat je draagt om jezelf te versieren.",
+    "example": "Een ring is een sieraad.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de ring",
+    "definition": "Een rond sieraad voor een vinger.",
+    "example": "De ring past goed.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het horloge",
+    "definition": "Een kleine klok die je meestal om de pols draagt.",
+    "example": "Mijn horloge geeft acht uur aan.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de ketting",
+    "definition": "Een reeks verbonden schakels, bijvoorbeeld als halssieraad.",
+    "example": "Zij draagt een ketting.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "wassen",
+    "definition": "iets met water en eventueel zeep schoonmaken; ook zichzelf of een lichaamsdeel reinigen",
+    "example": "Ik was mijn handen voordat ik ga koken.",
+    "verbId": "wassen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de graad",
+    "definition": "Een eenheid om onder andere temperatuur uit te drukken.",
+    "example": "Het is twintig graden.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "ophangen",
+    "definition": "De handeling aan een haak of steun hangen; ook telefonisch niet verbreken, waarbij het resultaat volledig, omhoog, zichtbaar of gereed wordt.",
+    "example": "Het werkwoord ophangen wordt hier gebruikt in de betekenis: de handeling aan een haak of steun hangen; ook telefonisch niet verbreken, waarbij het resultaat volledig, omhoog, zichtbaar of gereed wordt.",
+    "verbId": "ophangen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "zelf",
+    "definition": "De genoemde persoon zonder een ander als uitvoerder.",
+    "example": "Ik was mijn kleren zelf.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "alles",
+    "definition": "Alle dingen binnen de bedoelde groep.",
+    "example": "Alles ligt in de kast.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "apart",
+    "definition": "Gescheiden van andere personen of dingen.",
+    "example": "Was deze trui apart.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "meteen",
+    "definition": "Zonder te wachten, op hetzelfde moment.",
+    "example": "Ik kom meteen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "passen",
+    "definition": "De juiste maat hebben, geschikt zijn of iets proberen aan te trekken.",
+    "example": "Deze zin gebruikt passen in de betekenis: de juiste maat hebben, geschikt zijn of iets proberen aan te trekken.",
+    "verbId": "passen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "een moment",
+    "definition": "Een korte tijd waarin je wacht.",
+    "example": "Een moment, alstublieft.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de bloes",
+    "definition": "Een bovenkledingstuk van dunne stof, vaak met knopen.",
+    "example": "De bloes hangt in de kast.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "mogen",
+    "definition": "Toestemming hebben of krijgen om iets te doen; soms ook een mogelijkheid uitdrukken.",
+    "example": "In deze context gebruiken we mogen om toestemming of een voorzichtige mogelijkheid uitdrukken.",
+    "verbId": "mogen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "te",
+    "definition": "Vóór een eigenschap: meer dan goed of gewenst is.",
+    "example": "Deze jas is te groot.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het verkeer",
+    "definition": "De beweging van mensen en voertuigen op wegen.",
+    "example": "Het verkeer is druk.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "rijden",
+    "definition": "Een voertuig besturen of zich met een voertuig over een route verplaatsen.",
+    "example": "Ik rijd morgen met de auto naar Antwerpen.",
+    "verbId": "rijden",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het fietspad",
+    "definition": "Een pad bestemd voor fietsverkeer.",
+    "example": "Wij fietsen op het fietspad.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de weg",
+    "definition": "Een route of aangelegde strook om over te reizen.",
+    "example": "Deze weg gaat naar het station.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "stoppen",
+    "definition": "Niet verdergaan met een handeling of beweging; transitief ook iets beëindigen of ergens in plaatsen.",
+    "example": "De bus stopt bij het volgende station.",
+    "verbId": "stoppen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het verkeersbord",
+    "definition": "Een bord dat informatie of regels voor het verkeer aangeeft.",
+    "example": "Er staat een verkeersbord bij de weg.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de provincie",
+    "definition": "Een bestuurlijk gebied binnen een land.",
+    "example": "Nederland heeft twaalf provincies.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het midden",
+    "definition": "Het centrale deel tussen de buitenkanten.",
+    "example": "De tafel staat in het midden.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het eiland",
+    "definition": "Een stuk land met water aan alle kanten.",
+    "example": "Wij varen naar het eiland.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "naartoe",
+    "definition": "In de richting van een genoemde bestemming.",
+    "example": "Waar ga je naartoe?",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "belangrijk",
+    "definition": "Van grote waarde of betekenis voor iets.",
+    "example": "Dit is belangrijke informatie.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Amsterdam",
+    "definition": "De hoofdstad van Nederland.",
+    "example": "Amsterdam ligt in Noord-Holland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Maastricht",
+    "definition": "De hoofdstad van de provincie Limburg.",
+    "example": "Maastricht ligt in het zuiden van Nederland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Groningen",
+    "definition": "Een Nederlandse provincie en de gelijknamige provinciehoofdstad.",
+    "example": "Groningen ligt in het noorden.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "na",
+    "definition": "Later dan een moment of volgend op iets.",
+    "example": "Na de les ga ik naar huis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "van",
+    "definition": "Geeft onder meer herkomst, bezit of het begin van een traject aan.",
+    "example": "De les is van tien tot twaalf.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tot",
+    "definition": "Geeft het eindpunt van een periode of afstand aan.",
+    "example": "Ik werk tot vijf uur.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "in",
+    "definition": "Binnen een ruimte of gedurende een bepaalde periode.",
+    "example": "Ik woon in Nederland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tijdens",
+    "definition": "Gedurende de genoemde activiteit of periode.",
+    "example": "Tijdens de les luisteren we.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "te laat",
+    "definition": "Na het verwachte of afgesproken tijdstip.",
+    "example": "Ik kom te laat door de file.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "denken",
+    "definition": "Gedachten vormen of ergens over nadenken; ook een mening of verwachting uitdrukken.",
+    "example": "Ik denk dat de vergadering om negen uur begint.",
+    "verbId": "denken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "onderweg",
+    "definition": "Tijdens het reizen naar een bestemming.",
+    "example": "Ik ben onderweg naar huis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de plek",
+    "definition": "Een bepaalde plaats waar iets of iemand is.",
+    "example": "Dit is een fijne plek.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "doorgeven",
+    "definition": "Iets aan een volgende persoon overdragen, meestal tot een volgende fase, het einde of voorbij een hindernis.",
+    "example": "We proberen vandaag zorgvuldig door te geven.",
+    "verbId": "doorgeven",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "alvast",
+    "definition": "Al vóór een later moment of als voorbereiding.",
+    "example": "Alvast bedankt voor je hulp.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "oversteken",
+    "definition": "Van de ene kant naar de andere gaan, meestal over een weg of water.",
+    "example": "Het werkwoord oversteken wordt hier gebruikt in de betekenis: van de ene kant naar de andere gaan, meestal over een weg of water.",
+    "verbId": "oversteken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "ver",
+    "definition": "Op grote afstand van het genoemde punt.",
+    "example": "Het station is ver weg.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "eerst",
+    "definition": "Vóór andere stappen in een volgorde.",
+    "example": "Eerst lees ik de tekst.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "bij",
+    "definition": "In de nabijheid van of op de plaats van iemand of iets.",
+    "example": "Ik wacht bij de deur.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Friesland",
+    "definition": "Een provincie in het noorden van Nederland.",
+    "example": "Leeuwarden ligt in Friesland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Drenthe",
+    "definition": "Een provincie in het noordoosten van Nederland.",
+    "example": "Assen ligt in Drenthe.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Overijssel",
+    "definition": "Een provincie in het oosten van Nederland.",
+    "example": "Zwolle ligt in Overijssel.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Gelderland",
+    "definition": "Een provincie in het oosten van Nederland.",
+    "example": "Arnhem ligt in Gelderland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Limburg",
+    "definition": "Een provincie in het zuidoosten van Nederland.",
+    "example": "Maastricht ligt in Limburg.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Noord-Brabant",
+    "definition": "Een provincie in het zuiden van Nederland.",
+    "example": "Eindhoven ligt in Noord-Brabant.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Zeeland",
+    "definition": "Een provincie in het zuidwesten van Nederland.",
+    "example": "Middelburg ligt in Zeeland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Zuid-Holland",
+    "definition": "Een provincie in het westen van Nederland.",
+    "example": "Den Haag ligt in Zuid-Holland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Noord-Holland",
+    "definition": "Een provincie in het westen van Nederland.",
+    "example": "Haarlem ligt in Noord-Holland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Utrecht",
+    "definition": "Een Nederlandse provincie en de gelijknamige provinciehoofdstad.",
+    "example": "De stad Utrecht ligt in de provincie Utrecht.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Flevoland",
+    "definition": "Een provincie in het midden van Nederland.",
+    "example": "Lelystad ligt in Flevoland.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "Texel",
+    "definition": "Het grootste Nederlandse Waddeneiland.",
+    "example": "De boot vaart naar Texel.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "onder",
+    "definition": "Op een lagere plaats dan iets anders.",
+    "example": "De kat zit onder de tafel.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "achter",
+    "definition": "Aan de achterkant van iets of iemand.",
+    "example": "De fiets staat achter het huis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "naast",
+    "definition": "Aan de zijkant van en dichtbij iets.",
+    "example": "Ik zit naast mijn broer.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tussen",
+    "definition": "In de ruimte die twee of meer dingen scheidt.",
+    "example": "De hond zit tussen de dozen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tegenover",
+    "definition": "Aan de overkant, met de voorkanten naar elkaar.",
+    "example": "De winkel is tegenover de school.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de doos",
+    "definition": "Een meestal kartonnen verpakking voor spullen.",
+    "example": "Het boek zit in de doos.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de hond",
+    "definition": "Een veelgehouden huisdier dat kan blaffen.",
+    "example": "De hond zit naast de doos.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de kat",
+    "definition": "Een huisdier dat kan miauwen.",
+    "example": "De kat slaapt op de bank.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de dame",
+    "definition": "Een beleefde aanduiding voor een vrouw.",
+    "example": "De dame vraagt de weg.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de heer",
+    "definition": "Een beleefde aanduiding voor een man.",
+    "example": "De heer wacht bij de halte.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "iedereen",
+    "definition": "Alle mensen in de bedoelde groep.",
+    "example": "Iedereen doet mee.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "trainen",
+    "definition": "Door herhaalde oefening vaardigheden, conditie of gedrag verbeteren.",
+    "example": "De medewerkers moesten vandaag trainen.",
+    "verbId": "trainen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "spelen",
+    "definition": "Aan een spel deelnemen, muziek uitvoeren, een rol vertolken of een factor van betekenis zijn.",
+    "example": "De kinderen spelen buiten.",
+    "verbId": "spelen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de informatie",
+    "definition": "Gegevens of uitleg waarmee je iets te weten komt.",
+    "example": "De informatie staat op het bord.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "vanaf",
+    "definition": "Te beginnen bij een genoemd tijdstip of punt.",
+    "example": "De winkel is open vanaf negen uur.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "daarom",
+    "definition": "Geeft de reden aan voor een gevolg.",
+    "example": "Ik ben ziek; daarom blijf ik thuis.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "starten",
+    "definition": "Beginnen of in werking stellen binnen de bedoelde context en constructie.",
+    "example": "Deze zin gebruikt starten in de betekenis: beginnen of in werking stellen.",
+    "verbId": "starten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "inschrijven",
+    "definition": "Een naam of gegevens officieel registreren voor deelname, verblijf of opleiding.",
+    "example": "Je kunt inschrijven zich voor de cursus via de website.",
+    "verbId": "inschrijven",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het woordweb",
+    "definition": "Een schema met woorden rondom een centraal onderwerp.",
+    "example": "Ik maak een woordweb over familie.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de tekening",
+    "definition": "Een afbeelding gemaakt met lijnen op een oppervlak.",
+    "example": "Ik maak een tekening van een hond.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de zin",
+    "definition": "Een samenhangende groep woorden die een mededeling, vraag of opdracht vormt.",
+    "example": "Ik schrijf een zin met dit woord.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de tegenstelling",
+    "definition": "Een relatie tussen betekenissen die tegenover elkaar staan.",
+    "example": "Groot en klein vormen een tegenstelling.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "missen",
+    "definition": "Niet aanwezig hebben, niet raken of het ontbreken van iemand of iets voelen.",
+    "example": "In deze context gebruiken we missen om iets niet hebben, niet raken of sterk voelen ontbreken.",
+    "verbId": "missen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "wachten",
+    "definition": "Op dezelfde plaats of in dezelfde toestand blijven totdat iemand komt of iets gebeurt.",
+    "example": "We wachten op de bus naar Eindhoven.",
+    "verbId": "wachten",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "via",
+    "definition": "Langs een tussenpunt op weg naar een bestemming.",
+    "example": "Ik reis via Utrecht.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "gelukkig",
+    "definition": "Blij; ook een uitdrukking dat iets gunstig is verlopen.",
+    "example": "Gelukkig ben ik op tijd.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "aankomen",
+    "definition": "Een bestemming bereiken; ook zwaarder worden, een onderwerp raken of effect hebben op iemand.",
+    "example": "De trein komt om half negen aan.",
+    "verbId": "aankomen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "geen",
+    "definition": "Ontkent een onbepaald zelfstandig naamwoord of een onbepaalde hoeveelheid.",
+    "example": "Ik heb geen fiets.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "niet",
+    "definition": "Ontkent een handeling, eigenschap of bepaald zinsdeel.",
+    "example": "Ik kom vandaag niet.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het ijsje",
+    "definition": "Een kleine portie consumptie-ijs.",
+    "example": "Ik koop een ijsje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "slapen",
+    "definition": "Gedurende een periode in de natuurlijke toestand van lichamelijke en mentale rust zijn.",
+    "example": "Ik slaap meestal zeven uur per nacht.",
+    "verbId": "slapen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "hangen",
+    "definition": "Zich of iets aan een hoger punt bevinden zonder op de grond te steunen.",
+    "example": "Je kunt hangen de jas aan de kapstok.",
+    "verbId": "hangen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "uitstappen",
+    "definition": "Een voertuig verlaten of deelname beëindigen.",
+    "example": "We moesten de handeling volledig uitstappen voordat we verder konden.",
+    "verbId": "uitstappen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "instappen",
+    "definition": "Een voertuig binnengaan om mee te reizen.",
+    "example": "Je kunt instappen bij de voorste deur van de bus.",
+    "verbId": "instappen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de chauffeur",
+    "definition": "Iemand die een motorvoertuig bestuurt.",
+    "example": "De chauffeur rijdt de bus.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "blijven",
+    "definition": "Op dezelfde plaats of in dezelfde toestand voortduren zonder weg te gaan of te veranderen.",
+    "example": "We proberen vandaag zorgvuldig te blijven.",
+    "verbId": "blijven",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "volgend",
+    "definition": "Na het huidige of eerder genoemde in een reeks.",
+    "example": "Ik neem de volgende bus.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "eindelijk",
+    "definition": "Na lang wachten of na veel moeite.",
+    "example": "Eindelijk is de bus er.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de bal",
+    "definition": "Een rond voorwerp waarmee je kunt spelen.",
+    "example": "De bal ligt op het veld.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "tekenen",
+    "definition": "Lijnen of afbeeldingen maken of een document ondertekenen.",
+    "example": "Deze zin gebruikt tekenen in de betekenis: lijnen of afbeeldingen maken of een document ondertekenen.",
+    "verbId": "tekenen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "zwemmen",
+    "definition": "Zich met arm- en beenbewegingen door het water verplaatsen.",
+    "example": "Ik heb een uur gezwommen.",
+    "verbId": "zwemmen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "dansen",
+    "definition": "Het lichaam ritmisch op muziek of volgens vaste passen bewegen.",
+    "example": "We proberen vandaag zorgvuldig te dansen.",
+    "verbId": "dansen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "houden van",
+    "definition": "Iemand liefhebben of iets graag doen of gebruiken.",
+    "example": "Ik houd van muziek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "weer",
+    "definition": "Opnieuw, nog een keer.",
+    "example": "Ik ga morgen weer zwemmen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "bewegen",
+    "definition": "Van plaats of houding veranderen, of iemand tot actie of emotie brengen.",
+    "example": "In deze situatie gebruiken we 'bewegen' voor de beschreven handeling of toestand.",
+    "verbId": "bewegen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "uit eten",
+    "definition": "Een maaltijd gebruiken in een restaurant.",
+    "example": "Wij gaan zaterdag uit eten.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zingen",
+    "definition": "met de stem muzikale tonen en meestal woorden voortbrengen",
+    "example": "De kinderen zongen samen een bekend lied.",
+    "verbId": "zingen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de radio",
+    "definition": "Een apparaat of medium voor uitgezonden geluid.",
+    "example": "Ik luister naar de radio.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "op bezoek",
+    "definition": "Bij iemand aanwezig om die persoon te ontmoeten.",
+    "example": "Wij gaan op bezoek bij oma.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het liedje",
+    "definition": "Een kort muziekstuk met woorden om te zingen.",
+    "example": "Ik zing een liedje.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "als",
+    "definition": "Kan een voorwaarde of een tijdsmoment inleiden.",
+    "example": "Als ik vrij ben, ga ik wandelen.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "een dagje weg",
+    "definition": "Een uitstap waarbij je ongeveer één dag van huis bent.",
+    "example": "Wij gaan een dagje weg.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het dier",
+    "definition": "Een levend wezen zoals een hond, vogel of vis.",
+    "example": "Dit dier woont op de boerderij.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "de boerderij",
+    "definition": "Een bedrijf met gebouwen en grond voor landbouw of veeteelt.",
+    "example": "Op de boerderij staan koeien.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "het varken",
+    "definition": "Een gehouden dier met een snuit en een stevig lichaam.",
+    "example": "Het varken loopt buiten.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dik",
+    "definition": "Met een grote omvang of afstand tussen twee kanten.",
+    "example": "Dit boek is dik.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "kwijt",
+    "definition": "Niet meer wetend waar iets of iemand is.",
+    "example": "Ik ben mijn sleutel kwijt.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "overal",
+    "definition": "Op alle plaatsen binnen het bedoelde gebied.",
+    "example": "Ik heb overal gezocht.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dit",
+    "definition": "Wijst een dichtbijzijnde zaak aan bij een enkelvoudig het-woord.",
+    "example": "Dit boek ligt hier.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "dat",
+    "definition": "Wijst een verder weg gelegen zaak aan bij een enkelvoudig het-woord.",
+    "example": "Dat huis staat daar.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "deze",
+    "definition": "Wijst iets dichtbij aan bij een de-woord of meervoud.",
+    "example": "Deze tas is van mij.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "die",
+    "definition": "Wijst iets verder weg aan bij een de-woord of meervoud.",
+    "example": "Die boeken liggen daar.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "wandelen",
+    "definition": "rustig te voet gaan, meestal voor ontspanning, plezier of beweging",
+    "example": "We hebben zondag twee uur in het bos gewandeld.",
+    "verbId": "wandelen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "fietsen",
+    "definition": "Een fiets besturen om zich te verplaatsen of als sportieve activiteit.",
+    "example": "Ik fiets elke dag naar mijn werk.",
+    "verbId": "fietsen",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "de natuur",
+    "definition": "Planten, dieren en landschap buiten wat mensen hebben gemaakt.",
+    "example": "Ik wandel graag in de natuur.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "ieder",
+    "definition": "Elk afzonderlijk lid van de bedoelde groep.",
+    "example": "Ieder kind krijgt een boek.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "op vakantie gaan",
+    "definition": "Voor ontspanning een periode van huis weggaan.",
+    "example": "Wij gaan in juli op vakantie.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "groetjes",
+    "definition": "Een informele groet, vaak aan het einde van een bericht.",
+    "example": "Groetjes van ons allemaal.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "schoonmaken",
+    "definition": "Vuil verwijderen en iets schoon maken.",
+    "example": "Deze zin gebruikt schoonmaken in de betekenis: vuil verwijderen en iets schoon maken.",
+    "verbId": "schoonmaken",
+    "kind": "werkwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie; werkwoordenatlas"
+  },
+  {
+    "term": "het bier",
+    "definition": "Een meestal alcoholische drank gemaakt van graan en hop.",
+    "example": "Er staat bier op tafel.",
+    "kind": "zelfstandig naamwoord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "zin hebben in",
+    "definition": "Iets graag willen doen of gebruiken.",
+    "example": "Ik heb zin in een wandeling.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "elkaar",
+    "definition": "Drukt een wederzijdse handeling of relatie uit.",
+    "example": "Wij helpen elkaar.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "jawel",
+    "definition": "Een bevestiging die vaak een ontkenning tegenspreekt.",
+    "example": "Kom je niet? Jawel, ik kom.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "weleens",
+    "definition": "Op een enkel moment of af en toe.",
+    "example": "Ik ga weleens naar de bioscoop.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  },
+  {
+    "term": "inderdaad",
+    "definition": "Bevestigt dat een eerdere uitspraak klopt.",
+    "example": "Dat is inderdaad mijn jas.",
+    "kind": "woord",
+    "level": "A1",
+    "status": "editorially-reviewed",
+    "source": "A1-broncontrole · centrale lexiconredactie"
+  }
+];
+
+const a1SourcePages = [
+  {
+    "id": "a1-source-01",
+    "photo": 1,
+    "file": "IMG_6B84D8F4-404D-4AAB-8920-798FA3B41703.jpeg",
+    "lessonId": "persoonlijke-gegevens",
+    "title": "Jezelf voorstellen",
+    "terms": [
+      "hallo",
+      "de naam",
+      "de vrouw",
+      "Nederland",
+      "getrouwd",
+      "de man",
+      "het kind",
+      "het jaar",
+      "komen",
+      "wonen"
+    ],
+    "verbs": [
+      "zijn",
+      "hebben",
+      "komen",
+      "wonen"
+    ],
+    "rule": "Je stelt jezelf voor met naam, leeftijd, herkomst, woonplaats en gezin. Kind heeft het meervoud kinderen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-02",
+    "photo": 2,
+    "file": "IMG_9F8854D4-6356-46DE-8179-C15B20CC41CC.jpeg",
+    "lessonId": "klinkers",
+    "title": "Lange en korte klanken",
+    "terms": [
+      "de muur",
+      "de bus",
+      "ik"
+    ],
+    "verbs": [
+      "luisteren"
+    ],
+    "rule": "Muur heeft een lange uu; bus heeft een korte u; ik heeft een korte i. De bijbehorende luisteropname is niet meegeleverd.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-03",
+    "photo": 3,
+    "file": "IMG_9A7E8D07-B05B-426D-B7E5-72407DCD1524.jpeg",
+    "lessonId": "lettercombinaties",
+    "title": "Ui, eu, au en ou",
+    "terms": [
+      "het huis",
+      "de neus",
+      "de auto",
+      "het touw"
+    ],
+    "verbs": [
+      "luisteren"
+    ],
+    "rule": "Ui en eu zijn verschillende klanken. Au in auto en ou in touw klinken hetzelfde.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-04",
+    "photo": 4,
+    "file": "IMG_E1FAC0EF-CA4E-466F-8F4B-F74B27637594.jpeg",
+    "lessonId": "groeten",
+    "title": "Begroeten",
+    "terms": [
+      "groeten",
+      "het Nederlands",
+      "hoi",
+      "dag",
+      "doei",
+      "de mevrouw",
+      "tot ziens",
+      "goedemorgen",
+      "de meneer",
+      "goedemiddag",
+      "goedenavond"
+    ],
+    "verbs": [
+      "groeten"
+    ],
+    "rule": "Hoi en hallo zijn begroetingen. Doei en tot ziens gebruik je bij afscheid. Goedemorgen, goedemiddag en goedenavond passen bij het dagdeel.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-05",
+    "photo": 5,
+    "file": "IMG_7B022E63-A5F3-4408-8BD0-A34C9BA3CCDD.jpeg",
+    "lessonId": "familierelaties",
+    "title": "Familieboom",
+    "terms": [
+      "de vader",
+      "de moeder",
+      "de ouder",
+      "de oom",
+      "de tante",
+      "de neef",
+      "de nicht",
+      "de vrouw",
+      "de broer",
+      "de schoonzus",
+      "de zus",
+      "de zwager",
+      "de zoon",
+      "de dochter",
+      "het kleinkind",
+      "mijn",
+      "getrouwd"
+    ],
+    "verbs": [
+      "zijn",
+      "hebben",
+      "trouwen"
+    ],
+    "rule": "Vanuit Tom: Hans en Nel zijn zijn ouders; Max en Karen zijn oom en tante. Kees en Nienke zijn hun kinderen. Julia is Toms vrouw; David en Lisa zijn hun kinderen. Bram en Helma hebben Vincent en Vera. Meike is Toms zus; Johan is zijn zwager. Neef en nicht kunnen kinderen van een oom of tante én kinderen van een broer of zus aanduiden.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-06",
+    "photo": 6,
+    "file": "IMG_D5C1CD1F-6EFE-422C-A186-2ECBD710B782.jpeg",
+    "lessonId": "lettercombinaties",
+    "title": "Ie, oe, ei en ij",
+    "terms": [
+      "de fiets",
+      "het boek",
+      "de trein",
+      "het ijs"
+    ],
+    "verbs": [
+      "luisteren"
+    ],
+    "rule": "Ie in fiets en oe in boek zijn elk één klank. Ei in trein en ij in ijs klinken hetzelfde.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-07",
+    "photo": 7,
+    "file": "IMG_68D0D573-6CC1-44DE-88D1-F15ABC005FF4.jpeg",
+    "lessonId": "familierelaties",
+    "title": "Gezinsleden",
+    "terms": [
+      "de familie",
+      "de zoon",
+      "de dochter",
+      "de broer",
+      "de zus",
+      "de ouder",
+      "de moeder",
+      "de vader",
+      "de oma",
+      "de opa",
+      "en",
+      "heten"
+    ],
+    "verbs": [
+      "heten",
+      "hebben"
+    ],
+    "rule": "Ouders zijn vader en moeder. Opa en oma zijn grootouders. Zoon en dochter zijn kinderen; broer en zus delen een ouder.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-08",
+    "photo": 8,
+    "file": "IMG_3D45DD38-21DB-4924-B849-E64075777838.jpeg",
+    "lessonId": "klinkers",
+    "title": "Maan en man",
+    "terms": [
+      "de maan",
+      "de man",
+      "het been",
+      "de pen",
+      "de boom",
+      "de sok"
+    ],
+    "verbs": [
+      "luisteren"
+    ],
+    "rule": "Lange klinkers: maan, been, boom. Korte klinkers: man, pen, sok. Het verschil in klank kan de betekenis veranderen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-09",
+    "photo": 9,
+    "file": "IMG_8D099500-DE68-4B21-82AF-67C1CF7F0096.jpeg",
+    "lessonId": "schooldag",
+    "title": "In de pauze",
+    "terms": [
+      "drinken",
+      "graag",
+      "de koffie",
+      "de thee",
+      "de suiker",
+      "de pauze"
+    ],
+    "verbs": [
+      "drinken"
+    ],
+    "rule": "Met graag geef je een voorkeur aan: Ik drink graag thee. Koffie, thee en suiker zijn de-woorden.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-10",
+    "photo": 10,
+    "file": "IMG_B0E3C76C-2969-4C2F-B076-D7612E5ED685.jpeg",
+    "lessonId": "instructies",
+    "title": "Leren op school",
+    "terms": [
+      "leren",
+      "luisteren",
+      "schrijven",
+      "spreken",
+      "de pen",
+      "lezen",
+      "het boek",
+      "de computer",
+      "het bord",
+      "de tekst",
+      "maken",
+      "de opdracht"
+    ],
+    "verbs": [
+      "leren",
+      "luisteren",
+      "schrijven",
+      "spreken",
+      "lezen",
+      "maken"
+    ],
+    "rule": "Je leest een tekst, schrijft met een pen, luistert naar de docent en maakt een opdracht. De gebiedende wijs geeft een instructie: lees, luister, schrijf.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-11",
+    "photo": 11,
+    "file": "IMG_AB4CF261-2C47-47A8-8A06-EFB48B11DA17.jpeg",
+    "lessonId": "instructies",
+    "title": "Instructies en tekens",
+    "terms": [
+      "het rondje",
+      "kiezen",
+      "het kruisje",
+      "de streep",
+      "de lijn",
+      "het plaatje",
+      "typen",
+      "moeten"
+    ],
+    "verbs": [
+      "kiezen",
+      "typen",
+      "moeten",
+      "kijken"
+    ],
+    "rule": "Een rondje, kruisje, streep en lijn zijn verschillende tekens. Kies betekent dat je een antwoord selecteert; typ betekent dat je het toetsenbord gebruikt.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-12",
+    "photo": 12,
+    "file": "IMG_EE1D4051-73C6-41DA-A339-DEB7FEB10A85.jpeg",
+    "lessonId": "groeten",
+    "title": "Aanbieden en bedanken",
+    "terms": [
+      "de melk",
+      "alsjeblieft",
+      "dank je wel",
+      "op school",
+      "willen",
+      "nee dank je"
+    ],
+    "verbs": [
+      "willen",
+      "geven"
+    ],
+    "rule": "Bij een aanbod kun je antwoorden: Ja, graag of Nee, dank je. Alsjeblieft gebruik je bij het vragen of geven; dank je wel bij het bedanken.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-13",
+    "photo": 13,
+    "file": "IMG_43178A16-695A-483B-AD5C-CA6ABBE5C4C7.jpeg",
+    "lessonId": "schooldag",
+    "title": "De week",
+    "terms": [
+      "de agenda",
+      "de week",
+      "de dag",
+      "het weekend",
+      "maandag",
+      "dinsdag",
+      "woensdag",
+      "donderdag",
+      "vrijdag",
+      "zaterdag",
+      "zondag",
+      "vandaag",
+      "morgen"
+    ],
+    "verbs": [
+      "zijn"
+    ],
+    "rule": "Een week heeft zeven dagen. Zaterdag en zondag vormen het weekend. Vandaag is de huidige dag; morgen is de volgende dag.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-14",
+    "photo": 14,
+    "file": "IMG_4F4DCE46-F21D-49E9-82CB-70DE60E260AC.jpeg",
+    "lessonId": "instructies",
+    "title": "School en mensen",
+    "terms": [
+      "de school",
+      "binnen",
+      "de docent",
+      "zeggen",
+      "de cursist",
+      "de pauze",
+      "lopen",
+      "buiten",
+      "gaan",
+      "welkom",
+      "naar",
+      "samen"
+    ],
+    "verbs": [
+      "zeggen",
+      "lopen",
+      "gaan"
+    ],
+    "rule": "De docent geeft les; de cursist volgt les. Binnen en buiten zijn tegengestelden. Naar geeft een richting aan: naar buiten, naar school.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-15",
+    "photo": 15,
+    "file": "IMG_184C0A34-FFCA-4294-A036-D4928431933A.jpeg",
+    "lessonId": "begrijpen-verstaan",
+    "title": "Hulp bij begrijpen",
+    "terms": [
+      "moeilijk",
+      "veel",
+      "de mens",
+      "snel",
+      "begrijpen",
+      "sorry",
+      "wat",
+      "hoe"
+    ],
+    "verbs": [
+      "begrijpen",
+      "zeggen",
+      "betekenen",
+      "schrijven"
+    ],
+    "rule": "Vraag om hulp met Wat betekent dat? of Hoe schrijf je dat? Begrijpen gaat over de betekenis, verstaan over wat je hoort.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-16",
+    "photo": 16,
+    "file": "IMG_7E3571C6-9AD8-4485-AA27-972B7D5613D7.jpeg",
+    "lessonId": "instructies",
+    "title": "In de klas",
+    "terms": [
+      "staan",
+      "de klas",
+      "zitten",
+      "zien",
+      "het potlood",
+      "de gum",
+      "het papier",
+      "makkelijk",
+      "het ding"
+    ],
+    "verbs": [
+      "staan",
+      "zitten",
+      "zien",
+      "spellen"
+    ],
+    "rule": "Je schrijft met een potlood op papier en gebruikt een gum om iets uit te wissen. Staan en zitten beschrijven verschillende houdingen. Ding wordt dingen in het meervoud.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-17",
+    "photo": 17,
+    "file": "IMG_1966831B-B216-4CB2-8901-44C855D92104.jpeg",
+    "lessonId": "groeten",
+    "title": "Geven en helpen",
+    "terms": [
+      "alsjeblieft",
+      "bedankt",
+      "helpen",
+      "geven",
+      "krijgen",
+      "graag gedaan",
+      "vragen",
+      "iemand"
+    ],
+    "verbs": [
+      "helpen",
+      "geven",
+      "krijgen",
+      "vragen"
+    ],
+    "rule": "Wie iets geeft, draagt het over; wie het krijgt, ontvangt het. Op bedankt kun je reageren met graag gedaan.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-18",
+    "photo": 18,
+    "file": "IMG_B4C8AD53-20AE-4F23-9DA1-159FE25A7736.jpeg",
+    "lessonId": "huis-kamers",
+    "title": "Het huis van buiten",
+    "terms": [
+      "het dak",
+      "de schuur",
+      "het huis",
+      "de deur",
+      "de garage",
+      "de tuin",
+      "het balkon",
+      "de flat",
+      "het raam"
+    ],
+    "verbs": [
+      "wonen"
+    ],
+    "rule": "Een huis heeft een dak, ramen en een deur. Een garage is voor een voertuig; een schuur voor opslag. Een balkon ligt aan de buitenkant van een verdieping.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-19",
+    "photo": 19,
+    "file": "IMG_15CA7171-27C7-4230-9F1B-53748DFF326F.jpeg",
+    "lessonId": "buurt-verdieping",
+    "title": "Winkels en omgeving",
+    "terms": [
+      "de winkel",
+      "het dorp",
+      "de trap",
+      "weinig",
+      "mooi",
+      "aardig",
+      "de buurt"
+    ],
+    "verbs": [
+      "wonen"
+    ],
+    "rule": "Een buurt is het gebied rond je huis. Een dorp is kleiner dan een stad. Met de trap ga je naar boven of beneden. Weinig geeft een kleine hoeveelheid aan.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-20",
+    "photo": 20,
+    "file": "IMG_38E9DADA-45C9-4DD4-91B0-4AB601E74124.jpeg",
+    "lessonId": "buurt-verdieping",
+    "title": "Stad en verdieping",
+    "terms": [
+      "de stad",
+      "het park",
+      "hoog",
+      "de verdieping",
+      "de lift"
+    ],
+    "verbs": [
+      "wonen",
+      "gaan"
+    ],
+    "rule": "Een verdieping is een laag van een gebouw. Een lift brengt mensen naar een andere verdieping. Hoog beschrijft een grote afstand boven de grond.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-21",
+    "photo": 21,
+    "file": "IMG_180D9118-1212-4652-A9CD-12E6EB3FC547.jpeg",
+    "lessonId": "buurt-verdieping",
+    "title": "Rangtelwoorden",
+    "terms": [
+      "eerste",
+      "tweede",
+      "derde",
+      "vierde",
+      "vijfde",
+      "zesde",
+      "zevende",
+      "achtste",
+      "negende",
+      "tiende"
+    ],
+    "verbs": [
+      "wonen"
+    ],
+    "rule": "De reeks is eerste, tweede, derde, vierde, vijfde, zesde, zevende, achtste, negende, tiende. Gebruik rangtelwoorden voor volgorde: de tweede verdieping, de eerste dag.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-22",
+    "photo": 22,
+    "file": "IMG_5A050F6C-5B36-4255-9BC0-7298EFA280E3.jpeg",
+    "lessonId": "meubels-kleuren",
+    "title": "Kleuren",
+    "terms": [
+      "rood",
+      "oranje",
+      "geel",
+      "paars",
+      "blauw",
+      "groen",
+      "roze",
+      "grijs",
+      "bruin",
+      "wit",
+      "zwart",
+      "de pen",
+      "de lamp",
+      "de tafel",
+      "de gum",
+      "de bank",
+      "de muur",
+      "het potlood",
+      "de deur",
+      "de kast",
+      "het bord",
+      "de stoel"
+    ],
+    "verbs": [
+      "zijn"
+    ],
+    "rule": "Na is of zijn blijft de kleurnaam hier onverbogen: de deur is grijs, de stoelen zijn zwart. De kleur vóór een zelfstandig naamwoord kan een e krijgen: een grijze deur.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-23",
+    "photo": 23,
+    "file": "IMG_DAD9045E-A8B2-4BB5-B393-C697F71D382A.jpeg",
+    "lessonId": "meubels-kleuren",
+    "title": "Meubels",
+    "terms": [
+      "de televisie",
+      "de bank",
+      "de lamp",
+      "de kast",
+      "het bed",
+      "de tafel",
+      "de stoel",
+      "de douche",
+      "het bad",
+      "het meubel"
+    ],
+    "verbs": [
+      "staan"
+    ],
+    "rule": "Stoel wordt stoelen, meubel wordt meubels. Meubels staan in kamers: het bed in de slaapkamer, de bank in de woonkamer. Bad en douche horen bij de badkamer.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-24",
+    "photo": 24,
+    "file": "IMG_435FC162-A231-4778-8D2E-16C2783EAA37.jpeg",
+    "lessonId": "huis-kamers",
+    "title": "Kamers",
+    "terms": [
+      "de zolder",
+      "de kamer",
+      "de woonkamer",
+      "de badkamer",
+      "de slaapkamer",
+      "de wc",
+      "de gang",
+      "de keuken",
+      "boven",
+      "beneden"
+    ],
+    "verbs": [
+      "hebben",
+      "zijn"
+    ],
+    "rule": "Woonkamer, keuken, slaapkamer en badkamer hebben verschillende functies. Boven en beneden geven een plaats of richting aan. Kamer wordt kamers; slaapkamer wordt slaapkamers.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-25",
+    "photo": 25,
+    "file": "IMG_DADB9444-17BD-49A4-A736-72B5CEB1A4C9.jpeg",
+    "lessonId": "koken-bakken",
+    "title": "Soep en ingrediënten",
+    "terms": [
+      "de soep",
+      "de liter",
+      "de tomaat",
+      "de ui",
+      "het zout",
+      "een beetje",
+      "klaar"
+    ],
+    "verbs": [
+      "doen",
+      "koken"
+    ],
+    "rule": "Tomaat wordt tomaten. Een liter meet inhoud. Een beetje zout is een kleine hoeveelheid. Klaar betekent dat het bereiden afgelopen is.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-26",
+    "photo": 26,
+    "file": "IMG_37F77546-A907-4DF8-8BCD-CD2BAC0C3C4F.jpeg",
+    "lessonId": "schooldag",
+    "title": "De hoofdzin",
+    "terms": [
+      "ik",
+      "we",
+      "zij",
+      "de cursist",
+      "hij",
+      "het werkwoord",
+      "de hoofdzin"
+    ],
+    "verbs": [
+      "komen",
+      "moeten",
+      "lezen",
+      "schrijven",
+      "zitten"
+    ],
+    "rule": "In een gewone mededelende hoofdzin staat de persoonsvorm op de tweede zinsplaats: Ik lees een boek. De eerste plaats kan uit meer dan één woord bestaan.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-27",
+    "photo": 27,
+    "file": "IMG_6F61A262-6C4E-4C9E-81F2-C2C80C9A393B.jpeg",
+    "lessonId": "aan-tafel",
+    "title": "Wat vind je lekker?",
+    "terms": [
+      "de kip",
+      "de vis",
+      "de rijst",
+      "de boterham",
+      "de kaas",
+      "de worst",
+      "de bloemkool",
+      "lekker",
+      "vinden",
+      "nooit",
+      "altijd",
+      "meestal"
+    ],
+    "verbs": [
+      "vinden",
+      "eten"
+    ],
+    "rule": "Ik vind kaas lekker geeft een smaakvoorkeur. Altijd betekent iedere keer, meestal vaak maar niet altijd, nooit op geen enkel moment.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-28",
+    "photo": 28,
+    "file": "IMG_453FCEFD-50CC-48BA-B6FA-5F77BF614087.jpeg",
+    "lessonId": "woning-zoeken",
+    "title": "Een woning zoeken",
+    "terms": [
+      "zoeken",
+      "druk",
+      "rustig",
+      "het internet",
+      "de prijs",
+      "huren",
+      "nu",
+      "zonder",
+      "de plaats",
+      "het aantal",
+      "per"
+    ],
+    "verbs": [
+      "zoeken",
+      "huren",
+      "wonen"
+    ],
+    "rule": "Bij een woningadvertentie lees je plaats, aantal kamers en prijs per maand. Druk en rustig beschrijven de omgeving. Huren betekent betalen voor tijdelijk gebruik.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-29",
+    "photo": 29,
+    "file": "IMG_CFE7321A-6641-465E-A606-B13CE25A5E9E.jpeg",
+    "lessonId": "schooldag",
+    "title": "Vraagwoorden",
+    "terms": [
+      "wie",
+      "wat",
+      "waar",
+      "wanneer",
+      "hoeveel",
+      "het vraagwoord"
+    ],
+    "verbs": [
+      "zijn",
+      "drinken",
+      "komen",
+      "doen",
+      "eten"
+    ],
+    "rule": "In een vraag met een vraagwoord staat dat vooraan, daarna de persoonsvorm en vaak het onderwerp: Waar woon jij? Bij inversie met jij vervalt de t: Wat drink jij?",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-30",
+    "photo": 30,
+    "file": "IMG_9C7B84CD-D429-412C-BFFA-E3CA0FBD4CEF.jpeg",
+    "lessonId": "woning-zoeken",
+    "title": "Sleutels",
+    "terms": [
+      "op slot",
+      "de sleutel",
+      "vinden",
+      "liggen",
+      "lachen",
+      "pakken",
+      "vaak"
+    ],
+    "verbs": [
+      "vinden",
+      "liggen",
+      "lachen",
+      "pakken",
+      "vergeten"
+    ],
+    "rule": "Een deur op slot is vergrendeld. Je kunt je sleutel vergeten, zoeken, vinden en pakken. Vaak betekent dat iets regelmatig gebeurt.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-31",
+    "photo": 31,
+    "file": "IMG_37E8AB93-FE9C-4E6D-B0D6-0AF07BD6760F.jpeg",
+    "lessonId": "markt-betalen",
+    "title": "Boodschappen",
+    "terms": [
+      "de markt",
+      "de appel",
+      "de groente",
+      "de bakker",
+      "de slager",
+      "het brood",
+      "het vlees",
+      "de supermarkt",
+      "de boter",
+      "boodschappen",
+      "doen",
+      "kopen",
+      "kunnen"
+    ],
+    "verbs": [
+      "doen",
+      "kopen",
+      "kunnen"
+    ],
+    "rule": "Bij de bakker koop je brood en bij de slager vlees. Appel wordt appels; groente wordt groenten. Boodschappen doen betekent eten en andere benodigdheden kopen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-32",
+    "photo": 32,
+    "file": "IMG_75244C4A-745B-47DC-9476-FC83A23852DE.jpeg",
+    "lessonId": "koken-bakken",
+    "title": "Koken",
+    "terms": [
+      "snijden",
+      "koken",
+      "de pan",
+      "de minuut",
+      "nodig hebben",
+      "doen",
+      "klaar"
+    ],
+    "verbs": [
+      "snijden",
+      "koken",
+      "hebben",
+      "doen"
+    ],
+    "rule": "Je snijdt ingrediënten, doet ze in een pan en kookt ze. Een minuut meet tijd. Nodig hebben geeft aan wat je moet gebruiken.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-33",
+    "photo": 33,
+    "file": "IMG_16ED16B7-E8B9-468C-9BD5-34F933EC039C.jpeg",
+    "lessonId": "aan-tafel",
+    "title": "Aan tafel",
+    "terms": [
+      "roepen",
+      "het eten",
+      "het bord",
+      "zetten",
+      "eet smakelijk",
+      "het ijs",
+      "het mes",
+      "de vork",
+      "het glas",
+      "de lepel",
+      "allemaal",
+      "op"
+    ],
+    "verbs": [
+      "roepen",
+      "zetten",
+      "eten",
+      "dekken"
+    ],
+    "rule": "Het bestek bestaat uit mes, vork en lepel. Voor het eten zeg je eet smakelijk. Het eten is op betekent dat er niets meer over is.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-34",
+    "photo": 34,
+    "file": "IMG_51AB2150-5E35-4111-8035-1A1EB86CEFBE.jpeg",
+    "lessonId": "koken-bakken",
+    "title": "Een taart bakken",
+    "terms": [
+      "de taart",
+      "de gram",
+      "oké",
+      "het ei",
+      "de oven",
+      "koud",
+      "aan",
+      "uit",
+      "genoeg",
+      "meer",
+      "minder",
+      "dan"
+    ],
+    "verbs": [
+      "bakken"
+    ],
+    "rule": "Gram meet gewicht. Voor bakken gebruik je een oven. Aan en uit beschrijven of een apparaat werkt. Meer en minder vergelijken hoeveelheden; genoeg betekent voldoende.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-35",
+    "photo": 35,
+    "file": "IMG_9989B165-7E39-4557-9621-45D4F9530448.jpeg",
+    "lessonId": "schooldag",
+    "title": "Ja-neevragen",
+    "terms": [
+      "ja",
+      "nee",
+      "het werkwoord"
+    ],
+    "verbs": [
+      "willen",
+      "gaan",
+      "zijn",
+      "vinden",
+      "doen",
+      "kopen"
+    ],
+    "rule": "In een ja-neevraag staat de persoonsvorm vooraan: Koop jij brood? Het antwoord kan met ja of nee beginnen. Jij koopt wordt koop jij bij inversie.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-36",
+    "photo": 36,
+    "file": "IMG_11308521-A378-4852-A79B-04D40DACEF98.jpeg",
+    "lessonId": "markt-betalen",
+    "title": "Euro en cent",
+    "terms": [
+      "de euro",
+      "de cent",
+      "het briefje",
+      "de munt",
+      "verschillend",
+      "het bedrag"
+    ],
+    "verbs": [
+      "betalen",
+      "kosten"
+    ],
+    "rule": "Een euro is honderd cent. Je schrijft het euroteken vóór het bedrag. De foto toont munt- en biljetwaarden; dit is een taalvoorbeeld, geen actuele betaalinformatie.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-37",
+    "photo": 37,
+    "file": "IMG_2637D370-2936-4975-B067-394B710714A4.jpeg",
+    "lessonId": "lichaam",
+    "title": "Het lichaam",
+    "terms": [
+      "het lichaam",
+      "het hoofd",
+      "de schouder",
+      "de arm",
+      "de buik",
+      "de vinger",
+      "de knie",
+      "de voet",
+      "de teen",
+      "de rug",
+      "de bil",
+      "de hand",
+      "het been"
+    ],
+    "verbs": [
+      "hebben"
+    ],
+    "rule": "Meervouden: schouders, armen, vingers, knieën, voeten, tenen, billen, handen en benen. Hoofd, buik en rug benoemen grotere lichaamsdelen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-38",
+    "photo": 38,
+    "file": "IMG_060692FE-EA4C-425A-AE91-16DE842C21B4.jpeg",
+    "lessonId": "markt-betalen",
+    "title": "Een reclamefolder",
+    "terms": [
+      "de aardappel",
+      "de wortel",
+      "de bloemkool",
+      "de boon",
+      "de sla",
+      "de banaan",
+      "de appel",
+      "de peer",
+      "de sinaasappel",
+      "de citroen",
+      "de druif",
+      "gratis",
+      "de kilo",
+      "de gram"
+    ],
+    "verbs": [
+      "kosten",
+      "kopen"
+    ],
+    "rule": "Vergelijk de prijs en de hoeveelheid in een folder: per kilo, per 500 gram of per stuk. De afgebeelde prijzen zijn historische oefenvoorbeelden. Een plus een gratis betekent twee producten voor de prijs van één.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-39",
+    "photo": 39,
+    "file": "IMG_CD6A2150-EBB2-4AB3-B6FC-748E0A3FB64C.jpeg",
+    "lessonId": "lettercombinaties",
+    "title": "Lettergrepen en klemtoon",
+    "terms": [
+      "het woord",
+      "de lettergreep",
+      "de klemtoon",
+      "de dochter",
+      "het water",
+      "de schouder",
+      "de banaan",
+      "de cursist",
+      "de familie",
+      "de computer",
+      "december",
+      "donderdag",
+      "de supermarkt"
+    ],
+    "verbs": [
+      "leren"
+    ],
+    "rule": "Woorden bestaan uit lettergrepen. Klemtoon valt op DOCH-ter, WA-ter, SCHOU-der, ba-NAAN, cur-SIST, fa-MI-lie, com-PU-ter, de-CEM-ber, DON-der-dag en SU-per-markt.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-40",
+    "photo": 40,
+    "file": "IMG_D19115BD-EFC5-48B0-9621-32B194B1D76E.jpeg",
+    "lessonId": "lichaam",
+    "title": "Meervoud met korte klinker",
+    "terms": [
+      "het enkelvoud",
+      "het meervoud",
+      "de voet",
+      "de wang",
+      "de arm",
+      "de tand",
+      "de pan",
+      "de lip",
+      "de zus",
+      "het bed"
+    ],
+    "verbs": [
+      "maken",
+      "schrijven"
+    ],
+    "rule": "Meervoud krijgt vaak en: voet–voeten, wang–wangen, arm–armen, tand–tanden. Bij een korte klinker gevolgd door één medeklinker verdubbelt die medeklinker vaak: pan–pannen, lip–lippen, zus–zussen, bed–bedden.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-41",
+    "photo": 41,
+    "file": "IMG_B38F0A06-75A6-44F3-A492-1E36FF5BFEB6.jpeg",
+    "lessonId": "markt-betalen",
+    "title": "Betalen",
+    "terms": [
+      "betalen",
+      "de euro",
+      "verschillend",
+      "het briefje",
+      "de munt",
+      "de cent",
+      "het bedrag",
+      "gebruiken",
+      "kosten",
+      "bijna"
+    ],
+    "verbs": [
+      "betalen",
+      "gebruiken",
+      "kosten"
+    ],
+    "rule": "Je betaalt een bedrag met geld. Bijna dertig betekent iets minder dan dertig. Briefje wordt briefjes, munt wordt munten.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-42",
+    "photo": 42,
+    "file": "IMG_A2B2731F-1239-49E3-ABA8-DBC58BE02702.jpeg",
+    "lessonId": "lichaam",
+    "title": "Het gezicht",
+    "terms": [
+      "het gezicht",
+      "het haar",
+      "het oog",
+      "de neus",
+      "de tand",
+      "de lip",
+      "de kin",
+      "de wang",
+      "de snor",
+      "de mond",
+      "het oor",
+      "de baard",
+      "de nek"
+    ],
+    "verbs": [
+      "hebben"
+    ],
+    "rule": "Meervouden: ogen, tanden, lippen, wangen en oren. Een snor groeit boven de lip; een baard groeit op de kin en wangen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-43",
+    "photo": 43,
+    "file": "IMG_45D0634A-98EC-4A83-9ED9-37A7B07E486D.jpeg",
+    "lessonId": "markt-betalen",
+    "title": "Gewicht en prijs",
+    "terms": [
+      "de verkoper",
+      "de druif",
+      "de kilo",
+      "duur",
+      "de komkommer",
+      "terug",
+      "de helft",
+      "het ons",
+      "het pond",
+      "alstublieft",
+      "anders",
+      "nog iets",
+      "fijn"
+    ],
+    "verbs": [
+      "kopen",
+      "betalen"
+    ],
+    "rule": "In deze Nederlandse winkelcontext is een kilo 1000 gram, een pond 500 gram en een ons 100 gram. De helft is één van twee gelijke delen. Nog iets? vraagt of de klant meer wil.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-44",
+    "photo": 44,
+    "file": "IMG_8E046541-7EB8-45A6-A6B8-C51698316C52.jpeg",
+    "lessonId": "markt-betalen",
+    "title": "Bij de kassa",
+    "terms": [
+      "het pak",
+      "in de aanbieding",
+      "goedkoop",
+      "de kassa",
+      "de zegel",
+      "pinnen",
+      "het geld",
+      "de bon",
+      "iets",
+      "mee",
+      "daarna",
+      "want"
+    ],
+    "verbs": [
+      "pinnen",
+      "betalen"
+    ],
+    "rule": "Bij de kassa betaal je en krijg je een bon. Pinnen betekent betalen met een betaalpas. Goedkoop heeft een lage prijs; een aanbieding heeft een tijdelijk gunstiger prijs.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-45",
+    "photo": 45,
+    "file": "IMG_DB1487E9-7CC1-4D94-9BE7-D912D7555174.jpeg",
+    "lessonId": "tandarts",
+    "title": "Bij de tandarts",
+    "terms": [
+      "de tandarts",
+      "de kies",
+      "het gaatje",
+      "de foto",
+      "poetsen",
+      "vullen",
+      "het gebit",
+      "in orde",
+      "misschien",
+      "helaas",
+      "vervelend",
+      "elk",
+      "helemaal"
+    ],
+    "verbs": [
+      "poetsen",
+      "vullen"
+    ],
+    "rule": "Het gebit bestaat uit tanden en kiezen. Een gaatje is een beschadiging in een tand of kies. De tandarts kan een foto maken en een gaatje vullen. Deze woorden oefenen een gesprek, geen behandeling.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-46",
+    "photo": 46,
+    "file": "IMG_993FE5E9-54CD-4F95-B1ED-2268EB562AEE.jpeg",
+    "lessonId": "apotheek",
+    "title": "Medicijnen gebruiken",
+    "terms": [
+      "de pil",
+      "de zalf",
+      "de druppel",
+      "het doosje",
+      "innemen",
+      "de huid",
+      "smeren",
+      "de drogist",
+      "daar",
+      "de keer",
+      "dagelijks",
+      "sommige"
+    ],
+    "verbs": [
+      "innemen",
+      "smeren"
+    ],
+    "rule": "Pillen neem je in; zalf smeer je op de huid. Druppel wordt druppels, pil wordt pillen. Dagelijks betekent iedere dag. Dit zijn woordbetekenissen, geen gebruiks- of doseringsinstructies.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-47",
+    "photo": 47,
+    "file": "IMG_AB885FF0-A2DF-4F8D-AAA1-AC8561350272.jpeg",
+    "lessonId": "lichaam",
+    "title": "Meervoud met lange klinker",
+    "terms": [
+      "het been",
+      "het oog",
+      "de muur",
+      "het raam",
+      "de neef",
+      "het huis"
+    ],
+    "verbs": [
+      "schrijven"
+    ],
+    "rule": "Been–benen, oog–ogen, muur–muren en raam–ramen houden een lange klank; in een open lettergreep schrijf je één klinker. Neef–neven en huis–huizen veranderen bovendien f in v en s in z.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-48",
+    "photo": 48,
+    "file": "IMG_AF62CE63-13EF-4792-8D85-B91F156DB222.jpeg",
+    "lessonId": "huisarts-afspraak",
+    "title": "Een afspraak maken",
+    "terms": [
+      "bellen",
+      "de tandarts",
+      "de huisarts",
+      "de assistente",
+      "de afspraak",
+      "de controle",
+      "de koorts",
+      "de pijn",
+      "dus",
+      "maar",
+      "later",
+      "eerder"
+    ],
+    "verbs": [
+      "bellen",
+      "maken"
+    ],
+    "rule": "Bij een afspraak noem je met wie en wanneer. Eerder is vóór een genoemd tijdstip; later is erna. De huisarts is de eerste arts voor algemene gezondheidsvragen; de tandarts behandelt het gebit.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-49",
+    "photo": 49,
+    "file": "IMG_DE178FA5-5849-48D2-B61B-CDE6A5614284.jpeg",
+    "lessonId": "kleren-kleur",
+    "title": "Kledingstukken",
+    "terms": [
+      "de trui",
+      "de rok",
+      "het vest",
+      "de jas",
+      "de tas",
+      "de sok",
+      "het hemd",
+      "de onderbroek",
+      "het overhemd",
+      "het T-shirt",
+      "de broek",
+      "de schoen"
+    ],
+    "verbs": [
+      "dragen"
+    ],
+    "rule": "Leer kleding met het lidwoord: het hemd, het overhemd, het T-shirt en het vest; de broek, de jas en de schoen. Schoen wordt schoenen, sok wordt sokken.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-50",
+    "photo": 50,
+    "file": "IMG_A80642F2-936E-408E-867F-5CB4CBA802EE.jpeg",
+    "lessonId": "huisarts-afspraak",
+    "title": "Klachten beschrijven",
+    "terms": [
+      "ziek",
+      "de dokter",
+      "het medicijn",
+      "de apotheek",
+      "het ziekenhuis",
+      "het probleem",
+      "last hebben van",
+      "soms",
+      "halen",
+      "ander",
+      "bijvoorbeeld"
+    ],
+    "verbs": [
+      "hebben",
+      "halen"
+    ],
+    "rule": "Beschrijf een klacht met Ik heb pijn in mijn buik of Ik heb last van mijn nek. Medicijn wordt medicijnen. De apotheek levert medicijnen; een ziekenhuis biedt medische zorg.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-51",
+    "photo": 51,
+    "file": "IMG_73AF9659-52A9-4EFA-AC16-30622DB93499.jpeg",
+    "lessonId": "huisarts-afspraak",
+    "title": "Griep en klachten",
+    "terms": [
+      "de klacht",
+      "de keel",
+      "de spier",
+      "hoesten",
+      "de griep",
+      "het recept",
+      "sinds",
+      "nog",
+      "erg",
+      "natuurlijk",
+      "waarschijnlijk",
+      "beterschap"
+    ],
+    "verbs": [
+      "hoesten"
+    ],
+    "rule": "Sinds geeft het begin van een periode aan: sinds maandag. Waarschijnlijk drukt onzekerheid uit. Beterschap is een wens voor iemand die ziek is. De klachtenwoorden zijn taaloefening, geen diagnose.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-52",
+    "photo": 52,
+    "file": "IMG_083D477D-9DFE-4EDD-ACC2-3A2E8355BCB2.jpeg",
+    "lessonId": "kleren-kleur",
+    "title": "Verkleinwoorden",
+    "terms": [
+      "de broek",
+      "het broekje",
+      "het huis",
+      "het huisje",
+      "het kind",
+      "het kindje"
+    ],
+    "verbs": [
+      "zijn"
+    ],
+    "rule": "Verkleinwoorden in het enkelvoud krijgen het: het broekje, het huisje, het kindje. Het meervoud krijgt altijd de: de broeken, de huizen, de kinderen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-53",
+    "photo": 53,
+    "file": "IMG_2BA7E766-6E2D-4645-BE26-0B47C5300F2D.jpeg",
+    "lessonId": "groeten",
+    "title": "Jij en u",
+    "terms": [
+      "jong",
+      "de voornaam",
+      "oud",
+      "de achternaam",
+      "zeggen",
+      "kennen",
+      "u",
+      "jij"
+    ],
+    "verbs": [
+      "zeggen",
+      "kennen"
+    ],
+    "rule": "U is een beleefde aanspreekvorm; jij is informeel. Voornaam is je persoonlijke naam, achternaam je familienaam. De aanspreekvorm hangt ook af van de situatie en voorkeur.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-54",
+    "photo": 54,
+    "file": "IMG_D3496A02-5D9B-490B-8677-3405D7F3CB9A.jpeg",
+    "lessonId": "kleren-kleur",
+    "title": "De en het",
+    "terms": [
+      "de vrouw",
+      "de jongen",
+      "de broek",
+      "de tas",
+      "de vraag",
+      "het boek",
+      "het kind",
+      "het huis",
+      "het antwoord",
+      "het meisje",
+      "het tasje"
+    ],
+    "verbs": [
+      "leren"
+    ],
+    "rule": "Leer het lidwoord samen met het zelfstandig naamwoord. Meervouden krijgen de. Verkleinwoorden in het enkelvoud krijgen het, ook als de betekenis een persoon is: het meisje.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-55",
+    "photo": 55,
+    "file": "IMG_EF93AD13-241D-40EC-8CBF-1423376269C8.jpeg",
+    "lessonId": "openingstijden",
+    "title": "Openingstijden",
+    "terms": [
+      "open",
+      "dicht",
+      "de openingstijden",
+      "het internet",
+      "online",
+      "bestellen",
+      "brengen",
+      "ophalen",
+      "toch",
+      "behalve",
+      "gesloten",
+      "de feestdag"
+    ],
+    "verbs": [
+      "kopen",
+      "bestellen",
+      "brengen",
+      "ophalen"
+    ],
+    "rule": "Openingstijden geven aan wanneer een winkel open is. Behalve noemt een uitzondering. Bij online bestellen worden spullen bezorgd of haal je ze zelf op. De voorbeeldtijden zijn oefenmateriaal.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-56",
+    "photo": 56,
+    "file": "IMG_402317AC-205F-4EB0-8C4B-D0E95E4A7901.jpeg",
+    "lessonId": "openingstijden",
+    "title": "Uur en dagdelen",
+    "terms": [
+      "het uur",
+      "de minuut",
+      "het kwartier",
+      "de seconde",
+      "half",
+      "de ochtend",
+      "de middag",
+      "de avond",
+      "de nacht"
+    ],
+    "verbs": [
+      "duren"
+    ],
+    "rule": "Een uur heeft 60 minuten, een half uur 30 minuten, een kwartier 15 minuten en een minuut 60 seconden. Een digitale klok kan 24-uursnotatie gebruiken: 14.00 is twee uur ’s middags.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-57",
+    "photo": 57,
+    "file": "IMG_6D3E5F8D-838A-4743-85E3-F671FCA65012.jpeg",
+    "lessonId": "openingstijden",
+    "title": "Voor en over",
+    "terms": [
+      "voor",
+      "over",
+      "het kwartier",
+      "het uur"
+    ],
+    "verbs": [
+      "zijn"
+    ],
+    "rule": "2.05 is vijf over twee; 2.10 tien over twee; 2.15 kwart over twee. 2.45 is kwart voor drie; 2.50 tien voor drie; 2.55 vijf voor drie. Half drie is 2.30.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-58",
+    "photo": 58,
+    "file": "IMG_610F19E9-DC37-4D11-B8D4-A2B2D7297F21.jpeg",
+    "lessonId": "kleren-kleur",
+    "title": "Wat draag je?",
+    "terms": [
+      "kort",
+      "de jurk",
+      "de laars",
+      "net",
+      "de kleren",
+      "het pak",
+      "lang",
+      "dragen",
+      "het werk",
+      "aanhebben",
+      "vrij",
+      "allebei"
+    ],
+    "verbs": [
+      "dragen",
+      "aanhebben"
+    ],
+    "rule": "Voor een zelfstandig naamwoord krijgt een bijvoeglijk naamwoord vaak een e: een korte jurk, nette kleren, bruine schoenen. Een pak is een combinatie van passende kledingstukken. Allebei betekent beiden.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-59",
+    "photo": 59,
+    "file": "IMG_3F505222-5E7D-4CF2-9824-3670E7C7035B.jpeg",
+    "lessonId": "station-bus",
+    "title": "Op reis",
+    "terms": [
+      "de fiets",
+      "de bus",
+      "de auto",
+      "het station",
+      "de trein",
+      "het vliegtuig",
+      "de tram",
+      "de metro",
+      "de boot",
+      "reizen",
+      "laat",
+      "nemen"
+    ],
+    "verbs": [
+      "reizen",
+      "nemen"
+    ],
+    "rule": "Je reist met de trein, bus, tram, metro, boot of het vliegtuig. Het station is de plaats waar treinen stoppen. Neem de bus betekent dat je de bus als vervoer kiest.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-60",
+    "photo": 60,
+    "file": "IMG_21B74734-878A-407C-8B16-C306621250A6.jpeg",
+    "lessonId": "openingstijden",
+    "title": "Tijd en duur",
+    "terms": [
+      "de klok",
+      "de tijd",
+      "duren",
+      "de ochtend",
+      "de middag",
+      "de avond",
+      "de nacht",
+      "’s nachts"
+    ],
+    "verbs": [
+      "duren"
+    ],
+    "rule": "Hoe laat? vraagt naar een tijdstip. Hoe lang? vraagt naar een duur. ’s Nachts betekent tijdens de nacht; een klok laat de tijd zien.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-61",
+    "photo": 61,
+    "file": "IMG_F9E4FA0F-3453-4EDD-B8AB-FD2AB0B105D6.jpeg",
+    "lessonId": "passen-ruilen",
+    "title": "Ruilen",
+    "terms": [
+      "het gat",
+      "werken",
+      "kapot",
+      "ruilen",
+      "dezelfde",
+      "een ogenblik",
+      "sturen",
+      "even",
+      "jammer",
+      "wel",
+      "nee",
+      "meenemen"
+    ],
+    "verbs": [
+      "werken",
+      "ruilen",
+      "sturen",
+      "meenemen"
+    ],
+    "rule": "Een kapot kledingstuk kan een gat hebben. Ruilen betekent iets teruggeven en iets anders krijgen. Dezelfde betekent identiek aan wat eerder genoemd is. Een ogenblik vraagt om kort wachten.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-62",
+    "photo": 62,
+    "file": "IMG_4DD6F421-E586-4013-AE74-1DFE1F036527.jpeg",
+    "lessonId": "wassen-accessoires",
+    "title": "Accessoires",
+    "terms": [
+      "de hoed",
+      "de bril",
+      "de oorbel",
+      "de muts",
+      "de sjaal",
+      "de handschoen",
+      "de hoofddoek",
+      "de armband",
+      "het sieraad",
+      "de ring",
+      "het horloge",
+      "de ketting"
+    ],
+    "verbs": [
+      "dragen"
+    ],
+    "rule": "Sieraad wordt sieraden, oorbel wordt oorbellen, handschoen wordt handschoenen. Een horloge draag je om de pols; een ketting om de hals; een ring om een vinger.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-63",
+    "photo": 63,
+    "file": "IMG_6B53CB7E-4DF7-46C5-8D07-047175EFC1CD.jpeg",
+    "lessonId": "wassen-accessoires",
+    "title": "Wassen",
+    "terms": [
+      "wassen",
+      "vies",
+      "donker",
+      "warm",
+      "de graad",
+      "schoon",
+      "ophangen",
+      "droog",
+      "zelf",
+      "alles",
+      "apart",
+      "meteen"
+    ],
+    "verbs": [
+      "wassen",
+      "ophangen"
+    ],
+    "rule": "Vies en schoon zijn tegengestelden; nat en droog ook. Apart wassen betekent gescheiden van andere was. Een temperatuur wordt in graden uitgedrukt; volg het wasetiket voor het kledingstuk.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-64",
+    "photo": 64,
+    "file": "IMG_0FDFADED-0F34-4EC0-BD09-BFB69891DFF2.jpeg",
+    "lessonId": "passen-ruilen",
+    "title": "Kleding passen",
+    "terms": [
+      "de kleding",
+      "het feest",
+      "de medewerker",
+      "trouwen",
+      "de knoop",
+      "passen",
+      "de paskamer",
+      "de maat",
+      "een moment",
+      "de bloes",
+      "mogen",
+      "te"
+    ],
+    "verbs": [
+      "passen",
+      "trouwen",
+      "mogen"
+    ],
+    "rule": "In een paskamer probeer je kleding. Te groot of te klein betekent dat de maat niet goed is. Mag ik dit passen? is een beleefd verzoek. De knoop sluit een kledingstuk.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-65",
+    "photo": 65,
+    "file": "IMG_3AFFB7B1-324A-4DBF-90E8-C358A9E3839D.jpeg",
+    "lessonId": "verkeer-route",
+    "title": "Verkeer",
+    "terms": [
+      "het verkeer",
+      "het bord",
+      "rijden",
+      "de snelweg",
+      "het fietspad",
+      "de weg",
+      "het zebrapad",
+      "het stoplicht",
+      "de regel",
+      "de kleur",
+      "stoppen",
+      "opletten"
+    ],
+    "verbs": [
+      "rijden",
+      "stoppen",
+      "opletten"
+    ],
+    "rule": "Een verkeersbord geeft informatie, een gebod of verbod. Een stoplicht gebruikt kleuren. Een zebrapad is een oversteekplaats. Hier oefen je verkeerswoordenschat, geen volledig verkeersreglement.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-66",
+    "photo": 66,
+    "file": "IMG_4D3662E7-A64F-441A-8E9A-D368C740A554.jpeg",
+    "lessonId": "verkeer-route",
+    "title": "Verkeersborden lezen",
+    "terms": [
+      "de regel",
+      "het verkeersbord",
+      "de snelweg",
+      "het fietspad",
+      "het zebrapad",
+      "binnen",
+      "buiten",
+      "mogen"
+    ],
+    "verbs": [
+      "mogen",
+      "rijden",
+      "lopen"
+    ],
+    "rule": "De afgebeelde borden illustreren plaatsnamen, maximumsnelheden, fietspaden en verboden. Mogen drukt toestemming uit; niet mogen een verbod. De historische snelheden zijn geen actuele rij-instructie.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-67",
+    "photo": 67,
+    "file": "IMG_E54C8C38-2A43-4030-A710-6BD29AE2A086.jpeg",
+    "lessonId": "nederland-kaart",
+    "title": "Windrichtingen",
+    "terms": [
+      "de kaart",
+      "de provincie",
+      "het noorden",
+      "het oosten",
+      "het zuiden",
+      "het westen",
+      "het midden",
+      "het eiland",
+      "het land",
+      "naartoe",
+      "de hoofdstad",
+      "belangrijk"
+    ],
+    "verbs": [
+      "liggen"
+    ],
+    "rule": "De vier windrichtingen zijn noord, oost, zuid en west. Midden betekent het centrale deel. Eiland wordt eilanden; provincie wordt provincies. Een hoofdstad is de bestuurlijke hoofdplaats van een land of provincie.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-68",
+    "photo": 68,
+    "file": "IMG_33B05ACE-E0EF-4C73-80DB-D350A6D3D01E.jpeg",
+    "lessonId": "nederland-kaart",
+    "title": "Hoofdsteden",
+    "terms": [
+      "de hoofdstad",
+      "de provincie",
+      "het land",
+      "belangrijk",
+      "Amsterdam",
+      "Maastricht",
+      "Groningen"
+    ],
+    "verbs": [
+      "heten"
+    ],
+    "rule": "Een provincie heeft een hoofdstad. Amsterdam is de hoofdstad van Nederland. Maastricht hoort bij Limburg; Groningen is zowel de naam van een provincie als van haar hoofdstad.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-69",
+    "photo": 69,
+    "file": "IMG_05676BFA-C8D1-486B-A793-7D9433900B05.jpeg",
+    "lessonId": "onderweg-plannen",
+    "title": "Voorzetsels van tijd",
+    "terms": [
+      "voor",
+      "na",
+      "over",
+      "van",
+      "tot",
+      "in",
+      "op",
+      "sinds",
+      "tijdens"
+    ],
+    "verbs": [
+      "wassen",
+      "drinken",
+      "werken",
+      "trouwen"
+    ],
+    "rule": "Voor en na vergelijken momenten. Over twee uur is twee uur vanaf nu. Van tien tot twaalf geeft begin en eind aan. Gebruik in bij maand en jaar, op bij datum en dag, sinds bij een beginpunt en tijdens bij een periode.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-70",
+    "photo": 70,
+    "file": "IMG_3E4ECFA5-36EB-43D1-9979-1D458BA706B3.jpeg",
+    "lessonId": "onderweg-plannen",
+    "title": "Te laat onderweg",
+    "terms": [
+      "de collega",
+      "de file",
+      "te laat",
+      "snappen",
+      "denken",
+      "prima",
+      "onderweg",
+      "de plek",
+      "dus",
+      "doorgeven",
+      "alvast",
+      "tot straks"
+    ],
+    "verbs": [
+      "bellen",
+      "snappen",
+      "denken",
+      "doorgeven"
+    ],
+    "rule": "Een file kan maken dat je te laat komt. Onderweg betekent dat je nog reist. Geef een bericht door aan een collega. Tot straks verwijst naar een ontmoeting later op dezelfde dag.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-71",
+    "photo": 71,
+    "file": "IMG_0A942EB4-9F76-49C2-9E8E-83C98CB7EBF6.jpeg",
+    "lessonId": "verkeer-route",
+    "title": "De weg vragen",
+    "terms": [
+      "het station",
+      "de weg",
+      "oversteken",
+      "het kruispunt",
+      "rechts",
+      "links",
+      "rechtdoor",
+      "ongeveer",
+      "ver",
+      "dichtbij"
+    ],
+    "verbs": [
+      "vragen",
+      "lopen",
+      "oversteken"
+    ],
+    "rule": "Vraag naar een bestemming en volg de volgorde van de route: eerst oversteken, daarna bij een kruispunt afslaan. Linksaf, rechtsaf en rechtdoor geven verschillende richtingen aan.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-72",
+    "photo": 72,
+    "file": "IMG_E6837FE7-F455-44C8-B8F0-3F49D02501B6.jpeg",
+    "lessonId": "verkeer-route",
+    "title": "Routewoorden",
+    "terms": [
+      "de weg",
+      "oversteken",
+      "het kruispunt",
+      "rechtsaf",
+      "linksaf",
+      "rechtdoor",
+      "ver",
+      "dichtbij",
+      "eerst",
+      "bij"
+    ],
+    "verbs": [
+      "oversteken",
+      "lopen"
+    ],
+    "rule": "Eerst geeft de eerste stap aan. Bij het kruispunt noemt de plaats waar je een handeling uitvoert. Ver en dichtbij beschrijven afstand.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-73",
+    "photo": 73,
+    "file": "IMG_0786CC49-21C3-412B-93C8-247511FB7134.jpeg",
+    "lessonId": "nederland-kaart",
+    "title": "Provincies van Nederland",
+    "terms": [
+      "Nederland",
+      "de provincie",
+      "het noorden",
+      "het oosten",
+      "het zuiden",
+      "het westen",
+      "het midden",
+      "het eiland",
+      "Groningen",
+      "Friesland",
+      "Drenthe",
+      "Overijssel",
+      "Gelderland",
+      "Limburg",
+      "Noord-Brabant",
+      "Zeeland",
+      "Zuid-Holland",
+      "Noord-Holland",
+      "Utrecht",
+      "Flevoland",
+      "Texel"
+    ],
+    "verbs": [
+      "liggen"
+    ],
+    "rule": "Nederland heeft twaalf provincies. De kaart oefent hun ligging en windrichtingen. Texel is het grootste Nederlandse Waddeneiland. De vijf op de kaart genoemde Waddeneilanden zijn niet alle eilanden van Nederland.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-74",
+    "photo": 74,
+    "file": "IMG_98ADC97F-63A2-46EC-9E6C-AA8D360F2E3F.jpeg",
+    "lessonId": "verkeer-route",
+    "title": "Plaats en beweging",
+    "terms": [
+      "op",
+      "onder",
+      "voor",
+      "achter",
+      "naast",
+      "tussen",
+      "in",
+      "uit",
+      "over",
+      "tegenover",
+      "aan",
+      "boven",
+      "de doos",
+      "de hond",
+      "de kat"
+    ],
+    "verbs": [
+      "zitten",
+      "springen",
+      "hangen"
+    ],
+    "rule": "Op, onder, voor, achter, naast, tussen, in en tegenover beschrijven een plaats. Uit en over kunnen beweging beschrijven. Een foto hangt aan de muur; een lamp hangt boven de tafel.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-75",
+    "photo": 75,
+    "file": "IMG_F97E8D98-41CF-462A-9290-5488AA556D84.jpeg",
+    "lessonId": "hobbys-sport",
+    "title": "Sport en teams",
+    "terms": [
+      "sporten",
+      "voetballen",
+      "de dame",
+      "de heer",
+      "het team",
+      "de wedstrijd",
+      "de club",
+      "iedereen",
+      "trainen",
+      "spelen",
+      "de informatie",
+      "vanaf"
+    ],
+    "verbs": [
+      "sporten",
+      "voetballen",
+      "trainen",
+      "spelen"
+    ],
+    "rule": "Je traint bij een club en speelt een wedstrijd met een team. Vanaf geeft een beginpunt aan, bijvoorbeeld een minimumleeftijd. Iedereen betekent alle betrokken mensen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-76",
+    "photo": 76,
+    "file": "IMG_EEF77F6D-2A1E-47BE-A760-EE1D7F66CDB3.jpeg",
+    "lessonId": "persoonlijke-gegevens",
+    "title": "Een formulier invullen",
+    "terms": [
+      "het formulier",
+      "invullen",
+      "het adres",
+      "het huisnummer",
+      "de postcode",
+      "de woonplaats",
+      "het e-mailadres",
+      "daarom",
+      "de cursus",
+      "starten",
+      "inschrijven",
+      "de geboortedatum"
+    ],
+    "verbs": [
+      "invullen",
+      "starten",
+      "inschrijven"
+    ],
+    "rule": "Een adres bevat straat, huisnummer, postcode en woonplaats. Een formulier kan ook geboortedatum en e-mailadres vragen. Inschrijven betekent je aanmelden voor bijvoorbeeld een cursus.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-77",
+    "photo": 77,
+    "file": "IMG_B5155888-4BD2-4123-B94F-DF38D1138FC2.jpeg",
+    "lessonId": "begrijpen-verstaan",
+    "title": "Woorden leren",
+    "terms": [
+      "de betekenis",
+      "het woordenboek",
+      "het internet",
+      "het plaatje",
+      "het woordweb",
+      "de tekening",
+      "de zin",
+      "de tegenstelling",
+      "onthouden"
+    ],
+    "verbs": [
+      "zoeken",
+      "vragen",
+      "onthouden",
+      "schrijven",
+      "maken"
+    ],
+    "rule": "Om een woord te onthouden kun je een betekenis opzoeken, een tekening of woordweb maken, een voorbeeldzin schrijven, een synoniem of tegenstelling noteren. Bewaar woorden alfabetisch en schrijf de of het erbij.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-78",
+    "photo": 78,
+    "file": "IMG_5CB33F41-1F13-46D0-BEE7-39FCED760A86.jpeg",
+    "lessonId": "station-bus",
+    "title": "Op het station",
+    "terms": [
+      "het bord",
+      "de vertrektijd",
+      "vertrekken",
+      "druk",
+      "missen",
+      "wachten",
+      "het spoor",
+      "via",
+      "gelukkig",
+      "aankomen"
+    ],
+    "verbs": [
+      "vertrekken",
+      "missen",
+      "wachten",
+      "aankomen"
+    ],
+    "rule": "Vertrektijd is het moment waarop de trein weggaat; aankomen is de bestemming bereiken. Via noemt een tussenpunt. Op het bord lees je tijd en spoor. De tijden op de foto zijn oefenvoorbeelden.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-79",
+    "photo": 79,
+    "file": "IMG_F7E7FF94-91F7-4E34-A19A-A6934A21019F.jpeg",
+    "lessonId": "onderweg-plannen",
+    "title": "Twee werkwoorden",
+    "terms": [
+      "het werkwoord",
+      "sporten",
+      "de koffie",
+      "voetballen"
+    ],
+    "verbs": [
+      "gaan",
+      "willen",
+      "kunnen",
+      "sporten",
+      "drinken",
+      "voetballen"
+    ],
+    "rule": "Met een vervoegd hulpwerkwoord staat de infinitief vaak aan het einde: Ik wil morgen sporten. De persoonsvorm staat op plaats twee; de infinitief verandert niet met het onderwerp.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-80",
+    "photo": 80,
+    "file": "IMG_C8D825A3-407C-46F0-B7AE-DF359DC780F7.jpeg",
+    "lessonId": "geen-niet",
+    "title": "Geen en niet",
+    "terms": [
+      "geen",
+      "niet",
+      "het ijsje",
+      "de tuin",
+      "de schoen",
+      "het kind",
+      "de suiker",
+      "de koffie"
+    ],
+    "verbs": [
+      "kopen",
+      "hebben",
+      "zwemmen",
+      "gaan"
+    ],
+    "rule": "Geen ontkent een onbepaald zelfstandig naamwoord: geen tuin, geen schoenen, geen suiker. Niet ontkent onder meer een werkwoord, eigenschap of bepaalde woordgroep: hij zwemt niet, niet groot, niet met de bus.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-81",
+    "photo": 81,
+    "file": "IMG_D9152280-539A-4719-A606-342FF3A1C82C.jpeg",
+    "lessonId": "station-bus",
+    "title": "Bus en halte",
+    "terms": [
+      "slapen",
+      "de halte",
+      "hangen",
+      "uitstappen",
+      "instappen",
+      "de chauffeur",
+      "blijven",
+      "net",
+      "volgend",
+      "eindelijk"
+    ],
+    "verbs": [
+      "slapen",
+      "hangen",
+      "uitstappen",
+      "instappen",
+      "blijven"
+    ],
+    "rule": "Bij een halte stap je in of uit. De chauffeur bestuurt de bus. De volgende bus komt na deze bus. Net kan vlak vóór het genoemde moment betekenen: de bus is net weg.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-82",
+    "photo": 82,
+    "file": "IMG_C4A6C59B-D446-4C52-AC16-C8E445AEA849.jpeg",
+    "lessonId": "hobbys-sport",
+    "title": "Hobby’s",
+    "terms": [
+      "vertellen",
+      "de bal",
+      "tekenen",
+      "zwemmen",
+      "de vriend",
+      "dansen",
+      "de muziek",
+      "de hobby",
+      "houden van",
+      "weer",
+      "bewegen",
+      "gezond"
+    ],
+    "verbs": [
+      "vertellen",
+      "tekenen",
+      "zwemmen",
+      "dansen",
+      "houden",
+      "bewegen"
+    ],
+    "rule": "Met Ik houd van noem je wat je leuk vindt. Hobby’s zijn bezigheden in je vrije tijd. Vriend wordt vrienden; hobby wordt hobby’s.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-83",
+    "photo": 83,
+    "file": "IMG_5F642F4F-33DE-44A8-B97E-8131354ED6E5.jpeg",
+    "lessonId": "uitgaan",
+    "title": "Het weekend",
+    "terms": [
+      "uit eten",
+      "het restaurant",
+      "zingen",
+      "het museum",
+      "de zee",
+      "het strand",
+      "de radio",
+      "het concert",
+      "op bezoek",
+      "het liedje",
+      "als",
+      "een dagje weg"
+    ],
+    "verbs": [
+      "zingen",
+      "bezoeken",
+      "wandelen"
+    ],
+    "rule": "Uit eten betekent eten in een restaurant. Op bezoek gaan is iemand bezoeken. Een dagje weg is een korte uitstap. Muziek kun je thuis beluisteren of bij een concert horen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-84",
+    "photo": 84,
+    "file": "IMG_EB760149-9C9B-4E77-8A0B-004427FDCC7D.jpeg",
+    "lessonId": "dieren",
+    "title": "Dieren",
+    "terms": [
+      "het dier",
+      "de hond",
+      "de kat",
+      "de boerderij",
+      "de koe",
+      "het paard",
+      "het schaap",
+      "het varken",
+      "dik",
+      "leuk",
+      "kwijt",
+      "overal"
+    ],
+    "verbs": [
+      "geven",
+      "zoeken"
+    ],
+    "rule": "Dier wordt dieren, koe wordt koeien, schaap wordt schapen. Een boerderij kan verschillende dieren hebben. Kwijt betekent dat je niet weet waar iets of iemand is; overal betekent op alle plaatsen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-85",
+    "photo": 85,
+    "file": "IMG_F27039B0-3910-4002-8430-E761A3C4F927.jpeg",
+    "lessonId": "begrijpen-verstaan",
+    "title": "Ik begrijp het niet",
+    "terms": [
+      "bedoelen",
+      "uitleggen",
+      "verstaan",
+      "langzaam",
+      "nog een keer",
+      "herhalen"
+    ],
+    "verbs": [
+      "bedoelen",
+      "uitleggen",
+      "verstaan",
+      "herhalen"
+    ],
+    "rule": "Begrijpen gaat over betekenis; verstaan over horen en herkennen wat iemand zegt. Vraag Kunt u dat uitleggen? bij onbegrip en Kunt u dat herhalen? als je het opnieuw wilt horen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-86",
+    "photo": 86,
+    "file": "IMG_8DFFCD3C-AEFF-4520-AB55-C848AC46DEDC.jpeg",
+    "lessonId": "nederland-kaart",
+    "title": "Wereldkaart",
+    "terms": [
+      "de kaart",
+      "het land",
+      "Nederland"
+    ],
+    "verbs": [
+      "wonen",
+      "komen"
+    ],
+    "rule": "De opdracht laat je Nederland en je eigen land aanwijzen. De kaart bevat veel plaatsnamen; deze inventaris beperkt zich tot de leeropdracht en reproduceert niet alle kaartlabels. Het zichtbare Wikimedia/CC BY-SA-credit blijft bij de oorspronkelijke kaart; de foto wordt niet verspreid.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-87",
+    "photo": 87,
+    "file": "IMG_D57B8CA6-AA4E-4686-93F2-4980AB5DE981.jpeg",
+    "lessonId": "meubels-kleuren",
+    "title": "Dit, dat, deze en die",
+    "terms": [
+      "dit",
+      "dat",
+      "deze",
+      "die",
+      "hier",
+      "daar",
+      "dichtbij",
+      "ver",
+      "het boek",
+      "de tas"
+    ],
+    "verbs": [
+      "aanwijzen"
+    ],
+    "rule": "Bij een het-woord: dit dichtbij, dat verder weg. Bij een de-woord: deze dichtbij, die verder weg. In het meervoud gebruik je altijd deze of die, ongeacht het enkelvoudige lidwoord.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-88",
+    "photo": 88,
+    "file": "IMG_8E4B3648-8083-425E-B1BB-F53A5315198D.jpeg",
+    "lessonId": "vakantie-weer",
+    "title": "Op vakantie",
+    "terms": [
+      "de tent",
+      "het weer",
+      "wandelen",
+      "fietsen",
+      "het zwembad",
+      "de natuur",
+      "de bloem",
+      "de vogel",
+      "de vakantie",
+      "ieder",
+      "op vakantie gaan",
+      "groetjes"
+    ],
+    "verbs": [
+      "wandelen",
+      "fietsen",
+      "zwemmen",
+      "gaan"
+    ],
+    "rule": "Op een vakantiekaart kun je vertellen waar je bent, hoe het weer is en wat je doet. Bloem wordt bloemen; vogel wordt vogels. Ieder krijgt een e vóór een de-woord: iedere dag; ieder jaar.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-89",
+    "photo": 89,
+    "file": "IMG_F95BF214-F36E-4246-99BA-E6B4A875719D.jpeg",
+    "lessonId": "nederland-kaart",
+    "title": "Wereldkaart tweede foto",
+    "terms": [
+      "de kaart",
+      "het land",
+      "Nederland"
+    ],
+    "verbs": [
+      "wonen",
+      "komen"
+    ],
+    "rule": "Deze foto toont dezelfde kaart en dezelfde aanwijsoefening als bronfoto 86. Zij blijft als afzonderlijke bron geregistreerd, maar veroorzaakt geen dubbele woorden of kaartinhoud.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
+  },
+  {
+    "id": "a1-source-90",
+    "photo": 90,
+    "file": "IMG_80488C74-DAAE-48A7-A7DA-546A6C80D0F8.jpeg",
+    "lessonId": "uitgaan",
+    "title": "Vrije tijd met vrienden",
+    "terms": [
+      "de vriendin",
+      "de film",
+      "schoonmaken",
+      "kletsen",
+      "het café",
+      "het bier",
+      "zin hebben in",
+      "elkaar",
+      "jawel",
+      "weleens",
+      "inderdaad",
+      "veel plezier"
+    ],
+    "verbs": [
+      "schoonmaken",
+      "kletsen",
+      "hebben"
+    ],
+    "rule": "Zin hebben in geeft een wens aan. Elkaar beschrijft een wederzijdse relatie. Jawel kan een negatieve vraag tegenspreken. Veel plezier wens je iemand die iets leuks gaat doen.",
+    "status": "visible-targets-reviewed",
+    "limits": "Zichtbare leerwoorden en regels; geen reconstructie van afgesneden oefeningen of ontbrekende uitgeversaudio."
   }
 ];
 
@@ -3049,7 +9483,8 @@ const centralLexiconEntries = [
   lexeme('het gaat goed', 'Een positief antwoord op de vraag hoe het gaat.', 'Dank je, het gaat goed.', 'uitdrukking', 'A1'),
 
   ...a1ExpansionLexicon,
-  ...a1ExpansionVerbs.filter((verb) => !['vertrekken', 'bezoeken'].includes(verb.infinitive)).map((verb) => ({
+  ...a1SourceLexicon,
+  ...a1ExpansionVerbs.filter((verb) => !['vertrekken', 'bezoeken', 'sporten', 'voetballen', 'onthouden'].includes(verb.infinitive)).map((verb) => ({
     term: verb.infinitive, definition: verb.meaning, example: verb.examples[0], kind: 'werkwoord',
     level: 'A1', status: 'editorially-reviewed', source: 'A1-werkwoordenatlas · centrale lexiconredactie', verbId: verb.infinitive,
   })),
@@ -3140,518 +9575,6 @@ function safeProgress(raw = {}) {
     c2Completed: Array.isArray(raw.c2Completed) ? [...new Set(raw.c2Completed.filter((item) => typeof item === 'string'))] : [],
   };
 }
-
-// Original summaries; canonical lexicon, verb and grammar references.
-const a1ReferenceCards = [
-  {
-    "id": "kennismaken",
-    "themeId": "hallo",
-    "title": "Jezelf voorstellen",
-    "rule": "Gebruik zijn voor je naam of leeftijd en hebben voor bezit en familie.",
-    "examples": [
-      "Ik ben Sara. Ik ben dertig jaar.",
-      "Ik heb een broer. Hij woont in Delft."
-    ],
-    "terms": [
-      "de naam",
-      "de familie"
-    ],
-    "verbs": [
-      "zijn",
-      "hebben"
-    ],
-    "grammarIds": [
-      "hebben-zijn"
-    ]
-  },
-  {
-    "id": "beleefd",
-    "themeId": "hallo",
-    "title": "Jij of u?",
-    "rule": "Jij is informeel. U is beleefd of formeel. Stem je begroeting af op de situatie.",
-    "examples": [
-      "Goedemorgen. Hoe heet u?",
-      "Hoi! Hoe gaat het met je?"
-    ],
-    "terms": [
-      "morgen",
-      "de avond"
-    ],
-    "verbs": [
-      "heten",
-      "groeten"
-    ],
-    "grammarIds": [
-      "register"
-    ]
-  },
-  {
-    "id": "familie",
-    "themeId": "hallo",
-    "title": "Familie en bezit",
-    "rule": "Mijn, jouw en zijn vertellen bij wie iets hoort. Neef en nicht kunnen twee familierelaties aanduiden; de context helpt.",
-    "examples": [
-      "Dit is mijn zus. Haar dochter is mijn nicht.",
-      "De zoon van mijn tante is mijn neef."
-    ],
-    "terms": [
-      "de zus",
-      "de broer"
-    ],
-    "verbs": [
-      "wonen",
-      "heten"
-    ],
-    "grammarIds": [
-      "bezittelijk"
-    ]
-  },
-  {
-    "id": "klanken",
-    "themeId": "school",
-    "title": "Klank en spelling",
-    "rule": "Vergelijk korte en lange klinkers. Twee letters vormen niet altijd een tweeklank: ie en oe geven elk één klinker weer. Ei en ij klinken hetzelfde; au en ou ook.",
-    "examples": [
-      "man — maan; bom — boom",
-      "fiets — boek; trein — ijs; auto — koud"
-    ],
-    "terms": [
-      "het boek",
-      "de school"
-    ],
-    "verbs": [
-      "luisteren",
-      "spreken"
-    ],
-    "grammarIds": []
-  },
-  {
-    "id": "hulp",
-    "themeId": "school",
-    "title": "Vraag om uitleg",
-    "rule": "Begrijpen gaat over de betekenis. Verstaan gaat over wat je hoort. Vraag gerust om herhaling.",
-    "examples": [
-      "Kunt u dat woord uitleggen?",
-      "Wilt u wat langzamer praten? Ik versta u niet goed."
-    ],
-    "terms": [
-      "de vraag",
-      "het antwoord"
-    ],
-    "verbs": [
-      "begrijpen",
-      "verstaan",
-      "herhalen"
-    ],
-    "grammarIds": [
-      "modale-werkwoorden"
-    ]
-  },
-  {
-    "id": "hoofdzin",
-    "themeId": "school",
-    "title": "Het werkwoord op plaats twee",
-    "rule": "In een gewone hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een zinsdeel kan uit meer woorden bestaan.",
-    "examples": [
-      "Ik lees vandaag een boek.",
-      "Na de les lees ik een boek."
-    ],
-    "terms": [
-      "de les",
-      "het boek"
-    ],
-    "verbs": [
-      "lezen",
-      "schrijven"
-    ],
-    "grammarIds": [
-      "gewone-zin",
-      "woordvolgorde"
-    ]
-  },
-  {
-    "id": "vragen",
-    "themeId": "school",
-    "title": "Vragen maken",
-    "rule": "Een ja-neevraag begint met de persoonsvorm. Een vraagwoord vraagt naar specifieke informatie. Bij jij of je als onderwerp ná de persoonsvorm vervalt de toegevoegde t.",
-    "examples": [
-      "Werk jij vandaag? Waar werk je?",
-      "Wanneer begint de les?"
-    ],
-    "terms": [
-      "de vraag",
-      "dag"
-    ],
-    "verbs": [
-      "werken",
-      "beginnen"
-    ],
-    "grammarIds": [
-      "vraagwoorden",
-      "tegenwoordige-tijd"
-    ]
-  },
-  {
-    "id": "kamers",
-    "themeId": "wonen",
-    "title": "Kamers en plaats",
-    "rule": "Gebruik een plaatsvoorzetsel om te vertellen waar iets is. Boven en beneden geven een plaats of richting aan.",
-    "examples": [
-      "De lamp staat naast het bed.",
-      "De keuken is beneden. De badkamer is boven."
-    ],
-    "terms": [
-      "de keuken",
-      "het bed"
-    ],
-    "verbs": [
-      "staan",
-      "liggen"
-    ],
-    "grammarIds": [
-      "voorzetsels-plaats"
-    ]
-  },
-  {
-    "id": "artikelen",
-    "themeId": "wonen",
-    "title": "De, het en een",
-    "rule": "Leer een zelfstandig naamwoord samen met het lidwoord. Meervouden hebben de. Verkleinwoorden in het enkelvoud hebben het.",
-    "examples": [
-      "de stoel — de stoelen",
-      "het huis — de huizen; het huisje"
-    ],
-    "terms": [
-      "de stoel",
-      "het huis"
-    ],
-    "verbs": [
-      "zijn"
-    ],
-    "grammarIds": [
-      "bepaald-lidwoord",
-      "onbepaald-lidwoord",
-      "verkleinwoord"
-    ]
-  },
-  {
-    "id": "aanwijzen",
-    "themeId": "wonen",
-    "title": "Dit, dat, deze, die",
-    "rule": "Dichtbij: dit bij een het-woord, deze bij een de-woord of meervoud. Verder weg: dat of die.",
-    "examples": [
-      "dit huis — dat huis",
-      "deze stoel — die stoel; deze huizen — die huizen"
-    ],
-    "terms": [
-      "het huis",
-      "de stoel"
-    ],
-    "verbs": [
-      "zien"
-    ],
-    "grammarIds": [
-      "aanwijzend"
-    ]
-  },
-  {
-    "id": "meervoud",
-    "themeId": "wonen",
-    "title": "Meer dan één",
-    "rule": "Veel meervouden krijgen -en of -s. De spelling kan veranderen om de klinkerklank te behouden. Leer uitzonderingen bij het woord.",
-    "examples": [
-      "raam — ramen; bed — bedden",
-      "tafel — tafels; kind — kinderen"
-    ],
-    "terms": [
-      "het raam",
-      "de tafel"
-    ],
-    "verbs": [
-      "hebben"
-    ],
-    "grammarIds": [
-      "meervoud"
-    ]
-  },
-  {
-    "id": "boodschappen",
-    "themeId": "eten",
-    "title": "Hoeveel kost het?",
-    "rule": "Vraag naar de prijs, de hoeveelheid of het totaal. In Nederlandse prijzen staat een komma tussen euro’s en centen.",
-    "examples": [
-      "Mag ik een halve kilo appels?",
-      "Dat kost twee euro vijftig: € 2,50."
-    ],
-    "terms": [
-      "de appel",
-      "de prijs"
-    ],
-    "verbs": [
-      "kosten",
-      "betalen"
-    ],
-    "grammarIds": [
-      "hoofdtelwoord"
-    ]
-  },
-  {
-    "id": "koken",
-    "themeId": "eten",
-    "title": "In de keuken",
-    "rule": "Noem eerst wat je nodig hebt. Gebruik een korte instructie om te vertellen wat iemand moet doen.",
-    "examples": [
-      "Ik heb twee tomaten nodig.",
-      "Snijd de tomaten. Doe ze in de pan."
-    ],
-    "terms": [
-      "de pan",
-      "de tomaat"
-    ],
-    "verbs": [
-      "snijden",
-      "koken"
-    ],
-    "grammarIds": [
-      "modale-werkwoorden"
-    ]
-  },
-  {
-    "id": "ontkennen",
-    "themeId": "eten",
-    "title": "Geen of niet?",
-    "rule": "Geen ontkent een onbepaald zelfstandig naamwoord, bijvoorbeeld met een of zonder lidwoord. Niet ontkent onder andere een eigenschap, een handeling of een bepaald zinsdeel.",
-    "examples": [
-      "Ik heb geen koffie.",
-      "De soep is niet warm. Ik koop die taart niet."
-    ],
-    "terms": [
-      "de koffie",
-      "de soep"
-    ],
-    "verbs": [
-      "kopen",
-      "drinken"
-    ],
-    "grammarIds": []
-  },
-  {
-    "id": "afspraak",
-    "themeId": "gezondheid",
-    "title": "Een afspraak maken",
-    "rule": "Vertel kort wat er aan de hand is en vraag wanneer je kunt komen. Dit zijn taalvoorbeelden, geen medisch advies.",
-    "examples": [
-      "Ik wil een afspraak maken. Ik heb pijn in mijn oor.",
-      "Kan ik morgen bij de huisarts komen?"
-    ],
-    "terms": [
-      "de huisarts",
-      "het oor"
-    ],
-    "verbs": [
-      "bellen",
-      "komen"
-    ],
-    "grammarIds": [
-      "modale-werkwoorden"
-    ]
-  },
-  {
-    "id": "klachten",
-    "themeId": "gezondheid",
-    "title": "Vertellen hoe je je voelt",
-    "rule": "Gebruik hebben bij veel klachten en zijn bij een toestand. Sinds geeft het begin van een periode aan.",
-    "examples": [
-      "Ik heb sinds maandag keelpijn.",
-      "Ik ben moe. Ik wil even zitten."
-    ],
-    "terms": [
-      "het hoofd",
-      "de buik"
-    ],
-    "verbs": [
-      "voelen",
-      "zitten"
-    ],
-    "grammarIds": [
-      "hebben-zijn",
-      "voorzetsels-tijd"
-    ]
-  },
-  {
-    "id": "beschrijven",
-    "themeId": "kleding",
-    "title": "Kleur en eigenschap",
-    "rule": "Voor een zelfstandig naamwoord krijgt een bijvoeglijk naamwoord meestal -e. Bij een onbepaald het-woord in het enkelvoud meestal niet. Na zijn komt geen buigings-e.",
-    "examples": [
-      "een rode jas — de rode jas",
-      "een groen shirt — het groene shirt; het shirt is groen"
-    ],
-    "terms": [
-      "de jas",
-      "de kleur"
-    ],
-    "verbs": [
-      "dragen",
-      "zijn"
-    ],
-    "grammarIds": [
-      "bijvoeglijk-naamwoord"
-    ]
-  },
-  {
-    "id": "passen",
-    "themeId": "kleding",
-    "title": "Passen en ruilen",
-    "rule": "Gebruik te om te zeggen dat iets meer is dan gewenst. Vraag beleefd om een andere maat of om hulp.",
-    "examples": [
-      "Deze jas is te klein. Heeft u een grotere maat?",
-      "Mag ik deze broek passen?"
-    ],
-    "terms": [
-      "de broek",
-      "de maat"
-    ],
-    "verbs": [
-      "passen",
-      "ruilen"
-    ],
-    "grammarIds": [
-      "vergelijking",
-      "modale-werkwoorden"
-    ]
-  },
-  {
-    "id": "klok",
-    "themeId": "reizen",
-    "title": "Hoe laat is het?",
-    "rule": "Bij half noem je het volgende uur. Kwart over is vijftien minuten na het uur; kwart voor is vijftien minuten ervoor.",
-    "examples": [
-      "08:15: kwart over acht. 08:30: half negen.",
-      "08:45: kwart voor negen. De trein vertrekt om negen uur."
-    ],
-    "terms": [
-      "het uur",
-      "de trein"
-    ],
-    "verbs": [
-      "vertrekken",
-      "wachten"
-    ],
-    "grammarIds": [
-      "voorzetsels-tijd"
-    ]
-  },
-  {
-    "id": "richting",
-    "themeId": "reizen",
-    "title": "De weg vragen",
-    "rule": "Vraag waar je bestemming is. Gebruik links, rechts en rechtdoor om een route te beschrijven.",
-    "examples": [
-      "Waar is het station? Is het ver?",
-      "Ga rechtdoor en dan naar links."
-    ],
-    "terms": [
-      "het station",
-      "de straat"
-    ],
-    "verbs": [
-      "gaan",
-      "lopen"
-    ],
-    "grammarIds": [
-      "voorzetsels-richting"
-    ]
-  },
-  {
-    "id": "twee-werkwoorden",
-    "themeId": "reizen",
-    "title": "Twee werkwoorden",
-    "rule": "Een modaal werkwoord staat als persoonsvorm vooraan; de infinitief staat meestal achteraan. Bij scheidbare werkwoorden blijven de delen in de infinitief bij elkaar.",
-    "examples": [
-      "Ik moet bij de volgende halte uitstappen.",
-      "Wij willen morgen met de trein reizen."
-    ],
-    "terms": [
-      "de halte",
-      "de bus"
-    ],
-    "verbs": [
-      "moeten",
-      "uitstappen"
-    ],
-    "grammarIds": [
-      "modale-werkwoorden",
-      "zinsvolgorde-werkwoordgroep"
-    ]
-  },
-  {
-    "id": "tijd",
-    "themeId": "vrije-tijd",
-    "title": "Dagen en plannen",
-    "rule": "Gebruik op bij dagen, om bij een tijdstip en in bij maanden. Een rangtelwoord geeft een plaats in een reeks aan.",
-    "examples": [
-      "Op zaterdag ga ik om tien uur zwemmen.",
-      "Januari is de eerste maand. Februari is de tweede."
-    ],
-    "terms": [
-      "de maand",
-      "de week"
-    ],
-    "verbs": [
-      "zwemmen",
-      "gaan"
-    ],
-    "grammarIds": [
-      "voorzetsels-tijd",
-      "hoofdtelwoord"
-    ]
-  },
-  {
-    "id": "uitnodigen",
-    "themeId": "vrije-tijd",
-    "title": "Samen iets doen",
-    "rule": "Stel een activiteit voor en zeg of je kunt. Met want kun je een reden toevoegen zonder de gewone woordvolgorde te veranderen.",
-    "examples": [
-      "Wil je zondag met mij fietsen?",
-      "Ik kan niet, want ik werk zondag."
-    ],
-    "terms": [
-      "de vriend",
-      "het weekend"
-    ],
-    "verbs": [
-      "fietsen",
-      "kunnen"
-    ],
-    "grammarIds": [
-      "voegwoorden"
-    ]
-  },
-  {
-    "id": "vakantie",
-    "themeId": "vrije-tijd",
-    "title": "Vakantie en weer",
-    "rule": "Vertel waar je bent, wat je doet en hoe het weer is. Gebruik het bij algemene beschrijvingen van het weer.",
-    "examples": [
-      "We zijn op vakantie. We wandelen in het bos.",
-      "Het is warm, maar het regent vandaag."
-    ],
-    "terms": [
-      "het weer",
-      "de vakantie"
-    ],
-    "verbs": [
-      "wandelen",
-      "regenen"
-    ],
-    "grammarIds": [
-      "onpersoonlijk",
-      "voegwoorden"
-    ]
-  }
-];
-const a1ReferenceNodeId = (id) => `a1-reference:${id}`;
 
 // Original lessons based on topic coverage of the supplied reference photographs.
 // This module is the single source for lessons, listening scenes and exercises.
@@ -5045,6 +10968,12 @@ const a1ExpansionLessons = [
     "audioId": "a1-dialogue:vakantie-weer"
   }
 ];
+for (const lesson of a1ExpansionLessons) {
+ lesson.sourcePages = a1SourcePages.filter(page => page.lessonId === lesson.id);
+ lesson.referencePhotos = lesson.sourcePages.map(page => page.photo);
+ lesson.terms = [...new Set([...lesson.terms, ...lesson.sourcePages.flatMap(page => page.terms)])];
+ lesson.verbs = [...new Set([...lesson.verbs, ...lesson.sourcePages.flatMap(page => page.verbs)])];
+}
 const a1LessonNodeId = (id) => `a1-lesson:${id}`;
 const a1LessonAudio = a1ExpansionLessons.map((lesson) => ({
   id: lesson.audioId, lessonId: lesson.id, language: 'nl-NL', engine: 'speech-synthesis',
@@ -5492,6 +11421,7 @@ const a1VerbPracticeContexts = [
     "dekt"
   ]
 ];
+a1VerbPracticeContexts.push(['trouwen','Zij ___ met haar partner.','trouwt'],['sporten','Ik ___ in het park.','sport'],['voetballen','Hij ___ met vrienden.','voetbalt'],['onthouden','Zij ___ het woord.','onthoudt'],['opletten','Hij ___ goed op.','let'],['aanwijzen','Zij ___ dit boek aan.','wijst']);
 for (const [index, [infinitive, prompt, answer]] of a1VerbPracticeContexts.entries()) {
   const verb = a1ExpansionVerbs.find((entry) => entry.infinitive === infinitive);
   const lessons = a1ExpansionLessons.filter((lesson) => lesson.verbs.includes(infinitive));
@@ -5508,6 +11438,547 @@ for (const [index, [infinitive, prompt, answer]] of a1VerbPracticeContexts.entri
       options: definitions.slice(offset).concat(definitions.slice(0, offset)), explanation: verb.usage },
   );
   for (const lesson of lessons) lesson.exerciseIds.push(formId, meaningId);
+}
+
+// Each lesson word has a reachable meaning exercise and explicit source-page links.
+for (const lesson of a1ExpansionLessons) {
+ const definitions = [...new Set(lesson.terms.map(term => findLexiconEntry(term)?.definition).filter(Boolean))];
+ for (const [index, term] of lesson.terms.entries()) {
+  const entry = findLexiconEntry(term);
+  if (!entry) throw new Error(`Missing source word: ${term}`);
+  const options = [entry.definition, ...definitions.filter(d => d !== entry.definition).slice(0, 2)];
+  const offset = index % options.length;
+  const id = `a1-source-word-${lesson.id}-${index + 1}`;
+  a1ExpansionExercises.push({id, lessonId:lesson.id, sourcePageIds:lesson.sourcePages.filter(p=>p.terms.includes(term)).map(p=>p.id), term, level:'A1',difficulty:2,type:'choice',skill:'woordenschat',topic:lesson.title,prompt:`Wat betekent “${term}” in deze zin: “${entry.example}”?`,answer:entry.definition,options:options.slice(offset).concat(options.slice(0,offset)),explanation:`${entry.definition} Voorbeeld: ${entry.example}`});
+  lesson.exerciseIds.push(id);
+ }
+}
+
+// Original summaries; canonical lexicon, verb and grammar references.
+const a1ReferenceCards = [
+  {
+    "id": "kennismaken",
+    "themeId": "hallo",
+    "title": "Jezelf voorstellen",
+    "rule": "Gebruik zijn voor je naam of leeftijd en hebben voor bezit en familie.",
+    "examples": [
+      "Ik ben Sara. Ik ben dertig jaar.",
+      "Ik heb een broer. Hij woont in Delft."
+    ],
+    "terms": [
+      "de naam",
+      "de familie"
+    ],
+    "verbs": [
+      "zijn",
+      "hebben"
+    ],
+    "grammarIds": [
+      "hebben-zijn"
+    ]
+  },
+  {
+    "id": "beleefd",
+    "themeId": "hallo",
+    "title": "Jij of u?",
+    "rule": "Jij is informeel. U is beleefd of formeel. Stem je begroeting af op de situatie.",
+    "examples": [
+      "Goedemorgen. Hoe heet u?",
+      "Hoi! Hoe gaat het met je?"
+    ],
+    "terms": [
+      "morgen",
+      "de avond"
+    ],
+    "verbs": [
+      "heten",
+      "groeten"
+    ],
+    "grammarIds": [
+      "register"
+    ]
+  },
+  {
+    "id": "familie",
+    "themeId": "hallo",
+    "title": "Familie en bezit",
+    "rule": "Mijn, jouw en zijn vertellen bij wie iets hoort. Neef en nicht kunnen twee familierelaties aanduiden; de context helpt.",
+    "examples": [
+      "Dit is mijn zus. Haar dochter is mijn nicht.",
+      "De zoon van mijn tante is mijn neef."
+    ],
+    "terms": [
+      "de zus",
+      "de broer"
+    ],
+    "verbs": [
+      "wonen",
+      "heten"
+    ],
+    "grammarIds": [
+      "bezittelijk"
+    ]
+  },
+  {
+    "id": "klanken",
+    "themeId": "school",
+    "title": "Klank en spelling",
+    "rule": "Vergelijk korte en lange klinkers. Twee letters vormen niet altijd een tweeklank: ie en oe geven elk één klinker weer. Ei en ij klinken hetzelfde; au en ou ook.",
+    "examples": [
+      "man — maan; bom — boom",
+      "fiets — boek; trein — ijs; auto — koud"
+    ],
+    "terms": [
+      "het boek",
+      "de school"
+    ],
+    "verbs": [
+      "luisteren",
+      "spreken"
+    ],
+    "grammarIds": []
+  },
+  {
+    "id": "hulp",
+    "themeId": "school",
+    "title": "Vraag om uitleg",
+    "rule": "Begrijpen gaat over de betekenis. Verstaan gaat over wat je hoort. Vraag gerust om herhaling.",
+    "examples": [
+      "Kunt u dat woord uitleggen?",
+      "Wilt u wat langzamer praten? Ik versta u niet goed."
+    ],
+    "terms": [
+      "de vraag",
+      "het antwoord"
+    ],
+    "verbs": [
+      "begrijpen",
+      "verstaan",
+      "herhalen"
+    ],
+    "grammarIds": [
+      "modale-werkwoorden"
+    ]
+  },
+  {
+    "id": "hoofdzin",
+    "themeId": "school",
+    "title": "Het werkwoord op plaats twee",
+    "rule": "In een gewone hoofdzin staat de persoonsvorm op de tweede zinsplaats. Een zinsdeel kan uit meer woorden bestaan.",
+    "examples": [
+      "Ik lees vandaag een boek.",
+      "Na de les lees ik een boek."
+    ],
+    "terms": [
+      "de les",
+      "het boek"
+    ],
+    "verbs": [
+      "lezen",
+      "schrijven"
+    ],
+    "grammarIds": [
+      "gewone-zin",
+      "woordvolgorde"
+    ]
+  },
+  {
+    "id": "vragen",
+    "themeId": "school",
+    "title": "Vragen maken",
+    "rule": "Een ja-neevraag begint met de persoonsvorm. Een vraagwoord vraagt naar specifieke informatie. Bij jij of je als onderwerp ná de persoonsvorm vervalt de toegevoegde t.",
+    "examples": [
+      "Werk jij vandaag? Waar werk je?",
+      "Wanneer begint de les?"
+    ],
+    "terms": [
+      "de vraag",
+      "dag"
+    ],
+    "verbs": [
+      "werken",
+      "beginnen"
+    ],
+    "grammarIds": [
+      "vraagwoorden",
+      "tegenwoordige-tijd"
+    ]
+  },
+  {
+    "id": "kamers",
+    "themeId": "wonen",
+    "title": "Kamers en plaats",
+    "rule": "Gebruik een plaatsvoorzetsel om te vertellen waar iets is. Boven en beneden geven een plaats of richting aan.",
+    "examples": [
+      "De lamp staat naast het bed.",
+      "De keuken is beneden. De badkamer is boven."
+    ],
+    "terms": [
+      "de keuken",
+      "het bed"
+    ],
+    "verbs": [
+      "staan",
+      "liggen"
+    ],
+    "grammarIds": [
+      "voorzetsels-plaats"
+    ]
+  },
+  {
+    "id": "artikelen",
+    "themeId": "wonen",
+    "title": "De, het en een",
+    "rule": "Leer een zelfstandig naamwoord samen met het lidwoord. Meervouden hebben de. Verkleinwoorden in het enkelvoud hebben het.",
+    "examples": [
+      "de stoel — de stoelen",
+      "het huis — de huizen; het huisje"
+    ],
+    "terms": [
+      "de stoel",
+      "het huis"
+    ],
+    "verbs": [
+      "zijn"
+    ],
+    "grammarIds": [
+      "bepaald-lidwoord",
+      "onbepaald-lidwoord",
+      "verkleinwoord"
+    ]
+  },
+  {
+    "id": "aanwijzen",
+    "themeId": "wonen",
+    "title": "Dit, dat, deze, die",
+    "rule": "Dichtbij: dit bij een het-woord, deze bij een de-woord of meervoud. Verder weg: dat of die.",
+    "examples": [
+      "dit huis — dat huis",
+      "deze stoel — die stoel; deze huizen — die huizen"
+    ],
+    "terms": [
+      "het huis",
+      "de stoel"
+    ],
+    "verbs": [
+      "zien"
+    ],
+    "grammarIds": [
+      "aanwijzend"
+    ]
+  },
+  {
+    "id": "meervoud",
+    "themeId": "wonen",
+    "title": "Meer dan één",
+    "rule": "Veel meervouden krijgen -en of -s. De spelling kan veranderen om de klinkerklank te behouden. Leer uitzonderingen bij het woord.",
+    "examples": [
+      "raam — ramen; bed — bedden",
+      "tafel — tafels; kind — kinderen"
+    ],
+    "terms": [
+      "het raam",
+      "de tafel"
+    ],
+    "verbs": [
+      "hebben"
+    ],
+    "grammarIds": [
+      "meervoud"
+    ]
+  },
+  {
+    "id": "boodschappen",
+    "themeId": "eten",
+    "title": "Hoeveel kost het?",
+    "rule": "Vraag naar de prijs, de hoeveelheid of het totaal. In Nederlandse prijzen staat een komma tussen euro’s en centen.",
+    "examples": [
+      "Mag ik een halve kilo appels?",
+      "Dat kost twee euro vijftig: € 2,50."
+    ],
+    "terms": [
+      "de appel",
+      "de prijs"
+    ],
+    "verbs": [
+      "kosten",
+      "betalen"
+    ],
+    "grammarIds": [
+      "hoofdtelwoord"
+    ]
+  },
+  {
+    "id": "koken",
+    "themeId": "eten",
+    "title": "In de keuken",
+    "rule": "Noem eerst wat je nodig hebt. Gebruik een korte instructie om te vertellen wat iemand moet doen.",
+    "examples": [
+      "Ik heb twee tomaten nodig.",
+      "Snijd de tomaten. Doe ze in de pan."
+    ],
+    "terms": [
+      "de pan",
+      "de tomaat"
+    ],
+    "verbs": [
+      "snijden",
+      "koken"
+    ],
+    "grammarIds": [
+      "modale-werkwoorden"
+    ]
+  },
+  {
+    "id": "ontkennen",
+    "themeId": "eten",
+    "title": "Geen of niet?",
+    "rule": "Geen ontkent een onbepaald zelfstandig naamwoord, bijvoorbeeld met een of zonder lidwoord. Niet ontkent onder andere een eigenschap, een handeling of een bepaald zinsdeel.",
+    "examples": [
+      "Ik heb geen koffie.",
+      "De soep is niet warm. Ik koop die taart niet."
+    ],
+    "terms": [
+      "de koffie",
+      "de soep"
+    ],
+    "verbs": [
+      "kopen",
+      "drinken"
+    ],
+    "grammarIds": []
+  },
+  {
+    "id": "afspraak",
+    "themeId": "gezondheid",
+    "title": "Een afspraak maken",
+    "rule": "Vertel kort wat er aan de hand is en vraag wanneer je kunt komen. Dit zijn taalvoorbeelden, geen medisch advies.",
+    "examples": [
+      "Ik wil een afspraak maken. Ik heb pijn in mijn oor.",
+      "Kan ik morgen bij de huisarts komen?"
+    ],
+    "terms": [
+      "de huisarts",
+      "het oor"
+    ],
+    "verbs": [
+      "bellen",
+      "komen"
+    ],
+    "grammarIds": [
+      "modale-werkwoorden"
+    ]
+  },
+  {
+    "id": "klachten",
+    "themeId": "gezondheid",
+    "title": "Vertellen hoe je je voelt",
+    "rule": "Gebruik hebben bij veel klachten en zijn bij een toestand. Sinds geeft het begin van een periode aan.",
+    "examples": [
+      "Ik heb sinds maandag keelpijn.",
+      "Ik ben moe. Ik wil even zitten."
+    ],
+    "terms": [
+      "het hoofd",
+      "de buik"
+    ],
+    "verbs": [
+      "voelen",
+      "zitten"
+    ],
+    "grammarIds": [
+      "hebben-zijn",
+      "voorzetsels-tijd"
+    ]
+  },
+  {
+    "id": "beschrijven",
+    "themeId": "kleding",
+    "title": "Kleur en eigenschap",
+    "rule": "Voor een zelfstandig naamwoord krijgt een bijvoeglijk naamwoord meestal -e. Bij een onbepaald het-woord in het enkelvoud meestal niet. Na zijn komt geen buigings-e.",
+    "examples": [
+      "een rode jas — de rode jas",
+      "een groen shirt — het groene shirt; het shirt is groen"
+    ],
+    "terms": [
+      "de jas",
+      "de kleur"
+    ],
+    "verbs": [
+      "dragen",
+      "zijn"
+    ],
+    "grammarIds": [
+      "bijvoeglijk-naamwoord"
+    ]
+  },
+  {
+    "id": "passen",
+    "themeId": "kleding",
+    "title": "Passen en ruilen",
+    "rule": "Gebruik te om te zeggen dat iets meer is dan gewenst. Vraag beleefd om een andere maat of om hulp.",
+    "examples": [
+      "Deze jas is te klein. Heeft u een grotere maat?",
+      "Mag ik deze broek passen?"
+    ],
+    "terms": [
+      "de broek",
+      "de maat"
+    ],
+    "verbs": [
+      "passen",
+      "ruilen"
+    ],
+    "grammarIds": [
+      "vergelijking",
+      "modale-werkwoorden"
+    ]
+  },
+  {
+    "id": "klok",
+    "themeId": "reizen",
+    "title": "Hoe laat is het?",
+    "rule": "Bij half noem je het volgende uur. Kwart over is vijftien minuten na het uur; kwart voor is vijftien minuten ervoor.",
+    "examples": [
+      "08:15: kwart over acht. 08:30: half negen.",
+      "08:45: kwart voor negen. De trein vertrekt om negen uur."
+    ],
+    "terms": [
+      "het uur",
+      "de trein"
+    ],
+    "verbs": [
+      "vertrekken",
+      "wachten"
+    ],
+    "grammarIds": [
+      "voorzetsels-tijd"
+    ]
+  },
+  {
+    "id": "richting",
+    "themeId": "reizen",
+    "title": "De weg vragen",
+    "rule": "Vraag waar je bestemming is. Gebruik links, rechts en rechtdoor om een route te beschrijven.",
+    "examples": [
+      "Waar is het station? Is het ver?",
+      "Ga rechtdoor en dan naar links."
+    ],
+    "terms": [
+      "het station",
+      "de straat"
+    ],
+    "verbs": [
+      "gaan",
+      "lopen"
+    ],
+    "grammarIds": [
+      "voorzetsels-richting"
+    ]
+  },
+  {
+    "id": "twee-werkwoorden",
+    "themeId": "reizen",
+    "title": "Twee werkwoorden",
+    "rule": "Een modaal werkwoord staat als persoonsvorm vooraan; de infinitief staat meestal achteraan. Bij scheidbare werkwoorden blijven de delen in de infinitief bij elkaar.",
+    "examples": [
+      "Ik moet bij de volgende halte uitstappen.",
+      "Wij willen morgen met de trein reizen."
+    ],
+    "terms": [
+      "de halte",
+      "de bus"
+    ],
+    "verbs": [
+      "moeten",
+      "uitstappen"
+    ],
+    "grammarIds": [
+      "modale-werkwoorden",
+      "zinsvolgorde-werkwoordgroep"
+    ]
+  },
+  {
+    "id": "tijd",
+    "themeId": "vrije-tijd",
+    "title": "Dagen en plannen",
+    "rule": "Gebruik op bij dagen, om bij een tijdstip en in bij maanden. Een rangtelwoord geeft een plaats in een reeks aan.",
+    "examples": [
+      "Op zaterdag ga ik om tien uur zwemmen.",
+      "Januari is de eerste maand. Februari is de tweede."
+    ],
+    "terms": [
+      "de maand",
+      "de week"
+    ],
+    "verbs": [
+      "zwemmen",
+      "gaan"
+    ],
+    "grammarIds": [
+      "voorzetsels-tijd",
+      "hoofdtelwoord"
+    ]
+  },
+  {
+    "id": "uitnodigen",
+    "themeId": "vrije-tijd",
+    "title": "Samen iets doen",
+    "rule": "Stel een activiteit voor en zeg of je kunt. Met want kun je een reden toevoegen zonder de gewone woordvolgorde te veranderen.",
+    "examples": [
+      "Wil je zondag met mij fietsen?",
+      "Ik kan niet, want ik werk zondag."
+    ],
+    "terms": [
+      "de vriend",
+      "het weekend"
+    ],
+    "verbs": [
+      "fietsen",
+      "kunnen"
+    ],
+    "grammarIds": [
+      "voegwoorden"
+    ]
+  },
+  {
+    "id": "vakantie",
+    "themeId": "vrije-tijd",
+    "title": "Vakantie en weer",
+    "rule": "Vertel waar je bent, wat je doet en hoe het weer is. Gebruik het bij algemene beschrijvingen van het weer.",
+    "examples": [
+      "We zijn op vakantie. We wandelen in het bos.",
+      "Het is warm, maar het regent vandaag."
+    ],
+    "terms": [
+      "het weer",
+      "de vakantie"
+    ],
+    "verbs": [
+      "wandelen",
+      "regenen"
+    ],
+    "grammarIds": [
+      "onpersoonlijk",
+      "voegwoorden"
+    ]
+  }
+];
+const a1ReferenceNodeId = (id) => `a1-reference:${id}`;
+
+const a1ReferenceLessons = {"kennismaken": ["persoonlijke-gegevens"], "beleefd": ["groeten"], "familie": ["familierelaties"], "klanken": ["klinkers", "lettercombinaties"], "hulp": ["begrijpen-verstaan", "instructies"], "hoofdzin": ["schooldag"], "vragen": ["schooldag"], "kamers": ["huis-kamers", "woning-zoeken"], "artikelen": ["kleren-kleur"], "aanwijzen": ["meubels-kleuren"], "meervoud": ["lichaam"], "boodschappen": ["markt-betalen"], "koken": ["koken-bakken", "aan-tafel"], "ontkennen": ["geen-niet"], "afspraak": ["huisarts-afspraak"], "klachten": ["lichaam", "huisarts-afspraak"], "beschrijven": ["kleren-kleur"], "passen": ["passen-ruilen"], "klok": ["openingstijden"], "richting": ["verkeer-route", "nederland-kaart"], "twee-werkwoorden": ["onderweg-plannen", "station-bus"], "tijd": ["schooldag", "uitgaan"], "uitnodigen": ["uitgaan"], "vakantie": ["vakantie-weer"]};
+for (const id of ['buurt-verdieping','apotheek','tandarts','wassen-accessoires','hobbys-sport','dieren']) {
+ const lesson=a1ExpansionLessons.find(l=>l.id===id);
+ const cardId=`source-${id}`;
+ a1ReferenceLessons[cardId]=[id];
+ a1ReferenceCards.push({id:cardId,themeId:lesson.themeId,title:lesson.title,rule:lesson.explanation,examples:lesson.dialogue.slice(0,2),terms:[],verbs:[],grammarIds:[]});
+}
+for (const card of a1ReferenceCards) {
+ card.lessonIds=a1ReferenceLessons[card.id];
+ if(!card.lessonIds)throw new Error(`Missing reference mapping: ${card.id}`);
+ const lessons=card.lessonIds.map(id=>a1ExpansionLessons.find(l=>l.id===id));
+ for(const key of ['terms','verbs','grammarIds'])card[key]=[...new Set([...card[key],...lessons.flatMap(l=>l[key])])];
+ card.sourcePages=[...new Map(lessons.flatMap(l=>l.sourcePages).map(p=>[p.id,p])).values()];
 }
 
 // Original expansion data for the static Dutch-learning application.
@@ -145888,7 +152359,7 @@ const KNOWLEDGE_GRAPH_URL = './data/content-knowledge-graph.json';
 const KNOWLEDGE_GRAPH_SCRIPT_URL = './data/content-knowledge-graph.js';
 
 const graphTypeLabels = {
-  a1_lesson: 'A1-les', lesson_audio: 'Lesaudio', a1_reference: 'A1 Cheat Sheet', lexeme: 'Woordenboek',
+  a1_source_page: 'Bronpagina A1', a1_lesson: 'A1-les', lesson_audio: 'Lesaudio', a1_reference: 'A1 Cheat Sheet', lexeme: 'Woordenboek',
   graph_root: 'Overzicht', source_collection: 'Collectie', level: 'Niveau', learning_path: 'Leerpad', theme: 'Thema', spiral_theme: 'Spiraalthema', term: 'Term', vocabulary: 'Woordenschat',
   grammar: 'Grammatica', grammar_focus: 'Curriculumfocus', question_topic: 'Vraagstructuur', structure: 'Taalstructuur', idiom: 'Idiomatiek', concept: 'Concept',
   technical_concept: 'Vakbegrip', professional_concept: 'Professioneel begrip', listening: 'Luisteren', reading: 'Lezen', writing: 'Schrijven',
@@ -145967,7 +152438,7 @@ async function readKnowledgeGraph() {
 
 function routeForNode(node) {
   const routes = {
-    a1_lesson: 'a1', lesson_audio: 'a1', a1_reference: 'a1-cheatsheet', lexeme: 'woordenschat', verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
+    a1_source_page: 'a1', spiral_theme: 'b1', a1_lesson: 'a1', lesson_audio: 'a1', a1_reference: 'a1-cheatsheet', lexeme: 'woordenschat', verb: 'werkwoorden', grammar: 'grammatica', grammar_focus: 'grammatica', question_topic: 'vragen', structure: 'taalstructuren', idiom: 'taalstructuren',
     vocabulary: 'woordenschat', listening: 'luisteren', reading: 'lezen-schrijven', writing: 'lezen-schrijven', exercise: 'oefenen',
     technical_concept: node?.source === 'software' ? 'software' : node?.source === 'natuurkunde' ? 'natuurkunde' : 'wiskunde',
     professional_concept: 'vaklexicon', learning_path: 'leerpad', theme: node?.level?.toLocaleLowerCase('nl-NL'), level: node?.label?.toLocaleLowerCase('nl-NL'),
@@ -146009,7 +152480,7 @@ function canonicalGraphView(source) {
   return { ...source, nodes: source.nodes.filter((node) => !aliases.has(node.id)).map((node) => contexts.has(node.id) ? { ...node, sourceContexts: contexts.get(node.id), searchText: [node.searchText, ...contexts.get(node.id).map((item) => item.searchText)].join(' ') } : node), edges: [...edges.values()], aliases };
 }
 
-function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOpenReference, onOpenLesson, notify } = {}) {
+function createKnowledgeGraphExplorer({ onOpenTheme, onOpenPage, onOpenVerb, onOpenPath, onOpenReference, onOpenLesson, notify } = {}) {
   let graph = null;
   let sourceGraph = null;
   let nodesById = new Map();
@@ -146022,7 +152493,7 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
   let resultLimit = 80;
   let neighbourPage = 0;
   let previousNodeId = null;
-  const state = { query: '', type: 'all', level: 'all', mode: 'all', issuesOnly: false, depth: 2, representation: 'canonical', initial: 'all', neighbourQuery: '' };
+  const state = { query: '', type: 'words', level: 'all', mode: 'all', issuesOnly: false, depth: 2, representation: 'canonical', initial: 'all', neighbourQuery: '', fullMap: true };
 
   const get = (id) => document.getElementById(id);
   const elements = () => ({
@@ -146072,7 +152543,14 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
   }
 
   function sortedResults() {
-    return sourceGraph.nodes.filter(matchesFilters).sort(compareGraphLabels);
+    // Filter original contexts first so no theme/level association disappears.
+    const matches = sourceGraph.nodes.filter(matchesFilters);
+    const unique = new Map();
+    for (const node of matches) {
+      const id = graph.aliases.get(node.id) || node.id;
+      unique.set(id, nodesById.get(id) || node);
+    }
+    return [...unique.values()].sort(compareGraphLabels);
   }
 
   function renderStats() {
@@ -146161,7 +152639,7 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
     const pageSize = state.depth === 2 ? 12 : pinned ? 23 : 24;
     const pages = Math.max(1, Math.ceil(remaining.length / pageSize));
     neighbourPage = Math.min(neighbourPage, pages - 1);
-    const visible = remaining.slice(neighbourPage * pageSize, (neighbourPage + 1) * pageSize);
+    const visible = state.fullMap ? [...remaining] : remaining.slice(neighbourPage * pageSize, (neighbourPage + 1) * pageSize);
     if (pinned) visible.unshift(pinned);
     const visibleIds = new Set([startId, ...visible, ...visible.map((id) => parents.get(id))]);
     const visibleEdges = new Map();
@@ -146185,7 +152663,7 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
     selectedId = selected.id;
     const neighbourhoodData = neighbourhood(selected.id);
     const neighbours = neighbourhoodData.nodes.filter((node) => node.id !== selected.id);
-    const width = 1200; const height = 800; const cx = width / 2; const cy = height / 2;
+    const width = 1200; const height = state.fullMap ? Math.max(800,200+Math.ceil(neighbours.length/5)*110) : 800; const cx = width / 2; const cy = state.fullMap ? 65 : height / 2;
     const positions = new Map([[selected.id, { x: cx, y: cy }]]);
     const firstRing = neighbours.slice(0, 10);
     const secondRing = neighbours.slice(10);
@@ -146198,24 +152676,26 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
       positions.set(node.id, { x: cx + Math.cos(angle) * 510, y: cy + Math.sin(angle) * 345 });
     });
 
+    if(state.fullMap)neighbours.forEach((node,index)=>positions.set(node.id,{x:120+(index%5)*240,y:200+Math.floor(index/5)*110}));
+    el.canvas.classList.toggle('knowledge-map-full',state.fullMap);
     const visibleIds = new Set(positions.keys());
     const lines = neighbourhoodData.edges.filter((edge) => visibleIds.has(edge.source) && visibleIds.has(edge.target)).map((edge) => {
       const start = positions.get(edge.source); const end = positions.get(edge.target);
       const mx = (start.x + end.x) / 2; const my = (start.y + end.y) / 2;
-      return `<g class="knowledge-edge"><line x1="${start.x}" y1="${start.y}" x2="${end.x}" y2="${end.y}"></line><text x="${mx}" y="${my - 4}">${graphEscape(shortLabel(graphRelationLabels[edge.type] || edge.label, 18))}</text></g>`;
+      return `<g class="knowledge-edge" data-edge-source="${graphEscape(edge.source)}" data-edge-target="${graphEscape(edge.target)}"><line x1="${start.x}" y1="${start.y}" x2="${end.x}" y2="${end.y}"></line><text x="${mx}" y="${my - 4}">${graphEscape(shortLabel(graphRelationLabels[edge.type] || edge.label, 18))}</text></g>`;
     }).join('');
     const nodeMarkup = [...positions.entries()].map(([id, position]) => {
       const node = nodesById.get(id);
       const active = id === selected.id;
       const w = active ? 180 : 142; const h = active ? 68 : 54;
-      return `<g class="knowledge-node ${graphNodeClass(node)} ${active ? 'selected' : ''}" data-graph-node="${graphEscape(id)}" role="button" aria-label="${graphEscape(node.label)}" transform="translate(${position.x - w / 2} ${position.y - h / 2})">
-        <rect width="${w}" height="${h}" rx="14"></rect>
+      return `<g class="knowledge-node ${graphNodeClass(node)} ${active ? 'selected' : ''}" data-graph-node="${graphEscape(id)}" role="button" tabindex="0" aria-label="${graphEscape(node.label)}" transform="translate(${position.x - w / 2} ${position.y - h / 2})">
+        <title>${graphEscape(node.label)}</title><rect width="${w}" height="${h}" rx="14"></rect>
         <text class="node-type" x="${w / 2}" y="${active ? 20 : 17}" text-anchor="middle">${graphEscape(graphTypeLabels[node.type] || node.type)}</text>
         <text class="node-label" x="${w / 2}" y="${active ? 43 : 37}" text-anchor="middle">${graphEscape(shortLabel(node.label, active ? 25 : 19))}</text>
         ${node.level ? `<text class="node-level" x="${w - 9}" y="12" text-anchor="end">${graphEscape(node.level)}</text>` : ''}
       </g>`;
     }).join('');
-    el.canvas.innerHTML = `<div class="button-row knowledge-neighbour-pages"><span role="status">${neighbours.length} van ${neighbourhoodData.total} verbonden items (${state.depth} ${state.depth === 1 ? 'stap' : 'stappen'}) · pagina ${neighbourPage + 1}/${neighbourhoodData.pages}</span><button type="button" class="secondary-button" data-graph-neighbour-page="-1" ${neighbourPage === 0 ? 'disabled' : ''}>Vorige</button><button type="button" class="secondary-button" data-graph-neighbour-page="1" ${neighbourPage + 1 >= neighbourhoodData.pages ? 'disabled' : ''}>Volgende</button></div><svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="knowledge-graph-svg-title knowledge-graph-svg-desc">
+    el.canvas.innerHTML = `<div class="button-row knowledge-neighbour-pages"><span role="status">${neighbours.length} van ${neighbourhoodData.total} verbonden items (${state.depth} ${state.depth === 1 ? 'stap' : 'stappen'}) ${state.fullMap ? '· volledig overzicht' : `· pagina ${neighbourPage + 1}/${neighbourhoodData.pages}`}</span><button type="button" class="secondary-button" data-graph-neighbour-page="-1" ${state.fullMap || neighbourPage === 0 ? 'disabled' : ''}>Vorige</button><button type="button" class="secondary-button" data-graph-neighbour-page="1" ${state.fullMap || neighbourPage + 1 >= neighbourhoodData.pages ? 'disabled' : ''}>Volgende</button></div><svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="knowledge-graph-svg-title knowledge-graph-svg-desc">
       <title id="knowledge-graph-svg-title">Relaties rond ${graphEscape(selected.label)}</title>
       <desc id="knowledge-graph-svg-desc">${compactNumber(neighbours.length)} zichtbare verbonden inhoudseenheden. Gebruik de resultatenlijst of klik op een node om verder te navigeren.</desc>
       ${lines}${nodeMarkup}
@@ -146255,7 +152735,7 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
     el.detail.innerHTML = `<div class="knowledge-detail-heading"><div><span class="kicker">${graphEscape(graphTypeLabels[node.type] || node.type)}${node.level ? ` · ${graphEscape(node.level)}` : ''}</span><h2>${graphEscape(node.label)}</h2><p>${graphEscape(node.subtitle || node.source)}</p></div>${status ? `<span class="knowledge-detail-status ${graphEscape(node.status)}">${graphEscape(status)}</span>` : ''}</div>
       ${verbDetails}${issueDetails}${exerciseDetails}${genericData}
       ${node.sourceContexts?.length ? `<details><summary>Gebruik in thema’s en oorspronkelijke inhoud (${node.sourceContexts.length})</summary>${node.sourceContexts.map((item) => `<section><h3>${graphEscape(item.label)} · ${graphEscape(item.level || '')}</h3><p>${graphEscape(item.source)} · ${graphEscape(item.subtitle)}</p>${renderPrimitive(item.data)}</section>`).join('')}</details>` : ''}
-      ${route ? `<button class="secondary-button" type="button" data-graph-open-page="${graphEscape(route)}" ${node.type === 'verb' ? `data-graph-open-verb="${graphEscape(node.label)}"` : ''} ${['a1_lesson', 'lesson_audio'].includes(node.type) ? `data-graph-open-lesson="${graphEscape(node.data?.lessonId)}"` : ''} ${node.type === 'a1_reference' ? `data-graph-open-reference="${graphEscape(node.data?.referenceId)}"` : ''} ${node.type === 'learning_path' ? `data-graph-open-path="${graphEscape(node.data?.pathId || '')}"` : ''}>Open in de leeromgeving →</button>` : ''}
+      ${route ? `<button class="secondary-button" type="button" data-graph-open-page="${graphEscape(route)}" ${['theme','spiral_theme'].includes(node.type) ? `data-graph-open-theme="${graphEscape(node.id)}"` : ''} ${node.type === 'verb' ? `data-graph-open-verb="${graphEscape(node.label)}"` : ''} ${['a1_lesson', 'lesson_audio', 'a1_source_page'].includes(node.type) ? `data-graph-open-lesson="${graphEscape(node.data?.lessonId)}"` : ''} ${node.type === 'a1_reference' ? `data-graph-open-reference="${graphEscape(node.data?.referenceId)}"` : ''} ${node.type === 'learning_path' ? `data-graph-open-path="${graphEscape(node.data?.pathId || '')}"` : ''}>Open in de leeromgeving →</button>` : ''}
       <section class="knowledge-relations"><div class="section-heading compact"><h3>Relaties</h3><span>${compactNumber(relations.length)} totaal</span></div>${Object.entries(relationGroups).sort((a, b) => b[1].length - a[1].length).map(([label, items]) => `<details ${['synoniem', 'controlepunt', 'gebruikt in thema', 'komt voor in'].includes(label) ? 'open' : ''}><summary>${graphEscape(label)} <span>${items.length}</span></summary><div>${items.map((item) => item.node ? `<button type="button" data-graph-node="${graphEscape(item.node.id)}"><small>${graphEscape(graphTypeLabels[item.node.type] || item.node.type)}</small><strong>${graphEscape(shortLabel(item.node.label, 55))}</strong></button>` : '').join('')}</div></details>`).join('')}</section>`;
   }
 
@@ -146298,6 +152778,14 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
     if (!el.search || el.search.dataset.graphBound === 'true') return;
     el.search.dataset.graphBound = 'true';
     el.search.addEventListener('input', (event) => { state.query = event.target.value; resultLimit = 80; renderResults(); });
+    get('knowledge-graph-layout')?.addEventListener('change', event=>{state.fullMap=event.target.value==='full';neighbourPage=0;renderGraph();});
+    const highlight = event => {
+      const id=event.target.closest('[data-graph-node]')?.dataset.graphNode;
+      for(const edge of el.canvas.querySelectorAll('.knowledge-edge'))edge.classList.toggle('highlighted',Boolean(id)&&(edge.dataset.edgeSource===id||edge.dataset.edgeTarget===id));
+    };
+    el.canvas?.addEventListener('pointerover',highlight);
+    el.canvas?.addEventListener('focusin',highlight);
+    el.canvas?.addEventListener('keydown',event=>{const node=event.target.closest('[data-graph-node]');if(node&&['Enter',' '].includes(event.key)){event.preventDefault();selectNode(node.dataset.graphNode);}});
     el.type?.addEventListener('change', (event) => { state.type = event.target.value; resultLimit = 80; renderResults(); });
     el.level?.addEventListener('change', (event) => { state.level = event.target.value; resultLimit = 80; renderResults(); });
     el.mode?.addEventListener('change', (event) => { state.mode = event.target.value; neighbourPage = 0; renderGraph(); });
@@ -146310,7 +152798,8 @@ function createKnowledgeGraphExplorer({ onOpenPage, onOpenVerb, onOpenPath, onOp
       if (nodeButton) { selectNode(nodeButton.dataset.graphNode); return; }
       const pageButton = event.target.closest('[data-graph-open-page]');
       if (pageButton) {
-        if (pageButton.dataset.graphOpenVerb) onOpenVerb?.(pageButton.dataset.graphOpenVerb);
+        if (pageButton.dataset.graphOpenTheme) onOpenTheme?.(pageButton.dataset.graphOpenTheme);
+        else if (pageButton.dataset.graphOpenVerb) onOpenVerb?.(pageButton.dataset.graphOpenVerb);
         else if (pageButton.dataset.graphOpenLesson) onOpenLesson?.(pageButton.dataset.graphOpenLesson);
         else if (pageButton.dataset.graphOpenReference) onOpenReference?.(pageButton.dataset.graphOpenReference);
         else if (pageButton.dataset.graphOpenPath) onOpenPath?.(pageButton.dataset.graphOpenPath);
@@ -150551,7 +157040,8 @@ for (const theme of [...a1Themes, ...a2Themes]) {
 for (const theme of a1Themes) {
   theme.lessons = a1ExpansionLessons.filter((lesson) => lesson.themeId === theme.id);
   const existingTerms = new Set(Object.values(theme.wordGroups).flat());
-  const newTerms = [...new Set(theme.lessons.flatMap((lesson) => lesson.terms))].filter((term) => !existingTerms.has(term));
+  const lessonVerbs = new Set(theme.lessons.flatMap(lesson => lesson.verbs));
+  const newTerms = [...new Set(theme.lessons.flatMap((lesson) => lesson.terms))].filter((term) => !existingTerms.has(term) && !lessonVerbs.has(term));
   theme.wordGroups['Aanvullende leswoorden'] = newTerms;
   const existingVerbs = new Set(theme.wordGroups.Werkwoorden || []);
   for (const verb of new Set(theme.lessons.flatMap((lesson) => lesson.verbs))) {
@@ -150563,13 +157053,18 @@ for (const theme of a1Themes) {
       image: theme.image, intro: lesson.explanation, text: audio.text, question: lesson.question,
       options: [lesson.answer, ...lesson.distractors], answer: 0 });
     for (const term of lesson.terms) {
-      if (vocabulary.some((word) => word.word === term)) continue;
       const entry = findLexiconEntry(term);
+      if (vocabulary.some((word) => word.word === (entry?.term || term))) continue;
       if (!entry) throw new Error(`Missing A1 lexeme: ${term}`);
       vocabulary.push({ word: entry.term, article: /^(de|het) /.exec(term)?.[1] || '', category: `A1 · ${theme.id}`,
         level: 'A1', theme: theme.id, image: theme.image, alt: `Illustratie bij ${theme.title}`, definition: entry.definition, example: entry.example });
     }
   }
+}
+
+// Preserve the earlier theme-specific word contexts and their stable IDs.
+for (const entry of [{"word": "de voornaam", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De naam die vóór je achternaam staat.", "example": "Mijn voornaam is Lina."}, {"word": "de achternaam", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De familienaam van een persoon.", "example": "Kunt u uw achternaam spellen?"}, {"word": "het adres", "article": "het", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De straat, het huisnummer en de woonplaats.", "example": "Mijn adres is Marktstraat 12."}, {"word": "de nationaliteit", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Het land waarmee iemand officieel verbonden is.", "example": "Wat is uw nationaliteit?"}, {"word": "kennismaken", "article": "geen", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Iemand voor het eerst ontmoeten en iets over elkaar vertellen.", "example": "Wij maken vandaag kennis met de buren."}, {"word": "spellen", "article": "geen", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De letters van een woord één voor één noemen.", "example": "Hoe spel je je naam?"}, {"word": "getrouwd", "article": "geen", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Met iemand in een huwelijk verbonden.", "example": "Mijn zus is getrouwd."}, {"word": "aangenaam", "article": "geen", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Beleefde reactie wanneer je iemand ontmoet.", "example": "Aangenaam, ik ben Amir."}, {"word": "het lesrooster", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een overzicht van lessen en tijden.", "example": "Op het lesrooster staat Nederlands om negen uur."}, {"word": "de opdracht", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Werk dat je voor een les moet maken.", "example": "Maak opdracht zes op bladzijde twintig."}, {"word": "de uitleg", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Informatie waardoor iets duidelijk wordt.", "example": "De uitleg van de docent is duidelijk."}, {"word": "de pauze", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een korte periode zonder les of werk.", "example": "In de pauze drinken we koffie."}, {"word": "inleveren", "article": "geen", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Werk aan een docent geven wanneer het klaar is.", "example": "Je moet het huiswerk vrijdag inleveren."}, {"word": "herhalen", "article": "geen", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Iets nog een keer zeggen of doen.", "example": "Kunt u de zin herhalen?"}, {"word": "duidelijk", "article": "geen", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Goed te begrijpen.", "example": "De instructie is duidelijk."}, {"word": "op tijd", "article": "geen", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Niet te vroeg en niet te laat.", "example": "Ik ben altijd op tijd voor de les."}, {"word": "de woning", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een huis of appartement waarin iemand woont.", "example": "Wij zoeken een betaalbare woning."}, {"word": "de woonkamer", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "De kamer waar je zit en ontspant.", "example": "De bank staat in de woonkamer."}, {"word": "de verdieping", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een niveau van een gebouw.", "example": "Wij wonen op de tweede verdieping."}, {"word": "de huur", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Het bedrag dat je betaalt om ergens te wonen.", "example": "De huur is inclusief water."}, {"word": "verhuizen", "article": "geen", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Van de ene woning naar een andere gaan.", "example": "Volgende maand verhuizen we naar Waalre."}, {"word": "opruimen", "article": "geen", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Dingen netjes op hun plaats zetten.", "example": "Ik ruim de keuken op."}, {"word": "ruim", "article": "geen", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Met veel beschikbare plaats.", "example": "De woonkamer is licht en ruim."}, {"word": "in de buurt", "article": "geen", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Dicht bij een bepaalde plaats.", "example": "Er is een supermarkt in de buurt."}, {"word": "de maaltijd", "article": "de", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Eten op een vast moment van de dag.", "example": "Het avondeten is onze warme maaltijd."}, {"word": "de aanbieding", "article": "de", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een product dat tijdelijk minder kost.", "example": "De koffie is deze week in de aanbieding."}, {"word": "de verpakking", "article": "de", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Materiaal dat om een product zit.", "example": "Lees de informatie op de verpakking."}, {"word": "de rekening", "article": "de", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Het bedrag dat je in een restaurant moet betalen.", "example": "Mogen wij de rekening, alstublieft?"}, {"word": "bestellen", "article": "geen", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "In een winkel of restaurant zeggen wat je wilt hebben.", "example": "Ik bestel soep en brood."}, {"word": "afrekenen", "article": "geen", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Betalen wat je hebt gekocht.", "example": "U kunt bij de kassa afrekenen."}, {"word": "vers", "article": "geen", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Kort geleden gemaakt of geoogst.", "example": "De groente op de markt is vers."}, {"word": "nog iets anders", "article": "geen", "category": "A1 · eten en drinken", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Vraag of iemand meer wil bestellen.", "example": "Wilt u nog iets anders?"}, {"word": "de klacht", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een lichamelijk of psychisch probleem.", "example": "Wat zijn uw klachten?"}, {"word": "de afspraak", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een afgesproken tijd voor een bezoek.", "example": "Ik heb morgen een afspraak bij de huisarts."}, {"word": "het recept", "article": "het", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een document waarmee je medicijnen krijgt.", "example": "De dokter schrijft een recept."}, {"word": "de bijsluiter", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Papier met informatie over een medicijn.", "example": "Lees de bijsluiter goed."}, {"word": "hoesten", "article": "geen", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Met kracht lucht uit je longen laten komen.", "example": "Ik moet veel hoesten."}, {"word": "uitrusten", "article": "geen", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Rust nemen om te herstellen.", "example": "U moet een paar dagen uitrusten."}, {"word": "duizelig", "article": "geen", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Het gevoel hebben dat alles draait.", "example": "Ik ben sinds vanochtend duizelig."}, {"word": "beterschap", "article": "geen", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Wens aan iemand die ziek is.", "example": "Beterschap en neem voldoende rust."}, {"word": "de paskamer", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een kleine ruimte waar je kleding kunt passen.", "example": "De paskamers zijn achter in de winkel."}, {"word": "de maat", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een aanduiding van hoe groot kleding is.", "example": "Heeft u deze trui in maat M?"}, {"word": "de bon", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Het bewijs dat je iets hebt betaald.", "example": "Bewaar de bon als je iets wilt ruilen."}, {"word": "de rits", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een sluiting met kleine tandjes.", "example": "De rits van mijn jas is kapot."}, {"word": "passen", "article": "geen", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Kleding aantrekken om te zien of het goed zit.", "example": "Mag ik deze broek passen?"}, {"word": "ruilen", "article": "geen", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een gekocht product terugbrengen en iets anders nemen.", "example": "Ik wil deze trui graag ruilen."}, {"word": "strak", "article": "geen", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Dicht om het lichaam.", "example": "Deze broek zit te strak."}, {"word": "het staat je goed", "article": "het", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "De kleding ziet er mooi uit bij iemand.", "example": "Die blauwe jas staat je goed."}, {"word": "de dienstregeling", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een overzicht van ritten en vertrektijden.", "example": "Controleer de dienstregeling in de app."}, {"word": "het perron", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "De plaats naast het spoor waar reizigers wachten.", "example": "De trein staat op perron vier."}, {"word": "de overstap", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Het moment waarop je van vervoermiddel verandert.", "example": "In Utrecht heb ik een korte overstap."}, {"word": "de vertraging", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Extra wachttijd doordat iets later komt.", "example": "De trein heeft tien minuten vertraging."}, {"word": "inchecken", "article": "geen", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Je reis beginnen met een kaart of telefoon.", "example": "Vergeet niet in te checken."}, {"word": "uitstappen", "article": "geen", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een bus, trein of auto verlaten.", "example": "U moet bij de derde halte uitstappen."}, {"word": "rechtdoor", "article": "geen", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Zonder links of rechts af te slaan.", "example": "Ga bij het kruispunt rechtdoor."}, {"word": "hoe kom ik bij…?", "article": "geen", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Vraag naar een route.", "example": "Hoe kom ik bij het station?"}, {"word": "de vrije tijd", "article": "de", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "De tijd waarin je niet werkt of naar school gaat.", "example": "In mijn vrije tijd speel ik gitaar."}, {"word": "de vereniging", "article": "de", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een groep mensen met dezelfde activiteit of interesse.", "example": "Ik ben lid van een sportvereniging."}, {"word": "de voorstelling", "article": "de", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een activiteit in een theater.", "example": "De voorstelling begint om acht uur."}, {"word": "de weersverwachting", "article": "de", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Informatie over het toekomstige weer.", "example": "Volgens de weersverwachting wordt het zonnig."}, {"word": "uitnodigen", "article": "geen", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Iemand vragen om te komen.", "example": "Wij nodigen onze buren uit."}, {"word": "afspreken", "article": "geen", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Samen een tijd en plaats kiezen.", "example": "Zullen we zaterdag afspreken?"}, {"word": "gezellig", "article": "geen", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Prettig, warm en sociaal.", "example": "Het was een gezellige avond."}, {"word": "zin hebben in", "article": "geen", "category": "A1 · vrije tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Iets graag willen doen.", "example": "Heb je zin in een wandeling?"}, {"word": "de naam", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Het woord of de combinatie van woorden waarmee een persoon, plaats of zaak wordt aangeduid.", "example": "Mijn naam is Noor El Amrani."}, {"word": "de geboortedatum", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De kalenderdatum waarop iemand is geboren, meestal genoteerd met dag, maand en jaar.", "example": "Mijn geboortedatum is 14 mei 1985."}, {"word": "de postcode", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een combinatie van cijfers en letters die bij een gebied of adres hoort.", "example": "Wat is uw postcode?"}, {"word": "goedemorgen", "article": "", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een beleefde begroeting die je vanaf de ochtend tot ongeveer het middaguur gebruikt.", "example": "Goedemorgen, mevrouw De Vries."}, {"word": "goedenavond", "article": "", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een beleefde begroeting die je in de avond gebruikt.", "example": "Goedenavond, alles goed met u?"}, {"word": "alsjeblieft", "article": "", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een informeel woord bij een verzoek of wanneer je iets aan iemand geeft.", "example": "Hier is je sleutel, alsjeblieft."}, {"word": "dank je wel", "article": "", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een informele uitdrukking waarmee je iemand nadrukkelijk bedankt.", "example": "Dank je wel voor je hulp."}, {"word": "de neef", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een zoon van je broer, zus, oom of tante; de precieze familieband blijkt uit de context.", "example": "Mijn neef van tien speelt graag voetbal."}, {"word": "de nicht", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "Een dochter van je broer, zus, oom of tante; de precieze familieband blijkt uit de context.", "example": "Mijn nicht studeert in Utrecht."}, {"word": "de zwager", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De man van je broer of zus, of de broer van je partner.", "example": "Mijn zus en mijn zwager komen eten."}, {"word": "de schoonzus", "article": "de", "category": "A1 · hallo", "level": "A1", "theme": "hallo", "image": "images/theme-hallo.svg", "alt": "Illustratie bij Hallo", "definition": "De vrouw van je broer of zus, of de zus van je partner.", "example": "De zus van mijn man is mijn schoonzus."}, {"word": "de maan", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Het hemellichaam dat om de aarde draait en vaak ’s nachts zichtbaar is.", "example": "Vanavond zie ik de maan."}, {"word": "de man", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een volwassen persoon van het mannelijke geslacht; ook een huwelijkspartner.", "example": "De man wacht bij de ingang."}, {"word": "de muur", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een verticale afscheiding van steen, beton of ander materiaal.", "example": "Aan de muur hangt een grote foto."}, {"word": "de bus", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een groot wegvoertuig dat veel passagiers langs vaste haltes vervoert.", "example": "De bus naar het centrum vertrekt over vijf minuten."}, {"word": "de fiets", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een voertuig met twee wielen dat je met pedalen voortbeweegt.", "example": "Ik ga elke dag met de fiets naar mijn werk."}, {"word": "het boek", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een verzameling bedrukte of digitale bladzijden met tekst of afbeeldingen.", "example": "Ik leen een Nederlands boek uit de bibliotheek."}, {"word": "de neus", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Het deel van het gezicht waarmee je ruikt en ademhaalt.", "example": "Door de verkoudheid zit mijn neus dicht."}, {"word": "het huis", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een gebouw dat bedoeld is om in te wonen.", "example": "Ons huis heeft een kleine tuin."}, {"word": "het potlood", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Schrijfgerei met een grafietpunt dat je kunt uitgummen.", "example": "Het kind tekent een huis met een potlood."}, {"word": "de gum", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een klein voorwerp waarmee je potloodstrepen van papier verwijdert.", "example": "Met de gum wis ik het verkeerde antwoord uit."}, {"word": "het rondje", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een kleine cirkel of een teken in de vorm van een cirkel.", "example": "Zet een rondje om het goede antwoord."}, {"word": "het kruisje", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een klein teken van twee lijnen die elkaar kruisen.", "example": "Zet een kruisje bij je keuze."}, {"word": "het woordenboek", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een boek of digitale bron waarin woorden met hun betekenis en spelling staan.", "example": "Ik controleer de betekenis in het woordenboek."}, {"word": "de betekenis", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Wat een woord, zin of teken uitdrukt.", "example": "Ik vraag naar de betekenis van het woord."}, {"word": "het voorbeeld", "article": "het", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een concreet geval dat laat zien hoe een regel of opdracht werkt.", "example": "De docent geeft een voorbeeld met het werkwoord wonen."}, {"word": "langzaam", "article": "", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Met lage snelheid of meer tijd dan gemiddeld.", "example": "Door de drukte rijdt het verkeer langzaam."}, {"word": "maandag", "article": "", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "De dag na zondag en voor dinsdag.", "example": "Op maandag begint de les om negen uur."}, {"word": "morgen", "article": "", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "De dag na vandaag.", "example": "Morgen ga ik naar de gemeente."}, {"word": "de koffie", "article": "de", "category": "A1 · school", "level": "A1", "theme": "school", "image": "images/theme-school.svg", "alt": "Illustratie bij School", "definition": "Een warme drank die wordt gemaakt van gemalen koffiebonen en water.", "example": "Na de lunch drinkt hij een kop koffie."}, {"word": "het dak", "article": "het", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "De bovenste bedekking van een gebouw die beschermt tegen weer en wind.", "example": "Na de storm moet het dak worden gerepareerd."}, {"word": "de zolder", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "De ruimte direct onder het dak, vaak gebruikt voor opslag of als extra kamer.", "example": "Op de zolder bewaren we oude dozen."}, {"word": "de gang", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een smalle doorgangsruimte die kamers met elkaar verbindt.", "example": "De slaapkamers komen uit op de lange gang."}, {"word": "de bank", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een meubel waarop meerdere mensen naast elkaar kunnen zitten.", "example": "Wij zitten met twee personen op de bank."}, {"word": "de kast", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een meubel met ruimte om spullen in op te bergen.", "example": "Mijn kleding ligt in de kast."}, {"word": "de lamp", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een voorwerp dat licht geeft wanneer het aanstaat.", "example": "Ik doe de lamp aan om te lezen."}, {"word": "het bed", "article": "het", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een meubel waarop je slaapt.", "example": "Het bed staat in de slaapkamer."}, {"word": "de lift", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een cabine die mensen of goederen tussen verdiepingen vervoert.", "example": "De lift is buiten gebruik, dus we nemen de trap."}, {"word": "de trap", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een reeks treden waarmee je naar een hogere of lagere verdieping gaat.", "example": "De slaapkamer is bovenaan de trap."}, {"word": "het dorp", "article": "het", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een kleinere woonplaats met minder inwoners dan een stad.", "example": "Mijn ouders wonen in een rustig dorp."}, {"word": "de sleutel", "article": "de", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Een voorwerp waarmee je een slot opent of sluit.", "example": "Ik heb een extra sleutel voor de buurvrouw."}, {"word": "rustig", "article": "", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Met weinig lawaai, verkeer of activiteit.", "example": "Wij wonen in een rustige straat buiten het centrum."}, {"word": "druk", "article": "", "category": "A1 · wonen", "level": "A1", "theme": "wonen", "image": "images/theme-wonen.svg", "alt": "Illustratie bij Wonen", "definition": "Met veel mensen, activiteiten of geluid tegelijk.", "example": "Het is druk in de gang tussen twee lessen."}, {"word": "de bakker", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Iemand die brood en vaak ook gebak maakt of verkoopt.", "example": "Ik koop brood bij de bakker."}, {"word": "de slager", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Iemand die vlees bewerkt en verkoopt.", "example": "Bij de slager koop ik vlees voor het avondeten."}, {"word": "de munt", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een meestal rond metalen betaalmiddel met een bepaalde waarde.", "example": "Ik betaal met een munt van twee euro."}, {"word": "de pan", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een kookvat met bodem en rand waarin eten wordt gekookt of gestoofd.", "example": "De soep staat in een grote pan."}, {"word": "de oven", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een afgesloten apparaat dat voedsel met hete lucht of warmte bakt of gaart.", "example": "De ovenschotel moet dertig minuten in de oven."}, {"word": "de tomaat", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een vrucht die je vaak als groente in gerechten gebruikt.", "example": "Ik snijd een tomaat voor de salade."}, {"word": "het ei", "article": "het", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een product met een schaal, eiwit en dooier, bijvoorbeeld van een kip.", "example": "Ik kook een ei voor mijn ontbijt."}, {"word": "het bord", "article": "het", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een vlak in het klaslokaal waarop de docent schrijft of projecteert.", "example": "De docent schrijft de werkwoorden op het bord."}, {"word": "de lepel", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Bestek met een ronde of ovale bak waarmee je vloeibaar of zacht eten eet.", "example": "Roer de soep met een houten lepel."}, {"word": "de vork", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Bestek met meerdere punten waarmee je voedsel prikt en eet.", "example": "Bij de pasta ligt een vork."}, {"word": "het mes", "article": "het", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Bestek met een scherp blad om voedsel te snijden.", "example": "Snijd het brood met een scherp mes."}, {"word": "de suiker", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een zoete stof die je bijvoorbeeld in eten of drinken doet.", "example": "Ik drink thee zonder suiker."}, {"word": "de melk", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een witte drank van dieren of planten die ook in gerechten wordt gebruikt.", "example": "Doe een beetje melk in de koffie."}, {"word": "de soep", "article": "de", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Een vloeibaar gerecht dat je met een lepel eet.", "example": "De soep zit in een kom."}, {"word": "warm", "article": "", "category": "A1 · eten", "level": "A1", "theme": "eten", "image": "images/theme-eten.svg", "alt": "Illustratie bij Eten en drinken", "definition": "Met een duidelijk hogere temperatuur dan de omgeving.", "example": "De thee is nog warm, dus drink voorzichtig."}, {"word": "de arm", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Het lichaamsdeel van schouder tot hand.", "example": "De verpleegkundige meet de bloeddruk aan mijn arm."}, {"word": "de hand", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Het uiteinde van de arm met een palm, duim en vingers.", "example": "Was je handen voordat je de wond verzorgt."}, {"word": "het oog", "article": "het", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Het zintuig waarmee je licht, kleur en vormen ziet.", "example": "Er zit stof in mijn rechteroog."}, {"word": "de voet", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Het onderste deel van het been waarop je staat en loopt.", "example": "De schoen drukt op mijn linker voet."}, {"word": "de huisarts", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "De arts die algemene medische zorg geeft en zo nodig doorverwijst.", "example": "Ik bel de huisarts omdat de klachten niet verdwijnen."}, {"word": "de assistent", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Iemand die een ander helpt bij diens werk.", "example": "De assistent neemt de telefoon van de huisarts op."}, {"word": "de keelpijn", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Pijn in de keel, bijvoorbeeld bij het slikken.", "example": "Ik heb keelpijn en bel de huisarts."}, {"word": "de apotheek", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een zorglocatie waar medicijnen worden verstrekt en uitgelegd.", "example": "Ik haal het voorgeschreven medicijn bij de apotheek."}, {"word": "de zalf", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een dik smeerbaar medicijn voor behandeling van de huid.", "example": "Smeer de zalf dun op de geïrriteerde plek."}, {"word": "de druppel", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een kleine ronde hoeveelheid vloeistof.", "example": "Er valt een druppel water op de tafel."}, {"word": "het doosje", "article": "het", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een klein voorwerp met wanden en vaak een deksel om iets in te bewaren.", "example": "De pleisters zitten in een doosje."}, {"word": "de tandarts", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "De zorgverlener die tanden, kiezen en mond onderzoekt en behandelt.", "example": "Ik ga twee keer per jaar naar de tandarts."}, {"word": "de kies", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een brede tand achter in de mond waarmee je voedsel fijnmaakt.", "example": "De tandarts kijkt naar mijn kies."}, {"word": "het gaatje", "article": "het", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een kleine opening; bij een tand kan het een beschadigde plek zijn.", "example": "De tandarts onderzoekt of er een gaatje in mijn kies zit."}, {"word": "de tandenborstel", "article": "de", "category": "A1 · gezondheid", "level": "A1", "theme": "gezondheid", "image": "images/theme-dokter.svg", "alt": "Illustratie bij Gezondheid", "definition": "Een kleine borstel waarmee je je tanden schoonmaakt.", "example": "Mijn tandenborstel staat bij de wastafel."}, {"word": "de trui", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een warm kledingstuk met lange mouwen voor het bovenlichaam.", "example": "In de winter draag ik vaak een wollen trui."}, {"word": "het overhemd", "article": "het", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een net bovenkledingstuk met kraag, knopen en meestal lange mouwen.", "example": "Hij strijkt zijn overhemd voor het gesprek."}, {"word": "de rok", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een kledingstuk dat vanaf de taille naar beneden hangt zonder broekspijpen.", "example": "De zwarte rok komt tot haar knieën."}, {"word": "het shirt", "article": "het", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een licht kledingstuk voor het bovenlichaam, met korte of lange mouwen.", "example": "Hij draagt een blauw shirt onder zijn jas."}, {"word": "de broek", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een kledingstuk dat vanaf de taille beide benen afzonderlijk bedekt.", "example": "Deze broek zit comfortabel en is lang genoeg."}, {"word": "kapot", "article": "", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Beschadigd en daardoor niet meer volledig bruikbaar of heel.", "example": "De rits van mijn jas is kapot."}, {"word": "de handschoen", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een kledingstuk dat hand en vingers tegen kou of vuil beschermt.", "example": "Ik ben één handschoen op de fiets verloren."}, {"word": "de hoofddoek", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een doek die je op of om je hoofd draagt.", "example": "Zij draagt een blauwe hoofddoek."}, {"word": "de bril", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een hulpmiddel met glazen voor je ogen om beter te zien.", "example": "Met mijn bril kan ik de tekst goed lezen."}, {"word": "droog", "article": "", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Zonder water of neerslag en niet nat.", "example": "Neem geen paraplu mee; het blijft droog."}, {"word": "het uur", "article": "het", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een periode van zestig minuten.", "example": "De reis duurt een uur."}, {"word": "het kwartier", "article": "het", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een periode van vijftien minuten.", "example": "Ik wacht een kwartier op de bus."}, {"word": "de bestelling", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een aanvraag om één of meer producten te kopen en te laten leveren of klaarzetten.", "example": "Je ontvangt een e-mail zodra de bestelling is verzonden."}, {"word": "de winkel", "article": "de", "category": "A1 · kleding", "level": "A1", "theme": "kleding", "image": "images/theme-kleding.svg", "alt": "Illustratie bij Kleding", "definition": "Een plaats waar producten aan klanten worden verkocht.", "example": "De winkel sluit vandaag om acht uur."}, {"word": "het spoor", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "De rails en het genummerde perrondeel waar een trein rijdt of vertrekt.", "example": "Onze trein vertrekt vandaag van spoor vijf."}, {"word": "de halte", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een vaste plaats waar bus, tram of metro stopt voor passagiers.", "example": "Stap uit bij de derde halte."}, {"word": "het kaartje", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een papieren of digitaal bewijs dat je voor een reis of toegang hebt betaald.", "example": "Ik koop online een kaartje voor de trein."}, {"word": "het kruispunt", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een plaats waar wegen elkaar kruisen.", "example": "Bij het kruispunt sla ik linksaf."}, {"word": "het stoplicht", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een lichtsignaal dat met rood, geel en groen het verkeer regelt.", "example": "Wacht bij het rode stoplicht."}, {"word": "links", "article": "", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Aan de kant die tegenover rechts ligt.", "example": "De apotheek is links van de supermarkt."}, {"word": "het noorden", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "De windrichting tegenover het zuiden, op veel kaarten bovenaan.", "example": "Het noorden staat bovenaan deze kaart."}, {"word": "het zuiden", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "De windrichting tegenover het noorden, op veel kaarten onderaan.", "example": "Wij reizen naar het zuiden van het land."}, {"word": "het oosten", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "De windrichting waar de zon ongeveer opkomt.", "example": "Op deze kaart ligt het oosten rechts."}, {"word": "het westen", "article": "het", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "De windrichting tegenover het oosten, waar de zon ongeveer ondergaat.", "example": "Op deze kaart ligt het westen links."}, {"word": "de file", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een lange rij langzaam rijdende of stilstaande voertuigen.", "example": "Door een ongeluk staat er een file op de snelweg."}, {"word": "de collega", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Iemand met wie je bij dezelfde organisatie of in hetzelfde beroep werkt.", "example": "Mijn collega legt het nieuwe systeem uit."}, {"word": "de minuut", "article": "de", "category": "A1 · reizen", "level": "A1", "theme": "reizen", "image": "images/theme-reizen.svg", "alt": "Illustratie bij Reizen", "definition": "Een periode van zestig seconden.", "example": "De bus vertrekt over één minuut."}, {"word": "de wedstrijd", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een georganiseerde activiteit waarin personen of teams proberen te winnen.", "example": "De voetbalwedstrijd eindigde in twee tegen één."}, {"word": "het team", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een groep mensen die samen verantwoordelijk is voor een gedeeld doel of werkgebied.", "example": "Het team verdeelt de taken voor de nieuwe week."}, {"word": "de muziek", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Geordende klanken en ritmes die worden gespeeld of gezongen.", "example": "Tijdens het koken luister ik naar rustige muziek."}, {"word": "de hobby", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een activiteit die je regelmatig voor plezier in je vrije tijd doet.", "example": "Fotografie is haar favoriete hobby."}, {"word": "het museum", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een instelling waar kunst, geschiedenis of andere collecties worden bewaard en getoond.", "example": "In het museum bekijken we schilderijen van Rembrandt."}, {"word": "het concert", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een optreden waarbij muziek live voor publiek wordt gespeeld of gezongen.", "example": "Het concert begint om acht uur."}, {"word": "het café", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een horecazaak waar mensen vooral drinken en elkaar ontmoeten.", "example": "Na de film drinken we iets in het café."}, {"word": "de vriendin", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een vrouw of meisje met wie iemand een persoonlijke vriendschap heeft; soms ook een vrouwelijke partner.", "example": "Mijn vriendin en ik volgen samen Nederlandse les."}, {"word": "het schaap", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een boerderijdier met een dikke vacht van wol.", "example": "Het schaap staat in de wei."}, {"word": "de koe", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een volwassen vrouwelijk rund dat op een boerderij vaak voor melk wordt gehouden.", "example": "De koe staat naast de schapen."}, {"word": "het paard", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een groot dier waarop mensen kunnen rijden en dat ook lasten kan trekken.", "example": "Het paard loopt in de wei."}, {"word": "de vogel", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een dier met veren, een snavel en vleugels.", "example": "Er zit een vogel in de boom."}, {"word": "de tent", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een verplaatsbare beschutting van doek waarin je bijvoorbeeld kampeert.", "example": "Wij slapen op vakantie in een tent."}, {"word": "het strand", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een strook zand of stenen langs zee, meer of rivier.", "example": "Bij mooi weer gaan we naar het strand."}, {"word": "de bloem", "article": "de", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Het deel van een plant dat vaak kleur heeft en waaruit zaden kunnen ontstaan.", "example": "Er staat een gele bloem in de tuin."}, {"word": "het zwembad", "article": "het", "category": "A1 · vrije-tijd", "level": "A1", "theme": "vrije-tijd", "image": "images/theme-vrije-tijd.svg", "alt": "Illustratie bij Vrije tijd", "definition": "Een gebouw of terrein met bassins waarin mensen zwemmen.", "example": "Het zwembad heeft een apart bad voor kinderen."}]) {
+ if(!vocabulary.some(v=>v.word===entry.word && v.theme===entry.theme)) vocabulary.push(entry);
 }
 
 const baseQuestionTopics = questionTopics;
@@ -151245,11 +157740,19 @@ function renderA1LessonIndex(theme) {
   return `<nav class="a1-detail-body a1-lesson-index" aria-label="Lessen in ${escapeHtml(theme.title)}"><span class="kicker">Kies je les</span><h2>Lessen in ${escapeHtml(theme.title)}</h2><p>Open een les om te lezen, luisteren en oefenen.</p><div class="a1-lesson-links">${(theme.lessons || []).map((lesson, index) => `<button type="button" class="a1-lesson-link" data-a1-lesson="${lesson.id}"><span class="a1-lesson-position">${index + 1}</span><span><strong>${escapeHtml(lesson.title)}</strong><small>${lesson.terms.map(escapeHtml).join(' · ')}</small></span><span aria-hidden="true">→</span></button>`).join('')}</div><div class="button-row">${a1ReferenceCards.filter((card) => card.themeId === theme.id).map((card) => `<button type="button" class="text-button" data-a1-reference="${card.id}">Cheat Sheet · ${escapeHtml(card.title)} →</button>`).join('')}</div></nav>`;
 }
 
+function renderA1SourcePages(pages) {
+ return `<section class="a1-source-pages"><h3>Leerinhoud per bronpagina</h3><p>De woorden en regels hieronder zijn gecontroleerd aan de hand van de aangeleverde foto’s. Luisteren gebruikt de Nederlandse browserstem.</p>${pages.map(page=>`<details><summary>${escapeHtml(page.title)} · foto ${page.photo} · ${page.terms.length} leerwoorden</summary><p>${escapeHtml(page.rule)}</p><button class="speak secondary-button" type="button" data-text="${escapeHtml(page.rule)}" data-rate="0.8">Luister naar de uitleg</button><div class="button-row">${page.terms.map(term=>`<button type="button" class="speak text-button" data-text="${escapeHtml(term)}" data-rate="0.8">${escapeHtml(term)} 🔊</button>`).join('')}</div><small>Bron: ${escapeHtml(page.file)}</small><div><button class="text-button" type="button" data-guided-graph-node="${page.id}">Deze bronpagina in de graaf →</button></div></details>`).join('')}</section>`;
+}
+function renderA1FamilyTree() {
+ const rows=[['Hans en Nel','vader en moeder · ouders'],['Max en Karen','oom en tante · Max is de broer van Hans'],['Kees en Nienke','neef en nicht · kinderen van Max en Karen'],['Julia','vrouw van Tom'],['David en Lisa','zoon en dochter van Tom en Julia'],['Bram en Helma','broer en schoonzus'],['Vincent en Vera','neef en nicht · kinderen van Bram en Helma'],['Meike en Johan','zus en zwager']];
+ return `<section class="a1-family-tree"><h3>Familieboom: de relaties met Tom</h3><p>Deze personen en relaties staan in bronfoto 5.</p><table><thead><tr><th>Personen</th><th>Relatie met Tom</th></tr></thead><tbody>${rows.map(([a,b])=>`<tr><td>${a}</td><td>${b}</td></tr>`).join('')}</tbody></table><p>Hans en Nel hebben vier kleinkinderen: David, Lisa, Vincent en Vera. Kees en Vincent zijn allebei een neef van Tom, maar via verschillende familierelaties.</p></section>`;
+}
+
 function renderA1Lessons(theme) {
   return `<section class="a1-detail-body a1-expanded-lessons"><span class="kicker">A1 · Lezen, luisteren en oefenen</span><h2>Lessen: ${escapeHtml(theme.title)}</h2>
     <p>Lees de uitleg, luister naar het gesprek en oefen met de gekoppelde woorden en werkwoorden.</p>
     ${(theme.lessons || []).map((lesson) => `<details id="a1-lesson-${lesson.id}" class="a1-expanded-lesson"><summary>${escapeHtml(lesson.title)}</summary>
-      <h3>Zo werkt het</h3><p>${escapeHtml(lesson.explanation)}</p>
+      <h3>Zo werkt het</h3><p>${escapeHtml(lesson.explanation)}</p>${lesson.id === "familierelaties" ? renderA1FamilyTree() : ""}${renderA1SourcePages(lesson.sourcePages)}
       <h3>Woorden in context</h3><div class="a1-word-grid">${lesson.terms.map((term) => {
         const entry = findLexiconEntry(term);
         return `<article><strong>${escapeHtml(entry.term)}</strong><p>${escapeHtml(entry.definition)}</p><small>${escapeHtml(entry.example)}</small><div class="button-row"><button class="speak" type="button" data-text="${escapeHtml(entry.term)}" data-rate="0.8">🔊 Woord</button><button class="speak" type="button" data-text="${escapeHtml(entry.example)}" data-rate="0.82">🔊 Voorbeeld</button></div></article>`;
@@ -151259,8 +157762,8 @@ function renderA1Lessons(theme) {
       <div class="a1-dialogue">${lesson.dialogue.map((line, index) => `<p><b>${index % 2 ? 'B' : 'A'}</b><span>${escapeHtml(line)}</span><button class="speak" type="button" data-text="${escapeHtml(line)}" data-rate="0.82" aria-label="Luister: ${escapeHtml(line)}">🔊</button></p>`).join('')}</div>
       <p>Oefen met een partner: neem om de beurt rol A en rol B. Vervang daarna één detail door je eigen informatie.</p>
       <div class="button-row">${lesson.grammarIds.map((id) => `<button class="text-button" type="button" data-a1-grammar="${id}">${escapeHtml(allGrammarTopics.find((topic) => topic.id === id).title)} →</button>`).join('')}
-      ${lesson.exerciseIds.map((id) => { const exercise = exerciseBank.find((item) => item.id === id); return `<button class="secondary-button" type="button" data-a1-exercise="${id}">${exercise.verbId ? escapeHtml(exercise.verbId) + ' · ' : ''}${exercise.type === 'listening' ? 'Luisteren' : exercise.type === 'input' ? 'Werkwoordvorm' : exercise.skill === 'grammatica' ? 'Taalregel' : 'Betekenis'} →</button>`; }).join('')}
-      <button class="text-button" type="button" data-guided-graph-node="${a1LessonNodeId(lesson.id)}">Les in de kennisgraaf →</button></div>
+      </div><details class="a1-lesson-exercises"><summary>Oefeningen bij deze les (${lesson.exerciseIds.length})</summary><div class="button-row">${lesson.exerciseIds.map((id) => { const exercise = exerciseBank.find((item) => item.id === id); return `<button class="secondary-button" type="button" data-a1-exercise="${id}">${exercise.verbId ? escapeHtml(exercise.verbId) + ' · ' : ''}${exercise.type === 'listening' ? 'Luisteren' : exercise.type === 'input' ? 'Werkwoordvorm' : exercise.skill === 'grammatica' ? 'Taalregel' : exercise.term ? escapeHtml(exercise.term) : 'Betekenis'} →</button>`; }).join('')}
+      </div></details><div class="button-row"><button class="text-button" type="button" data-guided-graph-node="${a1LessonNodeId(lesson.id)}">Les in de kennisgraaf →</button></div>
     </details>`).join('')}</section>`;
 }
 
@@ -151286,11 +157789,11 @@ function renderA1Reference() {
       <img src="${theme.image}" alt="Illustratie bij ${escapeHtml(theme.title)}" loading="lazy">
       <div><span class="kicker">A1 · ${escapeHtml(theme.title)}</span><h2>${escapeHtml(card.title)}</h2><p>${escapeHtml(card.rule)}</p>
       <ul>${card.examples.map((sentence) => `<li>${escapeHtml(sentence)} <button class="speak" type="button" data-text="${escapeHtml(sentence)}" data-rate="0.82" aria-label="Luister: ${escapeHtml(sentence)}">🔊</button></li>`).join('')}</ul>
-      <details><summary>Woorden, werkwoorden en grammatica</summary>
+      ${card.id === "familie" ? renderA1FamilyTree() : ""}${renderA1SourcePages(card.sourcePages)}<details open><summary>${card.terms.length} woorden, werkwoorden en grammatica</summary>
       ${card.terms.map((term) => { const entry = findLexiconEntry(term); return `<p><strong>${escapeHtml(entry.term)}</strong> — ${escapeHtml(entry.definition)}</p>`; }).join('')}
       <div class="button-row">${card.verbs.map((verb) => `<button class="text-button" type="button" data-guided-open-verb="${escapeHtml(verb)}">${escapeHtml(verb)} →</button>`).join('')}</div>
       ${card.grammarIds.map((id) => { const grammar = allGrammarTopics.find((item) => item.id === id); return `<button class="text-button" type="button" data-a1-grammar="${escapeHtml(grammar.id)}">${escapeHtml(grammar.title)} →</button>`; }).join('')}
-      </details><div class="button-row"><button class="text-button" type="button" data-page="a1" data-a1-theme="${card.themeId}">Open thema →</button><button class="text-button" type="button" data-guided-graph-node="${a1ReferenceNodeId(card.id)}">Ontdek verbanden →</button></div></div></article>`;
+      </details><div class="button-row">${card.lessonIds.map(id=>`<button class="secondary-button" type="button" data-a1-lesson="${id}">Open les: ${escapeHtml(a1ExpansionLessons.find(l=>l.id===id).title)} →</button>`).join('')}<button class="text-button" type="button" data-page="a1" data-a1-theme="${card.themeId}">Thema: ${escapeHtml(theme.title)} →</button><button class="text-button" type="button" data-guided-graph-node="${a1ReferenceNodeId(card.id)}">Ontdek verbanden →</button></div></div></article>`;
   }).join('') || '<p>Geen kaarten gevonden. Probeer een ander woord.</p>';
 }
 
@@ -152711,6 +159214,11 @@ function initialize() {
   if (questionLessonCount) questionLessonCount.textContent = String(allQuestionTopics.length);
   if (questionPracticeCount) questionPracticeCount.textContent = String(allQuestionPractice.length);
   knowledgeGraphExplorer = createKnowledgeGraphExplorer({
+    onOpenTheme: (nodeId) => {
+      const match=/^theme:(A0|A1|A2|B1|B2|C1|C2):(.+)$/.exec(nodeId);
+      if(match){const [,level,id]=match; state[`${level.toLowerCase()}Theme`]=id; if(['A0','A1','A2'].includes(level))renderCourseThemes(level);else renderSpiralCourse(level);showPage(level.toLowerCase());}
+      else if(nodeId.startsWith('spiral-theme:')){state.b1Theme=nodeId.slice('spiral-theme:'.length);renderSpiralCourse('B1');showPage('b1');}
+    },
     onOpenLesson: openA1Lesson,
     onOpenReference: openA1Reference,
     onOpenPage: (page) => showPage(page),

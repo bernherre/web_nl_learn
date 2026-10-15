@@ -10,7 +10,7 @@ applyCoreVerbReviews(verbAtlas);
 const graph = JSON.parse(readFileSync(new URL('../data/content-knowledge-graph.json', import.meta.url)));
 const nodes = new Map(graph.nodes.map(node => [node.id, node]));
 test('A1 reference cards cover all eight themes and resolve canonical references', () => {
-  assert.equal(new Set(a1ReferenceCards.map(card => card.id)).size, 24);
+  assert.equal(new Set(a1ReferenceCards.map(card => card.id)).size, 30);
   assert.deepEqual(new Set(a1ReferenceCards.map(card => card.themeId)), new Set(a1Themes.map(theme => theme.id)));
   for (const card of a1ReferenceCards) {
     for (const term of card.terms) assert.ok(findLexiconEntry(term), term);

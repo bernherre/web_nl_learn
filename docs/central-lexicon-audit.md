@@ -1,6 +1,6 @@
 # Audit centraal lexicon V19.4
 
-- Centrale, redactioneel nagekeken entries: 1713
+- Centrale, redactioneel nagekeken entries: 2114
 - Centrale A1-batch: 666 entries
 - Centrale A2-batch: 679 entries
 - Unieke A0-termen in woordgroepen: 178
@@ -12,15 +12,16 @@
 | Niveau | Unieke termen | Met betrouwbare uitleg | Controle nodig |
 |---|---:|---:|---:|
 | A0 | 178 | 178 | 0 |
-| A1 | 1037 | 1037 | 0 |
+| A1 | 1417 | 1417 | 0 |
 | A2 | 917 | 917 | 0 |
 
 ## Soorten entries in het centrale lexicon
 
-- zelfstandig naamwoord: 826
+- zelfstandig naamwoord: 972
 - vaste combinatie: 441
+- woord: 176
+- werkwoord: 142
 - bijvoeglijk naamwoord: 106
-- werkwoord: 63
 - uitdrukking: 34
 - vraag: 34
 - bijwoord: 18

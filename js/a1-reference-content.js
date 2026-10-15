@@ -1,3 +1,4 @@
+import { a1ExpansionLessons } from './a1-expansion-content.js';
 // Original summaries; canonical lexicon, verb and grammar references.
 export const a1ReferenceCards = [
   {
@@ -509,3 +510,18 @@ export const a1ReferenceCards = [
   }
 ];
 export const a1ReferenceNodeId = (id) => `a1-reference:${id}`;
+
+const a1ReferenceLessons = {"kennismaken": ["persoonlijke-gegevens"], "beleefd": ["groeten"], "familie": ["familierelaties"], "klanken": ["klinkers", "lettercombinaties"], "hulp": ["begrijpen-verstaan", "instructies"], "hoofdzin": ["schooldag"], "vragen": ["schooldag"], "kamers": ["huis-kamers", "woning-zoeken"], "artikelen": ["kleren-kleur"], "aanwijzen": ["meubels-kleuren"], "meervoud": ["lichaam"], "boodschappen": ["markt-betalen"], "koken": ["koken-bakken", "aan-tafel"], "ontkennen": ["geen-niet"], "afspraak": ["huisarts-afspraak"], "klachten": ["lichaam", "huisarts-afspraak"], "beschrijven": ["kleren-kleur"], "passen": ["passen-ruilen"], "klok": ["openingstijden"], "richting": ["verkeer-route", "nederland-kaart"], "twee-werkwoorden": ["onderweg-plannen", "station-bus"], "tijd": ["schooldag", "uitgaan"], "uitnodigen": ["uitgaan"], "vakantie": ["vakantie-weer"]};
+for (const id of ['buurt-verdieping','apotheek','tandarts','wassen-accessoires','hobbys-sport','dieren']) {
+ const lesson=a1ExpansionLessons.find(l=>l.id===id);
+ const cardId=`source-${id}`;
+ a1ReferenceLessons[cardId]=[id];
+ a1ReferenceCards.push({id:cardId,themeId:lesson.themeId,title:lesson.title,rule:lesson.explanation,examples:lesson.dialogue.slice(0,2),terms:[],verbs:[],grammarIds:[]});
+}
+for (const card of a1ReferenceCards) {
+ card.lessonIds=a1ReferenceLessons[card.id];
+ if(!card.lessonIds)throw new Error(`Missing reference mapping: ${card.id}`);
+ const lessons=card.lessonIds.map(id=>a1ExpansionLessons.find(l=>l.id===id));
+ for(const key of ['terms','verbs','grammarIds'])card[key]=[...new Set([...card[key],...lessons.flatMap(l=>l[key])])];
+ card.sourcePages=[...new Map(lessons.flatMap(l=>l.sourcePages).map(p=>[p.id,p])).values()];
+}

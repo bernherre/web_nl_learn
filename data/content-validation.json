@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-14T15:59:23.313Z",
-  "version": "19.4.0-alpha.14",
+  "generatedAt": "2026-10-15T08:19:00.217Z",
+  "version": "19.4.0-alpha.21",
   "status": "passed",
   "totals": {
     "checks": 81,
@@ -18,10 +18,10 @@
       "questionPractice": 22
     },
     "exercises": {
-      "total": 8192,
+      "total": 9048,
       "byLevel": {
         "A0": 356,
-        "A1": 1184,
+        "A1": 2040,
         "A2": 1569,
         "B1": 2259,
         "B2": 2806,
@@ -31,8 +31,8 @@
       "sourceReview": 24
     },
     "verbs": {
-      "total": 1898,
-      "reviewed": 1898,
+      "total": 1904,
+      "reviewed": 1904,
       "pendingLexicalReview": 0,
       "reviewedShare": 100
     },
@@ -46,10 +46,10 @@
       "newExercises": 24
     },
     "knowledgeGraph": {
-      "nodes": 27989,
-      "edges": 93949,
+      "nodes": 30517,
+      "edges": 109439,
       "issues": 0,
-      "sourceCollections": 62
+      "sourceCollections": 63
     }
   },
   "results": [
@@ -246,14 +246,14 @@
       "area": "exercises",
       "check": "oefenbanktotaal is reproduceerbaar",
       "status": "pass",
-      "detail": "8192 oefeningen.",
+      "detail": "9048 oefeningen.",
       "evidence": null
     },
     {
       "area": "exercises",
       "check": "oefening-id’s zijn uniek",
       "status": "pass",
-      "detail": "8192 unieke id's.",
+      "detail": "9048 unieke id's.",
       "evidence": null
     },
     {
@@ -274,14 +274,14 @@
       "area": "exercises",
       "check": "niveauverdeling",
       "status": "pass",
-      "detail": "{\"A0\":356,\"A1\":1184,\"A2\":1569,\"B1\":2259,\"B2\":2806,\"C1\":9,\"C2\":9}",
+      "detail": "{\"A0\":356,\"A1\":2040,\"A2\":1569,\"B1\":2259,\"B2\":2806,\"C1\":9,\"C2\":9}",
       "evidence": null
     },
     {
       "area": "verbs",
       "check": "atlasomvang is consistent",
       "status": "pass",
-      "detail": "1898 unieke werkwoorden na correctielagen.",
+      "detail": "1904 unieke werkwoorden na correctielagen.",
       "evidence": null
     },
     {
@@ -295,7 +295,7 @@
       "area": "verbs",
       "check": "alle expliciete reviews zijn toegepast",
       "status": "pass",
-      "detail": "1898 handmatig nagekeken fiches.",
+      "detail": "1904 handmatig nagekeken fiches.",
       "evidence": null
     },
     {
@@ -316,7 +316,7 @@
       "area": "verbs",
       "check": "nagekeken fiches hebben specifieke definities en geldige metadata",
       "status": "pass",
-      "detail": "1898 fiches voldoen.",
+      "detail": "1904 fiches voldoen.",
       "evidence": null
     },
     {
@@ -330,7 +330,7 @@
       "area": "verbs",
       "check": "alle werkwoorden hebben een lexicale eindcontrole",
       "status": "pass",
-      "detail": "1898 van 1898 werkwoorden zijn nagekeken.",
+      "detail": "1904 van 1904 werkwoorden zijn nagekeken.",
       "evidence": null
     },
     {
@@ -358,7 +358,7 @@
       "area": "verbs",
       "check": "synoniemen zijn uniek, contextueel bruikbaar en spreken de verschilnotitie niet tegen",
       "status": "pass",
-      "detail": "1898 fiches gecontroleerd.",
+      "detail": "1904 fiches gecontroleerd.",
       "evidence": null
     },
     {
@@ -442,7 +442,7 @@
       "area": "content-banks",
       "check": "woordenschat",
       "status": "pass",
-      "detail": "244 items.",
+      "detail": "844 items.",
       "evidence": null
     },
     {
@@ -491,7 +491,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.4.0-alpha.14 staat in beide shell-assets.",
+      "detail": "Versie 19.4.0-alpha.21 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -519,42 +519,42 @@
       "area": "technical",
       "check": "V19-oefeningen worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=920420, gebruikspositie=953229.",
+      "detail": "Definitiepositie=1129108, gebruikspositie=1161917.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=916505, gebruikspositie=8039973.",
+      "detail": "Definitiepositie=1125193, gebruikspositie=8313824.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de eerste werkwoordbatch wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=2810144, aanroeppositie=7979301.",
+      "detail": "Definitiepositie=3018832, aanroeppositie=8249148.",
       "evidence": null
     },
     {
       "area": "technical",
       "check": "de lexicale eindcontrole wordt vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=7539319, aanroeppositie=7979337.",
+      "detail": "Definitiepositie=7748007, aanroeppositie=8249184.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.4.0-alpha.14.",
+      "detail": "Versie 19.4.0-alpha.21.",
       "evidence": null
     },
     {
       "area": "knowledge-graph",
       "check": "alle grote inhoudsbanken zijn verbonden",
       "status": "pass",
-      "detail": "27989 nodes en 93949 relaties.",
+      "detail": "30517 nodes en 109439 relaties.",
       "evidence": null
     },
     {
@@ -610,7 +610,7 @@
       "area": "knowledge-graph",
       "check": "gevorderde vraagmodules zijn aan grammatica gekoppeld",
       "status": "pass",
-      "detail": "153 grammaticale koppelingen.",
+      "detail": "186 grammaticale koppelingen.",
       "evidence": null
     },
     {

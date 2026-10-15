@@ -1,6 +1,28 @@
-# Nederlands, gewoon doen — V19.4 Alpha 14
+# Nederlands, gewoon doen — V19.4 Alpha 21
 
-## V19.4 Alpha 14 — A1-cursus, werkwoorden en verbonden oefeningen
+## Alpha 21 — herbouwde A1-broncontrole
+
+Deze levering bouwt verder op Alpha 18. Het niet-bewaarde Alpha 20-archief is niet beschikbaar; Alpha 21 is een opnieuw opgebouwde en gecontroleerde versie.
+
+- 90 bronfoto’s geïnventariseerd; 730 verschillende doeltermen, inclusief werkwoorden en geografische namen. Woorden en zichtbare taalregels zijn per bronpagina terug te vinden.
+- 32 uitgebreide A1-lessen en 30 gekoppelde naslagkaarten gebruiken dezelfde volledige leswoorden. Familie bevat de relaties uit de aangeleverde stamboom.
+- 2.114 centrale lexiconentries; 401 meer dan Alpha 18. Zes nieuwe volledige werkwoordfiches: trouwen, sporten, voetballen, onthouden, opletten, aanwijzen. Atlas totaal: 1.904.
+- 976 oefeningen in de A1-uitbreiding; 9.048 oefeningen in de volledige bank. Elk leswoord heeft een contextgebonden betekenisoefening.
+- Inhoud opent met woorden in alfabetische volgorde. Canonieke woorden worden één keer getoond; oorspronkelijke contexten en links blijven behouden. De oorspronkelijke nodeweergave blijft beschikbaar.
+- De graaf toont standaard het volledige verbonden overzicht in een scrollbaar vlak, met een optionele compacte weergave. Bronpagina, les, naslagkaart, woorden, werkwoorden en oefeningen zijn gekoppeld.
+- Alle 27.989 nodes en 93.949 relaties uit Alpha 18 behouden. Bestaande mediabestanden zijn bytegelijk gecontroleerd.
+- Audio gebruikt Nederlandse browserspraak; er zijn geen oorspronkelijke boekopnamen toegevoegd. Foto’s van het boek worden niet gebundeld. Bestaande credits blijven behouden.
+- Afgesneden oefeningen, ontbrekende luisteropnamen en alle kleine labels op de wereldkaart zijn niet gereconstrueerd. Zie `docs/a1-source-coverage.md` en het JSON-inventarisbestand.
+
+### Lokaal testen
+
+Pak de ZIP uit in een aparte map en voer `run-local.bat` uit. De Python-server werkt vanuit die map op http://localhost:8000. Bronbestanden blijven bewerkbaar; na wijzigingen in JS-modules maakt `npm run build` de klassieke browserbundle opnieuw. Gebruik Ctrl+F5 als de browser een oudere versie toont.
+
+### Verificatie
+
+205 tests geslaagd; 81 inhoudsvalidaties geslaagd. Browsercontrole: Familie, naslagkaart, themanavigatie, woordoefening, bronpagina-graaf en mobiel op 390 px. De beschikbaarheid van een Nederlandse stem hangt af van de browser.
+
+## Historie: V19.4 Alpha 14 — A1-cursus, werkwoorden en verbonden oefeningen
 
 - 32 aanvullende lessen in de acht bestaande A1-thema’s, gekoppeld aan de onderwerpen van alle 90 aangeleverde referentiefoto’s.
 - 12 nieuwe volledige werkwoordfiches; 1.898 werkwoorden in de atlas. De oorspronkelijke 1.886 fiches blijven inhoudelijk identiek.

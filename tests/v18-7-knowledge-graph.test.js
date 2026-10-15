@@ -16,8 +16,8 @@ test('de actuele kennisgraaf bevat alle hoofdcollecties zonder gebroken relaties
   assert.equal(graph.metadata.version, packageJson.version);
   assert.equal(graph.nodes.length, graph.metadata.nodeCount);
   assert.equal(graph.edges.length, graph.metadata.edgeCount);
-  assert.equal(graph.metadata.exerciseCount, 8192);
-  assert.equal(graph.metadata.reviewedVerbs, 1898);
+  assert.equal(graph.metadata.exerciseCount, 9048);
+  assert.equal(graph.metadata.reviewedVerbs, 1904);
   assert.equal(graph.metadata.unreviewedVerbs, 0);
   assert.ok(graph.metadata.nodeCount >= 17500);
   assert.ok(graph.metadata.edgeCount >= 64000);

@@ -19,9 +19,9 @@ const graph=JSON.parse(readFileSync(new URL('../data/content-knowledge-graph.jso
 const nodes=new Map(graph.nodes.map(node=>[node.id,node]));
 const edges=new Set(graph.edges.map(edge=>`${edge.source}|${edge.type}|${edge.target}`));
 const normalise=value=>value.toLowerCase().normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
-test('twelve complete additions coexist with the reviewed begrijpen entry',()=>{
- assert.equal(a1ExpansionVerbs.length,12);
- assert.equal(verbAtlas.length,1898);
+test('eighteen complete additions coexist with the reviewed begrijpen entry',()=>{
+ assert.equal(a1ExpansionVerbs.length,18);
+ assert.equal(verbAtlas.length,1904);
  assert.equal(new Set(verbAtlas.map(v=>v.infinitive)).size,verbAtlas.length);
  assert.equal(verbAtlas.filter(v=>v.infinitive==='begrijpen').length,1);
  for(const v of a1ExpansionVerbs){
@@ -47,7 +47,7 @@ test('all 90 reference photographs are mapped to complete, reachable lessons',()
   assert.ok(edges.has(`theme:A1:${l.themeId}|has_lesson|${id}`));
   for(const term of l.terms){
    const entry=findLexiconEntry(term);assert.ok(entry,term);
-   assert.ok(vocabulary.some(v=>v.word===term));
+   assert.ok(vocabulary.some(v=>v.word===entry.term));
    assert.ok(edges.has(`${id}|uses_lexeme|lexeme:${normalise(entry.term)}`));
   }
   for(const verb of l.verbs){assert.ok(verbAtlas.find(v=>v.infinitive===verb)?.reviewed,verb);assert.ok(edges.has(`${id}|uses_verb|verb:${verb}`));}
@@ -60,7 +60,7 @@ test('all 90 reference photographs are mapped to complete, reachable lessons',()
  }
 });
 test('new tests have unique options, valid answers, and canonical feedback',()=>{
- assert.equal(a1ExpansionExercises.length,120);
+ assert.equal(a1ExpansionExercises.length,976);
  for(const e of a1ExpansionExercises){
   assert.ok(checkExerciseAnswer(e,e.answer));
   if (e.options) {

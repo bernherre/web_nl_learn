@@ -32,7 +32,7 @@ test('Alpha 8 behoudt alle 1.886 fiches en raakt geen andere verbsectie aan', ()
   const after = structuredClone(before);
   applyVerbSentencePatternFixes(after);
 
-  assert.equal(after.length, 1898);
+  assert.equal(after.length, 1904);
   assert.deepEqual(
     after.map((verb) => verb.infinitive),
     before.map((verb) => verb.infinitive),

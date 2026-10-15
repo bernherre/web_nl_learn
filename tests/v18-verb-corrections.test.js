@@ -45,9 +45,9 @@ test('de drie ontbrekende modale werkwoorden zijn zonder duplicaten toegevoegd',
     assert.equal(verbAtlas.filter((verb) => verb.infinitive === infinitive).length, 1, `${infinitive}: dubbel of ontbrekend`);
     assert.equal(get(infinitive).reviewed, true);
   }
-  assert.equal(verbAtlas.length, 1895);
-  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'regelmatig').length, 881);
-  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'onregelmatig').length, 1014);
+  assert.equal(verbAtlas.length, 1901);
+  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'regelmatig').length, 885);
+  assert.equal(verbAtlas.filter((verb) => verb.regularity === 'onregelmatig').length, 1016);
 });
 
 test('alle sinds V18 gewijzigde basisvormen en hulpwerkwoorden zijn expliciet gevalideerd', () => {

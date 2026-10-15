@@ -1,4 +1,3 @@
-// Original, complete A1 entries. Applied through the canonical atlas.
 export const a1ExpansionVerbs = [
   {
     "infinitive": "groeten",
@@ -783,6 +782,396 @@ export const a1ExpansionVerbs = [
       "perfectum": "Ik heb de tafel gedekt.",
       "modaal": "Ik moet de tafel dekken.",
       "bijzin": "Ik pak de borden omdat ik de tafel dek."
+    }
+  },
+  {
+    "infinitive": "trouwen",
+    "stem": "trouw",
+    "past": "trouwde",
+    "pastPlural": "trouwden",
+    "participle": "getrouwd",
+    "auxiliary": "zijn",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Met een partner een huwelijk aangaan en echtgenoten worden.",
+    "synonyms": [
+      "in het huwelijk treden"
+    ],
+    "synonymNote": "Hier gaat het om zelf een huwelijk aangaan, niet om het huwelijk van anderen voltrekken.",
+    "usage": "Hier gaat het om zelf een huwelijk aangaan, niet om het huwelijk van anderen voltrekken.",
+    "examples": [
+      "Ik trouw met mijn partner.",
+      "Wij trouwden met mijn partner."
+    ],
+    "regularity": "regelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik trouw",
+      "jij trouwt",
+      "hij/zij trouwt",
+      "wij trouwen",
+      "jullie trouwen",
+      "zij trouwen"
+    ],
+    "pastForms": [
+      "ik trouwde",
+      "jij trouwde",
+      "hij/zij trouwde",
+      "wij trouwden",
+      "jullie trouwden",
+      "zij trouwden"
+    ],
+    "perfectForms": [
+      "ik ben getrouwd",
+      "wij zijn getrouwd"
+    ],
+    "imperative": "trouw",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik trouw met mijn partner.",
+      "inversie": "Vandaag trouw ik met mijn partner.",
+      "vraag": "Trouw jij met mijn partner?",
+      "verleden": "Ik trouwde met mijn partner.",
+      "perfectum": "Ik ben met mijn partner getrouwd.",
+      "modaal": "Ik wil met mijn partner trouwen.",
+      "bijzin": "Ik ben blij omdat ik met mijn partner trouw."
+    }
+  },
+  {
+    "infinitive": "sporten",
+    "stem": "sport",
+    "past": "sportte",
+    "pastPlural": "sportten",
+    "participle": "gesport",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Een sport beoefenen voor beweging, ontspanning of een wedstrijd.",
+    "synonyms": [
+      "bewegen"
+    ],
+    "synonymNote": "Bewegen is ruimer dan sporten; niet elke beweging is sport.",
+    "usage": "Bewegen is ruimer dan sporten; niet elke beweging is sport.",
+    "examples": [
+      "Ik sport in het park.",
+      "Wij sportten in het park."
+    ],
+    "regularity": "regelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik sport",
+      "jij sport",
+      "hij/zij sport",
+      "wij sporten",
+      "jullie sporten",
+      "zij sporten"
+    ],
+    "pastForms": [
+      "ik sportte",
+      "jij sportte",
+      "hij/zij sportte",
+      "wij sportten",
+      "jullie sportten",
+      "zij sportten"
+    ],
+    "perfectForms": [
+      "ik heb gesport",
+      "wij hebben gesport"
+    ],
+    "imperative": "sport",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik sport in het park.",
+      "inversie": "Vandaag sport ik in het park.",
+      "vraag": "Sport jij in het park?",
+      "verleden": "Ik sportte in het park.",
+      "perfectum": "Ik heb in het park gesport.",
+      "modaal": "Ik wil in het park sporten.",
+      "bijzin": "Ik ben blij omdat ik in het park sport."
+    }
+  },
+  {
+    "infinitive": "voetballen",
+    "stem": "voetbal",
+    "past": "voetbalde",
+    "pastPlural": "voetbalden",
+    "participle": "gevoetbald",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "De sport voetbal spelen en proberen de bal in het doel te krijgen.",
+    "synonyms": [
+      "een voetbalwedstrijd spelen"
+    ],
+    "synonymNote": "Een wedstrijd is één vorm van voetballen; je kunt ook oefenen.",
+    "usage": "Een wedstrijd is één vorm van voetballen; je kunt ook oefenen.",
+    "examples": [
+      "Ik voetbal met mijn vrienden.",
+      "Wij voetbalden met mijn vrienden."
+    ],
+    "regularity": "regelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik voetbal",
+      "jij voetbalt",
+      "hij/zij voetbalt",
+      "wij voetballen",
+      "jullie voetballen",
+      "zij voetballen"
+    ],
+    "pastForms": [
+      "ik voetbalde",
+      "jij voetbalde",
+      "hij/zij voetbalde",
+      "wij voetbalden",
+      "jullie voetbalden",
+      "zij voetbalden"
+    ],
+    "perfectForms": [
+      "ik heb gevoetbald",
+      "wij hebben gevoetbald"
+    ],
+    "imperative": "voetbal",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik voetbal met mijn vrienden.",
+      "inversie": "Vandaag voetbal ik met mijn vrienden.",
+      "vraag": "Voetbal jij met mijn vrienden?",
+      "verleden": "Ik voetbalde met mijn vrienden.",
+      "perfectum": "Ik heb met mijn vrienden gevoetbald.",
+      "modaal": "Ik wil met mijn vrienden voetballen.",
+      "bijzin": "Ik ben blij omdat ik met mijn vrienden voetbal."
+    }
+  },
+  {
+    "infinitive": "onthouden",
+    "stem": "onthoud",
+    "past": "onthield",
+    "pastPlural": "onthielden",
+    "participle": "onthouden",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Informatie in je geheugen bewaren zodat je die later nog weet.",
+    "synonyms": [
+      "in het geheugen bewaren"
+    ],
+    "synonymNote": "Deze betekenis gaat over herinneren; iemand iets onthouden is een andere betekenis.",
+    "usage": "Deze betekenis gaat over herinneren; iemand iets onthouden is een andere betekenis.",
+    "examples": [
+      "Ik onthoud dit woord.",
+      "Wij onthielden dit woord."
+    ],
+    "regularity": "onregelmatig",
+    "separable": false,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik onthoud",
+      "jij onthoudt",
+      "hij/zij onthoudt",
+      "wij onthouden",
+      "jullie onthouden",
+      "zij onthouden"
+    ],
+    "pastForms": [
+      "ik onthield",
+      "jij onthield",
+      "hij/zij onthield",
+      "wij onthielden",
+      "jullie onthielden",
+      "zij onthielden"
+    ],
+    "perfectForms": [
+      "ik heb onthouden",
+      "wij hebben onthouden"
+    ],
+    "imperative": "onthoud",
+    "conjugationClass": "sterk / onregelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik onthoud dit woord.",
+      "inversie": "Vandaag onthoud ik dit woord.",
+      "vraag": "Onthoud jij dit woord?",
+      "verleden": "Ik onthield dit woord.",
+      "perfectum": "Ik heb dit woord onthouden.",
+      "modaal": "Ik wil dit woord onthouden.",
+      "bijzin": "Ik ben blij omdat ik dit woord onthoud."
+    }
+  },
+  {
+    "infinitive": "opletten",
+    "stem": "let op",
+    "past": "lette op",
+    "pastPlural": "letten op",
+    "participle": "opgelet",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Je aandacht richten op wat er gebeurt zodat je iets goed waarneemt.",
+    "synonyms": [
+      "aandacht schenken"
+    ],
+    "synonymNote": "Opletten kan zonder aanvulling of met op: let op het verkeer.",
+    "usage": "Opletten kan zonder aanvulling of met op: let op het verkeer.",
+    "examples": [
+      "Ik let op het verkeer.",
+      "Wij letten goed op tijdens de les."
+    ],
+    "regularity": "regelmatig",
+    "separable": true,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik let op",
+      "jij let op",
+      "hij/zij let op",
+      "wij letten op",
+      "jullie letten op",
+      "zij letten op"
+    ],
+    "pastForms": [
+      "ik lette op",
+      "jij lette op",
+      "hij/zij lette op",
+      "wij letten op",
+      "jullie letten op",
+      "zij letten op"
+    ],
+    "perfectForms": [
+      "ik heb opgelet",
+      "wij hebben opgelet"
+    ],
+    "imperative": "let op",
+    "conjugationClass": "zwak / regelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik let goed op.",
+      "inversie": "Vandaag let ik goed op.",
+      "vraag": "Let jij goed op?",
+      "verleden": "Ik lette goed op.",
+      "perfectum": "Ik heb goed opgelet.",
+      "modaal": "Ik moet goed opletten.",
+      "bijzin": "Ik begrijp de uitleg omdat ik goed oplet."
+    }
+  },
+  {
+    "infinitive": "aanwijzen",
+    "stem": "wijs aan",
+    "past": "wees aan",
+    "pastPlural": "wezen aan",
+    "participle": "aangewezen",
+    "auxiliary": "hebben",
+    "level": "A1",
+    "semantic": "handeling",
+    "semanticLabel": "dagelijkse communicatie en handelingen",
+    "meaning": "Met een vinger, gebaar of woorden laten zien welke persoon of zaak je bedoelt.",
+    "synonyms": [
+      "aanduiden"
+    ],
+    "synonymNote": "Aanduiden kan ook alleen met woorden; aanwijzen gebeurt vaak met een gebaar.",
+    "usage": "Je wijst iemand of iets aan. In de hoofdzin staat aan los; in de infinitief is aanwijzen één woord.",
+    "examples": [
+      "Ik wijs dit boek aan.",
+      "Wij wezen de juiste tas aan."
+    ],
+    "regularity": "onregelmatig",
+    "separable": true,
+    "reflexive": false,
+    "fixedPreposition": "",
+    "relatedWords": [],
+    "register": "neutraal",
+    "reviewed": true,
+    "formsReviewed": true,
+    "curated": true,
+    "reviewBatch": "A1-bronuitbreiding-2026-10",
+    "reviewStatus": "editorially-reviewed",
+    "lexicalSource": "Oorspronkelijke leerdefinities; Nederlandse vervoegingsregels en taaladvies",
+    "formsSource": "Handmatig uitgewerkte paradigma’s; zie docs/a1-verb-audit.md",
+    "presentForms": [
+      "ik wijs aan",
+      "jij wijst aan",
+      "hij/zij wijst aan",
+      "wij wijzen aan",
+      "jullie wijzen aan",
+      "zij wijzen aan"
+    ],
+    "pastForms": [
+      "ik wees aan",
+      "jij wees aan",
+      "hij/zij wees aan",
+      "wij wezen aan",
+      "jullie wezen aan",
+      "zij wezen aan"
+    ],
+    "perfectForms": [
+      "ik heb aangewezen",
+      "wij hebben aangewezen"
+    ],
+    "imperative": "wijs aan",
+    "conjugationClass": "sterk / onregelmatig",
+    "sentencePatterns": {
+      "hoofdzin": "Ik wijs dit boek aan.",
+      "inversie": "Vandaag wijs ik dit boek aan.",
+      "vraag": "Wijs jij dit boek aan?",
+      "verleden": "Ik wees dit boek aan.",
+      "perfectum": "Ik heb dit boek aangewezen.",
+      "modaal": "Ik kan dit boek aanwijzen.",
+      "bijzin": "Ik zie dat jij dit boek aanwijst."
     }
   }
 ];

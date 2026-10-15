@@ -1,3 +1,4 @@
+import { a1SourcePages } from '../js/a1-source-pages.js';
 import { a1ExpansionVerbs } from '../js/a1-expansion-verbs.js';
 import { a1ExpansionLessons, a1ExpansionExercises, a1LessonAudio, a1LessonNodeId } from '../js/a1-expansion-content.js';
 import { a1ReferenceCards, a1ReferenceNodeId } from '../js/a1-reference-content.js';
@@ -295,13 +296,15 @@ for (const item of vocabulary) {
   addNode({
     id,
     type: 'vocabulary',
-    label: [item.article, item.word].filter(Boolean).join(' '),
+    label: item.article && !item.word.startsWith(`${item.article} `) ? `${item.article} ${item.word}` : item.word,
     subtitle: item.definition,
     level: item.level,
     source: 'visuele-woordenschat',
     data: item,
   });
   levelEdge(id, item.level);
+  const canonicalEntry = findLexiconEntry(item.word) || findLexiconEntry([item.article, item.word].filter(Boolean).join(' '));
+  if (canonicalEntry) addEdge(id, `lexeme:${normalise(canonicalEntry.term)}`, 'resolves_to_lexeme', 'centrale betekenis');
   const themeMatches = [...themeIds.entries()].filter(([key]) => key.endsWith(`:${item.theme}`));
   for (const [, themeId] of themeMatches) addEdge(id, themeId, 'used_in_theme', 'thema');
   if (!clean(item.definition) || clean(item.definition).length < 12) addIssue(id, 'definition-too-short', 'Definitie ontbreekt of is te kort.', 'warning');
@@ -830,6 +833,17 @@ for (const verb of a1ExpansionVerbs) {
 // Maak de herkomst zelf navigeerbaar: iedere inhoudsnode hoort bij een broncollectie.
 const rootId = 'graph:all-content';
 addNode({ id: rootId, type: 'graph_root', label: 'Alle leerinhoud', subtitle: 'Centrale ingang van de kennisgraaf', source: 'kennisgraaf' });
+for (const page of a1SourcePages) {
+ addNode({id:page.id,type:'a1_source_page',label:page.title,subtitle:page.rule,level:'A1',source:'a1-broncontrole',data:page});
+ addEdge(a1LessonNodeId(page.lessonId),page.id,'has_source_page','bronpagina');
+ for(const term of page.terms)addEdge(page.id,`lexeme:${normalise(findLexiconEntry(term).term)}`,'uses_lexeme','leerwoord');
+ for(const verb of page.verbs)addEdge(page.id,verbByNormalised.get(normalise(verb)),'uses_verb','werkwoord');
+ for(const e of a1ExpansionExercises.filter(e=>e.sourcePageIds?.includes(page.id)))addEdge(page.id,`exercise:${e.id}`,'uses_exercise','oefening');
+}
+for(const card of a1ReferenceCards){
+ for(const id of card.lessonIds)addEdge(a1ReferenceNodeId(card.id),a1LessonNodeId(id),'has_lesson','bijbehorende les');
+ for(const page of card.sourcePages)addEdge(a1ReferenceNodeId(card.id),page.id,'has_source_page','bronpagina');
+}
 const sourceSnapshot = [...nodes.values()].filter((node) => node.id !== rootId && node.type !== 'source_collection');
 const sourceIds = new Map();
 for (const source of unique(sourceSnapshot.map((node) => node.source).filter(Boolean))) {

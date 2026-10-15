@@ -1,3 +1,4 @@
+import { a1SourceLexicon } from './a1-source-lexicon.js';
 import { a1ExpansionLexicon } from './a1-expansion-lexicon.js';
 import { a1ExpansionVerbs } from './a1-expansion-verbs.js';
 import { a1LexiconEntries } from './lexicon-a1.js';
@@ -344,7 +345,8 @@ export const centralLexiconEntries = [
   lexeme('het gaat goed', 'Een positief antwoord op de vraag hoe het gaat.', 'Dank je, het gaat goed.', 'uitdrukking', 'A1'),
 
   ...a1ExpansionLexicon,
-  ...a1ExpansionVerbs.filter((verb) => !['vertrekken', 'bezoeken'].includes(verb.infinitive)).map((verb) => ({
+  ...a1SourceLexicon,
+  ...a1ExpansionVerbs.filter((verb) => !['vertrekken', 'bezoeken', 'sporten', 'voetballen', 'onthouden'].includes(verb.infinitive)).map((verb) => ({
     term: verb.infinitive, definition: verb.meaning, example: verb.examples[0], kind: 'werkwoord',
     level: 'A1', status: 'editorially-reviewed', source: 'A1-werkwoordenatlas · centrale lexiconredactie', verbId: verb.infinitive,
   })),

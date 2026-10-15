@@ -1,3 +1,4 @@
+import { a1ExpansionVerbs } from '../js/a1-expansion-verbs.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { verbAtlas as baseVerbAtlas } from '../js/verb-atlas.js';
@@ -10,7 +11,8 @@ applyVerbCorrections(atlas);
 applyCoreVerbReviews(atlas);
 applyInitialVerbReviews(atlas);
 
-const firstHundred = [...atlas]
+// Keep the historical review batch stable when new alphabetically earlier verbs are added.
+const firstHundred = atlas.filter(v => !a1ExpansionVerbs.some(a => a.infinitive === v.infinitive))
   .sort((a, b) => a.infinitive.localeCompare(b.infinitive, 'nl-NL'))
   .slice(0, 100);
 const get = (name) => atlas.find((verb) => verb.infinitive === name);

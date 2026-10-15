@@ -1,7 +1,7 @@
 # Lexicale kwaliteitsaudit
 
-- Gecontroleerde kaarten en concepten: 2901
-- Verrijkte werkwoorden: 1898
+- Gecontroleerde kaarten en concepten: 3507
+- Verrijkte werkwoorden: 1904
 - Werkwoorden die bewust alleen als catalogusvorm worden behandeld: 0
 - Blokkerende bevindingen: 0
 

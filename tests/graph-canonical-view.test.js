@@ -31,3 +31,11 @@ test('grouped dictionary entries retain all original contextual fields and searc
     if (old.searchText) assert.ok(current.searchText.includes(old.searchText));
   }
 });
+
+test('the visual vocabulary and theme contexts for de koorts resolve to one lexeme', () => {
+ const view=canonicalGraphView(original);
+ const words=view.nodes.filter(n=>n.label==='de koorts' && ['lexeme','term','vocabulary'].includes(n.type));
+ assert.equal(words.length,1);
+ assert.equal(words[0].id,'lexeme:de-koorts');
+ assert.ok(words[0].sourceContexts.some(n=>n.type==='vocabulary'));
+});

@@ -26,7 +26,7 @@ test('V19.2.1 heeft 1.886 inhoudelijk uitgebreide werkwoordfiches zonder generie
   assert.equal(coreVerbReviews.length, 73);
   assert.equal(initialVerbReviews.length, 1748);
   assert.equal(finalVerbReviews.length, 79);
-  assert.equal(verbAtlas.filter((verb) => verb.reviewed === true).length, 1898);
+  assert.equal(verbAtlas.filter((verb) => verb.reviewed === true).length, 1904);
   for (const verb of verbAtlas.filter((item) => item.reviewed === true)) {
     assert.ok(verb.meaning.length >= 35, `${verb.infinitive}: te korte definitie`);
     assert.ok(!genericMeanings.includes(verb.meaning), `${verb.infinitive}: generieke definitie`);
@@ -60,7 +60,7 @@ test('ontbrekende kernwerkwoorden zijn zonder duplicaten toegevoegd', () => {
     assert.equal(verbAtlas.filter((verb) => verb.infinitive === name).length, 1, name);
     assert.equal(get(name).reviewed, true, name);
   }
-  assert.equal(verbAtlas.length, 1898);
+  assert.equal(verbAtlas.length, 1904);
 });
 
 test('de bronreview voegt twaalf uitlegmodules en vierentwintig controleerbare oefeningen toe', () => {

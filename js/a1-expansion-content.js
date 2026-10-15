@@ -1,3 +1,4 @@
+import { a1SourcePages } from './a1-source-pages.js';
 import { a1ExpansionVerbs } from './a1-expansion-verbs.js';
 // Original lessons based on topic coverage of the supplied reference photographs.
 // This module is the single source for lessons, listening scenes and exercises.
@@ -1392,6 +1393,12 @@ export const a1ExpansionLessons = [
     "audioId": "a1-dialogue:vakantie-weer"
   }
 ];
+for (const lesson of a1ExpansionLessons) {
+ lesson.sourcePages = a1SourcePages.filter(page => page.lessonId === lesson.id);
+ lesson.referencePhotos = lesson.sourcePages.map(page => page.photo);
+ lesson.terms = [...new Set([...lesson.terms, ...lesson.sourcePages.flatMap(page => page.terms)])];
+ lesson.verbs = [...new Set([...lesson.verbs, ...lesson.sourcePages.flatMap(page => page.verbs)])];
+}
 export const a1LessonNodeId = (id) => `a1-lesson:${id}`;
 export const a1LessonAudio = a1ExpansionLessons.map((lesson) => ({
   id: lesson.audioId, lessonId: lesson.id, language: 'nl-NL', engine: 'speech-synthesis',
@@ -1839,6 +1846,7 @@ const a1VerbPracticeContexts = [
     "dekt"
   ]
 ];
+a1VerbPracticeContexts.push(['trouwen','Zij ___ met haar partner.','trouwt'],['sporten','Ik ___ in het park.','sport'],['voetballen','Hij ___ met vrienden.','voetbalt'],['onthouden','Zij ___ het woord.','onthoudt'],['opletten','Hij ___ goed op.','let'],['aanwijzen','Zij ___ dit boek aan.','wijst']);
 for (const [index, [infinitive, prompt, answer]] of a1VerbPracticeContexts.entries()) {
   const verb = a1ExpansionVerbs.find((entry) => entry.infinitive === infinitive);
   const lessons = a1ExpansionLessons.filter((lesson) => lesson.verbs.includes(infinitive));
@@ -1855,4 +1863,18 @@ for (const [index, [infinitive, prompt, answer]] of a1VerbPracticeContexts.entri
       options: definitions.slice(offset).concat(definitions.slice(0, offset)), explanation: verb.usage },
   );
   for (const lesson of lessons) lesson.exerciseIds.push(formId, meaningId);
+}
+
+// Each lesson word has a reachable meaning exercise and explicit source-page links.
+for (const lesson of a1ExpansionLessons) {
+ const definitions = [...new Set(lesson.terms.map(term => findLexiconEntry(term)?.definition).filter(Boolean))];
+ for (const [index, term] of lesson.terms.entries()) {
+  const entry = findLexiconEntry(term);
+  if (!entry) throw new Error(`Missing source word: ${term}`);
+  const options = [entry.definition, ...definitions.filter(d => d !== entry.definition).slice(0, 2)];
+  const offset = index % options.length;
+  const id = `a1-source-word-${lesson.id}-${index + 1}`;
+  a1ExpansionExercises.push({id, lessonId:lesson.id, sourcePageIds:lesson.sourcePages.filter(p=>p.terms.includes(term)).map(p=>p.id), term, level:'A1',difficulty:2,type:'choice',skill:'woordenschat',topic:lesson.title,prompt:`Wat betekent “${term}” in deze zin: “${entry.example}”?`,answer:entry.definition,options:options.slice(offset).concat(options.slice(0,offset)),explanation:`${entry.definition} Voorbeeld: ${entry.example}`});
+  lesson.exerciseIds.push(id);
+ }
 }
