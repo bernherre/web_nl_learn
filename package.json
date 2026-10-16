@@ -1,6 +1,6 @@
 {
   "name": "web-nl-learn",
-  "version": "19.4.0-alpha.21",
+  "version": "19.4.0-alpha.22",
   "private": true,
   "type": "module",
   "description": "Statische Nederlandstalige leeromgeving A0-C2 met centraal lexicon, 1.904 werkwoorden, 9.048 oefeningen en verbonden A1-broninhoud.",

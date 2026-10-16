@@ -1,8 +1,8 @@
 /* Generated browser bundle. Source of truth and order: app-config.js, lexical-quality.js, a1-expansion-verbs.js, a1-expansion-lexicon.js, a1-source-lexicon.js, a1-source-pages.js, lexicon-a1.js, lexicon-a2.js, lexicon.js, learning.js, a1-expansion-content.js, a1-reference-content.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, learning-paths.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, c1-c2-language-systems.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, verb-sentence-pattern-fixes.js, knowledge-graph.js, content.js, main.js. */
 (function () {
 'use strict';
-const APP_VERSION = '19.4.0-alpha.21';
-const APP_RELEASE = 'V19.4 Alpha 21';
+const APP_VERSION = '19.4.0-alpha.22';
+const APP_RELEASE = 'V19.4 Alpha 22';
 
 const GENERIC_DEFINITION_PATTERNS = [
   /^Het werkwoord beschrijft vooral/u,
@@ -157405,21 +157405,61 @@ function updateVoiceStatus(message, available = true) {
   elements.voiceStatus?.classList.toggle('warning', !available);
 }
 
+// Keep the current utterance alive and ignore events from replaced requests.
+let activeUtterance = null;
 function speak(text, rate) {
-  if (!text || !('speechSynthesis' in window)) {
+  if (!text) return;
+  if (!('speechSynthesis' in window) || typeof SpeechSynthesisUtterance === 'undefined') {
     showToast('Deze browser ondersteunt geen spraaksynthese.');
     return;
   }
-  window.speechSynthesis.cancel();
-  const utterance = new SpeechSynthesisUtterance(text);
-  utterance.lang = 'nl-NL';
-  utterance.rate = Math.min(1.2, Math.max(.5, Number(rate) || state.settings.speechRate));
-  utterance.pitch = 1;
-  if (state.dutchVoice) utterance.voice = state.dutchVoice;
-  utterance.onerror = () => showToast('De uitspraak kon niet worden afgespeeld. Controleer je browserstemmen.');
-  window.speechSynthesis.speak(utterance);
-  state.progress.audioPlays += 1;
-  saveProgress();
+  const synth = window.speechSynthesis;
+  // Detach before cancel(): browsers may report canceled/interrupted synchronously.
+  if (activeUtterance) {
+    activeUtterance.onstart = activeUtterance.onend = activeUtterance.onerror = null;
+    activeUtterance = null;
+  }
+  try {
+    if (synth.speaking || synth.pending) synth.cancel();
+    if (synth.paused) synth.resume();
+    // Voices can become available after initial page load (notably on mobile).
+    loadVoices();
+    const utterance = new SpeechSynthesisUtterance(text);
+    activeUtterance = utterance;
+    utterance.lang = state.dutchVoice?.lang || 'nl-NL';
+    utterance.rate = Math.min(1.2, Math.max(.5, Number(rate) || state.settings.speechRate));
+    utterance.pitch = 1;
+    if (state.dutchVoice) utterance.voice = state.dutchVoice;
+    let started = false;
+    utterance.onstart = () => {
+      if (activeUtterance !== utterance || started) return;
+      started = true;
+      state.progress.audioPlays += 1;
+      saveProgress();
+    };
+    utterance.onend = () => {
+      if (activeUtterance === utterance) activeUtterance = null;
+    };
+    utterance.onerror = (event) => {
+      if (activeUtterance !== utterance) return;
+      activeUtterance = null;
+      if (event.error === 'canceled' || event.error === 'interrupted') return;
+      const messages = {
+        'not-allowed': 'Audio is geblokkeerd. Tik opnieuw op de luidspreker om de uitspraak te starten.',
+        'voice-unavailable': 'De Nederlandse stem is niet beschikbaar. Controleer de Nederlandse stemmen op je apparaat en probeer opnieuw.',
+        'language-unavailable': 'Nederlands is niet beschikbaar voor spraak op dit apparaat. Controleer de geïnstalleerde stemmen.',
+        'audio-busy': 'De audio-uitgang is bezet. Stop andere audio en tik opnieuw op de luidspreker.',
+        'audio-hardware': 'De audio-uitgang is niet beschikbaar. Controleer je geluidsuitvoer.',
+        'network': 'De spraakdienst heeft geen verbinding. Controleer je internetverbinding en probeer opnieuw.',
+      };
+      showToast(messages[event.error] || `De uitspraak is niet gestart (${event.error || 'onbekend'}). Tik opnieuw op de luidspreker; herlaad de pagina als dit blijft gebeuren.`);
+    };
+    // Stay in the tap handler: no timer/await that loses user activation on iOS.
+    synth.speak(utterance);
+  } catch (error) {
+    activeUtterance = null;
+    showToast('De spraakdienst is niet beschikbaar. Herlaad de pagina en tik opnieuw op de luidspreker.');
+  }
 }
 
 function vocabularyCard(item) {
