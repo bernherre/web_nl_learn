@@ -21,8 +21,8 @@ test('de hoofdapp gebruikt geen twijfelachtige WAV-opnames', async () => {
   const app = await read('js/app.js');
   assert.doesNotMatch(html, /audio\/.*\.wav/i);
   assert.doesNotMatch(main, /audio\/.*\.wav/i);
-  assert.match(main, /utterance\.lang = 'nl-NL'/);
-  assert.match(app, /utterance\.lang = 'nl-NL'/);
+  assert.doesNotMatch(app, /audio\/.*\.wav/i);
+  // Dutch voice selection and fallback are exercised in speech-playback.test.js.
   assert.match(html, /Normaal/);
   assert.match(html, /Langzaam/);
 });

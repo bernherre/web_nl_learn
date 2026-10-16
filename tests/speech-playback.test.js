@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import vm from 'node:vm';
 import { readFileSync } from 'node:fs';
 const source = readFileSync(new URL('../js/main.js', import.meta.url), 'utf8');
-function setup() {
+function setup(voice = { lang: 'nl-NL', name: 'Dutch' }, implementation = source) {
   const played = [], notices = [], calls = [];
   const state = { settings: { speechRate: .9 }, progress: { audioPlays: 0 } };
   const synth = { speaking: false, pending: false, paused: false,
@@ -11,9 +11,9 @@ function setup() {
     speak(u) { played.push(u); } };
   const context = vm.createContext({ window: { speechSynthesis: synth },
     SpeechSynthesisUtterance: class { constructor(text) { this.text = text; } },
-    state, loadVoices() { calls.push('voices'); state.dutchVoice = { lang: 'nl-NL', name: 'Dutch' }; },
+    state, loadVoices() { calls.push('voices'); state.dutchVoice = voice; },
     saveProgress() { calls.push('save'); }, showToast(message) { notices.push(message); } });
-  vm.runInContext(source.slice(source.indexOf('let activeUtterance = null;'), source.indexOf('\nfunction vocabularyCard')), context);
+  vm.runInContext(implementation.slice(implementation.indexOf('let activeUtterance = null;'), implementation.indexOf('\nfunction vocabularyCard')), context);
   return { played, notices, calls, state, synth, speak: context.speak };
 }
 test('speech starts synchronously, refreshes voices and only counts actual start once', () => {
@@ -47,3 +47,15 @@ test('synchronous engine failure is handled', () => {
   const h = setup(); h.synth.speak = () => { throw Error('Unavailable'); }; h.speak('Hallo');
   assert.equal(h.notices.length, 1); assert.equal(h.state.progress.audioPlays, 0);
 });
+
+for (const file of ['main.js', 'app.js']) {
+  test(`${file}: Dutch voice language and nl-NL fallback work at runtime`, () => {
+    const implementation = readFileSync(new URL(`../js/${file}`, import.meta.url), 'utf8');
+    for (const voice of [null, { lang: 'nl-NL', name: 'Dutch' }, { lang: 'nl-BE', name: 'Flemish' }]) {
+      const h = setup(voice, implementation);
+      h.speak('Goedemorgen');
+      assert.equal(h.played[0].lang, voice?.lang || 'nl-NL');
+      assert.equal(h.played[0].voice, voice || undefined);
+    }
+  });
+}

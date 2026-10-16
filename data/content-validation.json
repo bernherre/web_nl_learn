@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-15T08:19:00.217Z",
-  "version": "19.4.0-alpha.21",
+  "generatedAt": "2026-10-16T21:10:25.649Z",
+  "version": "19.4.0-alpha.23",
   "status": "passed",
   "totals": {
     "checks": 81,
@@ -491,7 +491,7 @@
       "area": "technical",
       "check": "CSS en JavaScript hebben cache-busting",
       "status": "pass",
-      "detail": "Versie 19.4.0-alpha.21 staat in beide shell-assets.",
+      "detail": "Versie 19.4.0-alpha.23 staat in beide shell-assets.",
       "evidence": null
     },
     {
@@ -526,7 +526,7 @@
       "area": "technical",
       "check": "V19-praktijksituaties worden vóór gebruik gebundeld",
       "status": "pass",
-      "detail": "Definitiepositie=1125193, gebruikspositie=8313824.",
+      "detail": "Definitiepositie=1125193, gebruikspositie=8315977.",
       "evidence": null
     },
     {
@@ -547,7 +547,7 @@
       "area": "knowledge-graph",
       "check": "graafversie is gelijk aan de applicatieversie",
       "status": "pass",
-      "detail": "Versie 19.4.0-alpha.21.",
+      "detail": "Versie 19.4.0-alpha.23.",
       "evidence": null
     },
     {

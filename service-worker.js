@@ -1,5 +1,5 @@
-const CACHE = 'nederlands-gewoon-doen-v19-4-0-alpha-22';
-const APP_VERSION = '19.4.0-alpha.22';
+const CACHE = 'nederlands-gewoon-doen-v19-4-0-alpha-23';
+const APP_VERSION = '19.4.0-alpha.23';
 const OFFLINE_URL = './offline.html';
 const KNOWLEDGE_GRAPH_ASSETS = ['/data/content-knowledge-graph.json', '/data/content-knowledge-graph.js'];
 const CORE = [

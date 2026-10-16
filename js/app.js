@@ -1,8 +1,8 @@
 /* Generated browser bundle. Source of truth and order: app-config.js, lexical-quality.js, a1-expansion-verbs.js, a1-expansion-lexicon.js, a1-source-lexicon.js, a1-source-pages.js, lexicon-a1.js, lexicon-a2.js, lexicon.js, learning.js, a1-expansion-content.js, a1-reference-content.js, depth-content.js, supplement-content.js, questions-content.js, starter-content.js, spiral-content.js, advanced-level-content.js, learning-paths.js, number-math-content.js, technical-content.js, professional-content.js, advanced-practice-content.js, source-review-content.js, c1-c2-language-systems.js, v19-learning-experience.js, exercises.js, profiles.js, verb-atlas.js, verb-corrections.js, verb-core-review.js, verb-initial-review.js, verb-final-review.js, verb-sentence-pattern-fixes.js, knowledge-graph.js, content.js, main.js. */
 (function () {
 'use strict';
-const APP_VERSION = '19.4.0-alpha.22';
-const APP_RELEASE = 'V19.4 Alpha 22';
+const APP_VERSION = '19.4.0-alpha.23';
+const APP_RELEASE = 'V19.4 Alpha 23';
 
 const GENERIC_DEFINITION_PATTERNS = [
   /^Het werkwoord beschrijft vooral/u,
